@@ -1,0 +1,61 @@
+@import './variable.scss';
+
+
+//左侧使用到的
+.components-body {
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+}
+
+
+
+.active-draw-item {
+  & > .component-name {
+    color: $lighterBlue;
+  }
+}
+
+.drawing-item {
+  position: relative;
+  cursor: move;
+  box-sizing: border-box;
+  border: 1px dashed transparent;
+  border-radius: 3px;
+  padding: 0 2px;
+  //margin-bottom: 15px;
+  border: 1px dashed lightgray;
+  &.active-draw-item {
+    border: 1px dashed $lighterBlue;
+  }
+
+}
+
+//.drawing-item, .drawing-row-item {
+//  &:hover {
+//    & > .el-form-item {
+//      background: $selectedColor;
+//      border-radius: 6px;
+//    }
+//
+//    & > .drawing-item-copy, & > .drawing-item-delete {
+//      display: initial;
+//    }
+//  }
+//
+//  & > .drawing-item-copy, & > .drawing-item-delete {
+//    display: none;
+//    position: absolute;
+//    top: -10px;
+//    width: 20px;
+//    height: 20px;
+//    line-height: 20px;
+//    text-align: center;
+//    border-radius: 50%;
+//    font-size: 12px;
+//    border: 1px solid;
+//    cursor: pointer;
+//    z-index: 1;
+//  }
+
+//}
