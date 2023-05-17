@@ -1317,7 +1317,7 @@ const propertyConfigList = {
             options: [{label: "primary", value: "primary"}, {label: "success", value: "success"}, {
                 label: "warning",
                 value: "warning"
-            }, {label: "danger", value: "danger"}, {label: "info", value: "info"}, {label: "text", value: "text"}]
+            }, {label: "danger", value: "danger"}, {label: "info", value: "info"}]
         },
         plain: {label: "朴素按钮", title: "是否为朴素按钮", type: "boolean", default: false},
         text: {label: "文字按钮", title: "是否为文字按钮", type: "boolean", default: false},

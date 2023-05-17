@@ -349,6 +349,26 @@ export const selectComponents = [
         }
 
     },
+    {
+        __id__: 'datetime-picker',
+        __config__: {
+            name: '日期选择',
+            tag: 'el-date-picker',
+            tagIcon: 'date',
+            defaultValue: null,
+            showLabel: true,
+            labelWidth: null,
+            layout: 'formItem',
+            required: true,
+            changeTag: true,
+            document: 'https://element-plus.gitee.io/zh-CN/component/datetime-picker.html',
+        },
+        __props__: {
+            type:'dateTime',
+            style: {width: '100%'},
+        }
+
+    },
 
     {
         __id__: 'rate',

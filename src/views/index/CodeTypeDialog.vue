@@ -19,7 +19,7 @@
 
     <template #footer>
       <el-button @click="close"> 取消</el-button>
-      <el-button type="primary" @click="handelConfirm"> 确定</el-button>
+      <el-button type="primary" @click="handleConfirm"> 确定</el-button>
     </template>
   </el-dialog>
 
@@ -27,7 +27,7 @@
 <script setup>
 
 const props = defineProps(['showFileName']);
-const emit = defineEmits(['update:modelValue','confirm']);
+const emits = defineEmits(['confirm']);
 
 const formData = ref({
   fileName: undefined,
@@ -50,16 +50,16 @@ function onOpen() {
 
 
 function close(e) {
-  emit('update:modelValue', false)
+  emits('update:modelValue', false)
 }
 
 const formRef=ref();
-function handelConfirm() {
+function handleConfirm() {
   formRef.value.validate((valid) => {
     if (valid) {
       close()
       try {
-        emit('confirm', {...formData.value})
+        emits('confirm', {...formData.value})
       }catch(err) {
         console.info(err)
       }

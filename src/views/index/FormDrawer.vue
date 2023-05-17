@@ -72,7 +72,7 @@
                 <el-icon><download/></el-icon>
                 导出vue文件
               </span>
-              <span ref="copyBtn" class="bar-btn copy-btn">
+              <span class="bar-btn copy-btn">
                 <el-icon><document-copy/></el-icon>
                 复制代码
               </span>

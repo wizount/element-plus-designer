@@ -6,7 +6,7 @@
         append-to-body
         @open="onOpen"
     >
-      <template #title>
+      <template #header>
         选择图标
         <el-input
             v-model="key"

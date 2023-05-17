@@ -200,16 +200,16 @@ export const elementPlusComponents =[
         ],
         title: "Basic 基础组件"
     },
-    {
-        children: [
-            {
-                name: "Config Provider 全局配置",
-                key: "config-provider",
-                children: []
-            }
-        ],
-        title: "配置组件"
-    },
+    // {
+    //     children: [
+    //         {
+    //             name: "Config Provider 全局配置",
+    //             key: "config-provider",
+    //             children: []
+    //         }
+    //     ],
+    //     title: "配置组件"
+    // },
     {
         children: [
             {

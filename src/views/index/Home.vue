@@ -15,8 +15,8 @@
           <el-collapse-item :title="c.title" :name="c.titles" v-for="c in elementPlusComponents" :key="c.title">
 <!--            <el-link v-for="l in c.children">{{ l.name }}</el-link>-->
               <template v-for="l in c.children">
-                {{ l.name }}
-              <draggable class="components-draggable" :list="l.children" item-key="renderKey"
+<!--                {{ l.name }}-->
+              <draggable  tag="span" class="components-draggable" :list="l.children" item-key="renderKey"
                 :group="{ name: 'componentsGroup', pull: 'clone', put: false }" :clone="cloneComponent"
                 draggable=".components-item" :sort="false" @end="onEnd">
                 <template #item="{element}">
@@ -61,7 +61,7 @@
         <el-button text @click="download"> 导出vue文件</el-button>
         <el-button text @click="componentTreeVisible=true"> 组件树</el-button>
         <el-button class="copy-btn-main" text @click="copy"> 复制代码</el-button>
-        <el-button class="delete-btn" text @click="empty"> 清空</el-button>
+        <el-button class="delete-btn" text @click="emptyDrawingList"> 清空</el-button>
         <div id="copyNode" class="display:none;"></div>
       </div>
       <el-scrollbar class="center-scrollbar">
@@ -73,7 +73,7 @@
                             @mouseenter="drawItemMouseenter" @mouseleave="drawItemMouseleave"/>
           </template>
         </draggable>
-        <div v-show="!drawingList.length" class="empty-info"> 从左侧拖入或点选组件进行表单设计</div>
+        <div v-show="!drawingList||drawingList.length===0" class="empty-info"> 从左侧拖入或点选组件进行界面设计</div>
         <div style="position: fixed; left: 400px" ref="actionDiv">
           <el-button type="primary" size="small" circle icon="Document" @click="drawingItemCopy"/>
           <el-button type="danger" size="small" circle icon="Delete" @click="drawingItemDelete"/>
@@ -84,8 +84,7 @@
     <right-panel :active-data="activeData" :design-conf="designConf" :show-field="!!drawingList.length"
                  @tag-change="tagChange" @fetch-data="fetchData" @add-child-item="addChildItem"/>
     <form-drawer v-model="formDrawerVisible" :drawing-data="drawingData" size="100%" :generate-conf="generateConf"/>
-    <json-drawer size="60%" v-model="jsonDrawerVisible" :json-str="jsonStr" @refresh="refreshJson"
-                 class="drawer-header-hide"/>
+    <json-drawer size="750px" v-model="jsonDrawerVisible" :json-str="jsonStr" @refresh="refreshJson"/>
     <code-type-dialog v-model="dialogVisible" title="选择生成类型" :show-file-name="showFileName"
                       @confirm="generate"/>
     <el-drawer v-model="componentTreeVisible" title="组件树">
@@ -130,7 +129,7 @@ import {
   rawComponents,
   selectComponents,
 } from '@/components/generator/config'
-import {beautifierConf, deepClone, isObjectObject,} from '@/utils/index'
+import {beautifierConf, deepClone, isObjectObject} from '@/utils/index'
 import {vue3Template, vueScript, vueTemplate,} from '@/components/generator/html.js'
 import {renderJs} from '@/components/generator/js'
 import drawingDefault from '@/components/generator/drawingDefault'
@@ -144,7 +143,8 @@ import propertyConfigList from "@/components/generator/settingConfig";
 
 import {elementPlusComponents} from "@/components/generator/elementPlusConfig";
 
-import {nextTick} from "vue";
+import  {nextTick} from "vue";
+
 
 let tempActiveData
 let beautifier
@@ -471,12 +471,12 @@ function AssembleFormData() {
 function generate(data) {
 
   AssembleFormData()
-  if (operationType == "download") {
+  if (operationType === "download") {
     generateConf.value = data
     execDownload(data)
-  } else if (operationType == "copy") {
+  } else if (operationType === "copy") {
     execCopy();
-  } else if (operationType == "run") {
+  } else if (operationType === "run") {
     generateConf.value = data
     console.info(generateConf.value)
     execRun();
@@ -499,7 +499,7 @@ function execCopy(data) {
   document.getElementById('copyNode').click()
 }
 
-function empty() {
+function emptyDrawingList() {
   ElMessageBox.confirm('确定要清空所有组件吗？', '提示', {type: 'warning'}).then(
       () => {
         drawingList.value = []
@@ -519,15 +519,22 @@ function generateCode() {
 
 }
 
-const jsonStr = ref();
+//region json显示操作
+const jsonStr = ref("");
 
 function showJson() {
-  //AssembleFormData()
+  console.info("showJson");
   jsonStr.value = JSON.stringify(drawingList.value, null, 2);
-  console.info(jsonStr.value)
+  console.info(jsonStr.value );
+
   jsonDrawerVisible.value = true
+  console.info(jsonDrawerVisible.value );
 }
 
+function refreshJson(data) {
+  drawingList.value = deepClone(data)
+}
+//endregion
 function download() {
   dialogVisible.value = true
   showFileName.value = true
@@ -535,9 +542,10 @@ function download() {
 }
 
 function run() {
-  dialogVisible.value = true
-  showFileName.value = false
-  operationType = 'run'
+  ElMessageBox.alert("未完成");
+  // dialogVisible.value = true
+  // showFileName.value = false
+  // operationType = 'run'
 }
 
 function copy() {
@@ -551,11 +559,11 @@ function tagChange(newTag) {
   newTag = cloneComponent(newTag)
   activeData.value.__id__ = newTag.__id__
   newTag.__config__.defaultValue = activeData.value.__config__.defaultValue
-  activeData.value.__config__ = newTag.__config__
+  activeData.value.__config__ = newTag.__config__;
 
   activeData.value.__props__.placeholder = newTag.__props__.placeholder
   Object.keys(activeData.value.__props__).forEach((key) => {
-    if (newTag.__props__.hasOwnProperty(key) && activeData.value.__props__[key] != undefined) {
+    if (newTag.__props__.hasOwnProperty(key) && activeData.value.__props__[key] !== undefined) {
       newTag.__props__[key] = activeData.value.__props__[key];
     }
   })
@@ -573,11 +581,7 @@ function tagChange(newTag) {
 }
 
 
-function refreshJson(data) {
-  drawingList.value = deepClone(data.fields)
-  delete data.fields
-  designConf.value = data
-}
+
 
 
 function addChildItem(item) {
