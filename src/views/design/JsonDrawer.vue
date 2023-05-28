@@ -65,34 +65,6 @@ function preventDefaultSave(e) {
   }
 }
 
-let clipboard = null;
-
-onMounted(() => {
-      if (!clipboard) {
-        clipboard = new ClipboardJS('#jsonCopyNode', {
-          text: (trigger) => {
-            console.info(1333)
-            ElNotification({
-              title: '成功',
-              message: '代码已复制到剪切板，可粘贴。',
-              type: 'success',
-            })
-            return aceStr.value
-          },
-
-        })
-        clipboard.on('error', (e) => {
-          ElMessage.error('代码复制失败')
-        })
-        console.info(clipboard)
-      }
-    }
-)
-
-function onClose() {
-  clipboard && clipboard.destroy();
-  clipboard = null;
-}
 
 function exportJsonFile() {
   ElMessageBox.prompt('文件名:', '导出文件', {
@@ -115,8 +87,22 @@ function refresh() {
   }
 }
 
-function triggerCopy() {
-  document.getElementById('jsonCopyNode').click()
+function triggerCopy(event) {
+  let clipboard = new ClipboardJS('#jsonCopyNode', {
+    text: (trigger) => {
+      ElNotification({
+        title: '成功',
+        message: '代码已复制到剪切板，可粘贴。',
+        type: 'success',
+      })
+      return aceStr.value
+    },
+
+  })
+  clipboard.on('error', (e) => {
+    ElMessage.error('代码复制失败')
+  })
+  clipboard.onClick(event)
 }
 </script>
 

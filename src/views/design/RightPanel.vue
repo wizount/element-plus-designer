@@ -11,42 +11,52 @@
       <div style="padding: 15px">
         <el-form v-show="currentTab === 'field' &&showField" class="bootstrap-form">
           <el-form-item>
-            <template #label>组件类型<a class="document-link" target="_blank" :href="documentLink" title="查看组件文档">
-              <el-icon>
-                <Link/>
-              </el-icon>
-            </a></template>
-            <div style="display: flex;width: 100%">
-              <el-select v-model="activeData.__id__" placeholder="请选择组件类型"
-                         @change="tagChange" v-if="config.changeTag" style="flex: 1">
-                <el-option-group v-for="group in tagList" :key="group.label" :label="group.label">
-                  <el-option v-for="item in group.options" :key="item.__config__.name" :label="item.__config__.name"
-                             :value="item.__id__">
-                    <svg-icon class="node-icon" :icon-class="item.__config__.tagIcon"/>
-                    <span> {{ item.__config__.name }}</span></el-option>
-                </el-option-group>
-              </el-select>
-              <div v-else style="flex: 1">{{ config.name }}</div>
-              <el-button text icon="ArrowUp" type="primary" title="切换到父组件"
-                         @click="activeParentComponent"></el-button>
-            </div>
+            <template #label>组件类型
+              <el-link type="primary" class="document-link" :underline="false" target="_blank" :href="documentLink"
+                       title="查看组件文档">
+                <el-icon>
+                  <Link/>
+                </el-icon>
+              </el-link>
+              <el-link type="info" :underline="false" class="document-link" title="切换到父组件"
+                       @click="activeParentComponent">
+                <el-icon style="transform:rotate(180deg);">
+                  <Download/>
+                </el-icon>
+              </el-link>
+            </template>
+            <!--            <div style="display: flex;width: 100%">-->
+            <!--              <el-select v-model="activeData.__id__" placeholder="请选择组件类型"-->
+            <!--                         @change="tagChange" v-if="config.changeTag" style="flex: 1">-->
+            <!--                <el-option-group v-for="group in tagList" :key="group.label" :label="group.label">-->
+            <!--                  <el-option v-for="item in group.options" :key="item.__config__.name" :label="item.__config__.name"-->
+            <!--                             :value="item.__id__">-->
+            <!--                    <svg-icon class="node-icon" :icon-class="item.__config__.tagIcon"/>-->
+            <!--                    <span> {{ item.__config__.name }}</span></el-option>-->
+            <!--                </el-option-group>-->
+            <!--              </el-select>-->
+            <!--              <div v-else style="flex: 1">{{ config.name }}</div>-->
+            <!--              <el-button text icon="ArrowUp" type="primary" title="切换到父组件"-->
+            <!--                         @click="activeParentComponent"></el-button>-->
+            <!--            </div>-->
+          </el-form-item>
+          <el-form-item label="组件名">
+            <el-input v-model="config.componentName" placeholder="请输入组件名"/>
           </el-form-item>
 
-          <el-form-item v-if="activeData.__vModel__ !== undefined" label="字段名">
+          <el-form-item v-if="activeData.__vModel__ !== undefined" label="字段名" title="字段名，用于v-model">
             <el-input v-model="activeData.__vModel__" placeholder="请输入字段名（v-model）"/>
           </el-form-item>
-          <el-form-item v-if="config.componentName !== undefined" label="组件名">
-            <el-input v-model="config.componentName" placeholder="请输入字段名（v-model）"/>
-          </el-form-item>
-          <el-form-item v-if="config.label !== undefined" label="标题">
-            <el-input v-model="config.label" placeholder="请输入标题" @input="changeRenderKey"/>
-          </el-form-item>
+
           <el-form-item
               v-if="config.showLabel !== undefined &&config.labelWidth !== undefined"
               label="显示标签">
             <el-switch v-model="config.showLabel"/>
           </el-form-item>
-          <el-form-item v-if="config.labelWidth !== undefined" label="标签宽度">
+          <el-form-item v-if="config.showLabel" label="标题">
+            <el-input v-model="config.label" placeholder="请输入标题" @input="changeRenderKey"/>
+          </el-form-item>
+          <el-form-item v-if="config.showLabel" label="标签宽度">
             <el-input v-model.number="config.labelWidth" type="number" placeholder="请输入标签宽度"/>
           </el-form-item>
           <el-form-item v-if="activeProps.placeholder !== undefined" label="占位提示">
@@ -76,37 +86,11 @@
           <el-form-item v-if="config.required !== undefined" label="必填">
             <el-switch v-model="config.required"></el-switch>
           </el-form-item>
-          <template v-for="(v,k) in activeProperty">
-            <el-form-item v-if="!v.hide&&k!='placeholder'&&k!='vModel'"
-                          v-show="!v.switch||v.switch&&activeProps[v.switch[0]]==v.switch[1]" :label="v.label||v.title"
-                          :title="k+'：'+v.title" :key="k">
-
-              <template v-if="v.renderTag=='iconDialog'">
-                <el-button class="click-remove-btn" text v-if="activeProps[k]"
-                           :icon="activeProps[k]" title="点击删除"
-                           @click="activeProps[k]=''">{{ activeProps[k] }}
-                </el-button>
-                <el-button @click="openIconsDialog(k)"> 选择...</el-button>
-              </template>
-              <template v-else-if="v.type=='array'">
-                <array-editor :list="v.slot?activeData.__slot__[k]:activeProps[k]"
-                              :tag="v.tag||'ElInput'"></array-editor>
-              </template>
-              <template v-else-if="v.type=='objectArray'">
-                <object-array-editor :keys="v.keys"
-                                     :list="v.slot?activeData.__slot__[k]:activeProps[k]"></object-array-editor>
-              </template>
-              <template v-else-if="v.type=='object'">
-                <object-editor v-model="activeProps[k]" v-bind="v.objectTag"></object-editor>
-              </template>
-              <config-form-item :data="v.slot?activeData.__slot__:activeProps" :k="k"
-                                :property-config="v" v-else></config-form-item>
-            </el-form-item>
-          </template>
+          <item-config :property-config="activeProperty" :props-value="activeProps" :slots-value="activeData.__slot__"></item-config>
 
         </el-form>
 
-        <el-form v-if="currentTab=='reg'&&Array.isArray(config.regList)">
+        <el-form v-if="currentTab==='reg'&&Array.isArray(config.regList)">
           <el-divider>正则校验</el-divider>
           <div v-for="(item, index) in config.regList" :key="index" class="reg-item">
             <span class="close-btn" @click="config.regList.splice(index, 1)">
@@ -129,7 +113,7 @@
             <el-button @click="addReg" size="small"> 添加规则</el-button>
           </div>
         </el-form>
-        <el-form v-if="currentTab=='childTag'&&config.childTag"><!--拥有固定的子项-->
+        <el-form v-if="currentTab==='childTag'&&config.childTag"><!--拥有固定的子项-->
           <draggable v-model="activeData.__children__" :animation="340" group="childItem" itemKey="renderKey"
                      handle=".option-drag">
             <template #item="{element,index}">
@@ -153,73 +137,36 @@
             <el-button text type="primary" @click="addChildItem()"> 添加子组件
             </el-button>
           </div>
-
-          <template v-for="(v,k) in activeChildProperty">
-            <el-form-item v-if="!v.hide&&k!='placeholder'&&k!='vModel'"
-                          v-show="!v.switch||v.switch&&childActiveProps[v.switch[0]]==v.switch[1]"
-                          :label="v.label||v.title"
-                          :title="k+'：'+v.title" :key="k">
-
-              <template v-if="v.renderTag=='iconDialog'">
-                <el-button class="click-remove-btn" text v-if="childActiveProps[k]"
-                           :icon="childActiveProps[k]" title="点击删除"
-                           @click="childActiveProps[k]=''">{{ childActiveProps[k] }}
-                </el-button>
-                <el-button @click="openIconsDialog(k)"> 选择...</el-button>
-              </template>
-              <template v-else-if="v.type=='array'">
-                <array-editor :keys="v.keys" :list="activeChildItem.__slot__[k]"></array-editor>
-              </template>
-              <config-form-item :data="v.slot?activeChildItem.__slot__:childActiveProps" :k="k"
-                                :property-config="v" v-else></config-form-item>
-            </el-form-item>
-          </template>
+          <item-config :property-config="activeChildProperty" :props-value="childActiveProps" :slots-value="childActiveSlots"></item-config>
         </el-form>
 
-        <div v-if="currentTab=='style'">
+        <div v-if="currentTab==='style'">
           <style-editor v-model="activeProps.style"></style-editor>
         </div>
       </div>
     </el-scrollbar>
     <tree-node-dialog v-model="dialogVisible" title="添加选项" @commit="addNode"/>
-    <icons-dialog v-model="iconsVisible" :chosen="activeData[currentIconModel]"
-                  @select="setIcon">
-    </icons-dialog>
+
   </div>
 </template>
 
 <script setup lang="jsx">
-import TreeNodeDialog from '@/views/index/TreeNodeDialog'
-import IconsDialog from './IconsDialog'
+import TreeNodeDialog from '@/views/design/TreeNodeDialog'
 import Draggable from "vuedraggable";
 import {saveDesignConf} from '@/utils/db'
-import {
-  childComponents,
-  inputComponents,
-  selectComponents
-} from '@/components/generator/config'
+
 
 import propertyConfigList from "@/components/generator/settingConfig"
-import ConfigFormItem from "@/views/index/ConfigFormItem";
+import ConfigFormItem from "@/views/design/ConfigFormItem";
 import ArrayEditor from "@/components/ArrayEditor";
 import StyleEditor from "@/components/StyleEditor";
-
 
 
 const currentTab = ref('field')
 const currentNode = ref(null)
 const dialogVisible = ref(false)
 
-const currentIconModel = ref(null)
 
-const tagList = [{
-  label: '输入型组件',
-  options: inputComponents,
-},
-  {
-    label: '选择型组件',
-    options: selectComponents,
-  }]
 
 
 const props = defineProps({
@@ -235,7 +182,7 @@ const props = defineProps({
     }
 )
 
-const emits = defineEmits(['tag-change', 'addChildItem'])
+const emits = defineEmits(['tag-change', 'addChildItem', "activeParentComponent"])
 const config = computed(() => {
   return props.activeData.__config__ || {}
 })
@@ -254,7 +201,6 @@ const documentLink = computed(() => {
 })
 
 
-
 //监听，并随时保存
 watch(activeProps, (newVal) => {
   activeProperty.value && Object.keys(activeProperty.value).forEach((k) => {
@@ -267,13 +213,13 @@ watch(activeProps, (newVal) => {
 
 //region 对部分的tag进行修改
 watch(() => activeProps.value.multiple, (val) => {
-  if (config.value.tag == 'el-select' || config.value.tag == 'el-select-v2') {
+  if (config.value.tag === 'el-select' || config.value.tag === 'el-select-v2') {
     if (val) {
       if (!Array.isArray(config.value.defaultValue)) {
         config.value.defaultValue = []
       }
     } else {
-      if (typeof config.value.defaultValue != 'string') {
+      if (typeof config.value.defaultValue !== 'string') {
         config.value.defaultValue = ''
       }
     }
@@ -284,13 +230,13 @@ watch(() => activeProps.value['is-range'], (val) => {
   props.activeData.renderKey = `${config.value.drawItemId}${Math.floor(Math.random() * 10000)}`
 })
 watch(() => activeProps.value.range, (val) => {
-  if (config.value.tag == 'el-slider') {
+  if (config.value.tag === 'el-slider') {
     if (val) {
       if (!Array.isArray(config.value.defaultValue)) {
         config.value.defaultValue = [25, 50]
       }
     } else {
-      if (typeof config.value.defaultValue != 'number') {
+      if (typeof config.value.defaultValue !== 'number') {
         config.value.defaultValue = 50
       }
     }
@@ -319,8 +265,8 @@ const dateTimeFormatList = {
   datetimerange: 'YYYY-MM-DD HH:mm:ss',
 }
 watch(() => activeProps.value.type, (newVal, oldVal) => {
-  if (newVal && oldVal && config.value.tag == 'el-date-picker') {
-    if (newVal == 'dates' || newVal.indexOf('range') > 0) {
+  if (newVal && oldVal && config.value.tag === 'el-date-picker') {
+    if (newVal === 'dates' || newVal.indexOf('range') > 0) {
       config.value.defaultValue = []
     } else {
       config.value.defaultValue = null
@@ -335,10 +281,10 @@ watch(() => activeProps.value.type, (newVal, oldVal) => {
 
 //region 正则表达式
 //AutoComplete 回调
-import { AutoCompleteCallback} from "@/utils/element-plus-utils";
+import {AutoCompleteCallback} from "@/utils/element-plus-utils";
 import regList from '@/utils/regList.json'
-const ac = new AutoCompleteCallback(regList)
 
+const ac = new AutoCompleteCallback(regList)
 
 
 function addReg() {
@@ -347,8 +293,9 @@ function addReg() {
     message: '',
   })
 }
+
 //fixme 当更新时，要填入正则表达式的message
-function regChange(e){
+function regChange(e) {
   console.info(e)
 }
 
@@ -356,7 +303,7 @@ function regChange(e){
 
 import ObjectArrayEditor from "@/components/ObjectArrayEditor";
 import ObjectEditor from "@/components/ObjectEditor";
-
+import ItemConfig from "@/views/design/ItemConfig.vue";
 
 
 function addTreeItem() {
@@ -406,16 +353,6 @@ function addNode(data) {
   currentNode.value.push(data)
 }
 
-//region 图标选择
-const iconsVisible = ref(false)
-function openIconsDialog(model) {
-  iconsVisible.value = true
-  currentIconModel.value = model
-}
-
-function setIcon(val) {
-  activeProps.value[currentIconModel.value] = val
-}
 
 function tagChange(id) {
   let target = inputComponents.find(
@@ -431,6 +368,7 @@ function tagChange(id) {
 
 // 使changeRenderKey在目标组件改变时可用
 const needRerenderList = ['tinymce']
+
 function changeRenderKey() {
   if (needRerenderList.includes(config.value.tag)) {
     props.activeData.renderKey = `${config.drawItemId}${Math.floor(Math.random() * 10000)}`
@@ -446,24 +384,22 @@ const childActiveProps = computed(() => {
   return activeChildItem.value && activeChildItem.value.__props__ || {}
 })
 
+const childActiveSlots = computed(() => {
+  return activeChildItem.value && activeChildItem.value.__slot__ || {}
+})
 function showChildItem(child) {
   activeChildItem.value = child;
 }
 
 function addChildItem() {
-  for (const c of childComponents) {
-    if (c.__config__.tag == config.value.childTag) {
-      emits('addChildItem', c)
-      const children = props.activeData.__children__;
-      activeChildItem.value = children[children.length - 1];
-    }
-  }
+  emits('addChildItem', props.activeData.__config__.childTag)
 }
 
 //根据当前选中的组件，选中他的父组件
 function activeParentComponent() {
-
+  emits('activeParentComponent')
 }
+
 
 //endregion
 </script>
@@ -473,9 +409,7 @@ function activeParentComponent() {
   margin-bottom: 0px !important;
 }
 
-.click-remove-btn:hover {
-  text-decoration: line-through red
-}
+
 
 .right-board {
   width: 350px;
@@ -505,18 +439,8 @@ function activeParentComponent() {
 .document-link {
   width: 20px;
   height: 20px;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  background: #409eff;
-  z-index: 1;
-  border-radius: 0 0 6px 0;
-  text-align: center;
-  line-height: 20px;
-  color: #fff;
   font-size: 18px;
-  margin-top: 4px;
-  margin-left: 2px;
+  margin: 6px 0px 4px 10px;
 }
 
 .node-label {
@@ -561,20 +485,15 @@ function activeParentComponent() {
 
 
 .bootstrap-form {
-  .el-form-item {
-    display: flex;
-    width: 100% !important;
-
-    :deep(.el-form-item__label) {
-      display: flex;
-      width: fit-content !important;
+  :deep(.el-form-item) {
+    margin-bottom: 6px;
+    .el-form-item__label {
       background: #f0f8ff;
+      margin-right: 8px;
       padding-left: 8px;
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
     }
 
-    :deep(.el-input__wrapper) {
+    .el-input__wrapper {
       border-top-left-radius: 0px !important;
       border-bottom-left-radius: 0px !important;
     }

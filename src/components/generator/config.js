@@ -1,6 +1,7 @@
 // 表单属性【右面板】
 export const designConf = {
-    unFocusedComponentBorder: true
+    unFocusedComponentBorder: true,
+    wrapWithCol:true,//生成组件包含col
 }
 
 // 输入型组件 【左面板】

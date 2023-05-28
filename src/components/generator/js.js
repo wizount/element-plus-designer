@@ -1,30 +1,102 @@
-export const renderJs = (itemList) => {
-    return `${renderRefs(itemList).join("")}
-    ${renderOptions(itemList).join("")}
-     const rules={${renderAllRules(itemList).join("")}}`;
+import propertyConfigList from "@/components/generator/settingConfig";
 
+//总入口
+export const renderJs = (itemList) => {
+    let res = [];
+    vModelRefGeneratedMap = {}
+    res.push(renderItemList(itemList));
+    return res.join("");
 }
-export const renderRefs = (itemList) => {
-    let refs = [];
+
+//递归调用生成所有的JS
+const renderItemList = (itemList) => {
+    if (!Array.isArray(itemList)) {
+        return [];
+    }
+    let res = [];
+    for (const item of itemList) {
+        res.push(renderItem(item).join(""));
+    }
+    return res.join("");
+    // return `${renderRefs(itemList).join("")}
+    // ${renderOptions(itemList).join("")}
+    //  const rules={${renderAllRules(itemList).join("")}}`;
+}
+//单独生成
+const renderItem = (item) => {
+    let res = []
+    const tag = item.__config__.tag;
+    console.info(tag);
+    if (tag === 'el-form') {
+        res.push(`const ${item.__props__.model}=ref({${renderFormData(item.__children__).join("")}});`)
+        res.push(`const ${item.__props__.rules}={${renderFormRules(item.__children__).join("")}};`)
+    }
+    res.push(renderVModelRef(item));
+    res.push(renderPropRefs(item));
+    res.push(renderItemList(item.__children__));
+
+    // res.push(renderNotFormRefs(item).join(""))
+
+
+    return res;
+}
+//生成表单数据
+const renderFormData = (itemList) => {
+    if (!Array.isArray(itemList)) {
+        return [];
+    }
+    let data = [];
     for (const item of itemList) {
         if (item.__vModel__) {
-            refs.push(`const ${item.__vModel__}=ref(${renderValue(item.__config__.defaultValue)});`)
+            vModelRefGeneratedMap[item.__vModel__] = true;
+            data.push(`${item.__vModel__}:${renderValue(item.__config__.defaultValue)},`)
         }
-        if (item.__children__) {
-            refs = refs.concat(renderRefs(item.__children__))
-        }
+        data = data.concat(renderFormData(item.__children__))
     }
-    return refs;
+    return data;
+}
+//生成表单校验
+const renderFormRules = (itemList) => {
+    if (!Array.isArray(itemList)) {
+        return [];
+    }
+    let rules = [];
+    for (const item of itemList) {
+        if (item.__vModel__) {
+            rules.push(renderARules(item))
+        }
+        rules = rules.concat(renderFormRules(item.__children__))
+    }
+    return rules;
+}
+//生成属性ref
+export const renderPropRefs = (item) => {
+    const refs = [];
+    const props = item.__props__
+    const {__ref__} = props;
+    __ref__ && Object.keys(__ref__).forEach((k) => {
+        refs.push(` const ${__ref__[k]}=ref(${renderValue(props[k] || item.__slot__[k])});`)
+    })
+    return refs.join("");
+}
+
+let vModelRefGeneratedMap = {}
+//生成v-model ref
+export const renderVModelRef = (item) => {
+    if (item.__vModel__&&!vModelRefGeneratedMap[item.__vModel__]) {
+        return `const ${item.__vModel__}=ref(${renderValue(item.__config__.defaultValue)});`;
+    }
+    return "";
 }
 const renderValue = (value) => {
-    if (value == undefined || value == null) {
-        return ""
+    if (value === undefined || value === null) {
+        return "undefined"
     }
-    if (typeof value == 'boolean' || typeof value == 'number') {//针对boolean，是true直接写一个名称
+    if (typeof value === 'boolean' || typeof value === 'number') {//针对boolean，是true直接写一个名称
         return JSON.stringify(value)
-    } else if (typeof value == 'string') {
+    } else if (typeof value === 'string') {
         return `"${value}"`
-    } else if (typeof value == 'object') {
+    } else if (typeof value === 'object') {
         value = deepClone(value)
         Object.keys(value).forEach((k) => {
             if (!k || !value[k]) {
@@ -36,34 +108,6 @@ const renderValue = (value) => {
     }
 }
 
-const renderOptions = (itemList) => {
-    let options = [];
-    for (const item of itemList) {
-        if (item.__vModel__) {
-            const {tag} = item.__config__;
-            if (tag == 'el-select' || tag == 'el-radio-group' || tag == 'el-checkbox-group') {
-                options.push(`const ${item.__vModel__}Options=ref(${renderValue(item.__slot__.options)});`)
-            }
-        }
-        if (item.__children__) {
-            options = options.concat(renderOptions(item.__children__))
-        }
-    }
-    return options;
-}
-
-const renderAllRules = (itemList) => {
-    let rules = [];
-    for (const item of itemList) {
-        if (item.__vModel__) {
-            rules.push(renderARules(item))
-        }
-        if (item.__children__) {
-            rules = rules.concat(renderAllRules(item.__children__))
-        }
-    }
-    return rules;
-}
 
 // 构建校验规则
 function renderARules(item) {
@@ -100,9 +144,10 @@ function renderARules(item) {
 }
 
 
-
 import {exportDefault, titleCase, deepClone} from '@/utils/index'
 import ruleTrigger from './ruleTrigger'
+import {isArrayEqual, isObjectEqual} from "@/components/generator/utils";
+import {renderObjectProps} from "@/components/generator/html";
 
 const units = {
     KB: '1024',
@@ -306,12 +351,12 @@ function buildRules(scheme, ruleList) {
     const rules = []
     if (ruleTrigger[config.tag]) {
         if (config.required) {
-            const type =  Array.isArray(config.defaultValue) ? 'type: \'array\',' : ''
-            let message =  Array.isArray(config.defaultValue) ? `请至少选择一个${config.label}` : scheme.placeholder
+            const type = Array.isArray(config.defaultValue) ? 'type: \'array\',' : ''
+            let message = Array.isArray(config.defaultValue) ? `请至少选择一个${config.label}` : scheme.placeholder
             if (message === undefined) message = `${config.label}不能为空`
             rules.push(`{ required: true, ${type} message: '${message}', trigger: '${ruleTrigger[config.tag]}' }`)
         }
-        if (config.regList &&  Array.isArray(config.regList)) {
+        if (config.regList && Array.isArray(config.regList)) {
             config.regList.forEach(item => {
                 if (item.pattern) {
                     rules.push(

@@ -1,30 +1,35 @@
-# vue3-form-generator
+# Element Plus designer 
+感谢 JakHuang [form generator](https://github.com/JakHuang/form-generator) 提供的灵感。  
+Element Plus设计器提供大部分element plus组件所见及所得在线设计，当然也包含表单设计。  
+当前除了设置， 
 
-This template should help get you started developing with Vue 3 in Vite.
+## 功能概述
 
-## Recommended IDE Setup
+- element plus组件在线设计
+- 组件属性更
+- 导出和复制vue3代码
+- 导出JSON
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+### 工程安装
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 开发
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### 发布
 
 ```sh
 npm run build
 ```
+
+# 技术栈
+Vue3 
+Element Plus
+
 下一步计划，重新改vue draggable

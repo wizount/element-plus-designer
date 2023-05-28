@@ -1,11 +1,11 @@
 import {createWebHistory, createRouter} from 'vue-router'
-import Home from '@/views/index/Home.vue'
-import Test from '@/views/Test'
+import Index from '@/views/design/index.vue'
+import Test from '@/views/tool/Test'
 const routes = [
     {
         path: '/',
-        name: 'home',
-        component: Home,
+        name: 'index',
+        component: Index,
     },
     {
         path: '/test',
@@ -15,23 +15,12 @@ const routes = [
     {
         path: '/elutils',
         name: 'elutils',
-        component:() =>import('@/views/ElementPropertyUtils')
+        component:() =>import('@/views/tool/ElementPropertyUtils')
     },
     {
-        path: '/parser',
-        name: 'parser',
-        component: () =>
-            import(
-                /* webpackChunkName: "parser-example" */ '@/components/parser/example/Index.vue'
-                ),
-    },
-    {
-        path: '/tinymce',
-        name: 'tinymce',
-        component: () =>
-            import(
-                /* webpackChunkName: "tinymce-example" */ '@/components/tinymce/example/Index.vue'
-                ),
+        path: '/preview',
+        name: 'preview',
+        component:() =>import('@/views/tool/preview')
     },
 ]
 

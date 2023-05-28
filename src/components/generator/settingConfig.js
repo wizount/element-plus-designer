@@ -238,8 +238,9 @@ const propertyConfigList = {
         placeholder: '请选择',
         options: {
             slot: true,
+            ref: true,
             label: '选项',
-            type: 'array',//如果是array,支持draggable
+            type: 'objectArray',//如果是array,支持draggable
             keys: [{key: "label", label: '选项名'}, {key: "value", label: '选项值'}]//key为空是，array里面的项是字符串，否则是object
         },
         disabled: {label: "禁用", title: "是否禁用", type: "boolean", default: false},
@@ -268,6 +269,24 @@ const propertyConfigList = {
             default: "CircleClose"
         },
         multiple: {label: "多选", title: "是否多选", type: "boolean", default: false},
+        "multiple-limit": {
+            label: "多选最大数目",
+            title: "多选时可被选择的最大数目。 当被设置为0时，可被选择的数目不设限。",
+            type: "number",
+            default: 0,
+            switch: ['multiple', true]
+        },
+        "tag-type": {
+            label: "标签类型",
+            title: "标签类型",
+            type: "string",
+            options: [{label: "success", value: "success"}, {label: "info", value: "info"}, {
+                label: "warning",
+                value: "warning"
+            }, {label: "danger", value: "danger"}],
+            default: "info",
+            switch: ['multiple', true]
+        },
         "collapse-tags": {
             label: "折叠多选",
             title: "多选时是否将选中值按文字的形式展示",
@@ -281,14 +300,14 @@ const propertyConfigList = {
             type: "boolean",
             options: [{label: "true", value: "true"}, {label: "false", value: "false"}],
             default: false,
-            switch: ['multiple', true]
+            switch: ['collapse-tags', true]
         },
-        "multiple-limit": {
-            label: "多选最大数目",
-            title: "多选时可被选择的最大数目。 当被设置为0时，可被选择的数目不设限。",
+        "max-collapse-tags": {
+            label: "标签最大数量",
+            title: "需要显示的 Tag 的最大数量 只有当 collapse-tags 设置为 true 时才会生效。",
             type: "number",
-            default: 0,
-            switch: ['multiple', true]
+            default: 1,
+            switch: ['collapse-tags', true]//控制显示
         },
         name: {label: "", title: "选择器的原生name属性", type: "string", hide: true},
         effect: {
@@ -305,12 +324,6 @@ const propertyConfigList = {
             title: "是否允许创建新条目， 当使用该属性时，filterable必须设置为true",
             type: "boolean",
             default: false
-        },
-        "reserve-keyword": {
-            label: "保留关键字",
-            title: "筛选时，是否在选择选项后保留关键字",
-            type: "boolean",
-            default: true
         },
         "no-data-text": {
             label: "无数据显示文字",
@@ -333,19 +346,13 @@ const propertyConfigList = {
             options: [{label: "true", value: "true"}, {label: "false", value: "false"}],
             default: true
         },
-        "popper-options": {label: "popper选项", title: "自定义 popper 选项，更多请参考 popper.js", type: "object"},
         "automatic-dropdown": {
             label: "自动弹出菜单",
             title: "对于不可过滤的 Select 组件，此属性决定是否在输入框获得焦点后自动弹出选项菜单",
             type: "boolean",
             default: false
         },
-        height: {
-            label: "子选项的高度",
-            title: "下拉菜单的高度，每一个子选项的高度是 34px",
-            type: "number",
-            default: 170
-        },
+
         "scrollbar-always-on": {label: "展示滚动条", title: "控制是否总是展示滚动条", type: "boolean", default: false},
         remote: {label: "服务器搜索数据", title: "是否从服务器搜索数据", type: "boolean", default: false},
         "remote-method": {
@@ -372,12 +379,72 @@ const propertyConfigList = {
                 value: "right-end"
             }],
             default: "bottom-start"
-        }
+        },
+        "filter-method": {label: "筛选方法", title: "自定义筛选方法", type: "function"},
+        "remote-show-suffix": {
+            label: "远程搜索后缀图标",
+            title: "远程搜索方法显示后缀图标",
+            type: "boolean",
+            default: false
+        },
+        loading: {
+            label: "正在获取数据",
+            title: "是否正在从远程获取数据",
+            type: "boolean",
+            options: [{label: "true", value: "true"}, {label: "false", value: "false"}],
+            default: false
+        },
+        "loading-text": {
+            label: "加载内容显示文本",
+            title: "从服务器加载内容时显示的文本",
+            type: "string",
+            default: "Loading"
+        },
+        "no-match-text": {
+            label: "无匹配时显示文字",
+            title: "搜索条件无匹配时显示的文字，也可以使用 empty 插槽设置",
+            type: "string",
+            default: "No matching data"
+        },
+        "reserve-keyword": {
+            label: "搜索关键词",
+            title: "当 multiple 和 filter被设置为 true 时，是否在选中一个选项后保留当前的搜索关键词",
+            type: "boolean",
+            options: [{label: "true", value: "true"}, {label: "false", value: "false"}],
+            default: true
+        },
+        "default-first-option": {
+            label: "回车选择第一个匹配项",
+            title: "是否在输入框按下回车时，选择第一个匹配项。 需配合 filterable 或 remote 使用",
+            type: "boolean",
+            default: false
+        },
+        "popper-append-to-body": {
+            label: "弹出框插入至body元素",
+            title: "是否将弹出框插入至 body 元素 当弹出框的位置出现问题时，你可以尝试将该属性设置为false。",
+            type: "boolean",
+            default: true
+        },
+        "fit-input-width": {
+            label: "",
+            title: "下拉框的宽度是否与输入框相同",
+            type: "boolean",
+            default: false
+        },
+        "suffix-icon": {
+            label: "后缀图标",
+            title: "自定义后缀图标组件",
+            type: "string | Component",
+            renderTag: 'iconDialog',
+            default: "ArrowDown"
+        },
+
     },
     radioGroup: {
         vModel: 'modelValue',
         options: {
             slot: true,
+            ref: true,
             label: '选项',
             type: 'objectArray',//如果是array,支持draggable
             keys: [{key: "label", label: '选项名'}, {key: "value", label: '选项值'}]//key为空是，array里面的项是字符串，否则是object
@@ -413,6 +480,7 @@ const propertyConfigList = {
         vModel: 'modelValue',
         options: {
             slot: true,
+            ref: true,
             label: '选项',
             type: 'objectArray',//如果是array,支持draggable
             keys: [{key: "label", label: '选项名'}, {key: "value", label: '选项值'}]//key为空是，array里面的项是字符串，否则是object
@@ -754,7 +822,7 @@ const propertyConfigList = {
         vModel: 'modelValue',
         placeholder: '请选择',
         options: {label: "数据源", title: "可选项数据源，键名可通过 Props 属性配置", type: "array"},
-        props: {label: "配置选项", title: "配置选项，具体见下表", type: "object"},
+        props: {label: "配置选项", title: "配置选项，具体见下表", type: "object"},//todo
         size: {
             label: "尺寸",
             title: "尺寸",
@@ -944,6 +1012,14 @@ const propertyConfigList = {
         },
         round: {label: "圆形", title: "Tag 是否为圆形", type: "boolean", default: false}
     },
+    "check-tag": {
+        default: {
+            slot: true,
+            type: 'string',
+            label: '内容'
+        },
+        checked: {label: "选中", title: "是否选中", type: "boolean", default: false}
+    },
     link: {
         default: {
             slot: true,
@@ -1065,7 +1141,22 @@ const propertyConfigList = {
         },
     },
     form: {
-        rules: {label: "验证规则", title: "表单验证规则", type: "string"},
+        model: {
+            label: "表单数据",
+            title: "表单数据对象",
+            type: "string",
+            required: true,
+            formRef: true,//只用在el-form
+            defaultRefName: "formData"
+        },
+        rules: {
+            label: "验证规则",
+            title: "表单验证规则",
+            type: "string",
+            required: true,
+            formRef: true,
+            defaultRefName: "formRules"
+        },
         inline: {
             label: "行内表单",
             title: "行内表单模式",
@@ -1149,6 +1240,76 @@ const propertyConfigList = {
             default: false
         }
     },
+    formItem: {
+        prop: {
+            label: "model 的键名",
+            title: "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])。 在定义了 validate、resetFields 的方法时，该属性是必填的",
+            type: "string/string[]"
+        },
+        label: {label: "", title: "标签文本", type: "string"},
+        "label-width": {
+            label: "标签宽度",
+            title: "标签宽度，例如 '50px'。 可以使用 auto。",
+            type: "string/number",
+        },
+        required: {
+            label: "必填项",
+            title: "是否为必填项，如不设置，则会根据校验规则确认",
+            type: "boolean",
+            default: false
+        },
+        rules: {
+            hide: true,
+            label: "表单验证规则",
+            title: "表单验证规则, 具体配置见下表, 更多内容可以参考async-validator",
+            type: "object",
+
+        },
+        error: {
+            label: "验证错误提示信息",
+            title: "表单域验证错误时的提示信息。设置该值会导致表单验证状态变为 error，并显示该错误信息。",
+            type: "string"
+        },
+        "show-message": {
+            label: "显示校验错误信息",
+            title: "是否显示校验错误信息",
+            type: "boolean",
+            default: true
+        },
+        "inline-message": {
+            label: "行内显示校验信息",
+            title: "是否在行内显示校验信息",
+            type: "boolean",
+            default: false
+        },
+        size: {
+            label: "尺寸",
+            title: "用于控制该表单域下组件的默认尺寸",
+            type: "string",
+            options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
+                label: "small",
+                value: "small"
+            }],
+            default: "default"
+        },
+        for: {
+            hide: true,
+            label: "",
+            title: "和原生标签相同能力",
+            type: "string",
+            options: [{label: "string", value: "string"}]
+        },
+        "validate-status": {
+            label: "校验的状态",
+            title: "formitem 校验的状态",
+            type: "string",
+
+            options: [{label: "error", value: "error"}, {label: "validating", value: "validating"}, {
+                label: "success",
+                value: "success"
+            }]
+        }
+    },
     row: {
         gutter: {label: "栅格间隔", title: "栅格间隔", type: "number", default: 0},
         justify: {
@@ -1221,41 +1382,45 @@ const propertyConfigList = {
             title: "<768px 响应式栅格数或者栅格属性对象",
             type: "number/object (例如 {span: 4, offset: 4})",
             renderTag: 'el-clearable-slider', renderProps: {max: 24, min: 0, marks: {12: ''}},
-            default: undefined
+            default: undefined,
+            remember: true
         },
         sm: {
             label: "sm(≥768px)",
             title: "≥768px 响应式栅格数或者栅格属性对象",
             type: "number/object (例如 {span: 4, offset: 4})",
             renderTag: 'el-clearable-slider', renderProps: {max: 24, min: 0, marks: {12: ''}},
-            default: undefined
+            default: undefined,
+            remember: true
         },
         md: {
             label: "md(≥992px)",
             title: "≥992px 响应式栅格数或者栅格属性对象",
             type: "number/object (例如 {span: 4, offset: 4})",
             renderTag: 'el-clearable-slider', renderProps: {max: 24, min: 0, marks: {12: ''}},
-            default: undefined
+            default: undefined,
+            remember: true
         },
         lg: {
             label: "lg(≥1200px)",
             title: "≥1200px 响应式栅格数或者栅格属性对象",
             type: "number/object (例如 {span: 4, offset: 4})",
             renderTag: 'el-clearable-slider', renderProps: {max: 24, min: 0, marks: {12: ''}},
-            default: undefined
+            default: undefined,
+            remember: true
         },
         xl: {
             label: "xl(≥1920px)",
             title: "≥1920px 响应式栅格数或者栅格属性对象",
             type: "number/object (例如 {span: 4, offset: 4})",
             renderTag: 'el-clearable-slider', renderProps: {max: 24, min: 0, marks: {12: ''}},
-            default: undefined
+            default: undefined,
+            remember: true
         },
         tag: {
             label: "自定义元素标签",
             title: "自定义元素标签",
             type: "string",
-            //options: [{label: "(*)", value: "(*)"}],
             default: "div"
         }
     },
@@ -1360,6 +1525,27 @@ const propertyConfigList = {
             default: false
         }
     },
+    "button-group": {
+        size: {
+            label: "尺寸",
+            title: "尺寸",
+            type: "string",
+            options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
+                label: "small",
+                value: "small"
+            }],
+            default: 'default'
+        },
+        type: {
+            label: "类型",
+            title: "类型",
+            type: "string",
+            options: [{label: "primary", value: "primary"}, {label: "success", value: "success"}, {
+                label: "warning",
+                value: "warning"
+            }, {label: "danger", value: "danger"}, {label: "info", value: "info"}]
+        }
+    },
     empty: {
         image: {label: "图片地址", title: "图片地址", type: "string"},
         "image-size": {label: "图片大小", title: "图片大小（宽度）", type: "number"},
@@ -1418,6 +1604,7 @@ const propertyConfigList = {
         }
     },
     divider: {
+        default: {slot: true, label: '文字', type: 'string'},
         direction: {
             label: "方向",
             title: "设置分割线方向",
@@ -1456,12 +1643,11 @@ const propertyConfigList = {
             title: "子元素的排列方向",
             type: "string",
             options: [{label: "horizontal", value: "horizontal"}, {label: "vertical", value: "vertical"}],
-            default: "vertical"
         }
     },
     header: {height: {label: "高度", title: "顶栏高度", type: "string", default: "60px"}},
     footer: {height: {label: "高度", title: "底栏高度", type: "string", default: "60px"}},
-    aside: {height: {label: "宽度", title: "底栏宽度", type: "string", default: "300px"}},
+    aside: {width: {label: "宽度", title: "侧边栏宽度", type: "string", default: "300px"}},
     scrollbar: {
         height: {
             label: "高度",
@@ -2003,10 +2189,10 @@ const propertyConfigList = {
     },
     timeline: {},
     'timeline-item': {
-        default: {label: '内容', slot: true, type: 'string'},
+        default: {slot: true, label: '内容', type: 'string'},
+        center: {label: "垂直居中", title: "是否垂直居中", type: "boolean", default: false},
         timestamp: {label: "时间戳", title: "时间戳", type: "string"},
         "hide-timestamp": {label: "隐藏时间戳", title: "是否隐藏时间戳", type: "boolean", default: false},
-        center: {label: "垂直居中", title: "是否垂直居中", type: "boolean", default: false},
         placement: {
             label: "时间戳位置",
             title: "时间戳位置",
@@ -2889,13 +3075,13 @@ const propertyConfigList = {
         }
     },
     upload: {
-        action: {label: "URL", title: "请求 URL", type: "string",default:"https"},
+        action: {label: "URL", title: "请求 URL", type: "string", default: "https"},
         headers: {label: "请求头部", title: "设置上传的请求头部", type: "Object"},
         method: {
             label: "方法",
             title: "设置上传请求方法",
             type: "string",
-            options: [{label: "post", value: "post"},{label: "get", value: "get"}],
+            options: [{label: "post", value: "post"}, {label: "get", value: "get"}],
             default: "post"
         },
         multiple: {
@@ -2993,7 +3179,10 @@ const propertyConfigList = {
             label: "列表类型",
             title: "文件列表的类型",
             type: "string",
-            options: [{label: "text", value: "text"},{label: "picture", value: "picture"},{label: "picture-card", value: "picture-card"}],
+            options: [{label: "text", value: "text"}, {label: "picture", value: "picture"}, {
+                label: "picture-card",
+                value: "picture-card"
+            }],
             default: "text"
         },
         "auto-upload": {
@@ -3025,7 +3214,7 @@ for (const pcKey in propertyConfigList) {
         const p = pc[pKey];
         if (p.type && !p.renderTag) {
             let tag = 'el-input';
-            if (p.type == 'boolean') {
+            if (p.type === 'boolean') {
                 tag = 'el-switch'
             } else if (p.options && p.options.length <= 3) {
                 tag = 'el-radio-group'
@@ -3037,7 +3226,7 @@ for (const pcKey in propertyConfigList) {
             } else if (p.type.indexOf('number') > -1) {
                 tag = 'el-input-number'
             }
-            if (tag == 'el-input' || tag == 'el-select') {
+            if (tag === 'el-input' || tag === 'el-select') {
                 p.renderProps = {clearable: true, ...p.renderProps}
             }
             p.renderTag = tag;

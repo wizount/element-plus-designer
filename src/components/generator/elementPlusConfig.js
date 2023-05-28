@@ -15,12 +15,19 @@ export const elementPlusComponents =[
                             document: "https://element-plus.gitee.io/zh-CN/component/button.html"
                         },
                         __slot__: {
-                            default: "主要按钮"
+                            default: "按钮"
                         },
-                        __props__: {
-                            type: "primary",
-                            icon: "Search"
-                        }
+                    },
+                    {
+                        __id__: "button-group",
+                        __config__: {
+                            name: "按钮组",
+                            tag: "el-button-group",
+                            tagIcon: "button",
+                            layout: "containerItem",
+                            childTag: "el-button",
+                            document: "https://element-plus.gitee.io/zh-CN/component/button.html"
+                        },
                     }
                 ]
             },
@@ -28,28 +35,6 @@ export const elementPlusComponents =[
                 name: "Border 边框",
                 key: "border",
                 children: []
-            },
-            {
-                name: "Color 色彩",
-                key: "color",
-                children: [
-                    {
-                        __id__: "color-picker",
-                        __config__: {
-                            name: "颜色选择",
-                            tag: "el-color-picker",
-                            tagIcon: "color",
-                            defaultValue: null,
-                            showLabel: true,
-                            labelWidth: null,
-                            layout: "formItem",
-                            required: true,
-                            changeTag: true,
-                            document: "https://element-plus.gitee.io/zh-CN/component/color-picker.html"
-                        },
-                        __props__: {}
-                    }
-                ]
             },
             {
                 name: "Container 布局容器",
@@ -122,6 +107,7 @@ export const elementPlusComponents =[
                             name: "行容器",
                             tag: "el-row",
                             tagIcon: "row",
+                            childTag: "el-col",
                             layout: "containerItem",
                             document: "https://element-plus.gitee.io/zh-CN/component/layout.html"
                         },
@@ -133,6 +119,7 @@ export const elementPlusComponents =[
                             name: "列容器",
                             tag: "el-col",
                             tagIcon: "col",
+                            parentTag: "el-row",
                             layout: "containerItem",
                             document: "https://element-plus.gitee.io/zh-CN/component/layout.html"
                         },
@@ -151,7 +138,7 @@ export const elementPlusComponents =[
                             name: "链接",
                             tag: "el-link",
                             tagIcon: "link",
-                            document: "https://element-plus.gitee.io/zh-CN/component/tag.html"
+                            document: "https://element-plus.gitee.io/zh-CN/component/link.html"
                         },
                         __slot__: {
                             default: "link"
@@ -212,6 +199,38 @@ export const elementPlusComponents =[
     // },
     {
         children: [
+            {
+                name: "Form 表单",
+                key: "form",
+                children: [
+                    {
+                        __id__: "form",
+                        __config__: {
+                            name: "表单",
+                            tag: "el-form",
+                            tagIcon: "form",
+                            layout: "containerItem",
+                            document: "https://element-plus.gitee.io/zh-CN/component/form.html"
+                        },
+                        __props__: {
+                            rules: "rules"
+                        }
+                    },
+                    {
+                        __id__: "formItem",
+                        __config__: {
+                            name: "表单项",
+                            tag: "el-form-item",
+                            tagIcon: "form",
+                            layout: "containerItem",
+                            document: "https://element-plus.gitee.io/zh-CN/component/form.html"
+                        },
+                        __props__: {
+                            rules: "rules"
+                        }
+                    }
+                ]
+            },
             {
                 name: "Autocomplete 自动补全输入框",
                 key: "autocomplete",
@@ -359,25 +378,6 @@ export const elementPlusComponents =[
                 name: "DateTime Picker 日期时间选择器",
                 key: "datetime-picker",
                 children: []
-            },
-            {
-                name: "Form 表单",
-                key: "form",
-                children: [
-                    {
-                        __id__: "form",
-                        __config__: {
-                            name: "表单",
-                            tag: "el-form",
-                            tagIcon: "form",
-                            layout: "containerItem",
-                            document: "https://element-plus.gitee.io/zh-CN/component/form.html"
-                        },
-                        __props__: {
-                            rules: "rules"
-                        }
-                    }
-                ]
             },
             {
                 name: "Input 输入框",
@@ -562,11 +562,11 @@ export const elementPlusComponents =[
                             options: [
                                 {
                                     label: "选项一",
-                                    value: 1
+                                    value: "1"
                                 },
                                 {
                                     label: "选项二",
-                                    value: 2
+                                    value: "2"
                                 }
                             ]
                         },
@@ -1060,16 +1060,16 @@ export const elementPlusComponents =[
                         __props__: {}
                     },
                     {
-                        __id__: "link",
+                        __id__: "check-tag",
                         __config__: {
                             layout: "rawItem",
-                            name: "链接",
-                            tag: "el-link",
-                            tagIcon: "link",
+                            name: "可选中标签",
+                            tag: "el-check-tag",
+                            tagIcon: "check-tag",
                             document: "https://element-plus.gitee.io/zh-CN/component/tag.html"
                         },
                         __slot__: {
-                            default: "link"
+                            default: "可选中标签"
                         },
                         __props__: {}
                     }
@@ -1374,6 +1374,9 @@ export const elementPlusComponents =[
                             tag: "el-divider",
                             tagIcon: "divider",
                             document: "https://element-plus.gitee.io/zh-CN/component/divider.html"
+                        },
+                        __slot__: {
+                            default: "分割线"
                         },
                         __props__: {}
                     }

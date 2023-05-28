@@ -18,6 +18,7 @@ export default {
         }
 
         //以下组件也是自动生成
+        //options只针对select
         const {renderTag: tag,  options} = props.propertyConfig;
         const renderConfig = {
             __config__: {tag,... props.propertyConfig.config},

@@ -203,10 +203,10 @@ onMounted(() => {
     const children = [];
     const item = {children}
     for (const c of childrenNode) {
-      if (c.tagName == 'P') {
+      if (c.tagName === 'P') {
         item.title = c.textContent.trim();
       }
-      if (c.tagName == "A") {
+      if (c.tagName === "A") {
         const key=c.getAttribute("href").replace("/zh-CN/component/","");
         const elKey="el-"+key;
         const cs=[];

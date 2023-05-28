@@ -4,7 +4,7 @@ export default (scheme) => {
     const slot = scheme.__slot__
     if (slot && slot.options && slot.options.length) {
         children.push(
-            `<el-option v-for="(item, index) in ${scheme.__vModel__}Options" :key="index" :label="item.label" :value="item.value" :disabled="item.disabled"></el-option>`
+            `<el-option v-for="(item, index) in ${scheme.__props__.__ref__.options}" :key="index" :label="item.label" :value="item.value" :disabled="item.disabled"></el-option>`
         )
     }
     return children.join('\n')

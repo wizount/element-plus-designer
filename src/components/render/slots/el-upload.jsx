@@ -5,7 +5,7 @@ export default {
     'list-type': (h, conf, key) => {
         const config = conf.__config__
         let defaultSlot = null;
-        if (conf['list-type'] == 'picture-card') {
+        if (conf['list-type'] === 'picture-card') {
             defaultSlot = <ElIcon><Plus/></ElIcon>
         } else {
             defaultSlot = <ElButton type="primary">点击上传</ElButton>

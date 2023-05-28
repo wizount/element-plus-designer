@@ -42,6 +42,10 @@ export default {
                     }
                 })
             }
+            //增加默认slot
+            if(!thisSlots.default&&conf.__slot__&&conf.__slot__.default){
+                thisSlots.default=()=>conf.__slot__.default
+            }
             return thisSlots;
         }
 

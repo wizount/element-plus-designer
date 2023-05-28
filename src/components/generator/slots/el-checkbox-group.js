@@ -8,7 +8,7 @@ export default (scheme) => {
             config.optionType === 'button' ? 'el-checkbox-button' : 'el-checkbox'
         const border = config.border ? 'border' : ''
         children.push(
-            `<${tag} v-for="(item, index) in ${scheme.__vModel__}Options" :key="index" :label="item.value" :disabled="item.disabled" ${border}>{{item.label}}</${tag}>`
+            `<${tag} v-for="(item, index) in ${scheme.__props__.__ref__.options}" :key="index" :label="item.value" :disabled="item.disabled" ${border}>{{item.label}}</${tag}>`
         )
     }
     return children.join('\n')

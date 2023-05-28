@@ -114,16 +114,13 @@ import {parse} from '@babel/parser'
 import ClipboardJS from 'clipboard'
 import {saveAs} from 'file-saver'
 import {
-  makeUpHtml,
-  vueTemplate,
   vueScript,
   cssStyle, vue3Template,
 } from '@/components/generator/html.js'
-import {makeUpJs, renderJs} from '@/components/generator/js'
+import { renderJs} from '@/components/generator/js'
 import {makeUpCss} from '@/components/generator/css'
 import {exportDefault, beautifierConf, titleCase} from '@/utils/index'
 import ResourceDialog from './ResourceDialog'
-import loadMonaco from '@/utils/loadMonaco'
 import loadBeautifier from '@/utils/loadBeautifier'
 import {onBeforeUnmount, onMounted} from "vue";
 import {ElMessage, ElMessageBox, ElNotification} from "element-plus";
@@ -290,7 +287,7 @@ function runCode() {
 }
 
 function generateCode() {
-  const html = vueTemplate(editorObj.html.getValue())
+  const html = vue3Template(editorObj.html.getValue())
   const script = vueScript(editorObj.js.getValue())
   const css = cssStyle(editorObj.css.getValue())
   return beautifier.html(html + script + css, beautifierConf.html)

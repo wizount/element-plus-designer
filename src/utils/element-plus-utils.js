@@ -6,7 +6,7 @@ export class AutoCompleteCallback {
     constructor(list) {
         this.list = []
         for (const l of list) {
-            if (typeof l == 'string') {
+            if (typeof l === 'string') {
                 this.list.push({value: l, text: l})
             } else {
                 this.list.push(l)
