@@ -20,5 +20,8 @@ selenium-debug.log
 *.local
 *.txt
 
-package-lock.json
+
 yarn.lock
+
+# 组件属性配置生成
+/src/components/config
