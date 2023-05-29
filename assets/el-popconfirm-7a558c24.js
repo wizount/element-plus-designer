@@ -1,1 +1,0 @@
-import{h as _,__tla as a}from"./index-176089f5.js";let e,n=Promise.all([(()=>{try{return a}catch{}})()]).then(async()=>{e={reference(t,r,l){return{reference:()=>t(_,null,r.__slot__[l])}}}});export{n as __tla,e as default};

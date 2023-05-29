@@ -1,1 +1,0 @@
-import{l as _,__tla as e}from"./index-176089f5.js";let a,s=Promise.all([(()=>{try{return e}catch{}})()]).then(async()=>{a={options(l,o,n){const t=[];return o.__slot__.options.forEach(r=>{t.push(l(_,r))}),{default:()=>t}}}});export{s as __tla,a as default};
