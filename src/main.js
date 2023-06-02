@@ -1,3 +1,5 @@
+console.info("before")
+
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -7,9 +9,6 @@ import ElementPlus from 'element-plus'
 
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import 'element-plus/dist/index.css'
-
-// import mdFiles from "@/components/config/index"
-// console.info(mdFiles)
 
 const app = createApp(App)
 
@@ -29,5 +28,5 @@ app.use(elementIcons)
 import ElClearableSlider from "@/components/ElClearableSlider"
 app.component('el-clearable-slider', ElClearableSlider)
 
-
+console.info("mount")
 app.mount('#app')

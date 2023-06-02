@@ -11,12 +11,12 @@ export function getDrawingList() {
   if (version !== DRAWING_ITEMS_VERSION) {
     localStorage.setItem(DRAWING_ITEMS_VERSION_KEY, DRAWING_ITEMS_VERSION)
     saveDrawingList([])
-    return null
+    return []
   }
 
   const str = localStorage.getItem(DRAWING_ITEMS)
   if (str) return JSON.parse(str)
-  return null
+  return []
 }
 
 export function saveDrawingList(list) {

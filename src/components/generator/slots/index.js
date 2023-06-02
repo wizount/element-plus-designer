@@ -11,8 +11,11 @@ const keys = Object.keys(slotsFiles) || []
 for (const key of keys) {
     const tag = key.replace(/^\.\/(.*)\.\w+$/, '$1');
     const value = slotsFiles[key]
-    const res = await value()
-    slotHtmlFunctions[tag] = res.default
+    value().then(res=>{
+        slotHtmlFunctions[tag] = res.default
+    })
+    // const res = await value()
+    // slotHtmlFunctions[tag] = res.default
 }
 //console.info(slotHtmlFunctions)
 export default slotHtmlFunctions;
