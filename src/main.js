@@ -1,5 +1,3 @@
-console.info("before")
-
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -28,5 +26,4 @@ app.use(elementIcons)
 import ElClearableSlider from "@/components/ElClearableSlider"
 app.component('el-clearable-slider', ElClearableSlider)
 
-console.info("mount")
 app.mount('#app')

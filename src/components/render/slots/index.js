@@ -14,7 +14,7 @@ for (const key of keys) {
     const tag = key.replace(/^\.\/(.*)\.\w+$/, '$1').replace("slots/", "")
     const value = slotsFiles[key]
     value().then(res=>{
-        slotHtmlFunctions[tag] = res.default
+        slotRenderFunctions[tag] = res.default
     })
 }
 
