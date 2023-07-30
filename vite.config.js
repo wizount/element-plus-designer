@@ -18,11 +18,16 @@ export default defineConfig(({ mode, command }) => {
         fileName: (format) => `build.${format}.js`
       },
       rollupOptions: {
-        external: ['vue'],
+        external: ['vue', 'element-plus','vuedraggable'],
         output: {
+          exports: 'default',  //要支持CDN引入必须设置此参数！！！
+          // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
           globals: {
-            vue: 'Vue'
-          }
+            vue: 'Vue',
+            'element-plus': 'ElementPlus',
+            'vuedraggable': 'Draggable',
+          },
+          assetFileNames: `style.css`
         }
       }
     },
