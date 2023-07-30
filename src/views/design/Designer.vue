@@ -6,8 +6,13 @@
         <div class="logo"><img :src="logo" alt="logo"/> Element Plus Designer
           <a class="github"
              href="https://github.com/wizount/element-plus-designer"
-             target="_blank"> <img
-              src="https://github.githubassets.com/pinned-octocat.svg" alt/> </a></div>
+             target="_blank"><svg-icon icon-class="github"/> </a>
+          <a class="github"
+             href="https://gitee.com/wizount/element-plus-designer"
+             target="_blank"><svg-icon icon-class="gitee"/> </a>
+        </div>
+
+
       </div>
       <el-scrollbar class="left-scrollbar">
         <el-collapse class="components-list">
@@ -193,6 +198,7 @@ elementPlusComponents.forEach((first) => {
 import {nextTick} from "vue";
 import {Download} from "@element-plus/icons-vue";
 import HtmlDrawer from "@/views/design/HtmlDrawer.vue";
+import SvgIcon from "@/components/SvgIcon/index.vue";
 
 
 let tempActiveData
