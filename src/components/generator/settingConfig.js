@@ -1044,6 +1044,38 @@ const propertyConfigList = {
         href: {label: "href 属性", title: "原生 href 属性", type: "string"},
         icon: {label: "图标组件", title: "图标组件", type: "string | Component", renderTag: 'iconDialog'}
     },
+    text: {
+        default: {
+            slot: true,
+            type: 'string',
+            label: '文本内容'
+        },
+        type: {
+            label: "类型",
+            title: "类型",
+            type: "string",
+            options: [{label: "primary", value: "primary"}, {label: "success", value: "success"}, {
+                label: "warning",
+                value: "warning"
+            }, {label: "danger", value: "danger"}, {label: "info", value: "info"}, {
+                label: "default",
+                value: "default"
+            }],
+            default: "default"
+        },
+        size: {
+            label: "大小",
+            title: "大小",
+            type: "string",
+            options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
+                label: "small",
+                value: "small"
+            }],
+            default: "default"
+        },
+        truncated: {label: "显示省略号", title: "显示省略号", type: "boolean", default: false},
+        tag: {label: "自定义元素标签", title: "自定义元素标签", type: "string",default:"span"},
+    },
     progress: {
         percentage: {
             label: "百分比",
@@ -2227,9 +2259,6 @@ const propertyConfigList = {
         },
         icon: {label: "自定义图标", title: "自定义图标", type: "string | Component", renderTag: 'iconDialog'},
         hollow: {label: "空心点", title: "是否空心点", type: "boolean", default: false}
-    },
-    'text': {
-        default: {label: '文字内容', slot: true, type: 'string'},
     },
     'flex-box': {
 

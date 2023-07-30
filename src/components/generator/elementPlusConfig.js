@@ -148,6 +148,26 @@ export const elementPlusComponents =[
                 ]
             },
             {
+                name: "Text 文本",
+                key: "text",
+                children: [
+                    {
+                        __id__: "text",
+                        __config__: {
+                            layout: "rawItem",
+                            name: "文本",
+                            tag: "el-text",
+                            tagIcon: "text",
+                            document: "https://element-plus.gitee.io/zh-CN/component/text.html"
+                        },
+                        __slot__: {
+                            default: "text"
+                        },
+                        __props__: {}
+                    }
+                ]
+            },
+            {
                 name: "Scrollbar 滚动条",
                 key: "scrollbar",
                 children: [
