@@ -78,7 +78,7 @@ const propertyConfigList = {
         label: {label: "标签文本", title: "标签文本", type: "string", hide: true},
         tabindex: {label: "tabindex", title: "输入框的 tabindex", type: "string / number", hide: true},
         "validate-event": {label: "表单校验", title: "输入时是否触发表单的校验", type: "boolean", default: true},
-        "input-style": {label: "style", title: "input 元素或 textarea 元素的 style", type: "object", default: {}}
+        "input-style": {label: "style", title: "input 元素或 textarea 元素的 style",  type: "style", default: {}}
     },
     multipleInput: {
         vModel: 'modelValue',
@@ -118,7 +118,7 @@ const propertyConfigList = {
         label: {label: "标签文本", title: "标签文本", type: "string", hide: true},
         tabindex: {label: "tabindex", title: "输入框的 tabindex", type: "string / number", hide: true},
         "validate-event": {label: "表单校验", title: "输入时是否触发表单的校验", type: "boolean", default: true},
-        "input-style": {label: "style", title: "input 元素或 textarea 元素的 style", type: "object", default: {}}
+        "input-style": {label: "style", title: "input 元素或 textarea 元素的 style", type: "style", default: {}}
     },
     passwordInput: {
         vModel: 'modelValue',
@@ -176,7 +176,7 @@ const propertyConfigList = {
         label: {label: "标签文本", title: "标签文本", type: "string", hide: true},
         tabindex: {label: "tabindex", title: "输入框的 tabindex", type: "string / number", hide: true},
         "validate-event": {label: "表单校验", title: "输入时是否触发表单的校验", type: "boolean", default: true},
-        "input-style": {label: "style", title: "input 元素或 textarea 元素的 style", type: "object", default: {}}
+        "input-style": {label: "style", title: "input 元素或 textarea 元素的 style", type: "style", default: {}}
     },
     'input-number': {
         vModel: 'modelValue',
@@ -1074,7 +1074,7 @@ const propertyConfigList = {
             default: "default"
         },
         truncated: {label: "显示省略号", title: "显示省略号", type: "boolean", default: false},
-        tag: {label: "自定义元素标签", title: "自定义元素标签", type: "string",default:"span"},
+        tag: {label: "自定义元素标签", title: "自定义元素标签", type: "string", default: "span"},
     },
     progress: {
         percentage: {
@@ -1706,7 +1706,7 @@ const propertyConfigList = {
         "wrap-style": {
             label: "包裹容器样式",
             title: "包裹容器的自定义样式",
-            type: "string/object"
+            type: "style"
         },
         "wrap-class": {
             label: "包裹容器类名",
@@ -1716,7 +1716,7 @@ const propertyConfigList = {
         "view-style": {
             label: "视图样式",
             title: "视图的自定义样式",
-            type: "string/object",
+            ype: "style"
         },
         "view-class": {
             label: "视图类名",
@@ -1772,7 +1772,7 @@ const propertyConfigList = {
             title: "给 space-items 的类名前缀",
             type: "string"
         },
-        style: {label: "样式", title: "额外样式", type: "string / Array / Object"},
+        style: {label: "样式", title: "额外样式", type: "style"},
         spacer: {label: "间隔符", title: "间隔符", type: "string / number / VNode"},
         size: {label: "间隔大小", title: "间隔大小", type: "string / number / [number, number]", default: "small"},
         wrap: {
@@ -3239,6 +3239,67 @@ const propertyConfigList = {
             default: false
         },
         limit: {label: "最大数量", title: "允许上传文件的最大数量", type: "number"}
+    },
+    statistic: {
+        value: {
+            label: "数字内容",
+            title: "数字内容",
+            type: "number",
+            default: 0
+        },
+        "decimal-separator": {
+            label: "小数点",
+            title: "设置小数点符号",
+            type: "string",
+            default: "."
+        },
+        formatter: {
+            hide:true,
+            label: "",
+            title: "自定义数字格式化",
+            type: "Function",
+        },
+        "group-separator": {
+            label: "千分位",
+            title: "设置千分位标识符",
+            type: "string",
+            default: ","
+        },
+        precision: {
+            label: "精度",
+            title: "数字精度",
+            type: "number",
+            default: 0
+        },
+        prefix: {label: "前缀", title: "设置数字的前缀", type: "string"},
+        suffix: {label: "后缀", title: "设置数字的后缀", type: "string"},
+        title: {label: "标题", title: "数字标题", type: "string"},
+        "value-style": {
+            label: "数字样式",
+            title: "数字样式",
+            type: "style",
+        }
+    },
+    countdown: {
+        value: {
+            label: "目标时间",
+            title: "目标时间",
+            type: "number",
+        },
+        "decimal-separator": {
+            label: "格式",
+            title: "格式化倒计时",
+            type: "string",
+            default: "HH:mm:ss"
+        },
+        prefix: {label: "前缀", title: "设置数字的前缀", type: "string"},
+        suffix: {label: "后缀", title: "设置数字的后缀", type: "string"},
+        title: {label: "标题", title: "数字标题", type: "string"},
+        "value-style": {
+            label: "数字样式",
+            title: "数字样式",
+            type: "style",
+        }
     }
 }
 

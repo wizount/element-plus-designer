@@ -116,17 +116,17 @@
         </draggable>
         <div v-show="!drawingList||drawingList.length===0" class="empty-info"> 从左侧拖入或点选组件进行界面设计</div>
         <div style="position: fixed; left: 400px" ref="actionDiv" v-if="activeData.__config__">
-          <svg-icon :icon-class="activeData.__config__.tagIcon"/>
-          <span style="color: gray"> {{ activeData.__config__.componentName }}</span>
+          <svg-icon style="color: var(--el-text-color)" :icon-class="activeData.__config__.tagIcon"/>
+          <span style="color: var(--el-text-color)"> {{ activeData.__config__.componentName }}</span>
 
-          <el-button class="activeBtn" size="small" circle @click="activeParentComponent" title="跳到父组件">
+          <el-button class="activeBtn" size="small" type="info" circle @click="activeParentComponent" title="跳到父组件">
             <el-icon style="transform:rotate(180deg);">
               <Download/>
             </el-icon>
           </el-button>
-          <el-button class="activeBtn" size="small" circle icon="ArrowUp" @click="moveComponent(-1)" title="上移">
+          <el-button class="activeBtn" size="small" type="info" circle icon="ArrowUp" @click="moveComponent(-1)" title="上移">
           </el-button>
-          <el-button class="activeBtn" size="small" circle icon="ArrowDown" @click="moveComponent(1)" title="下移">
+          <el-button class="activeBtn" size="small" type="info" circle icon="ArrowDown" @click="moveComponent(1)" title="下移">
           </el-button>
           <el-button class="activeBtn" type="primary" size="small" circle icon="Document" @click="drawingItemCopy"
                      title="复制组件"/>

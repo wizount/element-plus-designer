@@ -32,6 +32,9 @@
       <template v-else-if="v.type==='object'">
         <object-editor v-model="propsValue[k]" v-bind="v.objectTag"></object-editor>
       </template>
+      <template v-else-if="v.type==='style'">
+        <style-editor v-model="propsValue[k]" v-bind="v.objectTag"></style-editor>
+      </template>
       <config-form-item :data="v.slot?slotsValue:propsValue" :k="k"
                         :property-config="v" v-else></config-form-item>
     </el-form-item>
@@ -51,6 +54,7 @@ import ArrayEditor from "@/components/ArrayEditor.vue";
 import IconsDialog from "@/views/design/IconsDialog.vue";
 import {computed} from "vue";
 import {ElMessageBox} from "element-plus";
+import StyleEditor from "@/components/StyleEditor.vue";
 
 const props = defineProps(["propertyConfig", "propsValue", "slotsValue"])
 //region 图标选择

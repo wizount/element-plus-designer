@@ -1140,6 +1140,32 @@ export const elementPlusComponents =[
                 name: "Virtualized Tree 虚拟化树形控件",
                 key: "tree-v2",
                 children: []
+            },
+            {
+                name: "Statistic 统计组件",
+                key: "statistic",
+                children: [
+                    {
+                        __id__: "statistic",
+                        __config__: {
+                            name: "统计组件",
+                            tag: "el-statistic",
+                            tagIcon: "statistic",
+                            layout: "rawItem",
+                            document: "https://element-plus.gitee.io/zh-CN/component/statistic.html"
+                        }
+                    },
+                    {
+                        __id__: "countdown",
+                        __config__: {
+                            name: "倒计时",
+                            tag: "el-countdown",
+                            tagIcon: "countdown",
+                            layout: "rawItem",
+                            document: "https://element-plus.gitee.io/zh-CN/component/statistic.html#%E5%80%92%E8%AE%A1%E6%97%B6"
+                        }
+                    }
+                ]
             }
         ],
         title: "Data 数据展示"

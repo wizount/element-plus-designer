@@ -53,7 +53,6 @@ function change() {
   for (const l of list.value) {
     style[l.key] = l.value;
   }
-  console.info(style)
   emits('update:modelValue', style)
 }
 
