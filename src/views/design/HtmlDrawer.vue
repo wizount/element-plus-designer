@@ -2,13 +2,13 @@
   <div>
     <el-drawer v-bind="$attrs" @closed="onClose">
       <div class="action-bar" :style="{ 'text-align': 'left' }">
-        <el-button text class="bar-btn copy-html-btn" icon="DocumentCopy" @click="triggerCopy">
+        <el-button text type="primary" class="copy-html-btn" icon="DocumentCopy" @click="triggerCopy">
           复制HTML
         </el-button>
-        <el-button text class="bar-btn" @click="exportHtmlFile" icon="Download">
+        <el-button text type="primary" @click="exportHtmlFile" icon="Download">
           导出HTML文件
         </el-button>
-        <el-button text class="bar-btn delete-btn" @click="emits('update:modelValue', false)" icon="CircleClose">
+        <el-button text type="danger" @click="emits('update:modelValue', false)" icon="CircleClose">
           关闭
         </el-button>
       </div>
@@ -19,7 +19,7 @@
           class="html-editor"
           :options="{fontSize:'15px'}"
           lang="html"
-          theme="chrome"/>
+          theme="one_dark"/>
 
     </el-drawer>
   </div>
@@ -36,7 +36,7 @@ import {ElMessage, ElMessageBox, ElNotification} from "element-plus";
 import {VAceEditor} from 'vue3-ace-editor';
 import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/theme-chrome';
-
+import 'ace-builds/src-noconflict/theme-one_dark';
 const props = defineProps({htmlStr: {type: String, required: true,}})
 const emits = defineEmits();
 
@@ -99,9 +99,7 @@ function triggerCopy(event) {
 
 
 <style lang="scss" scoped>
-@import '@/styles/mixin.scss';
 
-@include action-bar;
 .html-editor {
   height: calc(100vh - 80px);
 }

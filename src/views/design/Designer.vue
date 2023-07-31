@@ -3,8 +3,7 @@
   <div class="container">
     <div class="left-board">
       <div class="logo-wrapper">
-        <div class="logo"><img :src="logo" alt="logo"/> Element Plus Designer
-          <a class="github"
+        <div class="logo"><img :src="logo" alt="logo"/>Element Plus Designer<a class="github"
              href="https://github.com/wizount/element-plus-designer"
              target="_blank"><svg-icon icon-class="github"/> </a>
           <a class="github"
@@ -66,6 +65,7 @@
         <el-button text @click="download"> 导出vue文件</el-button>
         <el-button text @click="componentTreeVisible=true"> 组件树</el-button>
         <el-button text @click="execCopy"> 复制代码</el-button>
+
         <!--        <el-dropdown>-->
         <!--          <el-button text> 复制代码</el-button>-->
         <!--          <template #dropdown>-->
@@ -93,8 +93,14 @@
                   <el-switch v-model="designConf.wrapWithCol"></el-switch>
                 </el-form-item>
               </el-dropdown-item>
+              <el-dropdown-item>
+                <el-form-item label="暗黑模式" style="margin-bottom: 0px">
+                  <el-switch @click="toggleDark()" :model-value="isDark" title="暗黑模式"></el-switch>
+                </el-form-item>
+              </el-dropdown-item>
             </el-dropdown-menu>
           </template>
+
         </el-dropdown>
 
         <el-button type="danger" text icon="Delete" @click="emptyDrawingList"> 清空</el-button>
@@ -826,30 +832,21 @@ function removeItemFromTree(e, node, data) {
   e.stopPropagation();
 }
 
-//region dark theme
-// import 'element-plus/theme-chalk/dark/css-vars.css'
-// import { useToggle } from "@vueuse/shared";
-// import { useDark } from "@vueuse/core";
-//
-// const isDark = useDark({
-//   // 存储到localStorage/sessionStorage中的Key 根据自己的需求更改
-//   storageKey: "useDarkKEY",
-//   // 暗黑class名字
-//   valueDark: "dark",
-//   // 高亮class名字
-//   valueLight: "light"
-// });
-// const toggle = useToggle(isDark);
-// toggle("dark");
-
-//endregion
-
-
 //region
 watch(designConf, (val) => {
   saveDesignConf(val)
 }, {deep: true})
 //endregion
+
+//region 暗黑模式
+
+import { useDark, useToggle } from '@vueuse/core'
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
+console.info(isDark.value)
+//
+
 </script>
 
 

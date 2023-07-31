@@ -26,4 +26,8 @@ app.use(elementIcons)
 import ElClearableSlider from "@/components/ElClearableSlider"
 app.component('el-clearable-slider', ElClearableSlider)
 
+// main.ts
+// 如果只想导入css变量
+import 'element-plus/theme-chalk/dark/css-vars.css'
+
 app.mount('#app')

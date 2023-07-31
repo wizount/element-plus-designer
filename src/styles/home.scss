@@ -27,7 +27,7 @@ body, html {
 .logo-wrapper {
   position: relative;
   height: $actionBarHeight;
-  background: #fff;
+  background: var(--el-bg-color);
   border-bottom: 1px solid #f1e8e8;
   box-sizing: border-box;
 
@@ -89,23 +89,23 @@ body, html {
 
 .components-body {
   padding: 8px 10px;
-  background: $selectedColor;
+  background: var(--el-color-primary-light-9);
   font-size: 12px;
   cursor: move;
-  border: 1px dashed $selectedColor;
+  border: 1px dashed var(--el-border-color);
   border-radius: 3px;
 
   .svg-icon {
-    color: #777;
+    color: var(--el-text-color-regular);
     font-size: 15px;
   }
 
   &:hover {
     border: 1px dashed #787be8;
-    color: #787be8;
+    color: var(--el-color-primary);
 
     .svg-icon {
-      color: #787be8;
+      color: var(--el-color-primary);
     }
   }
 }

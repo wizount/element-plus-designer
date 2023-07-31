@@ -2,17 +2,17 @@
   <div>
     <el-drawer v-bind="$attrs" @closed="onClose">
       <div class="action-bar" :style="{ 'text-align': 'left' }">
-        <el-button text class="bar-btn" @click="refresh" icon="Refresh" title="更改到界面">
+        <el-button text type="primary" @click="refresh" icon="Refresh" title="更改到界面">
           更新
         </el-button>
-        <el-button text class="bar-btn copy-json-btn" icon="DocumentCopy" @click="triggerCopy">
+        <el-button text type="primary" class="copy-json-btn" icon="DocumentCopy" @click="triggerCopy">
           复制JSON
         </el-button>
 
-        <el-button text class="bar-btn" @click="exportJsonFile" icon="Download">
+        <el-button text type="primary" @click="exportJsonFile" icon="Download">
           导出JSON文件
         </el-button>
-        <el-button text class="bar-btn delete-btn" @click="emits('update:modelValue', false)" icon="CircleClose">
+        <el-button text type="primary" class="delete-btn" @click="emits('update:modelValue', false)" icon="CircleClose">
           关闭
         </el-button>
       </div>

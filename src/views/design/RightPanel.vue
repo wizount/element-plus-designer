@@ -9,7 +9,7 @@
     <el-scrollbar class="right-scrollbar">
       <!-- 组件属性 -->
       <div style="padding: 15px">
-        <el-form v-show="currentTab === 'field' &&showField" class="bootstrap-form">
+        <el-form v-show="currentTab === 'field' &&showField">
           <el-form-item>
             <template #label>组件类型
               <el-link type="primary" class="document-link" :underline="false" target="_blank" :href="documentLink"
@@ -480,23 +480,6 @@ function activeParentComponent() {
 
   & + .reg-item {
     margin-top: 18px;
-  }
-}
-
-
-.bootstrap-form {
-  :deep(.el-form-item) {
-    margin-bottom: 6px;
-    .el-form-item__label {
-      background: #f0f8ff;
-      margin-right: 8px;
-      padding-left: 8px;
-    }
-
-    .el-input__wrapper {
-      border-top-left-radius: 0px !important;
-      border-bottom-left-radius: 0px !important;
-    }
   }
 }
 

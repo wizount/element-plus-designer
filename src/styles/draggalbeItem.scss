@@ -1,15 +1,6 @@
 @import './variable.scss';
 
 
-//左侧使用到的
-.components-body {
-  padding: 0;
-  margin: 0;
-  font-size: 0;
-}
-
-
-
 .active-draw-item {
   & > .component-name {
     color: $lighterBlue;
