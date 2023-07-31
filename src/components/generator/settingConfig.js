@@ -1555,6 +1555,12 @@ const propertyConfigList = {
             title: "dark 模式, 意味着自动设置 color 为 dark 模式的颜色",
             type: "boolean",
             default: false
+        },
+        tag: {
+            label: "自定义元素标签",
+            title: "自定义元素标签，比如按钮，div，路由链接，nuxt链接",
+            type: "string",
+            default: "button"
         }
     },
     "button-group": {
