@@ -8,7 +8,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "输入框尺寸，只在 type 不为 'textarea' 时有效",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -58,11 +57,10 @@ const propertyConfigList = {
         autocomplete: {
             label: "autocomplete",
             title: "原生 autocomplete 属性",
-            type: "string",
             default: "off",
             hide: true
         },
-        name: {label: "name", title: "等价于原生 input name 属性", type: "string", hide: true},
+        name: {label: "name", title: "等价于原生 input name 属性", hide: true},
         readonly: {label: "只读", title: "原生  readonly 属性，是否只读", type: "boolean", default: false},
         max: {label: "max", title: "原生 max 属性，设置最大值", hide: true},
         min: {label: "min", title: "原生属性，设置最小值", hide: true},
@@ -70,15 +68,14 @@ const propertyConfigList = {
         resize: {
             label: "缩放",
             title: "控制是否能被用户缩放",
-            type: "string",
             options: ["none", "both", "horizontal", "vertical"], hide: true
         },
         autofocus: {label: "自动获取焦点", title: "原生属性，自动获取焦点", type: "boolean", default: false},
-        form: {label: "form", title: "原生属性", type: "string", hide: true},
-        label: {label: "标签文本", title: "标签文本", type: "string", hide: true},
+        form: {label: "form", title: "原生属性", hide: true},
+        label: {label: "标签文本", title: "标签文本", hide: true},
         tabindex: {label: "tabindex", title: "输入框的 tabindex", type: "string / number", hide: true},
         "validate-event": {label: "表单校验", title: "输入时是否触发表单的校验", type: "boolean", default: true},
-        "input-style": {label: "style", title: "input 元素或 textarea 元素的 style",  type: "style", default: {}}
+        "input-style": {label: "style", title: "input 元素或 textarea 元素的 style", type: "style", default: {}}
     },
     multipleInput: {
         vModel: 'modelValue',
@@ -104,18 +101,17 @@ const propertyConfigList = {
         autocomplete: {
             label: "autocomplete",
             title: "原生 autocomplete 属性",
-            type: "string",
             default: "off",
             hide: true
         },
-        name: {label: "name", title: "等价于原生 input name 属性", type: "string", hide: true},
+        name: {label: "name", title: "等价于原生 input name 属性", hide: true},
         readonly: {label: "只读", title: "原生  readonly 属性，是否只读", type: "boolean", default: false},
         max: {label: "max", title: "原生 max 属性，设置最大值", hide: true},
         min: {label: "min", title: "原生属性，设置最小值", hide: true},
         step: {label: "step", title: "原生属性，设置输入字段的合法数字间隔", hide: true},
         autofocus: {label: "自动获取焦点", title: "原生属性，自动获取焦点", type: "boolean", default: false},
-        form: {label: "form", title: "原生属性", type: "string", hide: true},
-        label: {label: "标签文本", title: "标签文本", type: "string", hide: true},
+        form: {label: "form", title: "原生属性", hide: true},
+        label: {label: "标签文本", title: "标签文本", hide: true},
         tabindex: {label: "tabindex", title: "输入框的 tabindex", type: "string / number", hide: true},
         "validate-event": {label: "表单校验", title: "输入时是否触发表单的校验", type: "boolean", default: true},
         "input-style": {label: "style", title: "input 元素或 textarea 元素的 style", type: "style", default: {}}
@@ -128,7 +124,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "输入框尺寸，只在 type 不为 'textarea' 时有效",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -162,18 +157,17 @@ const propertyConfigList = {
         autocomplete: {
             label: "autocomplete",
             title: "原生 autocomplete 属性",
-            type: "string",
             default: "off",
             hide: true
         },
-        name: {label: "name", title: "等价于原生 input name 属性", type: "string", hide: true},
+        name: {label: "name", title: "等价于原生 input name 属性", hide: true},
         readonly: {label: "只读", title: "原生  readonly 属性，是否只读", type: "boolean", default: false},
         max: {label: "max", title: "原生 max 属性，设置最大值", hide: true},
         min: {label: "min", title: "原生属性，设置最小值", hide: true},
         step: {label: "step", title: "原生属性，设置输入字段的合法数字间隔", hide: true},
         autofocus: {label: "自动获取焦点", title: "原生属性，自动获取焦点", type: "boolean", default: false},
-        form: {label: "form", title: "原生属性", type: "string", hide: true},
-        label: {label: "标签文本", title: "标签文本", type: "string", hide: true},
+        form: {label: "form", title: "原生属性", hide: true},
+        label: {label: "标签文本", title: "标签文本", hide: true},
         tabindex: {label: "tabindex", title: "输入框的 tabindex", type: "string / number", hide: true},
         "validate-event": {label: "表单校验", title: "输入时是否触发表单的校验", type: "boolean", default: true},
         "input-style": {label: "style", title: "input 元素或 textarea 元素的 style", type: "style", default: {}}
@@ -184,7 +178,6 @@ const propertyConfigList = {
         size: {
             label: "精度",
             title: "计数器尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -195,7 +188,6 @@ const propertyConfigList = {
         "controls-position": {
             label: "按钮位置",
             title: "控制按钮位置",
-            type: "string",
             options: [{label: "默认", value: ""}, {label: "右边", value: "right"}],
         },
         min: {
@@ -223,8 +215,8 @@ const propertyConfigList = {
         "step-strictly": {label: "严格步数", title: "是否只能输入 step 的倍数", type: "boolean", default: false},
         readonly: {label: "只读", title: "原生  readonly 属性，是否只读", type: "boolean", default: false},
         disabled: {label: "禁用", title: "是否禁用状态", type: "boolean", default: false},
-        name: {label: "", title: "等价于原生 input name 属性", type: "string", hide: true},
-        label: {label: "", title: "输入框关联的 label 文字", type: "string", hide: true},
+        name: {label: "", title: "等价于原生 input name 属性", hide: true},
+        label: {label: "", title: "输入框关联的 label 文字", hide: true},
         "value-on-clear": {
             label: "清空时显示的值",
             title: "当输入框被清空时显示的值 (> 2.2.0)",
@@ -247,13 +239,11 @@ const propertyConfigList = {
         "value-key": {
             label: "",
             title: "作为 value 唯一标识的键名，绑定值为对象类型时必填",
-            type: "string",
             default: "value", hide: true
         },
         size: {
             label: "尺寸",
             title: "输入框尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -279,7 +269,6 @@ const propertyConfigList = {
         "tag-type": {
             label: "标签类型",
             title: "标签类型",
-            type: "string",
             options: [{label: "success", value: "success"}, {label: "info", value: "info"}, {
                 label: "warning",
                 value: "warning"
@@ -309,15 +298,14 @@ const propertyConfigList = {
             default: 1,
             switch: ['collapse-tags', true]//控制显示
         },
-        name: {label: "", title: "选择器的原生name属性", type: "string", hide: true},
+        name: {label: "", title: "选择器的原生name属性", hide: true},
         effect: {
             label: "文字提示主题",
             title: "文字提示（Tooltip）的主题，内置dark和light两种。",
-            type: "string",
             options: [{label: "light", value: "light"}, {label: "dark", value: "dark"}],
             default: "light"
         },
-        autocomplete: {label: "", title: "自动完成选择输入", type: "string", default: "off", hide: true},
+        autocomplete: {label: "", title: "自动完成选择输入", default: "off", hide: true},
         filterable: {label: "可筛选", title: "是否可筛选", type: "boolean", default: false},
         "allow-create": {
             label: "创建新条目",
@@ -328,10 +316,9 @@ const propertyConfigList = {
         "no-data-text": {
             label: "无数据显示文字",
             title: "当在没有数据时显示的文字，你同时可以使用#empty插槽进行设置。",
-            type: "string",
             default: "No Data"
         },
-        "popper-class": {label: "下拉菜单类名", title: "选择器下拉菜单的自定义类名", type: "string"},
+        "popper-class": {label: "下拉菜单类名", title: "选择器下拉菜单的自定义类名"},
         teleported: {
             label: "使用teleport插入body元素",
             title: "该下拉菜单是否使用teleport插入body元素",
@@ -364,7 +351,6 @@ const propertyConfigList = {
         placement: {
             label: "下拉框出现位置",
             title: "下拉框出现的位置",
-            type: "string",
             options: [{label: "top", value: "top"}, {label: "top-start", value: "top-start"}, {
                 label: "top-end",
                 value: "top-end"
@@ -397,13 +383,11 @@ const propertyConfigList = {
         "loading-text": {
             label: "加载内容显示文本",
             title: "从服务器加载内容时显示的文本",
-            type: "string",
             default: "Loading"
         },
         "no-match-text": {
             label: "无匹配时显示文字",
             title: "搜索条件无匹配时显示的文字，也可以使用 empty 插槽设置",
-            type: "string",
             default: "No matching data"
         },
         "reserve-keyword": {
@@ -452,7 +436,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "单选框组尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -463,14 +446,12 @@ const propertyConfigList = {
         "text-color": {
             label: "激活文本颜色",
             title: "按钮形式的 Radio 激活时的文本颜色",
-            type: "string",
             renderTag: 'el-color-picker',
             default: "#ffffff"
         },
         fill: {
             label: "填充色和边框色",
             title: "按钮形式的 Radio 激活时的填充色和边框色",
-            type: "string",
             renderTag: 'el-color-picker',
             default: "#409EFF"
         },
@@ -488,7 +469,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "多选框组尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -498,18 +478,16 @@ const propertyConfigList = {
         disabled: {label: "禁用", title: "是否禁用", type: "boolean", default: false},
         min: {label: "勾选最小数量", title: "可被勾选的 checkbox 的最小数量", type: "number"},
         max: {label: "勾选最大数量", title: "可被勾选的 checkbox 的最大数量", type: "number"},
-        label: {label: "", title: "为屏幕阅读器准备的标签", type: "string"},
+        label: {label: "", title: "为屏幕阅读器准备的标签"},
         "text-color": {
             label: "按钮活跃颜色",
             title: "当按钮为活跃状态时的字体颜色",
-            type: "string",
             renderTag: 'el-color-picker',
             default: "#ffffff"
         },
         fill: {
             label: "按钮活跃边框背景颜色",
             title: "当按钮为活跃状态时的边框和背景颜色",
-            type: "string",
             renderTag: 'el-color-picker',
             default: "#409EFF"
         },
@@ -522,7 +500,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "switch 的大小",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -548,8 +525,8 @@ const propertyConfigList = {
             type: "string | Component",
             renderTag: 'iconDialog'
         },
-        "active-text": {label: "打开时文字描述", title: "switch 打开时的文字描述", type: "string"},
-        "inactive-text": {label: "关闭时文字描述", title: "switch 的状态为 off 时的文字描述", type: "string"},
+        "active-text": {label: "打开时文字描述", title: "switch 打开时的文字描述"},
+        "inactive-text": {label: "关闭时文字描述", title: "switch 的状态为 off 时的文字描述"},
         "active-value": {
             label: "on时的值",
             title: "switch 状态为 on 时的值",
@@ -565,22 +542,19 @@ const propertyConfigList = {
         "active-color": {
             label: "on时背景颜色",
             title: "当在 on 状态时的背景颜色(已废弃，请使用 CSS var --el-switch-on-color )",
-            type: "string",
             renderTag: 'el-color-picker'
         },
         "inactive-color": {
             label: "off时背景颜色",
             title: "off 状态时的背景颜色(已废弃，使用 CSS var --el-switch-of-color )",
-            type: "string",
             renderTag: 'el-color-picker'
         },
         "border-color": {
             label: "边框颜色",
             title: "开关的边框颜色 ( 已废弃，使用 CSS var --el-switch-border-color )",
-            type: "string",
             renderTag: 'el-color-picker'
         },
-        name: {label: "", title: "switch 对应的 name 属性", type: "string", hide: true},
+        name: {label: "", title: "switch 对应的 name 属性", hide: true},
         "validate-event": {
             label: "表单校验",
             title: "改变 switch 状态时是否触发表单的校验",
@@ -610,7 +584,6 @@ const propertyConfigList = {
         "input-size": {
             label: "输入框的大小",
             title: "输入框的大小，如果设置了size属性，默认值自动取 size",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -628,7 +601,6 @@ const propertyConfigList = {
         size: {
             label: "大小",
             title: "slider 包装器的大小，垂直模式下该属性不可用",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -641,18 +613,16 @@ const propertyConfigList = {
         "format-tooltip": {label: "", title: "格式化提示信息", type: "function(value)", hide: true},
 
         vertical: {label: "垂直模式", title: "垂直模式", type: "boolean", default: false},
-        height: {label: "滑块高度", title: "滑块高度，垂直模式必填", type: "string", switch: ['vertical', true]},
-        label: {label: "屏幕阅读器标签", title: "屏幕阅读器标签", type: "string"},
+        height: {label: "滑块高度", title: "滑块高度，垂直模式必填", switch: ['vertical', true]},
+        label: {label: "屏幕阅读器标签", title: "屏幕阅读器标签"},
         "range-start-label": {
             label: "标签开始标记",
             title: "当 range 为true时，屏幕阅读器标签开始的标记",
-            type: "string",
             switch: ['vertical', true]
         },
         "range-end-label": {
             label: "标签结尾标记",
             title: "当 range 为true时，屏幕阅读器标签结尾的标记",
-            type: "string",
             switch: ['vertical', true]
         },
         "format-value-text": {
@@ -667,11 +637,10 @@ const propertyConfigList = {
             type: "number",
             default: 300
         },
-        "tooltip-class": {label: "tooltip类名", title: "tooltip 的自定义类名", type: "string"},
+        "tooltip-class": {label: "tooltip类名", title: "tooltip 的自定义类名"},
         placement: {
             label: "Tooltip出现位置",
             title: "Tooltip 出现的位置",
-            type: "string",
             options: [{label: "top", value: "top"}, {label: "top-start", value: "top-start"}, {
                 label: "top-end",
                 value: "top-end"
@@ -702,7 +671,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -733,14 +701,12 @@ const propertyConfigList = {
         "void-color": {
             label: "未选中 icon 的颜色",
             title: "未选中 icon 的颜色",
-            type: "string",
             renderTag: 'el-color-picker',
             default: "#C6D1DE"
         },
         "disabled-void-color": {
             label: "只读时未选中 icon 的颜色",
             title: "只读时未选中 icon 的颜色",
-            type: "string",
             default: "#EFF2F7"
         },
         icons: {
@@ -778,7 +744,6 @@ const propertyConfigList = {
         "text-color": {
             label: "辅助文字颜色",
             title: "辅助文字的颜色",
-            type: "string",
             renderTag: 'el-color-picker',
             default: "#1F2D3D"
         },
@@ -796,7 +761,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -807,14 +771,13 @@ const propertyConfigList = {
         "color-format": {
             label: "颜色的格式",
             title: "写入 v-model 的颜色的格式",
-            type: "string",
             options: [{label: "hsl", value: "hsl"}, {label: "hsv", value: "hsv"}, {
                 label: "hex",
                 value: "hex"
             }, {label: "rgb", value: "rgb"}],
             default: "hex"//fixme  (当 show-alpha 为 false) / rgb (当 show-alpha 为 true)
         },
-        "popper-class": {label: "下拉框的类名", title: "el-color-picker 下拉框的类名", type: "string"},
+        "popper-class": {label: "下拉框的类名", title: "el-color-picker 下拉框的类名"},
         predefine: {label: "预设颜色", title: "预设颜色", type: "array", tag: 'ElColorPicker', default: []},
         "validate-event": {label: "表单校验", title: "输入时是否触发表单的校验", type: "boolean", default: true}
     },
@@ -826,7 +789,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -848,7 +810,7 @@ const propertyConfigList = {
             type: "boolean",
             default: false
         },
-        separator: {label: "分隔符", title: "用于分隔选项的字符", type: "string", default: "/"},
+        separator: {label: "分隔符", title: "用于分隔选项的字符", default: "/"},
         filterable: {label: "被搜索", title: "该选项是否可以被搜索", type: "boolean"},
         "filter-method": {
             label: "搜索逻辑",
@@ -861,7 +823,7 @@ const propertyConfigList = {
             title: "过滤函数调用前欲被调用的钩子函数，该函数接受一个参数。 如果该函数的返回值是 false 或者是一个被拒绝的 Promise，那么接下来的过滤逻辑便不会执行。",
             type: "function(value)"
         },
-        "popper-class": {label: "弹出内容类名", title: "弹出内容的自定义类名", type: "string"},
+        "popper-class": {label: "弹出内容类名", title: "弹出内容的自定义类名"},
         teleported: {
             label: "使用teleport",
             title: "弹层是否使用 teleport",
@@ -877,7 +839,6 @@ const propertyConfigList = {
         "tag-type": {
             label: "标签类型",
             title: "标签类型",
-            type: "string",
             options: [{label: "success", value: "success"}, {label: "info", value: "info"}, {
                 label: "warning",
                 value: "warning"
@@ -891,7 +852,6 @@ const propertyConfigList = {
         type: {
             label: "风格类型",
             title: "风格类型",
-            type: "string",
             options: [{label: "默认", value: ""}, {label: "card", value: "card"}, {
                 label: "border-card",
                 value: "border-card"
@@ -903,7 +863,6 @@ const propertyConfigList = {
         "tab-position": {
             label: "选项卡位置",
             title: "选项卡所在位置",
-            type: "string",
             options: [{label: "top", value: "top"}, {label: "right", value: "right"}, {
                 label: "bottom",
                 value: "bottom"
@@ -919,7 +878,7 @@ const propertyConfigList = {
         }
     },
     'tab-pane': {
-        label: {label: "选项卡标题", title: "选项卡标题", type: "string"},
+        label: {label: "选项卡标题", title: "选项卡标题"},
         disabled: {label: "禁用", title: "是否禁用", type: "boolean", default: false},
         name: {
             label: "标识符",
@@ -949,17 +908,15 @@ const propertyConfigList = {
         shape: {
             label: "形状",
             title: "Avatar 形状",
-            type: "string",
             options: [{label: "circle", value: "circle"}, {label: "square", value: "square"}],
             default: "circle"
         },
-        src: {label: "图片源地址", title: "Avatar 图片的源地址", type: "string"},
-        "src-set": {label: "", title: "图片 Avatar 的原生 srcset 属性", type: "string"},
-        alt: {label: "alt属性", title: "图片 Avatar 的原生 alt 属性", type: "string"},
+        src: {label: "图片源地址", title: "Avatar 图片的源地址"},
+        "src-set": {label: "", title: "图片 Avatar 的原生 srcset 属性"},
+        alt: {label: "alt属性", title: "图片 Avatar 的原生 alt 属性"},
         fit: {
             label: "适应容器",
             title: "当展示类型为图片的时候，设置图片如何适应容器",
-            type: "string",
             options: [{label: "fill", value: "fill"}, {label: "contain", value: "contain"}, {
                 label: "cover",
                 value: "cover"
@@ -976,7 +933,6 @@ const propertyConfigList = {
         type: {
             label: "类型",
             title: "类型",
-            type: "string",
             options: [{label: "默认", value: ""}, {label: "success", value: "success"}, {
                 label: "info",
                 value: "info"
@@ -989,11 +945,10 @@ const propertyConfigList = {
         closable: {label: "可关闭", title: "是否可关闭", type: "boolean", default: false},
         "disable-transitions": {label: "禁用渐变动画", title: "是否禁用渐变动画", type: "boolean", default: false},
         hit: {label: "边框描边", title: "是否有边框描边", type: "boolean", default: false},
-        color: {label: "背景色", title: "背景色", type: "string", renderTag: 'el-color-picker'},
+        color: {label: "背景色", title: "背景色", renderTag: 'el-color-picker'},
         size: {
             label: "尺寸",
             title: "尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -1003,7 +958,6 @@ const propertyConfigList = {
         effect: {
             label: "主题",
             title: "主题",
-            type: "string",
             options: [{label: "dark", value: "dark"}, {label: "light", value: "light"}, {
                 label: "plain",
                 value: "plain"
@@ -1029,7 +983,6 @@ const propertyConfigList = {
         type: {
             label: "类型",
             title: "类型",
-            type: "string",
             options: [{label: "primary", value: "primary"}, {label: "success", value: "success"}, {
                 label: "warning",
                 value: "warning"
@@ -1041,7 +994,7 @@ const propertyConfigList = {
         },
         underline: {label: "下划线", title: "是否下划线", type: "boolean", default: true},
         disabled: {label: "禁用状态", title: "是否禁用状态", type: "boolean", default: false},
-        href: {label: "href 属性", title: "原生 href 属性", type: "string"},
+        href: {label: "href 属性", title: "原生 href 属性"},
         icon: {label: "图标组件", title: "图标组件", type: "string | Component", renderTag: 'iconDialog'}
     },
     text: {
@@ -1053,7 +1006,6 @@ const propertyConfigList = {
         type: {
             label: "类型",
             title: "类型",
-            type: "string",
             options: [{label: "primary", value: "primary"}, {label: "success", value: "success"}, {
                 label: "warning",
                 value: "warning"
@@ -1066,7 +1018,6 @@ const propertyConfigList = {
         size: {
             label: "大小",
             title: "大小",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -1074,7 +1025,7 @@ const propertyConfigList = {
             default: "default"
         },
         truncated: {label: "显示省略号", title: "显示省略号", type: "boolean", default: false},
-        tag: {label: "自定义元素标签", title: "自定义元素标签", type: "string", default: "span"},
+        tag: {label: "自定义元素标签", title: "自定义元素标签", default: "span"},
     },
     progress: {
         percentage: {
@@ -1086,7 +1037,6 @@ const propertyConfigList = {
         type: {
             label: "类型",
             title: "进度条类型",
-            type: "string",
             options: [{label: "line", value: "line"}, {label: "circle", value: "circle"}, {
                 label: "dashboard",
                 value: "dashboard"
@@ -1103,7 +1053,6 @@ const propertyConfigList = {
         status: {
             label: "当前状态",
             title: "进度条当前状态",
-            type: "string",
             options: [{label: "默认", value: undefined}, {label: "success", value: "success"}, {
                 label: "exception",
                 value: "exception"
@@ -1117,7 +1066,6 @@ const propertyConfigList = {
         color: {
             label: "背景色",
             title: "进度条背景色 进度条背景色 （会覆盖 status 状态颜色）",
-            type: "string",
             renderTag: 'el-color-picker'
         },
         width: {
@@ -1130,7 +1078,6 @@ const propertyConfigList = {
         "stroke-linecap": {
             label: "两端形状",
             title: "circle/dashboard 类型路径两端的形状",
-            type: "string",
             options: [{label: "butt", value: "butt"}, {label: "round", value: "round"}, {
                 label: "square",
                 value: "square"
@@ -1140,12 +1087,11 @@ const propertyConfigList = {
         format: {label: "", title: "指定进度条文字内容", type: "function(percentage)", hide: true}
     },
     result: {
-        title: {label: "标题", title: "标题", type: "string"},
-        "sub-title": {label: "二级标题", title: "二级标题", type: "string"},
+        title: {label: "标题", title: "标题"},
+        "sub-title": {label: "二级标题", title: "二级标题"},
         icon: {
             label: "图标类型",
             title: "图标类型",
-            type: "string",
             options: [{label: "success", value: "success"}, {label: "warning", value: "warning"}, {
                 label: "info",
                 value: "info"
@@ -1154,21 +1100,21 @@ const propertyConfigList = {
         }
     },
     alert: {
-        title: {label: "标题", title: "Alert 标题。", type: "string"},
+        title: {label: "标题", title: "Alert 标题。"},
         type: {
-            label: "类型", title: "Alert 类型。", type: "string", default: 'info',
+            label: "类型", title: "Alert 类型。", default: 'info',
             options: [{label: "success", value: "success"}, {label: "info", value: "info"}, {
                 label: "warning",
                 value: "warning"
             }, {label: "error", value: "error"}]
         },
-        description: {label: "描述文本", title: "描述性文本", type: "string"},
+        description: {label: "描述文本", title: "描述性文本"},
         closable: {label: "可以关闭", title: "是否可以关闭", type: "boolean", default: true},
         center: {label: "文字居中", title: "文字是否居中", type: "boolean", default: false},
-        'close-text': {label: "关闭按钮文本", title: "自定义关闭按钮文本", type: "string"},
+        'close-text': {label: "关闭按钮文本", title: "自定义关闭按钮文本"},
         'show-icon': {label: "显示类型图标", title: "是否显示类型图标", type: "boolean", default: false},
         'effect': {
-            label: "主题样式", title: "主题样式", type: "string", default: 'light',
+            label: "主题样式", title: "主题样式", default: 'light',
             options: [{label: "light", value: "light"}, {label: "dark", value: "dark"}]
         },
     },
@@ -1176,7 +1122,6 @@ const propertyConfigList = {
         model: {
             label: "表单数据",
             title: "表单数据对象",
-            type: "string",
             required: true,
             formRef: true,//只用在el-form
             defaultRefName: "formData"
@@ -1184,7 +1129,6 @@ const propertyConfigList = {
         rules: {
             label: "验证规则",
             title: "表单验证规则",
-            type: "string",
             required: true,
             formRef: true,
             defaultRefName: "formRules"
@@ -1198,7 +1142,6 @@ const propertyConfigList = {
         "label-position": {
             label: "标签位置",
             title: "表单域标签的位置， 当设置为 left 或 right 时，则也需要设置 label-width 属性",
-            type: "string",
             options: [{label: "left", value: "left"}, {label: "right", value: "right"}, {label: "top", value: "top"}],
             default: "right"
         },
@@ -1210,7 +1153,6 @@ const propertyConfigList = {
         "label-suffix": {
             label: "标签后缀",
             title: "表单域标签的后缀",
-            type: "string",
         },
         "hide-required-asterisk": {
             label: "隐藏标签红色星号",
@@ -1221,7 +1163,6 @@ const propertyConfigList = {
         "require-asterisk-position": {
             label: "星号位置",
             title: "星号的位置。",
-            type: "string",
             options: [{label: "left", value: "left"}, {label: "right", value: "right"}],
             default: "left"
         },
@@ -1252,7 +1193,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "用于控制该表单内组件的尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -1278,7 +1218,7 @@ const propertyConfigList = {
             title: "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])。 在定义了 validate、resetFields 的方法时，该属性是必填的",
             type: "string/string[]"
         },
-        label: {label: "", title: "标签文本", type: "string"},
+        label: {label: "", title: "标签文本"},
         "label-width": {
             label: "标签宽度",
             title: "标签宽度，例如 '50px'。 可以使用 auto。",
@@ -1317,7 +1257,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "用于控制该表单域下组件的默认尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -1328,13 +1267,11 @@ const propertyConfigList = {
             hide: true,
             label: "",
             title: "和原生标签相同能力",
-            type: "string",
             options: [{label: "string", value: "string"}]
         },
         "validate-status": {
             label: "校验的状态",
             title: "formitem 校验的状态",
-            type: "string",
 
             options: [{label: "error", value: "error"}, {label: "validating", value: "validating"}, {
                 label: "success",
@@ -1347,7 +1284,6 @@ const propertyConfigList = {
         justify: {
             label: "水平排列方式",
             title: "flex 布局下的水平排列方式",
-            type: "string",
             options: [{label: "start", value: "start"}, {label: "end", value: "end"}, {
                 label: "center",
                 value: "center"
@@ -1360,7 +1296,6 @@ const propertyConfigList = {
         align: {
             label: "垂直排列方式",
             title: "flex 布局下的垂直排列方式",
-            type: "string",
             options: [{label: "top", value: "top"}, {label: "middle", value: "middle"}, {
                 label: "bottom",
                 value: "bottom"
@@ -1370,7 +1305,6 @@ const propertyConfigList = {
         tag: {
             label: "自定义元素标签",
             title: "自定义元素标签",
-            type: "string",
             //options: [{label: "(*)", value: "(*)"}],
             default: "div"
         }
@@ -1452,7 +1386,6 @@ const propertyConfigList = {
         tag: {
             label: "自定义元素标签",
             title: "自定义元素标签",
-            type: "string",
             default: "div"
         }
     },
@@ -1484,7 +1417,6 @@ const propertyConfigList = {
         type: {
             label: "类型",
             title: "badge 类型。",
-            type: "string",
             options: [{label: "primary", value: "primary"}, {label: "success", value: "success"}, {
                 label: "warning",
                 value: "warning"
@@ -1500,7 +1432,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -1510,7 +1441,6 @@ const propertyConfigList = {
         type: {
             label: "类型",
             title: "类型",
-            type: "string",
             options: [{label: "primary", value: "primary"}, {label: "success", value: "success"}, {
                 label: "warning",
                 value: "warning"
@@ -1536,7 +1466,6 @@ const propertyConfigList = {
         "native-type": {
             label: "原生 type 属性",
             title: "原生 type 属性",
-            type: "string",
             options: [{label: "button", value: "button"}, {label: "submit", value: "submit"}, {
                 label: "reset",
                 value: "reset"
@@ -1559,7 +1488,6 @@ const propertyConfigList = {
         tag: {
             label: "自定义元素标签",
             title: "自定义元素标签，比如按钮，div，路由链接，nuxt链接",
-            type: "string",
             default: "button"
         }
     },
@@ -1567,7 +1495,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -1577,7 +1504,6 @@ const propertyConfigList = {
         type: {
             label: "类型",
             title: "类型",
-            type: "string",
             options: [{label: "primary", value: "primary"}, {label: "success", value: "success"}, {
                 label: "warning",
                 value: "warning"
@@ -1585,16 +1511,15 @@ const propertyConfigList = {
         }
     },
     empty: {
-        image: {label: "图片地址", title: "图片地址", type: "string"},
+        image: {label: "图片地址", title: "图片地址"},
         "image-size": {label: "图片大小", title: "图片大小（宽度）", type: "number"},
-        description: {label: "描述", title: "描述", type: "string"}
+        description: {label: "描述", title: "描述"}
     },
     steps: {
         space: {label: "间距", title: "每个 step 的间距，不填写将自适应间距。 支持百分比。", type: "number / string"},
         direction: {
             label: "方向",
             title: "显示方向",
-            type: "string",
             options: [{label: "vertical", value: "vertical"}, {label: "horizontal", value: "horizontal"}],
             default: "horizontal"
         },
@@ -1602,7 +1527,6 @@ const propertyConfigList = {
         "process-status": {
             label: "当前步骤状态",
             title: "设置当前步骤的状态",
-            type: "string",
             options: [{label: "wait", value: "wait"}, {label: "process", value: "process"}, {
                 label: "finish",
                 value: "finish"
@@ -1612,7 +1536,6 @@ const propertyConfigList = {
         "finish-status": {
             label: "结束步骤状态",
             title: "设置结束步骤的状态",
-            type: "string",
             options: [{label: "wait", value: "wait"}, {label: "process", value: "process"}, {
                 label: "finish",
                 value: "finish"
@@ -1623,8 +1546,8 @@ const propertyConfigList = {
         simple: {label: "简洁风格", title: "是否应用简洁风格", type: "boolean", default: false}
     },
     step: {
-        title: {label: "标题", title: "标题", type: "string"},
-        description: {label: "描述", title: "描述文案", type: "string"},
+        title: {label: "标题", title: "标题"},
+        description: {label: "描述", title: "描述文案"},
         icon: {
             label: "图标",
             title: "Step 组件的自定义图标。 也支持 slot 方式写入",
@@ -1634,7 +1557,6 @@ const propertyConfigList = {
         status: {
             label: "状态",
             title: "设置当前步骤的状态， 不设置则根据 steps 确定状态",
-            type: "string",
             options: [{label: "wait", value: "wait"}, {label: "process", value: "process"}, {
                 label: "finish",
                 value: "finish"
@@ -1646,14 +1568,12 @@ const propertyConfigList = {
         direction: {
             label: "方向",
             title: "设置分割线方向",
-            type: "string",
             options: [{label: "horizontal", value: "horizontal"}, {label: "vertical", value: "vertical"}],
             default: "horizontal"
         },
         "border-style": {
             label: "样式",
             title: "设置分隔符样式",
-            type: "string",
             options: [{label: "dotted", value: "dotted"}, {label: "dashed", value: "dashed"}, {
                 label: "solid",
                 value: "solid"
@@ -1667,7 +1587,6 @@ const propertyConfigList = {
         "content-position": {
             label: "内容位置",
             title: "自定义分隔线内容的位置",
-            type: "string",
             options: [{label: "left", value: "left"}, {label: "right", value: "right"}, {
                 label: "center",
                 value: "center"
@@ -1679,13 +1598,12 @@ const propertyConfigList = {
         direction: {
             label: "排列方向",
             title: "子元素的排列方向",
-            type: "string",
             options: [{label: "horizontal", value: "horizontal"}, {label: "vertical", value: "vertical"}],
         }
     },
-    header: {height: {label: "高度", title: "顶栏高度", type: "string", default: "60px"}},
-    footer: {height: {label: "高度", title: "底栏高度", type: "string", default: "60px"}},
-    aside: {width: {label: "宽度", title: "侧边栏宽度", type: "string", default: "300px"}},
+    header: {height: {label: "高度", title: "顶栏高度", default: "60px"}},
+    footer: {height: {label: "高度", title: "底栏高度", default: "60px"}},
+    aside: {width: {label: "宽度", title: "侧边栏宽度", default: "300px"}},
     scrollbar: {
         height: {
             label: "高度",
@@ -1716,12 +1634,11 @@ const propertyConfigList = {
         "view-style": {
             label: "视图样式",
             title: "视图的自定义样式",
-            ype: "style"
+            type: "style"
         },
         "view-class": {
             label: "视图类名",
             title: "视图的自定义类名",
-            type: "string",
         },
         noresize: {
             label: "响应容器尺寸变化",
@@ -1732,14 +1649,13 @@ const propertyConfigList = {
         tag: {
             label: "视图的元素标签",
             title: "视图的元素标签",
-            type: "string",
             default: "div"
         },
         always: {
             label: "滚动条总是显示",
             title: "滚动条总是显示",
             type: "boolean",
-            default: "false"
+            default: false
         },
         "min-size": {
             label: "最小尺寸",
@@ -1752,7 +1668,6 @@ const propertyConfigList = {
         alignment: {
             label: "对齐方式",
             title: "对齐的方式",
-            type: "string",
             options: [{label: "stretch", value: "stretch"}, {label: "center", value: "center"}, {
                 label: "flex-start",
                 value: "flex-start"
@@ -1763,7 +1678,6 @@ const propertyConfigList = {
         direction: {
             label: "排列方向",
             title: "排列的方向",
-            type: "string",
             options: [{label: "vertical", value: "vertical"}, {label: "horizontal", value: "horizontal"}],
             default: "horizontal"
         },
@@ -1795,11 +1709,11 @@ const propertyConfigList = {
     },
     'collapse-item': {
         name: {label: "名称", title: "唯一标志符", type: "string/number"},
-        title: {label: "标题", title: "面板标题", type: "string"},
+        title: {label: "标题", title: "面板标题"},
         disabled: {label: "禁用", title: "是否禁用", type: "boolean"}
     },
     carousel: {
-        height: {label: "高度", title: "carousel 的高度", type: "string"},
+        height: {label: "高度", title: "carousel 的高度"},
         "initial-index": {
             label: "初始状态激活索引",
             title: "初始状态激活的幻灯片的索引，从 0 开始",
@@ -1809,7 +1723,6 @@ const propertyConfigList = {
         trigger: {
             label: "触发方式",
             title: "指示器的触发方式",
-            type: "string",
             options: [{label: "hover", value: "hover"}, {label: "click", value: "click"}],
             default: "hover"
         },
@@ -1818,36 +1731,33 @@ const propertyConfigList = {
         "indicator-position": {
             label: "指示器位置",
             title: "指示器的位置",
-            type: "string",
             options: [{label: "outside", value: "outside"}, {label: "none", value: "none"}]
         },
         arrow: {
             label: "切换箭头显示时机",
             title: "切换箭头的显示时机",
-            type: "string",
             options: [{label: "always", value: "always"}, {label: "hover", value: "hover"}, {
                 label: "never",
                 value: "never"
             }],
             default: "hover"
         },
-        type: {label: "类型", title: "carousel 的类型", type: "string", options: [{label: "card", value: "card"}]},
+        type: {label: "类型", title: "carousel 的类型", options: [{label: "card", value: "card"}]},
         loop: {label: "循环显示", title: "是否循环显示", type: "boolean", default: true},
         direction: {
             label: "展示的向",
             title: "展示的方向",
-            type: "string",
             options: [{label: "horizontal", value: "horizontal"}, {label: "vertical", value: "vertical"}],
             default: "horizontal"
         },
         "pause-on-hover": {label: "悬浮时暂停切换", title: "鼠标悬浮时暂停自动切换", type: "boolean", default: true}
     },
     'carousel-item': {
-        name: {label: "名字", title: "幻灯片的名字，可用作 setActiveItem 的参数", type: "string"},
-        label: {label: "指示器的文本", title: "该幻灯片所对应指示器文本", type: "string"}
+        name: {label: "名字", title: "幻灯片的名字，可用作 setActiveItem 的参数"},
+        label: {label: "指示器的文本", title: "该幻灯片所对应指示器文本"}
     },
     breadcrumb: {
-        separator: {label: "分隔符", title: "分隔符", type: "string", default: "/"},
+        separator: {label: "分隔符", title: "分隔符", default: "/"},
         "separator-icon": {
             label: "分隔符图标",
             title: "图标分隔符的组件或组件名",
@@ -1878,13 +1788,11 @@ const propertyConfigList = {
         "value-key": {
             label: "",
             title: "作为 value 唯一标识的键名，绑定值为对象类型时必填",
-            type: "string",
             default: "value", hide: true
         },
         size: {
             label: "尺寸",
             title: "输入框尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -1922,15 +1830,14 @@ const propertyConfigList = {
             default: 0,
             switch: ['multiple', true]
         },
-        name: {label: "", title: "选择器的原生name属性", type: "string", hide: true},
+        name: {label: "", title: "选择器的原生name属性", hide: true},
         effect: {
             label: "文字提示主题",
             title: "文字提示（Tooltip）的主题，内置dark和light两种。",
-            type: "string",
             options: [{label: "light", value: "light"}, {label: "dark", value: "dark"}],
             default: "light"
         },
-        autocomplete: {label: "", title: "自动完成选择输入", type: "string", default: "off", hide: true},
+        autocomplete: {label: "", title: "自动完成选择输入", default: "off", hide: true},
         filterable: {label: "可筛选", title: "是否可筛选", type: "boolean", default: false},
         "allow-create": {
             label: "创建新条目",
@@ -1947,10 +1854,9 @@ const propertyConfigList = {
         "no-data-text": {
             label: "无数据显示文字",
             title: "当在没有数据时显示的文字，你同时可以使用#empty插槽进行设置。",
-            type: "string",
             default: "No Data"
         },
-        "popper-class": {label: "下拉菜单类名", title: "选择器下拉菜单的自定义类名", type: "string"},
+        "popper-class": {label: "下拉菜单类名", title: "选择器下拉菜单的自定义类名"},
         teleported: {
             label: "使用teleport插入body元素",
             title: "该下拉菜单是否使用teleport插入body元素",
@@ -1994,7 +1900,6 @@ const propertyConfigList = {
         placement: {
             label: "下拉框出现位置",
             title: "下拉框出现的位置",
-            type: "string",
             options: [{label: "top", value: "top"}, {label: "top-start", value: "top-start"}, {
                 label: "top-end",
                 value: "top-end"
@@ -2022,7 +1927,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "输入框尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -2033,32 +1937,28 @@ const propertyConfigList = {
         "start-placeholder": {
             label: "开始日期占位内容",
             title: "范围选择时开始日期的占位内容",
-            type: "string",
             switch: ['is-range', true]
         },
         "end-placeholder": {
             label: "结束日期占位内容",
             title: "范围选择时结束日期的占位内容",
-            type: "string",
             switch: ['is-range', true]
         },
         "arrow-control": {label: "箭头选择时间", title: "是否使用箭头进行时间选择", type: "boolean", default: false},
-        "popper-class": {label: "下拉框类名", title: "TimePicker 下拉框的类名", type: "string"},
-        "range-separator": {label: "分隔符", title: "选择范围时的分隔符", type: "string", default: "-"},
+        "popper-class": {label: "下拉框类名", title: "TimePicker 下拉框的类名"},
+        "range-separator": {label: "分隔符", title: "选择范围时的分隔符", default: "-"},
         format: {
             label: "输入框格式",
             title: "显示在输入框中的格式",
-            type: "string",
             default: "HH:mm:ss"
         },
         'value-format': {
             label: "值格式",
             title: "值格式",
-            type: "string",
             default: "HH:mm:ss"
         },
         id: {label: "", title: "等价于原生 input id 属性", type: "string / [string, string]", hide: true},
-        name: {label: "", title: "等价于原生 input name 属性", type: "string", hide: true},
+        name: {label: "", title: "等价于原生 input name 属性", hide: true},
         "prefix-icon": {
             label: "前缀图标",
             title: "前缀图标",
@@ -2095,7 +1995,6 @@ const propertyConfigList = {
         type: {
             label: "类型",
             title: "显示类型",
-            type: "string",
             options: [
                 //year/month/date/dates/datetime/ week/datetimerange/daterange/ monthrange
                 {
@@ -2142,13 +2041,11 @@ const propertyConfigList = {
         format: {
             label: "显示格式",
             title: "显示在输入框中的格式",
-            type: "string",
             default: "YYYY-MM-DD"
         },
         "value-format": {
             label: "值格式",
             title: "可选，绑定值的格式。 不指定则绑定值为 Date 对象",
-            type: "string",
             default: "YYYY-MM-DD"
         },
 
@@ -2157,7 +2054,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "输入框尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -2166,11 +2062,11 @@ const propertyConfigList = {
         },
         editable: {label: "文本框可输入", title: "文本框可输入", type: "boolean", default: true},
         clearable: {label: "显示清除按钮", title: "是否显示清除按钮", type: "boolean", default: true},
-        "start-placeholder": {label: "开始日期占位内容", title: "范围选择时开始日期的占位内容", type: "string"},
-        "end-placeholder": {label: "结束日期占位内容", title: "范围选择时结束日期的占位内容", type: "string"},
+        "start-placeholder": {label: "开始日期占位内容", title: "范围选择时开始日期的占位内容"},
+        "end-placeholder": {label: "结束日期占位内容", title: "范围选择时结束日期的占位内容"},
 
-        "popper-class": {label: "下拉框的类名", title: "DatePicker 下拉框的类名", type: "string"},
-        "range-separator": {label: "分隔符", title: "选择范围时的分隔符", type: "string", default: "-"},
+        "popper-class": {label: "下拉框的类名", title: "DatePicker 下拉框的类名"},
+        "range-separator": {label: "分隔符", title: "选择范围时的分隔符", default: "-"},
         "default-value": {label: "默认显示时间", title: "可选，选择器打开时默认显示的时间", type: "Date / [Date, Date]"},
         "default-time": {
             label: "默认时间",
@@ -2178,7 +2074,7 @@ const propertyConfigList = {
             type: "Date / [Date, Date]"
         },
         id: {label: "", title: "等价于原生 id 属性", type: "string / [string, string]", hide: true},
-        name: {label: "", title: "等价于原生 name 属性", type: "string", hide: true},
+        name: {label: "", title: "等价于原生 name 属性", hide: true},
         "unlink-panels": {
             label: "取消两个日期面板联动",
             title: "在范围选择器里取消两个日期面板之间的联动",
@@ -2229,19 +2125,17 @@ const propertyConfigList = {
     'timeline-item': {
         default: {slot: true, label: '内容', type: 'string'},
         center: {label: "垂直居中", title: "是否垂直居中", type: "boolean", default: false},
-        timestamp: {label: "时间戳", title: "时间戳", type: "string"},
+        timestamp: {label: "时间戳", title: "时间戳"},
         "hide-timestamp": {label: "隐藏时间戳", title: "是否隐藏时间戳", type: "boolean", default: false},
         placement: {
             label: "时间戳位置",
             title: "时间戳位置",
-            type: "string",
             options: [{label: "top", value: "top"}, {label: "bottom", value: "bottom"}],
             default: "bottom"
         },
         type: {
             label: "节点类型",
             title: "节点类型",
-            type: "string",
             options: [{label: "primary", value: "primary"}, {label: "success", value: "success"}, {
                 label: "warning",
                 value: "warning"
@@ -2250,7 +2144,6 @@ const propertyConfigList = {
         color: {
             label: "节点颜色",
             title: "节点颜色",
-            type: "string",
             options: [{label: "hsl", value: "hsl"}, {label: "hsv", value: "hsv"}, {
                 label: "hex",
                 value: "hex"
@@ -2259,7 +2152,6 @@ const propertyConfigList = {
         size: {
             label: "节点尺寸",
             title: "节点尺寸",
-            type: "string",
             options: [{label: "normal", value: "normal"}, {label: "large", value: "large"}],
             default: "normal"
         },
@@ -2277,7 +2169,6 @@ const propertyConfigList = {
         mode: {
             label: "展示模式",
             title: "菜单展示模式",
-            type: "string",
             options: [{label: "水平", value: "horizontal"}, {label: "垂直", value: "vertical"}],
             default: "vertical"
         },
@@ -2297,22 +2188,19 @@ const propertyConfigList = {
         "background-color": {
             label: "背景颜色",
             title: "菜单的背景颜色（十六进制格式）（已被废弃，使用--bg-color）",
-            type: "string",
             default: "#ffffff"
         },
         "text-color": {
             label: "文字颜色",
             title: "文字颜色（十六进制格式）（已被废弃，使用--text-color）",
-            type: "string",
             default: "#303133"
         },
         "active-text-color": {
             label: "活动菜单项文本颜色",
             title: "活动菜单项的文本颜色（十六进制格式）（已被废弃，使用--active-color）",
-            type: "string",
             default: "#409EFF"
         },
-        "default-active": {label: "默认激活菜单的 index", title: "页面加载时默认激活菜单的 index", type: "string"},
+        "default-active": {label: "默认激活菜单的 index", title: "页面加载时默认激活菜单的 index"},
         "default-openeds": {label: "打开的sub-menu数组", title: "默认打开的 sub-menu 的 index 的数组", type: "Array"},
         "unique-opened": {
             label: "只保持一个子菜单展开",
@@ -2323,7 +2211,6 @@ const propertyConfigList = {
         "menu-trigger": {
             label: "子菜单打开触发方式",
             title: "子菜单打开的触发方式，只在 mode 为 horizontal 时有效。",
-            type: "string",
             options: [{label: "hover", value: "hover"}, {label: "click", value: "click"}],
             default: "hover"
         },
@@ -2337,8 +2224,8 @@ const propertyConfigList = {
     },
     'sub-menu': {
         title: {slot: true, label: '标题', type: 'string'},
-        index: {label: "唯一标志", title: "唯一标志", type: "string"},
-        "popper-class": {label: "popper类名", title: "为 popper 添加类名", type: "string"},
+        index: {label: "唯一标志", title: "唯一标志"},
+        "popper-class": {label: "popper类名", title: "为 popper 添加类名"},
         "show-timeout": {label: "展开延时", title: "展开 sub-menu 的延时", type: "number", default: 300},
         "hide-timeout": {label: "收起延时", title: "收起 sub-menu 的延时", type: "number", default: 300},
         disabled: {label: "禁用", title: "是否禁用", type: "boolean", default: false},
@@ -2372,36 +2259,34 @@ const propertyConfigList = {
     },
     'menu-item': {
         default: {slot: true, label: '标题', type: 'string'},
-        index: {label: "唯一标志", title: "唯一标志", type: "string"},
+        index: {label: "唯一标志", title: "唯一标志"},
         route: {label: "Vue Router", title: "Vue Router 路径对象", type: "object"},
         disabled: {label: "禁用", title: "是否禁用", type: "boolean", default: false}
     },
-    'menu-item-group': {title: {label: "组标题", title: "组标题", type: "string"}},
+    'menu-item-group': {title: {label: "组标题", title: "组标题"}},
     descriptions: {
         border: {label: "边框", title: "是否带有边框", type: "boolean", default: false},
         column: {label: '每行数量', title: "一行 Descriptions Item 的数量", type: "number", default: 3},
         direction: {
             label: "排列的方向",
             title: "排列的方向",
-            type: "string",
             options: [{label: "vertical", value: "vertical"}, {label: "horizontal", value: "horizontal"}],
             default: "horizontal"
         },
         size: {
             label: "尺寸",
             title: "列表的尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
             }],
             default: "default"
         },
-        title: {label: "标题文本", title: "标题文本，显示在左上方", type: "string"},
-        extra: {label: "操作区文本", title: "操作区文本，显示在右上方", type: "string"}
+        title: {label: "标题文本", title: "标题文本，显示在左上方"},
+        extra: {label: "操作区文本", title: "操作区文本，显示在右上方"}
     },
     'descriptions-item': {
-        label: {label: "标签文本", title: "标签文本", type: "string"},
+        label: {label: "标签文本", title: "标签文本"},
         span: {label: "列数量", title: "列的数量", type: "number", default: 1},
         width: {
             label: "宽度",
@@ -2416,7 +2301,6 @@ const propertyConfigList = {
         align: {
             label: "内容对齐方式",
             title: "列的内容对齐方式（如无 border，对标签和内容均生效）",
-            type: "string",
             options: [{label: "left", value: "left"}, {label: "center", value: "center"}, {
                 label: "right",
                 value: "right"
@@ -2426,14 +2310,13 @@ const propertyConfigList = {
         "label-align": {
             label: "标签对齐方式",
             title: "列的标签对齐方式，若不设置该项，则使用内容的对齐方式（如无 border，请使用 align 参数）",
-            type: "string",
             options: [{label: "left", value: "left"}, {label: "center", value: "center"}, {
                 label: "right",
                 value: "right"
             }]
         },
-        "class-name": {label: "内容自定义类名", title: "列的内容自定义类名", type: "string"},
-        "label-class-name": {label: "标签自定义类名", title: "列的标签自定义类名", type: "string"}
+        "class-name": {label: "内容自定义类名", title: "列的内容自定义类名"},
+        "label-class-name": {label: "标签自定义类名", title: "列的标签自定义类名"}
     },
     transfer: {
         vModel: 'modelValue',
@@ -2452,7 +2335,6 @@ const propertyConfigList = {
         "filter-placeholder": {
             label: "搜索框占位符",
             title: "搜索框占位符",
-            type: "string",
             default: "Enter keyword",
             switch: ['filterable', true]
         },
@@ -2460,7 +2342,6 @@ const propertyConfigList = {
         "target-order": {
             label: "右侧元素排序策略",
             title: "右侧列表元素的排序策略： 若为 original，则保持与数据源相同的顺序； 若为 push，则新加入的元素排在最后； 若为 unshift，则新加入的元素排在最前",
-            type: "string",
             options: [{label: "相同", value: "original"}, {label: "最后", value: "push"}, {
                 label: "最前",
                 value: "unshift"
@@ -2518,7 +2399,6 @@ const propertyConfigList = {
         layout: {
             label: "组件布局",
             title: "组件布局，子组件名用逗号分隔",
-            type: "string",
             // options: [{label: "sizes", value: "sizes"}, {label: "prev", value: "prev"}, {
             //     label: "pager",
             //     value: "pager"
@@ -2534,15 +2414,15 @@ const propertyConfigList = {
             type: "array", tag: 'ElInputNumber',
             default: [10, 20, 30, 40, 50, 100]
         },
-        "popper-class": {label: "下拉框类名", title: "每页显示个数选择器的下拉框类名", type: "string"},
-        "prev-text": {label: "上一页文字", title: "替代图标显示的上一页文字", type: "string"},
+        "popper-class": {label: "下拉框类名", title: "每页显示个数选择器的下拉框类名"},
+        "prev-text": {label: "上一页文字", title: "替代图标显示的上一页文字"},
         "prev-icon": {
             label: "上一页图标",
             title: "上一页的图标， 比 prev-text 优先级更高",
             type: "string | Component", renderTag: 'iconDialog',
             default: "ArrowLeft"
         },
-        "next-text": {label: "下一页文字", title: "替代图标显示的下一页文字", type: "string"},
+        "next-text": {label: "下一页文字", title: "替代图标显示的下一页文字"},
         "next-icon": {
             label: "下一页图标",
             title: "下一页的图标， 比 next-text 优先级更高",
@@ -2571,7 +2451,6 @@ const propertyConfigList = {
         size: {
             label: "尺寸",
             title: "Table 的尺寸",
-            type: "string",
             options: [{label: "large", value: "large"}, {label: "default", value: "default"}, {
                 label: "small",
                 value: "small"
@@ -2630,7 +2509,6 @@ const propertyConfigList = {
         "empty-text": {
             label: "无数据显示的文本内容",
             title: "空数据时显示的文本内容， 也可以通过 #empty 设置",
-            type: "string",
             default: "No Data"
         },
         "default-expand-all": {
@@ -2654,12 +2532,11 @@ const propertyConfigList = {
         "tooltip-effect": {
             label: "",
             title: "tooltip effect 属性",
-            type: "string",
             options: [{label: "dark", value: "dark"}, {label: "light", value: "light"}],
             default: "dark"
         },
         "show-summary": {label: "", title: "是否在表尾显示合计行", type: "boolean", default: false},
-        "sum-text": {label: "", title: "合计行第一列的文本", type: "string", default: "合计"},
+        "sum-text": {label: "", title: "合计行第一列的文本", default: "合计"},
         "summary-method": {label: "", title: "自定义的合计计算方法", type: "function({ columns, data })"},
         "span-method": {
             label: "",
@@ -2688,7 +2565,6 @@ const propertyConfigList = {
         "table-layout": {
             label: "布局方式",
             title: "设置表格单元、行和列的布局方式",
-            type: "string",
             options: [{label: "fixed", value: "fixed"}, {label: "auto", value: "auto"}],
             default: "fixed"
         },
@@ -2699,7 +2575,6 @@ const propertyConfigList = {
         type: {
             label: "列类型",
             title: "对应列的类型。 如果设置了selection则显示多选框； 如果设置了 index 则显示该行的索引（从 1 开始计算）； 如果设置了 expand 则显示为一个可展开的按钮",
-            type: "string",
             options: [{label: "默认", value: undefined}, {label: "selection", value: "selection"}, {
                 label: "index",
                 value: "index"
@@ -2708,8 +2583,8 @@ const propertyConfigList = {
                 value: "expand"
             }]
         },
-        label: {label: "列标题", title: "显示的标题", type: "string"},
-        prop: {label: "字段名", title: "字段名称 对应列内容的字段名， 也可以使用 property属性", type: "string"},
+        label: {label: "列标题", title: "显示的标题"},
+        prop: {label: "字段名", title: "字段名称 对应列内容的字段名， 也可以使用 property属性"},
         width: {label: "宽度", title: "对应列的宽度", type: "string / number"},
         index: {
             label: "",
@@ -2783,7 +2658,6 @@ const propertyConfigList = {
         align: {
             label: "对齐方式",
             title: "对齐方式",
-            type: "string",
             options: [{label: "left", value: "left"}, {label: "center", value: "center"}, {
                 label: "right",
                 value: "right"
@@ -2793,14 +2667,13 @@ const propertyConfigList = {
         "header-align": {
             label: "",
             title: "表头对齐方式， 若不设置该项，则使用表格的对齐方式",
-            type: "string",
             options: [{label: "left", value: "left"}, {label: "center", value: "center"}, {
                 label: "right",
                 value: "right"
             }]
         },
-        "class-name": {label: "列类名", title: "列的 className", type: "string"},
-        "label-class-name": {label: "列标题类名", title: "当前列标题的自定义类名", type: "string"},
+        "class-name": {label: "列类名", title: "列的 className"},
+        "label-class-name": {label: "列标题类名", title: "当前列标题的自定义类名"},
         selectable: {
             label: "",
             title: "仅对 type=selection 的列有效，类型为 Function，Function 的返回值用来决定这一行的 CheckBox 是否可以勾选",
@@ -2820,7 +2693,6 @@ const propertyConfigList = {
         "filter-placement": {
             label: "",
             title: "过滤弹出框的定位",
-            type: "string",
             options: [{label: "与 Tooltip 的 placement 属性相同", value: "与 Tooltip 的 placement 属性相同"}],
             hide: true
         },
@@ -2880,13 +2752,12 @@ const propertyConfigList = {
     popconfirm: {
         reference: {slot: true, label: '按钮文字', type: 'string'},
         width: {label: "弹出窗口宽度", title: "弹出窗口宽度", type: "string/number", default: "150px"},
-        title: {label: "标题", title: "标题", type: "string"},
-        "confirm-button-text": {label: "确认按钮文字", title: "确认按钮文字", type: "string"},
-        "cancel-button-text": {label: "取消按钮文字", title: "取消按钮文字", type: "string"},
+        title: {label: "标题", title: "标题"},
+        "confirm-button-text": {label: "确认按钮文字", title: "确认按钮文字"},
+        "cancel-button-text": {label: "取消按钮文字", title: "取消按钮文字"},
         "confirm-button-type": {
             label: "确认按钮类型",
             title: "确认按钮类型",
-            type: "string",
             options: [{label: "primary", value: "primary"}, {label: "success", value: "success"}, {
                 label: "warning",
                 value: "warning"
@@ -2896,7 +2767,6 @@ const propertyConfigList = {
         "cancel-button-type": {
             label: "取消按钮类型",
             title: "取消按钮类型",
-            type: "string",
             options: [{label: "primary", value: "primary"}, {label: "success", value: "success"}, {
                 label: "warning",
                 value: "warning"
@@ -2911,7 +2781,7 @@ const propertyConfigList = {
             default: "QuestionFilled",
             renderTag: 'iconDialog'
         },
-        "icon-color": {label: "", title: "Icon 颜色", type: "string", renderTag: 'el-color-picker', default: "#f90"},
+        "icon-color": {label: "", title: "Icon 颜色", renderTag: 'el-color-picker', default: "#f90"},
         teleported: {
             label: "下拉列表插入 body 元素",
             title: "是否将 popover 的下拉列表插入至 body 元素",
@@ -2927,12 +2797,11 @@ const propertyConfigList = {
     },
     popover: {
         reference: {slot: true, label: '按钮文字', type: 'string'},
-        title: {label: "标题", title: "标题", type: "string"},
-        content: {label: "显示内容", title: "显示的内容，也可以通过写入默认 slot 修改显示内容", type: "string"},
+        title: {label: "标题", title: "标题"},
+        content: {label: "显示内容", title: "显示的内容，也可以通过写入默认 slot 修改显示内容"},
         trigger: {
             label: "触发方式",
             title: "触发方式",
-            type: "string",
             options: [{label: "click", value: "click"}, {label: "focus", value: "focus"}, {
                 label: "hover",
                 value: "hover"
@@ -2942,7 +2811,6 @@ const propertyConfigList = {
         effect: {
             label: "主题",
             title: "Tooltip 主题，Element Plus 内置了 dark / light 两种主题",
-            type: "string",
             options: [{label: "light", value: "light"}, {label: "dark", value: "dark"}],
             default: "light"
         },
@@ -2950,7 +2818,6 @@ const propertyConfigList = {
         placement: {
             label: "出现位置",
             title: "出现位置",
-            type: "string",
             options: [{label: "top", value: "top"}, {label: "top-start", value: "top-start"}, {
                 label: "top-end",
                 value: "top-end"
@@ -2969,7 +2836,7 @@ const propertyConfigList = {
         disabled: {label: "禁用", title: "Popover 是否可用", type: "boolean", default: false},
         visible: {label: "显示", title: "Popover 是否显示", type: "Boolean", default: "false"},
         offset: {label: "偏移量", title: "出现位置的偏移量", type: "number", default: 0},
-        transition: {label: "渐变动画", title: "定义渐变动画", type: "string", default: "el-fade-in-linear"},
+        transition: {label: "渐变动画", title: "定义渐变动画", default: "el-fade-in-linear"},
         "show-arrow": {
             label: "显示 Tooltip 箭头",
             title: "是否显示 Tooltip 箭头， 欲了解更多信息，请参考 ElPopper",
@@ -2983,7 +2850,7 @@ const propertyConfigList = {
             options: [{label: "详情参考 popper.js", value: "详情参考 popper.js"}],
             default: "{modifiers: [{name: 'computeStyles',options: {gpuAcceleration: false}}]}", hide: true
         },
-        "popper-class": {label: "popper 添加类名", title: "为 popper 添加类名", type: "string"},
+        "popper-class": {label: "popper 添加类名", title: "为 popper 添加类名"},
         "show-after": {label: "延迟出现", title: "延迟出现，单位毫秒", type: "number", default: 0},
         "hide-after": {label: "延迟关闭", title: "延迟关闭，单位毫秒", type: "number", default: 200},
         "auto-close": {
@@ -3008,11 +2875,10 @@ const propertyConfigList = {
     },
     tooltip: {
 
-        content: {label: "显示内容", title: "显示的内容，也可被 slot#content 覆盖", type: "String"},
+        content: {label: "显示内容", title: "显示的内容，也可被 slot#content 覆盖"},
         trigger: {
             label: "触发方式",
             title: "如何触发（展示） Tooltip",
-            type: "string",
             options: [{label: "hover", value: "hover"}, {label: "click", value: "click"}, {
                 label: "focus",
                 value: "focus"
@@ -3022,7 +2888,6 @@ const propertyConfigList = {
         effect: {
             label: "主题",
             title: "Tooltip 主题，内置了 dark / light 两种",
-            type: "string",
             options: [{label: "dark", value: "dark"}, {label: "light", value: "light"}],
             default: "dark"
         },
@@ -3035,7 +2900,6 @@ const propertyConfigList = {
         placement: {
             label: "出现位置",
             title: "Tooltip 组件出现的位置",
-            type: "string",
             options: [{label: "top", value: "top"}, {label: "top-start", value: "top-start"}, {
                 label: "top-end",
                 value: "top-end"
@@ -3054,7 +2918,7 @@ const propertyConfigList = {
         //fixme  visible: {label: "可见性", title: "Tooltip 组件可见性", options:[{label: "不设置", value: ''},{label: "显示", value: true},{label: "不显示", value:false}]},
         disabled: {label: "禁用", title: "Tooltip 组件是否禁用", type: "boolean", default: false},
         offset: {label: "偏移量", title: "出现位置的偏移量", type: "number", default: 0},
-        transition: {label: "动画名称", title: "动画名称", type: "string", default: "el-fade-in-linear"},
+        transition: {label: "动画名称", title: "动画名称", default: "el-fade-in-linear"},
         "append-to": {
             label: "",
             title: "指示 Tooltip 的内容将附加在哪一个网页元素上",
@@ -3084,7 +2948,7 @@ const propertyConfigList = {
             type: "boolean",
             default: false
         },
-        "popper-class": {label: "popper 添加类名", title: "为 Tooltip 的 popper 添加类名", type: "string"},
+        "popper-class": {label: "popper 添加类名", title: "为 Tooltip 的 popper 添加类名"},
         enterable: {label: "鼠标可进入", title: "鼠标是否可进入到 tooltip 中", type: "boolean", default: true},
         tabindex: {label: "tabindex", title: "Tooltip 的 tabindex", type: "number", default: 0},
         teleported: {
@@ -3110,12 +2974,11 @@ const propertyConfigList = {
         }
     },
     upload: {
-        action: {label: "URL", title: "请求 URL", type: "string", default: "https"},
+        action: {label: "URL", title: "请求 URL", default: "https"},
         headers: {label: "请求头部", title: "设置上传的请求头部", type: "Object"},
         method: {
             label: "方法",
             title: "设置上传请求方法",
-            type: "string",
             options: [{label: "post", value: "post"}, {label: "get", value: "get"}],
             default: "post"
         },
@@ -3129,7 +2992,6 @@ const propertyConfigList = {
         name: {
             label: "字段名",
             title: "上传的文件字段名",
-            type: "string",
             default: "file"
         },
         "with-credentials": {
@@ -3153,7 +3015,6 @@ const propertyConfigList = {
         accept: {
             label: "文件类型",
             title: "接受上传的文件类型（thumbnail-mode 模式下此参数无效）",
-            type: "string",
         },
         "on-preview": {
             label: "已上传的文件时的钩子",
@@ -3213,7 +3074,6 @@ const propertyConfigList = {
         "list-type": {
             label: "列表类型",
             title: "文件列表的类型",
-            type: "string",
             options: [{label: "text", value: "text"}, {label: "picture", value: "picture"}, {
                 label: "picture-card",
                 value: "picture-card"
@@ -3250,11 +3110,10 @@ const propertyConfigList = {
         "decimal-separator": {
             label: "小数点",
             title: "设置小数点符号",
-            type: "string",
             default: "."
         },
         formatter: {
-            hide:true,
+            hide: true,
             label: "",
             title: "自定义数字格式化",
             type: "Function",
@@ -3262,7 +3121,6 @@ const propertyConfigList = {
         "group-separator": {
             label: "千分位",
             title: "设置千分位标识符",
-            type: "string",
             default: ","
         },
         precision: {
@@ -3271,9 +3129,9 @@ const propertyConfigList = {
             type: "number",
             default: 0
         },
-        prefix: {label: "前缀", title: "设置数字的前缀", type: "string"},
-        suffix: {label: "后缀", title: "设置数字的后缀", type: "string"},
-        title: {label: "标题", title: "数字标题", type: "string"},
+        prefix: {label: "前缀", title: "设置数字的前缀"},
+        suffix: {label: "后缀", title: "设置数字的后缀"},
+        title: {label: "标题", title: "数字标题"},
         "value-style": {
             label: "数字样式",
             title: "数字样式",
@@ -3289,12 +3147,11 @@ const propertyConfigList = {
         "decimal-separator": {
             label: "格式",
             title: "格式化倒计时",
-            type: "string",
             default: "HH:mm:ss"
         },
-        prefix: {label: "前缀", title: "设置数字的前缀", type: "string"},
-        suffix: {label: "后缀", title: "设置数字的后缀", type: "string"},
-        title: {label: "标题", title: "数字标题", type: "string"},
+        prefix: {label: "前缀", title: "设置数字的前缀"},
+        suffix: {label: "后缀", title: "设置数字的后缀"},
+        title: {label: "标题", title: "数字标题"},
         "value-style": {
             label: "数字样式",
             title: "数字样式",
@@ -3308,6 +3165,9 @@ for (const pcKey in propertyConfigList) {
     const pc = propertyConfigList[pcKey];
     for (const pKey in pc) {
         const p = pc[pKey];
+        if (p instanceof Object && !p.type) {
+            p.type = 'string';
+        }
         if (p.type && !p.renderTag) {
             let tag = 'el-input';
             if (p.type === 'boolean') {
@@ -3326,6 +3186,9 @@ for (const pcKey in propertyConfigList) {
                 p.renderProps = {clearable: true, ...p.renderProps}
             }
             p.renderTag = tag;
+        }
+        if (p.type === 'style' && !p.default) {
+            p.default = {}
         }
     }
 

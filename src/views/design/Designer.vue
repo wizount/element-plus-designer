@@ -3,7 +3,7 @@
   <div class="container">
     <div class="left-board">
       <div class="logo-wrapper">
-        <div class="logo"><img :src="logo" alt="logo"/>Element Plus Designer<a class="github"
+        <div class="logo"><img :src="logo" alt="logo"/> Element Plus Designer<a class="github"
              href="https://github.com/wizount/element-plus-designer"
              target="_blank"><svg-icon icon-class="github"/> </a>
           <a class="github"
@@ -65,20 +65,6 @@
         <el-button text @click="download"> 导出vue文件</el-button>
         <el-button text @click="componentTreeVisible=true"> 组件树</el-button>
         <el-button text @click="execCopy"> 复制代码</el-button>
-
-        <!--        <el-dropdown>-->
-        <!--          <el-button text> 复制代码</el-button>-->
-        <!--          <template #dropdown>-->
-        <!--            <el-dropdown-menu>-->
-        <!--              <el-dropdown-item @click="console.info(11)">-->
-        <!--                页面-->
-        <!--              </el-dropdown-item>-->
-        <!--              <el-dropdown-item @click="">-->
-        <!--                弹窗-->
-        <!--              </el-dropdown-item>-->
-        <!--            </el-dropdown-menu>-->
-        <!--          </template>-->
-        <!--        </el-dropdown>-->
         <el-dropdown>
           <el-button text> 设置</el-button>
           <template #dropdown>
@@ -115,7 +101,7 @@
           </template>
         </draggable>
         <div v-show="!drawingList||drawingList.length===0" class="empty-info"> 从左侧拖入或点选组件进行界面设计</div>
-        <div style="position: fixed; left: 400px" ref="actionDiv" v-if="activeData.__config__">
+        <div style="position: fixed; left: 400px; z-index: 3;" ref="activeToolbar" v-if="activeData.__config__">
           <svg-icon style="color: var(--el-text-color)" :icon-class="activeData.__config__.tagIcon"/>
           <span style="color: var(--el-text-color)"> {{ activeData.__config__.componentName }}</span>
 
@@ -251,7 +237,7 @@ const showTree = ref(true)//为了树能自动刷新
 const generateConf = ref(null)
 const showFileName = ref(false)
 const activeData = ref({})
-const actionDiv = ref(null)
+const activeToolbar = ref(null)
 
 
 let operationType = ""
@@ -428,10 +414,12 @@ function moveComponent(upOrDown) {
 
 function resetActiveDrawItemPosition() {
   let item = document.getElementsByClassName("active-draw-item")[0];
-  let rect = item.getBoundingClientRect()
-  actionDiv.value.style.display = 'block';
-  actionDiv.value.style.left = (rect.left + rect.width - actionDiv.value.clientWidth) + "px";
-  actionDiv.value.style.top = (rect.top - 20) + "px";
+  if(item) {
+    let rect = item.getBoundingClientRect()
+    activeToolbar.value.style.display = 'block';
+    activeToolbar.value.style.left = (rect.left + rect.width - activeToolbar.value.clientWidth) + "px";
+    activeToolbar.value.style.top = (rect.top - 20) + "px";
+  }
 }
 
 //endregion
@@ -642,9 +630,7 @@ function resetDrawItemId(item) {
 }
 
 function allowToAdd(parent, clone) {
-  console.info(parent, clone)
   if (!parent) {
-    console.info(1)
     const parentTag = clone.__config__.parentTag;
     if (parentTag) {
       ElMessageBox.alert(`不能添加${clone.__config__.name}（${clone.__config__.tag}）。`)
@@ -655,7 +641,6 @@ function allowToAdd(parent, clone) {
   const childTag = parent.__config__.childTag;
 
   if (childTag) {
-    console.info(2)
     if (clone.__config__.tag !== childTag) {
       ElMessageBox.alert(`${parent.__config__.name}（${parent.__config__.tag}）组件下只能添加${childTag}。`)
       //  ElMessageBox.alert(`不只能添加到${clone.__config__.name}（${parent.__config__.tag}）组件下。${designConf.value.wrapWithCol ? "可以关闭”设置->组件包裹col“。" : ""}`)
@@ -664,7 +649,6 @@ function allowToAdd(parent, clone) {
   }
   const parentTag = clone.__config__.parentTag;
   if (parentTag) {
-    console.info(3)
     if (parent.__config__.tag !== parentTag) {
       ElMessageBox.alert(`只能添加到${clone.__config__.name}（${parentTag}）组件下。`)
       return false;
@@ -844,9 +828,13 @@ import { useDark, useToggle } from '@vueuse/core'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-console.info(isDark.value)
-//
 
+
+
+//
+import mdContents from "@/components/config";
+
+console.info(JSON.stringify(mdContents,null,2))
 </script>
 
 

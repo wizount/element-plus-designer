@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-drawer v-bind="$attrs" @closed="onClose">
+    <el-drawer v-bind="$attrs">
       <div class="action-bar" :style="{ 'text-align': 'left' }">
         <el-button text type="primary" @click="refresh" icon="Refresh" title="更改到界面">
           更新

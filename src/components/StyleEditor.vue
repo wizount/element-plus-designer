@@ -41,7 +41,6 @@ const emits = defineEmits(['update:modelValue']);
 const list = ref([]);
 
 watchEffect(() => {
-  console.info(props.modelValue)
   list.value = []
   props.modelValue&&Object.keys(props.modelValue).forEach((key) => {
     list.value.push({key, value: props.modelValue[key]})
