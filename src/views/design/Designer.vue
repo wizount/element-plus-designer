@@ -1,6 +1,7 @@
 <template>
 
   <div class="container">
+
     <div class="left-board">
       <div class="logo-wrapper">
         <div class="logo"><img :src="logo" alt="logo"/> Element Plus Designer<a class="github"
@@ -16,9 +17,7 @@
       <el-scrollbar class="left-scrollbar">
         <el-collapse class="components-list">
           <el-collapse-item :title="c.title" :name="c.titles" v-for="c in elementPlusComponents" :key="c.title">
-            <!--            <el-link v-for="l in c.children">{{ l.name }}</el-link>-->
             <template v-for="l in c.children">
-              <!--                {{ l.name }}-->
               <draggable tag="span" class="components-draggable" :list="l.children" item-key="renderKey"
                          :group="{ name: 'componentsGroup', pull: 'clone', put: false }" :clone="cloneComponent"
                          draggable=".components-item" :sort="false" @end="onEnd">
@@ -154,7 +153,7 @@
 
 <script setup>
 import logo from "@/assets/logo.png"
-import Draggable from 'vuedraggable'
+import Draggable from '@/vuedraggable/vuedraggable'
 import {debounce} from 'throttle-debounce'
 import {saveAs} from 'file-saver'
 import ClipboardJS from 'clipboard'

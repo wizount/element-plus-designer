@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import Draggable from "vuedraggable";
+import Draggable from '@/vuedraggable/vuedraggable';
 const props = defineProps({
   //tag
   tag: {

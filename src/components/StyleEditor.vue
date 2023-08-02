@@ -26,7 +26,7 @@
 
 <script setup>
 import styleName from '@/utils/styleName.json'
-import Draggable from "vuedraggable";
+import Draggable from '@/vuedraggable/vuedraggable';
 import {ref, watchEffect} from "vue";
 import {AutoCompleteCallback} from "@/utils/element-plus-utils";
 

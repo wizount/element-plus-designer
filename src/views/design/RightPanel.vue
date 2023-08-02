@@ -152,7 +152,7 @@
 
 <script setup lang="jsx">
 import TreeNodeDialog from '@/views/design/TreeNodeDialog'
-import Draggable from "vuedraggable";
+import Draggable from '@/vuedraggable/vuedraggable';
 import {saveDesignConf} from '@/utils/db'
 
 

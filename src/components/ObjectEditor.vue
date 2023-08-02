@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import Draggable from "vuedraggable";
+import Draggable from '@/vuedraggable/vuedraggable';
 import {ref, watchEffect} from "vue";
 
 const props = defineProps({
