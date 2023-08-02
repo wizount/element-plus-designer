@@ -829,11 +829,6 @@ const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
 
-
-//
-import mdContents from "@/components/config";
-
-console.info(JSON.stringify(mdContents,null,2))
 </script>
 
 
