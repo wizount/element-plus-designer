@@ -1,8 +1,10 @@
 import Render from "@/components/render/render"
 import {CopyDocument, Delete} from "@element-plus/icons-vue";
 import {ElFormItem, ElIcon, ElRow, ElCol} from "element-plus";
-import Draggable from "vuedraggable";
+import Draggable from '@/vuedraggable/vuedraggable';
 import {deepClone} from "@/utils";
+import slotRenderFunctions from "@/components/render/slots";
+import {h} from "vue";
 ///import '@/styles/draggalbeItem.scss'
 
 
@@ -87,8 +89,21 @@ export default {
                 return props_;
 
             }
+            let thisSlots =null
+            const childObjs = slotRenderFunctions[curItem.__config__.tag]
+            if (childObjs) {
+                thisSlots={}
+                Object.keys(childObjs).forEach(key => {
+                    const childFunc = childObjs[key]
+                    if (curItem.__slot__ && curItem.__slot__[key]) {
+                        Object.assign(thisSlots, childFunc(h, curItem, key))
+                    }
+                })
+            }
+
             let DraggableChildren = <Draggable tag={curItem.__config__.tag}
                                                componentData={{...colProps(), ...buildVModel(curItem)}}
+                                               componentSlots={thisSlots}
                                                list={curItem.__children__} group="componentsGroup"
                                                itemKey="renderKey"
                                                animation={340}>
