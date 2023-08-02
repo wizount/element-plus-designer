@@ -1221,7 +1221,44 @@ export const elementPlusComponents =[
             {
                 name: "Menu 菜单",
                 key: "menu",
-                children: []
+                children: [
+                    {
+                        __id__: "menu",
+                        __config__: {
+                            name: "菜单",
+                            tag: "el-menu",
+                            tagIcon: "menu",
+                            layout: "containerItem",
+                            document: "https://element-plus.gitee.io/zh-CN/component/menu.html"
+                        }
+                    },
+                    {
+                        __id__: "sub-menu",
+                        __config__: {
+                            name: "子菜单",
+                            tag: "el-sub-menu",
+                            tagIcon: "sub-menu",
+                            layout: "containerItem",
+                            document: "https://element-plus.gitee.io/zh-CN/component/menu.html#submenu-attributes"
+                        },
+                        __slot__: {
+                            title: "子菜单"
+                        }
+                    },
+                    {
+                        __id__: "menu-item",
+                        __config__: {
+                            name: "菜单项",
+                            tag: "el-menu-item",
+                            tagIcon: "menu-item",
+                            layout: "rawItem",
+                            document: "https://element-plus.gitee.io/zh-CN/component/menu.html#menu-item-attributes"
+                        },
+                        __slot__: {
+                            default: "菜单项"
+                        },
+                    },
+                ]
             },
             {
                 name: "Page Header 页头",
