@@ -424,7 +424,7 @@ const propertyConfigList = {
         },
 
     },
-    radioGroup: {
+    'radio-group': {
         vModel: 'modelValue',
         options: {
             slot: true,
@@ -457,7 +457,7 @@ const propertyConfigList = {
         },
         "validate-event": {label: "表单校验", title: "输入时是否触发表单的校验", type: "boolean", default: true}
     },
-    checkboxGroup: {
+    'checkbox-group': {
         vModel: 'modelValue',
         options: {
             slot: true,
@@ -1212,7 +1212,7 @@ const propertyConfigList = {
             default: false
         }
     },
-    formItem: {
+    'form-item': {
         prop: {
             label: "model 的键名",
             title: "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])。 在定义了 validate、resetFields 的方法时，该属性是必填的",
@@ -2144,10 +2144,7 @@ const propertyConfigList = {
         color: {
             label: "节点颜色",
             title: "节点颜色",
-            options: [{label: "hsl", value: "hsl"}, {label: "hsv", value: "hsv"}, {
-                label: "hex",
-                value: "hex"
-            }, {label: "rgb", value: "rgb"}]
+            renderTag:"el-color-picker"
         },
         size: {
             label: "节点尺寸",
@@ -2188,16 +2185,19 @@ const propertyConfigList = {
         "background-color": {
             label: "背景颜色",
             title: "菜单的背景颜色（十六进制格式）（已被废弃，使用--bg-color）",
+            renderTag: 'el-color-picker',
             default: "#ffffff"
         },
         "text-color": {
             label: "文字颜色",
             title: "文字颜色（十六进制格式）（已被废弃，使用--text-color）",
+            renderTag: 'el-color-picker',
             default: "#303133"
         },
         "active-text-color": {
             label: "活动菜单项文本颜色",
             title: "活动菜单项的文本颜色（十六进制格式）（已被废弃，使用--active-color）",
+            renderTag: 'el-color-picker',
             default: "#409EFF"
         },
         "default-active": {label: "默认激活菜单的 index", title: "页面加载时默认激活菜单的 index"},
@@ -2230,6 +2230,7 @@ const propertyConfigList = {
         "hide-timeout": {label: "收起延时", title: "收起 sub-menu 的延时", type: "number", default: 300},
         disabled: {label: "禁用", title: "是否禁用", type: "boolean", default: false},
         "popper-append-to-body": {
+            hide:true,
             label: "弹出菜单插入至 body 元素",
             title: "是否将弹出菜单插入至 body 元素。 在菜单的定位出现问题时，可尝试修改该属性",
             type: "boolean",
@@ -2237,24 +2238,28 @@ const propertyConfigList = {
         },
         "popper-offset": {label: "弹出窗口偏移", title: "弹出窗口偏移", type: "number", default: 6},
         "expand-close-icon": {
-            label: "",
+            label: "父展开子关闭图标",
             title: "父菜单展开且子菜单关闭时的图标， expand-close-icon 和 expand-open-icon 需要一起配置才能生效",
-            type: "string | Component"
+            type: "string | Component",
+            renderTag: 'iconDialog'
         },
         "expand-open-icon": {
-            label: "",
+            label: "父展开子打开图标",
             title: "父菜单展开且子菜单打开时的图标， expand-open-icon 和 expand-close-icon 需要一起配置才能生效",
-            type: "string | Component"
+            type: "string | Component",
+            renderTag: 'iconDialog'
         },
         "collapse-close-icon": {
-            label: "",
+            label: "父收起子关闭图标",
             title: "父菜单收起且子菜单关闭时的图标， expand-close-icon 和 expand-open-icon 需要一起配置才能生效",
-            type: "string | Component"
+            type: "string | Component",
+            renderTag: 'iconDialog'
         },
         "collapse-open-icon": {
-            label: "",
+            label: "父收起子打开图标",
             title: "父菜单收起且子菜单打开时的图标， expand-open-icon 和 expand-close-icon 需要一起配置才能生效",
-            type: "string | Component"
+            type: "string | Component",
+            renderTag: 'iconDialog'
         }
     },
     'menu-item': {
@@ -2263,7 +2268,7 @@ const propertyConfigList = {
         route: {label: "Vue Router", title: "Vue Router 路径对象", type: "object"},
         disabled: {label: "禁用", title: "是否禁用", type: "boolean", default: false}
     },
-    'menu-item-group': {title: {label: "组标题", title: "组标题"}},
+    'menu-item-group': {title: {label: "标题", title: "标题"}},
     descriptions: {
         border: {label: "边框", title: "是否带有边框", type: "boolean", default: false},
         column: {label: '每行数量', title: "一行 Descriptions Item 的数量", type: "number", default: 3},

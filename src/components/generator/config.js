@@ -219,7 +219,7 @@ export const selectComponents = [
 
     },
     {
-        __id__: 'radioGroup',
+        __id__: 'radio-group',
         __config__: {
             name: '单选框组',
             labelWidth: null,
@@ -250,7 +250,7 @@ export const selectComponents = [
 
     },
     {
-        __id__: 'checkboxGroup',
+        __id__: 'checkbox-group',
         __config__: {
             name: '多选框组',
             tag: 'el-checkbox-group',

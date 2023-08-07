@@ -237,7 +237,7 @@ export const elementPlusComponents =[
                         }
                     },
                     {
-                        __id__: "formItem",
+                        __id__: "form-item",
                         __config__: {
                             name: "表单项",
                             tag: "el-form-item",
@@ -315,7 +315,7 @@ export const elementPlusComponents =[
                 key: "checkbox",
                 children: [
                     {
-                        __id__: "checkboxGroup",
+                        __id__: "checkbox-group",
                         __config__: {
                             name: "多选框组",
                             tag: "el-checkbox-group",
@@ -507,7 +507,7 @@ export const elementPlusComponents =[
                 key: "radio",
                 children: [
                     {
-                        __id__: "radioGroup",
+                        __id__: "radio-group",
                         __config__: {
                             name: "单选框组",
                             labelWidth: null,
@@ -1257,6 +1257,19 @@ export const elementPlusComponents =[
                         __slot__: {
                             default: "菜单项"
                         },
+                    },
+                    {
+                        __id__: "menu-item-group",
+                        __config__: {
+                            name: "菜单项组",
+                            tag: "el-menu-item-group",
+                            tagIcon: "menu-item-group",
+                            layout: "containerItem",
+                            document: "https://element-plus.gitee.io/zh-CN/component/menu.html#menu-item--group-attributes"
+                        },
+                        __props__: {
+                            title:"菜单项组"
+                        }
                     },
                 ]
             },
