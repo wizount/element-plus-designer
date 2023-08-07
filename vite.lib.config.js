@@ -12,6 +12,7 @@ export default defineConfig(({ mode, command }) => {
    // base: command === 'build' ? '/element-plus-designer/' : '/',
     plugins: createVitePlugins(env, command === 'build'),
     build: {
+      outDir:"./lib",
       lib: {
         entry: path.resolve(__dirname, 'src/export.js'),
         name: 'element-plus-designer',

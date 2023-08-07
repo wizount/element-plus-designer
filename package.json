@@ -1,9 +1,10 @@
 {
   "name": "element-plus-designer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:lib": "vite build -c vite.lib.config.js",
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
@@ -36,23 +37,23 @@
     "vite-plugin-vue-setup-extend": "0.4.0"
   },
   "files": [
-    "dist"
+    "lib"
   ],
   "repository": {
     "type": "git",
     "url": "https://gitee.com/wizount/element-plus-designer"
   },
-  "module": "./dist/build.es.js",
-  "main": "./dist/build.es.js",
-  "unpkg": "./dist/build.umd.js",
+  "module": "./lib/build.es.js",
+  "main": "./lib/build.es.js",
+  "unpkg": "./lib/build.umd.js",
   "exports": {
     ".": {
-      "import": "./dist/build.es.js",
-      "require": "./dist/build.umd.js"
+      "import": "./lib/build.es.js",
+      "require": "./lib/build.umd.js"
     },
     "./dist/style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
+      "import": "./lib/style.css",
+      "require": "./lib/style.css"
     }
   }
 }
