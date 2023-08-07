@@ -124,8 +124,9 @@ export const renderSlot = (item) => {
     if (slot.default) {
         return slot.default;
     }
-    if (slotHtmlFunctions[tag])
+    if (slotHtmlFunctions[tag]){
         return slotHtmlFunctions[tag](item);
+    }
     return "";
 }
 

@@ -7,6 +7,7 @@ const routes = [
         name: 'index',
         component: Index,
     },
+
     {
         path: '/test',
         name: 'test',
@@ -16,6 +17,11 @@ const routes = [
         path: '/elutils',
         name: 'elutils',
         component:() =>import('@/views/tool/ElementPropertyUtils')
+    },
+    {
+        path: '/config',
+        name: 'config',
+        component:() =>import('@/components/config/ConfigEditor')
     },
     {
         path: '/preview',

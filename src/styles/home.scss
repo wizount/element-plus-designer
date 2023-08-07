@@ -1,5 +1,4 @@
 @import './variable.scss';
-@import './draggalbeItem.scss';
 
 body, html {
   margin: 0px;
@@ -21,7 +20,8 @@ body, html {
 
 .left-scrollbar {
   height: calc(100vh - $actionBarHeight)!important;
-  overflow: auto!important;
+  width: $leftBoardWidth;
+ // overflow: auto!important;
 }
 
 .logo-wrapper {

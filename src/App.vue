@@ -1,18 +1,11 @@
 <template>
   <div>
     <router-view />
-    <div style="position: absolute; bottom: 10px;right: 10px;color: gray">Element Plus version {{version}}</div>
   </div>
 </template>
 
 <script>
-import ElementPlus from 'element-plus'
 export default {
-  data() {
-    return {
-      version: ElementPlus.version
-    }
-  },
   mounted() {
     // 取消开始的loading动画
    // const preLoader = document.querySelector('#pre-loader')

@@ -330,13 +330,21 @@ function setLoading(component, val) {
 }
 
 //region 选中组件的操作
+
+import {useWindowSize} from "@vueuse/core";
+
+const {width, height} = useWindowSize();
+watch([width, height],(val)=>{
+  nextTick(()=>{
+    resetActiveDrawItemPosition();
+  })
+})
 function activeDrawItem(currentItem) {
   if (!currentItem || !currentItem.__config__) {
     return;
   }
   activeData.value = currentItem
   activeId.value = currentItem.__config__.drawItemId;
-
   nextTick(() => {
     resetActiveDrawItemPosition();
   })
@@ -829,10 +837,12 @@ const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
 
+
+//
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/styles/home';
 
 .p-0 {

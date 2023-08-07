@@ -5,8 +5,10 @@ import Draggable from '@/vuedraggable/vuedraggable';
 import {deepClone} from "@/utils";
 import slotRenderFunctions from "@/components/render/slots";
 import {h} from "vue";
-///import '@/styles/draggalbeItem.scss'
+import '@/styles/draggalbeItem.scss'
 
+
+let eventTime=Date.now();
 
 export default {
     props: [
@@ -20,23 +22,27 @@ export default {
     setup(props) {
         function buildEvent(curItem, list, index) {
             const onClick = (event) => {
-                props.onActiveItem( curItem)
-                event.stopPropagation()
+                if(Date.now()-eventTime>50) {//阻止事件向上传递（因无法选中el-menu-item而更改）
+                    props.onActiveItem(curItem);
+                }
+                eventTime=Date.now();
             }
 
             return {onClick}
         }
-        function buildClass(curItem){
+
+        function buildClass(curItem) {
             const {drawItemId} = curItem.__config__
             let className = props.activeId === drawItemId ? 'drawing-item active-draw-item' : 'drawing-item';
 
-            if (props.designConf.unFocusedComponentBorder&&props.activeId !== drawItemId) className += ' unfocus-bordered';
+            if (props.designConf.unFocusedComponentBorder && props.activeId !== drawItemId) className += ' unfocus-bordered';
             if (props.class) {
 
                 className += " " + className
             }
             return className;
         }
+
         function buildVModel(curItem) {
             if (curItem.__vModel__) {
                 return {
@@ -61,7 +67,14 @@ export default {
                     labelWidth = '0';
                     label = ''
                 }
-                return {labelWidth, label, required, prop: curItem.__vModel__,class: buildClass(curItem), style: {width: '100%'}}
+                return {
+                    labelWidth,
+                    label,
+                    required,
+                    prop: curItem.__vModel__,
+                    class: buildClass(curItem),
+                    style: {width: '100%'}
+                }
             }
 
             const Input = <Render conf={curItem} {...buildVModel(curItem)}></Render>
@@ -79,7 +92,7 @@ export default {
             let colProps = () => {
                 const props_ = deepClone(curItem.__props__)
                 let className = buildClass(curItem);
-                props_.class=className;
+                props_.class = className;
                 if (curItem.__children__.length === 0) {
                     if (!props_.style.minHeight && !props_.style['min-height']) {
                         props_.style['min-height'] = '60px';
@@ -89,10 +102,10 @@ export default {
                 return props_;
 
             }
-            let thisSlots =null
+            let thisSlots = null
             const childObjs = slotRenderFunctions[curItem.__config__.tag]
             if (childObjs) {
-                thisSlots={}
+                thisSlots = {}
                 Object.keys(childObjs).forEach(key => {
                     const childFunc = childObjs[key]
                     if (curItem.__slot__ && curItem.__slot__[key]) {

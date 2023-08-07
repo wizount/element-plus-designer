@@ -86,7 +86,8 @@
           <el-form-item v-if="config.required !== undefined" label="必填">
             <el-switch v-model="config.required"></el-switch>
           </el-form-item>
-          <item-config :property-config="activeProperty" :props-value="activeProps" :slots-value="activeData.__slot__"></item-config>
+          <item-config :property-config="activeProperty" :props-value="activeProps"
+                       :slots-value="activeData.__slot__"></item-config>
 
         </el-form>
 
@@ -137,13 +138,15 @@
             <el-button text type="primary" @click="addChildItem()"> 添加子组件
             </el-button>
           </div>
-          <item-config :property-config="activeChildProperty" :props-value="childActiveProps" :slots-value="childActiveSlots"></item-config>
+          <item-config :property-config="activeChildProperty" :props-value="childActiveProps"
+                       :slots-value="childActiveSlots"></item-config>
         </el-form>
 
         <div v-if="currentTab==='style'">
           <style-editor v-model="activeProps.style"></style-editor>
         </div>
       </div>
+      <div style="position: absolute; bottom: 10px;right: 10px;color: gray">Element Plus version {{ version }}</div>
     </el-scrollbar>
     <tree-node-dialog v-model="dialogVisible" title="添加选项" @commit="addNode"/>
 
@@ -151,6 +154,9 @@
 </template>
 
 <script setup lang="jsx">
+import ElementPlus from "element-plus";
+
+const version = ElementPlus.version;
 import TreeNodeDialog from '@/views/design/TreeNodeDialog'
 import Draggable from '@/vuedraggable/vuedraggable';
 import {saveDesignConf} from '@/utils/db'
@@ -165,8 +171,6 @@ import StyleEditor from "@/components/StyleEditor";
 const currentTab = ref('field')
 const currentNode = ref(null)
 const dialogVisible = ref(false)
-
-
 
 
 const props = defineProps({
@@ -264,14 +268,13 @@ const dateTimeFormatList = {
   monthrange: 'YYYY-MM',
   datetimerange: 'YYYY-MM-DD HH:mm:ss',
 }
-watch(() => activeProps.value.type, (newVal, oldVal) => {
-  if (newVal && oldVal && config.value.tag === 'el-date-picker') {
+watch(() => activeProps.value.type, (newVal) => {
+  if (newVal && config.value.tag === 'el-date-picker') {
     if (newVal === 'dates' || newVal.indexOf('range') > 0) {
       config.value.defaultValue = []
     } else {
       config.value.defaultValue = null
     }
-    config.value.defaultValue = null;
     activeProps.value['value-format'] = dateTimeFormatList[newVal]
     activeProps.value['format'] = dateTimeFormatList[newVal]
   }
@@ -387,6 +390,7 @@ const childActiveProps = computed(() => {
 const childActiveSlots = computed(() => {
   return activeChildItem.value && activeChildItem.value.__slot__ || {}
 })
+
 function showChildItem(child) {
   activeChildItem.value = child;
 }
@@ -410,14 +414,13 @@ function activeParentComponent() {
 }
 
 
-
 .right-board {
   width: 350px;
   //position: absolute;
 
   .right-scrollbar {
     position: relative;
-    height: calc(100vh - 75px);
+    height: calc(100vh - 40px);
     box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden;
