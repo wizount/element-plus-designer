@@ -17,7 +17,9 @@ export default {
         'drawingList',
         'activeId',
         'designConf',
-        'onActiveItem'
+        'onActiveItem',
+        'onChange',
+        'itemMove'
     ],
     setup(props) {
         function buildEvent(curItem, list, index) {
@@ -119,7 +121,9 @@ export default {
                                                componentSlots={thisSlots}
                                                list={curItem.__children__} group="componentsGroup"
                                                itemKey="renderKey"
-                                               animation={340}>
+                                               onChange={props.onChange}
+                                               move={props.itemMove}
+                                               animation={340} >
                 {{
                     item: ({element, index}) => h(doLayout(element, curItem.__children__, index)),
                 }}

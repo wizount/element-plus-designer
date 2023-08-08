@@ -5,11 +5,15 @@
     <div class="left-board">
       <div class="logo-wrapper">
         <div class="logo"><img :src="logo" alt="logo"/> Element Plus Designer<a class="github"
-             href="https://github.com/wizount/element-plus-designer"
-             target="_blank"><svg-icon icon-class="github"/> </a>
+                                                                                href="https://github.com/wizount/element-plus-designer"
+                                                                                target="_blank">
+          <svg-icon icon-class="github"/>
+        </a>
           <a class="github"
              href="https://gitee.com/wizount/element-plus-designer"
-             target="_blank"><svg-icon icon-class="gitee"/> </a>
+             target="_blank">
+            <svg-icon icon-class="gitee"/>
+          </a>
         </div>
 
 
@@ -20,7 +24,7 @@
             <template v-for="l in c.children">
               <draggable tag="span" class="components-draggable" :list="l.children" item-key="renderKey"
                          :group="{ name: 'componentsGroup', pull: 'clone', put: false }" :clone="cloneComponent"
-                         draggable=".components-item" :sort="false" @end="onEnd">
+                         draggable=".components-item" :sort="false" @end="onEnd" >
                 <template #item="{element}">
                   <div class="components-item" @click="addComponent(element)">
                     <div class="components-body">
@@ -93,10 +97,10 @@
       </div>
       <el-scrollbar class="center-scrollbar" @scroll="resetActiveDrawItemPosition">
         <draggable tag="div" :list="drawingList" style="padding: 5px"
-                   group="componentsGroup" item-key="renderKey">
+                   group="componentsGroup" item-key="renderKey"  @change="elementChange" :move="itemMove">
           <template #item="{element,index}">
             <draggable-item :drawing-list="drawingList" :current-item="element" :index="index"
-                            :active-id="activeId" :design-conf="designConf" @activeItem="activeDrawItem"/>
+                            :active-id="activeId" :design-conf="designConf" @activeItem="activeDrawItem" @change="elementChange" :item-move="itemMove" />
           </template>
         </draggable>
         <div v-show="!drawingList||drawingList.length===0" class="empty-info"> 从左侧拖入或点选组件进行界面设计</div>
@@ -104,14 +108,17 @@
           <svg-icon style="color: var(--el-text-color)" :icon-class="activeData.__config__.tagIcon"/>
           <span style="color: var(--el-text-color)"> {{ activeData.__config__.componentName }}</span>
 
-          <el-button class="activeBtn" size="small" type="info" circle @click="activeParentComponent" title="跳到父组件">
+          <el-button class="activeBtn" size="small" type="info" circle @click="activeParentComponent"
+                     title="跳到父组件">
             <el-icon style="transform:rotate(180deg);">
               <Download/>
             </el-icon>
           </el-button>
-          <el-button class="activeBtn" size="small" type="info" circle icon="ArrowUp" @click="moveComponent(-1)" title="上移">
+          <el-button class="activeBtn" size="small" type="info" circle icon="ArrowUp" @click="moveComponent(-1)"
+                     title="上移">
           </el-button>
-          <el-button class="activeBtn" size="small" type="info" circle icon="ArrowDown" @click="moveComponent(1)" title="下移">
+          <el-button class="activeBtn" size="small" type="info" circle icon="ArrowDown" @click="moveComponent(1)"
+                     title="下移">
           </el-button>
           <el-button class="activeBtn" type="primary" size="small" circle icon="Document" @click="drawingItemCopy"
                      title="复制组件"/>
@@ -334,11 +341,12 @@ function setLoading(component, val) {
 import {useWindowSize} from "@vueuse/core";
 
 const {width, height} = useWindowSize();
-watch([width, height],(val)=>{
-  nextTick(()=>{
+watch([width, height], (val) => {
+  nextTick(() => {
     resetActiveDrawItemPosition();
   })
 })
+
 function activeDrawItem(currentItem) {
   if (!currentItem || !currentItem.__config__) {
     return;
@@ -421,7 +429,7 @@ function moveComponent(upOrDown) {
 
 function resetActiveDrawItemPosition() {
   let item = document.getElementsByClassName("active-draw-item")[0];
-  if(item) {
+  if (item) {
     let rect = item.getBoundingClientRect()
     activeToolbar.value.style.display = 'block';
     activeToolbar.value.style.left = (rect.left + rect.width - activeToolbar.value.clientWidth) + "px";
@@ -636,11 +644,11 @@ function resetDrawItemId(item) {
   }
 }
 
-function allowToAdd(parent, clone) {
+function allowToAdd(parent, clone, noShowMessage) {
   if (!parent) {
     const parentTag = clone.__config__.parentTag;
     if (parentTag) {
-      ElMessageBox.alert(`不能添加${clone.__config__.name}（${clone.__config__.tag}）。`)
+      !noShowMessage && ElMessageBox.alert(`不能添加${clone.__config__.name}（${clone.__config__.tag}）。`)
       return false;
     }
     return true;
@@ -648,20 +656,66 @@ function allowToAdd(parent, clone) {
   const childTag = parent.__config__.childTag;
 
   if (childTag) {
-    if (clone.__config__.tag !== childTag) {
-      ElMessageBox.alert(`${parent.__config__.name}（${parent.__config__.tag}）组件下只能添加${childTag}。`)
+    if (childTag.indexOf(clone.__config__.tag) < 0) {
+      !noShowMessage && ElMessageBox.alert(`${parent.__config__.name}（${parent.__config__.tag}）组件下只能添加${childTag}。`)
       //  ElMessageBox.alert(`不只能添加到${clone.__config__.name}（${parent.__config__.tag}）组件下。${designConf.value.wrapWithCol ? "可以关闭”设置->组件包裹col“。" : ""}`)
       return false;
     }
   }
   const parentTag = clone.__config__.parentTag;
   if (parentTag) {
-    if (parent.__config__.tag !== parentTag) {
-      ElMessageBox.alert(`只能添加到${clone.__config__.name}（${parentTag}）组件下。`)
+    if (parentTag.indexOf(parent.__config__.tag) < 0) {
+      !noShowMessage && ElMessageBox.alert(`只能添加到${clone.__config__.name}（${parentTag}）组件下。`)
       return false;
     }
   }
   return true;
+}
+
+
+//region 组件移动操作
+//组件变成操作
+function elementChange(evt) {
+  //todo 可以用来记录操作历史
+
+
+}
+function itemMove(evt) {
+  const {draggedContext, relatedContext} = evt;
+  const {element} = draggedContext;//拖拽对象
+  const {list} = relatedContext;//放到哪个位置
+
+  let parent = findChildrenParentRoot(list);
+
+  return allowToAdd(parent, element, true);
+
+
+}
+function findChildrenParentRoot(children) {
+  if (children === drawingList.value) {//检查数组地址相同
+    return undefined;
+  } else {
+    for (const p of drawingList.value) {
+      return findChildrenParent(p, children);
+    }
+  }
+}
+
+/**
+ * 查找children的父节点
+ */
+function findChildrenParent(parent, children) {
+
+  if (parent.__children__) {
+    if (parent.__children__ === children) {//检查数组地址相同
+      return parent
+    } else {
+      for (const p of parent.__children__) {
+        return findChildrenParent(p, children);
+      }
+    }
+  }
+
 }
 
 //endregion
@@ -831,11 +885,10 @@ watch(designConf, (val) => {
 
 //region 暗黑模式
 
-import { useDark, useToggle } from '@vueuse/core'
+import {useDark, useToggle} from '@vueuse/core'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-
 
 
 //

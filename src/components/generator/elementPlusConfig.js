@@ -1,4 +1,4 @@
-export const elementPlusComponents =[
+export const elementPlusComponents = [
     {
         children: [
             {
@@ -25,7 +25,7 @@ export const elementPlusComponents =[
                             tag: "el-button-group",
                             tagIcon: "button",
                             layout: "containerItem",
-                            childTag: "el-button",
+                            childTag: ["el-button"],
                             document: "https://element-plus.gitee.io/zh-CN/component/button.html"
                         },
                     }
@@ -107,7 +107,7 @@ export const elementPlusComponents =[
                             name: "行容器",
                             tag: "el-row",
                             tagIcon: "row",
-                            childTag: "el-col",
+                            childTag: ["el-col"],
                             layout: "containerItem",
                             document: "https://element-plus.gitee.io/zh-CN/component/layout.html"
                         },
@@ -119,7 +119,7 @@ export const elementPlusComponents =[
                             name: "列容器",
                             tag: "el-col",
                             tagIcon: "col",
-                            parentTag: "el-row",
+                            parentTag: ["el-row"],
                             layout: "containerItem",
                             document: "https://element-plus.gitee.io/zh-CN/component/layout.html"
                         },
@@ -827,7 +827,7 @@ export const elementPlusComponents =[
                             tag: "el-carousel",
                             tagIcon: "carousel",
                             layout: "containerItem",
-                            childTag: "el-carousel-item",
+                            childTag: ["el-carousel-item"],
                             document: "https://element-plus.gitee.io/zh-CN/component/carousel.html"
                         }
                     },
@@ -838,7 +838,7 @@ export const elementPlusComponents =[
                             tag: "el-carousel-item",
                             tagIcon: "carousel-item",
                             layout: "containerItem",
-                            parentTag: "el-carousel",
+                            parentTag: ["el-carousel"],
                             document: "https://element-plus.gitee.io/zh-CN/component/carousel.html"
                         }
                     }
@@ -855,7 +855,7 @@ export const elementPlusComponents =[
                             tag: "el-collapse",
                             tagIcon: "collapse",
                             layout: "containerItem",
-                            childTag: "el-collapse-item",
+                            childTag: ["el-collapse-item"],
                             document: "https://element-plus.gitee.io/zh-CN/component/collapse.html"
                         }
                     },
@@ -866,7 +866,7 @@ export const elementPlusComponents =[
                             tag: "el-collapse-item",
                             tagIcon: "collapse-item",
                             layout: "containerItem",
-                            parentTag: "el-collapse",
+                            parentTag: ["el-collapse"],
                             document: "https://element-plus.gitee.io/zh-CN/component/collapse.html"
                         }
                     }
@@ -999,7 +999,7 @@ export const elementPlusComponents =[
                             name: "表格",
                             tag: "el-table",
                             tagIcon: "table",
-                            childTag: "el-table-column",
+                            childTag: ["el-table-column"],
                             defaultValue: [],
                             document: "https://element-plus.gitee.io/zh-CN/component/table.html"
                         },
@@ -1050,7 +1050,7 @@ export const elementPlusComponents =[
                             tag: "el-table-column",
                             tagIcon: "table-column",
                             layout: "rawItem",
-                            parentTag: "el-table",
+                            parentTag: ["el-table"],
                             document: "https://element-plus.gitee.io/zh-CN/component/table.html"
                         }
                     }
@@ -1106,7 +1106,7 @@ export const elementPlusComponents =[
                             tag: "el-timeline",
                             tagIcon: "timeline",
                             layout: "containerItem",
-                            childTag: "el-timeline-item",
+                            childTag: ["el-timeline-item"],
                             document: "https://element-plus.gitee.io/zh-CN/component/timeline.html"
                         }
                     },
@@ -1117,7 +1117,7 @@ export const elementPlusComponents =[
                             tag: "el-timeline-item",
                             tagIcon: "timeline-item",
                             layout: "rawItem",
-                            parentTag: "el-timeline",
+                            parentTag: ["el-timeline"],
                             document: "https://element-plus.gitee.io/zh-CN/component/timeline.html"
                         },
                         __slot__: {
@@ -1193,7 +1193,7 @@ export const elementPlusComponents =[
                             tag: "el-breadcrumb",
                             tagIcon: "breadcrumb",
                             layout: "containerItem",
-                            childTag: "el-breadcrumb-item",
+                            childTag: ["el-breadcrumb-item"],
                             document: "https://element-plus.gitee.io/zh-CN/component/breadcrumb.html"
                         }
                     },
@@ -1204,7 +1204,7 @@ export const elementPlusComponents =[
                             tag: "el-breadcrumb-item",
                             tagIcon: "breadcrumb-item",
                             layout: "rawItem",
-                            parentTag: "el-breadcrumb",
+                            parentTag: ["S*"],
                             document: "https://element-plus.gitee.io/zh-CN/component/breadcrumb.html"
                         },
                         __slot__: {
@@ -1239,6 +1239,7 @@ export const elementPlusComponents =[
                             tag: "el-sub-menu",
                             tagIcon: "sub-menu",
                             layout: "containerItem",
+                            parentTag: ["el-menu", "el-sub-menu", "el-menu-item-group"],
                             document: "https://element-plus.gitee.io/zh-CN/component/menu.html#submenu-attributes"
                         },
                         __slot__: {
@@ -1251,6 +1252,7 @@ export const elementPlusComponents =[
                             name: "菜单项",
                             tag: "el-menu-item",
                             tagIcon: "menu-item",
+                            parentTag: ["el-menu", "el-sub-menu", "el-menu-item-group"],
                             layout: "rawItem",
                             document: "https://element-plus.gitee.io/zh-CN/component/menu.html#menu-item-attributes"
                         },
@@ -1264,11 +1266,12 @@ export const elementPlusComponents =[
                             name: "菜单项组",
                             tag: "el-menu-item-group",
                             tagIcon: "menu-item-group",
+                            childTag: ["el-menu-item"],
                             layout: "containerItem",
                             document: "https://element-plus.gitee.io/zh-CN/component/menu.html#menu-item--group-attributes"
                         },
                         __props__: {
-                            title:"菜单项组"
+                            title: "菜单项组"
                         }
                     },
                 ]
@@ -1289,7 +1292,7 @@ export const elementPlusComponents =[
                             tag: "el-steps",
                             tagIcon: "steps",
                             layout: "containerItem",
-                            childTag: "el-step",
+                            childTag: ["el-step"],
                             document: "https://element-plus.gitee.io/zh-CN/component/steps.html"
                         }
                     },
@@ -1299,7 +1302,7 @@ export const elementPlusComponents =[
                             name: "步骤",
                             tag: "el-step",
                             tagIcon: "step",
-                            parentTag: "el-steps",
+                            parentTag: ["el-steps"],
                             layout: "rawItem",
                             document: "https://element-plus.gitee.io/zh-CN/component/steps.html"
                         }
@@ -1317,7 +1320,7 @@ export const elementPlusComponents =[
                             tag: "el-tabs",
                             tagIcon: "tabs",
                             layout: "containerItem",
-                            childTag: "el-tab-pane",
+                            childTag: ["el-tab-pane"],
                             document: "https://element-plus.gitee.io/zh-CN/component/tabs.html"
                         }
                     },
@@ -1328,7 +1331,7 @@ export const elementPlusComponents =[
                             tag: "el-tab-pane",
                             tagIcon: "tab-pane",
                             layout: "containerItem",
-                            parentTag: "el-tabs",
+                            parentTag: ["el-tabs"],
                             document: "https://element-plus.gitee.io/zh-CN/component/tabs.html"
                         }
                     }
