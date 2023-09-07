@@ -1,0 +1,461 @@
+{
+  "__id__": "table-v2",
+  "attributes": {
+    "cache": {
+      "label": "",
+      "title": "Number of rows rendered in advance to boost the performance",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 2
+    },
+    "estimated-row-height": {
+      "label": "",
+      "title": "渲染动态的单元格的预估高度",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "header-class": {
+      "label": "",
+      "title": "header 部分的自定义 class 名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "<[HeaderClassGetter](#typings)\\"
+        }
+      ]
+    },
+    "header-props": {
+      "label": "",
+      "title": "header 部分的自定义 props 名",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        },
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "<[HeaderPropsGetter](#typings)\\"
+        }
+      ]
+    },
+    "header-cell-props": {
+      "label": "",
+      "title": "header cell 部分的自定义 props 名",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        },
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "<[HeaderCellPropsGetter](#typings)\\"
+        }
+      ]
+    },
+    "header-height": {
+      "label": "",
+      "title": "The height of the header is set by `height`. If given an array, it renders header rows equal to its length",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": 50
+    },
+    "footer-height": {
+      "label": "",
+      "title": "The height of the footer element, when provided, will be part to the calculation of the table's height.",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "row-class": {
+      "label": "",
+      "title": "row wrapper 部分的自定义 class 名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "<[RowClassGetter](#typings)\\"
+        }
+      ]
+    },
+    "row-key": {
+      "label": "",
+      "title": "The key of each row, if not provided, will be the index of the row",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "Symbol",
+          "tag": ""
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": "id"
+    },
+    "row-props": {
+      "label": "",
+      "title": "row component 部分的自定义 class 名",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        },
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "<[RowPropsGetter](#typings)\\"
+        }
+      ]
+    },
+    "row-height": {
+      "label": "",
+      "title": "每行的高度, 用于计算表的总高度",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 50
+    },
+    "cell-props": {
+      "label": "",
+      "title": "每个单元格 cell 的自定义 props (除了 header cell 以外)",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        },
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "<[CellPropsGetter](#typings)\\"
+        }
+      ]
+    },
+    "columns": {
+      "label": "",
+      "title": "列 column 的配置数组",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    },
+    "data": {
+      "label": "",
+      "title": "要在表中渲染的数据数组",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": []
+    },
+    "data-getter": {
+      "label": "",
+      "title": "A method to customize data fetch from the data source.",
+      "types": [
+        {
+          "name": "function",
+          "tag": ""
+        }
+      ]
+    },
+    "fixed-data": {
+      "label": "",
+      "title": "渲染行在表格主内容上方和 header 下方区域的数据",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    },
+    "expand-column-key": {
+      "label": "",
+      "title": "列的 key 来标记哪个行可以被展开",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "expanded-row-keys": {
+      "label": "",
+      "title": "存放行展开状态的 key 的数组，可以和  `v-model` 搭配使用",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    },
+    "default-expanded-row-keys": {
+      "label": "",
+      "title": "默认展开的行的 key 的数组, **这个数据不是响应式的**",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    },
+    "class": {
+      "label": "",
+      "title": "Class name for the virtual table, will be applied to all three tables (left, right, main)",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "array",
+          "tag": "array-editor"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
+    "fixed": {
+      "label": "",
+      "title": "Flag indicates the table column's width to be fixed or flexible.",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "width": {
+      "label": "",
+      "title": "Width of the table",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "height": {
+      "label": "",
+      "title": "Height of the table",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "max-height": {
+      "label": "",
+      "title": "Maximum height of the table",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "h-scrollbar-size": {
+      "label": "",
+      "title": "配置表格的水平滚动条大小，防止水平和垂直滚动条重叠。",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 6
+    },
+    "v-scrollbar-size": {
+      "label": "",
+      "title": "配置表格的垂直滚动条大小，防止水平和垂直滚动条重叠。",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 6
+    },
+    "scrollbar-always-on": {
+      "label": "",
+      "title": "如果开启，滚动条将一直显示，反之只会在鼠标经过时显示。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "sort-by": {
+      "label": "",
+      "title": "排序方式",
+      "types": [
+        {
+          "name": "Object\\<[SortBy](#typings)\\>",
+          "tag": ""
+        }
+      ],
+      "default": {}
+    },
+    "sort-state": {
+      "label": "",
+      "title": "多个排序",
+      "types": [
+        {
+          "name": "Object\\<[SortState](#typings)\\>",
+          "tag": ""
+        }
+      ],
+      "default": "undefined"
+    }
+  },
+  "slots": [
+    {
+      "name": "cell",
+      "params": "[CellSlotProps](#typings)"
+    },
+    {
+      "name": "header",
+      "params": "[HeaderSlotProps](#typings)"
+    },
+    {
+      "name": "header-cell",
+      "params": "[HeaderCellSlotProps](#typings)"
+    },
+    {
+      "name": "row",
+      "params": "[RowSlotProps](#typings)"
+    },
+    {
+      "name": "footer",
+      "params": "-"
+    },
+    {
+      "name": "empty",
+      "params": "-"
+    },
+    {
+      "name": "overlay",
+      "params": "-"
+    }
+  ],
+  "events": [
+    {
+      "name": "column-sort",
+      "title": "列排序时调用",
+      "params": "Object\\<ColumnSortParam\\>"
+    },
+    {
+      "name": "expanded-rows-change",
+      "title": "行展开状态改变时触发",
+      "params": "Array<KeyType>"
+    },
+    {
+      "name": "end-reached",
+      "title": "到达表格末尾时触发",
+      "params": "-"
+    },
+    {
+      "name": "scroll",
+      "title": "Invoked after scrolling",
+      "params": "Object\\<[ScrollParams](#typings)\\>"
+    },
+    {
+      "name": "rows-rendered",
+      "title": "当行被渲染后触发",
+      "params": "Object\\<[RowsRenderedParams](#typings)\\>"
+    },
+    {
+      "name": "row-expand",
+      "title": "点击箭头图标展开/折叠树节点时触发",
+      "params": "Object\\<[RowExpandParams](#typings)\\>"
+    },
+    {
+      "name": "row-event-handlers",
+      "title": "当每行添加了一系列事件处理器时触发",
+      "params": "Object\\<[RowEventHandlers](#typings)\\>"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "scrollTo",
+      "title": "滚动到给定位置",
+      "params": "{ scrollLeft?: number, scrollTop?: number}"
+    },
+    {
+      "name": "scrollToLeft",
+      "title": "滚动到给定的水平位置",
+      "params": "scrollLeft: number"
+    },
+    {
+      "name": "scrollToTop",
+      "title": "滚动到给定的垂直位置",
+      "params": "scrollTop: number"
+    },
+    {
+      "name": "scrollToRow",
+      "title": "使用给定的滚动策略滚动至指定行",
+      "params": "row: number, strategy?: \"auto\" |\"center\" | \"end\" | \"start\" | \"smart\""
+    }
+  ]
+}

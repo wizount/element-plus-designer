@@ -1,5 +1,4 @@
-import propertyConfigList from "@/components/generator/settingConfig";
-
+import elementPlusConfigMap from "@/element-plus-config"
 //总入口
 export const renderJs = (itemList) => {
     let res = [];
@@ -18,22 +17,25 @@ const renderItemList = (itemList) => {
         res.push(renderItem(item).join(""));
     }
     return res.join("");
-    // return `${renderRefs(itemList).join("")}
-    // ${renderOptions(itemList).join("")}
-    //  const rules={${renderAllRules(itemList).join("")}}`;
 }
 //单独生成
 const renderItem = (item) => {
+    if (typeof item === 'string') {
+        return []
+    }
     let res = []
     const tag = item.__config__.tag;
-    console.info(tag);
+
     if (tag === 'el-form') {
-        res.push(`const ${item.__props__.model}=ref({${renderFormData(item.__children__).join("")}});`)
-        res.push(`const ${item.__props__.rules}={${renderFormRules(item.__children__).join("")}};`)
+        res.push(`const ${item.__props__.model}=ref({${renderFormData(item.__slots__.default).join("")}});`)
+        res.push(`const ${item.__props__.rules}={${renderFormRules(item.__slots__.default).join("")}};`)
     }
     res.push(renderVModelRef(item));
     res.push(renderPropRefs(item));
-    res.push(renderItemList(item.__children__));
+    for (const slotName in item.__slots__) {
+        res.push(renderItemList(item.__slots__[slotName]));
+    }
+
 
     // res.push(renderNotFormRefs(item).join(""))
 
@@ -47,11 +49,14 @@ const renderFormData = (itemList) => {
     }
     let data = [];
     for (const item of itemList) {
+        if(item.__config__.tag==='el-form'){
+            continue;
+        }
         if (item.__vModel__) {
             vModelRefGeneratedMap[item.__vModel__] = true;
             data.push(`${item.__vModel__}:${renderValue(item.__config__.defaultValue)},`)
         }
-        data = data.concat(renderFormData(item.__children__))
+        data = data.concat(renderFormData(item.__slots__.default))
     }
     return data;
 }
@@ -62,10 +67,13 @@ const renderFormRules = (itemList) => {
     }
     let rules = [];
     for (const item of itemList) {
+        if(item.__config__.tag==='el-form'){
+            continue;
+        }
         if (item.__vModel__) {
             rules.push(renderARules(item))
         }
-        rules = rules.concat(renderFormRules(item.__children__))
+        rules = rules.concat(renderFormRules(item.__slots__.default))
     }
     return rules;
 }
@@ -73,9 +81,17 @@ const renderFormRules = (itemList) => {
 export const renderPropRefs = (item) => {
     const refs = [];
     const props = item.__props__
-    const {__ref__} = props;
-    __ref__ && Object.keys(__ref__).forEach((k) => {
-        refs.push(` const ${__ref__[k]}=ref(${renderValue(props[k] || item.__slot__[k])});`)
+    const __refs__ = item.__refs__
+    if (props.ref) {
+        refs.push(` const ${props.ref}=ref(undefined);`)
+    }
+    const {attributes}=elementPlusConfigMap[item.__id__]
+    __refs__ && Object.keys(__refs__).forEach((k) => {
+        let val = props[k];
+        if (val === undefined) {
+            val = item.__data__[k];
+        }
+        refs.push(` const ${__refs__[k]}=ref(${renderValue(val,attributes[k].default)});`)
     })
     return refs.join("");
 }
@@ -83,12 +99,12 @@ export const renderPropRefs = (item) => {
 let vModelRefGeneratedMap = {}
 //生成v-model ref
 export const renderVModelRef = (item) => {
-    if (item.__vModel__&&!vModelRefGeneratedMap[item.__vModel__]) {
+    if (item.__vModel__ && !vModelRefGeneratedMap[item.__vModel__]) {
         return `const ${item.__vModel__}=ref(${renderValue(item.__config__.defaultValue)});`;
     }
     return "";
 }
-const renderValue = (value) => {
+const renderValue = (value,default_ob) => {
     if (value === undefined || value === null) {
         return "undefined"
     }
@@ -98,12 +114,19 @@ const renderValue = (value) => {
         return `"${value}"`
     } else if (typeof value === 'object') {
         value = deepClone(value)
-        Object.keys(value).forEach((k) => {
-            if (!k || !value[k]) {
-                delete value[k]
-            }
-        })
-        return JSON.stringify(value).replace(/\"(.[^-\"]*?)\":/g, '$1:').replace(/\"/g, "'");
+        if(!Array.isArray(value)) {
+            Object.keys(value).forEach((k) => {
+                if (!k || !value[k]) {
+                    delete value[k];
+                    return false;
+                }
+                if (default_ob && value[k] === default_ob[k]) {
+                    delete value[k];
+                }
+            })
+        }
+
+        return JSON.stringify(value).replace(/\"(.[^-\"]*?)\":/g, '$1:');//.replace(/\"/g, "'");
 
     }
 }
@@ -115,6 +138,7 @@ function renderARules(item) {
     if (item.__vModel__ === undefined) return ""
     const rules = []
     if (ruleTrigger[config.tag]) {
+        console.info(config.required)
         if (config.required) {
             const type = Array.isArray(config.defaultValue) ? "type: 'array'," : ''
             let message = Array.isArray(config.defaultValue)
@@ -122,7 +146,7 @@ function renderARules(item) {
                 : item.placeholder
             if (message === undefined) message = `${config.label}不能为空`
             rules.push(
-                `{ required: true, ${type} message: '${message}', trigger: '${
+                `{ required: true, message: '${message}', trigger: '${
                     ruleTrigger[config.tag]
                 }' }`
             )
@@ -131,7 +155,7 @@ function renderARules(item) {
             config.regList.forEach((item) => {
                 if (item.pattern) {
                     rules.push(
-                        `{ pattern: ${item.pattern},
+                        `{ pattern: '${item.pattern}',
                           message: '${item.message}',
                           trigger: '${ruleTrigger[config.tag]}' }`
                     )
@@ -215,7 +239,7 @@ function buildAttributes(
     created
 ) {
     const config = scheme.__config__
-    const slot = scheme.__slot__
+    const slot = scheme.__data__
     buildData(scheme, dataList)
     buildRules(scheme, ruleList)
 
@@ -329,7 +353,7 @@ function buildOptions(scheme, optionsList) {
     if (scheme.__vModel__ === undefined) return
     // el-cascader直接有options属性，其他组件都是定义在slot中，所以有两处判断
     let {options} = scheme
-    if (!options) options = scheme.__slot__.options
+    if (!options) options = scheme.__data__.options
     if (scheme.__config__.dataType === 'dynamic') {
         options = []
     }

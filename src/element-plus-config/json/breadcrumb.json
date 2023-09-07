@@ -1,0 +1,46 @@
+{
+  "__id__": "breadcrumb",
+  "name": "面包屑",
+  "tag": "el-breadcrumb",
+  "tagIcon": "breadcrumb",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/breadcrumb.html",
+  "childTag": [
+    "el-breadcrumb-item"
+  ],
+  "attributes": {
+    "separator": {
+      "label": "分隔符",
+      "title": "分隔符",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "/"
+    },
+    "separator-icon": {
+      "label": "分隔符图标",
+      "title": "图标分隔符的组件或组件名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "breadcrumb-item"
+      ]
+    }
+  ]
+}

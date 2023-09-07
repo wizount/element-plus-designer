@@ -1,0 +1,156 @@
+{
+  "__id__": "steps",
+  "name": "步骤条",
+  "tag": "el-steps",
+  "tagIcon": "steps",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/steps.html",
+  "childTag": [
+    "el-step"
+  ],
+  "attributes": {
+    "space": {
+      "label": "间距",
+      "title": "每个 step 的间距，不填写将自适应间距。 支持百分比。",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "default": ""
+    },
+    "direction": {
+      "label": "方向",
+      "title": "显示方向",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "vertical",
+              "value": "vertical"
+            },
+            {
+              "label": "horizontal",
+              "value": "horizontal"
+            }
+          ]
+        }
+      ],
+      "default": "horizontal"
+    },
+    "active": {
+      "label": "当前步骤",
+      "title": "设置当前激活步骤",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "process-status": {
+      "label": "当前步骤状态",
+      "title": "设置当前步骤的状态",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "wait",
+              "value": "wait"
+            },
+            {
+              "label": "process",
+              "value": "process"
+            },
+            {
+              "label": "finish",
+              "value": "finish"
+            },
+            {
+              "label": "error",
+              "value": "error"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            }
+          ]
+        }
+      ],
+      "default": "process"
+    },
+    "finish-status": {
+      "label": "结束步骤状态",
+      "title": "设置结束步骤的状态",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "wait",
+              "value": "wait"
+            },
+            {
+              "label": "process",
+              "value": "process"
+            },
+            {
+              "label": "finish",
+              "value": "finish"
+            },
+            {
+              "label": "error",
+              "value": "error"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            }
+          ]
+        }
+      ],
+      "default": "finish"
+    },
+    "align-center": {
+      "label": "居中对齐",
+      "title": "进行居中对齐",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "simple": {
+      "label": "简洁风格",
+      "title": "是否应用简洁风格",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "默认插槽",
+      "subtags": [
+        "step"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "__id__": "badge",
+  "name": "徽章",
+  "tag": "el-badge",
+  "tagIcon": "badge",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/badge.html",
+  "attributes": {
+    "value": {
+      "label": "显示值",
+      "title": "显示值",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "default": ""
+    },
+    "max": {
+      "label": "最大值",
+      "title": "最大值，超过最大值会显示 {max}+。 只有当 value 是数字类型时才会工作。",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 99
+    },
+    "is-dot": {
+      "label": "显示小圆点",
+      "title": "是否显示小圆点。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "hidden": {
+      "label": "隐藏 Badge",
+      "title": "是否隐藏 Badge。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "type": {
+      "label": "类型",
+      "title": "badge 类型。",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "primary",
+              "value": "primary"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "danger",
+              "value": "danger"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            }
+          ]
+        }
+      ],
+      "default": "danger"
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    }
+  ]
+}

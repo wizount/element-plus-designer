@@ -1,0 +1,204 @@
+{
+  "__id__": "space",
+  "name": "间距",
+  "tag": "el-space",
+  "tagIcon": "space",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/space.html",
+  "attributes": {
+    "alignment": {
+      "label": "对齐方式",
+      "title": "对齐的方式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "stretch",
+              "value": "stretch"
+            },
+            {
+              "label": "center",
+              "value": "center"
+            },
+            {
+              "label": "flex-start",
+              "value": "flex-start"
+            },
+            {
+              "label": "flex-end",
+              "value": "flex-end"
+            }
+          ]
+        }
+      ],
+      "default": "center"
+    },
+    "class": {
+      "label": "类名",
+      "title": "类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        },
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    },
+    "direction": {
+      "label": "排列方向",
+      "title": "排列的方向",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "vertical",
+              "value": "vertical"
+            },
+            {
+              "label": "horizontal",
+              "value": "horizontal"
+            }
+          ]
+        }
+      ],
+      "default": "horizontal"
+    },
+    "prefix-cls": {
+      "label": "类名前缀",
+      "title": "给 space-items 的类名前缀",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "style": {
+      "label": "样式",
+      "title": "额外样式",
+      "types": [
+        {
+          "name": "object",
+          "tag": "style-editor"
+        }
+      ],
+      "default": {}
+    },
+    "spacer": {
+      "label": "间隔符",
+      "title": "间隔符",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "size": {
+      "label": "间隔大小",
+      "title": "间隔大小",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            },
+            {
+              "label": "large",
+              "value": "large"
+            }
+          ]
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "array",
+          "tag": "array-editor",
+          "props":{
+            "tag": "el-input-number",
+            "fixedNumber": 2
+          }
+        }
+      ],
+      "default": "small"
+    },
+    "wrap": {
+      "label": "自动折行",
+      "title": "设置是否自动折行",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "fill": {
+      "label": "子元素填充父容器",
+      "title": "子元素是否填充父容器",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "fill-ratio": {
+      "label": "填充父容器比例",
+      "title": "填充父容器的比例",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-slider"
+        }
+      ],
+      "default": 100
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "需要添加间隔的元素"
+    }
+  ]
+}

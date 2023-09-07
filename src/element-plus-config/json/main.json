@@ -1,0 +1,17 @@
+{
+  "__id__": "main",
+  "name": "主要区域容器",
+  "tag": "el-main",
+  "tagIcon": "main",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/container.html",
+  "attributes": {
+
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    }
+  ]
+}

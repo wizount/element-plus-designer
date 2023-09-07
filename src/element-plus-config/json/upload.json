@@ -1,0 +1,386 @@
+{
+  "__id__": "upload",
+  "name": "上传",
+  "tag": "el-upload",
+  "tagIcon": "upload",
+  "layout": "formItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/upload.html",
+  "attributes": {
+    "action": {
+      "label": "URL",
+      "title": "请求 URL",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "https"
+    },
+    "headers": {
+      "label": "请求头部",
+      "title": "设置上传的请求头部",
+      "types": [
+        {
+          "name": "Headers",
+          "tag": ""
+        },
+        {
+          "name": "Record<string, any>",
+          "tag": ""
+        }
+      ]
+    },
+    "method": {
+      "label": "方法",
+      "title": "设置上传请求方法",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "post",
+              "value": "post"
+            },
+            {
+              "label": "get",
+              "value": "get"
+            }
+          ]
+        }
+      ],
+      "default": "post"
+    },
+    "multiple": {
+      "label": "多选文件",
+      "title": "是否支持多选文件",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "data": {
+      "label": "附带参数",
+      "title": "上传时附带的额外参数",
+      "types": [
+        {
+          "name": "Record<string, any>",
+          "tag": ""
+        }
+      ]
+    },
+    "name": {
+      "label": "字段名",
+      "title": "上传的文件字段名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "file"
+    },
+    "with-credentials": {
+      "label": "发送 cookie 凭证信息",
+      "title": "支持发送 cookie 凭证信息",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "show-file-list": {
+      "label": "显示已上传文件列表",
+      "title": "是否显示已上传文件列表",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "drag": {
+      "label": "启用拖拽上传",
+      "title": "是否启用拖拽上传",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "accept": {
+      "label": "文件类型",
+      "title": "接受上传的文件类型（thumbnail-mode 模式下此参数无效）",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "on-preview": {
+      "label": "已上传的文件时的钩子",
+      "title": "点击文件列表中已上传的文件时的钩子",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(uploadFile: UploadFile) => void"
+        }
+      ],
+      "hide": true
+    },
+    "on-remove": {
+      "label": "移除文件",
+      "title": "文件列表移除文件时的钩子",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
+        }
+      ],
+      "hide": true
+    },
+    "on-success": {
+      "label": "",
+      "title": "文件上传成功时的钩子",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(response: any, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
+        }
+      ],
+      "hide": true
+    },
+    "on-error": {
+      "label": "",
+      "title": "文件上传失败时的钩子",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(error: Error, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
+        }
+      ],
+      "hide": true
+    },
+    "on-progress": {
+      "label": "",
+      "title": "文件上传时的钩子",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(evt: UploadProgressEvent, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
+        }
+      ],
+      "hide": true
+    },
+    "on-change": {
+      "label": "",
+      "title": "文件状态改变时的钩子，添加文件、上传成功和上传失败时都会被调用",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
+        }
+      ],
+      "hide": true
+    },
+    "on-exceed": {
+      "label": "",
+      "title": "当超出限制时，执行的钩子函数",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(files: File[], uploadFiles: UploadUserFile[]) => void"
+        }
+      ],
+      "hide": true
+    },
+    "before-upload": {
+      "label": "",
+      "title": "上传文件之前的钩子，参数为上传的文件， 若返回false或者返回 Promise 且被 reject，则停止上传。",
+      "types": [
+        {
+          "name": "function",
+          "tag": ""
+        }
+      ],
+      "hide": true
+    },
+    "before-remove": {
+      "label": "",
+      "title": "删除文件之前的钩子，参数为上传的文件和文件列表， 若返回 false 或者返回 Promise 且被 reject，则停止删除。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => Awaitable<boolean>"
+        }
+      ],
+      "hide": true
+    },
+    "file-list": {
+      "label": "",
+      "title": "默认上传文件",
+      "types": [
+        {
+          "name": "UploadUserFile[]",
+          "tag": ""
+        }
+      ],
+      "default": []
+    },
+    "list-type": {
+      "label": "列表类型",
+      "title": "文件列表的类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "text",
+              "value": "text"
+            },
+            {
+              "label": "picture",
+              "value": "picture"
+            },
+            {
+              "label": "picture-card",
+              "value": "picture-card"
+            }
+          ]
+        }
+      ],
+      "default": "text"
+    },
+    "auto-upload": {
+      "label": "自动上传文件",
+      "title": "是否自动上传文件",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "http-request": {
+      "label": "允许自行实现上传文件的请求",
+      "title": "覆盖默认的 Xhr 行为，允许自行实现上传文件的请求",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(options: UploadRequestOptions) => XMLHttpRequest"
+        },
+        {
+          "name": "Promise<unknown>",
+          "tag": ""
+        }
+      ],
+      "hide": true
+    },
+    "disabled": {
+      "label": "禁用上传",
+      "title": "是否禁用上传",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "limit": {
+      "label": "最大数量",
+      "title": "允许上传文件的最大数量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "type": "-"
+    },
+    {
+      "name": "trigger",
+      "title": "触发文件选择框的内容",
+      "type": "-"
+    },
+    {
+      "name": "tip",
+      "title": "提示说明文字",
+      "type": "-"
+    },
+    {
+      "name": "file",
+      "title": "缩略图模板的内容",
+      "type": "{ file: UploadFile }"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "abort",
+      "title": "取消上传请求",
+      "type": "(file: UploadFile) => void"
+    },
+    {
+      "name": "submit",
+      "title": "手动上传文件列表",
+      "type": "() => void"
+    },
+    {
+      "name": "clearFiles",
+      "title": "清空已上传的文件列表（该方法不支持在 `before-upload` 中调用）",
+      "type": "(status?: Array<\"ready\" | \"uploading\" | \"success\" | \"fail\">) => void"
+    },
+    {
+      "name": "handleStart",
+      "title": "手动选择文件",
+      "type": "(rawFile: UploadRawFile) => void"
+    },
+    {
+      "name": "handleRemove",
+      "title": "手动移除文件。 `file` 和`rawFile` 已被合并。 `rawFile` 将在 `v2.2.0` 中移除",
+      "type": "(file: UploadFile | UploadRawFile, rawFile?: UploadRawFile) => void"
+    }
+  ]
+}

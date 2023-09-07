@@ -1,0 +1,39 @@
+{
+  "__id__": "menu-item-group",
+  "name": "菜单项组",
+  "tag": "el-menu-item-group",
+  "tagIcon": "menu-item-group",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/menu.html#menu-item--group-attributes",
+  "childTag": [
+    "el-menu-item"
+  ],
+  "attributes": {
+    "title": {
+      "label": "标题",
+      "title": "标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "默认插槽内容",
+      "subtags": [
+        "menu-item"
+      ]
+    },
+    {
+      "name": "title",
+      "title": "自定义组标题内容"
+    }
+  ]
+}

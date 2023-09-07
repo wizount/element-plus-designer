@@ -1,0 +1,502 @@
+{
+  "__id__": "select-v2",
+  "name": "虚拟选择器",
+  "tag": "el-select-v2",
+  "tagIcon": "select",
+  "layout": "formItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/select-v2.html",
+  "attributes": {
+    "vModel": "modelValue",
+    "placeholder": "请选择",
+    "options": {
+      "label": "数据",
+      "title": "数据",
+      "ref": true,
+      "types": [
+        {
+          "name": "array",
+          "tag": "object-array-editor",
+          "props": {
+            "keys": [
+              {
+                "key": "value",
+                "label": "值",
+                "tag": "string-number-input"
+              },
+              {
+                "key": "label",
+                "label": "标签",
+                "tag": "string-number-input"
+              }
+            ]
+          }
+        }
+      ],
+      "default": []
+    },
+    "multiple": {
+      "label": "多选",
+      "title": "是否多选",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "value-key": {
+      "label": "",
+      "title": "作为 value 唯一标识的键名，绑定值为对象类型时必填",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "value"
+    },
+    "size": {
+      "label": "尺寸",
+      "title": "输入框尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "clearable": {
+      "label": "清空",
+      "title": "是否可以清空选项",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "clear-icon": {
+      "label": "清除图标",
+      "title": "自定义清除图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "CircleClose"
+    },
+    "collapse-tags": {
+      "label": "折叠多选",
+      "title": "多选时是否将选中值按文字的形式展示",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "switch": [
+        "multiple",
+        true
+      ]
+    },
+    "multiple-limit": {
+      "label": "多选最大数目",
+      "title": "多选时可被选择的最大数目。 当被设置为0时，可被选择的数目不设限。",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0,
+      "switch": [
+        "multiple",
+        true
+      ]
+    },
+    "name": {
+      "label": "",
+      "title": "选择器的原生name属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "hide": true
+    },
+    "effect": {
+      "label": "文字提示主题",
+      "title": "文字提示（Tooltip）的主题，内置dark和light两种。",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "light",
+              "value": "light"
+            },
+            {
+              "label": "dark",
+              "value": "dark"
+            }
+          ]
+        }
+      ],
+      "default": "light"
+    },
+    "autocomplete": {
+      "label": "",
+      "title": "自动完成选择输入",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "off",
+      "hide": true
+    },
+    "filterable": {
+      "label": "可筛选",
+      "title": "是否可筛选",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "allow-create": {
+      "label": "创建新条目",
+      "title": "是否允许创建新条目， 当使用该属性时，filterable必须设置为true",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "reserve-keyword": {
+      "label": "保留关键字",
+      "title": "筛选时，是否在选择选项后保留关键字",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "no-data-text": {
+      "label": "无数据显示文字",
+      "title": "当在没有数据时显示的文字，你同时可以使用#empty插槽进行设置。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "popper-class": {
+      "label": "下拉菜单类名",
+      "title": "选择器下拉菜单的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "popper-append-to-body": {
+      "label": "",
+      "title": "是否将弹出框插入至 body 元素 当弹出框的位置出现问题时，你可以尝试将该属性设置为false。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "deprecated": true
+    },
+    "teleported": {
+      "label": "使用teleport插入body元素",
+      "title": "该下拉菜单是否使用teleport插入body元素",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "persistent": {
+      "label": "persistent",
+      "title": "当下拉选择器未被激活并且persistent设置为false，选择器会被删除。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "popper-options": {
+      "label": "popper选项",
+      "title": "自定义 popper 选项，更多请参考 popper.js",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "hide": true
+    },
+    "automatic-dropdown": {
+      "label": "自动弹出菜单",
+      "title": "对于不可过滤的 Select 组件，此属性决定是否在输入框获得焦点后自动弹出选项菜单",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "height": {
+      "label": "子选项的高度",
+      "title": "下拉菜单的高度，每一个子选项的高度是 34px",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 170
+    },
+    "scrollbar-always-on": {
+      "label": "展示滚动条",
+      "title": "控制是否总是展示滚动条",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "remote": {
+      "label": "服务器搜索数据",
+      "title": "是否从服务器搜索数据",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "remote-method": {
+      "label": "",
+      "title": "当输入值发生变化时被调用的函数。 其参数是当前输入值。 只有当 filterable 设置为 true 时才会生效。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "keyword: string"
+        }
+      ],
+      "hide": true
+    },
+    "validate-event": {
+      "label": "触发表单校验",
+      "title": "输入时是否触发表单的校验",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "placement": {
+      "label": "下拉框出现位置",
+      "title": "下拉框出现的位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "top-start",
+              "value": "top-start"
+            },
+            {
+              "label": "top-end",
+              "value": "top-end"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            },
+            {
+              "label": "bottom-start",
+              "value": "bottom-start"
+            },
+            {
+              "label": "bottom-end",
+              "value": "bottom-end"
+            },
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "left-start",
+              "value": "left-start"
+            },
+            {
+              "label": "left-end",
+              "value": "left-end"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            },
+            {
+              "label": "right-start",
+              "value": "right-start"
+            },
+            {
+              "label": "right-end",
+              "value": "right-end"
+            }
+          ]
+        }
+      ],
+      "default": "bottom-start"
+    },
+    "collapse-tags-tooltip": {
+      "label": "显示多选tooltip",
+      "title": "当鼠标悬停于折叠标签的文本时，是否显示所有选中的标签。 只有当 collapse-tags 设置为 true 时才会生效。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "switch": [
+        "multiple",
+        true
+      ],
+      "version": "2.3.0"
+    }
+  },
+  "events": [
+    {
+      "name": "change",
+      "title": "选中值发生变化时触发",
+      "params": "val，目前的选中值"
+    },
+    {
+      "name": "visible-change",
+      "title": "下拉框出现/隐藏时触发",
+      "params": "val，出现则为 true，隐藏则为 false"
+    },
+    {
+      "name": "remove-tag",
+      "title": "多选模式下移除tag时触发",
+      "params": "val，移除的tag值"
+    },
+    {
+      "name": "clear",
+      "title": "可清空的单选模式下用户点击清空按钮时触发",
+      "params": "—"
+    },
+    {
+      "name": "blur",
+      "title": "当选择器的输入框失去焦点时触发",
+      "params": "(event: FocusEvent)"
+    },
+    {
+      "name": "focus",
+      "title": "当选择器的输入框获得焦点时触发",
+      "params": "(event: FocusEvent)"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义 Option 模板"
+    },
+    {
+      "name": "empty",
+      "title": "自定义当选项为空时的内容"
+    },
+    {
+      "name": "prefix",
+      "title": "输入框的前缀"
+    }
+  ]
+}

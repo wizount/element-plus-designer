@@ -1,0 +1,23 @@
+{
+  "__id__": "timeline",
+  "name": "时间线",
+  "tag": "el-timeline",
+  "tagIcon": "timeline",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/timeline.html",
+  "childTag": [
+    "el-timeline-item"
+  ],
+  "attributes": {
+
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "timeline 组件的自定义默认内容",
+      "subtags": [
+        "timeline-item"
+      ]
+    }
+  ]
+}

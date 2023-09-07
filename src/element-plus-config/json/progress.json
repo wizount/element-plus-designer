@@ -1,0 +1,246 @@
+{
+  "__id__": "progress",
+  "name": "进度条",
+  "tag": "el-progress",
+  "tagIcon": "progress",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/progress.html",
+  "attributes": {
+    "percentage": {
+      "label": "百分比",
+      "title": "百分比，必填",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "type": {
+      "label": "类型",
+      "title": "进度条类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "line",
+              "value": "line"
+            },
+            {
+              "label": "circle",
+              "value": "circle"
+            },
+            {
+              "label": "dashboard",
+              "value": "dashboard"
+            }
+          ]
+        }
+      ],
+      "default": "line"
+    },
+    "stroke-width": {
+      "label": "进宽度",
+      "title": "进度条的宽度",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 6
+    },
+    "text-inside": {
+      "label": "文字内置",
+      "title": "进度条显示文字内置在进度条内（仅 type 为 'line' 时可用）",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "status": {
+      "label": "当前状态",
+      "title": "进度条当前状态",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "默认"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "exception",
+              "value": "exception"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            }
+          ]
+        }
+      ]
+    },
+    "indeterminate": {
+      "label": "动画进度条",
+      "title": "是否为动画进度条",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "duration": {
+      "label": "进度条速度",
+      "title": "控制动画进度条速度",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 3
+    },
+    "color": {
+      "label": "背景色",
+      "title": "进度条背景色 进度条背景色 （会覆盖 status 状态颜色）",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        },
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(percentage: number) => string` / ^[Array]`{ color: string; percentage: number }[]"
+        },
+        {
+          "name": "array",
+          "tag": "object-array-editor",
+          "props": {
+            "keys": [
+              {
+                "key": "color",
+                "label": "颜色",
+                "tag": "el-color-picker"
+              },
+              {
+                "key": "percentage",
+                "label": "百分比",
+                "tag": "el-input-number"
+              }
+            ]
+          }
+        }
+      ],
+      "default": ""
+    },
+    "width": {
+      "label": "环形画布宽度",
+      "title": "环形进度条画布宽度（只在 type 为 circle 或 dashboard 时可用）",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 126
+    },
+    "show-text": {
+      "label": "显示文字内容",
+      "title": "是否显示进度条文字内容",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "stroke-linecap": {
+      "label": "两端形状",
+      "title": "circle/dashboard 类型路径两端的形状",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "butt",
+              "value": "butt"
+            },
+            {
+              "label": "round",
+              "value": "round"
+            },
+            {
+              "label": "square",
+              "value": "square"
+            }
+          ]
+        }
+      ],
+      "default": "round"
+    },
+    "format": {
+      "label": "",
+      "title": "指定进度条文字内容",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(percentage: number) => string"
+        }
+      ],
+      "hide": true
+    },
+    "striped": {
+      "label": "",
+      "title": "在进度条上增加条纹",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.3.4"
+    },
+    "striped-flow": {
+      "label": "",
+      "title": "让进度条上的条纹流动起来",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.3.4"
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义内容，参数为 `{ percentage }`"
+    }
+  ]
+}

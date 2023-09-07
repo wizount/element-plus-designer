@@ -1,8 +1,24 @@
+@import './variable.scss';
 @mixin action-bar {
   .action-bar {
-    height: 33px;
-    //   background: #f2fafb;
-    padding: 0 15px;
-    box-sizing: border-box;
+    height: $actionBarHeight;
+    text-align: right;
+    padding-top: 5px;
+    box-sizing: border-box;;
+    border: 1px solid #f1e8e8;
+    border-top: none;
+    border-left: none;
+
+    .delete-btn {
+      color: #F56C6C;
+    }
+    .el-button{
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+    .el-button + .el-button {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
   }
 }

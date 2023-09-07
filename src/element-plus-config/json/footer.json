@@ -1,0 +1,30 @@
+{
+  "__id__": "footer",
+  "name": "底栏容器",
+  "tag": "el-footer",
+  "tagIcon": "footer",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/container.html",
+  "attributes": {
+    "height": {
+      "label": "高度",
+      "title": "底栏高度",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "60px"
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    }
+  ]
+}

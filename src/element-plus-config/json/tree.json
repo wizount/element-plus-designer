@@ -1,0 +1,399 @@
+{
+  "__id__": "tree",
+  "name": "树形控件",
+  "tag": "el-tree",
+  "tagIcon": "tree",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/tree.html",
+  "attributes": {
+    "data": {
+      "label": "",
+      "title": "展示数据",
+      "ref": true,
+      "types": [
+        {
+          "name": "array",
+          "tag": "tree-editor"
+        }
+      ]
+    },
+    "empty-text": {
+      "label": "",
+      "title": "内容为空的时候展示的文本",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "node-key": {
+      "label": "唯一标识",
+      "title": "每个树节点用来作为唯一标识的属性，整棵树应该是唯一的",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "props": {
+      "label": "配置选项",
+      "title": "配置选项",
+      "types": [
+        {
+          "name": "object",
+          "tag": "fixed-keys-object-editor",
+          "props": {
+            "keys": [
+              {
+                "name": "label",
+                "title": "指定子树为节点对象的某个属性值",
+                "tag": "el-input"
+              },
+              {
+                "name": "value",
+                "title": "单单树形控件用不上，先放着",
+                "tag": "el-input"
+              },
+              {
+                "name": "children",
+                "title": "指定子树为节点对象的某个属性值",
+                "tag": "el-input"
+              },
+              {
+                "name": "isLeaf",
+                "title": "指定节点是否为叶子节点，仅在指定了 lazy 属性的情况下生效",
+                "tag": "el-input"
+              },
+              {
+                "name": "class",
+                "title": "自定义节点类名",
+                "tag": "el-input"
+              }
+            ]
+          }
+        }
+      ],
+      "default": {
+        "value": "value",
+        "label": "label",
+        "children": "children",
+        "isLeaf": "isLeaf",
+        "class": ""
+      }
+    },
+    "render-after-expand": {
+      "label": "延迟渲染子节点",
+      "title": "是否在第一次展开某个树节点后才渲染其子节点",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "load": {
+      "label": "加载子树数据方法",
+      "title": "加载子树数据的方法，仅当 lazy 属性为true 时生效",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "node, resolve)，`node`为当前点击的节点，`resolve`为数据加载完成的回调(必须调用"
+        }
+      ],
+      "hide": true
+    },
+    "render-content": {
+      "label": "节点内容区渲染",
+      "title": "树节点的内容区的渲染 Function",
+      "types": [
+        {
+          "name": "Function(h, `{ node, data, store }`)",
+          "tag": ""
+        }
+      ],
+      "hide": true
+    },
+    "highlight-current": {
+      "label": "高亮选中节点",
+      "title": "是否高亮当前选中节点，默认值是 false。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "default-expand-all": {
+      "label": "默认展开所有节点",
+      "title": "是否默认展开所有节点",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "expand-on-click-node": {
+      "label": "点击节点展开或收缩子节点",
+      "title": "是否在点击节点的时候展开或者收缩节点， 默认值为 true，如果为 false，则只有点箭头图标的时候才会展开或者收缩节点。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "check-on-click-node": {
+      "label": "点击时选中",
+      "title": "是否在点击节点的时候选中节点，默认值为 false，即只有在点击复选框时才会选中节点。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "auto-expand-parent": {
+      "label": "自动展开父节点",
+      "title": "展开子节点的时候是否自动展开父节点",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "default-expanded-keys": {
+      "label": "默认展开节点数组",
+      "title": "默认展开的节点的 key 的数组",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    },
+    "show-checkbox": {
+      "label": "可被选择",
+      "title": "节点是否可被选择",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "check-strictly": {
+      "label": "遵循父子不互相关联",
+      "title": "在显示复选框的情况下，是否严格的遵循父子不互相关联的做法，默认为 false",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "default-checked-keys": {
+      "label": "勾选节点",
+      "title": "默认勾选的节点的 key 的数组",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    },
+    "current-node-key": {
+      "label": "当前选中节点",
+      "title": "当前选中的节点",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "filter-node-method": {
+      "label": "",
+      "title": "对树节点进行筛选时执行的方法， 返回 `false` 则表示这个节点会被隐藏",
+      "types": [
+        {
+          "name": "Function(value, data, node)",
+          "tag": ""
+        }
+      ],
+      "hide": true
+    },
+    "accordion": {
+      "label": "只有一个同级树节点展开",
+      "title": "是否每次只打开一个同级树节点展开",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "indent": {
+      "label": "节点间水平缩进",
+      "title": "相邻级节点间的水平缩进，单位为像素",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 18
+    },
+    "icon": {
+      "label": "树节点图标组件",
+      "title": "自定义树节点图标组件",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "lazy": {
+      "label": "懒加载子节点",
+      "title": "是否懒加载子节点，需与 load 方法结合使用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "draggable": {
+      "label": "开启拖拽",
+      "title": "是否开启拖拽节点功能",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "allow-drag": {
+      "label": "",
+      "title": "判断节点能否被拖拽 如果返回 `false` ，节点不能被拖动",
+      "types": [
+        {
+          "name": "Function(node)",
+          "tag": ""
+        }
+      ],
+      "hide": true
+    },
+    "allow-drop": {
+      "label": "",
+      "title": "拖拽时判定目标节点能否成为拖动目标位置。 如果返回 `false` ，拖动节点不能被拖放到目标节点。 `type` 参数有三种情况：'prev'、'inner' 和 'next'，分别表示放置在目标节点前、插入至目标节点和放置在目标节点后",
+      "types": [
+        {
+          "name": "Function(draggingNode, dropNode, type)",
+          "tag": ""
+        }
+      ],
+      "hide": true
+    }
+  },
+  "exposes": [],
+  "events": [
+    {
+      "name": "node-click",
+      "title": "当节点被点击的时候触发",
+      "params": "四个参数：对应于节点点击的节点对象，TreeNode 的 `node` 属性, TreeNode和事件对象"
+    },
+    {
+      "name": "node-contextmenu",
+      "title": "当某一节点被鼠标右键点击时会触发该事件",
+      "params": "共四个参数，依次为：event、传递给 `data` 属性的数组中该节点所对应的对象、节点对应的 Node、节点组件本身。"
+    },
+    {
+      "name": "check-change",
+      "title": "当复选框被点击的时候触发",
+      "params": "共三个参数，依次为：传递给 data 属性的数组中该节点所对应的对象、节点本身是否被选中、节点的子树中是否有被选中的节点"
+    },
+    {
+      "name": "check",
+      "title": "点击节点复选框之后触发",
+      "params": "共两个参数，依次为：传递给 data 属性的数组中该节点所对应的对象、树目前的选中状态对象，包含 checkedNodes、checkedKeys、halfCheckedNodes、halfCheckedKeys 四个属性"
+    },
+    {
+      "name": "current-change",
+      "title": "当前选中节点变化时触发的事件",
+      "params": "共两个参数，依次为：当前节点的数据，当前节点的 Node 对象"
+    },
+    {
+      "name": "node-expand",
+      "title": "节点被展开时触发的事件",
+      "params": "共三个参数，依次为：传递给 `data` 属性的数组中该节点所对应的对象、节点对应的 Node、节点组件本身"
+    },
+    {
+      "name": "node-collapse",
+      "title": "节点被关闭时触发的事件",
+      "params": "共三个参数，依次为：传递给 `data` 属性的数组中该节点所对应的对象、节点对应的 Node、节点组件本身"
+    },
+    {
+      "name": "node-drag-start",
+      "title": "节点开始拖拽时触发的事件",
+      "params": "共两个参数，依次为：被拖拽节点对应的 Node、event"
+    },
+    {
+      "name": "node-drag-enter",
+      "title": "拖拽进入其他节点时触发的事件",
+      "params": "共三个参数，依次为：被拖拽节点对应的 Node、所进入节点对应的 Node、event"
+    },
+    {
+      "name": "node-drag-leave",
+      "title": "拖拽离开某个节点时触发的事件",
+      "params": "共三个参数，依次为：被拖拽节点对应的 Node、所离开节点对应的 Node、event"
+    },
+    {
+      "name": "node-drag-over",
+      "title": "在拖拽节点时触发的事件（类似浏览器的 mouseover 事件）",
+      "params": "共三个参数，依次为：被拖拽节点对应的 Node、当前进入节点对应的 Node、event"
+    },
+    {
+      "name": "node-drag-end",
+      "title": "拖拽结束时（可能未成功）触发的事件",
+      "params": "共四个参数，依次为：被拖拽节点对应的 Node、结束拖拽时最后进入的节点（可能为空）、被拖拽节点的放置位置（before、after、inner）、event"
+    },
+    {
+      "name": "node-drop",
+      "title": "拖拽成功完成时触发的事件",
+      "params": "共四个参数，依次为：被拖拽节点对应的 Node、结束拖拽时最后进入的节点、被拖拽节点的放置位置（before、after、inner）、event"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义树节点的内容， 自定义树节点的内容， 参数为 ` { node, data }`"
+    },
+    {
+      "name": "empty",
+      "title": "当数据为空时自定义的内容"
+    }
+  ]
+}

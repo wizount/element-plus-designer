@@ -1,0 +1,56 @@
+{
+  "__id__": "collapse-item",
+  "name": "折叠面板子项",
+  "tag": "el-collapse-item",
+  "tagIcon": "collapse-item",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/collapse.html",
+  "parentTag": [
+    "el-collapse"
+  ],
+  "attributes": {
+    "name": {
+      "label": "名称",
+      "title": "唯一标志符",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "title": {
+      "label": "标题",
+      "title": "面板标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "content of Collapse Item"
+    },
+    {
+      "name": "title",
+      "title": "content of Collapse Item title"
+    }
+  ]
+}

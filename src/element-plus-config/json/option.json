@@ -1,0 +1,63 @@
+{
+  "__id__": "option",
+  "name": "下拉选项",
+  "tag": "el-option",
+  "tagIcon": "option",
+  "layout": "rawItem",
+  "parentTag": ["el-select","el-option-group"],
+  "document": "https://element-plus.gitee.io/zh-CN/component/select.html",
+  "attributes": {
+    "value": {
+      "label": "",
+      "title": "选项的值",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
+    "label": {
+      "label": "",
+      "title": "选项的标签，若不设置则默认与`value`相同",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "disabled": {
+      "label": "",
+      "title": "是否禁用该选项",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "默认插槽"
+    }
+  ]
+}

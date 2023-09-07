@@ -1,0 +1,68 @@
+{
+  "__id__": "dropdown-item",
+  "tag": "el-dropdown-item",
+  "tagIcon": "dropdown",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/dropdown.html",
+  "attributes": {
+    "command": {
+      "label": "",
+      "title": "派发到`command`回调函数的指令参数",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
+    "disabled": {
+      "label": "",
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "divided": {
+      "label": "",
+      "title": "是否显示分隔符",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "icon": {
+      "label": "",
+      "title": "自定义图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义Dropdown-Item内容"
+    }
+  ]
+}

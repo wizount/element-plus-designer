@@ -1,0 +1,106 @@
+{
+  "__id__": "text",
+  "name": "文本",
+  "tag": "el-text",
+  "tagIcon": "text",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/text.html",
+  "attributes": {
+    "type": {
+      "label": "类型",
+      "title": "类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "primary",
+              "value": "primary"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "danger",
+              "value": "danger"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "size": {
+      "label": "大小",
+      "title": "大小",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "truncated": {
+      "label": "显示省略号",
+      "title": "显示省略号",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "tag": {
+      "label": "自定义元素标签",
+      "title": "自定义元素标签",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "span"
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "默认内容"
+    }
+  ]
+}

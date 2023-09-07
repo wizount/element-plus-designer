@@ -1,0 +1,164 @@
+{
+  "__id__": "sub-menu",
+  "name": "子菜单",
+  "tag": "el-sub-menu",
+  "tagIcon": "sub-menu",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/menu.html#submenu-attributes",
+  "parentTag": [
+    "el-menu",
+    "el-sub-menu",
+    "el-menu-item-group"
+  ],
+  "attributes": {
+    "index": {
+      "label": "唯一标志",
+      "title": "唯一标志",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "popper-class": {
+      "label": "popper类名",
+      "title": "为 popper 添加类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "show-timeout": {
+      "label": "展开延时",
+      "title": "展开 sub-menu 的延时",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 300
+    },
+    "hide-timeout": {
+      "label": "收起延时",
+      "title": "收起 sub-menu 的延时",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 300
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "popper-append-to-body": {
+      "label": "弹出菜单插入至 body 元素",
+      "title": "是否将弹出菜单插入至 body 元素。 在菜单的定位出现问题时，可尝试修改该属性",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": "一级子菜单：true / 非一级子菜单：false",
+      "deprecated": true,
+      "hide": true
+    },
+    "teleported": {
+      "label": "",
+      "title": "是否将 popup 的下拉列表插入至 body 元素",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": "一级子菜单：true / 非一级子菜单：false"
+    },
+    "popper-offset": {
+      "label": "弹出窗口偏移",
+      "title": "弹出窗口偏移",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 6
+    },
+    "expand-close-icon": {
+      "label": "父展开子关闭图标",
+      "title": "父菜单展开且子菜单关闭时的图标， expand-close-icon 和 expand-open-icon 需要一起配置才能生效",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "expand-open-icon": {
+      "label": "父展开子打开图标",
+      "title": "父菜单展开且子菜单打开时的图标， expand-open-icon 和 expand-close-icon 需要一起配置才能生效",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "collapse-close-icon": {
+      "label": "父收起子关闭图标",
+      "title": "父菜单收起且子菜单关闭时的图标， expand-close-icon 和 expand-open-icon 需要一起配置才能生效",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "collapse-open-icon": {
+      "label": "父收起子打开图标",
+      "title": "父菜单收起且子菜单打开时的图标， expand-open-icon 和 expand-close-icon 需要一起配置才能生效",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "sub-menu",
+        "menu-item",
+        "menu-item-group"
+      ]
+    },
+    {
+      "name": "title",
+      "title": "自定义标题内容"
+    }
+  ]
+}

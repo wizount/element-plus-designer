@@ -1,0 +1,56 @@
+{
+  "__id__": "radio-button",
+  "attributes": {
+    "label": {
+      "label": "",
+      "title": "单选框的值",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ]
+    },
+    "disabled": {
+      "label": "",
+      "title": "是否禁用单选框",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "name": {
+      "label": "",
+      "title": "原生 name 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "默认插槽内容"
+    }
+  ]
+}

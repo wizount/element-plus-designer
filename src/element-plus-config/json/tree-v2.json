@@ -1,0 +1,245 @@
+{
+  "__id__": "tree-v2",
+  "name": "虚拟树形",
+  "tag": "el-tree-v2",
+  "tagIcon": "tree",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/tree-v2.html",
+  "attributes": {
+    "data": {
+      "label": "",
+      "title": "展示数据",
+      "types": [
+        {
+          "name": "array",
+          "tag": "tree-editor"
+        }
+      ]
+    },
+    "empty-text": {
+      "label": "",
+      "title": "内容为空的时候展示的文本",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "props": {
+      "label": "配置选项",
+      "title": "配置选项",
+      "types": [
+        {
+          "name": "object",
+          "tag": "fixed-keys-object-editor",
+          "props": {
+            "keys": [
+              {
+                "name": "label",
+                "title": "指定子树为节点对象的某个属性值",
+                "tag": "el-input"
+              },
+              {
+                "name": "value",
+                "title": "单单树形控件用不上，先放着",
+                "tag": "el-input"
+              },
+              {
+                "name": "children",
+                "title": "指定子树为节点对象的某个属性值",
+                "tag": "el-input"
+              },
+              {
+                "name": "disabled",
+                "title": "指定节点选择框是否禁用为节点对象的某个属性值",
+                "tag": "el-input"
+              }
+            ]
+          }
+        }
+      ],
+      "default": {
+        "value": "id",
+        "label": "label",
+        "children": "children",
+        "disabled": "disabled"
+      }
+    },
+    "highlight-current": {
+      "label": "高亮选中",
+      "title": "是否高亮当前选中节点",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "expand-on-click-node": {
+      "label": "点击时展开或收缩",
+      "title": "是否在点击节点的时候展开或者收缩节点， 默认值为 true，如果为 false，则只有点箭头图标的时候才会展开或者收缩节点",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "check-on-click-node": {
+      "label": "点击选中",
+      "title": "是否在点击节点的时候选中节点，默认值为 false，即只有在点击复选框时才会选中节点",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "default-expanded-keys": {
+      "label": "默认展开节点",
+      "title": "默认展开的节点的 key 的数组",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    },
+    "show-checkbox": {
+      "label": "可被选择",
+      "title": "节点是否可被选择",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "check-strictly": {
+      "label": "遵循父子不互相关联",
+      "title": "在显示复选框的情况下，是否严格的遵循父子不互相关联的做法，默认为 false",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "default-checked-keys": {
+      "label": "默认勾选节点",
+      "title": "默认勾选的节点的 key 的数组",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    },
+    "current-node-key": {
+      "label": "当前选中节点",
+      "title": "当前选中的节点",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "filter-method": {
+      "label": "",
+      "title": "对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示， 返回 `false` 则表示这个节点会被隐藏",
+      "types": [
+        {
+          "name": "Function(value, data)",
+          "tag": ""
+        }
+      ],
+      "hide": true
+    },
+    "indent": {
+      "label": "水平缩进",
+      "title": "相邻级节点间的水平缩进，单位为像素",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 16
+    },
+    "icon": {
+      "label": "节点图标",
+      "title": "自定义树节点的图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "item-size": {
+      "label": "",
+      "title": "自定义树节点的高度",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 26
+    }
+  },
+  "exposes": [],
+  "events": [
+    {
+      "name": "node-click",
+      "title": "当节点被点击的时候触发",
+      "params": "(data: TreeNodeData, node: TreeNode, e: MouseEvent)"
+    },
+    {
+      "name": "node-contextmenu",
+      "title": "当节点被鼠标右键点击时会触发该事件",
+      "params": "(e: Event, data: TreeNodeData, node: TreeNode)"
+    },
+    {
+      "name": "check-change",
+      "title": "节点选中状态发生变化时的回调",
+      "params": "(data: TreeNodeData, checked: boolean)"
+    },
+    {
+      "name": "check",
+      "title": "当复选框被点击的时候触发",
+      "params": "(data: TreeNodeData, info: { checkedKeys: TreeKey[],checkedNodes: TreeData, halfCheckedKeys: TreeKey[], halfCheckedNodes: TreeData,})"
+    },
+    {
+      "name": "current-change",
+      "title": "当前选中节点变化时触发的事件",
+      "params": "(data: TreeNodeData, node: TreeNode)"
+    },
+    {
+      "name": "node-expand",
+      "title": "节点被展开时触发的事件",
+      "params": "(data: TreeNodeData, node: TreeNode)"
+    },
+    {
+      "name": "node-collapse",
+      "title": "节点被收起时触发的事件",
+      "params": "(data: TreeNodeData, node: TreeNode)"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义树节点的内容。 作用域参数为 `{ node: TreeNode, data: TreeNodeData }`"
+    }
+  ]
+}

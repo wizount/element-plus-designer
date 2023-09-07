@@ -1,0 +1,45 @@
+{
+  "__id__": "option-group",
+  "name": "下拉选项组",
+  "tag": "el-option-group",
+  "tagIcon": "option-group",
+  "layout": "rawItem",
+  "parentTag": ["el-select"],
+  "childTag": ["el-option"],
+  "document": "https://element-plus.gitee.io/zh-CN/component/select.html",
+  "attributes": {
+    "label": {
+      "label": "",
+      "title": "分组的组名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "label": "",
+      "title": "是否将该分组下所有选项置为禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "option"
+      ]
+    }
+  ]
+}

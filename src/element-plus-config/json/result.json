@@ -1,0 +1,85 @@
+{
+  "__id__": "result",
+  "name": "结果",
+  "tag": "el-result",
+  "tagIcon": "button",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/result.html",
+  "attributes": {
+    "title": {
+      "label": "标题",
+      "title": "标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "sub-title": {
+      "label": "二级标题",
+      "title": "二级标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "icon": {
+      "label": "图标类型",
+      "title": "图标类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "error",
+              "value": "error"
+            }
+          ]
+        }
+      ],
+      "default": "info"
+    }
+  },
+  "slots": [
+    {
+      "name": "icon",
+      "title": "icon 内容"
+    },
+    {
+      "name": "title",
+      "title": "result title 的内容"
+    },
+    {
+      "name": "sub-title",
+      "title": "sub title 的内容"
+    },
+    {
+      "name": "extra",
+      "title": "内容额外区域的内容"
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import ElementPlus from 'element-plus'
 
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import 'element-plus/dist/index.css'
+import '@/styles/share.scss'
 
 const app = createApp(App)
 
@@ -22,9 +23,10 @@ app.component('svg-icon', SvgIcon)
 import elementIcons from '@/components/SvgIcon/svgicon'
 app.use(elementIcons)
 
-//todo 用在col分栏，考虑局部引用。
-import ElClearableSlider from "@/components/ElClearableSlider"
-app.component('el-clearable-slider', ElClearableSlider)
+//载入props编辑组件。
+import editors from '@/components/editors/'
+app.use(editors)
+
 
 // main.ts
 // 如果只想导入css变量

@@ -1,0 +1,11 @@
+{
+  "__id__": "tree-select",
+  "name": "树形选择",
+  "tag": "el-tree-select",
+  "tagIcon": "tree-select",
+  "layout": "formItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/tree-select.html",
+
+  "attributes": {},
+  "slots": []
+}

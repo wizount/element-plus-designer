@@ -1,0 +1,242 @@
+{
+  "__id__": "form-item",
+  "name": "表单项",
+  "tag": "el-form-item",
+  "tagIcon": "form",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/form.html",
+  "attributes": {
+    "prop": {
+      "label": "model 的键名",
+      "title": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])。 在定义了 validate、resetFields 的方法时，该属性是必填的",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "string&#91;&#93;",
+          "tag": ""
+        }
+      ]
+    },
+    "label": {
+      "label": "",
+      "title": "标签文本",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "label-width": {
+      "label": "标签宽度",
+      "title": "标签宽度，例如 '50px'。 可以使用 auto。",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "default": ""
+    },
+    "required": {
+      "label": "必填项",
+      "title": "是否为必填项，如不设置，则会根据校验规则确认",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "rules": {
+      "label": "表单验证规则",
+      "title": "表单验证规则, 具体配置见下表, 更多内容可以参考async-validator",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "hide": true
+    },
+    "error": {
+      "label": "验证错误提示信息",
+      "title": "表单域验证错误时的提示信息。设置该值会导致表单验证状态变为 error，并显示该错误信息。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "show-message": {
+      "label": "显示校验错误信息",
+      "title": "是否显示校验错误信息",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "inline-message": {
+      "label": "行内显示校验信息",
+      "title": "是否在行内显示校验信息",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": ""
+    },
+    "size": {
+      "label": "尺寸",
+      "title": "用于控制该表单域下组件的默认尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "for": {
+      "label": "",
+      "title": "和原生标签相同能力",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "string",
+              "value": "string"
+            }
+          ]
+        }
+      ],
+      "hide": true
+    },
+    "validate-status": {
+      "label": "校验的状态",
+      "title": "formitem 校验的状态",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "error",
+              "value": "error"
+            },
+            {
+              "label": "validating",
+              "value": "validating"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "表单的内容。",
+      "type": "—"
+    },
+    {
+      "name": "label",
+      "title": "标签位置显示的内容",
+      "type": "^[object]`{ label: string }`"
+    },
+    {
+      "name": "error",
+      "title": "验证错误信息的显示内容",
+      "type": "^[object]`{ error: string }`"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "size",
+      "title": "表单项大小",
+      "type": "^[object]`ComputedRef<'' | 'large' | 'default' | 'small'>`"
+    },
+    {
+      "name": "validateMessage",
+      "title": "校验消息",
+      "type": "^[object]`Ref<string>`"
+    },
+    {
+      "name": "validateState",
+      "title": "校验状态",
+      "type": "^[object]`Ref<'' | 'error' | 'validating' | 'success'>`"
+    },
+    {
+      "name": "validate",
+      "title": "验证表单项",
+      "type": "Function",
+      "fnDes": "(trigger: string, callback?: FormValidateCallback | undefined) => FormValidationResult"
+    },
+    {
+      "name": "resetField",
+      "title": "对该表单项进行重置，将其值重置为初始值并移除校验结果",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "clearValidate",
+      "title": "移除该表单项的校验结果",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ]
+}

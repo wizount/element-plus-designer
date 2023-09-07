@@ -1,0 +1,297 @@
+{
+  "__id__": "rate",
+  "name": "评分",
+  "tag": "el-rate",
+  "tagIcon": "rate",
+  "layout": "formItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/rate.html",
+  "attributes": {
+    "vModel": "modelValue",
+    "max": {
+      "label": "最大分值",
+      "title": "最大分值",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 5
+    },
+    "size": {
+      "label": "尺寸",
+      "title": "尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "disabled": {
+      "label": "只读",
+      "title": "是否为只读",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "allow-half": {
+      "label": "允许半选",
+      "title": "是否允许半选",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "low-threshold": {
+      "label": "低中界限值",
+      "title": "低分和中等分数的界限值， 值本身被划分在低分中",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 2
+    },
+    "high-threshold": {
+      "label": "高中界限值",
+      "title": "高分和中等分数的界限值， 值本身被划分在高分中",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 4
+    },
+    "colors": {
+      "label": "icon 的颜色",
+      "title": "icon 的颜色。 若传入数组，共有 3 个元素，为 3 个分段所对应的颜色；若传入对象，可自定义分段，键名为分段的界限值，键值为对应的颜色",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor",
+          "props": {
+            "tag": "el-color-picker"
+          }
+        }
+      ],
+      "default": [
+        "#F7BA2A",
+        "#F7BA2A",
+        "#F7BA2A"
+      ]
+    },
+    "void-color": {
+      "label": "未选中 icon 的颜色",
+      "title": "未选中 icon 的颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#C6D1DE"
+    },
+    "disabled-void-color": {
+      "label": "只读时未选中 icon 的颜色",
+      "title": "只读时未选中 icon 的颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "#EFF2F7"
+    },
+    "icons": {
+      "label": "图标组件",
+      "title": "图标组件 若传入数组，共有 3 个元素，为 3 个分段所对应的类名；若传入对象，可自定义分段，键名为分段的界限值，键值为对应的类名",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor",
+          "props": {
+            "tag": "icon-chooser"
+          }
+        }
+      ],
+      "default": ["StarFilled", "StarFilled", "StarFilled"]
+    },
+    "void-icon": {
+      "label": "未选中图标",
+      "title": "未被选中的图标组件",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "Star"
+    },
+    "disabled-void-icon": {
+      "label": "禁用状态下未选择图标",
+      "title": "禁用状态下未选择图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "StarFilled"
+    },
+    "show-text": {
+      "label": "显示辅助文字",
+      "title": "是否显示辅助文字，若为真，则会从 texts 数组中选取当前分数对应的文字内容",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "show-score": {
+      "label": "显示当前分数",
+      "title": "是否显示当前分数， show-score 和 show-text 不能同时为真",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "text-color": {
+      "label": "辅助文字颜色",
+      "title": "辅助文字的颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#1F2D3D"
+    },
+    "texts": {
+      "label": "辅助文字数组",
+      "title": "辅助文字数组",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": [
+        "Extremely bad",
+        "Disappointed",
+        "Fair",
+        "Satisfied",
+        "Surprise"
+      ]
+    },
+    "score-template": {
+      "label": "",
+      "title": "分数显示模板",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "{value}"
+    },
+    "clearable": {
+      "label": "可重置值为0",
+      "title": "是否可以重置值为 0",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "id": {
+      "label": "",
+      "title": "原生 `id` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "label": {
+      "label": "",
+      "title": "和 Rate 的 `aria-label` 属性保持一致",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "name": "change",
+      "title": "分值改变时触发",
+      "type": "Function",
+      "fnDes": "(value: number) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "setCurrentValue",
+      "title": "设置当前值",
+      "type": "Function",
+      "fnDes": "(value: number) => void"
+    },
+    {
+      "name": "resetCurrentValue",
+      "title": "重置当前值",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ],
+  "slots": []
+}

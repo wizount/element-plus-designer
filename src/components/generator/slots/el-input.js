@@ -1,7 +1,7 @@
 // el-input 子级
 export default (scheme) => {
     const children = []
-    const slot = scheme.__slot__
+    const slot = scheme.__data__
     if (slot && slot.prepend) {
         children.push(`<template #prepend>${slot.prepend}</template>`)
     }

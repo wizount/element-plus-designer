@@ -1,0 +1,174 @@
+{
+  "__id__": "radio-group",
+  "name": "单选框组",
+  "tag": "el-radio-group",
+  "tagIcon": "radio",
+  "layout": "formItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/radio.html",
+  "attributes": {
+    "vModel": "modelValue",
+    "size": {
+      "label": "尺寸",
+      "title": "单选框组尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "text-color": {
+      "label": "激活文本颜色",
+      "title": "按钮形式的 Radio 激活时的文本颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#ffffff"
+    },
+    "fill": {
+      "label": "填充色和边框色",
+      "title": "按钮形式的 Radio 激活时的填充色和边框色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#409EFF"
+    },
+    "validate-event": {
+      "label": "表单校验",
+      "title": "输入时是否触发表单的校验",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "label": {
+      "label": "",
+      "title": "与 RadioGroup 中的 `aria-label` 属性相同",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "name": {
+      "label": "",
+      "title": "原生 `name` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "id": {
+      "label": "",
+      "title": "原生 `id` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "name": "change",
+      "title": "绑定值变化时触发的事件",
+      "type": "Function",
+      "fnDes": "(value: string | number | boolean) => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "radio",
+        "radio-button"
+      ]
+    }
+  ],
+  "data": {
+    "dynamicUrl": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/options",
+    "method": "get",
+    "name": "options",
+    "label": "选项",
+    "type":{
+      "name": "array",
+      "tag": "object-array-editor",
+      "props": {
+        "keys": [
+          {
+            "key": "value",
+            "label": "值",
+            "tag": "string-number-input"
+          },
+          {
+            "key": "label",
+            "label": "标签",
+            "tag": "string-number-input"
+          }
+        ]
+      }
+    },
+    "default": [
+      {
+        "label": "选项一",
+        "value": "1"
+      },
+      {
+        "label": "选项二",
+        "value": "2"
+      }
+    ]
+  }
+}

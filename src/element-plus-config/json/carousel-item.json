@@ -1,0 +1,45 @@
+{
+  "__id__": "carousel-item",
+  "name": "走马灯子项",
+  "tag": "el-carousel-item",
+  "tagIcon": "carousel-item",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/carousel.html",
+  "parentTag": [
+    "el-carousel"
+  ],
+  "attributes": {
+    "name": {
+      "label": "名字",
+      "title": "幻灯片的名字，可用作 setActiveItem 的参数",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "label": {
+      "label": "指示器的文本",
+      "title": "该幻灯片所对应指示器文本",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    }
+  ]
+}

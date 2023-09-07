@@ -1,0 +1,84 @@
+{
+  "__id__": "card",
+  "name": "卡片",
+  "tag": "el-card",
+  "tagIcon": "card",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/card.html",
+  "attributes": {
+    "header": {
+      "label": "标题",
+      "title": "卡片的标题 你既可以通过设置 header 来修改标题，也可以通过 slot#header 传入 DOM 节点",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "body-style": {
+      "label": "",
+      "title": "body 的 CSS 样式",
+      "types": [
+        {
+          "name": "object",
+          "tag": "style-editor"
+        }
+      ]
+    },
+    "body-class": {
+      "label": "",
+      "title": "custom class name of card body",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "shadow": {
+      "label": "",
+      "title": "设置阴影显示时机",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "always",
+              "value": "always"
+            },
+            {
+              "label": "never",
+              "value": "never"
+            },
+            {
+              "label": "hover",
+              "value": "hover"
+            }
+          ]
+        }
+      ],
+      "default": "always"
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    },
+    {
+      "name": "header",
+      "title": "卡片标题内容"
+    }
+  ]
+}

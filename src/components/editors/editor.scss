@@ -1,0 +1,35 @@
+.draggable-item {
+  display: flex;
+  border-bottom: 1px dashed #d5d4d4;
+  box-sizing: border-box;
+
+  .remove-btn {
+    //line-height:30px;
+    //height: 30px;
+    font-size: 20px;
+   // padding:3px;
+    cursor: pointer;
+    color: #f56c6c;
+  }
+
+  .drag-icon {
+    @extend .remove-btn;
+    color: #777;
+    cursor: move;
+  }
+
+  &.chosen {
+    border: 1px dashed #409eff;
+  }
+  .text-item{
+    padding-top:3px;
+  }
+}
+
+.draggable-item + .draggable-item {
+  margin-top: 4px;
+}
+
+
+
+

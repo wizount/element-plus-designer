@@ -1,0 +1,160 @@
+{
+  "__id__": "flex-div",
+  "name": "flexBox",
+  "tag": "div",
+  "tagIcon": "flex-div",
+  "layout": "containerItem",
+  "attributes": {
+    "style": {
+      "label": "样式",
+      "title": "flex 专有样式",
+      "types": [{
+      "name": "object",
+      "tag": "fixed-keys-object-editor",
+      "props": {
+        "keys": [
+          {
+            "name": "display",
+            "tag": "el-input",
+            "props": {
+               "readonly": true
+            }
+          },
+          {
+            "name": "flex-direction",
+            "title": "主轴的方向\r\nrow(主轴方向从左向右→)\r\nrow-reverse(主轴方向从右向左←)\r\ncolumn(主轴方向从上向下↓)\r\ncolumn-reverse(主轴方向从下向上↑)\r\n",
+            "tag": "el-select",
+            "options": [
+              {
+                "label": "row",
+                "value": "row"
+              },
+              {
+                "label": "row-reverse",
+                "value": "row-reverse"
+              },
+              {
+                "label": "column",
+                "value": "column"
+              },
+              {
+                "label": "column-reverse",
+                "value": "column-reverse"
+              }
+            ]
+          },
+          {
+            "name": "flex-wrap",
+            "title": "主轴的方向\rnowrap(侧轴无方向，相当于不换行)\rwrap(主轴方向水平时，侧轴方向从上向下↓，主轴方向竖直时，侧轴方向从左向右→，相当于顺序换行)\rwrap-reverse(主轴方向水平时，侧轴方向从下向上↑，主轴方向竖直时，侧轴方向从右向左←，相当于逆序换行)\r",
+            "tag": "el-select",
+            "options": [
+              {
+                "label": "nowrap",
+                "value": "nowrap"
+              },
+              {
+                "label": "wrap",
+                "value": "wrap"
+              },
+              {
+                "label": "wrap-reverse",
+                "value": "wrap-reverse"
+              }
+            ]
+          },
+          {
+            "name": "justify-content",
+            "title": "项目沿主轴方向的对齐方式\rflex-start(主轴方向上，起点对齐)\rflex-end(主轴方向上，终点对齐)\rcenter(主轴方向上，居中对齐)\rspace-between(主轴方向上，项目之间空隙相等)\rspace-around(主轴方向上，项目两侧空隙相等)\r",
+            "tag": "el-select",
+            "options": [
+              {
+                "label": "flex-start",
+                "value": "flex-start"
+              },
+              {
+                "label": "flex-end",
+                "value": "flex-end"
+              },
+              {
+                "label": "center",
+                "value": "center"
+              },
+              {
+                "label": "space-between",
+                "value": "space-between"
+              },
+              {
+                "label": "space-around",
+                "value": "space-around"
+              }
+            ]
+          },
+          {
+            "name": "align-content",
+            "title": "项目沿侧轴方向的对齐方式，如果项目只有一行，则该属性无效\rstretch如果项目height未设置或为auto，项目拉伸至占满侧轴\rflex-start(侧轴方向上，起点对齐)\rflex-end(侧轴方向上，终点对齐)\rcenter(侧轴方向上，居中对齐)\rspace-between(侧轴方向上，项目之间空隙相等)\rspace-around(主侧轴方向上，项目两侧空隙相等)\r",
+            "tag": "el-select",
+            "options": [
+              {
+                "label": "stretch",
+                "value": "stretch"
+              },
+              {
+                "label": "flex-start",
+                "value": "flex-start"
+              },
+              {
+                "label": "flex-end",
+                "value": "flex-end"
+              },
+              {
+                "label": "center",
+                "value": "center"
+              },
+              {
+                "label": "space-between",
+                "value": "space-between"
+              },
+              {
+                "label": "space-around",
+                "value": "space-around"
+              }
+            ]
+          },
+          {
+            "name": "align-items",
+            "title": "同一行项目沿侧轴方向的对齐方式，即项目在主轴方向上的垂直对齐方式\rstretch如果项目height未设置或为auto，则拉伸至占满该行\rflex-start(侧轴方向上，起点对齐)\rflex-end(侧轴方向上，终点对齐)\rcenter(侧轴方向上，居中对齐)\rbaseline(侧轴方向上，基线对齐)\r",
+            "tag": "el-select",
+            "options": [
+              {
+                "label": "stretch",
+                "value": "stretch"
+              },
+              {
+                "label": "flex-start",
+                "value": "flex-start"
+              },
+              {
+                "label": "flex-end",
+                "value": "flex-end"
+              },
+              {
+                "label": "center",
+                "value": "center"
+              },
+              {
+                "label": "baseline",
+                "value": "baseline"
+              }
+            ]
+          }
+        ]
+      }
+    }]
+  }},
+  "slots": [
+    {
+      "name": "default",
+      "title": "文本内容"
+    }
+  ]
+}

@@ -6,15 +6,19 @@ Element Plus设计器提供大部分element plus组件所见及所得在线设�
 <img src="https://gitee.com/wizount/element-plus-designer/raw/master/images/all.png">
 ## 功能概述
 
-- 支持95%以上的element plus组件在线设计
+- 支持98%以上的element plus组件在线设计
 - 丰富快速组件属性更改
 - style样式修改
 - 表单正则表达式创建
 - 导出和复制vue3代码
 - 导出JSON
+- 
+## 直接引用
 
-
-## 工程安装
+```sh 
+npm install element-plus-designer
+```
+## 工程开发安装
 
 ```sh
 npm install

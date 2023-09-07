@@ -1,0 +1,153 @@
+{
+  "__id__": "alert",
+  "name": "提示",
+  "tag": "el-alert",
+  "tagIcon": "alert",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/result.html",
+  "attributes": {
+    "title": {
+      "label": "标题",
+      "title": "Alert 标题。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "type": {
+      "label": "类型",
+      "title": "Alert 类型。",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "error",
+              "value": "error"
+            }
+          ]
+        }
+      ],
+      "default": "info"
+    },
+    "description": {
+      "label": "描述文本",
+      "title": "描述性文本",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "closable": {
+      "label": "可以关闭",
+      "title": "是否可以关闭",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "center": {
+      "label": "文字居中",
+      "title": "文字是否居中",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "close-text": {
+      "label": "关闭按钮文本",
+      "title": "自定义关闭按钮文本",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "show-icon": {
+      "label": "显示类型图标",
+      "title": "是否显示类型图标",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "effect": {
+      "label": "主题样式",
+      "title": "主题样式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "light",
+              "value": "light"
+            },
+            {
+              "label": "dark",
+              "value": "dark"
+            }
+          ]
+        }
+      ],
+      "default": "light"
+    }
+  },
+  "events": [
+    {
+      "name": "close",
+      "title": "关闭 Alert 时触发的事件",
+      "type": "Function",
+      "fnDes": "(event: MouseEvent) => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "Alert 内容描述"
+    },
+    {
+      "name": "title",
+      "title": "标题的内容"
+    }
+  ]
+}

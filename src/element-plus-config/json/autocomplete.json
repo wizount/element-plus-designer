@@ -1,0 +1,317 @@
+{
+  "__id__": "autocomplete",
+  "attributes": {
+    "clearable": {
+      "label": "",
+      "title": "是否可清空",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "disabled": {
+      "label": "",
+      "title": "自动补全组件是否被禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "value-key": {
+      "label": "",
+      "title": "输入建议对象中用于显示的键名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "value"
+    },
+    "debounce": {
+      "label": "",
+      "title": "获取输入建议的防抖延时，单位为毫秒",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 300
+    },
+    "placement": {
+      "label": "",
+      "title": "菜单弹出位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "top-end",
+              "value": "top-end"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            },
+            {
+              "label": "bottom-start",
+              "value": "bottom-start"
+            },
+            {
+              "label": "bottom-end",
+              "value": "bottom-end"
+            }
+          ]
+        }
+      ],
+      "default": "bottom-start"
+    },
+    "fetch-suggestions": {
+      "label": "",
+      "title": "获取输入建议的方法， 仅当你的输入建议数据 resolve 时，通过调用 `callback(data:[]) ` 来返回它",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(queryString: string, callback: callbackfn) => void"
+        }
+      ]
+    },
+    "trigger-on-focus": {
+      "label": "",
+      "title": "whether show suggestions when input focus",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "select-when-unmatched": {
+      "label": "",
+      "title": "在输入没有任何匹配建议的情况下，按下回车是否触发 `select` 事件",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "name": {
+      "label": "",
+      "title": "等价于原生 input `name` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "label": {
+      "label": "",
+      "title": "输入框关联的 label 文字",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "hide-loading": {
+      "label": "",
+      "title": "是否隐藏远程加载时的加载图标",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "popper-class": {
+      "label": "",
+      "title": "下拉列表的类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "popper-append-to-body": {
+      "label": "",
+      "title": "是否将下拉列表插入至 body 元素。 在下拉列表的定位出现问题时，可将该属性设置为 false",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "deprecated": true
+    },
+    "teleported": {
+      "label": "",
+      "title": "是否将下拉列表元素插入 append-to 指向的元素下",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "highlight-first-item": {
+      "label": "",
+      "title": "是否默认高亮远程搜索结果的第一项",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "fit-input-width": {
+      "label": "",
+      "title": "下拉框的宽度是否与输入框相同",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    }
+  },
+  "events": [
+    {
+      "name": "select",
+      "title": "点击选中建议项时触发",
+      "type": "Function",
+      "fnDes": "(item: typeof modelValue | any) => void"
+    },
+    {
+      "name": "change",
+      "title": "在 Input 值改变时触发",
+      "type": "Function",
+      "fnDes": "(value: string | number) => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义输入建议的内容。 自定义标签，参数为 { item }"
+    },
+    {
+      "name": "prefix",
+      "title": "输入框头部内容"
+    },
+    {
+      "name": "suffix",
+      "title": "输入框尾部内容"
+    },
+    {
+      "name": "prepend",
+      "title": "输入框前置内容，在 prefix 之前"
+    },
+    {
+      "name": "append",
+      "title": "输入框后置内容，在 suffix 之后"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "activated",
+      "title": "自动补全输入框是否被激活",
+      "type": "^[object]`Ref<boolean>`"
+    },
+    {
+      "name": "blur",
+      "title": "使 input 失去焦点",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "close",
+      "title": "折叠建议列表",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "focus",
+      "title": "使 input 获取焦点",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "handleSelect",
+      "title": "手动触发选中建议事件",
+      "type": "Function",
+      "fnDes": "(item: any) => promise<void>"
+    },
+    {
+      "name": "handleKeyEnter",
+      "title": "手动触发键盘回车事件",
+      "type": "Function",
+      "fnDes": "() => promise<void>"
+    },
+    {
+      "name": "highlightedIndex",
+      "title": "当前高亮显示选项的索引",
+      "type": "^[object]`Ref<number>`"
+    },
+    {
+      "name": "highlight",
+      "title": "在建议中高亮显示一个项目",
+      "type": "Function",
+      "fnDes": "(itemIndex: number) => void"
+    },
+    {
+      "name": "inputRef",
+      "title": "el-input 组件实例",
+      "type": "^[object]`Ref<ElInputInstance>`"
+    },
+    {
+      "name": "loading",
+      "title": "远程获取提示内容的加载状态指示器",
+      "type": "^[object]`Ref<boolean>`"
+    },
+    {
+      "name": "popperRef",
+      "title": "el-tooltip 组件实例",
+      "type": "^[object]`Ref<ElTooltipInstance>`"
+    },
+    {
+      "name": "suggestions",
+      "title": "获取自动补全结果",
+      "type": "^[object]`Ref<record<string, any>>`"
+    }
+  ]
+}

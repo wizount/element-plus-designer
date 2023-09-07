@@ -1,0 +1,240 @@
+{
+  "__id__": "transfer",
+  "name": "穿梭框",
+  "tag": "el-transfer",
+  "tagIcon": "transfer",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/transfer.html",
+  "attributes": {
+    "vModel": "modelValue",
+    "data": {
+      "label": "数据源",
+      "title": "Transfer 的数据源Array<{ key, label, disabled }>",
+      "types": [
+        {
+          "name": "array",
+          "tag": "object-array-editor",
+          "props": {
+            "keys": [
+              {
+                "key": "label",
+                "label": "名称"
+              },
+              {
+                "key": "key",
+                "label": "键值"
+              },
+              {
+                "key": "disabled",
+                "label": "禁用",
+                "tag": "ElSwitch"
+              }
+            ]
+          }
+        }
+      ],
+      "default": []
+    },
+    "filterable": {
+      "label": "可搜索",
+      "title": "是否可搜索",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "filter-placeholder": {
+      "label": "搜索框占位符",
+      "title": "搜索框占位符",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "Enter keyword",
+      "switch": [
+        "filterable",
+        true
+      ]
+    },
+    "filter-method": {
+      "label": "搜索方法",
+      "title": "自定义搜索方法",
+      "types": [
+        {
+          "name": "function",
+          "tag": ""
+        }
+      ],
+      "hide": true
+    },
+    "target-order": {
+      "label": "右侧元素排序策略",
+      "title": "右侧列表元素的排序策略： 若为 original，则保持与数据源相同的顺序； 若为 push，则新加入的元素排在最后； 若为 unshift，则新加入的元素排在最前",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "相同",
+              "value": "original"
+            },
+            {
+              "label": "最后",
+              "value": "push"
+            },
+            {
+              "label": "最前",
+              "value": "unshift"
+            }
+          ]
+        }
+      ],
+      "default": "original"
+    },
+    "titles": {
+      "label": "列表标题",
+      "title": "自定义列表标题",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": [
+        "List 1",
+        "List 2"
+      ]
+    },
+    "button-texts": {
+      "label": "按钮文字",
+      "title": "自定义按钮文案",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": []
+    },
+    "render-content": {
+      "label": "数据项渲染函数",
+      "title": "自定义数据项渲染函数",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "h, option"
+        }
+      ],
+      "hide": true
+    },
+    "format": {
+      "label": "",
+      "title": "列表顶部勾选状态文案",
+      "types": [
+        {
+          "name": "{ noChecked, hasChecked }",
+          "tag": ""
+        }
+      ],
+      "default": "{ noChecked: '${checked}/${total}', hasChecked: '${checked}/${total}' }",
+      "hide": true
+    },
+    "props": {
+      "label": "数据源的字段别名",
+      "title": "数据源的字段别名",
+      "types": [
+        {
+          "name": "{ key, label, disabled }",
+          "tag": ""
+        }
+      ],
+      "hide": true
+    },
+    "left-default-checked": {
+      "label": "",
+      "title": "初始状态下左侧列表的已勾选项的 key 数组",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": [],
+      "hide": true
+    },
+    "right-default-checked": {
+      "label": "",
+      "title": "初始状态下右侧列表的已勾选项的 key 数组",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": [],
+      "hide": true
+    },
+    "validate-event": {
+      "label": "触发表单验证",
+      "title": "是否触发表单验证",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义数据项的内容， 参数为 `{ option }`"
+    },
+    {
+      "name": "left-footer",
+      "title": "左侧列表底部的内容"
+    },
+    {
+      "name": "right-footer",
+      "title": "右侧列表底部的内容"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "clearQuery",
+      "title": "清空某个面板的搜索关键词",
+      "params": "'left' / 'right'"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "title": "右侧列表元素变化时触发",
+      "params": "当前值、数据移动的方向（'left' / 'right'）、发生移动的数据 key 数组"
+    },
+    {
+      "name": "left-check-change",
+      "title": "左侧列表元素被用户选中 / 取消选中时触发",
+      "params": "当前被选中的元素的 key 数组、选中状态发生变化的元素的 key 数组"
+    },
+    {
+      "name": "right-check-change",
+      "title": "右侧列表元素被用户选中 / 取消选中时触发",
+      "params": "当前被选中的元素的 key 数组、选中状态发生变化的元素的 key 数组"
+    }
+  ]
+}

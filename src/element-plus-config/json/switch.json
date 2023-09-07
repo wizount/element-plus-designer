@@ -1,0 +1,315 @@
+{
+  "__id__": "switch",
+  "name": "开关",
+  "tag": "el-switch",
+  "tagIcon": "switch",
+  "layout": "formItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/switch.html",
+  "attributes": {
+    "vModel": "modelValue",
+    "disabled": {
+      "label": "禁用",
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "loading": {
+      "label": "显示加载中",
+      "title": "是否显示加载中",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "size": {
+      "label": "尺寸",
+      "title": "switch 的大小",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": ""
+    },
+    "width": {
+      "label": "宽度",
+      "title": "switch 的宽度",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "default": ""
+    },
+    "inline-prompt": {
+      "label": "只呈现文本第一个字符",
+      "title": "无论图标或文本是否显示在点内，只会呈现文本的第一个字符",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "active-icon": {
+      "label": "on显示图标",
+      "title": "switch 状态为 on 时所显示图标，设置此项会忽略 active-text",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "inactive-icon": {
+      "label": "off显示图标",
+      "title": "switch 状态为 off 时所显示图标，设置此项会忽略 inactive-text",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "active-action-icon": {
+      "label": "",
+      "title": "` on `状态下显示的图标组件",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "version": "2.3.9"
+    },
+    "inactive-action-icon": {
+      "label": "",
+      "title": "` off `状态下显示的图标组件",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "version": "2.3.9"
+    },
+    "active-text": {
+      "label": "打开时文字描述",
+      "title": "switch 打开时的文字描述",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "inactive-text": {
+      "label": "关闭时文字描述",
+      "title": "switch 的状态为 off 时的文字描述",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "active-value": {
+      "label": "on时的值",
+      "title": "switch 状态为 on 时的值",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        },
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": true
+    },
+    "inactive-value": {
+      "label": "off时的值",
+      "title": "switch的状态为 off 时的值",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        },
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": false
+    },
+    "active-color": {
+      "label": "on时背景颜色",
+      "title": "当在 on 状态时的背景颜色(已废弃，请使用 CSS var --el-switch-on-color )",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "",
+      "deprecated": true
+    },
+    "inactive-color": {
+      "label": "off时背景颜色",
+      "title": "off 状态时的背景颜色(已废弃，使用 CSS var --el-switch-of-color )",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "",
+      "deprecated": true
+    },
+    "border-color": {
+      "label": "边框颜色",
+      "title": "开关的边框颜色 ( 已废弃，使用 CSS var --el-switch-border-color )",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "",
+      "deprecated": true
+    },
+    "name": {
+      "label": "",
+      "title": "switch 对应的 name 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "",
+      "hide": true
+    },
+    "validate-event": {
+      "label": "表单校验",
+      "title": "改变 switch 状态时是否触发表单的校验",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "before-change": {
+      "label": "",
+      "title": "switch 状态改变前的钩子， 返回 false 或者返回 Promise 且被 reject 则停止切换",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        },
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "() => Promise<boolean>"
+        }
+      ],
+      "hide": true
+    },
+    "id": {
+      "label": "",
+      "title": "input 的 id",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "tabindex": {
+      "label": "",
+      "title": "input 的 tabindex",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "name": "change",
+      "title": "switch 状态发生变化时的回调函数",
+      "type": "Function",
+      "fnDes": "(val: boolean | string | number) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "params": "focus",
+      "title": "手动 focus 到 switch 组件",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ],
+  "slots": []
+}

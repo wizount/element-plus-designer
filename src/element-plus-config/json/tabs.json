@@ -1,0 +1,161 @@
+{
+  "__id__": "tabs",
+  "name": "标签页",
+  "tag": "el-tabs",
+  "tagIcon": "tabs",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/tabs.html",
+  "childTag": [
+    "el-tab-pane"
+  ],
+  "attributes": {
+    "vModel": "modelValue",
+    "type": {
+      "label": "风格类型",
+      "title": "风格类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "默认",
+              "value": ""
+            },
+            {
+              "label": "card",
+              "value": "card"
+            },
+            {
+              "label": "border-card",
+              "value": "border-card"
+            }
+          ]
+        }
+      ]
+    },
+    "closable": {
+      "label": "标签可关闭",
+      "title": "标签是否可关闭",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "addable": {
+      "label": "标签可增加",
+      "title": "标签是否可增加",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "editable": {
+      "label": "标签可增加和关闭",
+      "title": "标签是否同时可增加和关闭",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "tab-position": {
+      "label": "选项卡位置",
+      "title": "选项卡所在位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            },
+            {
+              "label": "left",
+              "value": "left"
+            }
+          ]
+        }
+      ],
+      "default": "top"
+    },
+    "stretch": {
+      "label": "标签宽度自撑开",
+      "title": "标签的宽度是否自撑开",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "before-leave": {
+      "label": "",
+      "title": "切换标签之前的钩子函数， 若返回 false  或者返回被 reject 的 Promise，则阻止切换。",
+      "types": [
+        {
+          "name": "Function(activeName, oldActiveName)",
+          "tag": ""
+        }
+      ],
+      "hide": true
+    }
+  },
+  "events": [
+    {
+      "name": "tab-click",
+      "title": "tab 被选中时触发",
+      "params": "(pane: `TabsPaneContext`, ev: `Event`)"
+    },
+    {
+      "name": "tab-change",
+      "title": "`activeName` 改变时触发",
+      "params": "(name: `TabPaneName`)"
+    },
+    {
+      "name": "tab-remove",
+      "title": "点击 tab 移除按钮时触发",
+      "params": "(name: `TabPaneName`)"
+    },
+    {
+      "name": "tab-add",
+      "title": "点击 tab 新增按钮时触发",
+      "params": "—"
+    },
+    {
+      "name": "edit",
+      "title": "点击 tab 的新增或移除按钮后触发",
+      "params": "(paneName: `TabPaneName | undefined`, action: `'remove' | 'add'`)"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "默认插槽",
+      "subtags": [
+        "tab-pane"
+      ]
+    }
+  ]
+}

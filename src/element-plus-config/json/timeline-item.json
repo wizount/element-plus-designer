@@ -1,0 +1,172 @@
+{
+  "__id__": "timeline-item",
+  "name": "时间线子项",
+  "tag": "el-timeline-item",
+  "tagIcon": "timeline-item",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/timeline.html",
+  "parentTag": [
+    "el-timeline"
+  ],
+  "attributes": {
+    "timestamp": {
+      "label": "时间戳",
+      "title": "时间戳",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "hide-timestamp": {
+      "label": "隐藏时间戳",
+      "title": "是否隐藏时间戳",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "center": {
+      "label": "垂直居中",
+      "title": "是否垂直居中",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "placement": {
+      "label": "时间戳位置",
+      "title": "时间戳位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            }
+          ]
+        }
+      ],
+      "default": "bottom"
+    },
+    "type": {
+      "label": "节点类型",
+      "title": "节点类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "primary",
+              "value": "primary"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "danger",
+              "value": "danger"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            }
+          ]
+        }
+      ],
+      "default": ""
+    },
+    "color": {
+      "label": "节点颜色",
+      "title": "节点颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": ""
+    },
+    "size": {
+      "label": "节点尺寸",
+      "title": "节点尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "normal",
+              "value": "normal"
+            },
+            {
+              "label": "large",
+              "value": "large"
+            }
+          ]
+        }
+      ],
+      "default": "normal"
+    },
+    "icon": {
+      "label": "自定义图标",
+      "title": "自定义图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "hollow": {
+      "label": "空心点",
+      "title": "是否空心点",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "customize default content for timeline item"
+    },
+    {
+      "name": "dot",
+      "title": "customize defined node for timeline item.搞不清楚怎么用"
+    }
+  ]
+}

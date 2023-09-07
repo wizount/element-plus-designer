@@ -1,12 +1,6 @@
 @import './variable.scss';
 
 
-.active-draw-item {
-  & > .component-name {
-    color: $lighterBlue;
-  }
-}
-
 .drawing-item {
   position: relative;
   cursor: move;

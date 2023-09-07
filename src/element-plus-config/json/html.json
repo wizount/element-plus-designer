@@ -1,0 +1,14 @@
+{
+  "__id__": "html",
+  "tagIcon": "html",
+  "layout": "containerItem",
+  "attributes": {
+
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "默认内容"
+    }
+  ]
+}

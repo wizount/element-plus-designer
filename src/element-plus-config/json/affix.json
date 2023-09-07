@@ -1,0 +1,103 @@
+{
+  "__id__": "affix",
+  "name": "固钉",
+  "tag": "el-affix",
+  "tagIcon": "affix",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/affix.html",
+  "attributes": {
+    "offset": {
+      "label": "",
+      "title": "偏移距离",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "position": {
+      "label": "",
+      "title": "位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            }
+          ]
+        }
+      ],
+      "default": "top"
+    },
+    "target": {
+      "label": "",
+      "title": "指定容器 (CSS 选择器)",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "z-index": {
+      "label": "",
+      "title": "z-index",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 100
+    }
+  },
+  "events": [
+    {
+      "name": "change",
+      "title": "fixed 状态改变时触发的事件",
+      "type": "Function",
+      "fnDes": "(fixed: boolean) => void"
+    },
+    {
+      "name": "scroll",
+      "title": "滚动时触发的事件",
+      "type": "Function",
+      "fnDes": "(value: { scrollTop: number, fixed: boolean }) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "update",
+      "title": "手动更新固钉状态",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "updateRoot",
+      "title": "手动更新根元素的盒模型信息",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    }
+  ]
+}

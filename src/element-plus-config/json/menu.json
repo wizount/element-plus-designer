@@ -1,0 +1,225 @@
+{
+  "__id__": "menu",
+  "name": "菜单",
+  "tag": "el-menu",
+  "tagIcon": "menu",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/menu.html",
+  "attributes": {
+    "mode": {
+      "label": "展示模式",
+      "title": "菜单展示模式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "水平",
+              "value": "horizontal"
+            },
+            {
+              "label": "垂直",
+              "value": "vertical"
+            }
+          ]
+        }
+      ],
+      "default": "vertical"
+    },
+    "collapse": {
+      "label": "水平折叠",
+      "title": "是否水平折叠收起菜单（仅在 mode 为 vertical 时可用）",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "switch": [
+        "mode",
+        "vertical"
+      ]
+    },
+    "ellipsis": {
+      "label": "省略多余子项",
+      "title": "是否省略多余的子项（仅在横向模式生效）",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "background-color": {
+      "label": "背景颜色",
+      "title": "菜单的背景颜色（十六进制格式）（已被废弃，使用--bg-color）",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#ffffff"
+    },
+    "text-color": {
+      "label": "文字颜色",
+      "title": "文字颜色（十六进制格式）（已被废弃，使用--text-color）",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#303133"
+    },
+    "active-text-color": {
+      "label": "活动菜单项文本颜色",
+      "title": "活动菜单项的文本颜色（十六进制格式）（已被废弃，使用--active-color）",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#409EFF"
+    },
+    "default-active": {
+      "label": "默认激活菜单的 index",
+      "title": "页面加载时默认激活菜单的 index",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "default-openeds": {
+      "label": "打开的sub-menu数组",
+      "title": "默认打开的 sub-menu 的 index 的数组",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    },
+    "unique-opened": {
+      "label": "只保持一个子菜单展开",
+      "title": "是否只保持一个子菜单的展开",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "menu-trigger": {
+      "label": "子菜单打开触发方式",
+      "title": "子菜单打开的触发方式，只在 mode 为 horizontal 时有效。",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "hover",
+              "value": "hover"
+            },
+            {
+              "label": "click",
+              "value": "click"
+            }
+          ]
+        }
+      ],
+      "default": "hover"
+    },
+    "router": {
+      "label": "启用vue-router模式",
+      "title": "是否启用 vue-router 模式。 启用该模式会在激活导航时以 index 作为 path 进行路由跳转 使用 default-active 来设置加载时的激活项。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "collapse-transition": {
+      "label": "开启折叠动画",
+      "title": "是否开启折叠动画",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "popper-effect": {
+      "label": "",
+      "title": "Tooltip 主题，内置了 `dark` / `light` 两种主题",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "dark",
+              "value": "dark"
+            },
+            {
+              "label": "light",
+              "value": "light"
+            }
+          ]
+        }
+      ],
+      "default": "dark"
+    }
+  },
+  "events": [
+    {
+      "name": "select",
+      "title": "菜单激活回调",
+      "params": "index: 选中菜单项的 index, indexPath: 选中菜单项的 index path, item: 选中菜单项, routeResult: vue-router 的返回值（如果 router 为 true）"
+    },
+    {
+      "name": "open",
+      "title": "sub-menu 展开的回调",
+      "params": "index: 打开的 sub-menu 的 index, indexPath: 打开的 sub-menu 的 index path"
+    },
+    {
+      "name": "close",
+      "title": "sub-menu 收起的回调",
+      "params": "index: 收起的 sub-menu 的 index, indexPath: 收起的 sub-menu 的 index path"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "sub-menu",
+        "menu-item",
+        "menu-item-group"
+      ]
+    }
+  ]
+}

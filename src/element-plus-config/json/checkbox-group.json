@@ -1,0 +1,182 @@
+{
+  "__id__": "checkbox-group",
+  "name": "多选框组",
+  "tag": "el-checkbox-group",
+  "tagIcon": "checkbox",
+  "layout": "formItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/checkbox.html",
+  "attributes": {
+    "vModel": "modelValue",
+    "size": {
+      "label": "尺寸",
+      "title": "多选框组尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "min": {
+      "label": "勾选最小数量",
+      "title": "可被勾选的 checkbox 的最小数量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "max": {
+      "label": "勾选最大数量",
+      "title": "可被勾选的 checkbox 的最大数量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "label": {
+      "label": "",
+      "title": "为屏幕阅读器准备的标签",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "text-color": {
+      "label": "按钮活跃颜色",
+      "title": "当按钮为活跃状态时的字体颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#ffffff"
+    },
+    "fill": {
+      "label": "按钮活跃边框背景颜色",
+      "title": "当按钮为活跃状态时的边框和背景颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#409EFF"
+    },
+    "tag": {
+      "label": "",
+      "title": "复选框组元素标签",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "div"
+    },
+    "validate-event": {
+      "label": "表单校验",
+      "title": "输入时是否触发表单的校验",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    }
+  },
+  "events": [
+    {
+      "name": "change",
+      "title": "当绑定值变化时触发的事件",
+      "type": "Function",
+      "fnDes": "(value: string[] | number[]) => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "checkbox",
+        "checkbox-button"
+      ]
+    }
+  ],
+  "data": {
+    "dynamicUrl": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/options",
+    "method": "get",
+    "name": "options",
+    "label": "选项",
+    "type":{
+      "name": "array",
+      "tag": "object-array-editor",
+      "props": {
+        "keys": [
+          {
+            "key": "value",
+            "label": "值",
+            "tag": "string-number-input"
+          },
+          {
+            "key": "label",
+            "label": "标签",
+            "tag": "string-number-input"
+          }
+        ]
+      }
+    },
+    "default": [
+      {
+        "label": "选项一",
+        "value": "1"
+      },
+      {
+        "label": "选项二",
+        "value": "2"
+      }
+    ]
+  }
+}

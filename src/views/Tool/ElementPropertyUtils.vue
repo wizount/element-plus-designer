@@ -85,7 +85,7 @@ watch(input, (val) => {
     }
   }
 
-  output.value = JSON.stringify(props).replace(/\"(.[^-\"]*?)\":/g, '$1:')
+  output.value = JSON.stringify(props,null,2);//.replace(/\"(.[^-\"]*?)\":/g, '$1:')
 })
 </script>
 <style>

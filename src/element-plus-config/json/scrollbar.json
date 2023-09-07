@@ -1,0 +1,199 @@
+{
+  "__id__": "scrollbar",
+  "name": "滚动条",
+  "tag": "el-scrollbar",
+  "tagIcon": "scrollbar",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/scrollbar.html",
+  "attributes": {
+    "height": {
+      "label": "高度",
+      "title": "滚动条高度",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "max-height": {
+      "label": "最大高度",
+      "title": "滚动条最大高度",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "native": {
+      "label": "使用原生滚动条样式",
+      "title": "是否使用原生滚动条样式",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "wrap-style": {
+      "label": "包裹容器样式",
+      "title": "包裹容器的自定义样式",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "object",
+          "tag": "style-editor"
+        }
+      ]
+    },
+    "wrap-class": {
+      "label": "包裹容器类名",
+      "title": "包裹容器的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "view-style": {
+      "label": "视图样式",
+      "title": "视图的自定义样式",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "object",
+          "tag": "style-editor"
+        }
+      ]
+    },
+    "view-class": {
+      "label": "视图类名",
+      "title": "视图的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "noresize": {
+      "label": "响应容器尺寸变化",
+      "title": "不响应容器尺寸变化，如果容器尺寸不会发生变化，最好设置它可以优化性能",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "tag": {
+      "label": "视图的元素标签",
+      "title": "视图的元素标签",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "div"
+    },
+    "always": {
+      "label": "滚动条总是显示",
+      "title": "滚动条总是显示",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "min-size": {
+      "label": "最小尺寸",
+      "title": "滚动条最小尺寸",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 20
+    }
+  },
+  "events": [
+    {
+      "name": "scroll",
+      "title": "当触发滚动事件时，返回滚动的距离",
+      "type": "Function",
+      "fnDes": "({ scrollLeft: number, scrollTop: number }) => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "handleScroll",
+      "title": "触发滚动事件",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "scrollTo",
+      "title": "滚动到一组特定坐标",
+      "type": "Function",
+      "fnDes": "(options: ScrollToOptions | number, yCoord?: number) => void"
+    },
+    {
+      "name": "setScrollTop",
+      "title": "设置滚动条到顶部的距离",
+      "type": "Function",
+      "fnDes": "(scrollTop: number) => void"
+    },
+    {
+      "name": "setScrollLeft",
+      "title": "设置滚动条到左边的距离",
+      "type": "Function",
+      "fnDes": "(scrollLeft: number) => void"
+    },
+    {
+      "name": "update",
+      "title": "手动更新滚动条状态",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "wrapRef",
+      "title": "滚动条包裹的 ref 对象",
+      "type": "^[object]`Ref<HTMLDivElement>`"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "__id__": "row",
+  "name": "行容器",
+  "tag": "el-row",
+  "tagIcon": "row",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/layout.html",
+  "childTag": [
+    "el-col"
+  ],
+  "attributes": {
+    "gutter": {
+      "label": "栅格间隔",
+      "title": "栅格间隔",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "justify": {
+      "label": "水平排列方式",
+      "title": "flex 布局下的水平排列方式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "start",
+              "value": "start"
+            },
+            {
+              "label": "end",
+              "value": "end"
+            },
+            {
+              "label": "center",
+              "value": "center"
+            },
+            {
+              "label": "space-around",
+              "value": "space-around"
+            },
+            {
+              "label": "space-between",
+              "value": "space-between"
+            },
+            {
+              "label": "space-evenly",
+              "value": "space-evenly"
+            }
+          ]
+        }
+      ],
+      "default": "start"
+    },
+    "align": {
+      "label": "垂直排列方式",
+      "title": "flex 布局下的垂直排列方式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "middle",
+              "value": "middle"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            }
+          ]
+        }
+      ],
+      "default": "top"
+    },
+    "tag": {
+      "label": "自定义元素标签",
+      "title": "自定义元素标签",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "div"
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "col"
+      ]
+    }
+  ]
+}

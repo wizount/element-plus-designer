@@ -1,0 +1,98 @@
+{
+  "__id__": "step",
+  "name": "步骤",
+  "tag": "el-step",
+  "tagIcon": "step",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/steps.html",
+  "parentTag": [
+    "el-steps"
+  ],
+  "attributes": {
+    "title": {
+      "label": "标题",
+      "title": "标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "description": {
+      "label": "描述",
+      "title": "描述文案",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "icon": {
+      "label": "图标",
+      "title": "Step 组件的自定义图标。 也支持 slot 方式写入",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "status": {
+      "label": "状态",
+      "title": "设置当前步骤的状态， 不设置则根据 steps 确定状态",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "wait",
+              "value": "wait"
+            },
+            {
+              "label": "process",
+              "value": "process"
+            },
+            {
+              "label": "finish",
+              "value": "finish"
+            },
+            {
+              "label": "error",
+              "value": "error"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            }
+          ]
+        }
+      ],
+      "default": ""
+    }
+  },
+  "slots": [
+    {
+      "name": "icon",
+      "title": "自定义图标"
+    },
+    {
+      "name": "title",
+      "title": "自定义标题"
+    },
+    {
+      "name": "description",
+      "title": "自定义描述文案"
+    }
+  ]
+}

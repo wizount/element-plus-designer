@@ -1,0 +1,747 @@
+{
+  "__id__": "table",
+  "name": "表格",
+  "tag": "el-table",
+  "tagIcon": "table",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/table.html",
+  "childTag": [
+    "el-table-column"
+  ],
+  "attributes": {
+    "data": {
+      "label": "数据",
+      "title": "显示的数据",
+      "types": [
+        {
+          "name": "array",
+          "tag": "dynamic-data-getter"
+        }
+      ]
+    },
+    "height": {
+      "label": "高度",
+      "title": "Table 的高度， 默认为自动高度。 如果 height 为 number 类型，单位 px；如果 height 为 string 类型，则这个高度会设置为 Table 的 style.height 的值，Table 的高度会受控于外部样式。",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "max-height": {
+      "label": "最大高度",
+      "title": "Table 的最大高度。 合法的值为数字或者单位为 px 的高度。",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "stripe": {
+      "label": "斑马纹",
+      "title": "是否为斑马纹 table",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "border": {
+      "label": "纵向边框",
+      "title": "是否带有纵向边框",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "size": {
+      "label": "尺寸",
+      "title": "Table 的尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "fit": {
+      "label": "列自撑开",
+      "title": "列的宽度是否自撑开",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "show-header": {
+      "label": "显示表头",
+      "title": "是否显示表头",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "highlight-current-row": {
+      "label": "高亮当前行",
+      "title": "是否要高亮当前行",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "current-row-key": {
+      "label": "",
+      "title": "当前行的 key，只写属性",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "row-class-name": {
+      "label": "",
+      "title": "行的 className 的回调方法，也可以使用字符串为所有行设置一个固定的 className。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "{ row, rowIndex }"
+        },
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "hide": true
+    },
+    "row-style": {
+      "label": "",
+      "title": "行的 style 的回调方法，也可以使用一个固定的 Object 为所有行设置一样的 Style。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "{ row, rowIndex }"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "hide": true
+    },
+    "cell-class-name": {
+      "label": "",
+      "title": "单元格的 className 的回调方法，也可以使用字符串为所有单元格设置一个固定的 className。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "{ row, column, rowIndex, columnIndex }"
+        },
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "hide": true
+    },
+    "cell-style": {
+      "label": "",
+      "title": "单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有单元格设置一样的 Style。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "{ row, column, rowIndex, columnIndex }"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "hide": true
+    },
+    "header-row-class-name": {
+      "label": "",
+      "title": "表头行的 className 的回调方法，也可以使用字符串为所有表头行设置一个固定的 className。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "{ row, rowIndex }"
+        },
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "hide": true
+    },
+    "header-row-style": {
+      "label": "",
+      "title": "表头行的 style 的回调方法，也可以使用一个固定的 Object 为所有表头行设置一样的 Style。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "{ row, rowIndex }"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "hide": true
+    },
+    "header-cell-class-name": {
+      "label": "",
+      "title": "表头单元格的 className 的回调方法，也可以使用字符串为所有表头单元格设置一个固定的 className。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "{ row, column, rowIndex, columnIndex }"
+        },
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "hide": true
+    },
+    "header-cell-style": {
+      "label": "",
+      "title": "表头单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有表头单元格设置一样的 Style。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "{ row, column, rowIndex, columnIndex }"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "hide": true
+    },
+    "row-key": {
+      "label": "",
+      "title": "行数据的 Key，用来优化 Table 的渲染； 在使用reserve-selection功能与显示树形数据时，该属性是必填的。 类型为 String 时，支持多层访问：user.info.id，但不支持 user.info[0].id，此种情况请使用 Function。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "row"
+        },
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "hide": true
+    },
+    "empty-text": {
+      "label": "无数据显示的文本内容",
+      "title": "空数据时显示的文本内容， 也可以通过 #empty 设置",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "default-expand-all": {
+      "label": "展开所有行",
+      "title": "是否默认展开所有行，当 Table 包含展开行存在或者为树形表格时有效",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "hide": true
+    },
+    "expand-row-keys": {
+      "label": "",
+      "title": "可以通过该属性设置 Table 目前的展开行，需要设置 row-key 属性才能使用，该属性为展开行的 keys 数组。",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "hide": true
+    },
+    "default-sort": {
+      "label": "",
+      "title": "默认的排序列的 prop 和顺序。 它的 prop 属性指定默认的排序的列，order 指定默认排序的顺序",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "(order: 'ascending' 'descending')",
+              "value": "(order: 'ascending' 'descending')"
+            }
+          ]
+        }
+      ],
+      "default": "'descending')",
+      "hide": true
+    },
+    "tooltip-effect": {
+      "label": "",
+      "title": "tooltip effect 属性",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "dark",
+              "value": "dark"
+            },
+            {
+              "label": "light",
+              "value": "light"
+            }
+          ]
+        }
+      ],
+      "default": "dark"
+    },
+    "tooltip-options": {
+      "label": "",
+      "title": "溢出 tooltip 的选项，[参见下述 tooltip 组件](tooltip.html#attributes)",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "[请参考 tooltip](tooltip.html#attributes)",
+              "value": "[请参考 tooltip](tooltip.html#attributes)"
+            }
+          ]
+        }
+      ],
+      "default": "^[object]`{ enterable: true, placement: 'top', showArrow: true, hideAfter: 200, popperOptions: { strategy: 'fixed' } }`",
+      "version": "2.2.28"
+    },
+    "show-summary": {
+      "label": "",
+      "title": "是否在表尾显示合计行",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "sum-text": {
+      "label": "",
+      "title": "合计行第一列的文本",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "Sum"
+    },
+    "summary-method": {
+      "label": "",
+      "title": "自定义的合计计算方法",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "{ columns, data }"
+        }
+      ]
+    },
+    "span-method": {
+      "label": "",
+      "title": "合并行或列的计算方法",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "{ row, column, rowIndex, columnIndex }"
+        }
+      ],
+      "hide": true
+    },
+    "select-on-indeterminate": {
+      "label": "",
+      "title": "在多选表格中，当仅有部分行被选中时，点击表头的多选框时的行为。 若为 true，则选中所有行；若为 false，则取消选择所有行",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "indent": {
+      "label": "",
+      "title": "展示树形数据时，树节点的缩进",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 16,
+      "hide": true
+    },
+    "lazy": {
+      "label": "",
+      "title": "是否懒加载子节点数据",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "hide": true
+    },
+    "load": {
+      "label": "",
+      "title": "加载子节点数据的函数，lazy 为 true 时生效，函数第二个参数包含了节点的层级信息",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "row, treeNode, resolve"
+        }
+      ],
+      "hide": true
+    },
+    "tree-props": {
+      "label": "",
+      "title": "渲染嵌套数据的配置选项",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "default": "{ hasChildren: 'hasChildren', children: 'children' }",
+      "hide": true
+    },
+    "table-layout": {
+      "label": "布局方式",
+      "title": "设置表格单元、行和列的布局方式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "fixed",
+              "value": "fixed"
+            },
+            {
+              "label": "auto",
+              "value": "auto"
+            }
+          ]
+        }
+      ],
+      "default": "fixed"
+    },
+    "scrollbar-always-on": {
+      "label": "总是显示滚动条",
+      "title": "总是显示滚动条",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "show-overflow-tooltip": {
+      "label": "",
+      "title": "是否隐藏额外内容并在单元格悬停时使用 Tooltip 显示它们。这将影响全部列的展示。",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "[`object`](#table-attributes) ^(2.2.28)",
+              "value": "[`object`](#table-attributes) ^(2.2.28)"
+            }
+          ]
+        }
+      ],
+      "default": "参考 [tooltip-options](#table-attributes)"
+    },
+    "flexible": {
+      "label": "确保主轴最小尺寸",
+      "title": "确保主轴的最小尺寸",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.2.1"
+    }
+  },
+  "events": [
+    {
+      "name": "select",
+      "title": "当用户手动勾选数据行的 Checkbox 时触发的事件",
+      "params": "selection, row"
+    },
+    {
+      "name": "select-all",
+      "title": "当用户手动勾选全选 Checkbox 时触发的事件",
+      "params": "selection"
+    },
+    {
+      "name": "selection-change",
+      "title": "当选择项发生变化时会触发该事件",
+      "params": "selection"
+    },
+    {
+      "name": "cell-mouse-enter",
+      "title": "当单元格 hover 进入时会触发该事件",
+      "params": "row, column, cell, event"
+    },
+    {
+      "name": "cell-mouse-leave",
+      "title": "当单元格 hover 退出时会触发该事件",
+      "params": "row, column, cell, event"
+    },
+    {
+      "name": "cell-click",
+      "title": "当某个单元格被点击时会触发该事件",
+      "params": "row, column, cell, event"
+    },
+    {
+      "name": "cell-dblclick",
+      "title": "当某个单元格被双击击时会触发该事件",
+      "params": "row, column, cell, event"
+    },
+    {
+      "name": "cell-contextmenu",
+      "title": "当某个单元格被鼠标右键点击时会触发该事件",
+      "params": "row, column, cell, event"
+    },
+    {
+      "name": "row-click",
+      "title": "当某一行被点击时会触发该事件",
+      "params": "row, column, event"
+    },
+    {
+      "name": "row-contextmenu",
+      "title": "当某一行被鼠标右键点击时会触发该事件",
+      "params": "row, column, event"
+    },
+    {
+      "name": "row-dblclick",
+      "title": "当某一行被双击时会触发该事件",
+      "params": "row, column, event"
+    },
+    {
+      "name": "header-click",
+      "title": "当某一列的表头被点击时会触发该事件",
+      "params": "column, event"
+    },
+    {
+      "name": "header-contextmenu",
+      "title": "当某一列的表头被鼠标右键点击时触发该事件",
+      "params": "column, event"
+    },
+    {
+      "name": "sort-change",
+      "title": "当表格的排序条件发生变化的时候会触发该事件",
+      "params": "{ column, prop, order }"
+    },
+    {
+      "name": "filter-change",
+      "title": "column 的 key， 如果需要使用 filter-change 事件，则需要此属性标识是哪个 column 的筛选条件",
+      "params": "filters"
+    },
+    {
+      "name": "current-change",
+      "title": "当表格的当前行发生变化的时候会触发该事件，如果要高亮当前行，请打开表格的 highlight-current-row 属性",
+      "params": "currentRow, oldCurrentRow"
+    },
+    {
+      "name": "header-dragend",
+      "title": "当拖动表头改变了列的宽度的时候会触发该事件",
+      "params": "newWidth, oldWidth, column, event"
+    },
+    {
+      "name": "expand-change",
+      "title": "当用户对某一行展开或者关闭的时候会触发该事件（展开行时，回调的第二个参数为 expandedRows；树形表格时第二参数为 expanded）",
+      "params": "row, (expandedRows | expanded)"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "clearSelection",
+      "title": "用于多选表格，清空用户的选择",
+      "params": "—"
+    },
+    {
+      "name": "getSelectionRows",
+      "title": "返回当前选中的行",
+      "params": ""
+    },
+    {
+      "name": "toggleRowSelection",
+      "title": "用于多选表格，切换某一行的选中状态， 如果使用了第二个参数，则可直接设置这一行选中与否",
+      "params": "row, selected"
+    },
+    {
+      "name": "toggleAllSelection",
+      "title": "用于多选表格，切换全选和全不选",
+      "params": "—"
+    },
+    {
+      "name": "toggleRowExpansion",
+      "title": "用于可扩展的表格或树表格，如果某行被扩展，则切换。 使用第二个参数，您可以直接设置该行应该被扩展或折叠。",
+      "params": "row, expanded"
+    },
+    {
+      "name": "setCurrentRow",
+      "title": "用于单选表格，设定某一行为选中行， 如果调用时不加参数，则会取消目前高亮行的选中状态。",
+      "params": "row"
+    },
+    {
+      "name": "clearSort",
+      "title": "用于清空排序条件，数据会恢复成未排序的状态",
+      "params": "—"
+    },
+    {
+      "name": "clearFilter",
+      "title": "传入由`columnKey` 组成的数组以清除指定列的过滤条件。 如果没有参数，清除所有过滤器",
+      "params": "columnKeys"
+    },
+    {
+      "name": "doLayout",
+      "title": "对 Table 进行重新布局。 当表格可见性变化时，您可能需要调用此方法以获得正确的布局",
+      "params": "—"
+    },
+    {
+      "name": "sort",
+      "title": "手动排序表格。 参数 `prop` 属性指定排序列，`order` 指定排序顺序。",
+      "params": "prop: string, order: string"
+    },
+    {
+      "name": "scrollTo",
+      "title": "滚动到一组特定坐标",
+      "params": "(options: ScrollToOptions | number, yCoord?: number)"
+    },
+    {
+      "name": "setScrollTop",
+      "title": "设置垂直滚动位置",
+      "params": "top"
+    },
+    {
+      "name": "setScrollLeft",
+      "title": "设置水平滚动位置",
+      "params": "left"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "table-column"
+      ]
+    },
+    {
+      "name": "append",
+      "title": "插入至表格最后一行之后的内容， 如果需要对表格的内容进行无限滚动操作，可能需要用到这个 slot。 若表格有合计行，该 slot 会位于合计行之上。"
+    },
+    {
+      "name": "empty",
+      "title": "当数据为空时自定义的内容"
+    }
+  ]
+}

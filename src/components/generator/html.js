@@ -1,14 +1,15 @@
-import propertyConfigList from './settingConfig'
-import slotHtmlFunctions from "./slots";
+import elementPlusConfigMap from "@/element-plus-config"
+import slotHtmlFunctions from "@/components/generator/slots";
 
 export function vue3Template(itemList) {
-    return `<template>
+    return `<template_alt>
     <div style="padding: 5px">
      ${renderHtml(itemList)}
     </div>
-  </template>`
+  </template_alt>`
 }
 
+//总入口
 export const renderHtml = (itemList, formModelName) => {
     if (!itemList) {
         return ""
@@ -22,17 +23,18 @@ export const renderHtml = (itemList, formModelName) => {
 }
 //单个组件
 export const renderElement = (item, formModelName) => {
-    const {tag, layout} = item.__config__;
-    const id = item.__id__;
-    if (id === 'text') {//todo 只有文字而已，目前用span代替，应该有更好的方法
-        return renderSlot(item)
+    if (typeof item === 'string') {//todo 只有文字而已，目前用span代替，应该有更好的方法
+        return item
+    } else if (item.__id__ === 'plainText') {//todo 只有文字而已，目前用span代替，应该有更好的方法
+        return item.__slots__.default
     } else {
+        const {tag, layout} = item.__config__;
         let childHtml
         if (tag === "el-form") {
             let {model} = item.__props__;
-            childHtml = `<${tag}${renderProps(item)}>${renderSlot(item)}${renderHtml(item.__children__, model)}</${tag}>`;
+            childHtml = `<${tag}${renderProps(item)}>${renderSlots(item)}</${tag}>`;
         } else {
-            childHtml = `<${tag}${renderProps(item, formModelName)}>${renderSlot(item)}${renderHtml(item.__children__, formModelName)}</${tag}>`;
+            childHtml = `<${tag}${renderProps(item, formModelName)}>${renderSlots(item)}</${tag}>`;
         }
         if (layout === 'formItem') {
             return renderFormItem(item, childHtml)
@@ -41,22 +43,24 @@ export const renderElement = (item, formModelName) => {
         }
 
     }
-
 }
-//组件
+//组件属性
 export const renderProps = (item, formModelName) => {
     const id = item.__id__;
-    const configs = propertyConfigList[id];
+    const {attributes} = elementPlusConfigMap[id];
     const props = item.__props__
     const str = []
-    if (configs) {
-        const keys = Object.keys(configs)
+    if (props.ref) {
+        str.push(` ref=${props.ref}`)
+    }
+    if (attributes) {
+        const keys = Object.keys(attributes)
         keys.push('style');//多一个style
         keys.forEach((propsName) => {
             const value = props[propsName];
-            const config = configs[propsName];
-            if (config&&!config.slot && props.__ref__[propsName]) {
-                str.push(` :${propsName}="${props.__ref__[propsName]}"`);
+            const config = attributes[propsName];
+            if (config && !config.slot && item.__refs__[propsName]) {
+                str.push(` :${propsName}="${item.__refs__[propsName]}"`);
                 return false;
             }
             const typeOfValue = typeof value;
@@ -80,7 +84,7 @@ export const renderProps = (item, formModelName) => {
                                 str.push(` :${propsName}="${value}"`)
                             } else if (config.ref === true) {//在el-form中表示引用
                                 str.push(` :${propsName}="${props}"`)
-                            }else {
+                            } else {
                                 str.push(` ${propsName}="${value}"`)
                             }
                         } else if (typeOfValue === 'number') {
@@ -92,7 +96,7 @@ export const renderProps = (item, formModelName) => {
                                 }
                             } else {
                                 if (!config || !isObjectEqual(value, config.default)) {
-                                    str.push(renderObjectProps(propsName, value))
+                                    str.push(renderObjectProps(propsName, value, config && config.default))
                                 }
                             }
                         }
@@ -115,26 +119,33 @@ export const renderProps = (item, formModelName) => {
 }
 
 
-export const renderSlot = (item) => {
-    const slot = item.__slot__;
-    if (!slot) {
-        return "";
-    }
-    const tag = item.__config__.tag;
-    if (slot.default) {
-        return slot.default;
-    }
-    if (slotHtmlFunctions[tag]){
+export const renderSlots = (item) => {
+    const {tag, layout} = item.__config__;
+    if (slotHtmlFunctions[tag]) {
         return slotHtmlFunctions[tag](item);
+    } else {
+        const slots = item.__slots__;
+        if (!slots) {
+            return "";
+        }
+        const array = [];
+        for (const slotName in slots) {
+            let s = renderHtml(slots[slotName]);
+            if (s && slotName !== "default") {
+                s = `<template_alt #${slotName}>${s}</template_alt>` //fixme js beauty不支持这个
+            }
+            array.push(s)
+        }
+        return array.join("");
     }
-    return "";
+
 }
 
 export const renderFormItem = (item, child) => {
     const config = item.__config__
     let labelWidth = ''
     let label = `label="${config.label}"`
-    if (config.labelWidth ) {
+    if (config.labelWidth) {
         labelWidth = `label-width="${config.labelWidth}px"`
     }
     if (config.showLabel === false) {
@@ -147,16 +158,23 @@ export const renderFormItem = (item, child) => {
 }
 
 //属性值为object
-export const renderObjectProps = (propsName, ob) => {
+export const renderObjectProps = (propsName, ob, default_ob) => {
     if (!ob) {
         return ""
     }
     ob = deepClone(ob)
     Object.keys(ob).forEach((k) => {//删除空值
         if (!k || ob[k] === "" || ob[k] === undefined) {
-            delete ob[k]
+            delete ob[k];
+            return false;
         }
+        if (default_ob && ob[k] === default_ob[k]) {
+            delete ob[k];
+        }
+
     })
+
+
     const str = JSON.stringify(ob).replace(/\"(.[^-\"]*?)\":/g, '$1:').replace(/\"/g, "'");
     if (str === "{}" || str === "[]") {
         return "";
@@ -190,7 +208,7 @@ export function dialogWrapper(str) {
 }
 
 
-export function vueScript(html,script) {
+export function vueScript(html, script) {
     return `${html}
 <script setup>
 ${script}

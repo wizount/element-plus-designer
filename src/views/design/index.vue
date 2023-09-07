@@ -1,23 +1,23 @@
 <template>
-  <designer v-model="drawingList"></designer>
+  <designer v-model="drawItemList"></designer>
 </template>
 
 <script setup>
-import {getDrawingList, saveDrawingList} from "@/utils/db";
-import drawingDefault from "@/components/generator/drawingDefault";
+import {getDrawItemList, saveDrawItemList} from "@/utils/db";
+import drawingDefault from "@/components/config/drawingDefault";
 import {debounce} from "throttle-debounce";
 import Designer from "@/views/design/Designer.vue";
 
-const saveDrawingListDebounce = debounce(340, saveDrawingList)
+const saveDrawItemListDebounce = debounce(340, saveDrawItemList)
 
-const drawingListInDB = getDrawingList().filter((d)=>d!=null);
+const drawItemListInDB = getDrawItemList().filter((d)=>d!=null);
 
-if(drawingListInDB==null){
+if(drawItemListInDB==null){
 
 }
-const drawingList = ref(drawingListInDB || drawingDefault || [])
-watch(() => [...drawingList.value], (val) => {
-  saveDrawingListDebounce(val)
+const drawItemList = ref(drawItemListInDB || drawingDefault || [])
+watch(() => [...drawItemList.value], (val) => {
+  saveDrawItemListDebounce(val)
 }, {deep: true})
 
 </script>

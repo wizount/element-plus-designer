@@ -1,0 +1,297 @@
+{
+  "__id__": "dropdown",
+  "name": "下拉菜单",
+  "tag": "el-dropdown",
+  "tagIcon": "dropdown",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/dropdown.html",
+  "attributes": {
+    "type": {
+      "label": "",
+      "title": "菜单按钮类型，同 `Button` 组件一样，仅在 `split-button` 为 true 的情况下有效。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "size": {
+      "label": "",
+      "title": "菜单尺寸，在 split-button 为 true 的情况下也对触发按钮生效。",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "max-height": {
+      "label": "",
+      "title": "菜单最大高度",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "split-button": {
+      "label": "",
+      "title": "下拉触发元素呈现为按钮组",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "disabled": {
+      "label": "",
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "placement": {
+      "label": "",
+      "title": "菜单弹出位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "top-start",
+              "value": "top-start"
+            },
+            {
+              "label": "top-end",
+              "value": "top-end"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            },
+            {
+              "label": "bottom-start",
+              "value": "bottom-start"
+            },
+            {
+              "label": "bottom-end",
+              "value": "bottom-end"
+            }
+          ]
+        }
+      ],
+      "default": "bottom"
+    },
+    "trigger": {
+      "label": "",
+      "title": "触发下拉的行为",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "hover",
+              "value": "hover"
+            },
+            {
+              "label": "click",
+              "value": "click"
+            },
+            {
+              "label": "contextmenu",
+              "value": "contextmenu"
+            }
+          ]
+        }
+      ],
+      "default": "hover"
+    },
+    "hide-on-click": {
+      "label": "",
+      "title": "是否在点击菜单项后隐藏菜单",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "show-timeout": {
+      "label": "",
+      "title": "展开下拉菜单的延时，仅在 trigger 为 hover 时有效",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 250
+    },
+    "hide-timeout": {
+      "label": "",
+      "title": "收起下拉菜单的延时（仅在 trigger 为 hover 时有效）",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 150
+    },
+    "role": {
+      "label": "",
+      "title": "下拉菜单的 ARIA 属性。 根据具体场景，您可能想要将此更改为“navigation”",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "menu"
+    },
+    "tabindex": {
+      "label": "",
+      "title": "Dropdown 组件的 [tabindex](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "popper-class": {
+      "label": "",
+      "title": "自定义浮层类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "popper-options": {
+      "label": "",
+      "title": "[popper.js](https://popper.js.org/docs/v2/) 参数",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "请参考 [popper.js](https:",
+              "value": "请参考 [popper.js](https:"
+            },
+            {
+              "label": "",
+              "value": ""
+            },
+            {
+              "label": "popper.js.org",
+              "value": "popper.js.org"
+            },
+            {
+              "label": "docs",
+              "value": "docs"
+            },
+            {
+              "label": "v2",
+              "value": "v2"
+            },
+            {
+              "label": ") 文档",
+              "value": ") 文档"
+            }
+          ]
+        }
+      ],
+      "default": "{modifiers: [{name: 'computeStyles',options: {gpuAcceleration: false}}]}"
+    },
+    "teleported": {
+      "label": "",
+      "title": "是否将下拉列表插入至 body 元素",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "下拉菜单的内容。 注意：必须是有效的 html DOM 元素（例如 `<span>、<button>` 等）或 `el-component`，以附加监听触发器"
+    },
+    {
+      "name": "dropdown",
+      "title": "下拉列表，通常是 `<el-dropdown-menu>` 组件",
+      "subtags": [
+        "dropdown-menu"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "click",
+      "title": "`split-button` 为 true 时，点击左侧按钮的回调",
+      "params": "—"
+    },
+    {
+      "name": "command",
+      "title": "点击菜单项触发的事件回调",
+      "params": "dropdown-item 的指令"
+    },
+    {
+      "name": "visible-change",
+      "title": "下拉框出现/隐藏时触发",
+      "params": "出现则为 true，隐藏则为 false"
+    }
+  ]
+}

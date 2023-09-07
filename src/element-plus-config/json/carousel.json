@@ -1,0 +1,223 @@
+{
+  "__id__": "carousel",
+  "name": "走马灯",
+  "tag": "el-carousel",
+  "tagIcon": "carousel",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/carousel.html",
+  "childTag": [
+    "el-carousel-item"
+  ],
+  "attributes": {
+    "height": {
+      "label": "高度",
+      "title": "carousel 的高度",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "initial-index": {
+      "label": "初始状态激活索引",
+      "title": "初始状态激活的幻灯片的索引，从 0 开始",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "trigger": {
+      "label": "触发方式",
+      "title": "指示器的触发方式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "hover",
+              "value": "hover"
+            },
+            {
+              "label": "click",
+              "value": "click"
+            }
+          ]
+        }
+      ],
+      "default": "hover"
+    },
+    "autoplay": {
+      "label": "自动切换",
+      "title": "是否自动切换",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "interval": {
+      "label": "自动切换时间间隔",
+      "title": "自动切换的时间间隔，单位为毫秒",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 3000
+    },
+    "indicator-position": {
+      "label": "指示器位置",
+      "title": "指示器的位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "默认",
+              "value": ""
+            },
+            {
+              "label": "outside",
+              "value": "outside"
+            },
+            {
+              "label": "none",
+              "value": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "arrow": {
+      "label": "切换箭头显示时机",
+      "title": "切换箭头的显示时机",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "always",
+              "value": "always"
+            },
+            {
+              "label": "hover",
+              "value": "hover"
+            },
+            {
+              "label": "never",
+              "value": "never"
+            }
+          ]
+        }
+      ],
+      "default": "hover"
+    },
+    "type": {
+      "label": "类型",
+      "title": "carousel 的类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "默认",
+              "value": ""
+            },
+            {
+              "label": "card",
+              "value": "card"
+            }
+          ]
+        }
+      ]
+    },
+    "loop": {
+      "label": "循环显示",
+      "title": "是否循环显示",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "direction": {
+      "label": "展示的向",
+      "title": "展示的方向",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "horizontal",
+              "value": "horizontal"
+            },
+            {
+              "label": "vertical",
+              "value": "vertical"
+            }
+          ]
+        }
+      ],
+      "default": "horizontal"
+    },
+    "pause-on-hover": {
+      "label": "悬浮时暂停切换",
+      "title": "鼠标悬浮时暂停自动切换",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    }
+  },
+  "events": [
+    {
+      "name": "change",
+      "title": "幻灯片切换时触发",
+      "params": "目前激活的幻灯片的索引，原幻灯片的索引"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "carousel-item"
+      ]
+    }
+  ]
+}

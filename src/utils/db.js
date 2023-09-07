@@ -1,16 +1,16 @@
-const DRAWING_ITEMS = 'drawingItems'
-const DRAWING_ITEMS_VERSION = '1.2'
+const DRAWING_ITEMS = 'drawItems'
+const DRAWING_ITEMS_VERSION = '0.2'
 const DRAWING_ITEMS_VERSION_KEY = 'DRAWING_ITEMS_VERSION'
 const DRAWING_ID = 'idGlobal'
 const TREE_NODE_ID = 'treeNodeId'
 const FORM_CONF = 'designConf'
 
-export function getDrawingList() {
+export function getDrawItemList() {
   // 加入缓存版本的概念，保证缓存数据与程序匹配
   const version = localStorage.getItem(DRAWING_ITEMS_VERSION_KEY)
   if (version !== DRAWING_ITEMS_VERSION) {
     localStorage.setItem(DRAWING_ITEMS_VERSION_KEY, DRAWING_ITEMS_VERSION)
-    saveDrawingList([])
+    saveDrawItemList([])
     return []
   }
 
@@ -19,7 +19,7 @@ export function getDrawingList() {
   return []
 }
 
-export function saveDrawingList(list) {
+export function saveDrawItemList(list) {
   localStorage.setItem(DRAWING_ITEMS, JSON.stringify(list))
 }
 

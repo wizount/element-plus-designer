@@ -1,0 +1,109 @@
+{
+  "__id__": "loading",
+  "attributes": {
+    "target": {
+      "label": "",
+      "title": "Loading 需要覆盖的 DOM 节点。 可传入一个 DOM 对象或字符串； 若传入字符串，则会将其作为参数传入 `document.querySelector`以获取到对应 DOM 节点",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "HTMLElement",
+          "tag": ""
+        }
+      ],
+      "default": "document.body"
+    },
+    "body": {
+      "label": "",
+      "title": "同 `v-loading` 指令中的 `body` 修饰符",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "fullscreen": {
+      "label": "",
+      "title": "同 `v-loading` 指令中的 `fullscreen` 修饰符",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "lock": {
+      "label": "",
+      "title": "同 `v-loading` 指令中的 `lock` 修饰符",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "text": {
+      "label": "",
+      "title": "显示在加载图标下方的加载文案",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "spinner": {
+      "label": "",
+      "title": "自定义加载图标类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "background": {
+      "label": "",
+      "title": "遮罩背景色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "customClass": {
+      "label": "",
+      "title": "Loading 的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    }
+  },
+  "slots": []
+}

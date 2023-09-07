@@ -1,0 +1,312 @@
+{
+  "__id__": "button",
+  "name": "按钮",
+  "tag": "el-button",
+  "tagIcon": "button",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/button.html",
+  "attributes": {
+    "size": {
+      "label": "尺寸",
+      "title": "尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "props": {
+            "clearable": true
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "type": {
+      "label": "类型",
+      "title": "类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "primary",
+              "value": "primary"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "danger",
+              "value": "danger"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            }
+          ]
+        }
+      ]
+    },
+    "plain": {
+      "label": "朴素按钮",
+      "title": "是否为朴素按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "text": {
+      "label": "文字按钮",
+      "title": "是否为文字按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.2.0"
+    },
+    "bg": {
+      "label": "显示文字按钮背景颜色",
+      "title": "是否显示文字按钮背景颜色",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.2.0"
+    },
+    "link": {
+      "label": "链接按钮",
+      "title": "是否为链接按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.2.1"
+    },
+    "round": {
+      "label": "圆角按钮",
+      "title": "是否为圆角按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "circle": {
+      "label": "圆形按钮",
+      "title": "是否为圆形按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "loading": {
+      "label": "加载中",
+      "title": "是否为加载中状态",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "loading-icon": {
+      "label": "加载中图标",
+      "title": "自定义加载中状态图标组件",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "Loading"
+    },
+    "disabled": {
+      "label": "禁用状态",
+      "title": "按钮是否为禁用状态",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "icon": {
+      "label": "图标",
+      "title": "图标组件",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "autofocus": {
+      "label": "autofocus",
+      "title": "原生 autofocus 属性",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "native-type": {
+      "label": "原生 type 属性",
+      "title": "原生 type 属性",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "button",
+              "value": "button"
+            },
+            {
+              "label": "submit",
+              "value": "submit"
+            },
+            {
+              "label": "reset",
+              "value": "reset"
+            }
+          ]
+        }
+      ],
+      "default": "button"
+    },
+    "auto-insert-space": {
+      "label": "插入空格",
+      "title": "自动在两个中文字符之间插入空格",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ]
+    },
+    "color": {
+      "label": "按钮颜色",
+      "title": "自定义按钮颜色, 并自动计算 hover 和 active 触发后的颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ]
+    },
+    "dark": {
+      "label": "dark 模式",
+      "title": "dark 模式, 意味着自动设置 color 为 dark 模式的颜色",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "tag": {
+      "label": "自定义元素标签",
+      "title": "自定义元素标签，比如按钮，div，路由链接，nuxt链接",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "component",
+          "tag": ""
+        }
+      ],
+      "default": "button",
+      "version": "2.3.4"
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    },
+    {
+      "name": "loading",
+      "title": "自定义加载中组件"
+    },
+    {
+      "name": "icon",
+      "title": "自定义图标组件"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "ref",
+      "title": "按钮 html 元素",
+      "type": "^[object]`Ref<HTMLButtonElement>`"
+    },
+    {
+      "name": "size",
+      "title": "按钮尺寸",
+      "type": "^[object]`ComputedRef<'' | 'small' | 'default' | 'large'>`"
+    },
+    {
+      "name": "type",
+      "title": "按钮类型",
+      "type": "^[object]`ComputedRef<'' | 'default' | 'primary' | 'success' | 'warning' | 'info' | 'danger' | 'text'>`"
+    },
+    {
+      "name": "disabled",
+      "title": "按钮已禁用",
+      "type": "^[object]`ComputedRef<boolean>`"
+    },
+    {
+      "name": "shouldAddSpace",
+      "title": "是否在两个字符之间插入空格",
+      "type": "^[object]`ComputedRef<boolean>`"
+    }
+  ]
+}

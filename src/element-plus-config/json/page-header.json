@@ -1,0 +1,83 @@
+{
+  "__id__": "page-header",
+  "name": "页头",
+  "tag": "el-page-header",
+  "tagIcon": "page-header",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/page-header.html",
+  "attributes": {
+    "icon": {
+      "label": "图标",
+      "title": "Page Header 的图标 Icon 组件",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "Back"
+    },
+    "title": {
+      "label": "主标题",
+      "title": "Page Header 的主标题，默认是 Back (内置 a11y)",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "content": {
+      "label": "内容",
+      "title": "Page Header 的内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    }
+  },
+  "events": [
+    {
+      "name": "back",
+      "title": "点击左侧区域触发",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "icon",
+      "title": "图标内容"
+    },
+    {
+      "name": "title",
+      "title": "标题内容"
+    },
+    {
+      "name": "content",
+      "title": "内容"
+    },
+    {
+      "name": "extra",
+      "title": "扩展设置"
+    },
+    {
+      "name": "breadcrumb",
+      "title": "面包屑导航内容"
+    },
+    {
+      "name": "default",
+      "title": "默认内容"
+    }
+  ]
+}

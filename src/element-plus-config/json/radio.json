@@ -1,0 +1,109 @@
+{
+  "__id__": "radio",
+  "name": "单选框",
+  "tag": "el-radio",
+  "tagIcon": "radio",
+  "layout": "formItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/radio.html",
+  "attributes": {
+    "vModel": "modelValue",
+    "label": {
+      "label": "单选框的值",
+      "title": "单选框的值",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ]
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "是否禁用单选框",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "border": {
+      "label": "显示边框",
+      "title": "是否显示边框",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "size": {
+      "label": "尺寸",
+      "title": "单选框的尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "name": {
+      "label": "",
+      "title": "原始 `name` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "name": "change",
+      "title": "绑定值变化时触发的事件",
+      "type": "Function",
+      "fnDes": "(value: string | number | boolean) => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    }
+  ]
+}

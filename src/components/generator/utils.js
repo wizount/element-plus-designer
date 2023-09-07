@@ -1,6 +1,5 @@
 //判断数组是否相等
 export const isArrayEqual = (arrayA, arrayB) => {
-    console.info(JSON.stringify(arrayA), JSON.stringify(arrayB))
     return JSON.stringify(arrayA) === JSON.stringify(arrayB);
 }
 

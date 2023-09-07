@@ -1,0 +1,149 @@
+{
+  "__id__": "statistic",
+  "name": "统计组件",
+  "tag": "el-statistic",
+  "tagIcon": "statistic",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/statistic.html",
+  "attributes": {
+    "value": {
+      "label": "数字内容",
+      "title": "数字内容",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "decimal-separator": {
+      "label": "小数点",
+      "title": "设置小数点符号",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "."
+    },
+    "formatter": {
+      "label": "",
+      "title": "自定义数字格式化",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(value: number) => string | number"
+        }
+      ],
+      "hide": true
+    },
+    "group-separator": {
+      "label": "千分位",
+      "title": "设置千分位标识符",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ","
+    },
+    "precision": {
+      "label": "精度",
+      "title": "数字精度",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "prefix": {
+      "label": "前缀",
+      "title": "设置数字的前缀",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "suffix": {
+      "label": "后缀",
+      "title": "设置数字的后缀",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "title": {
+      "label": "标题",
+      "title": "数字标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "value-style": {
+      "label": "数字样式",
+      "title": "数字样式",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "object",
+          "tag": "style-editor"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "prefix",
+      "title": "数字区之前"
+    },
+    {
+      "name": "suffix",
+      "title": "数字区之后"
+    },
+    {
+      "name": "title",
+      "title": "数字标题"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "displayValue",
+      "title": "当前显示值",
+      "type": "^[object]`Ref<string | number>`"
+    }
+  ]
+}

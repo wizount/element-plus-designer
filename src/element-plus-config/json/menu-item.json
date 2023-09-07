@@ -1,0 +1,67 @@
+{
+  "__id__": "menu-item",
+  "name": "菜单项",
+  "tag": "el-menu-item",
+  "tagIcon": "menu-item",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/menu.html#menu-item-attributes",
+  "parentTag": [
+    "el-menu",
+    "el-sub-menu",
+    "el-menu-item-group"
+  ],
+  "attributes": {
+    "index": {
+      "label": "唯一标志",
+      "title": "唯一标志",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": null
+    },
+    "route": {
+      "label": "Vue Router",
+      "title": "Vue Router 路径对象",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    }
+  },
+  "events": [
+    {
+      "name": "click",
+      "title": "菜单点击时的回调函数",
+      "params": "el-menu-item 实例"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    },
+    {
+      "name": "title",
+      "title": "自定义标题内容"
+    }
+  ]
+}

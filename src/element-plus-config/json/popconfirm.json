@@ -1,0 +1,220 @@
+{
+  "__id__": "popconfirm",
+  "name": "气泡确认框",
+  "tag": "el-popconfirm",
+  "tagIcon": "popconfirm",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/popconfirm.html",
+  "attributes": {
+    "title": {
+      "label": "标题",
+      "title": "标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "confirm-button-text": {
+      "label": "确认按钮文字",
+      "title": "确认按钮文字",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "cancel-button-text": {
+      "label": "取消按钮文字",
+      "title": "取消按钮文字",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "confirm-button-type": {
+      "label": "确认按钮类型",
+      "title": "确认按钮类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "primary",
+              "value": "primary"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "danger",
+              "value": "danger"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "text",
+              "value": "text"
+            }
+          ]
+        }
+      ],
+      "default": "primary"
+    },
+    "cancel-button-type": {
+      "label": "取消按钮类型",
+      "title": "取消按钮类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "primary",
+              "value": "primary"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "danger",
+              "value": "danger"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "text",
+              "value": "text"
+            }
+          ]
+        }
+      ],
+      "default": "text"
+    },
+    "icon": {
+      "label": "自定义图标",
+      "title": "自定义图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "QuestionFilled"
+    },
+    "icon-color": {
+      "label": "",
+      "title": "Icon 颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#f90"
+    },
+    "hide-icon": {
+      "label": "隐藏 Icon",
+      "title": "是否隐藏 Icon",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "hide-after": {
+      "label": "",
+      "title": "关闭时的延迟",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 200
+    },
+    "teleported": {
+      "label": "下拉列表插入 body 元素",
+      "title": "是否将 popover 的下拉列表插入至 body 元素",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "persistent": {
+      "label": "persistent",
+      "title": "当 popover 组件长时间不触发且 persistent 属性设置为 false 时, popover 将会被删除",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "width": {
+      "label": "弹出窗口宽度",
+      "title": "弹出窗口宽度",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "default": 150
+    }
+  },
+  "events": [
+    {
+      "name": "confirm",
+      "title": "点击确认按钮时触发",
+      "type": "Function",
+      "fnDes": "(e: MouseEvent) => void"
+    },
+    {
+      "name": "cancel",
+      "title": "点击取消按钮时触发",
+      "type": "Function",
+      "fnDes": "(e: MouseEvent) => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "reference",
+      "title": "触发 Popconfirm 显示的 HTML 元素"
+    }
+  ]
+}

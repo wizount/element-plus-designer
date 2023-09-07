@@ -1,0 +1,112 @@
+{
+  "__id__": "column",
+  "attributes": {
+    "align": {
+      "label": "",
+      "title": "表格单元格内容对齐方式",
+      "types": [],
+      "default": "left"
+    },
+    "class": {
+      "label": "",
+      "title": "列的类名",
+      "types": [
+        "string"
+      ]
+    },
+    "fixed": {
+      "label": "",
+      "title": "固定列位置",
+      "types": [],
+      "default": false
+    },
+    "flexGrow": {
+      "label": "",
+      "title": "CSSProperties flex grow, Only useful when this is not a fixed table",
+      "types": [
+        "number"
+      ],
+      "default": 0
+    },
+    "flexShrink": {
+      "label": "",
+      "title": "CSSProperties flex shrink, Only useful when this is not a fixed table",
+      "types": [
+        "number"
+      ],
+      "default": 1
+    },
+    "headerClass": {
+      "label": "",
+      "title": "自定义 header 头部类名",
+      "types": [
+        "string"
+      ]
+    },
+    "hidden": {
+      "label": "",
+      "title": "此列是否不可见",
+      "types": [
+        "boolean"
+      ]
+    },
+    "style": {
+      "label": "",
+      "title": "自定义列单元格的类名，将会与 gird 单元格合并",
+      "types": [
+        "CSSProperties"
+      ]
+    },
+    "sortable": {
+      "label": "",
+      "title": "设置列是否可排序",
+      "types": [
+        "boolean"
+      ]
+    },
+    "title": {
+      "label": "",
+      "title": "Header 头部单元格中的默认文本",
+      "types": [
+        "string"
+      ]
+    },
+    "maxWidth": {
+      "label": "",
+      "title": "列的最大宽度",
+      "types": [
+        "string"
+      ]
+    },
+    "minWidth": {
+      "label": "",
+      "title": "列的最小宽度",
+      "types": [
+        "string"
+      ]
+    },
+    "width": {
+      "label": "",
+      "title": "列宽度",
+      "types": [
+        "number"
+      ]
+    },
+    "cellRenderer": {
+      "label": "",
+      "title": "自定义单元格渲染器",
+      "types": [
+        "VueComponent",
+        "(props: [CellRenderProps](#typings)) => VNode"
+      ]
+    },
+    "headerCellRenderer": {
+      "label": "",
+      "title": "自定义头部渲染器",
+      "types": [
+        "VueComponent",
+        "(props: [HeaderRenderProps](#typings)) => VNode"
+      ]
+    }
+  }
+}

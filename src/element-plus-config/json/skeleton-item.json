@@ -1,0 +1,55 @@
+{
+  "__id__": "skeleton-item",
+  "attributes": {
+    "variant": {
+      "label": "",
+      "title": "当前渲染 skeleton 类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "p",
+              "value": "p"
+            },
+            {
+              "label": "text",
+              "value": "text"
+            },
+            {
+              "label": "h1",
+              "value": "h1"
+            },
+            {
+              "label": "h3",
+              "value": "h3"
+            },
+            {
+              "label": "caption",
+              "value": "caption"
+            },
+            {
+              "label": "button",
+              "value": "button"
+            },
+            {
+              "label": "image",
+              "value": "image"
+            },
+            {
+              "label": "circle",
+              "value": "circle"
+            },
+            {
+              "label": "rect",
+              "value": "rect"
+            }
+          ]
+        }
+      ],
+      "default": "text"
+    }
+  },
+  "slots": []
+}

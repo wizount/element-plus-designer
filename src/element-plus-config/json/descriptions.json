@@ -1,0 +1,122 @@
+{
+  "__id__": "descriptions",
+  "attributes": {
+    "border": {
+      "label": "边框",
+      "title": "是否带有边框",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "column": {
+      "label": "每行数量",
+      "title": "一行 Descriptions Item 的数量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 3
+    },
+    "direction": {
+      "label": "排列的方向",
+      "title": "排列的方向",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "vertical",
+              "value": "vertical"
+            },
+            {
+              "label": "horizontal",
+              "value": "horizontal"
+            }
+          ]
+        }
+      ],
+      "default": "horizontal"
+    },
+    "size": {
+      "label": "尺寸",
+      "title": "列表的尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "title": {
+      "label": "标题文本",
+      "title": "标题文本，显示在左上方",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "extra": {
+      "label": "操作区文本",
+      "title": "操作区文本，显示在右上方",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "descriptions-item"
+      ]
+    },
+    {
+      "name": "title",
+      "title": "自定义标题，显示在左上方"
+    },
+    {
+      "name": "extra",
+      "title": "自定义操作区，显示在右上方"
+    }
+  ]
+}

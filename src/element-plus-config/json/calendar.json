@@ -1,0 +1,33 @@
+{
+  "__id__": "calendar",
+  "name": "日历",
+  "tag": "el-calendar",
+  "tagIcon": "calendar",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/calendar.html",
+  "attributes": {
+    "vModel": "modelValue",
+    "range": {
+      "label": "时间范围",
+      "title": "时间范围，包括开始时间与结束时间。 开始时间必须是周起始日，结束时间必须是周结束日，且时间跨度不能超过两个月。",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "date-cell",
+      "title": "`type` 表示该日期的所属月份，可选值有 prev-month、current-month 和 next-month；`isSelected` 标明该日期是否被选中；`day` 是格式化的日期，格式为 `yyyy-MM-dd`；`date` 是单元格的日期",
+      "type": "^[object]`{ data: { type: 'prev-month' | 'current-month' | 'next-month', isSelected: boolean, day: string, date: Date } }`"
+    },
+    {
+      "name": "header",
+      "title": "卡片标题内容",
+      "type": "^[object]`{ date: string }`"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "__id__": "tag",
+  "name": "标签",
+  "tag": "el-tag",
+  "tagIcon": "tag",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/tag.html",
+  "attributes": {
+    "type": {
+      "label": "类型",
+      "title": "类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "默认",
+              "value": ""
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "danger",
+              "value": "danger"
+            }
+          ]
+        }
+      ],
+      "default": ""
+    },
+    "closable": {
+      "label": "可关闭",
+      "title": "是否可关闭",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "disable-transitions": {
+      "label": "禁用渐变动画",
+      "title": "是否禁用渐变动画",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "hit": {
+      "label": "边框描边",
+      "title": "是否有边框描边",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "color": {
+      "label": "背景色",
+      "title": "背景色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": ""
+    },
+    "size": {
+      "label": "尺寸",
+      "title": "尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": ""
+    },
+    "effect": {
+      "label": "主题",
+      "title": "主题",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "dark",
+              "value": "dark"
+            },
+            {
+              "label": "light",
+              "value": "light"
+            },
+            {
+              "label": "plain",
+              "value": "plain"
+            }
+          ]
+        }
+      ],
+      "default": "light"
+    },
+    "round": {
+      "label": "圆形",
+      "title": "Tag 是否为圆形",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    }
+  },
+  "events": [
+    {
+      "name": "click",
+      "title": "点击 Tag 时触发的事件",
+      "type": "Function",
+      "fnDes": "(evt: MouseEvent) => void"
+    },
+    {
+      "name": "close",
+      "title": "关闭 Tag 时触发的事件",
+      "type": "Function",
+      "fnDes": "(evt: MouseEvent) => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    }
+  ]
+}

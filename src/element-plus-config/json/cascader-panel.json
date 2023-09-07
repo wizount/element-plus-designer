@@ -1,0 +1,66 @@
+{
+  "__id__": "cascader-panel",
+  "attributes": {
+    "options": {
+      "label": "",
+      "title": "选项的数据源， `value` 和 `label` 可以通过 `CascaderProps` 自定义.",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
+    "props": {
+      "label": "",
+      "title": "配置选项, 请参阅下面 `CascaderProps` 表。",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "name": "change",
+      "title": "当选中节点变化时触发",
+      "type": "Function",
+      "fnDes": "(value: CascaderValue) => void"
+    },
+    {
+      "name": "expand-change",
+      "title": "当展开节点发生变化时触发",
+      "type": "Function",
+      "fnDes": "(value: CascaderNodePathValue) => void"
+    },
+    {
+      "name": "close",
+      "title": "面板的关闭事件，提供给 Cascader 以便做更好的判断。",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "下级节点的自定义内容，它们分别是当前节点对象和节点数据。",
+      "params": "^[object]`{ node: any, data: any }`"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "getCheckedNodes",
+      "title": "获取一个当前选中节点的数组。(仅仅是传单) 是否只返回叶选中的节点，默认是 `false`",
+      "type": "Function",
+      "fnDes": "(leafOnly: boolean) => CascaderNode[] | undefined"
+    },
+    {
+      "name": "clearCheckedNodes",
+      "title": "清空选中的节点",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ]
+}

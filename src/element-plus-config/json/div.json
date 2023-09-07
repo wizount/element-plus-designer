@@ -1,0 +1,16 @@
+{
+  "__id__": "div",
+  "name": "div",
+  "tag": "div",
+  "tagIcon": "div",
+  "layout": "containerItem",
+  "attributes": {
+
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "文本内容"
+    }
+  ]
+}

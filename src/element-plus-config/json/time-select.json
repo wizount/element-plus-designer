@@ -1,0 +1,250 @@
+{
+  "__id__": "time-select",
+  "name": "时间选择",
+  "tag": "el-time-select",
+  "tagIcon": "time",
+  "layout": "formItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/time-select.html",
+  "attributes": {
+    "vModel": "modelValue",
+    "placeholder": "请选择",
+    "disabled": {
+      "label": "禁用",
+      "title": "禁用状态",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "editable": {
+      "label": "可输入",
+      "title": "文本框可输入",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "clearable": {
+      "label": "清除按钮",
+      "title": "是否显示清除按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "size": {
+      "label": "尺寸",
+      "title": "输入框尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "name": {
+      "label": "",
+      "title": "原生属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "hide": true
+    },
+    "effect": {
+      "label": "主题",
+      "title": "Tooltip 主题，内置了 `dark` / `light` 两种主题",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "dark",
+              "value": "dark"
+            },
+            {
+              "label": "light",
+              "value": "light"
+            }
+          ]
+        }
+      ],
+      "default": "light"
+    },
+    "prefix-icon": {
+      "label": "前缀图标",
+      "title": "自定义前缀图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "Clock"
+    },
+    "clear-icon": {
+      "label": "前缀图标",
+      "title": "自定义清除图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "CircleClose"
+    },
+    "start": {
+      "label": "",
+      "title": "开始时间",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "09:00"
+    },
+    "end": {
+      "label": "",
+      "title": "结束时间",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "18:00"
+    },
+    "step": {
+      "label": "",
+      "title": "间隔时间",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "00:30"
+    },
+    "min-time": {
+      "label": "最早时间",
+      "title": "最早时间点，早于该时间的时间段将被禁用",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "max-time": {
+      "label": "最晚时间点",
+      "title": "最晚时间点，晚于该时间的时间段将被禁用",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "format": {
+      "label": "时间格式",
+      "title": "设置时间格式",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "HH:mm"
+    }
+  },
+  "events": [
+    {
+      "name": "change",
+      "title": "用户确认选定的值时触发",
+      "type": "Function",
+      "fnDes": "(value: string) => void"
+    },
+    {
+      "name": "blur",
+      "title": "在组件 Input 失去焦点时触发",
+      "type": "Function",
+      "fnDes": "(event: FocusEvent) => void"
+    },
+    {
+      "name": "focus",
+      "title": "在组件 Input 获得焦点时触发",
+      "type": "Function",
+      "fnDes": "(event: FocusEvent) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "focus",
+      "title": "使 input 获取焦点",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "blur",
+      "title": "使 input 失去焦点",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ],
+  "slots": []
+}

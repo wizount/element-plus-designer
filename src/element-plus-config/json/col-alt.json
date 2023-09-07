@@ -1,0 +1,266 @@
+{
+  "__id__": "col",
+  "name": "列容器",
+  "tag": "el-col",
+  "tagIcon": "col",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/layout.html",
+  "parentTag": [
+    "el-row"
+  ],
+  "attributes": {
+    "span": {
+      "label": "占据列数",
+      "title": "栅格占据的列数",
+      "types": [
+        {
+          "name": "number",
+          "tag": "col-span-editor",
+          "props": {
+            "defaultValue": 24
+          }
+        }
+      ],
+      "default": 24,
+      "remember": true
+    },
+    "offset": {
+      "label": "左侧间隔格数",
+      "title": "栅格左侧的间隔格数",
+      "types": [
+        {
+          "name": "number",
+          "tag": "col-span-editor",
+          "props": {
+            "defaultValue": 0
+          }
+        }
+      ],
+      "default": 0
+    },
+    "push": {
+      "label": "向右移动格数",
+      "title": "栅格向右移动格数",
+      "types": [
+        {
+          "name": "number",
+          "tag": "col-span-editor",
+          "props": {
+            "defaultValue": 0
+          }
+        }
+      ],
+      "default": 0
+    },
+    "pull": {
+      "label": "向左移动格数",
+      "title": "栅格向左移动格数",
+      "types": [
+        {
+          "name": "number",
+          "tag": "col-span-editor",
+          "props": {
+            "defaultValue": 0
+          }
+        }
+      ],
+      "default": 0
+    },
+    "xs": {
+      "label": "xs(<768px)",
+      "title": "<768px 响应式栅格数或者栅格属性对象",
+      "types": [
+        {
+          "name": "number",
+          "tag": "col-span-editor"
+        },
+        {
+          "name": "object",
+          "tag": "fixed-keys-object-editor",
+          "props": {
+            "keys": [
+              {
+                "name": "span",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "offset",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "pull",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "push",
+                "tag": "col-span-editor"
+              }
+            ]
+          }
+        }
+      ],
+      "remember": true
+    },
+    "sm": {
+      "label": "sm(≥768px)",
+      "title": "≥768px 响应式栅格数或者栅格属性对象",
+      "types": [
+        {
+          "name": "number",
+          "tag": "col-span-editor"
+        },
+        {
+          "name": "object",
+          "tag": "fixed-keys-object-editor",
+          "props": {
+            "keys": [
+              {
+                "name": "span",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "offset",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "pull",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "push",
+                "tag": "col-span-editor"
+              }
+            ]
+          }
+        }
+      ],
+      "remember": true
+    },
+    "md": {
+      "label": "md(≥992px)",
+      "title": "≥992px 响应式栅格数或者栅格属性对象",
+      "types": [
+
+        {
+          "name": "number",
+          "tag": "col-span-editor"
+        },
+        {
+          "name": "object",
+          "tag": "fixed-keys-object-editor",
+          "props": {
+            "keys": [
+              {
+                "name": "span",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "offset",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "pull",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "push",
+                "tag": "col-span-editor"
+              }
+            ]
+          }
+        }
+      ],
+      "remember": true
+    },
+    "lg": {
+      "label": "lg(≥1200px)",
+      "title": "≥1200px 响应式栅格数或者栅格属性对象",
+      "types": [
+        {
+          "name": "number",
+          "tag": "col-span-editor"
+        },
+        {
+          "name": "object",
+          "tag": "fixed-keys-object-editor",
+          "props": {
+            "keys": [
+              {
+                "name": "span",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "offset",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "pull",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "push",
+                "tag": "col-span-editor"
+              }
+            ]
+          }
+        }
+      ],
+      "remember": true
+    },
+    "xl": {
+      "label": "xl(≥1920px)",
+      "title": "≥1920px 响应式栅格数或者栅格属性对象",
+      "types": [
+        {
+          "name": "number",
+          "tag": "col-span-editor"
+        },
+        {
+          "name": "object",
+          "tag": "fixed-keys-object-editor",
+          "props": {
+            "keys": [
+              {
+                "name": "span",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "offset",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "pull",
+                "tag": "col-span-editor"
+              },
+              {
+                "name": "push",
+                "tag": "col-span-editor"
+              }
+            ]
+          }
+        }
+      ],
+      "remember": true
+    },
+    "tag": {
+      "label": "自定义元素标签",
+      "title": "自定义元素标签",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "div"
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    }
+  ]
+}

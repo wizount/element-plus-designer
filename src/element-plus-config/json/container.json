@@ -1,0 +1,46 @@
+{
+  "__id__": "container",
+  "name": "外层容器",
+  "tag": "el-container",
+  "tagIcon": "container",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/container.html",
+  "attributes": {
+    "direction": {
+      "label": "排列方向",
+      "title": "子元素的排列方向",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "horizontal",
+              "value": "horizontal"
+            },
+            {
+              "label": "vertical",
+              "value": "vertical"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "container",
+        "header",
+        "aside",
+        "main",
+        "footer"
+      ]
+    }
+  ]
+}

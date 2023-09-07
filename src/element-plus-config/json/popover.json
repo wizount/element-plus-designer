@@ -1,0 +1,377 @@
+{
+  "__id__": "popover",
+  "name": "弹出框",
+  "tag": "el-popover",
+  "tagIcon": "popover",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/popover.html",
+  "attributes": {
+    "trigger": {
+      "label": "触发方式",
+      "title": "触发方式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "click",
+              "value": "click"
+            },
+            {
+              "label": "focus",
+              "value": "focus"
+            },
+            {
+              "label": "hover",
+              "value": "hover"
+            },
+            {
+              "label": "contextmenu",
+              "value": "contextmenu"
+            }
+          ]
+        }
+      ],
+      "default": "hover"
+    },
+    "title": {
+      "label": "标题",
+      "title": "标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "effect": {
+      "label": "主题",
+      "title": "Tooltip 主题，Element Plus 内置了 dark / light 两种主题",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "light",
+              "value": "light"
+            },
+            {
+              "label": "dark",
+              "value": "dark"
+            }
+          ]
+        }
+      ],
+      "default": "light"
+    },
+    "content": {
+      "label": "显示内容",
+      "title": "显示的内容，也可以通过写入默认 slot 修改显示内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "width": {
+      "label": "宽度",
+      "title": "宽度",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "default": "最小宽度 150px"
+    },
+    "placement": {
+      "label": "出现位置",
+      "title": "出现位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "top-start",
+              "value": "top-start"
+            },
+            {
+              "label": "top-end",
+              "value": "top-end"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            },
+            {
+              "label": "bottom-start",
+              "value": "bottom-start"
+            },
+            {
+              "label": "bottom-end",
+              "value": "bottom-end"
+            },
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "left-start",
+              "value": "left-start"
+            },
+            {
+              "label": "left-end",
+              "value": "left-end"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            },
+            {
+              "label": "right-start",
+              "value": "right-start"
+            },
+            {
+              "label": "right-end",
+              "value": "right-end"
+            }
+          ]
+        }
+      ],
+      "default": "bottom"
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "Popover 是否可用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "visible / v-model:visible": {
+      "label": "",
+      "title": "Popover 是否显示",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "offset": {
+      "label": "偏移量",
+      "title": "出现位置的偏移量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "transition": {
+      "label": "渐变动画",
+      "title": "定义渐变动画",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "el-fade-in-linear"
+    },
+    "show-arrow": {
+      "label": "显示 Tooltip 箭头",
+      "title": "是否显示 Tooltip 箭头， 欲了解更多信息，请参考 ElPopper",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "popper-options": {
+      "label": "popper.js 的参数",
+      "title": "popper.js 的参数",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "详情参考 popper.js",
+              "value": "详情参考 popper.js"
+            }
+          ]
+        }
+      ],
+      "default": "{modifiers: [{name: 'computeStyles',options: {gpuAcceleration: false}}]}",
+      "hide": true
+    },
+    "popper-class": {
+      "label": "popper 添加类名",
+      "title": "为 popper 添加类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "popper-style": {
+      "label": "",
+      "title": "为 popper 自定义样式",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
+    "show-after": {
+      "label": "延迟出现",
+      "title": "延迟出现，单位毫秒",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "hide-after": {
+      "label": "延迟关闭",
+      "title": "延迟关闭，单位毫秒",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 200
+    },
+    "auto-close": {
+      "label": "自动隐藏延时",
+      "title": "Tooltip 出现后自动隐藏延时，单位毫秒，为 0 则不会自动隐藏",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "tabindex": {
+      "label": "tabindex",
+      "title": "Popover 组件的 tabindex",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "teleported": {
+      "label": "teleported",
+      "title": "是否将 popover 的下拉列表插入至 body 元素",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "persistent": {
+      "label": "persistent",
+      "title": "当 popover 组件长时间不触发且 persistent 属性设置为 false 时, popover 将会被删除",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "Popover 内嵌 HTML 文本"
+    },
+    {
+      "name": "reference",
+      "title": "触发 Popover 显示的 HTML 元素"
+    }
+  ],
+  "events": [
+    {
+      "name": "show",
+      "title": "显示时触发",
+      "params": "—"
+    },
+    {
+      "name": "before-enter",
+      "title": "显示动画播放前触发",
+      "params": "—"
+    },
+    {
+      "name": "after-enter",
+      "title": "显示动画播放完毕后触发",
+      "params": "—"
+    },
+    {
+      "name": "hide",
+      "title": "隐藏时触发",
+      "params": "—"
+    },
+    {
+      "name": "before-leave",
+      "title": "隐藏动画播放前触发",
+      "params": "—"
+    },
+    {
+      "name": "after-leave",
+      "title": "隐藏动画播放完毕后触发",
+      "params": "—"
+    }
+  ]
+}

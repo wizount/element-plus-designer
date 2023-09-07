@@ -1,0 +1,62 @@
+{
+  "__id__": "empty",
+  "name": "空状态",
+  "tag": "el-empty",
+  "tagIcon": "empty",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/empty.html",
+  "attributes": {
+    "image": {
+      "label": "图片地址",
+      "title": "图片地址",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "image-size": {
+      "label": "图片大小",
+      "title": "图片大小（宽度）",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "description": {
+      "label": "描述",
+      "title": "描述",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "作为底部内容的内容"
+    },
+    {
+      "name": "image",
+      "title": "作为图像的内容"
+    },
+    {
+      "name": "description",
+      "title": "作为描述的内容"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "__id__": "dropdown-menu",
+  "tag": "el-dropdown-menu",
+  "tagIcon": "dropdown",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/dropdown.html",
+  "attributes": {
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "下拉菜单的内容",
+      "subtags": [
+        "dropdown-item"
+      ]
+    }
+  ]
+}

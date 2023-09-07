@@ -1,0 +1,290 @@
+{
+  "__id__": "form",
+  "name": "表单",
+  "tag": "el-form",
+  "tagIcon": "form",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/form.html",
+  "attributes": {
+    "model": {
+      "label": "表单数据",
+      "title": "表单数据对象",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "clearable": true
+        }
+      ],
+      "formRef": true
+    },
+    "rules": {
+      "label": "验证规则",
+      "title": "表单验证规则",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "clearable": true
+        }
+      ],
+      "formRef": true
+    },
+    "inline": {
+      "label": "行内表单",
+      "title": "行内表单模式",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "label-position": {
+      "label": "标签位置",
+      "title": "表单域标签的位置， 当设置为 left 或 right 时，则也需要设置 label-width 属性",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            },
+            {
+              "label": "top",
+              "value": "top"
+            }
+          ]
+        }
+      ],
+      "default": "right"
+    },
+    "label-width": {
+      "label": "标签长度",
+      "title": "标签的长度，例如50px。 作为 Form 直接子元素的 form-item 会继承该值。 可以使用 auto。",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "default": ""
+    },
+    "label-suffix": {
+      "label": "标签后缀",
+      "title": "表单域标签的后缀",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "hide-required-asterisk": {
+      "label": "隐藏标签红色星号",
+      "title": "是否隐藏必填字段标签旁边的红色星号。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "require-asterisk-position": {
+      "label": "星号位置",
+      "title": "星号的位置。",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            }
+          ]
+        }
+      ],
+      "default": "left"
+    },
+    "show-message": {
+      "label": "显示校验错误信息",
+      "title": "是否显示校验错误信息",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "inline-message": {
+      "label": "行内展示校验信息",
+      "title": "是否以行内形式展示校验信息",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "status-icon": {
+      "label": "显示校验反馈图标",
+      "title": "是否在输入框中显示校验结果反馈图标",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "validate-on-rule-change": {
+      "label": "立即触发验证",
+      "title": "是否在 rules 属性改变后立即触发一次验证",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "size": {
+      "label": "尺寸",
+      "title": "用于控制该表单内组件的尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "是否禁用该表单内的所有组件。 如果设置为 true, 它将覆盖内部组件的 disabled 属性",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "scroll-to-error": {
+      "label": "滚动表单项",
+      "title": "当校验失败时，滚动到第一个错误表单项",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "scroll-into-view-options": {
+      "label": "",
+      "title": "当校验有失败结果时，滚动到第一个失败的表单项目 可通过 [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 配置",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "name": "validate",
+      "title": "任一表单项被校验后触发",
+      "type": "Function",
+      "fnDes": "(prop: FormItemProp, isValid: boolean, message: string) => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "form-item"
+      ]
+    }
+  ],
+  "exposes": [
+    {
+      "name": "validate",
+      "title": "对整个表单的内容进行验证。 接收一个回调函数，或返回 `Promise`。",
+      "type": "Function",
+      "fnDes": "(callback?: FormValidateCallback) => Promise<void>"
+    },
+    {
+      "name": "validateField",
+      "title": "验证具体的某个字段。",
+      "type": "Function",
+      "fnDes": "(props?: Arrayable<FormItemProp> | undefined, callback?: FormValidateCallback | undefined) => FormValidationResult"
+    },
+    {
+      "name": "resetFields",
+      "title": "重置该表单项，将其值重置为初始值，并移除校验结果",
+      "type": "Function",
+      "fnDes": "(props?: Arrayable<FormItemProp> | undefined) => void"
+    },
+    {
+      "name": "scrollToField",
+      "title": "滚动到指定的字段",
+      "type": "Function",
+      "fnDes": "(prop: FormItemProp) => void"
+    },
+    {
+      "name": "clearValidate",
+      "title": "清理某个字段的表单验证信息。",
+      "type": "Function",
+      "fnDes": "(props?: Arrayable<FormItemProp> | undefined) => void"
+    }
+  ]
+}

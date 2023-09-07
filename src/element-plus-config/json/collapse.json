@@ -1,0 +1,41 @@
+{
+  "__id__": "collapse",
+  "name": "折叠面板",
+  "tag": "el-collapse",
+  "tagIcon": "collapse",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/collapse.html",
+  "childTag": [
+    "el-collapse-item"
+  ],
+  "attributes": {
+    "vModel": "modelValue",
+    "accordion": {
+      "label": "手风琴模式",
+      "title": "是否手风琴模式",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    }
+  },
+  "events": [
+    {
+      "name": "change",
+      "title": "当前激活面板改变时触发(如果是手风琴模式，参数 `activeNames` 类型为`string`，否则为`array`)",
+      "params": "(activeNames: array (non-accordion mode) / string (accordion mode))"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容",
+      "subtags": [
+        "collapse-item"
+      ]
+    }
+  ]
+}

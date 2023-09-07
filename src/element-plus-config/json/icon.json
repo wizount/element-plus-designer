@@ -1,0 +1,48 @@
+{
+  "__id__": "icon",
+  "name": "图标",
+  "tag": "el-icon",
+  "tagIcon": "icon",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/icon.html",
+  "attributes": {
+    "color": {
+      "label": "fill 颜色",
+      "title": "svg 的 fill 颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "size": {
+      "label": "图标大小",
+      "title": "SVG 图标的大小，size x size",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    }
+  ],
+  "data": {
+    "name": "icon",
+    "label": "icon名称",
+    "type":{
+      "name": "string",
+      "tag": "icon-chooser"
+    },
+    "default": "House"
+  }
+}

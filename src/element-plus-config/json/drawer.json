@@ -1,0 +1,268 @@
+{
+  "__id__": "drawer",
+  "name": "抽屉",
+  "tag": "el-drawer",
+  "tagIcon": "drawer",
+  "layout": "containerItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/drawer.html",
+  "attributes": {
+    "vModel": "modelValue",
+    "title": {
+      "label": "标题",
+      "title": "Drawer 的标题，也可通过具名 slot （见下表）传入",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "append-to-body": {
+      "label": "插入至 body 元素",
+      "title": "Drawer 自身是否插入至 body 元素上。嵌套的 Drawer 必须指定该属性并赋值为 **true**",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "lock-scroll": {
+      "label": " 出现时将 body 滚动锁定",
+      "title": "是否在 Drawer 出现时将 body 滚动锁定",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "before-close": {
+      "label": "关闭前回调",
+      "title": "关闭前的回调，会暂停 Drawer 的关闭",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(done: (cancel?: boolean) => void) => void(done 是个 function type 接受一个 boolean 参数, 执行 done 使用 true 参数或不提供参数将会终止关闭)"
+        }
+      ]
+    },
+    "close-on-click-modal": {
+      "label": "点击 modal 关闭",
+      "title": "是否可以通过点击 modal 关闭 Drawer",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "close-on-press-escape": {
+      "label": " ESC 关闭",
+      "title": "是否可以通过按下 ESC 关闭 Drawer",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "open-delay": {
+      "label": "打开延时",
+      "title": "Drawer 打开的延时时间，单位毫秒",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "close-delay": {
+      "label": "关闭延时",
+      "title": "Drawer 关闭的延时时间，单位毫秒",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "custom-class": {
+      "label": "自定义类名",
+      "title": "Drawer 的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "deprecated": true
+    },
+    "destroy-on-close": {
+      "label": "关闭后销毁子元素",
+      "title": "控制是否在关闭 Drawer 之后将子元素全部销毁",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "modal": {
+      "label": "需要遮罩层",
+      "title": "是否需要遮罩层",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "direction": {
+      "label": "打开方向",
+      "title": "Drawer 打开的方向",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "右边",
+              "value": "rtl"
+            },
+            {
+              "label": "左边",
+              "value": "ltr"
+            },
+            {
+              "label": "顶部",
+              "value": "ttb"
+            },
+            {
+              "label": "底部",
+              "value": "btt"
+            }
+          ]
+        }
+      ],
+      "default": "rtl"
+    },
+    "show-close": {
+      "label": "显示关闭按钮",
+      "title": "是否显示关闭按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "size": {
+      "label": "窗体大小",
+      "title": "Drawer 窗体的大小, 当使用 `number` 类型时, 以像素为单位, 当使用 `string` 类型时, 请传入 'x%', 否则便会以 `number` 类型解释",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "default": "30%"
+    },
+    "with-header": {
+      "label": "显示 header 栏",
+      "title": "控制是否显示 header 栏, 默认为 true, 当此项为 false 时, title attribute 和 title slot 均不生效",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "modal-class": {
+      "label": "遮罩层类名",
+      "title": "遮罩层的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "z-index": {
+      "label": "z-index",
+      "title": "设置 z-index",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "Drawer 的内容"
+    },
+    {
+      "name": "header",
+      "title": "Drawer 标题的内容；会替换标题部分，但不会移除关闭按钮。"
+    },
+    {
+      "name": "title ^(deprecated)",
+      "title": "与 header 作用相同 请使用 header"
+    },
+    {
+      "name": "footer",
+      "title": "Drawer 页脚部分"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "handleClose",
+      "title": "用于关闭 Drawer, 该方法会调用传入的 `before-close` 方法"
+    }
+  ],
+  "events": [
+    {
+      "name": "open",
+      "title": "Drawer 打开的回调",
+      "params": "—"
+    },
+    {
+      "name": "opened",
+      "title": "Drawer 打开动画结束时的回调",
+      "params": "—"
+    },
+    {
+      "name": "close",
+      "title": "Drawer 关闭的回调",
+      "params": "—"
+    },
+    {
+      "name": "closed",
+      "title": "Drawer 关闭动画结束时的回调",
+      "params": "—"
+    }
+  ]
+}

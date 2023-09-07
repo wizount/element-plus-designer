@@ -23,6 +23,6 @@ selenium-debug.log
 
 
 yarn.lock
-
-# 组件属性配置生成
-/src/components/config
+/src/element-plus-config/json-gen/
+/变量名规定.md
+/config-genrator/

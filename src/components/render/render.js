@@ -1,8 +1,3 @@
-import {deepClone} from '@/utils/index'
-
-
-
-
 import slotRenderFunctions from './slots'
 import {h, resolveComponent} from 'vue'
 
@@ -37,14 +32,14 @@ export default {
             if (childObjs) {
                 Object.keys(childObjs).forEach(key => {
                     const childFunc = childObjs[key]
-                    if (conf.__slot__ && conf.__slot__[key]) {
+                    if (conf.__data__ && conf.__data__[key]) {
                         Object.assign(thisSlots, childFunc(h, conf, key))
                     }
                 })
             }
             //增加默认slot
-            if(!thisSlots.default&&conf.__slot__&&conf.__slot__.default){
-                thisSlots.default=()=>conf.__slot__.default
+            if(!thisSlots.default&&conf.__data__&&conf.__data__.default){
+                thisSlots.default=()=>conf.__data__.default
             }
             return thisSlots;
         }

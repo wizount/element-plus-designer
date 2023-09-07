@@ -1,0 +1,260 @@
+{
+  "__id__": "pagination",
+  "name": "分页",
+  "tag": "el-pagination",
+  "tagIcon": "pagination",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/pagination.html",
+  "attributes": {
+    "small": {
+      "label": "小型分页",
+      "title": "是否使用小型分页样式",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "background": {
+      "label": "添加背景色",
+      "title": "是否为分页按钮添加背景色",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "page-size": {
+      "label": "",
+      "title": "每页显示条目个数",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "default-page-size": {
+      "label": "每页个数初始值",
+      "title": "每页显示条目数的初始值",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "total": {
+      "label": "总数",
+      "title": "总数",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "page-count": {
+      "label": "总页数",
+      "title": "总页数， total 和 page-count 设置任意一个就可以达到显示页码的功能；如果要支持 page-sizes 的更改，则需要使用 total 属性",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "pager-count": {
+      "label": "最大页码按钮数",
+      "title": "设置最大页码按钮数。 页码按钮的数量，当总页数超过该值时会折叠",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 7
+    },
+    "current-page": {
+      "label": "",
+      "title": "当前页数",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "default-current-page": {
+      "label": "初始页",
+      "title": "当前页数的初始值",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "layout": {
+      "label": "组件布局",
+      "title": "组件布局，子组件名用逗号分隔",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "prev, pager, next, jumper, ->, total"
+    },
+    "page-sizes": {
+      "label": "每页显示个数",
+      "title": "每页显示个数选择器的选项设置",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor",
+          "props":{
+            "tag": "el-input-number",
+            "tagProps": {
+              "step": 10,
+              "value-on-clear": 10
+            }
+          }
+        }
+      ],
+      "default": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        100
+      ]
+    },
+    "popper-class": {
+      "label": "下拉框类名",
+      "title": "每页显示个数选择器的下拉框类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "prev-text": {
+      "label": "上一页文字",
+      "title": "替代图标显示的上一页文字",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "prev-icon": {
+      "label": "上一页图标",
+      "title": "上一页的图标， 比 prev-text 优先级更高",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "ArrowLeft"
+    },
+    "next-text": {
+      "label": "下一页文字",
+      "title": "替代图标显示的下一页文字",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": ""
+    },
+    "next-icon": {
+      "label": "下一页图标",
+      "title": "下一页的图标， 比 next-text 优先级更高",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "ArrowRight"
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "是否禁用分页",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "hide-on-single-page": {
+      "label": "只有一页时隐藏",
+      "title": "只有一页时是否隐藏",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    }
+  },
+  "events": [
+    {
+      "name": "size-change",
+      "title": "`page-size` 改变时触发",
+      "type": "Function",
+      "fnDes": "(value: number) => void"
+    },
+    {
+      "name": "current-change",
+      "title": "`current-page` 改变时触发",
+      "type": "Function",
+      "fnDes": "(value: number) => void"
+    },
+    {
+      "name": "prev-click",
+      "title": "用户点击上一页按钮改变当前页时触发",
+      "type": "Function",
+      "fnDes": "(value: number) => void"
+    },
+    {
+      "name": "next-click",
+      "title": "用户点击下一页按钮改变当前页时触发",
+      "type": "Function",
+      "fnDes": "(value: number) => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义内容 设置文案，需要在 `layout` 中列出 `slot`"
+    }
+  ]
+}

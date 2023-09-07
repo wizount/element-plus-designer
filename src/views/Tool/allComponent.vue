@@ -184,7 +184,7 @@
 
 <script setup>
 import {onMounted} from "vue";
-import * as all from "@/components/generator/config"
+import * as all from "@/components/config/config"
 const keys = Object.keys(all) || []
 const components={};
 keys.forEach((k)=>{

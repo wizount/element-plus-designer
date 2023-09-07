@@ -1,0 +1,102 @@
+{
+  "__id__": "link",
+  "name": "链接",
+  "tag": "el-link",
+  "tagIcon": "link",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/link.html",
+  "attributes": {
+    "type": {
+      "label": "类型",
+      "title": "类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "primary",
+              "value": "primary"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "danger",
+              "value": "danger"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "underline": {
+      "label": "下划线",
+      "title": "是否下划线",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "disabled": {
+      "label": "禁用状态",
+      "title": "是否禁用状态",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "href": {
+      "label": "href 属性",
+      "title": "原生 href 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "icon": {
+      "label": "图标组件",
+      "title": "图标组件",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    },
+    {
+      "name": "icon",
+      "title": "自定义图标组件"
+    }
+  ]
+}

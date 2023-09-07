@@ -1,5 +1,3 @@
-import slotHtmlFunctions from "@/components/generator/slots";
-
 const slotRenderFunctions = {}
 /**
  * 将./slots中的文件挂载到对象componentChild上
@@ -7,15 +5,15 @@ const slotRenderFunctions = {}
  * 文件内容为value，解析JSON配置中的__slot__
  */
 
-const slotsFiles = import.meta.glob("./*.jsx");
+const slotsFiles = import.meta.glob("./*.jsx",{eager:true});
 const keys = Object.keys(slotsFiles) || []
 
 for (const key of keys) {
     const tag = key.replace(/^\.\/(.*)\.\w+$/, '$1').replace("slots/", "")
     const value = slotsFiles[key]
-    value().then(res=>{
-        slotRenderFunctions[tag] = res.default
-    })
+
+        slotRenderFunctions[tag] = value.default
+
 }
 
 export default slotRenderFunctions;

@@ -1,0 +1,7 @@
+{
+  "__id__": "plainText",
+  "name": "文本",
+  "tag": "span",
+  "tagIcon": "text",
+  "layout": "rawItem"
+}

@@ -23,13 +23,26 @@
           <el-collapse-item :title="c.title" :name="c.titles" v-for="c in elementPlusComponents" :key="c.title">
             <template v-for="l in c.children">
               <draggable tag="span" class="components-draggable" :list="l.children" item-key="renderKey"
-                         :group="{ name: 'componentsGroup', pull: 'clone', put: false }" :clone="cloneComponent"
-                         draggable=".components-item" :sort="false" @end="onEnd" >
+                         :group="{ name: 'componentsGroup', pull: 'clone', put: false }" :clone="cloneDrawItem"
+                         draggable=".components-item" :sort="false" @end="onEnd">
                 <template #item="{element}">
-                  <div class="components-item" @click="addComponent(element)">
+                  <div class="components-item" @click="addDrawItem(element)" :title="element.__config__.tag">
                     <div class="components-body">
                       <svg-icon :icon-class="element.__config__.tagIcon"/>
                       {{ element.__config__.name }}
+                      <el-dropdown v-if="element.__link__" class="subtag-item" @command="addDrawItem">
+                        <el-icon style="height: 38px;" @click="(e)=>{e.stopPropagation()}">
+                          <arrow-down/>
+                        </el-icon>
+                        <template #dropdown>
+                          <el-dropdown-menu>
+                            <el-dropdown-item v-for="l in element.__link__" :command="l">
+                              <svg-icon :icon-class="l.__config__.tagIcon"/>
+                              {{ l.__config__.name || l.__config__.tag }}
+                            </el-dropdown-item>
+                          </el-dropdown-menu>
+                        </template>
+                      </el-dropdown>
                     </div>
                   </div>
                 </template>
@@ -38,38 +51,19 @@
           </el-collapse-item>
 
         </el-collapse>
-        <!--        <div class="components-list">-->
-        <!--          <div v-for="(item, listIndex) in leftComponents" :key="listIndex">-->
-        <!--            <div class="components-title">-->
-        <!--              <svg-icon icon-class="component"/>-->
-        <!--              {{ item.title }}-->
-        <!--            </div>-->
-        <!--            <draggable class="components-draggable" :list="item.list" item-key="renderKey"-->
-        <!--                       :group="{ name: 'componentsGroup', pull: 'clone', put: false }" :clone="cloneComponent"-->
-        <!--                       draggable=".components-item" :sort="false" @end="onEnd">-->
-        <!--              <template #item="{element}">-->
-        <!--                <div class="components-item" @click="addComponent(element)">-->
-        <!--                  <div class="components-body">-->
-        <!--                    <svg-icon :icon-class="element.__config__.tagIcon"/>-->
-        <!--                    {{ element.__config__.name }}-->
-        <!--                  </div>-->
-        <!--                </div>-->
-        <!--              </template>-->
-        <!--            </draggable>-->
-        <!--          </div>-->
-        <!--        </div>-->
+
       </el-scrollbar>
     </div>
     <div class="center-board">
       <div class="action-bar">
-        <el-button text @click="run"> 运行</el-button>
-        <el-button text @click="showJson"> 查看json</el-button>
-        <el-button text @click="showHtml"> 查看Vue</el-button>
-        <el-button text @click="download"> 导出vue文件</el-button>
-        <el-button text @click="componentTreeVisible=true"> 组件树</el-button>
-        <el-button text @click="execCopy"> 复制代码</el-button>
+        <el-button text @click="run"><svg-icon class="mr-2" icon-class="run"/>运行</el-button>
+        <el-button text @click="showJson"> <svg-icon class="mr-2" icon-class="json"/>查看json</el-button>
+        <el-button text @click="showHtml"> <svg-icon class="mr-2" icon-class="code"/>查看Vue</el-button>
+        <el-button text @click="download" icon="Download"> 导出vue文件</el-button>
+        <el-button text @click="drawItemTreeVisible=true"> <svg-icon class="mr-2" icon-class="tree"/>组件树</el-button>
+        <el-button text @click="execCopy" icon="DocumentCopy"> 复制代码</el-button>
         <el-dropdown>
-          <el-button text> 设置</el-button>
+          <el-button text icon="Setting"> 设置</el-button>
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>
@@ -83,6 +77,11 @@
                 </el-form-item>
               </el-dropdown-item>
               <el-dropdown-item>
+                <el-form-item label="表单组件包裹form-item" prop="wrapWithCol" style="margin-bottom: 0px">
+                  <el-switch v-model="designConf.wrapWithFormItem"></el-switch>
+                </el-form-item>
+              </el-dropdown-item>
+              <el-dropdown-item>
                 <el-form-item label="暗黑模式" style="margin-bottom: 0px">
                   <el-switch @click="toggleDark()" :model-value="isDark" title="暗黑模式"></el-switch>
                 </el-form-item>
@@ -92,62 +91,70 @@
 
         </el-dropdown>
 
-        <el-button type="danger" text icon="Delete" @click="emptyDrawingList"> 清空</el-button>
+        <el-button type="danger" text icon="Delete" @click="emptyDrawItemList"> 清空</el-button>
         <div id="copyNode" class="display:none;"></div>
       </div>
       <el-scrollbar class="center-scrollbar" @scroll="resetActiveDrawItemPosition">
-        <draggable tag="div" :list="drawingList" style="padding: 5px"
-                   group="componentsGroup" item-key="renderKey"  @change="elementChange" :move="itemMove">
+        <draggable tag="div" :list="drawItemList" style="padding: 5px"
+                   group="componentsGroup" item-key="renderKey" @change="itemChange" :move="itemMove">
           <template #item="{element,index}">
-            <draggable-item :drawing-list="drawingList" :current-item="element" :index="index"
-                            :active-id="activeId" :design-conf="designConf" @activeItem="activeDrawItem" @change="elementChange" :item-move="itemMove" />
+            <draggable-item :current-item="element"
+                            :active-id="activeId" :design-conf="designConf" @activeItem="activeDrawItem"
+                            @change="itemChange" :item-move="itemMove" :form-models-and-rules="formModelsAndRules"/>
           </template>
         </draggable>
-        <div v-show="!drawingList||drawingList.length===0" class="empty-info"> 从左侧拖入或点选组件进行界面设计</div>
-        <div style="position: fixed; left: 400px; z-index: 3;" ref="activeToolbar" v-if="activeData.__config__">
+        <div v-show="!drawItemList||drawItemList.length===0" class="empty-info"> 从左侧拖入或点选组件进行界面设计</div>
+        <div class="activeToolbar" ref="activeToolbar" v-if="activeData.renderKey">
           <svg-icon style="color: var(--el-text-color)" :icon-class="activeData.__config__.tagIcon"/>
-          <span style="color: var(--el-text-color)"> {{ activeData.__config__.componentName }}</span>
+          <span style="color: var(--el-text-color)"> {{ activeData.__config__.itemName }}</span>
 
-          <el-button class="activeBtn" size="small" type="info" circle @click="activeParentComponent"
+          <el-button class="activeBtn" size="small" type="info" circle @click="activeParentDrawItem"
                      title="跳到父组件">
             <el-icon style="transform:rotate(180deg);">
               <Download/>
             </el-icon>
           </el-button>
-          <el-button class="activeBtn" size="small" type="info" circle icon="ArrowUp" @click="moveComponent(-1)"
+          <el-button class="activeBtn" size="small" type="info" circle icon="ArrowUp" @click="moveDrawItem(-1)"
                      title="上移">
           </el-button>
-          <el-button class="activeBtn" size="small" type="info" circle icon="ArrowDown" @click="moveComponent(1)"
+          <el-button class="activeBtn" size="small" type="info" circle icon="ArrowDown" @click="moveDrawItem(1)"
                      title="下移">
           </el-button>
-          <el-button class="activeBtn" type="primary" size="small" circle icon="Document" @click="drawingItemCopy"
+          <el-button class="activeBtn" type="primary" size="small" circle icon="Document" @click="drawItemCopy"
                      title="复制组件"/>
-          <el-button class="activeBtn" type="danger" size="small" circle icon="Delete" @click="drawingItemDelete"
+          <el-button class="activeBtn" type="danger" size="small" circle icon="Delete" @click="deleteDrawItem"
                      title="删除组件"/>
         </div>
       </el-scrollbar>
     </div>
-    <right-panel :active-data="activeData" :design-conf="designConf" :show-field="!!drawingList.length"
-                 @tag-change="tagChange" @fetch-data="fetchData" @add-child-item="addChildItem"
-                 @active-parent-component="activeParentComponent"/>
+    <right-panel :active-data="activeData" :design-conf="designConf" :show-field="!!drawItemList.length"
+                 @fetch-data="fetchData" @add-slot-draw-item="addSlotDrawItem"
+                 @active-parent-draw-item="activeParentDrawItem"/>
     <form-drawer v-model="formDrawerVisible" :drawing-data="drawingData" size="100%" :generate-conf="generateConf"/>
     <json-drawer size="750px" v-model="jsonDrawerVisible" :json-str="jsonStr" @refresh="refreshJson"/>
 
     <html-drawer size="750px" v-model="htmlDrawerVisible" :html-str="htmlStr"/>
     <code-type-dialog v-model="dialogVisible" title="选择生成类型" :show-file-name="showFileName"
                       @confirm="generate"/>
-    <el-drawer v-model="componentTreeVisible" title="组件树">
-      <el-tree :data="drawingList" node-key="renderKey" v-if="showTree"
-               :props="{children:'__children__'}"
-               default-expand-all draggable @node-click="activeDrawItem">
+    <el-drawer v-model="drawItemTreeVisible" title="组件树" size="350px" modal-class="bg-transparent"
+               @open="openTreeDrawer">
+      <el-tree :data="drawItemTreeData" ref="drawItemTree" node-key="renderKey" v-if="showTree"
+               default-expand-all highlight-current :expand-on-click-node="false"
+               @node-click="activeDrawItemThroughTree" draggable :allow-drag="drawItemTreeAllowDrag"
+               :allow-drop="drawItemTreeAllowDrop" @node-drop="drawItemTreeNodeDrop">
         <template #default="{ node, data }">
-
-          <!--          data.__config__-->
-          <!--          return config.tag + ":" + config.componentName || `${config.label}: ${data.__vModel__}`-->
           <span>
-          <span>{{ data.__config__.tag }}</span>
+             <el-text v-if="data.__id__==='plainText' " type="primary"><svg-icon
+                 :icon-class="data.__config__.tagIcon" :class="{ac:data.renderKey===activeData.renderKey}"/>{{
+                 data.__id__
+               }} - {{ data.__config__.itemName }}</el-text>
+          <el-text v-else-if="data.__config__&&data.__config__.tag" type="primary"><svg-icon
+              :icon-class="data.__config__.tagIcon" :class="{ac:data.renderKey===activeData.renderKey}"/>{{
+              data.__config__.tag
+            }} - {{ data.__config__.itemName }}</el-text>
+             <span v-else :title="`插槽${data.slotName}`">{{ data.slotName }}</span>
           <span>
-            <el-button style="margin-left: 8px" @click="removeItemFromTree($event,node, data)" icon="Delete" link
+            <el-button style="margin-left: 8px" @click="removeItemFromTree( data)" icon="Delete" link
                        type="danger"/>
           </span>
         </span>
@@ -168,33 +175,58 @@ import FormDrawer from './FormDrawer.vue'
 import JsonDrawer from './JsonDrawer'
 import RightPanel from './RightPanel'
 import {
-
   designConf as designConfPreset
-} from '@/components/generator/config'
-import {beautifierConf, deepClone, isObjectObject} from '@/utils/index'
+} from '@/components/config/config'
+import {beautifierConf, camelCase, deepClone, isObjectObject} from '@/utils/index'
 import {vue3Template, vueScript} from '@/components/generator/html.js'
 import {renderJs} from '@/components/generator/js'
-import drawingDefault from '@/components/generator/drawingDefault'
 
 import CodeTypeDialog from './CodeTypeDialog'
-import {getDesignConf, getDrawingList, getIdGlobal, saveDesignConf, saveDrawingList, saveIdGlobal,} from '@/utils/db'
+import {getDesignConf, getDrawItemList, getIdGlobal, saveDesignConf, saveDrawItemList, saveIdGlobal,} from '@/utils/db'
 import loadBeautifier from '@/utils/loadBeautifier'
 import {ElMessage, ElMessageBox, ElNotification} from 'element-plus'
 import DraggableItem from "./DraggableItem"
-import propertyConfigList from "@/components/generator/settingConfig";
+import {elementPlusComponents} from "@/components/config/elementPlusConfig";
 
-import {elementPlusComponents} from "@/components/generator/elementPlusConfig";
+
+import elementPlusConfigMap from "@/element-plus-config";
 
 const componentMap = {};
 elementPlusComponents.forEach((first) => {
   first.children.forEach((second) => {
     second.children.forEach((third) => {
-      componentMap[third.__config__.tag] = third;
+      createComponentMap(third)
+      if (third.__link__) {
+        third.__link__.forEach(l => {
+          createComponentMap(l)
+        })
+      }
     });
   });
 })
+
+function createComponentMap(com) {
+  if (elementPlusConfigMap[com.__id__]) {
+    if (!com.__config__) {
+      com.__config__ = {};
+    }
+    const {name, tag, tagIcon, layout} = elementPlusConfigMap[com.__id__];
+    if (!com.__config__.name) {
+      com.__config__.name = name;
+    }
+    if (!com.__config__.tag) {
+      com.__config__.tag = tag;
+    }
+    if (!com.__config__.tagIcon) {
+      com.__config__.tagIcon = tagIcon;
+    }
+    com.__config__.layout = layout;
+    componentMap[com.__id__] = com;
+  }
+}
+
 import {nextTick} from "vue";
-import {Download} from "@element-plus/icons-vue";
+import {ArrowDown, Download} from "@element-plus/icons-vue";
 import HtmlDrawer from "@/views/design/HtmlDrawer.vue";
 import SvgIcon from "@/components/SvgIcon/index.vue";
 
@@ -213,19 +245,20 @@ const props = defineProps({
 const emits = defineEmits(["update:modelValue"]);
 
 
-const drawingList = ref([])
+const drawItemList = ref([])
+
 watch(() => props.modelValue, (val) => {
-  drawingList.value = val;
+  drawItemList.value = val;
 })
 
-watch(drawingList, (val) => {
+watch(drawItemList, (val) => {
   if (val.length === 0) idGlobal.value = 100
   emits("update:modelValue", val);
+  formModelsAndRules.value = {};
+  buildFormModalsAndRules(val);
 
-  showTree.value = false;
-  nextTick(() => {
-    showTree.value = true;
-  })
+  drawItemTreeData.value = [];
+
 }, {deep: true})
 //endregion
 const idGlobal = ref(100);
@@ -235,30 +268,23 @@ const drawingData = ref()
 const activeId = ref(0)
 const formDrawerVisible = ref(false)
 const dialogVisible = ref(false)
-const componentTreeVisible = ref(false)
-
-const showTree = ref(true)//为了树能自动刷新
-
 
 const generateConf = ref(null)
 const showFileName = ref(false)
 const activeData = ref({})
 const activeToolbar = ref(null)
 
-
+//region 初始化及退出
 let operationType = ""
-
+let clipboard
 onMounted(() => {
-  drawingList.value = props.modelValue;
-  if (drawingList.value.length >= 1) {
-    activeDrawItem(drawingList.value[0])
+  drawItemList.value = props.modelValue;
+  if (drawItemList.value.length >= 1) {
+    activeDrawItem(drawItemList.value[0])
   }
 
   idGlobal.value = 100;
-  for (const dl of drawingList.value) {
-    resetDrawItemId(dl);
-  }
-
+  recursiveProcessDrawItemList(drawItemList.value, setMaxIdGlobal)
   const designConfInDB = getDesignConf()
   if (designConfInDB) {
     designConf.value = designConfInDB
@@ -266,7 +292,7 @@ onMounted(() => {
   loadBeautifier((btf) => {
     beautifier = btf
   })
-  const clipboard = new ClipboardJS('#copyNode', {
+  clipboard = new ClipboardJS('#copyNode', {
     text: (trigger) => {
       const codeStr = generateCode()
       ElNotification({
@@ -282,6 +308,25 @@ onMounted(() => {
   })
 })
 
+onBeforeUnmount(() => {
+  clipboard && clipboard.destroy();
+})
+
+/**
+ *找出最大的idGlobal
+ * @param item
+ */
+function setMaxIdGlobal(item) {
+  if (!item || !item.__config__) return;
+  let config = item.__config__;
+  idGlobal.value = Math.max(idGlobal.value, config.drawItemId)
+}
+
+function findItemIndexInDrawItemList(targetItem) {
+  return recursiveFindItemIndexInList(null, drawItemList.value, targetItem);
+}
+
+//endregion
 function setObjectValueReduce(obj, strKeys, data) {
   const arr = strKeys.split('.')
   arr.reduce((pre, item, i) => {
@@ -294,8 +339,8 @@ function setObjectValueReduce(obj, strKeys, data) {
   }, obj)
 }
 
-function setRespData(component, resp) {
-  const {dataPath, dataConsumer} = component.__config__
+function setRespData(item, resp) {
+  const {dataPath, dataConsumer} = item.__config__
   if (!dataPath || !dataConsumer) return
   const respData = dataPath
       .split('.')
@@ -305,19 +350,19 @@ function setRespData(component, resp) {
   // 以el-table为例，根据Element文档，应该将数据赋值给el-tabel的data属性，所以dataConsumer的值应为'data';
   // 此时赋值代码可写成 component[dataConsumer] = respData；
   // 但为支持更深层级的赋值（如：dataConsumer的值为'options.data'）,使用setObjectValueReduce
-  setObjectValueReduce(component, dataConsumer, respData)
-  const i = drawingList.value.findIndex(
-      (item) => item.renderKey === component.renderKey
+  setObjectValueReduce(item, dataConsumer, respData)
+  const i = drawItemList.value.findIndex(
+      (item) => item.renderKey === item.renderKey
   )
   if (i > -1) {
-    drawingList.value[i] = component
+    drawItemList.value[i] = item
   }
 }
 
-function fetchData(component) {//todo 增加动态获取数据
-  const {dataType, method, url} = component.__config__
+function fetchData(item) {//todo 增加动态获取数据
+  const {dataType, method, url} = item.__config__
   if (dataType === 'dynamic' && method && url) {
-    setLoading(component, true)
+    setLoading(item, true)
     // $axios({
     //   method,
     //   url,
@@ -328,8 +373,8 @@ function fetchData(component) {//todo 增加动态获取数据
   }
 }
 
-function setLoading(component, val) {
-  const {directives} = component
+function setLoading(item, val) {
+  const {directives} = item
   if (Array.isArray(directives)) {
     const t = directives.find((d) => d.name === 'loading')
     if (t) t.value = val
@@ -347,34 +392,35 @@ watch([width, height], (val) => {
   })
 })
 
-function activeDrawItem(currentItem) {
-  if (!currentItem || !currentItem.__config__) {
+function activeDrawItem(item) {
+  if (!item || !item.__config__) {
     return;
   }
-  activeData.value = currentItem
-  activeId.value = currentItem.__config__.drawItemId;
-  nextTick(() => {
+  activeData.value = item;
+  activeId.value = item.__config__.drawItemId;
+  setTimeout(() => {
     resetActiveDrawItemPosition();
-  })
+  }, 50)
 }
 
-function drawingItemCopy() {
-  let res = findItemIndexInList(drawingList.value, activeData.value);
+function drawItemCopy() {
+  let res = findItemIndexInDrawItemList(activeData.value);
   if (res) {
     let {list} = res;
 
     let clone = deepClone(activeData.value);
-
-    resetDrawItemId(clone);
+    processADrawItemAndSlots(clone, resetDrawItemId)
 
     list.push(clone);
   }
 }
 
 
-function drawingItemDelete() {
-  let {parent, index} = findParentAndIndexOfChildrenInDrawList(activeData.value);
-  const list = parent && parent.__children__ || drawingList.value;
+function deleteDrawItem(e, item) {
+  let {parent, list, index} = findItemIndexInDrawItemList(item || activeData.value);
+  if (!Array.isArray(list) || index < 0 || index > list.length) {
+    return;
+  }
   list.splice(index, 1);
   nextTick(() => {
     const len = list.length
@@ -387,26 +433,26 @@ function drawingItemDelete() {
     } else {
       parent && activeDrawItem(parent);
     }
-    if (drawingList.value.length === 0) {
+    if (drawItemList.value.length === 0) {
       activeData.value = {}
     }
   })
 }
 
 //active父组件
-function activeParentComponent() {
-  let {parent} = findParentAndIndexOfChildrenInDrawList(activeData.value);
+function activeParentDrawItem() {
+  let {parent} = findItemIndexInDrawItemList(activeData.value);
   if (parent) {
     activeDrawItem(parent);
   } else {
-    ElNotification.info("无父组件");
+    //ElNotification.info("无父组件");
   }
 }
 
 //移动
-function moveComponent(upOrDown) {
+function moveDrawItem(upOrDown) {
 
-  let res = findItemIndexInList(drawingList.value, activeData.value);
+  let res = findItemIndexInDrawItemList(activeData.value);
   if (!res) {
     return;
   }
@@ -438,65 +484,7 @@ function resetActiveDrawItemPosition() {
 }
 
 //endregion
-//region 组件遍历
 
-/**
- * 从list中找到 item 的index
- * @param list
- * @param item
- * @returns {undefined|*|{index: string, list}}
- */
-function findItemIndexInList(list, item) {
-  for (let index = 0; index < list.length; index++) {
-    let l = list[index];
-    if (item.renderKey === l.renderKey) {
-      return {list, index}
-    }
-    if (l.__children__ && l.__children__.length > 0) {
-      let res = findItemIndexInList(l.__children__, item);
-      if (res) {
-        return res;
-      }
-    }
-  }
-  return undefined;
-}
-
-/**
- * 查找某个item的父节点，并在__children__的所在位置
- */
-function findParentAndIndexOfChildrenInDrawList(item) {
-  for (let index = 0; index < drawingList.value.length; index++) {
-    const c = drawingList.value[index];
-    if (c.renderKey === item.renderKey) {
-      return {index}
-    }
-    let r = findParentAndIndexOfChildren(c, item);
-    if (r) {
-      return r;
-    }
-  }
-  return {};
-}
-
-function findParentAndIndexOfChildren(parent, item) {
-  if (parent.__children__) {
-    for (let index = 0; index < parent.__children__.length; index++) {
-      const c = parent.__children__[index];
-      if (c.renderKey === item.renderKey) {
-        return {parent, index}
-      }
-      let r = findParentAndIndexOfChildren(c, item);
-      if (r) {
-        return r;
-      }
-    }
-  }
-  return undefined;
-}
-
-
-//endregion
 
 //region 组件克隆操作
 
@@ -505,98 +493,122 @@ function findParentAndIndexOfChildren(parent, item) {
 function onEnd(obj) {
   if (obj.from !== obj.to) {
     fetchData(tempActiveData);
-
-    const {parent, index} = findParentAndIndexOfChildrenInDrawList(tempActiveData);
+    const {parent, list, index} = findItemIndexInDrawItemList(tempActiveData);
     //判断是否可以添加
     if (allowToAdd(parent, tempActiveData)) {
-      activeData.value = tempActiveData;
-      activeId.value = idGlobal.value;
+      if (obj.to.className !== 'slot-container') {
+        activeDrawItem(tempActiveData)
+      }
     } else {//不能添加就删除
-      parent.__children__.splice(index, 1);
+      list.splice(index, 1);
     }
-
+    if(parent&&parent.__id__==='button-group'&&tempActiveData.__id__==='button'){
+      delete  tempActiveData.__props__.size;
+    }
   }
 }
 
-function addComponent(item) {
-  const clone = cloneComponent(item)
-
+function addDrawItem(item) {
+  const clone = cloneDrawItem(item);
   fetchData(clone)
-
-
   if (activeData.value && activeData.value.__config__ && activeData.value.__config__.layout === 'containerItem') {
     if (allowToAdd(activeData.value, clone)) {
-      activeData.value.__children__.push(clone)
+      activeData.value.__slots__.default.push(clone)
     }
   } else {
     if (allowToAdd(undefined, clone)) {
-      drawingList.value.push(clone)
+      drawItemList.value.push(clone)
       activeDrawItem(clone)
     }
   }
 }
 
 
-function cloneComponent(origin) {
+//克隆组件
+function cloneDrawItem(origin) {
   //用el-col包裹
   let colItem
-  // if(designConf.value.wrapWithCol) {
-  let {parent} = findParentAndIndexOfChildrenInDrawList(origin);
-  parent = parent || activeData.value;
-  if (parent && parent.__config__ && parent.__config__.tag === 'el-row' && origin.__config__.tag !== 'el-col') {
-    colItem = cloneComponent(componentMap["el-col"]);
+  if (designConf.value.wrapWithCol) {
+    let {parent} = findItemIndexInDrawItemList(origin);
+    parent = parent || activeData.value;
+    if (parent.__config__ && parent.__config__.tag === 'el-row' && origin.__config__.tag !== 'el-col') {
+      colItem = cloneDrawItem(componentMap["col"]);
+    }
   }
-  //   if (designConf.value.wrapWithCol && origin.__config__.tag !== 'el-row' && origin.__config__.tag !== 'el-col') {
-  //     colItem = cloneComponent(componentMap["el-col"]);
-  //   }
-  // }
 
 
   const clone = deepClone(origin);
+  delete clone.__link__;
   createIdAndKey(clone);
   if (!clone["__props__"]) {
     clone["__props__"] = {}
   }
-  const props = clone["__props__"];
-  props.__ref__ = {};
+  //__refs__用来放需要通过变量引用的属性值。比如<el-input :disabled="disabled/> 中的 const disabled=ref(false)
+  if (!clone["__refs__"]) {
+    clone["__refs__"] = {}
+  }
+  const {__props__: props, __config__: config} = clone;
+
   const id = clone.__id__;
-  if (id && propertyConfigList[id]) {
-    const propConf = propertyConfigList[id];
-    for (const key in propConf) {
+  if (id && elementPlusConfigMap[id]) {
+    const {attributes, data} = elementPlusConfigMap[id];
+    for (const key in attributes) {
+      const attr = attributes[key];
+      if (attr.ref) {
+        clone.__refs__[key] = camelCase(config.itemName + "-" + key);
+      } else if (attr.formRef) {
+        props[key] = camelCase(config.itemName + '-' + key)
+      }
       if (key === 'vModel' || props[key]) {//非空值继续
         continue
       }
-      const aPc = propConf[key];
-      if (aPc.hide) {
+
+      if (attr.hide) {
         continue;
       }
-      if (aPc.ref) {
-        props.__ref__[key] = clone.__config__.componentName + key[0].toUpperCase() + key.slice(1);
-      } else if (aPc.formRef) {
-        props[key] = aPc.defaultRefName;
-      } else {
-        props[key] = deepClone(aPc.default)
+
+      if (props[key] === undefined && attr.default !== undefined) {
+        props[key] = deepClone(attr.default)
       }
-      if (aPc.remember && designConf.value[key]) {
-        props[key] = designConf.value[key];
+      if (attr.remember && designConf.value[key]) {
+        props[key] =  deepClone(designConf.value[key]);
       }
     }
-    if (propConf.placeholder)
-      props.placeholder = propConf.placeholder
+    if (attributes.placeholder)
+      props.placeholder = attributes.placeholder
+    //复制像el-select的选项
+    if (data) {
+      console.info(data)
+      if(data.ref) {
+        clone.__refs__[data.name] = camelCase(config.itemName + '-' + data.name)
+      }
+      clone.__data__ = {
+        dynamicUrl: data.dynamicUrl,
+        [data.name]: deepClone(data.default)
+      };
+    }
   }
-  const config = clone.__config__
+
+  //不包裹form-item
+  if (config.layout === 'formItem' && !designConf.value.wrapWithFormItem) {
+    delete config.showLabel;
+    delete config.labelWidth;
+    delete config.required;
+    config.layout = 'rawItem';
+  }
   props.placeholder !== undefined && (props.placeholder += config.label);
   if (!props.style) {
     props.style = {}
   }
   if (colItem) {
-    colItem.__children__.push(clone);
+    colItem.__slots__.default.push(clone);
     tempActiveData = colItem;
   } else {
     tempActiveData = clone
   }
   return tempActiveData
 }
+
 
 function createIdAndKey(item) {
   const config = item.__config__
@@ -607,54 +619,53 @@ function createIdAndKey(item) {
   item.renderKey = `${config.drawItemId}${Math.floor(Math.random() * 10000)}` // 改变renderKey后可以实现强制更新组件
 
   const itemId = item.__id__;
-  if (itemId && propertyConfigList[itemId] && propertyConfigList[itemId].vModel) {
-    item.__vModel__ = `${item.__id__}${idGlobal.value}`.replace(/\-/g, "_")
+  const itemNamePrefix = config.itemName || item.__id__;
+  if (itemId && elementPlusConfigMap[itemId] && elementPlusConfigMap[itemId].attributes.vModel) {
+    item.__vModel__ = camelCase(`${itemNamePrefix}${idGlobal.value}`);
   }
-  if (config.layout === 'containerItem') {
-    !Array.isArray(item.__children__) && (item.__children__ = [])
+
+  config.itemName = `${itemNamePrefix}${idGlobal.value}`
+
+  if (elementPlusConfigMap[item.__id__]) {
+    if (!item.__slots__) {
+      item.__slots__ = {}
+    }
+    for (const slot of elementPlusConfigMap[item.__id__].slots) {//有一般有default插槽就是containerItem
+      if (!item.__slots__[slot.name]) {
+        item.__slots__[slot.name] = [];
+      }
+    }
   }
-  config.componentName = `${item.__id__}${idGlobal.value}`
-  if (Array.isArray(item.__children__)) {
-    item.__children__ = item.__children__.map((childItem) =>
-        createIdAndKey(childItem)
-    )
-  }
+
   return item
 }
 
 /**
- * 重新设置组件id，重新加载或者复制组件都会调用
+ * 重新设置组件id，复制组件都会调用
  * @param item
  */
 function resetDrawItemId(item) {
   let newId = ++idGlobal.value;
   let config = item.__config__;
-  if (config.componentName === `${item.__id__}${config.drawItemId}`) {
-    config.componentName = `${item.__id__}${newId}`
-  }
-  if (item.__vModel__ === `${item.__id__}${config.drawItemId}`.replace(/\-/g, "_")) {
-    item.__vModel__ = `${item.__id__}${newId}`.replace(/\-/g, "_")
-  }
+  let oldItemName = config.itemName;
+  config.itemName = `${item.__id__}${newId}`
+  changeDrawItemVariableName(item, config.itemName, oldItemName);
   config.drawItemId = newId;
   item.renderKey = `${config.drawItemId}${Math.floor(Math.random() * 10000)}` // 改变renderKey后可以实现强制更新组件
-  if (item.__children__ && item.__children__.length > 0) {
-    for (const c of item.__children__) {
-      resetDrawItemId(c);
-    }
-  }
 }
 
+
 function allowToAdd(parent, clone, noShowMessage) {
-  if (!parent) {
-    const parentTag = clone.__config__.parentTag;
+  if (!parent || !parent.__id__) {
+
+    const {parentTag} = elementPlusConfigMap[clone.__id__];
     if (parentTag) {
       !noShowMessage && ElMessageBox.alert(`不能添加${clone.__config__.name}（${clone.__config__.tag}）。`)
       return false;
     }
     return true;
   }
-  const childTag = parent.__config__.childTag;
-
+  const {childTag} = elementPlusConfigMap[parent.__id__];
   if (childTag) {
     if (childTag.indexOf(clone.__config__.tag) < 0) {
       !noShowMessage && ElMessageBox.alert(`${parent.__config__.name}（${parent.__config__.tag}）组件下只能添加${childTag}。`)
@@ -662,24 +673,31 @@ function allowToAdd(parent, clone, noShowMessage) {
       return false;
     }
   }
-  const parentTag = clone.__config__.parentTag;
+  const {parentTag} = elementPlusConfigMap[clone.__id__];
   if (parentTag) {
     if (parentTag.indexOf(parent.__config__.tag) < 0) {
       !noShowMessage && ElMessageBox.alert(`只能添加到${clone.__config__.name}（${parentTag}）组件下。`)
       return false;
     }
   }
+
+  //专用，删除button-group下面button的size属性
+  if(parent&&parent.__id__==='button-group'&&clone.__id__==='button'){
+    delete  clone.__props__.size;
+  }
   return true;
 }
 
+//endregion
 
 //region 组件移动操作
 //组件变成操作
-function elementChange(evt) {
+function itemChange(evt) {
   //todo 可以用来记录操作历史
 
 
 }
+
 function itemMove(evt) {
   const {draggedContext, relatedContext} = evt;
   const {element} = draggedContext;//拖拽对象
@@ -691,12 +709,13 @@ function itemMove(evt) {
 
 
 }
+
 function findChildrenParentRoot(children) {
-  if (children === drawingList.value) {//检查数组地址相同
+  if (children === drawItemList.value) {//检查数组地址相同
     return undefined;
   } else {
-    for (const p of drawingList.value) {
-      return findChildrenParent(p, children);
+    for (const item of drawItemList.value) {
+      return findChildrenParent(item, children);
     }
   }
 }
@@ -706,12 +725,14 @@ function findChildrenParentRoot(children) {
  */
 function findChildrenParent(parent, children) {
 
-  if (parent.__children__) {
-    if (parent.__children__ === children) {//检查数组地址相同
-      return parent
-    } else {
-      for (const p of parent.__children__) {
-        return findChildrenParent(p, children);
+  if (parent.__slots__) {
+    for (const slotName in parent.__slots__) {
+      if (parent.__slots__[slotName] === children) {
+        return parent;
+      } else {
+        for (const item of parent.__slots__[slotName]) {
+          return findChildrenParent(item, children);
+        }
       }
     }
   }
@@ -722,13 +743,13 @@ function findChildrenParent(parent, children) {
 const layoutTreeProps = {
   label(data, node) {
     const config = data.__config__
-    return config.tag + ":" + config.componentName || `${config.label}: ${data.__vModel__}`
+    return config.tag + ":" + config.itemName || `${config.label}: ${data.__vModel__}`
   }
 }
 
 function AssembleFormData() {
   drawingData.value = {
-    fields: deepClone(drawingList.value),
+    fields: deepClone(drawItemList.value),
     ...designConf.value,
   }
 }
@@ -763,10 +784,10 @@ function execCopy() {
   document.getElementById('copyNode').click()
 }
 
-function emptyDrawingList() {
+function emptyDrawItemList() {
   ElMessageBox.confirm('确定要清空所有组件吗？', '提示', {type: 'warning'}).then(
       () => {
-        drawingList.value = []
+        drawItemList.value = []
         activeData.value = {}
         idGlobal.value = 100;
       }
@@ -775,11 +796,9 @@ function emptyDrawingList() {
 
 
 function generateCode() {
-  //const {type} = generateConf.value
-  const script = beautifier.js(renderJs(drawingList.value), beautifierConf.js);
-  const html = beautifier.html(vue3Template(drawingList.value), beautifierConf.html);
+  const script = beautifier.js(renderJs(drawItemList.value), beautifierConf.js);
+  const html = beautifier.html(vue3Template(drawItemList.value), beautifierConf.html).replaceAll("template_alt", "template");
   // const css = cssStyle(makeUpCss(drawingData))
-
   return vueScript(html, script)
 
 }
@@ -789,13 +808,13 @@ const jsonDrawerVisible = ref(false)
 const jsonStr = ref("");
 
 function showJson() {
-  jsonStr.value = JSON.stringify(drawingList.value, null, 2);
+  jsonStr.value = JSON.stringify(drawItemList.value, null, 2);
 
   jsonDrawerVisible.value = true
 }
 
 function refreshJson(data) {
-  drawingList.value = deepClone(data)
+  drawItemList.value = deepClone(data)
 }
 
 //endregion
@@ -831,53 +850,221 @@ function copy() {
   operationType = 'copy'
 }
 
-//废弃！更改组件tag，并复制以前的数据
-function tagChange(newTag) {
-  newTag = cloneComponent(newTag)
-  activeData.value.__id__ = newTag.__id__
-  newTag.__config__.defaultValue = activeData.value.__config__.defaultValue
-  activeData.value.__config__ = newTag.__config__;
 
-  activeData.value.__props__.placeholder = newTag.__props__.placeholder
-  Object.keys(activeData.value.__props__).forEach((key) => {
-    if (newTag.__props__.hasOwnProperty(key) && activeData.value.__props__[key] !== undefined) {
-      newTag.__props__[key] = activeData.value.__props__[key];
-    }
+//region 组件树操作
+const drawItemTreeVisible = ref(false)
+const showTree = ref(true)//为了树能自动刷新
+const drawItemTreeData = ref([]);
+const drawItemTree = ref()
+
+function openTreeDrawer() {
+  drawItemTreeData.value = [];
+  buildDrawItemTree(drawItemList.value, drawItemTreeData.value)
+  nextTick(() => {
+    drawItemTree.value.setCurrentKey(activeData.value.renderKey)
   })
-  activeData.value.__props__ = newTag.__props__
 
-  if (newTag.__slot__ && activeData.value.__slot__) {
-    Object.keys(activeData.value.__slot__).forEach((key) => {
-      if (newTag.__slot__.hasOwnProperty(key) && activeData.value.__slot__[key] !== undefined) {
-        newTag.__slot__[key] = activeData.value.__slot__[key];
+}
+
+function buildDrawItemTree(list, parent) {
+  for (const item of list) {
+    if (typeof item === 'string') {
+      continue;
+    }
+    const {renderKey, __id__} = item;
+    const {tag, tagIcon, itemName} = item.__config__;
+    let treeItem = {__id__, renderKey, __config__: {tag, tagIcon, itemName}};
+    treeItem.children = [];
+    parent.push(treeItem);
+
+    if (Array.isArray(item.__slots__.default)) {
+      buildDrawItemTree(item.__slots__.default, treeItem.children)
+    }
+
+    for (const slotName in item.__slots__) {
+      if (slotName === 'default') {
+        continue;
       }
-    })
+      if (Array.isArray(item.__slots__[slotName]) && item.__slots__[slotName].length > 0) {
+        let c = [];
+
+        buildDrawItemTree(item.__slots__[slotName], c);
+        c.length > 0 && treeItem.children.push({
+          slotName,
+          renderKey,
+          children: c
+        })
+      }
+    }
   }
-  activeData.value.__slot__ = newTag.__slot__
-  activeData.value.renderKey = newTag.renderKey
+
+}
+
+function drawItemTreeAllowDrag(node) {
+  return !node.data.slotName;
+}
+
+function drawItemTreeAllowDrop(draggingNode, dropNode, type) {
+  const {__id__: dropId, renderKey: dropRenderKey, slotName} = dropNode.data;
+  if (type === 'inner') {
+    if (slotName) {
+      return allowToAdd(undefined, draggingNode.data, true);
+    }
+    if (elementPlusConfigMap[dropId] && elementPlusConfigMap[dropId].layout === 'containerItem') {
+      return allowToAdd(dropNode.data, draggingNode.data, true);
+    }
+
+  }
+  if (type !== 'inner') {
+    const {__id__: draggingId, renderKey: draggingRenderKey} = dropNode.data;
+    if (dropNode.parent) {
+      return allowToAdd(dropNode.parent.data, draggingNode.data, true);
+    } else {
+      return allowToAdd(dropNode.data, draggingNode.data, true);
+    }
+  }
+
+  return false;
+
+}
+
+function drawItemTreeNodeDrop(draggingNode, dropNode, type) {
+  //根据数的变化，更改相对应的drawListItem
+  let {
+    list: draggingList,
+    index: draggingIndex
+  } = findItemIndexInDrawItemList(draggingNode.data);
+  let {
+    list: dropList,
+    index: dropIndex
+  } = findItemIndexInDrawItemList(dropNode.data);
+
+  const item = draggingList.splice(draggingIndex, 1);
+  if (type === 'inner') {
+    dropList[dropIndex].__slots__.default.push(...item);
+  } else {
+    if (draggingList === dropList && dropIndex > draggingIndex) {
+      dropIndex--;
+    }
+    if (type === 'before') {
+      if (dropIndex === 0) {
+        dropList.unshift(...item)
+      } else {
+        dropList.splice(dropIndex, 0, ...item);
+      }
+    } else {
+      if (dropIndex === dropList.length - 1) {
+        dropList.push(...item)
+      } else {
+        dropList.splice(dropIndex + 1, 0, ...item);
+      }
+    }
+  }
+
+  nextTick(() => {
+    drawItemTreeData.value = [];
+    buildDrawItemTree(drawItemList.value, drawItemTreeData.value);
+  })
 }
 
 
+function removeItemFromTree(data) {
+  deleteDrawItem(undefined, data);
+  nextTick(() => {
+    drawItemTreeData.value = [];
+    buildDrawItemTree(drawItemList.value, drawItemTreeData.value);
+  })
+}
+
+function activeDrawItemThroughTree(data) {
+  const {list, index} = findItemIndexInDrawItemList(data);
+  activeDrawItem(list[index])
+}
+
+//endregion
+//region 表单操作
+const formModelsAndRules = ref({});
+
+//构建表单model
+function buildFormModalsAndRules(list, modal, rules) {
+  for (const item of list) {
+    if (typeof item === 'string') {
+      continue;
+    }
+    if (item.__id__ === 'form') {
+      modal = {};
+      rules = {};
+      formModelsAndRules.value[item.__props__.model] = modal;
+      formModelsAndRules.value[item.__props__.rules] = rules;
+    } else {
+      if (item.__config__.layout === 'formItem' && item.__vModel__) {
+        const {__config__: config, __props__: props} = item;
+        modal && (modal[item.__vModel__] = config.defaultValue);
+        if (rules) {
+          const r = buildRules(item);
+          if (r.length > 0) {
+            rules[item.__vModel__] = r;
+          }
+        }
+      }
+
+    }
+    if (Array.isArray(item.__slots__.default)) {
+      buildFormModalsAndRules(item.__slots__.default, modal, rules)
+    }
+  }
+}
+
+// 构建校验规则
+function buildRules(item) {
+  const rules = []
+  const {__config__: config, __props__: props} = item;
+  if (ruleTrigger[config.tag]) {
+    if (config.required) {
+      const type = Array.isArray(config.defaultValue) ? "array" : undefined
+      let message = Array.isArray(config.defaultValue)
+          ? `请至少选择一个${config.label}`
+          : props.placeholder
+      if (message === undefined) message = `${config.label}不能为空`
+      rules.push(
+          {
+            required: true, type, message, trigger: ruleTrigger[config.tag]
+          }
+      )
+    }
+    if (config.regList && Array.isArray(config.regList)) {
+      config.regList.forEach((reg) => {
+        if (reg.pattern) {
+          rules.push({
+                pattern: new RegExp(reg.pattern),
+                message: reg.message,
+                trigger: ruleTrigger[config.tag]
+              }
+          )
+        }
+      })
+    }
+  }
+  return rules;
+}
+
+//endregion
+
+//region 插槽操作
 //添加子项，比如el-steps下加上el-step子项
-function addChildItem(childTag) {
+function addSlotDrawItem({slotName, subtag}) {
+  let child = componentMap[subtag]
 
-  let child = componentMap[childTag]
   if (child) {
-    const clone = cloneComponent(child);
-    activeData.value.__children__.push(clone)
+    const clone = cloneDrawItem(child);
+    activeData.value.__slots__[slotName].push(clone)
+  } else {
+    ElNotification.info(`添加${subtag}子组件失败！`)
   }
 }
 
-
-function removeItemFromTree(e, node, data) {
-  const parent = node.parent
-  const children = parent.data.__children__ || parent.data;
-  const index = children.findIndex((d) => d.renderKey === data.renderKey)
-  children.splice(index, 1);
-  e.stopPropagation();
-}
-
-//region
+//endregion
+//region 配置自动保存
 watch(designConf, (val) => {
   saveDesignConf(val)
 }, {deep: true})
@@ -886,17 +1073,24 @@ watch(designConf, (val) => {
 //region 暗黑模式
 
 import {useDark, useToggle} from '@vueuse/core'
+import ruleTrigger from "@/components/generator/ruleTrigger";
+import {
+  processADrawItemAndSlots,
+  recursiveProcessDrawItemList,
+  recursiveFindItemIndexInList,
+  changeDrawItemVariableName
+} from "@/views/design/DrawItemProcessor";
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
 
-//
+//endregion
 </script>
 
 
 <style lang="scss" scoped>
-@import '@/styles/home';
+@import '@/styles/designer.scss';
 
 .p-0 {
   padding: 0 !important;
@@ -909,5 +1103,9 @@ const toggleDark = useToggle(isDark)
 .activeBtn {
   @extend .p-0;
   @extend .m-2;
+}
+
+.bg-transparent {
+  background-color: unset;
 }
 </style>

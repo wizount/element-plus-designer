@@ -1,10 +1,10 @@
 // el-select 子级
 export default (scheme) => {
     const children = []
-    const slot = scheme.__slot__
+    const slot = scheme.__data__
     if (slot && slot.options && slot.options.length) {
         children.push(
-            `<el-option v-for="(item, index) in ${scheme.__props__.__ref__.options}" :key="index" :label="item.label" :value="item.value" :disabled="item.disabled"></el-option>`
+            `<el-option v-for="(item, index) in ${scheme.__refs__.options}" :key="index" :label="item.label" :value="item.value" :disabled="item.disabled"></el-option>`
         )
     }
     return children.join('\n')

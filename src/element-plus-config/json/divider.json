@@ -1,0 +1,113 @@
+{
+  "__id__": "divider",
+  "name": "分割线",
+  "tag": "el-divider",
+  "tagIcon": "divider",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/divider.html",
+  "attributes": {
+    "direction": {
+      "label": "方向",
+      "title": "设置分割线方向",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "horizontal",
+              "value": "horizontal"
+            },
+            {
+              "label": "vertical",
+              "value": "vertical"
+            }
+          ]
+        }
+      ],
+      "default": "horizontal"
+    },
+    "border-style": {
+      "label": "样式",
+      "title": "设置分隔符样式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "dotted",
+              "value": "dotted"
+            },
+            {
+              "label": "dashed",
+              "value": "dashed"
+            },
+            {
+              "label": "solid",
+              "value": "solid"
+            },
+            {
+              "label": "double",
+              "value": "double"
+            },
+            {
+              "label": "groove",
+              "value": "groove"
+            },
+            {
+              "label": "ridge",
+              "value": "ridge"
+            },
+            {
+              "label": "inset",
+              "value": "inset"
+            },
+            {
+              "label": "outset",
+              "value": "outset"
+            }
+          ]
+        }
+      ],
+      "default": "solid"
+    },
+    "content-position": {
+      "label": "内容位置",
+      "title": "自定义分隔线内容的位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            },
+            {
+              "label": "center",
+              "value": "center"
+            }
+          ]
+        }
+      ],
+      "default": "center"
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "设置分割线文案的位置"
+    }
+  ]
+}
