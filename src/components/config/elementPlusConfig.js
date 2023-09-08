@@ -735,7 +735,16 @@ export const elementPlusComponents = [
             {
                 name: "Descriptions 描述列表",
                 key: "descriptions",
-                children: []
+                children: [
+                    // {
+                    //     __id__: "descriptions",
+                    //     __link__: [
+                    //         {
+                    //             __id__: "descriptions-item",
+                    //         }
+                    //     ]
+                    // }
+                ]
             },
             {
                 name: "Empty 空状态",

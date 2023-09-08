@@ -1,5 +1,10 @@
 {
   "__id__": "descriptions",
+  "name": "描述列表",
+  "tag": "el-descriptions",
+  "tagIcon": "descriptions",
+  "layout": "rawItem",
+  "document": "https://element-plus.gitee.io/zh-CN/component/descriptions.html",
   "attributes": {
     "border": {
       "label": "边框",
