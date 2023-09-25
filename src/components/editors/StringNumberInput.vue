@@ -1,7 +1,7 @@
 <template>
   <el-input v-model="inputValue" @change="change">
     <template #append>
-      <el-button style="color: black" title="字符串，双击变成数字" @dblclick="toggleStrDigit">
+      <el-button style="color: var(--el-text-color-primary)" title="字符串，双击变成数字" @dblclick="toggleStrDigit">
         <span title="数字，双击变成字符串" v-if="isDigit">
           D
         </span>

@@ -3,7 +3,7 @@
   "name": "描述列表",
   "tag": "el-descriptions",
   "tagIcon": "descriptions",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/descriptions.html",
   "attributes": {
     "border": {

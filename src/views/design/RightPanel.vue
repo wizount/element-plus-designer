@@ -2,7 +2,7 @@
   <div class="right-board">
     <el-tabs v-model="currentTab" class="center-tabs" style="padding-left: 15px">
       <el-tab-pane label="组件属性" name="field"/>
-      <el-tab-pane label="插槽" name="slots" v-if="curComConfig.slots&&curComConfig.slots.length>0"/>
+      <el-tab-pane label="插槽" name="slots" v-if="showSlots"/>
       <el-tab-pane label="样式" name="style"/>
       <el-tab-pane label="正则表达式" name="reg" v-if="Array.isArray(curItemConfig.regList)"/>
     </el-tabs>
@@ -25,7 +25,7 @@
                 </el-icon>
               </el-link>
 
-              <div v-for="slot in curComSlots">
+              <div v-for="slot in curComSlots" v-if="showSlots">
                 <template v-if="slot.subtags&&slot.subtags.length>0">
                   <div v-if="slot.subtags.length===1">
                     <el-tooltip :content="`添加${slot.subtags[0]}组件`" placement="top">
@@ -34,8 +34,8 @@
                     </el-tooltip>
                   </div>
                   <div v-else>
-                    <el-dropdown @command="addSlotDrawItem">
-                      <el-button link type="primary" :content="`添加组件`" icon="Plus"/>
+                    <el-dropdown @command="addSlotDrawItem" class="m-1">
+                      <el-button link type="primary" content="添加组件" icon="Plus"/>
                       <template #dropdown>
                         <el-dropdown-menu>
                           <el-dropdown-item v-for="subtag in slot.subtags" :command="{slotName:slot.name,subtag}">
@@ -50,6 +50,11 @@
 
               </div>
             </template>
+          </el-form-item>
+          <el-form-item label="组件布局" v-if="curComConfig.layouts&&curComConfig.layouts.length>1">
+            <el-radio-group v-model="curItemConfig.layout">
+              <el-radio-button v-for="v in curComConfig.layouts" :label="v">{{ v }}</el-radio-button>
+            </el-radio-group>
           </el-form-item>
           <el-form-item label="组件名">
             <el-input v-model="curItemConfig.itemName" placeholder="请输入组件名"/>
@@ -86,27 +91,57 @@
             </div>
 
           </el-form-item>
-          <el-form-item v-if="curItemConfig.tag==='el-dialog'||curItemConfig.tag==='el-drawer'" label="显示" title="显示dialog或者drawer">
+          <el-form-item v-if="curItemConfig.tag==='el-dialog'||curItemConfig.tag==='el-drawer'" label="显示"
+                        title="显示dialog或者drawer">
             <el-button
-                       @click="curItemConfig.defaultValue=!curItemConfig.defaultValue">显示{{curItemConfig.tag}}</el-button>
+                @click="curItemConfig.defaultValue=!curItemConfig.defaultValue">显示{{ curItemConfig.tag }}
+            </el-button>
 
           </el-form-item>
           <el-form-item v-if="curItemConfig.optionType !== undefined" label="选项样式">
             <el-radio-group v-model="curItemConfig.optionType">
-              <el-radio-button label="default"> 默认</el-radio-button>
-              <el-radio-button label="button"> 按钮</el-radio-button>
+              <el-radio-button label="default">默认</el-radio-button>
+              <el-radio-button label="button">按钮</el-radio-button>
             </el-radio-group>
+          </el-form-item>
+          <el-form-item v-if="curItemConfig.iconName !== undefined" label="图标">
+            <icon-chooser v-model="curItemConfig.iconName"></icon-chooser>
           </el-form-item>
           <el-form-item v-if="curItemConfig.required !== undefined" label="必填">
             <el-switch v-model="curItemConfig.required"></el-switch>
           </el-form-item>
 
           <el-form-item v-if="activeData.__data__" :label="curComConfig.data.label">
-            <el-input v-model="activeData.__refs__[curComConfig.data.name]" v-if="curComConfig.data.ref">
-              <template #prepend >REF</template>
+
+            <el-radio-group v-model="activeData.__data__.source" class="mb-2">
+              <el-radio-button label="static">静态数据</el-radio-button>
+              <el-radio-button label="dynamic">动态数据</el-radio-button>
+            </el-radio-group>
+            <el-input v-model="activeData.__refs__[curComConfig.data.name]"
+                      v-if="activeData.__data__[activeData.__data__.source].ref">
+              <template #prepend>REF</template>
             </el-input>
-            <config-value-input :attr-config="curComConfig.data.type"
-                                v-model="activeData.__data__[curComConfig.data.name]"></config-value-input>
+            <div v-show="activeData.__data__.source==='static'">
+
+              <config-value-input :attr-config="curComConfig.data.static.type" :treeProps="curItemProps.props"
+                                  v-model="activeData.__data__[curComConfig.data.name]"></config-value-input>
+            </div>
+            <div  v-show="activeData.__data__.source==='dynamic'">
+              <el-form-item label="网址">
+                <el-input v-model="activeData.__data__.dynamic.url" placeholder="网址">
+                </el-input>
+              </el-form-item>
+              <el-form-item label="方法">
+                <el-select v-model="activeData.__data__.dynamic.method" placeholder="方法">
+                  <el-option label="get" value="get"></el-option>
+                  <el-option label="post" value="post"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="数据位置">
+                <el-input v-model="activeData.__data__.dynamic.dataKey" placeholder="数据位置">
+                </el-input>
+              </el-form-item>
+            </div>
           </el-form-item>
           <attributes-render :attribute-config="curComAttrs"
                              :active-data="activeData"></attributes-render>
@@ -149,7 +184,7 @@
         <div v-if="currentTab==='style'">
           <style-editor v-model="curItemProps.style"></style-editor>
         </div>
-        <div v-if="curComConfig.slots&&curComConfig.slots.length>0&&currentTab==='slots'" class="slot-tab-pane">
+        <div v-if="showSlots&&currentTab==='slots'" class="slot-tab-pane">
           <div v-for="slot in curComSlots">
             <el-card shadow="hover">
               <template #header>
@@ -219,11 +254,11 @@
               </template>
 
             </el-card>
-            <el-collapse-transition >
+            <el-collapse-transition>
               <el-form class="narrower-margin-bottom" v-if="chosenSlotDrawItem&&chosenSlotIndex.indexOf(slot.name)===0">
-              <attributes-render
-                                 :active-data="chosenSlotDrawItem"
-                                 :attribute-config="chosenSlotDrawItemAttributes"></attributes-render>
+                <attributes-render
+                    :active-data="chosenSlotDrawItem"
+                    :attribute-config="chosenSlotDrawItemAttributes"></attributes-render>
               </el-form>
             </el-collapse-transition>
           </div>
@@ -266,7 +301,7 @@ const props = defineProps({
     }
 )
 
-const emits = defineEmits([ 'addSlotDrawItem', "activeParentDrawItem"])
+const emits = defineEmits(['addSlotDrawItem', "activeParentDrawItem"])
 
 const curItemConfig = computed(() => {
   return props.activeData.__config__ || {}
@@ -298,7 +333,10 @@ const curItemSlots = computed(() => {
   return props.activeData.__slots__ || {}
 })
 
-
+const showSlots = computed(() => {
+  console.info(curItemConfig.value)
+  return curItemConfig.value.layout !== 'fixedItem' && curComConfig.value.slots && curComConfig.value.slots.length > 0
+})
 //当选中组件变化，也就是renderKey变化，重新选中的插槽数据
 watch(() => props.activeData.renderKey, (val) => {
   chosenSlotDrawItem.value = undefined;
@@ -316,7 +354,7 @@ watch(curItemProps, (newVal) => {
 
 //region 对部分的tag进行修改
 watch(() => curItemProps.value.multiple, (val) => {
-  if (['el-select','el-select-v2','el-tree-select'].indexOf(curItemConfig.value.tag)>=0 ) {
+  if (['el-select', 'el-select-v2', 'el-tree-select'].indexOf(curItemConfig.value.tag) >= 0) {
     if (val) {
       if (!Array.isArray(curItemConfig.value.defaultValue)) {
         curItemConfig.value.defaultValue = []
@@ -330,7 +368,7 @@ watch(() => curItemProps.value.multiple, (val) => {
   }
 })
 watch(() => curItemProps.value['is-range'], (val) => {
- props.activeData.renderKey = `${curItemConfig.value.drawItemId}${Math.floor(Math.random() * 10000)}`
+  props.activeData.renderKey = `${curItemConfig.value.drawItemId}${Math.floor(Math.random() * 10000)}`
   if (curItemConfig.value.tag === 'el-time-picker') {
     curItemConfig.value.defaultValue = []
   }
@@ -359,6 +397,7 @@ watch(() => curItemConfig.value.label, (newVal, oldVal) => {
 watch(() => curItemConfig.value.itemName, (newVal, oldVal) => {
   changeDrawItemVariableName(props.activeData, newVal, oldVal);
 })
+
 
 //region 对时间和日期组件进行格式操作
 //监听date-picker-type格式
@@ -394,6 +433,8 @@ import {AutoCompleteCallback} from "@/utils/element-plus-utils";
 import regList from '@/utils/regList.json'
 import {changeDrawItemVariableName} from "@/views/design/DrawItemProcessor";
 import ConfigValueInput from "@/views/design/ConfigValueInput";
+import {camelCase, deepClone} from "@/utils";
+import IconChooser from "@/components/editors/IconChooser.vue";
 
 const ac = new AutoCompleteCallback(regList)
 
@@ -460,8 +501,6 @@ function addNode(data) {
 }
 
 
-
-
 //region 插槽操作
 
 const chosenSlotDrawItem = ref(undefined)
@@ -479,10 +518,11 @@ function chooseSlotDrawItem(element, slotName, index) {
   chosenSlotDrawItem.value = element;
   chosenSlotIndex.value = slotName + index;
 }
-function deleteSlotDrawItem(slotName,index) {
+
+function deleteSlotDrawItem(slotName, index) {
   curItemSlots.value[slotName].splice(index, 1);
-  nextTick(()=>{
-    chosenSlotDrawItem.value=undefined
+  nextTick(() => {
+    chosenSlotDrawItem.value = undefined
     chosenSlotIndex.value = "";
   })
 }

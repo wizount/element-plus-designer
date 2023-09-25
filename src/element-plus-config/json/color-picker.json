@@ -3,7 +3,7 @@
   "name": "颜色选择",
   "tag": "el-color-picker",
   "tagIcon": "color",
-  "layout": "formItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/color-picker.html",
   "attributes": {
     "vModel": "modelValue",

@@ -3,7 +3,7 @@
   "name": "描述列表子项",
   "tag": "el-descriptions-item",
   "tagIcon": "descriptions",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/descriptions.html",
   "attributes": {
     "label": {

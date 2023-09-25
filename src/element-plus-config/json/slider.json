@@ -3,7 +3,7 @@
   "name": "滑块",
   "tag": "el-slider",
   "tagIcon": "slider",
-  "layout": "formItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/slider.html",
   "attributes": {
     "vModel": "modelValue",

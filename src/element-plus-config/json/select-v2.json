@@ -3,7 +3,7 @@
   "name": "虚拟选择器",
   "tag": "el-select-v2",
   "tagIcon": "select",
-  "layout": "formItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/select-v2.html",
   "attributes": {
     "vModel": "modelValue",

@@ -3,5 +3,5 @@
   "name": "文本",
   "tag": "span",
   "tagIcon": "text",
-  "layout": "rawItem"
+  "layouts": ["rawItem"]
 }

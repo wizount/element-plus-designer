@@ -1,9 +1,10 @@
+
 {
   "__id__": "upload",
   "name": "上传",
   "tag": "el-upload",
   "tagIcon": "upload",
-  "layout": "formItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/upload.html",
   "attributes": {
     "action": {

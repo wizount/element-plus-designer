@@ -121,7 +121,7 @@ export const renderProps = (item, formModelName) => {
 
 export const renderSlots = (item) => {
     const {tag, layout} = item.__config__;
-    if (slotHtmlFunctions[tag]) {
+    if (layout==='fixedItem'&&slotHtmlFunctions[tag]) {
         return slotHtmlFunctions[tag](item);
     } else {
         const slots = item.__slots__;

@@ -3,7 +3,7 @@
   "name": "抽屉",
   "tag": "el-drawer",
   "tagIcon": "drawer",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/drawer.html",
   "attributes": {
     "vModel": "modelValue",

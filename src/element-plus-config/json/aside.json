@@ -3,7 +3,7 @@
   "name": "侧边栏容器",
   "tag": "el-aside",
   "tagIcon": "aside",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/container.html",
   "attributes": {
     "width": {

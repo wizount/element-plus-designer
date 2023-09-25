@@ -1,5 +1,5 @@
 export default {
-    icon(h, conf, key) {
-        return {default: () => h(resolveComponent(conf.__data__.icon))}
+    default(h, conf, key) {
+        return {default: () => h(resolveComponent(conf.__config__.iconName))}
     },
 }

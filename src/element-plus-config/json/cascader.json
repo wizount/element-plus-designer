@@ -3,7 +3,7 @@
   "name": "级联选择",
   "tag": "el-cascader",
   "tagIcon": "cascader",
-  "layout": "formItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/cascader.html",
   "attributes": {
     "vModel": "modelValue",
@@ -18,7 +18,8 @@
           "tag": "tree-editor"
         }
       ],
-      "default": []
+      "default": [],
+      "hide": true
     },
     "props": {
       "label": "配置选项",
@@ -407,5 +408,34 @@
       "title": "cascader 内容的 ref",
       "type": "^[object]`ComputedRef<any>`"
     }
-  ]
+  ],
+  "data": {
+    "name": "options",
+    "label": "选项",
+    "source": "static",
+    "static": {
+      "ref": true,
+      "type": {
+        "name": "array",
+        "tag": "tree-editor"
+      },
+      "default": [
+        {
+          "value": "1",
+          "label": "选项1",
+          "children": [
+            {
+              "value": "2",
+              "label": "选项1-1"
+            }
+          ]
+        }
+      ]
+    },
+    "dynamic": {
+      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/options",
+      "method": "get",
+      "dataKey": ""
+    }
+  }
 }

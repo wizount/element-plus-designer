@@ -3,7 +3,7 @@
   "name": "徽章",
   "tag": "el-badge",
   "tagIcon": "badge",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/badge.html",
   "attributes": {
     "value": {

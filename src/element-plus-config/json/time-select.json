@@ -3,7 +3,7 @@
   "name": "时间选择",
   "tag": "el-time-select",
   "tagIcon": "time",
-  "layout": "formItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/time-select.html",
   "attributes": {
     "vModel": "modelValue",

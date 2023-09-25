@@ -1,5 +1,9 @@
 {
   "__id__": "table-v2",
+  "name": "虚拟表格",
+  "tag": "el-table-v2",
+  "tagIcon": "table",
+  "layouts": ["rawItem"],
   "attributes": {
     "cache": {
       "label": "",

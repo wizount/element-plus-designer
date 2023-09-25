@@ -3,7 +3,7 @@
   "name": "flexBox",
   "tag": "div",
   "tagIcon": "flex-div",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "attributes": {
     "style": {
       "label": "样式",

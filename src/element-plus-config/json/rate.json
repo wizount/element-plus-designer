@@ -3,7 +3,7 @@
   "name": "评分",
   "tag": "el-rate",
   "tagIcon": "rate",
-  "layout": "formItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/rate.html",
   "attributes": {
     "vModel": "modelValue",

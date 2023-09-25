@@ -3,7 +3,7 @@
   "name": "面包屑",
   "tag": "el-breadcrumb",
   "tagIcon": "breadcrumb",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/breadcrumb.html",
   "childTag": [
     "el-breadcrumb-item"

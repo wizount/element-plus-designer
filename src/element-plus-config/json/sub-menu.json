@@ -3,7 +3,7 @@
   "name": "子菜单",
   "tag": "el-sub-menu",
   "tagIcon": "sub-menu",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/menu.html#submenu-attributes",
   "parentTag": [
     "el-menu",

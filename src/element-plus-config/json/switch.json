@@ -3,7 +3,7 @@
   "name": "开关",
   "tag": "el-switch",
   "tagIcon": "switch",
-  "layout": "formItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/switch.html",
   "attributes": {
     "vModel": "modelValue",

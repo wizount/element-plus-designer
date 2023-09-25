@@ -3,7 +3,7 @@
   "name": "弹出框",
   "tag": "el-popover",
   "tagIcon": "popover",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/popover.html",
   "attributes": {
     "trigger": {

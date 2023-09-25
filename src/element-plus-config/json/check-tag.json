@@ -3,7 +3,7 @@
   "name": "可选中标签",
   "tag": "el-check-tag",
   "tagIcon": "check-tag",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/tag.html",
   "attributes": {
     "checked": {

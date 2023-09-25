@@ -3,7 +3,7 @@
   "name": "列容器",
   "tag": "el-col",
   "tagIcon": "col",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/layout.html",
   "parentTag": [
     "el-row"

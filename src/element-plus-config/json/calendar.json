@@ -3,7 +3,7 @@
   "name": "日历",
   "tag": "el-calendar",
   "tagIcon": "calendar",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/calendar.html",
   "attributes": {
     "vModel": "modelValue",

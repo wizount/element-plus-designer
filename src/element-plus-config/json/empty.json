@@ -3,7 +3,7 @@
   "name": "空状态",
   "tag": "el-empty",
   "tagIcon": "empty",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/empty.html",
   "attributes": {
     "image": {

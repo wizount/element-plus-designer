@@ -3,7 +3,7 @@
   "name": "回到顶部",
   "tag": "el-backtop",
   "tagIcon": "backtop",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/backtop.html",
   "attributes": {
     "target": {

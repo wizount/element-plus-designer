@@ -1,7 +1,7 @@
 {
   "__id__": "html",
   "tagIcon": "html",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "attributes": {
 
   },

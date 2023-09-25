@@ -3,7 +3,7 @@
   "name": "单选框组",
   "tag": "el-radio-group",
   "tagIcon": "radio",
-  "layout": "formItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/radio.html",
   "attributes": {
     "vModel": "modelValue",
@@ -138,37 +138,44 @@
     }
   ],
   "data": {
-    "dynamicUrl": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/options",
-    "method": "get",
     "name": "options",
     "label": "选项",
-    "type":{
-      "name": "array",
-      "tag": "object-array-editor",
-      "props": {
-        "keys": [
-          {
-            "key": "value",
-            "label": "值",
-            "tag": "string-number-input"
-          },
-          {
-            "key": "label",
-            "label": "标签",
-            "tag": "string-number-input"
-          }
-        ]
-      }
-    },
-    "default": [
-      {
-        "label": "选项一",
-        "value": "1"
+    "source": "static",
+    "static": {
+      "ref": true,
+      "type": {
+        "name": "array",
+        "tag": "object-array-editor",
+        "props": {
+          "keys": [
+            {
+              "key": "value",
+              "label": "值",
+              "tag": "string-number-input"
+            },
+            {
+              "key": "label",
+              "label": "标签",
+              "tag": "string-number-input"
+            }
+          ]
+        }
       },
-      {
-        "label": "选项二",
-        "value": "2"
-      }
-    ]
+      "default": [
+        {
+          "label": "选项一",
+          "value": "1"
+        },
+        {
+          "label": "选项二",
+          "value": "2"
+        }
+      ]
+    },
+    "dynamic": {
+      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/options",
+      "method": "get",
+      "dataKey": "list"
+    }
   }
 }

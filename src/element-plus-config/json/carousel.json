@@ -3,7 +3,7 @@
   "name": "走马灯",
   "tag": "el-carousel",
   "tagIcon": "carousel",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/carousel.html",
   "childTag": [
     "el-carousel-item"

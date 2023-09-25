@@ -57,7 +57,7 @@
         </el-form>
         <div class="text-right">
           <el-button @click="cancelAdd">取消</el-button>
-          <el-button @click="addItem">确定</el-button>
+          <el-button @click="addItem" type="primary">确定</el-button>
         </div>
 
       </popup-input>
@@ -156,7 +156,7 @@ const deleteItem = (node) => {
   }
   let idx = target.indexOf(data);
 
-  if (target === treeData && target.length === 1) {
+  if (target === treeData.value && target.length === 1) {
     ElNotification.warning("只有一个选项，不能删除");
   } else {
     target.splice(idx, 1);
@@ -167,7 +167,7 @@ const deleteItem = (node) => {
 const defaultKeys = ["label", "value", "disabled", "children"]
 watch(() => [props.treeProps.label, props.treeProps.value, props.treeProps.disabled, props.treeProps.children], (newVal, oldVal) => {
   defaultKeys.map((key, idx) => {
-    changeKeys(treeData, oldVal[idx] || key, newVal[idx] || key, oldVal[3])
+    changeKeys(treeData.value, oldVal[idx] || key, newVal[idx] || key, oldVal[3])
   })
   emits("update:modelValue",treeData.value)
 });

@@ -3,7 +3,7 @@
   "name": "卡片",
   "tag": "el-card",
   "tagIcon": "card",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/card.html",
   "attributes": {
     "header": {

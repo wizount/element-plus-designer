@@ -3,7 +3,7 @@
   "name": "树形控件",
   "tag": "el-tree",
   "tagIcon": "tree",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/tree.html",
   "attributes": {
     "data": {
@@ -15,7 +15,8 @@
           "name": "array",
           "tag": "tree-editor"
         }
-      ]
+      ],
+      "hide": true
     },
     "empty-text": {
       "label": "",
@@ -395,5 +396,34 @@
       "name": "empty",
       "title": "当数据为空时自定义的内容"
     }
-  ]
+  ],
+  "data": {
+    "name": "data",
+    "label": "展示数据",
+    "source": "static",
+    "static": {
+      "ref": true,
+      "type": {
+        "name": "array",
+        "tag": "tree-editor"
+      },
+      "default": [
+        {
+          "value": "1",
+          "label": "选项1",
+          "children": [
+            {
+              "value": "2",
+              "label": "选项1-1"
+            }
+          ]
+        }
+      ]
+    },
+    "dynamic": {
+      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/treeData",
+      "method": "get",
+      "dataKey": ""
+    }
+  }
 }

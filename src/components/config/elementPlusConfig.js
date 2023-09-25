@@ -15,13 +15,11 @@ export const elementPlusComponents = [
                     {
                         __id__: "div",
                         __config__: {
-                            // document: "https://element-plus.gitee.io/zh-CN/component/button.html"
                         }
                     },
                     {
                         __id__: "flex-div",
                         __config__: {
-                            // document: "https://element-plus.gitee.io/zh-CN/component/button.html"
                         },
                         __props__: {
                             style: {
@@ -166,6 +164,9 @@ export const elementPlusComponents = [
                 key: "icon",
                 children: [{
                     __id__: "icon",
+                    __config__: {
+                        iconName:'House'
+                    }
                 }]
             },
             {
@@ -272,11 +273,8 @@ export const elementPlusComponents = [
                     {
                         __id__: "cascader",
                         __config__: {
-                            url: "https://www.fastmock.site/mock/f8d7a54fb1e60561e2f720d5a810009d/fg/cascaderList",
-                            method: "get",
-                            dataPath: "list",
-                            dataConsumer: "options",
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             defaultValue: [],
                             dataType: "dynamic",
@@ -286,19 +284,7 @@ export const elementPlusComponents = [
                         __props__: {
                             style: {
                                 width: "100%"
-                            },
-                            options: [
-                                {
-                                    value: "1",
-                                    label: "选项1",
-                                    children: [
-                                        {
-                                            "value": "2",
-                                            "label": "选项1-1"
-                                        }
-                                    ]
-                                }
-                            ]
+                            }
                         }
                     }
                 ]
@@ -312,6 +298,7 @@ export const elementPlusComponents = [
                         __config__: {
                             defaultValue: [],
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             optionType: "default",
                             required: true,
@@ -321,6 +308,7 @@ export const elementPlusComponents = [
                             __id__: "checkbox",
                             __config__: {
                                 showLabel: true,
+                                wrapWithFormItem: true,
                                 labelWidth: null,
                                 optionType: "default",
                                 required: true,
@@ -339,6 +327,7 @@ export const elementPlusComponents = [
                         __config__: {
                             defaultValue: null,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             required: true,
                         },
@@ -354,6 +343,7 @@ export const elementPlusComponents = [
                         __config__: {
                             defaultValue: null,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             required: true,
                         },
@@ -375,6 +365,7 @@ export const elementPlusComponents = [
                             itemName: "datetime-picker",
                             defaultValue: null,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             required: true,
                             name: "日期时间选择"
@@ -399,6 +390,7 @@ export const elementPlusComponents = [
                             tagIcon: "input",
                             labelWidth: null,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             defaultValue: undefined,
                             required: true,
                             // 正则校验规则
@@ -416,6 +408,7 @@ export const elementPlusComponents = [
                             itemName: "texarea",
                             labelWidth: null,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             tag: 'el-input',
                             tagIcon: 'textarea',
                             defaultValue: undefined,
@@ -434,6 +427,7 @@ export const elementPlusComponents = [
                             name: "密码框",
                             tagIcon: "password",
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             required: true,
                             regList: [],
@@ -456,6 +450,7 @@ export const elementPlusComponents = [
                         __id__: "input-number",
                         __config__: {
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             required: true,
                             regList: [],
@@ -477,6 +472,7 @@ export const elementPlusComponents = [
                         __config__: {
                             labelWidth: null,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             optionType: "default",
                             required: true,
                             border: false,
@@ -493,6 +489,7 @@ export const elementPlusComponents = [
                         __config__: {
                             defaultValue: 0,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             required: true,
                         },
@@ -507,6 +504,7 @@ export const elementPlusComponents = [
                         __id__: "select",
                         __config__: {
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             defaultValue: "",
                             required: true,
@@ -537,6 +535,7 @@ export const elementPlusComponents = [
                         __id__: "select-v2",
                         __config__: {
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             defaultValue: "",
                             required: true,
@@ -558,6 +557,7 @@ export const elementPlusComponents = [
                         __config__: {
                             defaultValue: null,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             required: true,
                         },
@@ -573,6 +573,7 @@ export const elementPlusComponents = [
                         __config__: {
                             defaultValue: false,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             required: true,
                         },
@@ -588,6 +589,7 @@ export const elementPlusComponents = [
                         __config__: {
                             defaultValue: null,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             required: true,
                         },
@@ -608,6 +610,7 @@ export const elementPlusComponents = [
                         __config__: {
                             defaultValue: null,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             required: true,
                         },
@@ -640,6 +643,7 @@ export const elementPlusComponents = [
                         __config__: {
                             defaultValue: null,
                             showLabel: true,
+                            wrapWithFormItem: true,
                             labelWidth: null,
                             required: true,
                             showTip: false,
@@ -825,12 +829,6 @@ export const elementPlusComponents = [
                 children: [
                     {
                         __id__: "table",
-                        __props__: {
-                            data: [],
-                            style: {
-                                width: "99%"
-                            }
-                        },
                         __link__: [
                             {
                                 __id__: "table-column",
@@ -884,21 +882,7 @@ export const elementPlusComponents = [
                 key: "tree",
                 children: [
                     {
-                        __id__: "tree",
-                        __props__: {
-                            data: [
-                                {
-                                    value: "1",
-                                    label: "选项1",
-                                    children: [
-                                        {
-                                            value: "2",
-                                            label: "选项1-1"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
+                        __id__: "tree"
                     }
                 ]
             },
@@ -909,23 +893,12 @@ export const elementPlusComponents = [
                     __id__: "tree-select",
                     __config__: {
                         showLabel: true,
+                        wrapWithFormItem: true,
                         labelWidth: null,
                         optionType: "default",
                         required: true,
                     },
                     __props__: {
-                        data: [
-                            {
-                                value: "1",
-                                label: "选项1",
-                                children: [
-                                    {
-                                        value: "2",
-                                        label: "选项1-1"
-                                    }
-                                ]
-                            }
-                        ]
                     }
                 }]
             },
@@ -935,18 +908,6 @@ export const elementPlusComponents = [
                 children: [{
                     __id__: "tree-v2",
                     __props__: {
-                        data: [
-                            {
-                                id: "1",
-                                label: "选项1",
-                                children: [
-                                    {
-                                        id: "2",
-                                        label: "选项1-1"
-                                    }
-                                ]
-                            }
-                        ]
                     }
                 }]
             },

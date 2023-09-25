@@ -5,17 +5,25 @@ const elementPlusConfigMap = {}
  * 文件内容为value，解析JSON配置中的__slot__
  */
 
+import slotRenderFunctions from "@/components/render/slots";
 const jsonFiles = import.meta.glob("./json/*.json", {as: "raw", eager: true});
 const keys = Object.keys(jsonFiles) || []
 keys.map(key => {
-    const tag = key.replace(/^\.\/(.*)\.\w+$/, '$1').split("/").pop();
-    elementPlusConfigMap[tag] = JSON.parse(jsonFiles[key]);//fixme 有没有比较好的方法，不用再parse一次
-    if (!elementPlusConfigMap[tag].attributes) {
-        elementPlusConfigMap[tag].attributes = []
+    const id = key.replace(/^\.\/(.*)\.\w+$/, '$1').split("/").pop();
+    const json=JSON.parse(jsonFiles[key]);
+    if (!json.attributes) {
+        json.attributes = []
     }
-    if (!elementPlusConfigMap[tag].slots) {
-        elementPlusConfigMap[tag].slots = []
+    if (!json.slots) {
+        json.slots = []
     }
+    if(!json.layouts){
+        json.layouts=["rawItem"];
+    }
+    if(slotRenderFunctions[json.tag]){
+        json.layouts.splice(0,0,"fixedItem")
+    }
+    elementPlusConfigMap[id] = json;//fixme 有没有比较好的方法，不用再parse一次
 })
 Object.assign( elementPlusConfigMap["tree-select"].attributes,elementPlusConfigMap["select"].attributes);
 Object.assign( elementPlusConfigMap["tree-select"].attributes,elementPlusConfigMap["tree"].attributes);

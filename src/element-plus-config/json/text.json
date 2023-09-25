@@ -3,7 +3,7 @@
   "name": "文本",
   "tag": "el-text",
   "tagIcon": "text",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/text.html",
   "attributes": {
     "type": {

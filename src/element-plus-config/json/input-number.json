@@ -3,7 +3,7 @@
   "name": "计数器",
   "tag": "el-input-number",
   "tagIcon": "number",
-  "layout": "formItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/input-number.html",
   "attributes": {
     "vModel": "modelValue",

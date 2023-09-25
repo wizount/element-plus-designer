@@ -2,7 +2,7 @@
   "__id__": "dropdown-menu",
   "tag": "el-dropdown-menu",
   "tagIcon": "dropdown",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/dropdown.html",
   "attributes": {
   },

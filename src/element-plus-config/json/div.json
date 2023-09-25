@@ -3,10 +3,7 @@
   "name": "div",
   "tag": "div",
   "tagIcon": "div",
-  "layout": "containerItem",
-  "attributes": {
-
-  },
+  "layouts": ["containerItem"],
   "slots": [
     {
       "name": "default",

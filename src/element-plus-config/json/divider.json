@@ -3,7 +3,7 @@
   "name": "分割线",
   "tag": "el-divider",
   "tagIcon": "divider",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/divider.html",
   "attributes": {
     "direction": {

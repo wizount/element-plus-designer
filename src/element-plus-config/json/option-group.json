@@ -3,7 +3,7 @@
   "name": "下拉选项组",
   "tag": "el-option-group",
   "tagIcon": "option-group",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "parentTag": ["el-select"],
   "childTag": ["el-option"],
   "document": "https://element-plus.gitee.io/zh-CN/component/select.html",

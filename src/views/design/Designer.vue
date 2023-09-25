@@ -56,11 +56,23 @@
     </div>
     <div class="center-board">
       <div class="action-bar">
-        <el-button text @click="run"><svg-icon class="mr-2" icon-class="run"/>运行</el-button>
-        <el-button text @click="showJson"> <svg-icon class="mr-2" icon-class="json"/>查看json</el-button>
-        <el-button text @click="showHtml"> <svg-icon class="mr-2" icon-class="code"/>查看Vue</el-button>
+        <el-button text @click="run">
+          <svg-icon class="mr-2" icon-class="run"/>
+          运行
+        </el-button>
+        <el-button text @click="showJson">
+          <svg-icon class="mr-2" icon-class="json"/>
+          查看json
+        </el-button>
+        <el-button text @click="showHtml">
+          <svg-icon class="mr-2" icon-class="code"/>
+          查看Vue
+        </el-button>
         <el-button text @click="download" icon="Download"> 导出vue文件</el-button>
-        <el-button text @click="drawItemTreeVisible=true"> <svg-icon class="mr-2" icon-class="tree"/>组件树</el-button>
+        <el-button text @click="drawItemTreeVisible=true">
+          <svg-icon class="mr-2" icon-class="tree"/>
+          组件树
+        </el-button>
         <el-button text @click="execCopy" icon="DocumentCopy"> 复制代码</el-button>
         <el-dropdown>
           <el-button text icon="Setting"> 设置</el-button>
@@ -100,7 +112,8 @@
           <template #item="{element,index}">
             <draggable-item :current-item="element"
                             :active-id="activeId" :design-conf="designConf" @activeItem="activeDrawItem"
-                            @change="itemChange" :item-move="itemMove" :form-models-and-rules="formModelsAndRules"/>
+                            @change="itemChange" :item-move="itemMove" :form-models-and-rules="formModelsAndRules"
+                            :dynamic-data="dynamicData"/>
           </template>
         </draggable>
         <div v-show="!drawItemList||drawItemList.length===0" class="empty-info"> 从左侧拖入或点选组件进行界面设计</div>
@@ -210,7 +223,7 @@ function createComponentMap(com) {
     if (!com.__config__) {
       com.__config__ = {};
     }
-    const {name, tag, tagIcon, layout} = elementPlusConfigMap[com.__id__];
+    const {name, tag, tagIcon, layouts} = elementPlusConfigMap[com.__id__];
     if (!com.__config__.name) {
       com.__config__.name = name;
     }
@@ -220,7 +233,7 @@ function createComponentMap(com) {
     if (!com.__config__.tagIcon) {
       com.__config__.tagIcon = tagIcon;
     }
-    com.__config__.layout = layout;
+    com.__config__.layout = layouts[0];
     componentMap[com.__id__] = com;
   }
 }
@@ -257,6 +270,8 @@ watch(drawItemList, (val) => {
   formModelsAndRules.value = {};
   buildFormModalsAndRules(val);
 
+  // dynamicData.value={};
+  buildDynamicData();
   drawItemTreeData.value = [];
 
 }, {deep: true})
@@ -502,8 +517,8 @@ function onEnd(obj) {
     } else {//不能添加就删除
       list.splice(index, 1);
     }
-    if(parent&&parent.__id__==='button-group'&&tempActiveData.__id__==='button'){
-      delete  tempActiveData.__props__.size;
+    if (parent && parent.__id__ === 'button-group' && tempActiveData.__id__ === 'button') {
+      delete tempActiveData.__props__.size;
     }
   }
 }
@@ -571,30 +586,35 @@ function cloneDrawItem(origin) {
         props[key] = deepClone(attr.default)
       }
       if (attr.remember && designConf.value[key]) {
-        props[key] =  deepClone(designConf.value[key]);
+        props[key] = deepClone(designConf.value[key]);
       }
     }
     if (attributes.placeholder)
       props.placeholder = attributes.placeholder
     //复制像el-select的选项
     if (data) {
-      console.info(data)
-      if(data.ref) {
+
+      const static_ = {
+        ref: data.static.ref,
+      }
+      if (data.static.ref) {
+
         clone.__refs__[data.name] = camelCase(config.itemName + '-' + data.name)
       }
-      clone.__data__ = {
-        dynamicUrl: data.dynamicUrl,
-        [data.name]: deepClone(data.default)
-      };
+      const dynamic = {ref: true}
+
+      Object.assign(dynamic, data.dynamic)
+      clone.__data__ = {name:data.name,source: data.source, static: static_, dynamic, [data.name]: deepClone(data.static.default)};
+
     }
   }
 
   //不包裹form-item
-  if (config.layout === 'formItem' && !designConf.value.wrapWithFormItem) {
+  if (config.wrapWithFormItem && !designConf.value.wrapWithFormItem) {
     delete config.showLabel;
     delete config.labelWidth;
     delete config.required;
-    config.layout = 'rawItem';
+    config.wrapWithFormItem = false;
   }
   props.placeholder !== undefined && (props.placeholder += config.label);
   if (!props.style) {
@@ -682,8 +702,8 @@ function allowToAdd(parent, clone, noShowMessage) {
   }
 
   //专用，删除button-group下面button的size属性
-  if(parent&&parent.__id__==='button-group'&&clone.__id__==='button'){
-    delete  clone.__props__.size;
+  if (parent && parent.__id__ === 'button-group' && clone.__id__ === 'button') {
+    delete clone.__props__.size;
   }
   return true;
 }
@@ -960,10 +980,11 @@ function drawItemTreeNodeDrop(draggingNode, dropNode, type) {
       }
     }
   }
-
+  Array.isArray(item)&&item.length>0&&activeDrawItem(item[0])
   nextTick(() => {
     drawItemTreeData.value = [];
     buildDrawItemTree(drawItemList.value, drawItemTreeData.value);
+
   })
 }
 
@@ -978,7 +999,7 @@ function removeItemFromTree(data) {
 
 function activeDrawItemThroughTree(data) {
   const {list, index} = findItemIndexInDrawItemList(data);
-  activeDrawItem(list[index])
+  list && activeDrawItem(list[index])
 }
 
 //endregion
@@ -997,7 +1018,7 @@ function buildFormModalsAndRules(list, modal, rules) {
       formModelsAndRules.value[item.__props__.model] = modal;
       formModelsAndRules.value[item.__props__.rules] = rules;
     } else {
-      if (item.__config__.layout === 'formItem' && item.__vModel__) {
+      if (item.__config__.wrapWithFormItem && item.__vModel__) {
         const {__config__: config, __props__: props} = item;
         modal && (modal[item.__vModel__] = config.defaultValue);
         if (rules) {
@@ -1049,6 +1070,37 @@ function buildRules(item) {
 }
 
 //endregion
+
+//region 动态数据获取
+const dynamicData = ref({})
+
+import Axios from 'axios'
+
+function buildDynamicData() {
+  recursiveProcessDrawItemList(drawItemList.value, (item) => {
+    if (item.__data__) {
+      if (item.__data__.source === 'dynamic') {
+        const {data} = elementPlusConfigMap[item.__id__];
+        const {method, url, dataKey} = item.__data__.dynamic;
+        //if (!dynamicData.value[item.__refs__[data.name]]) {
+        Axios({method, url}).then((resp) => {
+          if (dataKey) {
+            dynamicData.value[item.__refs__[data.name]] = resp.data[dataKey]
+          } else {
+            dynamicData.value[item.__refs__[data.name]] = resp.data;
+          }
+          console.info(dynamicData.value)
+        })
+        // }
+
+      }
+    }
+  })
+
+
+}
+
+// endregion
 
 //region 插槽操作
 //添加子项，比如el-steps下加上el-step子项

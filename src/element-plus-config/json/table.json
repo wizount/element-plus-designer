@@ -3,7 +3,9 @@
   "name": "表格",
   "tag": "el-table",
   "tagIcon": "table",
-  "layout": "containerItem",
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/table.html",
   "childTag": [
     "el-table-column"
@@ -15,9 +17,10 @@
       "types": [
         {
           "name": "array",
-          "tag": "dynamic-data-getter"
+          "tag": "array-editor"
         }
-      ]
+      ],
+      "hide": true
     },
     "height": {
       "label": "高度",
@@ -374,28 +377,27 @@
       "default": "dark"
     },
     "tooltip-options": {
-      "label": "",
+      "label": "tooltip 的选项",
       "title": "溢出 tooltip 的选项，[参见下述 tooltip 组件](tooltip.html#attributes)",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "[请参考 tooltip](tooltip.html#attributes)",
-              "value": "[请参考 tooltip](tooltip.html#attributes)"
-            }
-          ]
+          "name": "string",
+          "tag": "object-editor"
         }
       ],
-      "default": "^[object]`{ enterable: true, placement: 'top', showArrow: true, hideAfter: 200, popperOptions: { strategy: 'fixed' } }`",
+      "default": {
+        "enterable": true,
+        "placement": "top",
+        "showArrow": true,
+        "hideAfter": 200,
+        "popperOptions": {
+          "strategy": "fixed"
+        }
+      },
       "version": "2.2.28"
     },
     "show-summary": {
-      "label": "",
+      "label": "表尾显示合计",
       "title": "是否在表尾显示合计行",
       "types": [
         {
@@ -406,7 +408,7 @@
       "default": false
     },
     "sum-text": {
-      "label": "",
+      "label": "合计第一列文本",
       "title": "合计行第一列的文本",
       "types": [
         {
@@ -428,7 +430,8 @@
           "tag": "",
           "desc": "{ columns, data }"
         }
-      ]
+      ],
+      "hide": true
     },
     "span-method": {
       "label": "",
@@ -443,7 +446,7 @@
       "hide": true
     },
     "select-on-indeterminate": {
-      "label": "",
+      "label": "点击表头多选框行为",
       "title": "在多选表格中，当仅有部分行被选中时，点击表头的多选框时的行为。 若为 true，则选中所有行；若为 false，则取消选择所有行",
       "types": [
         {
@@ -454,7 +457,7 @@
       "default": true
     },
     "indent": {
-      "label": "",
+      "label": "树节点缩进",
       "title": "展示树形数据时，树节点的缩进",
       "types": [
         {
@@ -466,7 +469,7 @@
       "hide": true
     },
     "lazy": {
-      "label": "",
+      "label": "懒加载",
       "title": "是否懒加载子节点数据",
       "types": [
         {
@@ -536,24 +539,15 @@
       "default": false
     },
     "show-overflow-tooltip": {
-      "label": "",
+      "label": "隐藏额外内容",
       "title": "是否隐藏额外内容并在单元格悬停时使用 Tooltip 显示它们。这将影响全部列的展示。",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "[`object`](#table-attributes) ^(2.2.28)",
-              "value": "[`object`](#table-attributes) ^(2.2.28)"
-            }
-          ]
+          "name": "boolean",
+          "tag": "el-switch"
         }
       ],
-      "default": "参考 [tooltip-options](#table-attributes)"
+      "default": false
     },
     "flexible": {
       "label": "确保主轴最小尺寸",
@@ -743,5 +737,23 @@
       "name": "empty",
       "title": "当数据为空时自定义的内容"
     }
-  ]
+  ],
+  "data": {
+    "name": "data",
+    "label": "数据",
+    "source": "dynamic",
+    "static": {
+      "ref": true,
+      "type": {
+        "name": "array",
+        "tag": "array-object-editor"
+      },
+      "default": []
+    },
+    "dynamic": {
+      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/tableData",
+      "method": "get",
+      "dataKey": ""
+    }
+  }
 }

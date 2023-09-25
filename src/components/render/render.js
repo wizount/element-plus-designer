@@ -2,7 +2,7 @@ import slotRenderFunctions from './slots'
 import {h, resolveComponent} from 'vue'
 
 export default {
-  //  inheritAttrs: false,想要拖拽，这个不能要
+    //  inheritAttrs: false,想要拖拽，这个不能要
 
     props: {
         conf: {
@@ -10,7 +10,7 @@ export default {
             required: true
         }
     },
-    setup(props, {slots, emit,attrs}) {
+    setup(props, {slots, emit, attrs}) {
         const {conf} = props
         // function buildDataObject() {
         //     const dataObject = {}
@@ -32,14 +32,8 @@ export default {
             if (childObjs) {
                 Object.keys(childObjs).forEach(key => {
                     const childFunc = childObjs[key]
-                    if (conf.__data__ && conf.__data__[key]) {
-                        Object.assign(thisSlots, childFunc(h, conf, key))
-                    }
+                    Object.assign(thisSlots, childFunc(h, conf, key))
                 })
-            }
-            //增加默认slot
-            if(!thisSlots.default&&conf.__data__&&conf.__data__.default){
-                thisSlots.default=()=>conf.__data__.default
             }
             return thisSlots;
         }

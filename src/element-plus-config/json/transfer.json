@@ -3,7 +3,7 @@
   "name": "穿梭框",
   "tag": "el-transfer",
   "tagIcon": "transfer",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/transfer.html",
   "attributes": {
     "vModel": "modelValue",

@@ -17,7 +17,8 @@ export default {
         'onActiveItem',
         'onChange',
         'itemMove',
-        'formModelsAndRules'
+        'formModelsAndRules',
+        'dynamicData'
     ],
     setup(props) {
         function buildEvent(curItem) {
@@ -50,8 +51,6 @@ export default {
                 } else {
                     clazz += " " + curClass
                 }
-
-
             }
             if (clazz) {
                 return {class: clazz};
@@ -74,7 +73,7 @@ export default {
             }
         }
 
-        function formItem(curItem) {
+        function formItem(curItem, layout) {
             //使用函数，才能响应式
             const formItemProps = () => {
                 const {required, showLabel} = curItem.__config__
@@ -93,8 +92,16 @@ export default {
                     style: {width: '100%'}
                 }
             }
+            let Input;
+            if (layout === 'rawItem') {
+                Input = rawItem(curItem, true)
 
-            const Input = <Render conf={curItem} {...buildVModel(curItem)}></Render>
+            } else if (layout === 'fixedItem') {
+                Input = <Render conf={curItem} {...buildVModel(curItem)}></Render>
+            } else {
+                Input = "error layout!";
+            }
+
 
             const FormItem =
                 <ElFormItem {...formItemProps()}>
@@ -174,36 +181,59 @@ export default {
             return thisSlots;
         }
 
-        function rawItem(curItem) {
-            const Input = <Render
+        function fixedItem(curItem) {
+            return <Render
                 conf={curItem} {...buildClass(curItem)} {...buildVModel(curItem)} {...buildEvent(curItem)}></Render>
 
-            return <Input/>
         }
 
-        function rawItemAlt(curItem) {
+        /**
+         *
+         * @param curItem
+         * @param simple true:不生成class和event
+         * @return {VNode}
+         */
+        function rawItem(curItem, simple) {
             const {tag} = curItem.__config__;
-            if (slotRenderFunctions[tag]) {
-                return rawItem(curItem);
+            const data = curItem.__data__;
+            let dataProps={}
+            if (data) {
+                const {name, source} = data;
+                if(source==='static'){
+                    dataProps[name]=data[name];
+                    console.info(dataProps)
+                }else{
+
+                    const key=curItem.__refs__[name];
+                    dataProps[name]=props.dynamicData[key];
+                    console.info(JSON.stringify(dataProps,null,2))
+                }
             }
-            let s = buildSlots(curItem);
-            return h(resolveComponent(tag),
-                {...buildClass(curItem), ...curItem.__props__, ...buildVModel(curItem), ...buildEvent(curItem)},
-                s);
+            if (simple) {
+                return h(resolveComponent(tag), {...curItem.__props__, ...buildVModel(curItem)},
+                    buildSlots(curItem));
+            } else {
+                return h(resolveComponent(tag),
+                    {...buildClass(curItem), ...curItem.__props__,...dataProps, ...buildVModel(curItem), ...buildEvent(curItem)},
+                    buildSlots(curItem));
+            }
+
         }
 
         function doLayout(curItem) {
             if (typeof curItem === "string") {
                 return h("span", curItem);
             }
-            const {layout} = curItem.__config__;
+            const {layout, wrapWithFormItem} = curItem.__config__;
 
-            if (layout === 'formItem') {
-                return formItem(curItem);
+            if (wrapWithFormItem) {
+                return formItem(curItem, layout);
             } else if (layout === 'containerItem') {
                 return containerItem(curItem);
             } else if (layout === 'rawItem') {
-                return rawItemAlt(curItem);
+                return rawItem(curItem);
+            } else if (layout === 'fixedItem') {
+                return fixedItem(curItem);
             }
         }
 

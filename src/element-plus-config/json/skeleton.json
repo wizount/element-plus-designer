@@ -3,7 +3,7 @@
   "name": "骨架",
   "tag": "el-skeleton",
   "tagIcon": "skeleton",
-  "layout": "rawItem",
+  "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/skeleton.html",
   "attributes": {
     "animated": {

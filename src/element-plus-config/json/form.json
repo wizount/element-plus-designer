@@ -3,7 +3,7 @@
   "name": "表单",
   "tag": "el-form",
   "tagIcon": "form",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/form.html",
   "attributes": {
     "model": {

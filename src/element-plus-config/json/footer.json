@@ -3,7 +3,7 @@
   "name": "底栏容器",
   "tag": "el-footer",
   "tagIcon": "footer",
-  "layout": "containerItem",
+  "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/container.html",
   "attributes": {
     "height": {
