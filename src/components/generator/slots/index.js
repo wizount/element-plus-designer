@@ -14,8 +14,5 @@ for (const key of keys) {
     value().then(res=>{
         slotHtmlFunctions[tag] = res.default
     })
-    // const res = await value()
-    // slotHtmlFunctions[tag] = res.default
 }
-//console.info(slotHtmlFunctions)
 export default slotHtmlFunctions;

@@ -99,7 +99,6 @@ function changeType(key, typeName) {
   const types = props.attributeConfig[key].types;
   let nextTypeName
   let thisDefault;
-  console.info(key)
   defaultSetterData.value[key].type = {};
   types.forEach((t, index) => {
     if (typeName === t.name) {

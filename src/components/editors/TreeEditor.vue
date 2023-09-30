@@ -9,7 +9,7 @@
         <el-form-item label="label">
           <el-input v-model="treeProps.label" placeholder="标签属性"></el-input>
         </el-form-item>
-        <el-form-item label="value">
+        <el-form-item label="value"  v-if="treeProps.value!==undefined">
           <el-input v-model="treeProps.value" placeholder="值属性"></el-input>
         </el-form-item>
         <el-form-item label="children">
@@ -48,11 +48,11 @@
           <el-form-item label="标签">
             <el-input v-model="tempItem[treeProps.label||'label']"/>
           </el-form-item>
-          <el-form-item label="值">
+          <el-form-item label="值"  v-if="treeProps.value!==undefined">
             <el-input v-model="tempItem[treeProps.value||'value']"/>
           </el-form-item>
           <el-form-item label="禁用" v-if="treeProps.disabled!==undefined">
-            <el-switch v-model="tempItem[treeProps.disabled||'disabled']"/>
+            <el-switch v-model="tempItem[treeProps.disabled||'disabled']"  active-value="disabled"/>
           </el-form-item>
         </el-form>
         <div class="text-right">
@@ -113,12 +113,15 @@ const addItem = () => {
   const {data, parent} = node;
   if (pos === -2) {
     Object.assign(data, tempItem.value)
+    if(!data.disabled){
+      delete data.disabled
+    }
     popupRef.value.close();
+    emits("update:modelValue",treeData.value)
     return;
   }
   const item = deepClone(tempItem.value)
   if (pos === 0) {
-    console.info(data)
     if (!data[children]) {
       data[children] = []
     }

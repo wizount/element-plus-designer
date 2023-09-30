@@ -23,7 +23,6 @@ export default {
     setup(props) {
         function buildEvent(curItem) {
             const onClick = (event) => {
-                console.info();
                 //fixme 再针对menu写一些代码  {//阻止事件向上传递（因无法选中el-menu-item而更改）
                 if (Date.now() - eventTime > 50) {
                     props.onActiveItem(curItem)
@@ -45,7 +44,6 @@ export default {
             if (props.designConf.unFocusedComponentBorder && props.activeId !== drawItemId) clazz += ' unfocus-bordered'
             const curClass = curItem.__props__.class;
             if (curClass) {
-                console.info(curClass)
                 if (Array.isArray(curClass)) {
                     clazz += " " + curClass.join(" ")
                 } else {
@@ -97,7 +95,7 @@ export default {
                 Input = rawItem(curItem, true)
 
             } else if (layout === 'fixedItem') {
-                Input = <Render conf={curItem} {...buildVModel(curItem)}></Render>
+                Input = fixedItem(curItem, true);
             } else {
                 Input = "error layout!";
             }
@@ -165,6 +163,7 @@ export default {
                 }
                 if (curItem.__config__.layout === 'rawItem') {
                     thisSlots[key] = () => curItem.__slots__[key].map(element => doLayout(element));
+                    console.info(key,thisSlots[key])
                 } else {
                     thisSlots[key] = () =>
                         <Draggable tag="span"
@@ -181,9 +180,37 @@ export default {
             return thisSlots;
         }
 
-        function fixedItem(curItem) {
-            return <Render
-                conf={curItem} {...buildClass(curItem)} {...buildVModel(curItem)} {...buildEvent(curItem)}></Render>
+
+        function buildData(curItem) {
+            const data = curItem.__data__;
+            let dataProps = {}
+            if (data) {
+                const {name, source} = data;
+                if (source === 'static') {
+                    dataProps[name] = data[name];
+                } else {
+                    const key = curItem.__refs__[name];
+                    if (data.dynamic.dataKey) {
+                        dataProps[name] = props.dynamicData[key]&&props.dynamicData[key][data.dynamic.dataKey] || [];//[]硬编码
+                    } else {
+                        dataProps[name] = props.dynamicData[key] || [];//[]硬编码
+                    }
+                }
+            }
+            return {__data__: dataProps};
+        }
+
+        function fixedItem(curItem, simple) {
+
+            let config = {...curItem, ...buildData(curItem)};
+
+            if (simple) {
+                return <Render conf={config} {...buildVModel(curItem)}></Render>
+            } else {
+                return <Render
+                    conf={config} {...buildClass(curItem)} {...buildVModel(curItem)} {...buildEvent(curItem)}></Render>
+            }
+
 
         }
 
@@ -195,26 +222,13 @@ export default {
          */
         function rawItem(curItem, simple) {
             const {tag} = curItem.__config__;
-            const data = curItem.__data__;
-            let dataProps={}
-            if (data) {
-                const {name, source} = data;
-                if(source==='static'){
-                    dataProps[name]=data[name];
-                    console.info(dataProps)
-                }else{
-
-                    const key=curItem.__refs__[name];
-                    dataProps[name]=props.dynamicData[key];
-                    console.info(JSON.stringify(dataProps,null,2))
-                }
-            }
+            const data = buildData(curItem).__data__;
             if (simple) {
-                return h(resolveComponent(tag), {...curItem.__props__, ...buildVModel(curItem)},
+                return h(resolveComponent(tag), {...curItem.__props__, ...data, ...buildVModel(curItem)},
                     buildSlots(curItem));
             } else {
                 return h(resolveComponent(tag),
-                    {...buildClass(curItem), ...curItem.__props__,...dataProps, ...buildVModel(curItem), ...buildEvent(curItem)},
+                    {...buildClass(curItem), ...curItem.__props__, ...data, ...buildVModel(curItem), ...buildEvent(curItem)},
                     buildSlots(curItem));
             }
 
@@ -225,7 +239,6 @@ export default {
                 return h("span", curItem);
             }
             const {layout, wrapWithFormItem} = curItem.__config__;
-
             if (wrapWithFormItem) {
                 return formItem(curItem, layout);
             } else if (layout === 'containerItem') {

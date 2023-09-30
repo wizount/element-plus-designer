@@ -1,9 +1,12 @@
 import elementPlusConfigMap from "@/element-plus-config"
 //总入口
+const imports = new Set();
 export const renderJs = (itemList) => {
     let res = [];
     vModelRefGeneratedMap = {}
+    imports.clear();
     res.push(renderItemList(itemList));
+    res.splice(0, 0, ...Array.from(imports))
     return res.join("");
 }
 
@@ -32,6 +35,7 @@ const renderItem = (item) => {
     }
     res.push(renderVModelRef(item));
     res.push(renderPropRefs(item));
+    res.push(renderDynamicData(item));
     for (const slotName in item.__slots__) {
         res.push(renderItemList(item.__slots__[slotName]));
     }
@@ -49,7 +53,7 @@ const renderFormData = (itemList) => {
     }
     let data = [];
     for (const item of itemList) {
-        if(item.__config__.tag==='el-form'){
+        if (item.__config__.tag === 'el-form') {
             continue;
         }
         if (item.__vModel__) {
@@ -67,7 +71,7 @@ const renderFormRules = (itemList) => {
     }
     let rules = [];
     for (const item of itemList) {
-        if(item.__config__.tag==='el-form'){
+        if (item.__config__.tag === 'el-form') {
             continue;
         }
         if (item.__vModel__) {
@@ -85,17 +89,46 @@ export const renderPropRefs = (item) => {
     if (props.ref) {
         refs.push(` const ${props.ref}=ref(undefined);`)
     }
-    const {attributes}=elementPlusConfigMap[item.__id__]
+    const {attributes} = elementPlusConfigMap[item.__id__]
     __refs__ && Object.keys(__refs__).forEach((k) => {
         let val = props[k];
         if (val === undefined) {
-            val = item.__data__[k];
+            val = getStaticData(item.__data__, k);
         }
-        refs.push(` const ${__refs__[k]}=ref(${renderValue(val,attributes[k].default)});`)
+        if (val === undefined && attributes[k] && attributes[k].required) {
+            val = attributes[k].default;
+        }
+        refs.push(` const ${__refs__[k]}=ref(${renderValue(val, attributes[k] && attributes[k].default)});`)
     })
     return refs.join("");
 }
 
+function getStaticData(__data__, key) {
+    if (__data__ === undefined || key === undefined || __data__.name !== key) {
+        return undefined;
+    }
+    if (__data__.source === 'static') {
+        return __data__[key];
+    }
+}
+
+//生成动态的数据获取
+export const renderDynamicData = (item) => {
+    const {__data__, __refs__} = item;
+    if (!__data__) {
+        return "";
+    }
+    const {name, source, dynamic} = __data__;
+    if (source !== 'dynamic') {
+        return "";
+    }
+    const {url, method, dataKey} = dynamic;
+    imports.add("import Axios from 'axios';")
+    return `function get${titleCase(__refs__[name])} (){Axios({"${method}", "${url}"}).then((resp) => {
+         ${__refs__[name]}.value=resp.data${dataKey ? "[" + dataKey + "]" : ""};
+        })}`;
+    //  return refs.join("");
+}
 let vModelRefGeneratedMap = {}
 //生成v-model ref
 export const renderVModelRef = (item) => {
@@ -104,7 +137,7 @@ export const renderVModelRef = (item) => {
     }
     return "";
 }
-const renderValue = (value,default_ob) => {
+const renderValue = (value, default_ob) => {
     if (value === undefined || value === null) {
         return "undefined"
     }
@@ -114,7 +147,7 @@ const renderValue = (value,default_ob) => {
         return `"${value}"`
     } else if (typeof value === 'object') {
         value = deepClone(value)
-        if(!Array.isArray(value)) {
+        if (!Array.isArray(value)) {
             Object.keys(value).forEach((k) => {
                 if (!k || !value[k]) {
                     delete value[k];
@@ -138,7 +171,6 @@ function renderARules(item) {
     if (item.__vModel__ === undefined) return ""
     const rules = []
     if (ruleTrigger[config.tag]) {
-        console.info(config.required)
         if (config.required) {
             const type = Array.isArray(config.defaultValue) ? "type: 'array'," : ''
             let message = Array.isArray(config.defaultValue)

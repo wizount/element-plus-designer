@@ -71,7 +71,6 @@ function onOpen() {
   // props.chosen="Aim"
   //iconList = originList
   active.value = props.chosen
-  console.info(props.chosen)
   iconList.value.slice(iconList.value.indexOf(props.chosen), 1)
   key.value = ''
   //scrollToActive()
@@ -79,7 +78,6 @@ function onOpen() {
 
 
 function onSelect(icon) {
-  console.info(icon)
   active.value = icon
   emits('select', icon)
   emits('update:modelValue', false)

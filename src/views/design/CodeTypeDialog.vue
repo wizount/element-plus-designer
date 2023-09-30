@@ -61,7 +61,6 @@ function handleConfirm() {
       try {
         emits('confirm', {...formData.value})
       }catch(err) {
-        console.info(err)
       }
     }
   })

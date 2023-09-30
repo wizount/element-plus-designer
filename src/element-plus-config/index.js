@@ -27,4 +27,5 @@ keys.map(key => {
 })
 Object.assign( elementPlusConfigMap["tree-select"].attributes,elementPlusConfigMap["select"].attributes);
 Object.assign( elementPlusConfigMap["tree-select"].attributes,elementPlusConfigMap["tree"].attributes);
+//fixme tree-select data中的value
 export default elementPlusConfigMap;

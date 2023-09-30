@@ -126,7 +126,7 @@
               <config-value-input :attr-config="curComConfig.data.static.type" :treeProps="curItemProps.props"
                                   v-model="activeData.__data__[curComConfig.data.name]"></config-value-input>
             </div>
-            <div  v-show="activeData.__data__.source==='dynamic'">
+            <div v-show="activeData.__data__.source==='dynamic'">
               <el-form-item label="网址">
                 <el-input v-model="activeData.__data__.dynamic.url" placeholder="网址">
                 </el-input>
@@ -138,7 +138,7 @@
                 </el-select>
               </el-form-item>
               <el-form-item label="数据位置">
-                <el-input v-model="activeData.__data__.dynamic.dataKey" placeholder="数据位置">
+                <el-input v-model="activeData.__data__.dynamic.dataKey" placeholder="数据位置" @change="changeRenderKey()">
                 </el-input>
               </el-form-item>
             </div>
@@ -264,7 +264,7 @@
           </div>
         </div>
       </div>
-      <div style="position: absolute; bottom: 10px;right: 10px;color: gray">Element Plus version {{ version }}</div>
+      <div style="position: absolute; bottom: 2px;right: 10px;color: gray">Element Plus version {{ version }}</div>
     </el-scrollbar>
     <tree-node-dialog v-model="dialogVisible" title="添加选项" @commit="addNode"/>
 
@@ -334,7 +334,6 @@ const curItemSlots = computed(() => {
 })
 
 const showSlots = computed(() => {
-  console.info(curItemConfig.value)
   return curItemConfig.value.layout !== 'fixedItem' && curComConfig.value.slots && curComConfig.value.slots.length > 0
 })
 //当选中组件变化，也就是renderKey变化，重新选中的插槽数据
@@ -368,7 +367,7 @@ watch(() => curItemProps.value.multiple, (val) => {
   }
 })
 watch(() => curItemProps.value['is-range'], (val) => {
-  props.activeData.renderKey = `${curItemConfig.value.drawItemId}${Math.floor(Math.random() * 10000)}`
+  changeRenderKey();
   if (curItemConfig.value.tag === 'el-time-picker') {
     curItemConfig.value.defaultValue = []
   }
@@ -395,10 +394,17 @@ watch(() => curItemConfig.value.label, (newVal, oldVal) => {
 
 
 watch(() => curItemConfig.value.itemName, (newVal, oldVal) => {
-  changeDrawItemVariableName(props.activeData, newVal, oldVal);
+  props.activeData.renderKey && changeDrawItemVariableName(props.activeData, newVal, oldVal);
+})
+
+watch(() => props.activeData.__data__ && props.activeData.__data__.source, (val) => {
+  if (val) changeRenderKey();
 })
 
 
+function changeRenderKey(){
+  props.activeData.renderKey = `${curItemConfig.value.drawItemId}${Math.floor(Math.random() * 10000)}`
+}
 //region 对时间和日期组件进行格式操作
 //监听date-picker-type格式
 

@@ -81,7 +81,6 @@ watch(input, (val) => {
         }
       }
       props[cols[0]] = prop;
-      console.info(props)
     }
   }
 

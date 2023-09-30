@@ -269,8 +269,6 @@ watch(drawItemList, (val) => {
   emits("update:modelValue", val);
   formModelsAndRules.value = {};
   buildFormModalsAndRules(val);
-
-  // dynamicData.value={};
   buildDynamicData();
   drawItemTreeData.value = [];
 
@@ -593,18 +591,20 @@ function cloneDrawItem(origin) {
       props.placeholder = attributes.placeholder
     //复制像el-select的选项
     if (data) {
-
+      const {name, source} = data;//props为true，代表是__props__里面的属性
       const static_ = {
         ref: data.static.ref,
       }
       if (data.static.ref) {
-
         clone.__refs__[data.name] = camelCase(config.itemName + '-' + data.name)
       }
       const dynamic = {ref: true}
 
       Object.assign(dynamic, data.dynamic)
-      clone.__data__ = {name:data.name,source: data.source, static: static_, dynamic, [data.name]: deepClone(data.static.default)};
+      clone.__data__ = {
+        name, source, dynamic, static: static_,
+        [data.name]: deepClone(data.static.default)
+      };
 
     }
   }
@@ -828,7 +828,28 @@ const jsonDrawerVisible = ref(false)
 const jsonStr = ref("");
 
 function showJson() {
-  jsonStr.value = JSON.stringify(drawItemList.value, null, 2);
+  const cloneDrawItemList = deepClone(drawItemList.value)
+  // recursiveProcessDrawItemList(cloneDrawItemList, (item) => {
+  //   const {__id__: id} = item;
+  //
+  //   const {attributes} = elementPlusConfigMap[id];
+  //   const {__props__: props} = item;
+  //   for (const attr in props) {
+  //     const val=props[attr];
+  //     if(val===''||val===undefined){
+  //       delete props[attr];
+  //       continue;
+  //     }
+  //     const default_ =attributes[attr]&& attributes[attr].default;
+  //     if(val===default_){
+  //       delete props[attr];
+  //       continue;
+  //     }
+  //   }
+  // })
+
+
+  jsonStr.value = JSON.stringify(cloneDrawItemList, null, 2);
 
   jsonDrawerVisible.value = true
 }
@@ -980,7 +1001,7 @@ function drawItemTreeNodeDrop(draggingNode, dropNode, type) {
       }
     }
   }
-  Array.isArray(item)&&item.length>0&&activeDrawItem(item[0])
+  Array.isArray(item) && item.length > 0 && activeDrawItem(item[0])
   nextTick(() => {
     drawItemTreeData.value = [];
     buildDrawItemTree(drawItemList.value, drawItemTreeData.value);
@@ -1079,17 +1100,11 @@ import Axios from 'axios'
 function buildDynamicData() {
   recursiveProcessDrawItemList(drawItemList.value, (item) => {
     if (item.__data__) {
-      if (item.__data__.source === 'dynamic') {
-        const {data} = elementPlusConfigMap[item.__id__];
+      const {data} = elementPlusConfigMap[item.__id__];
+      if (item.__data__.source === 'dynamic' && !dynamicData.value[item.__refs__[data.name]]) {
         const {method, url, dataKey} = item.__data__.dynamic;
-        //if (!dynamicData.value[item.__refs__[data.name]]) {
         Axios({method, url}).then((resp) => {
-          if (dataKey) {
-            dynamicData.value[item.__refs__[data.name]] = resp.data[dataKey]
-          } else {
-            dynamicData.value[item.__refs__[data.name]] = resp.data;
-          }
-          console.info(dynamicData.value)
+          dynamicData.value[item.__refs__[data.name]] = resp.data;
         })
         // }
 

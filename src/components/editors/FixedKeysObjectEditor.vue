@@ -26,7 +26,7 @@ const props = defineProps({
 onMounted(()=>{
   setValues();
 })
-function setValues(){console.info(JSON.stringify(props.modelValue))
+function setValues(){
   if (typeof props.modelValue === 'object' && !Array.isArray(props.modelValue)) {
     values.value = props.modelValue || {}
   } else {

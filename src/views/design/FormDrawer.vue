@@ -187,7 +187,6 @@ function preventDefaultSave(e) {
 
 function onOpen() {
   const {type} = props.generateConf
- // console.info(props.drawingData.fields)
   htmlCode = vue3Template(props.drawingData.fields, type);
   jsCode = renderJs(props.drawingData.fields, type)
   cssCode = "";//makeUpCss(props.drawingData.fields)
@@ -197,9 +196,6 @@ function onOpen() {
     htmlCode = beautifier.html(htmlCode, beautifierConf.html)
     jsCode = beautifier.js(jsCode, beautifierConf.js)
     cssCode = beautifier.css(cssCode, beautifierConf.html)
-
-    console.info(htmlCode);
-    console.info(jsCode);
     // loadMonaco((val) => {
     //   monaco = val
     //   setEditorValue('editorHtml', 'html', htmlCode)
