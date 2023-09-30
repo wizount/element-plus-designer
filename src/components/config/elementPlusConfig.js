@@ -645,11 +645,7 @@ export const elementPlusComponents = [
                             showLabel: true,
                             wrapWithFormItem: true,
                             labelWidth: null,
-                            required: true,
-                            showTip: false,
-                            buttonText: "点击上传",
-                            fileSize: 2,
-                            sizeUnit: "MB",
+                            required: true
                         },
                         __props__: {
                             action: "https://jsonplaceholder.typicode.com/posts/",
@@ -740,14 +736,17 @@ export const elementPlusComponents = [
                 name: "Descriptions 描述列表",
                 key: "descriptions",
                 children: [
-                    // {
-                    //     __id__: "descriptions",
-                    //     __link__: [
-                    //         {
-                    //             __id__: "descriptions-item",
-                    //         }
-                    //     ]
-                    // }
+                    {
+                        __id__: "descriptions",
+                        __link__: [
+                            {
+                                __id__: "descriptions-item",
+                                __slots__: {
+                                    default: ["描述"]
+                                },
+                            }
+                        ]
+                    }
                 ]
             },
             {
@@ -1077,7 +1076,7 @@ export const elementPlusComponents = [
             {
                 name: "Drawer 抽屉",
                 key: "drawer",
-                children: [
+                children: [//fixme 如果有子组件，会出错。
                     //     {
                     //     __id__: "drawer",
                     //     __config__: {
@@ -1112,9 +1111,6 @@ export const elementPlusComponents = [
                 children: [
                     {
                         __id__: "popconfirm",
-                        __slots__: {
-                            reference: "删除"
-                        },
                         __props__: {
                             title: "是否确认删除？"
                         }
@@ -1127,9 +1123,6 @@ export const elementPlusComponents = [
                 children: [
                     {
                         __id__: "popover",
-                        __slots__: {
-                            reference: ["打开"]
-                        },
                         __props__: {
                             title: "气泡卡片",
                             content: "显示内容"
