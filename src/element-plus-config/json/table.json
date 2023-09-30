@@ -419,7 +419,7 @@
           }
         }
       ],
-      "default": "Sum"
+      "default": ""
     },
     "summary-method": {
       "label": "",
@@ -748,7 +748,36 @@
         "name": "array",
         "tag": "array-object-editor"
       },
-      "default": []
+      "default": [
+        {
+          "date": "2016-05-03",
+          "address": "No. 189, Grove St, Los Angeles"
+        },
+        {
+          "date": "2016-05-02",
+          "address": "No. 189, Grove St, Los Angeles"
+        },
+        {
+          "date": "2016-05-04",
+          "address": "No. 189, Grove St, Los Angeles"
+        },
+        {
+          "date": "2016-05-01",
+          "address": "No. 189, Grove St, Los Angeles"
+        },
+        {
+          "date": "2016-05-08",
+          "address": "No. 189, Grove St, Los Angeles"
+        },
+        {
+          "date": "2016-05-06",
+          "address": "No. 189, Grove St, Los Angeles"
+        },
+        {
+          "date": "2016-05-07",
+          "address": "No. 189, Grove St, Los Angeles"
+        }
+      ]
     },
     "dynamic": {
       "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/tableData",

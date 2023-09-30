@@ -9,12 +9,8 @@
     "data": {
       "label": "",
       "title": "展示数据",
-      "types": [
-        {
-          "name": "array",
-          "tag": "tree-editor"
-        }
-      ],
+      "required": true,
+      "default": [],
       "hide": true
     },
     "empty-text": {
@@ -255,11 +251,11 @@
       },
       "default": [
         {
-          "value": "1",
+          "id": "1",
           "label": "选项1",
           "children": [
             {
-              "value": "2",
+              "id": "2",
               "label": "选项1-1"
             }
           ]
@@ -267,7 +263,7 @@
       ]
     },
     "dynamic": {
-      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/treeData",
+      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/tree-v2-data",
       "method": "get",
       "dataKey": ""
     }

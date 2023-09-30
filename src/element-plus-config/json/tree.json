@@ -3,19 +3,16 @@
   "name": "树形控件",
   "tag": "el-tree",
   "tagIcon": "tree",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/tree.html",
   "attributes": {
     "data": {
       "label": "",
       "title": "展示数据",
-      "ref": true,
-      "types": [
-        {
-          "name": "array",
-          "tag": "tree-editor"
-        }
-      ],
+      "required": true,
+      "default": [],
       "hide": true
     },
     "empty-text": {
@@ -59,13 +56,13 @@
                 "tag": "el-input"
               },
               {
-                "name": "value",
-                "title": "单单树形控件用不上，先放着",
+                "name": "children",
+                "title": "指定子树为节点对象的某个属性值",
                 "tag": "el-input"
               },
               {
-                "name": "children",
-                "title": "指定子树为节点对象的某个属性值",
+                "name": "disabled",
+                "title": "指定节点选择框是否禁用为节点对象的某个属性值",
                 "tag": "el-input"
               },
               {
@@ -83,9 +80,9 @@
         }
       ],
       "default": {
-        "value": "value",
         "label": "label",
         "children": "children",
+        "disabled": "disabled",
         "isLeaf": "isLeaf",
         "class": ""
       }
@@ -409,11 +406,9 @@
       },
       "default": [
         {
-          "value": "1",
           "label": "选项1",
           "children": [
             {
-              "value": "2",
               "label": "选项1-1"
             }
           ]
@@ -421,7 +416,7 @@
       ]
     },
     "dynamic": {
-      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/treeData",
+      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/tree-data",
       "method": "get",
       "dataKey": ""
     }

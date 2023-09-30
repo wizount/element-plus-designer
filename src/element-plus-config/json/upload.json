@@ -26,12 +26,8 @@
       "title": "设置上传的请求头部",
       "types": [
         {
-          "name": "Headers",
-          "tag": ""
-        },
-        {
-          "name": "Record<string, any>",
-          "tag": ""
+          "name": "Object",
+          "tag": "object-editor"
         }
       ]
     },
@@ -75,8 +71,8 @@
       "title": "上传时附带的额外参数",
       "types": [
         {
-          "name": "Record<string, any>",
-          "tag": ""
+          "name": "Object",
+          "tag": "object-editor"
         }
       ]
     },

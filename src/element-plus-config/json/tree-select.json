@@ -7,5 +7,34 @@
   "document": "https://element-plus.gitee.io/zh-CN/component/tree-select.html",
 
   "attributes": {},
-  "slots": []
+  "slots": [],
+  "data": {
+    "name": "data",
+    "label": "展示数据",
+    "source": "static",
+    "static": {
+      "ref": true,
+      "type": {
+        "name": "array",
+        "tag": "tree-editor"
+      },
+      "default": [
+        {
+          "value": "1",
+          "label": "选项1",
+          "children": [
+            {
+              "value": "2",
+              "label": "选项1-1"
+            }
+          ]
+        }
+      ]
+    },
+    "dynamic": {
+      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/tree-v2-data",
+      "method": "get",
+      "dataKey": ""
+    }
+  }
 }
