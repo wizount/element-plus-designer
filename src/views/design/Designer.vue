@@ -268,7 +268,7 @@ watch(drawItemList, (val) => {
   if (val.length === 0) idGlobal.value = 100
   emits("update:modelValue", val);
   formModelsAndRules.value = {};
-  buildFormModalsAndRules(val);
+  buildFormModelsAndRules(val);
   buildDynamicData();
   drawItemTreeData.value = [];
 
@@ -1028,7 +1028,7 @@ function activeDrawItemThroughTree(data) {
 const formModelsAndRules = ref({});
 
 //构建表单model
-function buildFormModalsAndRules(list, modal, rules) {
+function buildFormModelsAndRules(list, modal, rules) {
   for (const item of list) {
     if (typeof item === 'string') {
       continue;
@@ -1052,7 +1052,7 @@ function buildFormModalsAndRules(list, modal, rules) {
 
     }
     if (Array.isArray(item.__slots__.default)) {
-      buildFormModalsAndRules(item.__slots__.default, modal, rules)
+      buildFormModelsAndRules(item.__slots__.default, modal, rules)
     }
   }
 }

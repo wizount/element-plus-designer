@@ -1,0 +1,370 @@
+[
+  {
+    "__id__": "form",
+    "__props__": {
+      "model": "form101Model",
+      "rules": "form101Rules",
+      "inline": false,
+      "label-position": "right",
+      "label-width": "",
+      "label-suffix": "",
+      "hide-required-asterisk": false,
+      "require-asterisk-position": "right",
+      "show-message": true,
+      "inline-message": false,
+      "status-icon": false,
+      "validate-on-rule-change": true,
+      "size": "default",
+      "disabled": false,
+      "scroll-to-error": false,
+      "style": {}
+    },
+    "__config__": {
+      "name": "表单",
+      "tag": "el-form",
+      "tagIcon": "form",
+      "layout": "containerItem",
+      "drawItemId": 101,
+      "itemName": "form101"
+    },
+    "renderKey": "1019455",
+    "__slots__": {
+      "default": [
+        {
+          "__id__": "input",
+          "__config__": {
+            "tagIcon": "input",
+            "labelWidth": null,
+            "showLabel": true,
+            "wrapWithFormItem": true,
+            "defaultValue": "12",
+            "required": true,
+            "regList": [],
+            "name": "单行文本",
+            "tag": "el-input",
+            "layout": "rawItem",
+            "drawItemId": 102,
+            "label": "单行文本",
+            "itemName": "input102"
+          },
+          "__props__": {
+            "type": "text",
+            "style": {
+              "width": "100%"
+            },
+            "show-word-limit": false,
+            "clearable": false,
+            "disabled": false,
+            "size": "default",
+            "autosize": false,
+            "readonly": false,
+            "autofocus": false,
+            "validate-event": true,
+            "input-style": {},
+            "placeholder": "请输入单行文本"
+          },
+          "renderKey": "1024363",
+          "__vModel__": "input102",
+          "__slots__": {
+            "prefix": [],
+            "suffix": [],
+            "prepend": [],
+            "append": []
+          },
+          "__refs__": {}
+        },
+        {
+          "__id__": "input",
+          "__config__": {
+            "name": "多行文本",
+            "itemName": "texarea103",
+            "labelWidth": null,
+            "showLabel": true,
+            "wrapWithFormItem": true,
+            "tag": "el-input",
+            "tagIcon": "textarea",
+            "defaultValue": "12",
+            "required": true,
+            "regList": [],
+            "layout": "rawItem",
+            "drawItemId": 103,
+            "label": "多行文本"
+          },
+          "__props__": {
+            "type": "textarea",
+            "style": {
+              "width": "100%"
+            },
+            "show-word-limit": false,
+            "clearable": false,
+            "disabled": false,
+            "size": "default",
+            "autosize": false,
+            "readonly": false,
+            "autofocus": false,
+            "validate-event": true,
+            "input-style": {},
+            "placeholder": "请输入多行文本"
+          },
+          "renderKey": "1033045",
+          "__vModel__": "texarea103",
+          "__slots__": {
+            "prefix": [],
+            "suffix": [],
+            "prepend": [],
+            "append": []
+          },
+          "__refs__": {}
+        },
+        {
+          "__id__": "checkbox-group",
+          "__config__": {
+            "defaultValue": [
+              "2"
+            ],
+            "showLabel": true,
+            "wrapWithFormItem": true,
+            "labelWidth": null,
+            "optionType": "default",
+            "required": true,
+            "border": false,
+            "name": "多选框组",
+            "tag": "el-checkbox-group",
+            "tagIcon": "checkbox",
+            "layout": "fixedItem",
+            "drawItemId": 104,
+            "label": "多选框组",
+            "itemName": "checkbox-group104"
+          },
+          "renderKey": "1045448",
+          "__vModel__": "checkboxGroup104",
+          "__slots__": {
+            "default": []
+          },
+          "__props__": {
+            "size": "default",
+            "disabled": false,
+            "text-color": "#ffffff",
+            "fill": "#409EFF",
+            "tag": "div",
+            "validate-event": true,
+            "style": {}
+          },
+          "__refs__": {
+            "options": "checkboxGroup104Options"
+          },
+          "__data__": {
+            "name": "options",
+            "source": "static",
+            "dynamic": {
+              "ref": true,
+              "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/options",
+              "method": "get",
+              "dataKey": "list"
+            },
+            "static": {
+              "ref": true
+            },
+            "options": [
+              {
+                "label": "选项一",
+                "value": "1"
+              },
+              {
+                "label": "选项二",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        {
+          "__id__": "cascader",
+          "__config__": {
+            "showLabel": true,
+            "wrapWithFormItem": true,
+            "labelWidth": null,
+            "defaultValue": [
+              "1",
+              "2"
+            ],
+            "dataType": "dynamic",
+            "required": true,
+            "regList": [],
+            "name": "级联选择",
+            "tag": "el-cascader",
+            "tagIcon": "cascader",
+            "layout": "rawItem",
+            "drawItemId": 105,
+            "label": "级联选择",
+            "itemName": "cascader105"
+          },
+          "__props__": {
+            "style": {
+              "width": "100%"
+            },
+            "props": {
+              "expandTrigger": "click",
+              "multiple": false,
+              "checkStrictly": false,
+              "emitPath": true,
+              "lazy": false,
+              "value": "value",
+              "label": "label",
+              "children": "children",
+              "disabled": "disabled",
+              "leaf": "leaf",
+              "hoverThreshold": 500
+            },
+            "size": "default",
+            "disabled": false,
+            "clearable": false,
+            "show-all-levels": true,
+            "collapse-tags": false,
+            "collapse-tags-tooltip": false,
+            "separator": " / ",
+            "debounce": 300,
+            "popper-class": "",
+            "teleported": true,
+            "popper-append-to-body": true,
+            "tag-type": "info",
+            "validate-event": true,
+            "placeholder": "请选择级联选择"
+          },
+          "renderKey": "1052888",
+          "__vModel__": "cascader105",
+          "__slots__": {
+            "default": [],
+            "empty": []
+          },
+          "__refs__": {
+            "options": "cascader105Options"
+          },
+          "__data__": {
+            "name": "options",
+            "source": "static",
+            "dynamic": {
+              "ref": true,
+              "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/options",
+              "method": "get",
+              "dataKey": ""
+            },
+            "static": {
+              "ref": true
+            },
+            "options": [
+              {
+                "value": "1",
+                "label": "选项1",
+                "children": [
+                  {
+                    "value": "2",
+                    "label": "选项1-1"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "__id__": "div",
+          "__config__": {
+            "name": "div",
+            "tag": "div",
+            "tagIcon": "div",
+            "layout": "containerItem",
+            "drawItemId": 108,
+            "itemName": "div108"
+          },
+          "renderKey": "1085632",
+          "__slots__": {
+            "default": [
+              {
+                "__id__": "button",
+                "__slots__": {
+                  "default": [
+                    "取消"
+                  ],
+                  "loading": [],
+                  "icon": []
+                },
+                "__config__": {
+                  "name": "按钮",
+                  "tag": "el-button",
+                  "tagIcon": "button",
+                  "layout": "rawItem",
+                  "drawItemId": 106,
+                  "itemName": "button106"
+                },
+                "renderKey": "1061592",
+                "__props__": {
+                  "size": "default",
+                  "plain": false,
+                  "text": false,
+                  "bg": false,
+                  "link": false,
+                  "round": false,
+                  "circle": false,
+                  "loading": false,
+                  "loading-icon": "Loading",
+                  "disabled": false,
+                  "autofocus": false,
+                  "native-type": "button",
+                  "dark": false,
+                  "tag": "button",
+                  "style": {}
+                },
+                "__refs__": {}
+              },
+              {
+                "__id__": "button",
+                "__slots__": {
+                  "default": [
+                    "确定"
+                  ],
+                  "loading": [],
+                  "icon": []
+                },
+                "__config__": {
+                  "name": "按钮",
+                  "tag": "el-button",
+                  "tagIcon": "button",
+                  "layout": "rawItem",
+                  "drawItemId": 107,
+                  "itemName": "button107"
+                },
+                "renderKey": "1077863",
+                "__props__": {
+                  "size": "default",
+                  "plain": false,
+                  "text": false,
+                  "bg": false,
+                  "link": false,
+                  "round": true,
+                  "circle": false,
+                  "loading": false,
+                  "loading-icon": "Loading",
+                  "disabled": false,
+                  "autofocus": false,
+                  "native-type": "button",
+                  "dark": false,
+                  "tag": "button",
+                  "style": {},
+                  "type": "primary",
+                  "icon": "Checked"
+                },
+                "__refs__": {}
+              }
+            ]
+          },
+          "__props__": {
+            "style": {
+              "text-align": "right"
+            }
+          },
+          "__refs__": {}
+        }
+      ]
+    },
+    "__refs__": {}
+  }
+]

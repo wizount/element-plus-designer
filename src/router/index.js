@@ -7,7 +7,11 @@ const routes = [
         name: 'index',
         component: Index,
     },
-
+    {
+        path: '/render',
+        name: 'render',
+        component:() =>import('@/views/preview')
+    },
     {
         path: '/test',
         name: 'test',
