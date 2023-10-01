@@ -1,1 +1,0 @@
-import{E as a,g as s}from"./index-a38ca096.js";const b={options(t,l,_){const e=[];return l.__slot__.options.forEach(o=>{l.__config__.optionType==="button"?e.push(t(a,{label:o.value},()=>o.label)):e.push(t(s,{label:o.value,border:l.__config__.border},()=>o.label))}),{default:()=>e}}};export{b as default};
