@@ -4,6 +4,7 @@ Element Plus设计器提供大部分element plus组件所见及所得在线设�
 [GitHub演示地址](https://wizount.github.io/element-plus-designer/)
 
 <img src="https://gitee.com/wizount/element-plus-designer/raw/master/images/all.png">
+
 ## 功能概述
 
 - 支持98%以上的element plus组件在线设计
@@ -13,7 +14,9 @@ Element Plus设计器提供大部分element plus组件所见及所得在线设�
 - 导出和复制vue3代码
 - 导出JSON
 
-## 直接引用
+
+## 使用
+### 直接引用
 
 ```sh 
 npm install element-plus-designer
@@ -54,18 +57,18 @@ watch(formModel, (val) => {
 
 ```
 ## 工程开发安装
-
+### 安装
 ```sh
 npm install
 ```
 
-## 开发
+### 开发
 
 ```sh
 npm run dev
 ```
 然后访问：http://localhost:5173/
-## 发布
+### 发布
 
 ```sh
 npm run build

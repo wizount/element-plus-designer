@@ -181,7 +181,6 @@
 <script setup>
 import logo from "@/assets/logo.png"
 import Draggable from '@/vuedraggable/vuedraggable'
-import {debounce} from 'throttle-debounce'
 import {saveAs} from 'file-saver'
 import ClipboardJS from 'clipboard'
 import FormDrawer from './FormDrawer.vue'
@@ -829,24 +828,39 @@ const jsonStr = ref("");
 
 function showJson() {
   const cloneDrawItemList = deepClone(drawItemList.value)
-  // recursiveProcessDrawItemList(cloneDrawItemList, (item) => {
-  //   const {__id__: id} = item;
-  //
-  //   const {attributes} = elementPlusConfigMap[id];
-  //   const {__props__: props} = item;
-  //   for (const attr in props) {
-  //     const val=props[attr];
-  //     if(val===''||val===undefined){
-  //       delete props[attr];
-  //       continue;
-  //     }
-  //     const default_ =attributes[attr]&& attributes[attr].default;
-  //     if(val===default_){
-  //       delete props[attr];
-  //       continue;
-  //     }
-  //   }
-  // })
+  recursiveProcessDrawItemList(cloneDrawItemList, (item) => {
+    const {__id__: id} = item;
+
+    const {attributes} = elementPlusConfigMap[id];
+    const {__props__: props} = item;
+    for (const attr in props) {
+      const val = props[attr];
+      if (val === '' || val === undefined) {
+        delete props[attr];
+        continue;
+      }
+      const default_ = attributes[attr] && attributes[attr].default;
+      if (val === default_) {
+        delete props[attr];
+      } else if (typeof val === 'object') {
+        if (Array.isArray(val)) {
+          if (isArrayEqual(val, default_)) {
+            delete props[attr];
+          }
+        } else if (default_) {
+          for (const key in val) {
+            if (val[key] === default_[key]) {
+              delete val[key];
+            }
+          }
+          if (JSON.stringify(val) === '{}') {
+            delete props[attr];
+          }
+        }
+      }
+    }
+
+  })
 
 
   jsonStr.value = JSON.stringify(cloneDrawItemList, null, 2);
@@ -1147,6 +1161,7 @@ import {
   recursiveFindItemIndexInList,
   changeDrawItemVariableName
 } from "@/views/design/DrawItemProcessor";
+import {isArrayEqual, isObjectEqual} from "@/components/generator/utils";
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
