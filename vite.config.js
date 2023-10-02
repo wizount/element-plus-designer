@@ -7,8 +7,8 @@ export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd())
   const { VITE_APP_ENV } = env
   return {
-    base: VITE_APP_ENV === 'production' ? '/' : '/',
-    plugins: createVitePlugins(env, command === 'build'),
+    base: VITE_APP_ENV === 'production' ? '/element-plus-designer' : '/element-plus-designer',
+    plugins: createVitePlugins(env,  'build'),
     // build:{
     //   outDir:"./dist",
     // },

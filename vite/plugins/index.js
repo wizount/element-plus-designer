@@ -7,14 +7,14 @@ import createSetupExtend from './setup-extend'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import createCommonjs from "./commonjs";
 
-export default function createVitePlugins(viteEnv, isBuild = false) {
+export default function createVitePlugins(viteEnv, env) {
     const vitePlugins = [vue(), vueJsx]
 
     vitePlugins.push(createAutoImport())
     vitePlugins.push(createSetupExtend())
 
-    isBuild && vitePlugins.push(createCommonjs())
-    vitePlugins.push(createSvgIcon(isBuild))
-    isBuild && vitePlugins.push(...createCompression(viteEnv))
+    env==='lib'&& vitePlugins.push(createCommonjs())
+    vitePlugins.push(createSvgIcon(env!=='dev'))
+    env==='build'&& vitePlugins.push(...createCompression(viteEnv))
     return vitePlugins
 }
