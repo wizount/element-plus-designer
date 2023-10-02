@@ -1,5 +1,5 @@
 import Designer from "@/views/design/Designer.vue"
-import Render from "@/views/preview/Render.vue"
+import Render from "@/views/render/Render.vue"
 import 'virtual:svg-icons-register'
 import editors from "@/components/editors"
 import * as components from '@element-plus/icons-vue'

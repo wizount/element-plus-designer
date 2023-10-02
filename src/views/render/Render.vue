@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import DrawItem from "@/views/preview/DrawItem";
+import DrawItem from "@/views/render/DrawItem";
 import ruleTrigger from "@/components/generator/ruleTrigger";
 
 const props = defineProps({

@@ -10,7 +10,7 @@ const routes = [
     {
         path: '/render',
         name: 'render',
-        component:() =>import('@/views/preview')
+        component:() =>import('@/views/render')
     },
     {
         path: '/test',

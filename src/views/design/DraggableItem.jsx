@@ -163,7 +163,6 @@ export default {
                 }
                 if (curItem.__config__.layout === 'rawItem') {
                     thisSlots[key] = () => curItem.__slots__[key].map(element => doLayout(element));
-                    console.info(key,thisSlots[key])
                 } else {
                     thisSlots[key] = () =>
                         <Draggable tag="span"
