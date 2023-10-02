@@ -1,4 +1,4 @@
-import {createWebHistory, createRouter} from 'vue-router'
+import { createRouter, createWebHashHistory} from 'vue-router'
 import Index from '@/views/design/index.vue'
 import Test from '@/views/tool/Test'
 const routes = [
@@ -23,11 +23,6 @@ const routes = [
         component:() =>import('@/views/tool/ElementPropertyUtils')
     },
     {
-        path: '/config',
-        name: 'config',
-        component:() =>import('@/components/config/ConfigEditor')
-    },
-    {
         path: '/preview',
         name: 'preview',
         component:() =>import('@/views/tool/preview')
@@ -35,7 +30,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes,
     scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
