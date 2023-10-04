@@ -1,4 +1,4 @@
-import Render from "@/components/render/render"
+import FixItem from "@/components/FixItem"
 import {ElFormItem} from "element-plus";
 export default {
     props: [
@@ -117,10 +117,10 @@ export default {
             let config = {...curItem, ...buildData(curItem)};
 
             if (simple) {
-                return <Render conf={config} {...buildVModel(curItem)}></Render>
+                return <FixItem conf={config} {...buildVModel(curItem)}></FixItem>
             } else {
-                return <Render
-                    conf={config}  {...buildVModel(curItem)}></Render>
+                return <FixItem
+                    conf={config}  {...buildVModel(curItem)}></FixItem>
             }
 
 

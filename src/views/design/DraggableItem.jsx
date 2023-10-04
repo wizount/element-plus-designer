@@ -1,11 +1,9 @@
-import Render from "@/components/render/render"
+import FixItem from "@/components/FixItem"
 import {ElFormItem} from "element-plus";
 import Draggable from '@/vuedraggable/vuedraggable';
 import {deepClone} from "@/utils";
 import {h, resolveComponent} from "vue";
 import '@/styles/draggalbeItem.scss'
-import slotRenderFunctions from "@/components/render/slots";
-
 
 let eventTime = Date.now();
 
@@ -204,10 +202,10 @@ export default {
             let config = {...curItem, ...buildData(curItem)};
 
             if (simple) {
-                return <Render conf={config} {...buildVModel(curItem)}></Render>
+                return <FixItem conf={config} {...buildVModel(curItem)}></FixItem>
             } else {
-                return <Render
-                    conf={config} {...buildClass(curItem)} {...buildVModel(curItem)} {...buildEvent(curItem)}></Render>
+                return <FixItem
+                    conf={config} {...buildClass(curItem)} {...buildVModel(curItem)} {...buildEvent(curItem)}></FixItem>
             }
 
 

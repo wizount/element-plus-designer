@@ -1,4 +1,4 @@
-import Render from "@/components/render/render"
+import FixItem from "@/components/FixItem"
 
 //生成配置的FormItem
 export default {
@@ -28,7 +28,7 @@ export default {
         if (options) {
             renderConfig.__data__ = {options}
         }
-        return () => <Render conf={renderConfig}></Render>
+        return () => <FixItem conf={renderConfig}></FixItem>
 
     }
 
