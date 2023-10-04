@@ -189,7 +189,7 @@ import RightPanel from './RightPanel'
 import {
   designConf as designConfPreset
 } from '@/components/config/config'
-import {beautifierConf, camelCase, deepClone, isObjectObject} from '@/utils/index'
+import {beautifierConf, camelCase, deepClone, deleteObjectProps, isObjectObject} from '@/utils'
 import {vue3Template, vueScript} from '@/components/generator/html.js'
 import {renderJs} from '@/components/generator/js'
 
@@ -704,6 +704,26 @@ function allowToAdd(parent, clone, noShowMessage) {
   if (parent && parent.__id__ === 'button-group' && clone.__id__ === 'button') {
     delete clone.__props__.size;
   }
+
+  //专用,对el-container进行修改，direction：子元素中有 el-header 或 el-footer 时为 vertical，否则为 horizontal,fixme 不太准确，先这样
+  if (parent && parent.__id__ === 'container') {
+    const children = parent.children || parent.__slots__ && parent.__slots__.default;
+    let hasFooterOrHeader = false;
+    for (const child of children) {
+      if (child.__id__ === 'header' || child.__id__ === 'footer') {
+        hasFooterOrHeader = true;
+        break;
+      }
+    }
+
+    let parent_ = findDrawItemByRenderKey(drawItemList.value, parent.renderKey);
+
+    if (hasFooterOrHeader) {
+      parent_.__props__.direction = 'vertical';
+    } else {
+      parent_.__props__.direction = 'horizontal';
+    }
+  }
   return true;
 }
 
@@ -832,7 +852,7 @@ function showJson() {
     const {__id__: id} = item;
 
     const {attributes} = elementPlusConfigMap[id];
-    const {__props__: props} = item;
+    const {__props__: props,__slots__,__refs__} = item;
     for (const attr in props) {
       const val = props[attr];
       if (val === '' || val === undefined) {
@@ -847,10 +867,15 @@ function showJson() {
           if (isArrayEqual(val, default_)) {
             delete props[attr];
           }
-        } else if (default_) {
-          for (const key in val) {
-            if (val[key] === default_[key]) {
-              delete val[key];
+          if (val.length === 0) {
+            delete props[attr];
+          }
+        } else {
+          if (default_) {
+            for (const key in val) {
+              if (val[key] === default_[key]) {
+                delete val[key];
+              }
             }
           }
           if (JSON.stringify(val) === '{}') {
@@ -860,6 +885,28 @@ function showJson() {
       }
     }
 
+
+    if (id === 'container') {//direction 子元素中有 el-header 或 el-footer 时为 vertical，否则为 horizontal"
+      let hasFooterOrHeader = false;
+      for (const aItem of item.__slots__.default) {
+        if (aItem.__id__ === 'header' || aItem.__id__ === 'footer') {
+          hasFooterOrHeader = true;
+          break;
+        }
+      }
+      if (hasFooterOrHeader && item.__props__.direction === 'vertical' || !hasFooterOrHeader && item.__props__.direction === 'horizontal') {
+        delete item.__props__.direction;
+      }
+    }
+    deleteObjectProps(__slots__);
+    deleteObjectProps(__refs__);
+    deleteObjectProps(item);
+    delete  item["renderKey"];
+    delete  item.__id__;
+    delete  item.__config__["name"];
+    delete  item.__config__["drawItemId"];
+    delete  item.__config__["tagIcon"];
+    delete  item.__config__["itemName"];
   })
 
 
@@ -965,7 +1012,7 @@ function drawItemTreeAllowDrop(draggingNode, dropNode, type) {
     if (slotName) {
       return allowToAdd(undefined, draggingNode.data, true);
     }
-    if (elementPlusConfigMap[dropId] && elementPlusConfigMap[dropId].layout === 'containerItem') {
+    if (elementPlusConfigMap[dropId] && elementPlusConfigMap[dropId].layouts.indexOf('containerItem') >= 0) {
       return allowToAdd(dropNode.data, draggingNode.data, true);
     }
 
@@ -1159,7 +1206,7 @@ import {
   processADrawItemAndSlots,
   recursiveProcessDrawItemList,
   recursiveFindItemIndexInList,
-  changeDrawItemVariableName
+  changeDrawItemVariableName, findDrawItemByRenderKey
 } from "@/views/design/DrawItemProcessor";
 import {isArrayEqual, isObjectEqual} from "@/components/generator/utils";
 

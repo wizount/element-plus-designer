@@ -46,7 +46,7 @@ function buildFormModelsAndRules(list) {
       }
     }
 
-    if (Array.isArray(item.__slots__.default)) {
+    if (Array.isArray(item.__slots__&&item.__slots__.default)) {
       buildFormModelsAndRules(item.__slots__.default)
     }
   }

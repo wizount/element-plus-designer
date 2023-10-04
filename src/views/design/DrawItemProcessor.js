@@ -9,25 +9,44 @@ export function recursiveProcessDrawItemList(comList, processorFunc) {
         if (typeof item === 'string') {
             continue;
         }
-        processorFunc(item)
-        for (const slotName in item.__slots__) {
-            recursiveProcessDrawItemList(item.__slots__[slotName], processorFunc);
+        if (!processorFunc(item)) {//如果processorFunc返回true则停止递归
+            for (const slotName in item.__slots__) {
+                recursiveProcessDrawItemList(item.__slots__[slotName], processorFunc);
+            }
         }
 
     }
 }
 
+//递归某一个组件及子组件
 export function processADrawItemAndSlots(item, processorFunc) {
     if (typeof item === 'string') {
         return;
     }
-    processorFunc(item)
-    for (const slotName in item.__slots__) {
-        recursiveProcessDrawItemList(item.__slots__[slotName], processorFunc);
+
+    if (!processorFunc(item)) {
+        for (const slotName in item.__slots__) {
+            recursiveProcessDrawItemList(item.__slots__[slotName], processorFunc);
+        }
     }
+
 }
 
 //region 组件遍历
+
+
+export function findDrawItemByRenderKey(list, renderKey) {
+    let res = {};
+    recursiveProcessDrawItemList(list, (item) => {
+        if (item.renderKey === renderKey) {
+            res = item;
+            return true;
+        } else {
+            return false;
+        }
+    })
+    return res;
+}
 
 /**
  * 从list中找到 item 的index
@@ -35,6 +54,8 @@ export function processADrawItemAndSlots(item, processorFunc) {
  * @param item
  * @return 返回 item的父组件，所在的数组，位置，如果为空，返回{}
  */
+
+
 export function recursiveFindItemIndexInList(parent, list, item) {
     if (!Array.isArray(list) || !item || !item.renderKey) {
         return {};
