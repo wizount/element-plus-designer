@@ -1,28 +1,25 @@
 import loadScript from './loadScript'
-import ELEMENT from 'element-plus'
+import {ElLoading} from 'element-plus'
 import pluginsConfig from './pluginsConfig'
 
 let beautifierObj
 
 export default function loadBeautifier(cb) {
-  const { beautifierUrl } = pluginsConfig
-  if (beautifierObj) {
-    cb(beautifierObj)
-    return
-  }
+    const {beautifierUrl} = pluginsConfig
+    if (beautifierObj) {
+        cb(beautifierObj)
+        return
+    }
 
-  // const loading = ELEMENT.Loading.service({
-  //   fullscreen: true,
-  //   lock: true,
-  //   text: '格式化资源加载中...',
-  //   spinner: 'el-icon-loading',
-  //   background: 'rgba(255, 255, 255, 0.5)',
-  // })
+    const loading = ElLoading.service({
+        lock: true,
+        text: 'Loading',
+        background: 'rgba(0, 0, 0, 0.7)',
+    })
 
-  loadScript(beautifierUrl, () => {
-  //  loading.close()
-    // eslint-disable-next-line no-undef
-    beautifierObj = beautifier
-    cb(beautifierObj)
-  })
+    loadScript(beautifierUrl, () => {
+        loading.close()
+        beautifierObj = beautifier
+        cb(beautifierObj)
+    })
 }
