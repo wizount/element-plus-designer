@@ -1,33 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-restricted-syntax */
 
-/* eslint-disable guard-for-in */
-/**
- * num 小于0，左缩进num*2个空格； 大于0，右缩进num*2个空格。
- * @param {string} str 代码
- * @param {number} num 缩进次数
- * @param {number} len 【可选】缩进单位，空格数
- */
-export function indent(str, num, len = 2) {
-    if (num === 0) return str
-    const isLeft = num < 0
-    const result = []
-    let reg
-    let spaces = ''
-    if (isLeft) {
-        num *= -1
-        reg = new RegExp(`(^\\s{0,${num * len}})`, 'g')
-    } else {
-        for (let i = 0; i < num * len; i++) spaces += ' '
-    }
-
-    str.split('\n').forEach((line) => {
-        line = isLeft ? line.replace(reg, '') : spaces + line
-        result.push(line)
-    })
-    return result.join('\n')
-}
-
 // 首字母大小
 export function titleCase(str) {
     return str.replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
@@ -38,14 +11,6 @@ export function camelCase(str) {
     return str.replace(/-[a-z]/g, (str1) => str1.substr(-1).toUpperCase())
 }
 
-
-export function toUnderline(str) {
-    str = str.replace(/([A-Z])/g, '-$1').toLowerCase();
-    if (str.indexOf("-") == 0) {
-        str = str.substring(1);
-    }
-    return str;
-}
 
 export function isNumberStr(str) {
     return /^[+-]?(0|([1-9]\d*))(\.\d+)?$/g.test(str)
@@ -112,9 +77,6 @@ function parse(str) {
     })
 }
 
-export function jsonClone(obj) {
-    return parse(stringify(obj))
-}
 
 // 深拷贝对象
 export function deepClone(obj) {
@@ -192,4 +154,19 @@ export function getType(obj) {
 
     //如果是object类型数据，准确判断类型必须使用Object.prototype.toString.call(obj)的方式才能判断
     return Object.prototype.toString.call(obj).replace(/^\[object (\S+)\]$/, '$1').toLowerCase();
+}
+
+//删除json object 的空值
+export function deleteObjectProps(targetObject) {
+    for (const key in targetObject) {
+        const val = targetObject[key];
+        if (val === undefined || val === null || val === '') {
+            delete targetObject[key];
+        } else {
+            const str = JSON.stringify(val);
+            if (str === '[]' || str === '{}') {
+                delete targetObject[key];
+            }
+        }
+    }
 }
