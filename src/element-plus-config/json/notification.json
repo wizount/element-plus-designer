@@ -209,7 +209,5 @@
       ],
       "default": 0
     }
-  },
-  "exposes": [],
-  "slots": []
+  }
 }

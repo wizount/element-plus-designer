@@ -115,6 +115,5 @@
       "type": "Function",
       "fnDes": "(index: number) => void"
     }
-  ],
-  "slots": []
+  ]
 }

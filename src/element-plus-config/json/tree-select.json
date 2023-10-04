@@ -5,9 +5,6 @@
   "tagIcon": "tree-select",
   "layouts": ["rawItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/tree-select.html",
-
-  "attributes": {},
-  "slots": [],
   "data": {
     "name": "data",
     "label": "展示数据",

@@ -346,6 +346,5 @@
       "type": "Function",
       "fnDes": "(visibility: boolean) => void"
     }
-  ],
-  "slots": []
+  ]
 }

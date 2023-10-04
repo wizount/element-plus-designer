@@ -5,9 +5,6 @@
   "tagIcon": "main",
   "layouts": ["containerItem"],
   "document": "https://element-plus.gitee.io/zh-CN/component/container.html",
-  "attributes": {
-
-  },
   "slots": [
     {
       "name": "default",
