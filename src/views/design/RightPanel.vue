@@ -266,7 +266,6 @@
       </div>
       <div style="position: absolute; bottom: 2px;right: 10px;color: gray">Element Plus version {{ version }}</div>
     </el-scrollbar>
-    <tree-node-dialog v-model="dialogVisible" title="添加选项" @commit="addNode"/>
 
   </div>
 </template>
@@ -275,7 +274,6 @@
 import ElementPlus from "element-plus";
 
 const version = ElementPlus.version;
-import TreeNodeDialog from '@/views/design/TreeNodeDialog'
 import Draggable from '@/vuedraggable/vuedraggable';
 import {saveDesignConf} from '@/utils/db'
 import AttributesRender from "@/views/design/AttributesRender.vue";
@@ -284,9 +282,6 @@ import StyleEditor from "@/components/editors/StyleEditor.vue";
 import {ElCollapseTransition} from 'element-plus'
 
 const currentTab = ref('field')
-const currentNode = ref(null)
-const dialogVisible = ref(false)
-
 
 const props = defineProps({
       showField: Boolean,
@@ -458,53 +453,6 @@ function regChange(e) {
 }
 
 //endregion
-
-function addTreeItem() {
-//  ++idGlobal
-  dialogVisible.value = true
-  currentNode.value = props.activeData.options
-}
-
-//fixme
-function renderContent(h, {node, data, store}) {
-  return (
-      <div class="custom-tree-node">
-        <span>{node.label}</span>
-        <span class="node-operation">
-            <i
-                on-click={() => append(data)}
-                class="el-icon-plus"
-                title="添加"
-            ></i>
-            <i
-                on-click={() => remove(node, data)}
-                class="el-icon-delete"
-                title="删除"
-            ></i>
-          </span>
-      </div>
-  )
-}
-
-function append(data) {
-  if (!data.children) {
-    data['children'] = []
-  }
-  dialogVisible.value = true
-  currentNode.value = data.children
-}
-
-function remove(node, data) {
-  curItemConfig.value.defaultValue = [] // 避免删除时报错
-  const {parent} = node
-  const children = parent.data.children || parent.data
-  const index = children.findIndex((d) => d.id === data.id)
-  children.splice(index, 1)
-}
-
-function addNode(data) {
-  currentNode.value.push(data)
-}
 
 
 //region 插槽操作

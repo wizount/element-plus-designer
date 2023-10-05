@@ -84,8 +84,8 @@ const renderFormRules = (itemList) => {
 //生成属性ref
 export const renderPropRefs = (item) => {
     const refs = [];
-    const props = item.__props__
-    const __refs__ = item.__refs__
+    const props = item.__props__||{}
+    const __refs__ = item.__refs__||{}
     if (props.ref) {
         refs.push(` const ${props.ref}=ref(undefined);`)
     }

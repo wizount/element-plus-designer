@@ -1,10 +1,11 @@
 {
   "name": "element-plus-designer",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "build:lib": "vite build -c vite.lib.config.js",
+    "build:lib:render": "vite build -c vite.lib.render.config.js",
     "preview": "vite preview --port 4173"
   },
   "dependencies": {

@@ -19,8 +19,7 @@ import {ref, watchEffect} from "vue";
 
 const props = defineProps({
   modelValue: {
-    type: Object,
-    required: true
+    type: [String, Number],
   }
 });
 const emits = defineEmits(['update:modelValue']);
@@ -30,7 +29,7 @@ const inputValue = ref(null);
 const isDigit = ref(false)
 
 watchEffect(() => {
-  isDigit.value=typeof props.modelValue==='number';
+  isDigit.value = typeof props.modelValue === 'number';
   inputValue.value = props.modelValue;
 })
 
@@ -40,22 +39,22 @@ function change(val) {
 }
 
 
-
-function toggleStrDigit(){
-  isDigit.value=!isDigit.value;
+function toggleStrDigit() {
+  isDigit.value = !isDigit.value;
   parse(inputValue.value);
 }
-function parse(val){
-  if(isDigit.value){
-    try{
-      inputValue.value= parseFloat(val)||0;
-    }catch (e){
-      inputValue.value=0;
+
+function parse(val) {
+  if (isDigit.value) {
+    try {
+      inputValue.value = parseFloat(val) || 0;
+    } catch (e) {
+      inputValue.value = 0;
     }
-  }else{
-    inputValue.value=""+val;
+  } else {
+    inputValue.value = "" + val;
   }
-  emits('update:modelValue',  inputValue.value)
+  emits('update:modelValue', inputValue.value)
 }
 
 </script>

@@ -2,6 +2,7 @@
 node_modules/
 dist/
 lib/
+lib-render/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -23,6 +24,5 @@ selenium-debug.log
 
 
 yarn.lock
-/src/element-plus-config/json-gen/
 /变量名规定.md
-/config-genrator/
+/config-generator/

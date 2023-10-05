@@ -4,6 +4,9 @@
   "tag": "el-descriptions",
   "tagIcon": "descriptions",
   "layouts": ["rawItem"],
+  "childTag": [
+    "el-descriptions-item"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/descriptions.html",
   "attributes": {
     "border": {

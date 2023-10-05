@@ -149,13 +149,15 @@
     <html-drawer size="750px" v-model="htmlDrawerVisible" :html-str="htmlStr"/>
     <code-type-dialog v-model="dialogVisible" title="选择生成类型" :show-file-name="showFileName"
                       @confirm="generate"/>
-    <el-drawer v-model="drawItemTreeVisible" title="组件树" size="350px" modal-class="bg-transparent"
+    <el-drawer v-model="drawItemTreeVisible" title="组件树" size="405px" modal-class="bg-transparent"
                @open="openTreeDrawer">
-      <el-tree :data="drawItemTreeData" ref="drawItemTree" node-key="renderKey" v-if="showTree"
-               default-expand-all highlight-current :expand-on-click-node="false"
-               @node-click="activeDrawItemThroughTree" draggable :allow-drag="drawItemTreeAllowDrag"
-               :allow-drop="drawItemTreeAllowDrop" @node-drop="drawItemTreeNodeDrop">
-        <template #default="{ node, data }">
+<!--      fixme 更改height-->
+      <el-scrollbar :height="height-60">
+        <el-tree :data="drawItemTreeData" ref="drawItemTree" node-key="renderKey" v-if="showTree"
+                 default-expand-all highlight-current :expand-on-click-node="false"
+                 @node-click="activeDrawItemThroughTree" draggable :allow-drag="drawItemTreeAllowDrag"
+                 :allow-drop="drawItemTreeAllowDrop" @node-drop="drawItemTreeNodeDrop">
+          <template #default="{ node, data }">
           <span>
              <el-text v-if="data.__id__==='plainText' " type="primary"><svg-icon
                  :icon-class="data.__config__.tagIcon" :class="{ac:data.renderKey===activeData.renderKey}"/>{{
@@ -171,9 +173,11 @@
                        type="danger"/>
           </span>
         </span>
-        </template>
+          </template>
 
-      </el-tree>
+        </el-tree>
+      </el-scrollbar>
+
     </el-drawer>
   </div>
 </template>
@@ -835,9 +839,9 @@ function emptyDrawItemList() {
 
 
 function generateCode() {
-  const script = beautifier.js(renderJs(drawItemList.value), beautifierConf.js);
-  const html = beautifier.html(vue3Template(drawItemList.value), beautifierConf.html).replaceAll("template_alt", "template");
-  // const css = cssStyle(makeUpCss(drawingData))
+  let cloneJsonList = simplifyJson();
+  const script = beautifier.js(renderJs(cloneJsonList), beautifierConf.js);
+  const html = beautifier.html(vue3Template(cloneJsonList), beautifierConf.html).replaceAll("template_alt", "template");
   return vueScript(html, script)
 
 }
@@ -846,13 +850,13 @@ function generateCode() {
 const jsonDrawerVisible = ref(false)
 const jsonStr = ref("");
 
-function showJson() {
+function simplifyJson(all) {
   const cloneDrawItemList = deepClone(drawItemList.value)
   recursiveProcessDrawItemList(cloneDrawItemList, (item) => {
     const {__id__: id} = item;
 
     const {attributes} = elementPlusConfigMap[id];
-    const {__props__: props,__slots__,__refs__} = item;
+    const {__props__: props, __slots__, __refs__} = item;
     for (const attr in props) {
       const val = props[attr];
       if (val === '' || val === undefined) {
@@ -898,19 +902,25 @@ function showJson() {
         delete item.__props__.direction;
       }
     }
-    deleteObjectProps(__slots__);
-    deleteObjectProps(__refs__);
-    deleteObjectProps(item);
-    delete  item["renderKey"];
-    delete  item.__id__;
-    delete  item.__config__["name"];
-    delete  item.__config__["drawItemId"];
-    delete  item.__config__["tagIcon"];
-    delete  item.__config__["itemName"];
+    if (all) {
+      deleteObjectProps(__slots__);
+      deleteObjectProps(__refs__);
+      deleteObjectProps(item);
+      delete item["renderKey"];
+      delete item.__id__;
+      delete item.__config__["name"];
+      delete item.__config__["drawItemId"];
+      delete item.__config__["tagIcon"];
+      delete item.__config__["itemName"];
+    }
   })
+  return cloneDrawItemList;
+}
+
+function showJson() {
 
 
-  jsonStr.value = JSON.stringify(cloneDrawItemList, null, 2);
+  jsonStr.value = JSON.stringify(simplifyJson(true), null, 2);
 
   jsonDrawerVisible.value = true
 }
