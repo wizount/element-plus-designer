@@ -1,7 +1,5 @@
 <template>
-
   <div class="container">
-
     <div class="left-board">
       <div class="logo-wrapper">
         <div class="logo"><img :src="logo" alt="logo"/> Element Plus Designer<a class="github"
@@ -193,7 +191,7 @@ import RightPanel from './RightPanel'
 import {
   designConf as designConfPreset
 } from '@/components/config/config'
-import {beautifierConf, camelCase, deepClone, deleteObjectProps, isObjectObject} from '@/utils'
+import {addClass, beautifierConf, camelCase, deepClone, deleteObjectProps, isObjectObject} from '@/utils'
 import {vue3Template, vueScript} from '@/components/generator/html.js'
 import {renderJs} from '@/components/generator/js'
 
@@ -491,7 +489,11 @@ function moveDrawItem(upOrDown) {
 
 function resetActiveDrawItemPosition() {
   let item = document.getElementsByClassName("active-draw-item")[0];
+  if(!item){
+    item=  document.getElementsByClassName("active-raw-item")[0].childNodes[1]
+  }
   if (item) {
+    addClass(item,"drawing-item");
     let rect = item.getBoundingClientRect()
     activeToolbar.value.style.display = 'block';
     activeToolbar.value.style.left = (rect.left + rect.width - activeToolbar.value.clientWidth) + "px";
@@ -1218,7 +1220,7 @@ import {
   recursiveFindItemIndexInList,
   changeDrawItemVariableName, findDrawItemByRenderKey
 } from "@/views/design/DrawItemProcessor";
-import {isArrayEqual, isObjectEqual} from "@/components/generator/utils";
+import {isArrayEqual} from "@/components/generator/utils";
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)

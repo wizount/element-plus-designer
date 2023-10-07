@@ -188,7 +188,7 @@ export default {
                 } else {
                     const key = curItem.__refs__[name];
                     if (data.dynamic.dataKey) {
-                        dataProps[name] = props.dynamicData[key]&&props.dynamicData[key][data.dynamic.dataKey] || [];//[]硬编码
+                        dataProps[name] = props.dynamicData[key] && props.dynamicData[key][data.dynamic.dataKey] || [];//[]硬编码
                     } else {
                         dataProps[name] = props.dynamicData[key] || [];//[]硬编码
                     }
@@ -198,14 +198,22 @@ export default {
         }
 
         function fixedItem(curItem, simple) {
-
+            const {wrapWithSpan} = curItem.__config__;
             let config = {...curItem, ...buildData(curItem)};
+
 
             if (simple) {
                 return <FixItem conf={config} {...buildVModel(curItem)}></FixItem>
             } else {
-                return <FixItem
-                    conf={config} {...buildClass(curItem)} {...buildVModel(curItem)} {...buildEvent(curItem)}></FixItem>
+                if (wrapWithSpan) {
+                    const source = <FixItem conf={config}  {...buildVModel(curItem)}></FixItem>
+                    return doWrapWithSpan(curItem, source);
+                } else {
+                    return <FixItem
+                        conf={config} {...buildClass(curItem)} {...buildVModel(curItem)} {...buildEvent(curItem)}></FixItem>
+                }
+
+
             }
 
 
@@ -218,17 +226,29 @@ export default {
          * @return {VNode}
          */
         function rawItem(curItem, simple) {
-            const {tag} = curItem.__config__;
+            const {tag, wrapWithSpan} = curItem.__config__;
             const data = buildData(curItem).__data__;
             if (simple) {
                 return h(resolveComponent(tag), {...curItem.__props__, ...data, ...buildVModel(curItem)},
                     buildSlots(curItem));
             } else {
-                return h(resolveComponent(tag),
-                    {...buildClass(curItem), ...curItem.__props__, ...data, ...buildVModel(curItem), ...buildEvent(curItem)},
-                    buildSlots(curItem));
+                if (wrapWithSpan) {
+                    const source = h(resolveComponent(tag), {...curItem.__props__, ...data, ...buildVModel(curItem)}, buildSlots(curItem));
+                    return doWrapWithSpan(curItem, source);
+                } else {
+                    return h(resolveComponent(tag),
+                        {...buildClass(curItem), ...curItem.__props__, ...data, ...buildVModel(curItem), ...buildEvent(curItem)},
+                        buildSlots(curItem));
+                }
+
             }
 
+        }
+
+        function doWrapWithSpan(curItem, source) {
+            const {drawItemId} = curItem.__config__
+            let clazz = props.activeId === drawItemId ? 'active-raw-item' : props.designConf.unFocusedComponentBorder && props.activeId !== drawItemId ? 'raw-item' : '';
+            return h("span", {class: clazz, ...buildEvent(curItem)}, source);
         }
 
         function doLayout(curItem) {

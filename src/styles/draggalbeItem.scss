@@ -1,6 +1,8 @@
 @import './variable.scss';
 
 
+//fixme 这些类型再改吧
+
 .drawing-item {
   position: relative;
   cursor: move;
@@ -17,4 +19,10 @@
     border: 1px dashed lightgray;
   }
 
+}
+.active-raw-item .drawing-item {
+  @extend .drawing-item, .active-draw-item
+}
+.raw-item .drawing-item {
+  @extend .drawing-item, .unfocus-bordered
 }

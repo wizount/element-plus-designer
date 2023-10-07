@@ -12,20 +12,6 @@ export default {
     },
     setup(props, {slots, emit, attrs}) {
         const {conf} = props
-        // function buildDataObject() {
-        //     const dataObject = {}
-        //     Object.keys(conf).forEach(key => {
-        //         if (key.indexOf("__") < 0) {
-        //             dataObject[key] = conf[key]
-        //             // const val = conf[key]
-        //         }
-        //         if(conf[key]==null &&conf[key]==undefined){
-        //             delete conf[key]
-        //         }
-        //
-        //     })
-        //     return dataObject;
-        // }
         function buildSlots(conf) {
             const thisSlots = slots.default || {}
             const childObjs = slotRenderFunctions[conf.__config__.tag]

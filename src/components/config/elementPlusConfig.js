@@ -1,3 +1,9 @@
+const defaultFormItemConfig = {
+    showLabel: true,
+    wrapWithFormItem: true,
+    labelWidth: null,
+    required: true,
+}
 export const elementPlusComponents = [
     {
         title: "html组件",
@@ -14,13 +20,11 @@ export const elementPlusComponents = [
                     },
                     {
                         __id__: "div",
-                        __config__: {
-                        }
+                        __config__: {}
                     },
                     {
                         __id__: "flex-div",
-                        __config__: {
-                        },
+                        __config__: {},
                         __props__: {
                             style: {
                                 display: "flex"
@@ -165,7 +169,7 @@ export const elementPlusComponents = [
                 children: [{
                     __id__: "icon",
                     __config__: {
-                        iconName:'House'
+                        iconName: 'House'
                     }
                 }]
             },
@@ -273,12 +277,8 @@ export const elementPlusComponents = [
                     {
                         __id__: "cascader",
                         __config__: {
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
                             defaultValue: [],
-                            dataType: "dynamic",
-                            required: true,
+                            ...defaultFormItemConfig,
                             regList: [],
                         },
                         __props__: {
@@ -297,22 +297,14 @@ export const elementPlusComponents = [
                         __id__: "checkbox-group",
                         __config__: {
                             defaultValue: [],
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
+                            ...defaultFormItemConfig,
                             optionType: "default",
-                            required: true,
                             border: false,
                         },
                         __link__: [{
                             __id__: "checkbox",
                             __config__: {
-                                showLabel: true,
-                                wrapWithFormItem: true,
-                                labelWidth: null,
-                                optionType: "default",
-                                required: true,
-                                border: false,
+                                ...defaultFormItemConfig
                             },
                         }]
                     }
@@ -326,10 +318,8 @@ export const elementPlusComponents = [
                         __id__: "color-picker",
                         __config__: {
                             defaultValue: null,
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
-                            required: true,
+                            ...defaultFormItemConfig,
+                            wrapWithSpan: true,//用span包含是因为部分的组件无法传入class
                         },
                     }
                 ]
@@ -342,10 +332,8 @@ export const elementPlusComponents = [
                         __id__: "date-picker",
                         __config__: {
                             defaultValue: null,
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
-                            required: true,
+                            ...defaultFormItemConfig,
+                            wrapWithSpan: true,
                         },
                         __props__: {
                             style: {
@@ -362,13 +350,11 @@ export const elementPlusComponents = [
                     {
                         __id__: "date-picker",
                         __config__: {
+                            name:"日期时间选择",
                             itemName: "datetime-picker",
                             defaultValue: null,
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
-                            required: true,
-                            name: "日期时间选择"
+                            ...defaultFormItemConfig,
+                            wrapWithSpan: true,
                         },
                         __props__: {
                             style: {
@@ -388,11 +374,8 @@ export const elementPlusComponents = [
                         __id__: 'input',
                         __config__: {
                             tagIcon: "input",
-                            labelWidth: null,
-                            showLabel: true,
-                            wrapWithFormItem: true,
                             defaultValue: undefined,
-                            required: true,
+                            ...defaultFormItemConfig,
                             // 正则校验规则
                             regList: [],
                         },
@@ -406,13 +389,10 @@ export const elementPlusComponents = [
                         __config__: {
                             name: "多行文本",
                             itemName: "texarea",
-                            labelWidth: null,
-                            showLabel: true,
-                            wrapWithFormItem: true,
                             tag: 'el-input',
                             tagIcon: 'textarea',
                             defaultValue: undefined,
-                            required: true,
+                            ...defaultFormItemConfig,
                             regList: []
                         },
                         __props__: {
@@ -426,10 +406,7 @@ export const elementPlusComponents = [
                             itemName: "password",
                             name: "密码框",
                             tagIcon: "password",
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
-                            required: true,
+                            ...defaultFormItemConfig,
                             regList: [],
                         },
                         __props__: {
@@ -449,10 +426,7 @@ export const elementPlusComponents = [
                     {
                         __id__: "input-number",
                         __config__: {
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
-                            required: true,
+                            ...defaultFormItemConfig,
                             regList: [],
                         },
                         __props__: {
@@ -470,11 +444,8 @@ export const elementPlusComponents = [
                     {
                         __id__: "radio-group",
                         __config__: {
-                            labelWidth: null,
-                            showLabel: true,
-                            wrapWithFormItem: true,
+                            ...defaultFormItemConfig,
                             optionType: "default",
-                            required: true,
                             border: false,
                         }
                     }
@@ -488,10 +459,7 @@ export const elementPlusComponents = [
                         __id__: "rate",
                         __config__: {
                             defaultValue: 0,
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
-                            required: true,
+                            ...defaultFormItemConfig,
                         },
                     }
                 ]
@@ -503,11 +471,8 @@ export const elementPlusComponents = [
                     {
                         __id__: "select",
                         __config__: {
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
                             defaultValue: "",
-                            required: true,
+                            ...defaultFormItemConfig,
                             regList: [],
                         },
                         __props__: {
@@ -534,11 +499,8 @@ export const elementPlusComponents = [
                     {
                         __id__: "select-v2",
                         __config__: {
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
                             defaultValue: "",
-                            required: true,
+                            ...defaultFormItemConfig,
                         },
                         __props__: {
                             style: {
@@ -556,10 +518,7 @@ export const elementPlusComponents = [
                         __id__: "slider",
                         __config__: {
                             defaultValue: null,
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
-                            required: true,
+                            ...defaultFormItemConfig,
                         },
                     }
                 ]
@@ -572,10 +531,7 @@ export const elementPlusComponents = [
                         __id__: "switch",
                         __config__: {
                             defaultValue: false,
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
-                            required: true,
+                            ...defaultFormItemConfig,
                         },
                     }
                 ]
@@ -588,10 +544,7 @@ export const elementPlusComponents = [
                         __id__: "time-picker",
                         __config__: {
                             defaultValue: null,
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
-                            required: true,
+                            ...defaultFormItemConfig,
                         },
                         __props__: {
                             style: {
@@ -609,10 +562,7 @@ export const elementPlusComponents = [
                         __id__: "time-select",
                         __config__: {
                             defaultValue: null,
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
-                            required: true,
+                            ...defaultFormItemConfig,
                         },
                         __props__: {
                             style: {
@@ -642,10 +592,7 @@ export const elementPlusComponents = [
                         __id__: "upload",
                         __config__: {
                             defaultValue: null,
-                            showLabel: true,
-                            wrapWithFormItem: true,
-                            labelWidth: null,
-                            required: true
+                            ...defaultFormItemConfig,
                         },
                         __props__: {
                             action: "https://jsonplaceholder.typicode.com/posts/",
@@ -886,28 +833,21 @@ export const elementPlusComponents = [
                 ]
             },
             {
-                name: "TreeSelect 树形选择2.1.8",
                 key: "tree-select",
                 children: [{
                     __id__: "tree-select",
                     __config__: {
-                        showLabel: true,
-                        wrapWithFormItem: true,
-                        labelWidth: null,
                         optionType: "default",
-                        required: true,
+                        ...defaultFormItemConfig,
                     },
-                    __props__: {
-                    }
+
                 }]
             },
             {
                 name: "Virtualized Tree 虚拟化树形控件",
                 key: "tree-v2",
                 children: [{
-                    __id__: "tree-v2",
-                    __props__: {
-                    }
+                    __id__: "tree-v2"
                 }]
             },
             {
@@ -1111,6 +1051,10 @@ export const elementPlusComponents = [
                 children: [
                     {
                         __id__: "popconfirm",
+                        __config__: {
+                            reference: "删除",
+                            wrapWithSpan: true,
+                        },
                         __props__: {
                             title: "是否确认删除？"
                         }
@@ -1123,6 +1067,10 @@ export const elementPlusComponents = [
                 children: [
                     {
                         __id__: "popover",
+                        __config__: {
+                            reference: "弹出",
+                            wrapWithSpan: true,
+                        },
                         __props__: {
                             title: "气泡卡片",
                             content: "显示内容"
@@ -1136,6 +1084,9 @@ export const elementPlusComponents = [
                 children: [
                     {
                         __id__: "tooltip",
+                        __config__: {
+                            wrapWithSpan: true,
+                        },
                         __slots__: {
                             default: "文字提示"
                         },

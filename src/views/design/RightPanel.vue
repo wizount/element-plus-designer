@@ -96,7 +96,6 @@
             <el-button
                 @click="curItemConfig.defaultValue=!curItemConfig.defaultValue">显示{{ curItemConfig.tag }}
             </el-button>
-
           </el-form-item>
           <el-form-item v-if="curItemConfig.optionType !== undefined" label="选项样式">
             <el-radio-group v-model="curItemConfig.optionType">
@@ -106,6 +105,9 @@
           </el-form-item>
           <el-form-item v-if="curItemConfig.iconName !== undefined" label="图标">
             <icon-chooser v-model="curItemConfig.iconName"></icon-chooser>
+          </el-form-item>
+          <el-form-item v-if="curItemConfig.reference !== undefined" label="文字">
+            <el-input v-model="curItemConfig.reference"/>
           </el-form-item>
           <el-form-item v-if="curItemConfig.required !== undefined" label="必填">
             <el-switch v-model="curItemConfig.required"></el-switch>
