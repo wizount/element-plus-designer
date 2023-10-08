@@ -38,8 +38,8 @@ export default {
 
         function buildClass(curItem) {
             const {drawItemId} = curItem.__config__
-            let clazz = props.activeId === drawItemId ? 'drawing-item active-draw-item' : 'drawing-item';
-            if (props.designConf.unFocusedComponentBorder && props.activeId !== drawItemId) clazz += ' unfocus-bordered'
+            let clazz = props.activeId === drawItemId ? 'drawing-item selected-draw-item' : 'drawing-item';
+            if (props.designConf.unFocusedComponentBorder && props.activeId !== drawItemId) clazz += ' unselected-draw-item'
             const curClass = curItem.__props__.class;
             if (curClass) {
                 if (Array.isArray(curClass)) {
@@ -247,7 +247,7 @@ export default {
 
         function doWrapWithSpan(curItem, source) {
             const {drawItemId} = curItem.__config__
-            let clazz = props.activeId === drawItemId ? 'active-raw-item' : props.designConf.unFocusedComponentBorder && props.activeId !== drawItemId ? 'raw-item' : '';
+            let clazz = props.activeId === drawItemId ? 'selected-raw-item' : props.designConf.unFocusedComponentBorder && props.activeId !== drawItemId ? 'raw-item' : '';
             return h("span", {class: clazz, ...buildEvent(curItem)}, source);
         }
 

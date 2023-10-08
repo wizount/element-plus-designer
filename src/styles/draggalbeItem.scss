@@ -1,7 +1,7 @@
 @import './variable.scss';
 
 
-//fixme 这些类型再改吧
+//fixme 这些类名以后再改吧
 
 .drawing-item {
   position: relative;
@@ -12,17 +12,17 @@
   //padding: 0 2px;
   //margin-bottom: 15px;
 
-  &.active-draw-item {
+  &.selected-draw-item {
     border: 1px dashed $lighterBlue;
   }
-  &.unfocus-bordered{
+  &.unselected-draw-item{
     border: 1px dashed lightgray;
   }
 
 }
-.active-raw-item .drawing-item {
-  @extend .drawing-item, .active-draw-item
+.selected-raw-item .drawing-item {
+  @extend .drawing-item, .selected-draw-item
 }
 .raw-item .drawing-item {
-  @extend .drawing-item, .unfocus-bordered
+  @extend .drawing-item, .unselected-draw-item
 }

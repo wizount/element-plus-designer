@@ -149,7 +149,7 @@
                       @confirm="generate"/>
     <el-drawer v-model="drawItemTreeVisible" title="组件树" size="405px" modal-class="bg-transparent"
                @open="openTreeDrawer">
-<!--      fixme 更改height-->
+      <!--      fixme 更改height-->
       <el-scrollbar :height="height-60">
         <el-tree :data="drawItemTreeData" ref="drawItemTree" node-key="renderKey" v-if="showTree"
                  default-expand-all highlight-current :expand-on-click-node="false"
@@ -488,12 +488,14 @@ function moveDrawItem(upOrDown) {
 }
 
 function resetActiveDrawItemPosition() {
-  let item = document.getElementsByClassName("active-draw-item")[0];
-  if(!item){
-    item=  document.getElementsByClassName("active-raw-item")[0].childNodes[1]
+  let item = document.querySelector(".selected-draw-item");
+  if (!item) {
+    item = document.querySelector(".selected-raw-item :first-child");
+    if (item) {
+      addClass(item, "drawing-item");
+    }
   }
   if (item) {
-    addClass(item,"drawing-item");
     let rect = item.getBoundingClientRect()
     activeToolbar.value.style.display = 'block';
     activeToolbar.value.style.left = (rect.left + rect.width - activeToolbar.value.clientWidth) + "px";
