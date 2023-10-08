@@ -3,7 +3,7 @@
 
 //fixme 这些类名以后再改吧
 
-.drawing-item {
+.drawing-ele {
   position: relative;
   cursor: move;
   box-sizing: border-box;
@@ -12,17 +12,17 @@
   //padding: 0 2px;
   //margin-bottom: 15px;
 
-  &.selected-draw-item {
+  &.selected-draw-ele {
     border: 1px dashed $lighterBlue;
   }
-  &.unselected-draw-item{
+  &.unselected-draw-ele{
     border: 1px dashed lightgray;
   }
 
 }
-.selected-raw-item .drawing-item {
-  @extend .drawing-item, .selected-draw-item
+.selected-raw-ele .drawing-ele {
+  @extend .drawing-ele, .selected-draw-ele
 }
-.raw-item .drawing-item {
-  @extend .drawing-item, .unselected-draw-item
+.raw-ele .drawing-ele {
+  @extend .drawing-ele, .unselected-draw-ele
 }

@@ -24,8 +24,8 @@
                          :group="{ name: 'componentsGroup', pull: 'clone', put: false }" :clone="cloneDrawItem"
                          draggable=".components-item" :sort="false" @end="onEnd">
                 <template #item="{element}">
-                  <div class="components-item" @click="addDrawItem(element)" :title="element.__config__.tag">
-                    <div class="components-body">
+                  <div class="components-item" @click="addDrawItem(element)" :title="`${element.__config__.tag}${element.__config__.wrapWithFormItem&&designConf.wrapWithFormItem?'，表单组件':''}`">
+                    <div class="components-body" :class="{'form-item':element.__config__.wrapWithFormItem&&designConf.wrapWithFormItem}">
                       <svg-icon :icon-class="element.__config__.tagIcon"/>
                       {{ element.__config__.name }}
                       <el-dropdown v-if="element.__link__" class="subtag-item" @command="addDrawItem">
@@ -488,15 +488,15 @@ function moveDrawItem(upOrDown) {
 }
 
 function resetActiveDrawItemPosition() {
-  let item = document.querySelector(".selected-draw-item");
-  if (!item) {
-    item = document.querySelector(".selected-raw-item :first-child");
-    if (item) {
-      addClass(item, "drawing-item");
+  let ele = document.querySelector(".selected-draw-ele");
+  if (!ele) {
+    ele = document.querySelector(".selected-raw-ele :first-child");
+    if (ele) {
+      addClass(ele, "drawing-ele");
     }
   }
-  if (item) {
-    let rect = item.getBoundingClientRect()
+  if (ele) {
+    let rect = ele.getBoundingClientRect()
     activeToolbar.value.style.display = 'block';
     activeToolbar.value.style.left = (rect.left + rect.width - activeToolbar.value.clientWidth) + "px";
     activeToolbar.value.style.top = (rect.top - 20) + "px";

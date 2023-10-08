@@ -59,81 +59,68 @@
   .components-list {
     padding: 8px;
     box-sizing: border-box;
+    .components-draggable {
+      padding-bottom: 20px;
 
-    .components-item {
-      display: inline-block;
-      width: 48%;
-      margin: 1%;
-      transition: transform 0ms !important;
-
-    }
-
-  }
-
-  .components-draggable {
-    padding-bottom: 20px;
-
-    .components-item {
-      .components-body {
-        padding: 8px 10px;
-        background: var(--el-color-primary-light-9);
-        font-size: 12px;
-        cursor: move;
-        border: 1px dashed var(--el-border-color);
-        border-radius: 3px;
-
-        .svg-icon {
-          color: var(--el-text-color-regular);
-          font-size: 15px;
+      .components-item {
+        display: inline-block;
+        width: 48%;
+        margin: 1%;
+        transition: transform 0ms !important;
+        .form-item{
+          background: var(--el-color-primary-light-7)!important;
         }
-
-        &:hover {
-          border: 1px dashed #787be8;
-          color: var(--el-color-primary);
+        .components-body {
+          padding: 8px 10px;
+          background: var(--el-color-primary-light-9);
+          font-size: 12px;
+          cursor: move;
+          border: 1px dashed var(--el-border-color);
+          border-radius: 3px;
 
           .svg-icon {
+            color: var(--el-text-color-regular);
+            font-size: 15px;
+          }
+
+          &:hover {
+            border: 1px dashed #787be8;
             color: var(--el-color-primary);
+
+            .svg-icon {
+              color: var(--el-color-primary);
+            }
+
+            .subtag-item {
+              background-color: var(--el-color-primary-light-8);
+
+            }
           }
 
           .subtag-item {
-            background-color: var(--el-color-primary-light-8);
-
+            float: right;
+            cursor: pointer;
+            margin-top: -8px;
+            margin-right: -9px
           }
         }
+      }
 
-        .subtag-item {
-          float: right;
-          cursor: pointer;
-          margin-top: -8px;
-          margin-right: -9px
+      &.sortable-ghost {
+        &::before {
+          content: " ";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 3px;
+          background: rgb(89, 89, 223);
+          z-index: 2;
         }
       }
     }
-
-    &.sortable-ghost {
-      &::before {
-        content: " ";
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        height: 3px;
-        background: rgb(89, 89, 223);
-        z-index: 2;
-      }
-    }
   }
-}
 
-.components-title {
-  font-size: 14px;
-  color: #222;
-  margin: 6px 2px;
-
-  .svg-icon {
-    color: #666;
-    font-size: 18px;
-  }
 
 }
 
