@@ -79,7 +79,10 @@ const props = defineProps({
   },
   treeProps: {
     type: Object,
-    required: true
+    required: true,
+    default:()=>{
+      return {}
+    }
   }
 });
 const emits=defineEmits(["update:modelValue"])

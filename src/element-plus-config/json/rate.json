@@ -169,9 +169,9 @@
       ],
       "default": "StarFilled"
     },
-    "show-text": {
-      "label": "显示辅助文字",
-      "title": "是否显示辅助文字，若为真，则会从 texts 数组中选取当前分数对应的文字内容",
+    "show-score": {
+      "label": "显示当前分数",
+      "title": "是否显示当前分数， show-score 和 show-text 不能同时为真",
       "types": [
         {
           "name": "boolean",
@@ -180,9 +180,9 @@
       ],
       "default": false
     },
-    "show-score": {
-      "label": "显示当前分数",
-      "title": "是否显示当前分数， show-score 和 show-text 不能同时为真",
+    "show-text": {
+      "label": "显示辅助文字",
+      "title": "是否显示辅助文字，若为真，则会从 texts 数组中选取当前分数对应的文字内容",
       "types": [
         {
           "name": "boolean",
@@ -255,7 +255,8 @@
             "clearable": true
           }
         }
-      ]
+      ],
+      "hide": true
     },
     "label": {
       "label": "",
@@ -268,7 +269,8 @@
             "clearable": true
           }
         }
-      ]
+      ],
+      "hide": true
     }
   },
   "events": [
