@@ -23,6 +23,7 @@ const emits = defineEmits(['update:modelValue']);
 
 onMounted(() => {
   buildFormModelsAndRules(props.drawItemList);
+  console.info(formModel)
   emits("update:modelValue",formModel);
 })
 
@@ -55,13 +56,14 @@ function buildFormModelsAndRules(list) {
 // 构建校验规则
 function buildRules(item) {
   const rules = []
-  const {__config__: config, __props__: props} = item;
+  const {__config__: config, __props__} = item;
   if (ruleTrigger[config.tag]) {
     if (config.required) {
-      const type = Array.isArray(config.defaultValue) ? "array" : undefined
+      const type = Array.isArray(config.defaultValue) ? "array" : config.defaultValueType
+
       let message = Array.isArray(config.defaultValue)
           ? `请至少选择一个${config.label}`
-          : props.placeholder
+          : __props__&&__props__.placeholder||""
       if (message === undefined) message = `${config.label}不能为空`
       rules.push(
           {

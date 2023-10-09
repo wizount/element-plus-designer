@@ -426,6 +426,7 @@ export const elementPlusComponents = [
                     {
                         __id__: "input-number",
                         __config__: {
+                            defaultValueType:'number',//不加这个，表单检验会显示必须输入
                             ...defaultFormItemConfig,
                             regList: [],
                         },
@@ -459,6 +460,7 @@ export const elementPlusComponents = [
                         __id__: "rate",
                         __config__: {
                             defaultValue: 0,
+                            defaultValueType:'number',
                             ...defaultFormItemConfig,
                         },
                     }

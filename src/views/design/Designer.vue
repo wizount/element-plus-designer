@@ -139,7 +139,7 @@
       </el-scrollbar>
     </div>
     <right-panel :active-data="activeData" :design-conf="designConf" :show-field="!!drawItemList.length"
-                 @fetch-data="fetchData" @add-slot-draw-item="addSlotDrawItem"
+                 @add-slot-draw-item="addSlotDrawItem"
                  @active-parent-draw-item="activeParentDrawItem"/>
     <form-drawer v-model="formDrawerVisible" :drawing-data="drawingData" size="100%" :generate-conf="generateConf"/>
     <json-drawer size="750px" v-model="jsonDrawerVisible" :json-str="jsonStr" @refresh="refreshJson"/>
@@ -341,59 +341,6 @@ function findItemIndexInDrawItemList(targetItem) {
 }
 
 //endregion
-function setObjectValueReduce(obj, strKeys, data) {
-  const arr = strKeys.split('.')
-  arr.reduce((pre, item, i) => {
-    if (arr.length === i + 1) {
-      pre[item] = data
-    } else if (!isObjectObject(pre[item])) {
-      pre[item] = {}
-    }
-    return pre[item]
-  }, obj)
-}
-
-function setRespData(item, resp) {
-  const {dataPath, dataConsumer} = item.__config__
-  if (!dataPath || !dataConsumer) return
-  const respData = dataPath
-      .split('.')
-      .reduce((pre, item) => pre[item], resp)
-
-  // 将请求回来的数据，赋值到指定属性。
-  // 以el-table为例，根据Element文档，应该将数据赋值给el-tabel的data属性，所以dataConsumer的值应为'data';
-  // 此时赋值代码可写成 component[dataConsumer] = respData；
-  // 但为支持更深层级的赋值（如：dataConsumer的值为'options.data'）,使用setObjectValueReduce
-  setObjectValueReduce(item, dataConsumer, respData)
-  const i = drawItemList.value.findIndex(
-      (item) => item.renderKey === item.renderKey
-  )
-  if (i > -1) {
-    drawItemList.value[i] = item
-  }
-}
-
-function fetchData(item) {//todo 增加动态获取数据
-  const {dataType, method, url} = item.__config__
-  if (dataType === 'dynamic' && method && url) {
-    setLoading(item, true)
-    // $axios({
-    //   method,
-    //   url,
-    // }).then((resp) => {
-    //   setLoading(component, false)
-    //   setRespData(component, resp.data)
-    // })
-  }
-}
-
-function setLoading(item, val) {
-  const {directives} = item
-  if (Array.isArray(directives)) {
-    const t = directives.find((d) => d.name === 'loading')
-    if (t) t.value = val
-  }
-}
 
 //region 选中组件的操作
 
@@ -512,7 +459,6 @@ function resetActiveDrawItemPosition() {
 
 function onEnd(obj) {
   if (obj.from !== obj.to) {
-    fetchData(tempActiveData);
     const {parent, list, index} = findItemIndexInDrawItemList(tempActiveData);
     //判断是否可以添加
     if (allowToAdd(parent, tempActiveData)) {
@@ -530,7 +476,6 @@ function onEnd(obj) {
 
 function addDrawItem(item) {
   const clone = cloneDrawItem(item);
-  fetchData(clone)
   if (activeData.value && activeData.value.__config__ && activeData.value.__config__.layout === 'containerItem') {
     if (allowToAdd(activeData.value, clone)) {
       activeData.value.__slots__.default.push(clone)
@@ -1138,7 +1083,7 @@ function buildRules(item) {
   const {__config__: config, __props__: props} = item;
   if (ruleTrigger[config.tag]) {
     if (config.required) {
-      const type = Array.isArray(config.defaultValue) ? "array" : undefined
+      const type = Array.isArray(config.defaultValue) ? "array" : config.defaultValueType
       let message = Array.isArray(config.defaultValue)
           ? `请至少选择一个${config.label}`
           : props.placeholder
@@ -1179,6 +1124,7 @@ function buildDynamicData() {
       if (item.__data__.source === 'dynamic' && !dynamicData.value[item.__refs__[data.name]]) {
         const {method, url, dataKey} = item.__data__.dynamic;
         Axios({method, url}).then((resp) => {
+          item.renderKey = `${item.__config__.drawItemId}${Math.floor(Math.random() * 10000)}`
           dynamicData.value[item.__refs__[data.name]] = resp.data;
         })
         // }

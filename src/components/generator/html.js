@@ -1,42 +1,45 @@
 import elementPlusConfigMap from "@/element-plus-config"
 import slotHtmlFunctions from "@/components/generator/slots";
 
+//递归比较麻烦，直接使用
+let formModelName='';
 export function vue3Template(itemList) {
     return `<template_alt>
     <div style="padding: 5px">
-     ${renderHtml(itemList)}
+     ${renderItemList(itemList)}
     </div>
   </template_alt>`
 }
 
 //总入口
-export const renderHtml = (itemList, formModelName) => {
+export const renderItemList = (itemList) => {
     if (!itemList) {
         return ""
     }
     let html = [];
     for (const item of itemList) {
-        html.push(renderElement(item, formModelName))
+        html.push(renderItem(item))
     }
     return html.join("")
 
 }
 //单个组件
-export const renderElement = (item, formModelName) => {
+export const renderItem = (item) => {
     if (typeof item === 'string') {//todo 只有文字而已，目前用span代替，应该有更好的方法
         return item
     } else if (item.__id__ === 'plainText') {//todo 只有文字而已，目前用span代替，应该有更好的方法
         return item.__slots__.default
     } else {
-        const {tag, layout} = item.__config__;
+        const {tag, wrapWithFormItem} = item.__config__;
         let childHtml
         if (tag === "el-form") {
-            let {model} = item.__props__;
+            formModelName=item.__props__.model;
             childHtml = `<${tag}${renderProps(item)}>${renderSlots(item)}</${tag}>`;
+            formModelName='';
         } else {
-            childHtml = `<${tag}${renderProps(item, formModelName)}>${renderSlots(item)}</${tag}>`;
+            childHtml = `<${tag}${renderProps(item)}>${renderSlots(item)}</${tag}>`;
         }
-        if (layout === 'formItem') {
+        if (wrapWithFormItem) {
             return renderFormItem(item, childHtml)
         } else {
             return childHtml
@@ -45,7 +48,7 @@ export const renderElement = (item, formModelName) => {
     }
 }
 //组件属性
-export const renderProps = (item, formModelName) => {
+export const renderProps = (item) => {
     const id = item.__id__;
     const {attributes} = elementPlusConfigMap[id];
     const props = item.__props__
@@ -130,7 +133,7 @@ export const renderSlots = (item) => {
         }
         const array = [];
         for (const slotName in slots) {
-            let s = renderHtml(slots[slotName]);
+            let s = renderItemList(slots[slotName]);
             if (s && slotName !== "default") {
                 s = `<template_alt #${slotName}>${s}</template_alt>` //fixme js beauty不支持这个
             }
