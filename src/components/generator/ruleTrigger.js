@@ -4,7 +4,7 @@
  */
 export default {
   'el-input': 'blur',
-  'el-input-number': 'blur',
+  'el-input-number': 'change',
   'el-select': 'change',
   'el-radio-group': 'change',
   'el-checkbox-group': 'change',

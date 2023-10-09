@@ -21,12 +21,7 @@ const routes = [
         path: '/elutils',
         name: 'elutils',
         component:() =>import('@/views/tool/ElementPropertyUtils')
-    },
-    {
-        path: '/preview',
-        name: 'preview',
-        component:() =>import('@/views/tool/preview')
-    },
+    }
 ]
 
 const router = createRouter({

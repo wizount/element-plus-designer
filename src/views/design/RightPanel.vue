@@ -66,7 +66,7 @@
                 <el-form-item label="表达式">
                   <el-autocomplete v-model="item.pattern" placeholder="请输入正则表达式"
                                    :fetch-suggestions="ac.querySearch"
-                                   clearable @change="regChange">
+                                   clearable @select="regChange(item)">
                     <template #default="{ item }">
                       <span>{{ item.text }}</span>
                       <div>{{ item.value }}</div>
@@ -343,13 +343,7 @@ watch(() => curItemProps.value.type, (newVal) => {
 import {AutoCompleteCallback} from "@/utils/element-plus-utils";
 import regList from '@/utils/regList.json'
 import {changeDrawItemVariableName} from "@/views/design/DrawItemProcessor";
-import ConfigValueInput from "@/views/design/ConfigValueInput";
-import {camelCase, deepClone} from "@/utils";
-import IconChooser from "@/components/editors/IconChooser.vue";
-
 const ac = new AutoCompleteCallback(regList)
-
-
 function addReg() {
   curItemConfig.value.regList.push({
     pattern: '',
@@ -358,8 +352,15 @@ function addReg() {
 }
 
 //fixme 当更新时，要填入正则表达式的message
-function regChange(e) {
-  console.info(e)
+function regChange(item) {
+ for(const reg of regList){
+   console.info(reg.value)
+   if(reg.value===item.pattern){
+     item.message=reg.text;
+     console.info(item)
+     break;
+   }
+ }
 }
 
 //endregion

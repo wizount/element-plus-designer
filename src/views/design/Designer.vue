@@ -24,8 +24,10 @@
                          :group="{ name: 'componentsGroup', pull: 'clone', put: false }" :clone="cloneDrawItem"
                          draggable=".components-item" :sort="false" @end="onEnd">
                 <template #item="{element}">
-                  <div class="components-item" @click="addDrawItem(element)" :title="`${element.__config__.tag}${element.__config__.wrapWithFormItem&&designConf.wrapWithFormItem?'，表单组件':''}`">
-                    <div class="components-body" :class="{'form-item':element.__config__.wrapWithFormItem&&designConf.wrapWithFormItem}">
+                  <div class="components-item" @click="addDrawItem(element)"
+                       :title="`${element.__config__.tag}${element.__config__.wrapWithFormItem&&designConf.wrapWithFormItem?'，表单组件':''}`">
+                    <div class="components-body"
+                         :class="{'form-item':element.__config__.wrapWithFormItem&&designConf.wrapWithFormItem}">
                       <svg-icon :icon-class="element.__config__.tagIcon"/>
                       {{ element.__config__.name }}
                       <el-dropdown v-if="element.__link__" class="subtag-item" @command="addDrawItem">
@@ -344,7 +346,7 @@ function findItemIndexInDrawItemList(targetItem) {
 
 //region 选中组件的操作
 
-import {useWindowSize} from "@vueuse/core";
+import {isObject, useWindowSize} from "@vueuse/core";
 
 const {width, height} = useWindowSize();
 watch([width, height], (val) => {
@@ -524,17 +526,19 @@ function cloneDrawItem(origin) {
       } else if (attr.formRef) {
         props[key] = camelCase(config.itemName + '-' + key)
       }
-      if (key === 'vModel' || props[key]) {//非空值继续
+      if (key === 'vModel') {
         continue
       }
 
       if (attr.hide) {
         continue;
       }
-
-      if (props[key] === undefined && attr.default !== undefined) {
+      if (isObject(props[key]) && isObject(attr.default)) {
+        props[key] = Object.assign(deepClone(attr.default), props[key])
+      } else if (props[key] === undefined && attr.default !== undefined) {
         props[key] = deepClone(attr.default)
       }
+
       if (attr.remember && designConf.value[key]) {
         props[key] = deepClone(designConf.value[key]);
       }

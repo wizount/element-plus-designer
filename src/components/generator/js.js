@@ -187,7 +187,7 @@ function renderARules(item) {
             config.regList.forEach((item) => {
                 if (item.pattern) {
                     rules.push(
-                        `{ pattern: '${item.pattern}',
+                        `{ pattern: /${item.pattern}/,
                           message: '${item.message}',
                           trigger: '${ruleTrigger[config.tag]}' }`
                     )
