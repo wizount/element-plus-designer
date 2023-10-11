@@ -1,18 +1,25 @@
 import elementPlusConfigMap from "@/element-plus-config"
 import slotHtmlFunctions from "@/components/generator/slots";
+import {deepClone} from "@/utils";
+import {isArrayEqual, isObjectEqual} from "@/components/generator/utils";
+
 
 //递归比较麻烦，直接使用
 let formModelName='';
-export function vue3Template(itemList) {
+export function renderVue3Template(itemList) {
     return `<template_alt>
     <div style="padding: 5px">
      ${renderItemList(itemList)}
-    </div>
-  </template_alt>`
+    </div></template_alt>
+ `
 }
-
+export function renderHtml(itemList) {
+    return `
+     ${renderItemList(itemList)}
+ `
+}
 //总入口
-export const renderItemList = (itemList) => {
+const renderItemList = (itemList) => {
     if (!itemList) {
         return ""
     }
@@ -24,10 +31,10 @@ export const renderItemList = (itemList) => {
 
 }
 //单个组件
-export const renderItem = (item) => {
+const renderItem = (item) => {
     if (typeof item === 'string') {//todo 只有文字而已，目前用span代替，应该有更好的方法
         return item
-    } else if (item.__id__ === 'plainText') {//todo 只有文字而已，目前用span代替，应该有更好的方法
+    } else if (item.__id__ === 'plainText') {
         return item.__slots__.default
     } else {
         const {tag, wrapWithFormItem} = item.__config__;
@@ -48,7 +55,7 @@ export const renderItem = (item) => {
     }
 }
 //组件属性
-export const renderProps = (item) => {
+const renderProps = (item) => {
     const id = item.__id__;
     const {attributes} = elementPlusConfigMap[id];
     const props = item.__props__
@@ -122,7 +129,7 @@ export const renderProps = (item) => {
 }
 
 
-export const renderSlots = (item) => {
+const renderSlots = (item) => {
     const {tag, layout} = item.__config__;
     if (layout==='fixedItem'&&slotHtmlFunctions[tag]) {
         return slotHtmlFunctions[tag](item);
@@ -144,7 +151,7 @@ export const renderSlots = (item) => {
 
 }
 
-export const renderFormItem = (item, child) => {
+const renderFormItem = (item, child) => {
     const config = item.__config__
     let labelWidth = ''
     let label = `label="${config.label}"`
@@ -161,7 +168,7 @@ export const renderFormItem = (item, child) => {
 }
 
 //属性值为object
-export const renderObjectProps = (propsName, ob, default_ob) => {
+const renderObjectProps = (propsName, ob, default_ob) => {
     if (!ob) {
         return ""
     }
@@ -196,32 +203,3 @@ export const renderObjectProps = (propsName, ob, default_ob) => {
 
 
 }
-import {deepClone} from "@/utils";
-import {isArrayEqual, isObjectEqual} from "@/components/generator/utils";
-
-
-export function dialogWrapper(str) {
-    return `<el-dialog v-bind="$attrs" v-on="$listeners" @open="onOpen" @close="onClose" title="Dialog Titile">
-    ${str}
-    <template #footer>
-     <el-button @click="close">取消</el-button>
-      <el-button type="primary" @click="handelConfirm">确定</el-button>
-    </template>
-  </el-dialog>`
-}
-
-
-export function vueScript(html, script) {
-    return `${html}
-<script setup>
-${script}
-</script>`
-}
-
-
-export function cssStyle(cssStr) {
-    return `<style>
-    ${cssStr}
-  </style>`
-}
-

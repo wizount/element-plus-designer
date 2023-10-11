@@ -52,10 +52,25 @@
             </el-tabs>
             <div
                 v-show="activeTab === 'html'"
-                id="editorHtml"
-                class="tab-editor"
-            />
-            <div v-show="activeTab === 'js'" id="editorJs" class="tab-editor"/>
+            >
+              <VAceEditor
+                  v-model:value="htmlCode"
+                  class="editor"
+                  :options="{fontSize:'15px'}"
+                  lang="html"
+                  theme="chrome"/>
+
+            </div>
+            <div v-show="activeTab === 'js'" >
+              <VAceEditor
+                  v-model:value="jsCode"
+                  class="editor"
+                  :options="{fontSize:'15px'}"
+                  lang="javascript"
+                  theme="chrome"/>
+
+
+            </div>
             <div
                 v-show="activeTab === 'css'"
                 id="editorCss"
@@ -85,7 +100,6 @@
               </span>
             </div>
             <iframe
-                v-show="isIframeLoaded"
                 ref="previewPage"
                 class="result-wrapper"
                 frameborder="0"
@@ -94,7 +108,6 @@
             />
             <div
                 v-show="!isIframeLoaded"
-                v-loading="true"
                 class="result-wrapper"
             />
           </el-col>
@@ -110,26 +123,22 @@
 </template>
 
 <script setup>
-import {parse} from '@babel/parser'
 import ClipboardJS from 'clipboard'
 import {saveAs} from 'file-saver'
-import {
-  vueScript,
-  cssStyle, vue3Template,
-} from '@/components/generator/html.js'
-import { renderJs} from '@/components/generator/js'
-import {makeUpCss} from '@/components/generator/css'
-import {exportDefault, beautifierConf, titleCase} from '@/utils/index'
+import { renderJsOption} from '@/components/generator/js'
+import {exportDefault, beautifierConf,} from '@/utils'
 import ResourceDialog from './ResourceDialog'
 import loadBeautifier from '@/utils/loadBeautifier'
 import {onBeforeUnmount, onMounted} from "vue";
 import {ElMessage, ElMessageBox, ElNotification} from "element-plus";
 
-const editorObj = {
-  html: null,
-  js: null,
-  css: null,
-}
+import {VAceEditor} from 'vue3-ace-editor';
+import 'ace-builds/src-noconflict/mode-html';
+import 'ace-builds/src-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/mode-css';
+import 'ace-builds/src-noconflict/theme-chrome';
+import {renderHtml} from "@/components/generator/html";
+
 const mode = {
   html: 'html',
   js: 'javascript',
@@ -138,12 +147,12 @@ const mode = {
 let beautifier
 
 
-const props=defineProps(['drawingData', 'generateConf'])
+const props=defineProps(['drawItemList', 'generateConf'])
 
 
 const activeTab = ref('html')
-let htmlCode = ''
-let jsCode = ''
+const htmlCode = ref('')
+const jsCode =  ref('')
 let cssCode = ''
 const isIframeLoaded = ref(false)
 let isInitcode = false // 保证open后两个异步只执行一次runcode
@@ -186,26 +195,22 @@ function preventDefaultSave(e) {
 }
 
 function onOpen() {
-  const {type} = props.generateConf
-  htmlCode = vue3Template(props.drawingData.fields, type);
-  jsCode = renderJs(props.drawingData.fields, type)
+ const html= renderHtml(props.drawItemList.fields);
+  let js = renderJsOption(props.drawItemList.fields);
+  if(js.indexOf("export default")===0){
+   js=js.substring(14);
+  }
+
   cssCode = "";//makeUpCss(props.drawingData.fields)
 
   loadBeautifier((btf) => {
     beautifier = btf
-    htmlCode = beautifier.html(htmlCode, beautifierConf.html)
-    jsCode = beautifier.js(jsCode, beautifierConf.js)
+    htmlCode.value = beautifier.html(html.replaceAll("template_alt", "template"), beautifierConf.html)
+    jsCode.value = beautifier.js(js, beautifierConf.js)
+    console.info( jsCode.value)
     cssCode = beautifier.css(cssCode, beautifierConf.html)
-    // loadMonaco((val) => {
-    //   monaco = val
-    //   setEditorValue('editorHtml', 'html', htmlCode)
-    //   setEditorValue('editorJs', 'js', jsCode)
-    //   setEditorValue('editorCss', 'css', cssCode)
-    //   if (!isInitcode) {
-    //     isRefreshCode = true
-    //     isIframeLoaded.value && (isInitcode = true) && runCode()
-    //   }
-    // })
+    console.info(htmlCode.value,jsCode.value );
+    runCode();
   })
 }
 
@@ -216,8 +221,10 @@ function onClose() {
 
 function iframeLoad() {
   if (!isInitcode) {
-    isIframeLoaded.value = true
-    isRefreshCode && (isInitcode = true) && runCode()
+    console.info(222)
+    //isIframeLoaded.value = true
+   // isRefreshCode && (isInitcode = true) &&
+ runCode()
   }
 }
 
@@ -241,29 +248,28 @@ function setEditorValue(id, type, codeStr) {
 }
 const previewPage=ref();
 function runCode() {
-  const jsCodeStr = editorObj.js.getValue()
-
+  const jsCodeStr = jsCode.value
   try {
-    const ast = parse(jsCodeStr, {sourceType: 'module'})
-    const astBody = ast.program.body
-    if (astBody.length > 1) {
-      ElMessageBox.confirm(
-          'js格式不能识别，仅支持修改export default的对象内容',
-          '提示',
-          {
-            type: 'warning',
-          }
-      )
-      return
-    }
-    if (astBody[0].type === 'ExportDefaultDeclaration') {
+    // const ast = parse(jsCodeStr, {sourceType: 'module'})
+    // const astBody = ast.program.body
+    // if (astBody.length > 1) {
+    //   ElMessageBox.confirm(
+    //       'js格式不能识别，仅支持修改export default的对象内容',
+    //       '提示',
+    //       {
+    //         type: 'warning',
+    //       }
+    //   )
+    //   return
+    // }
+    //if (astBody[0].type === 'ExportDefaultDeclaration') {
       const postData = {
         type: 'refreshFrame',
         data: {
-          generateConf: generateConf,
-          html: editorObj.html.getValue(),
-          js: jsCodeStr.replace(exportDefault, ''),
-          css: editorObj.css.getValue(),
+          generateConf: {},
+          html: htmlCode.value,
+          js:jsCodeStr,
+          css: "",
           scripts: scripts,
           links: links,
         },
@@ -273,9 +279,7 @@ function runCode() {
           postData,
           location.origin
       )
-    } else {
-      ElMessage.error('请使用export default')
-    }
+  //
   } catch (err) {
     ElMessage.error(`js错误：${err}`)
     console.error(err)
@@ -341,7 +345,6 @@ function setResource(arr) {
 .left-editor {
   position: relative;
   height: 100%;
-  background: #1e1e1e;
   overflow: hidden;
 }
 
@@ -371,4 +374,9 @@ function setResource(arr) {
 :deep(.el-drawer__header) {
   display: none;
 }
+
+.editor {
+  height: calc(100vh - 80px);
+}
+
 </style>

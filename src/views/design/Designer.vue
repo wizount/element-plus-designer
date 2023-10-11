@@ -89,8 +89,16 @@
                 </el-form-item>
               </el-dropdown-item>
               <el-dropdown-item>
-                <el-form-item label="表单组件包裹form-item" prop="wrapWithCol" style="margin-bottom: 0px">
+                <el-form-item label="表单组件包裹form-item" prop="wrapWithFormItem" style="margin-bottom: 0px">
                   <el-switch v-model="designConf.wrapWithFormItem"></el-switch>
+                </el-form-item>
+              </el-dropdown-item>
+              <el-dropdown-item>
+                <el-form-item label="代码风格" prop="jsCodeStyle" style="margin-bottom: 0px">
+                  <el-radio-group v-model="designConf.jsCodeStyle">
+                    <el-radio-button label="options">选项式</el-radio-button>
+                    <el-radio-button label="composition">组合式</el-radio-button>
+                  </el-radio-group>
                 </el-form-item>
               </el-dropdown-item>
               <el-dropdown-item>
@@ -143,7 +151,7 @@
     <right-panel :active-data="activeData" :design-conf="designConf" :show-field="!!drawItemList.length"
                  @add-slot-draw-item="addSlotDrawItem"
                  @active-parent-draw-item="activeParentDrawItem"/>
-    <form-drawer v-model="formDrawerVisible" :drawing-data="drawingData" size="100%" :generate-conf="generateConf"/>
+    <form-drawer v-model="formDrawerVisible" :draw-item-list="drawingData" size="100%" :generate-conf="generateConf"/>
     <json-drawer size="750px" v-model="jsonDrawerVisible" :json-str="jsonStr" @refresh="refreshJson"/>
 
     <html-drawer size="750px" v-model="htmlDrawerVisible" :html-str="htmlStr"/>
@@ -194,8 +202,7 @@ import {
   designConf as designConfPreset
 } from '@/components/config/config'
 import {addClass, beautifierConf, camelCase, deepClone, deleteObjectProps, isObjectObject} from '@/utils'
-import {vue3Template, vueScript} from '@/components/generator/html.js'
-import {renderJs} from '@/components/generator/js'
+
 
 import CodeTypeDialog from './CodeTypeDialog'
 import {getDesignConf, getDrawItemList, getIdGlobal, saveDesignConf, saveDrawItemList, saveIdGlobal,} from '@/utils/db'
@@ -793,9 +800,7 @@ function emptyDrawItemList() {
 
 function generateCode() {
   let cloneJsonList = simplifyJson();
-  const script = beautifier.js(renderJs(cloneJsonList), beautifierConf.js);
-  const html = beautifier.html(vue3Template(cloneJsonList), beautifierConf.html).replaceAll("template_alt", "template");
-  return vueScript(html, script)
+  return renderSfc(cloneJsonList,designConf.value.jsCodeStyle,beautifier)
 
 }
 
@@ -903,10 +908,9 @@ function download() {
 }
 
 function run() {
-  ElMessageBox.alert("未完成");
-  // dialogVisible.value = true
-  // showFileName.value = false
-  // operationType = 'run'
+  dialogVisible.value = true
+  showFileName.value = false
+  operationType = 'run'
 }
 
 function copy() {
@@ -1173,6 +1177,7 @@ import {
   changeDrawItemVariableName, findDrawItemByRenderKey
 } from "@/views/design/DrawItemProcessor";
 import {isArrayEqual} from "@/components/generator/utils";
+import {renderJs, renderSfc} from "@/components/generator";
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)

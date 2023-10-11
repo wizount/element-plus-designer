@@ -53,7 +53,7 @@ import {
   Delete as ElIconDelete,
   CirclePlus as ElIconCirclePlus,
 } from '@element-plus/icons-vue'
-import {deepClone} from '@/utils/index'
+import {deepClone} from '@/utils'
 
 export default {
   data() {

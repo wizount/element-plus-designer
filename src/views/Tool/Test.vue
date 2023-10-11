@@ -1,114 +1,81 @@
 <template>
   <div style="padding: 5px">
-    <el-form :model="myFormData1" :rules="rules1">
-      <el-form-item label="单行文本" prop="singleInput104" required>
-        <el-input placeholder="请输入单行文本" style="width: 100%;" v-model="myFormData1.singleInput104"></el-input>
-      </el-form-item>
-      <el-form-item label="多行文本" prop="multipleInput105" required>
-        <el-input placeholder="请输入多行文本" style="width: 100%;" v-model="myFormData1.multipleInput105">
-        </el-input>
-      </el-form-item>
-      <el-form-item label="密码" prop="passwordInput106" required>
-        <el-input placeholder="请输入密码" clearable style="width: 100%;" v-model="myFormData1.passwordInput106">
-        </el-input>
-      </el-form-item>
-      <el-form-item label="计数器" prop="input_number107" required>
-        <el-input-number placeholder="请输入计数器" :min=-Infinity :max=100 v-model="myFormData1.input_number107">
+    <el-form :model="form101Model" :rules="form101Rules">
+      <el-form-item label="计数器" prop="inputNumber104" required>
+        <el-input-number placeholder="请输入计数器" :min=-9 :max=100 v-model="form101Model.inputNumber104">
         </el-input-number>
       </el-form-item>
-      <el-form-item label="下拉选择" prop="select108" required>
-        <el-select placeholder="请选择下拉选择" style="width: 100%;" v-model="myFormData1.select108">
-          <el-option v-for="(item, index) in select108Options" :key="index" :label="item.label"
-                     :value="item.value" :disabled="item.disabled"></el-option>
-        </el-select>
+      <el-form-item label="评分" prop="rate105" required>
+        <el-rate show-text text-color="#010D1B" v-model="form101Model.rate105"></el-rate>
       </el-form-item>
-      <el-form-item label="滑块" prop="slider109" required>
-        <el-slider v-model="myFormData1.slider109"></el-slider>
+      <el-form-item label="树形选择" prop="treeSelect106" required>
+        <el-tree-select placeholder="请选择树形选择" :data="treeSelect106Data" v-model="form101Model.treeSelect106">
+        </el-tree-select>
       </el-form-item>
-      <el-form-item label="开关" prop="switch110" required>
-        <el-switch v-model="myFormData1.switch110"></el-switch>
-      </el-form-item>
-      <el-form-item label="评分" prop="rate111" required>
-        <el-rate v-model="myFormData1.rate111"></el-rate>
-      </el-form-item>
-      <el-form-item label="开关" prop="switch112" required>
-        <el-switch v-model="myFormData1.switch112"></el-switch>
+      <el-form-item label="级联选择" prop="cascader110" required>
+        <el-cascader placeholder="请选择级联选择" :options="cascader110Options" style="width: 100%;"
+                     v-model="form101Model.cascader110"></el-cascader>
       </el-form-item>
     </el-form>
-    <el-form :model="formData2" :rules="rules2">
-      <el-form-item label="单行文本" prop="singleInput114">
-        <el-input placeholder="请输入单行文本" style="width: 100%;" v-model="formData2.singleInput114"></el-input>
-      </el-form-item>
-      <el-form-item label="密码" prop="passwordInput115" required>
-        <el-input placeholder="请输入密码" clearable style="width: 100%;" v-model="formData2.passwordInput115">
-        </el-input>
-      </el-form-item>
-    </el-form>
+    <el-form-item label="级联选择" prop="cascader112" required>
+      <el-cascader placeholder="请选择级联选择" :options="cascader112Options" style="width: 100%;"
+                   v-model="cascader112"></el-cascader>
+    </el-form-item>
   </div>
 </template>
 
 <script setup>
-const myFormData1 = ref({
-  singleInput104: undefined,
-  multipleInput105: undefined,
-  passwordInput106: undefined,
-  input_number107: undefined,
-  select108: "",
-  slider109: undefined,
-  switch110: false,
-  rate111: 4,
-  switch112: false,
+const form101Model = ref({
+  inputNumber104: 5,
+  rate105: 5,
+  treeSelect106: "2",
+  cascader110: undefined,
 });
-const rules1 = {
-  singleInput104: [{
-    required: true,
-    message: '单行文本不能为空',
-    trigger: 'blur'
-  }],
-  multipleInput105: [{
-    required: true,
-    message: '多行文本不能为空',
-    trigger: 'blur'
-  }],
-  passwordInput106: [{
-    required: true,
-    message: '密码不能为空',
-    trigger: 'blur'
-  }],
-  input_number107: [{
+const form101Rules = {
+  inputNumber104: [{
     required: true,
     message: '计数器不能为空',
-    trigger: 'blur'
-  }],
-  select108: [{
-    required: true,
-    message: '下拉选择不能为空',
+    trigger: 'change'
+  }, {
+    pattern: /^\+?[1-9][0-9]*$/,
+    message: '233',
     trigger: 'change'
   }],
-  rate111: [{
+  rate105: [{
     required: true,
     message: '评分不能为空',
     trigger: 'change'
   }],
-};
-const select108Options = ref([{
-  label: '选项一',
-  value: '1'
-}, {
-  label: '选项二',
-  value: '2'
-}]);
-const formData2 = ref({
-  singleInput114: undefined,
-  passwordInput115: undefined,
-});
-const rules2 = {
-  singleInput114: [],
-  passwordInput115: [{
+  cascader110: [{
     required: true,
-    message: '密码不能为空',
-    trigger: 'blur'
+    message: '级联选择不能为空',
+    trigger: 'change'
   }],
 };
+const treeSelect106Data = ref([{
+  value: "1",
+  label: "选项1",
+  children: [{
+    value: "2",
+    label: "选项1-1"
+  }]
+}]);
+const cascader110Options = ref([{
+  value: "1",
+  label: "选项1",
+  children: [{
+    value: "2",
+    label: "选项1-1"
+  }]
+}]);
+const cascader112 = ref(["1", "2"]);
+const cascader112Options = ref([{
+  value: "1",
+  label: "选项1",
+  children: [{
+    value: "2",
+    label: "选项1-1"
+  }]
+}]);
 
 </script>
