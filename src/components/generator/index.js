@@ -21,7 +21,7 @@ export const renderSfc = (drawItemList, jsCodeStyle, beautifier) => {
             js = beautifier.js(js, beautifierConf.js);
         }
         jsCode= `<script>
-export default ${js}
+${js}
 </script>`
     } else {
         let js = renderJsComposition(drawItemList);

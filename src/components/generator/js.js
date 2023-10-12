@@ -1,45 +1,74 @@
 import elementPlusConfigMap from "@/element-plus-config"
 import ruleTrigger from './ruleTrigger'
-import {deepClone} from "@/utils";
+import {deepClone, titleCase} from "@/utils";
 
 //总入口
 const imports = new Set();
 let vModelRefGeneratedMap = {}
 let variables = [];
+let mountedFunctions = [];
 let dynamicFunctions = [];
-let optionsStyle=false;
+let vueImports= new Set();
+let optionsStyle = false;
 //选项式
 export const renderJsOption = (itemList) => {
-    optionsStyle=true;
+    const jsCodeWithoutImport=renderJsOptionRaw(itemList);
+    return `
+    ${Array.from(imports).join(";")}
+    export default ${jsCodeWithoutImport}}`
+}
+//没有export default和import
+export const renderJsOptionRaw = (itemList) => {
+    optionsStyle = true;
     clearAndStartProcess(itemList);
-    return `{
-       data(){
+
+    let codeList=[];
+    //data
+    codeList.push(`data(){
          return{
            ${variables.map(v => {
-             return v.name + ":" + v.text}).join(",")}
+        return v.name + ":" + v.text
+    }).join(",")}
          }
-       }
+       }`)
+    mountedFunctions.length&&codeList.push(`mounted(){${mountedFunctions.map(s=>'this.'+s).join("")}}`)
+    dynamicFunctions.length&&codeList.push(`methods:{${dynamicFunctions.join(",")}}`)
+
+    return `{
+      ${codeList.join(",")}
     }`
 }
 //组合式
 export const renderJsComposition = (itemList) => {
-    optionsStyle=false;
+    optionsStyle = false;
     clearAndStartProcess(itemList);
-    return ` ${variables.map(v => {
-        if(v.noRef){
+    return `
+     ${Array.from(imports).join(";")}
+     ${vueImports.size>0 ?`import {${Array.from(vueImports).join(",")}} from "vue";`:""}
+     ${variables.map(v => {
+        if (v.noRef) {
             return `const ${v.name} = ${v.text};`
-        }else{
+        } else {
             return `const ${v.name} = ref(${v.text});`
         }
-        
-    }).join(",")}
+
+    }).join("")
+    }
+    onMounted(()=>{
+  ${mountedFunctions.join("")}
+})
+
+      ${dynamicFunctions.join("")}
     `
 }
 
 const clearAndStartProcess = (itemList) => {
     vModelRefGeneratedMap = {}
     imports.clear();
-    variables = []
+    variables = [];
+    mountedFunctions = [];
+    dynamicFunctions = [];
+    vueImports= new Set();
     processItemList(itemList);
 
 
@@ -150,7 +179,7 @@ const processPropRefs = (item) => {
 
     const props = item.__props__ || {}
     const __refs__ = item.__refs__ || {}
-    if (!optionsStyle&&props.ref) {//fixme 模板引用，选项式不运行！
+    if (!optionsStyle && props.ref) {//fixme 模板引用，选项式不运行！
         addVariable(props.ref, "undefined");
     }
     const {attributes} = elementPlusConfigMap[item.__id__]
@@ -174,7 +203,6 @@ function getStaticData(__data__, key) {
         return __data__[key];
     }
 }
-
 //生成动态的数据获取
 const processDynamicData = (item) => {
     const {__data__, __refs__} = item;
@@ -186,10 +214,22 @@ const processDynamicData = (item) => {
         return;
     }
     const {url, method, dataKey} = dynamic;
-    imports.add("import Axios from 'axios';")
-    dynamicFunctions.push(`function get${titleCase(__refs__[name])} (){Axios({"${method}", "${url}"}).then((resp) => {
+    imports.add("import axios from 'axios';")
+    const fnName=`get${titleCase(__refs__[name])}`;
+
+    mountedFunctions.push(`${fnName}();`)
+    if (optionsStyle) {
+
+        dynamicFunctions.push(`${fnName} (){axios({method:"${method}", url:"${url}"}).then((resp) => {
+         this.${__refs__[name]}=resp.data${dataKey ? "[" + dataKey + "]" : ""};
+        })}`)
+    } else {
+        vueImports.add("onMounted");
+        dynamicFunctions.push(`function ${fnName} (){axios({method:"${method}", url:"${url}"}).then((resp) => {
          ${__refs__[name]}.value=resp.data${dataKey ? "[" + dataKey + "]" : ""};
         })}`)
+    }
+
 
 }
 
@@ -228,6 +268,7 @@ const renderValue = (value, default_ob) => {
 
 
 function addVariable(name, text, noRef) {
+    if(!noRef) vueImports.add("ref");
     variables.push({name, text, noRef})
 }
 

@@ -413,6 +413,7 @@
     "name": "options",
     "label": "选项",
     "source": "static",
+    "inProps": true,
     "static": {
       "ref": true,
       "type": {
@@ -433,7 +434,7 @@
       ]
     },
     "dynamic": {
-      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/options",
+      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/cascaderData",
       "method": "get",
       "dataKey": ""
     }

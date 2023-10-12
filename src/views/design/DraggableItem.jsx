@@ -182,7 +182,7 @@ export default {
             const data = curItem.__data__;
             let dataProps = {}
             if (data) {
-                const {name, source} = data;
+                const {name, source, inProps} = data;
                 if (source === 'static') {
                     dataProps[name] = data[name];
                 } else {
@@ -193,8 +193,16 @@ export default {
                         dataProps[name] = props.dynamicData[key] || [];//[]硬编码
                     }
                 }
+                if (inProps) {
+                    return dataProps;
+                } else {
+                    return {__data__: dataProps};
+                }
+            } else {
+                return {}
             }
-            return {__data__: dataProps};
+
+
         }
 
         function fixedItem(curItem, simple) {
@@ -227,7 +235,7 @@ export default {
          */
         function rawItem(curItem, simple) {
             const {tag, wrapWithSpan} = curItem.__config__;
-            const data = buildData(curItem).__data__;
+            const data = buildData(curItem);
             if (simple) {
                 return h(resolveComponent(tag), {...curItem.__props__, ...data, ...buildVModel(curItem)},
                     buildSlots(curItem));

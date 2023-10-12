@@ -554,7 +554,7 @@ function cloneDrawItem(origin) {
       props.placeholder = attributes.placeholder
     //复制像el-select的选项
     if (data) {
-      const {name, source} = data;//props为true，代表是__props__里面的属性
+      const {name, source,inProps} = data;//props为true，代表是__props__里面的属性
       const static_ = {
         ref: data.static.ref,
       }
@@ -565,7 +565,7 @@ function cloneDrawItem(origin) {
 
       Object.assign(dynamic, data.dynamic)
       clone.__data__ = {
-        name, source, dynamic, static: static_,
+        name, source, dynamic, static: static_,inProps,
         [data.name]: deepClone(data.static.default)
       };
 
@@ -810,68 +810,68 @@ const jsonStr = ref("");
 
 function simplifyJson(all) {
   const cloneDrawItemList = deepClone(drawItemList.value)
-  recursiveProcessDrawItemList(cloneDrawItemList, (item) => {
-    const {__id__: id} = item;
-
-    const {attributes} = elementPlusConfigMap[id];
-    const {__props__: props, __slots__, __refs__} = item;
-    for (const attr in props) {
-      const val = props[attr];
-      if (val === '' || val === undefined) {
-        delete props[attr];
-        continue;
-      }
-      const default_ = attributes[attr] && attributes[attr].default;
-      if (val === default_) {
-        delete props[attr];
-      } else if (typeof val === 'object') {
-        if (Array.isArray(val)) {
-          if (isArrayEqual(val, default_)) {
-            delete props[attr];
-          }
-          if (val.length === 0) {
-            delete props[attr];
-          }
-        } else {
-          if (default_) {
-            for (const key in val) {
-              if (val[key] === default_[key]) {
-                delete val[key];
-              }
-            }
-          }
-          if (JSON.stringify(val) === '{}') {
-            delete props[attr];
-          }
-        }
-      }
-    }
-
-
-    if (id === 'container') {//direction 子元素中有 el-header 或 el-footer 时为 vertical，否则为 horizontal"
-      let hasFooterOrHeader = false;
-      for (const aItem of item.__slots__.default) {
-        if (aItem.__id__ === 'header' || aItem.__id__ === 'footer') {
-          hasFooterOrHeader = true;
-          break;
-        }
-      }
-      if (hasFooterOrHeader && item.__props__.direction === 'vertical' || !hasFooterOrHeader && item.__props__.direction === 'horizontal') {
-        delete item.__props__.direction;
-      }
-    }
-    if (all) {
-      deleteObjectProps(__slots__);
-      deleteObjectProps(__refs__);
-      deleteObjectProps(item);
-      delete item["renderKey"];
-      delete item.__id__;
-      delete item.__config__["name"];
-      delete item.__config__["drawItemId"];
-      delete item.__config__["tagIcon"];
-      delete item.__config__["itemName"];
-    }
-  })
+  // recursiveProcessDrawItemList(cloneDrawItemList, (item) => {
+  //   const {__id__: id} = item;
+  //
+  //   const {attributes} = elementPlusConfigMap[id];
+  //   const {__props__: props, __slots__, __refs__} = item;
+  //   for (const attr in props) {
+  //     const val = props[attr];
+  //     if (val === '' || val === undefined) {
+  //       delete props[attr];
+  //       continue;
+  //     }
+  //     const default_ = attributes[attr] && attributes[attr].default;
+  //     if (val === default_) {
+  //       delete props[attr];
+  //     } else if (typeof val === 'object') {
+  //       if (Array.isArray(val)) {
+  //         if (isArrayEqual(val, default_)) {
+  //           delete props[attr];
+  //         }
+  //         if (val.length === 0) {
+  //           delete props[attr];
+  //         }
+  //       } else {
+  //         if (default_) {
+  //           for (const key in val) {
+  //             if (val[key] === default_[key]) {
+  //               delete val[key];
+  //             }
+  //           }
+  //         }
+  //         if (JSON.stringify(val) === '{}') {
+  //           delete props[attr];
+  //         }
+  //       }
+  //     }
+  //   }
+  //
+  //
+  //   if (id === 'container') {//direction 子元素中有 el-header 或 el-footer 时为 vertical，否则为 horizontal"
+  //     let hasFooterOrHeader = false;
+  //     for (const aItem of item.__slots__.default) {
+  //       if (aItem.__id__ === 'header' || aItem.__id__ === 'footer') {
+  //         hasFooterOrHeader = true;
+  //         break;
+  //       }
+  //     }
+  //     if (hasFooterOrHeader && item.__props__.direction === 'vertical' || !hasFooterOrHeader && item.__props__.direction === 'horizontal') {
+  //       delete item.__props__.direction;
+  //     }
+  //   }
+  //   if (all) {
+  //     deleteObjectProps(__slots__);
+  //     deleteObjectProps(__refs__);
+  //     deleteObjectProps(item);
+  //     delete item["renderKey"];
+  //     delete item.__id__;
+  //     delete item.__config__["name"];
+  //     delete item.__config__["drawItemId"];
+  //     delete item.__config__["tagIcon"];
+  //     delete item.__config__["itemName"];
+  //   }
+  // })
   return cloneDrawItemList;
 }
 
@@ -1123,7 +1123,7 @@ function buildRules(item) {
 //region 动态数据获取
 const dynamicData = ref({})
 
-import Axios from 'axios'
+import axios from 'axios'
 
 function buildDynamicData() {
   recursiveProcessDrawItemList(drawItemList.value, (item) => {
@@ -1131,7 +1131,7 @@ function buildDynamicData() {
       const {data} = elementPlusConfigMap[item.__id__];
       if (item.__data__.source === 'dynamic' && !dynamicData.value[item.__refs__[data.name]]) {
         const {method, url, dataKey} = item.__data__.dynamic;
-        Axios({method, url}).then((resp) => {
+        axios({method, url}).then((resp) => {
           item.renderKey = `${item.__config__.drawItemId}${Math.floor(Math.random() * 10000)}`
           dynamicData.value[item.__refs__[data.name]] = resp.data;
         })

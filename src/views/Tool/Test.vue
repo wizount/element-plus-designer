@@ -1,81 +1,68 @@
 <template>
   <div style="padding: 5px">
     <el-form :model="form101Model" :rules="form101Rules">
-      <el-form-item label="计数器" prop="inputNumber104" required>
-        <el-input-number placeholder="请输入计数器" :min=-9 :max=100 v-model="form101Model.inputNumber104">
-        </el-input-number>
+      <el-form-item label="级联选择" prop="cascader102" required>
+        <el-cascader placeholder="请选择级联选择" :options="cascader102Options" style="width: 100%;"
+                     v-model="form101Model.cascader102"></el-cascader>
       </el-form-item>
-      <el-form-item label="评分" prop="rate105" required>
-        <el-rate show-text text-color="#010D1B" v-model="form101Model.rate105"></el-rate>
+      <el-form-item label="多选框组" prop="checkboxGroup103" required>
+        <el-checkbox-group v-model="form101Model.checkboxGroup103">
+          <el-checkbox v-for="(item, index) in checkboxGroup103Options" :key="index" :label="item.value"
+                       :disabled="item.disabled">{{item.label}}</el-checkbox>
+        </el-checkbox-group>
       </el-form-item>
-      <el-form-item label="树形选择" prop="treeSelect106" required>
-        <el-tree-select placeholder="请选择树形选择" :data="treeSelect106Data" v-model="form101Model.treeSelect106">
-        </el-tree-select>
-      </el-form-item>
-      <el-form-item label="级联选择" prop="cascader110" required>
-        <el-cascader placeholder="请选择级联选择" :options="cascader110Options" style="width: 100%;"
-                     v-model="form101Model.cascader110"></el-cascader>
+      <el-form-item label="颜色选择" prop="colorPicker104" required>
+        <el-color-picker v-model="form101Model.colorPicker104"></el-color-picker>
       </el-form-item>
     </el-form>
-    <el-form-item label="级联选择" prop="cascader112" required>
-      <el-cascader placeholder="请选择级联选择" :options="cascader112Options" style="width: 100%;"
-                   v-model="cascader112"></el-cascader>
-    </el-form-item>
   </div>
 </template>
 
-<script setup>
-const form101Model = ref({
-  inputNumber104: 5,
-  rate105: 5,
-  treeSelect106: "2",
-  cascader110: undefined,
-});
-const form101Rules = {
-  inputNumber104: [{
-    required: true,
-    message: '计数器不能为空',
-    trigger: 'change'
-  }, {
-    pattern: /^\+?[1-9][0-9]*$/,
-    message: '233',
-    trigger: 'change'
-  }],
-  rate105: [{
-    required: true,
-    message: '评分不能为空',
-    trigger: 'change'
-  }],
-  cascader110: [{
-    required: true,
-    message: '级联选择不能为空',
-    trigger: 'change'
-  }],
-};
-const treeSelect106Data = ref([{
-  value: "1",
-  label: "选项1",
-  children: [{
-    value: "2",
-    label: "选项1-1"
-  }]
-}]);
-const cascader110Options = ref([{
-  value: "1",
-  label: "选项1",
-  children: [{
-    value: "2",
-    label: "选项1-1"
-  }]
-}]);
-const cascader112 = ref(["1", "2"]);
-const cascader112Options = ref([{
-  value: "1",
-  label: "选项1",
-  children: [{
-    value: "2",
-    label: "选项1-1"
-  }]
-}]);
+<script>
+import axios from 'axios';
+export default {
+  data() {
+    return {
+      form101Model: {
+        cascader102: [],
+        checkboxGroup103: [],
+        colorPicker104: undefined
+      },
+      form101Rules: {
+        cascader102: [{
+          required: true,
+          message: "请至少选择一个级联选择",
+          trigger: "change"
+        }],
+        checkboxGroup103: [{
+          required: true,
+          message: "请至少选择一个多选框组",
+          trigger: "change"
+        }]
+      },
+      cascader102Options: undefined,
+      checkboxGroup103Options: [{
+        label: "选项一",
+        value: "1"
+      }, {
+        label: "选项二",
+        value: "2"
+      }]
+    }
+  },
+  mounted() {
+    this.getCascader102Options();
+  },
+  methods: {
+    getCascader102Options() {
+      axios({
+        method: "get",
+        url: "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/options"
+      }).then((resp) => {
+        this.cascader102Options = resp.data;
+      })
+    }
+  }
+}
 
 </script>

@@ -125,7 +125,7 @@
 <script setup>
 import ClipboardJS from 'clipboard'
 import {saveAs} from 'file-saver'
-import { renderJsOption} from '@/components/generator/js'
+import {renderJsOption, renderJsOptionRaw} from '@/components/generator/js'
 import {exportDefault, beautifierConf,} from '@/utils'
 import ResourceDialog from './ResourceDialog'
 import loadBeautifier from '@/utils/loadBeautifier'
@@ -196,7 +196,7 @@ function preventDefaultSave(e) {
 
 function onOpen() {
  const html= renderHtml(props.drawItemList.fields);
-  let js = renderJsOption(props.drawItemList.fields);
+  let js = renderJsOptionRaw(props.drawItemList.fields);
   if(js.indexOf("export default")===0){
    js=js.substring(14);
   }

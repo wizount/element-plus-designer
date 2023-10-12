@@ -11,6 +11,9 @@
     <script src="https://lib.baomitu.com/element-plus/2.3.14/index.full.min.js"></script>
     <script src="https://lib.baomitu.com/element-plus/2.3.14/locale/zh-cn.min.js"></script>
     <script src="https://unpkg.com/@element-plus/icons-vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
 
     <style>
         body {
@@ -55,15 +58,7 @@
         console.log(js)
         const   moute = eval(`(${js})`)
         moute.template=html;
-        // console.log(moute);
-        // const moute = {
-        //     data() {
-        //         return {
-        //             message: "Hello Element Plus",
-        //         };
-        //     },
-        //     template:  html
-        // };
+
         const app = Vue.createApp(moute);
         app.use(ElementPlus,{
             locale: ElementPlusLocaleZhCn
