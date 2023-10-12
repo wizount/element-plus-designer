@@ -184,7 +184,7 @@ export default {
             if (data) {
                 const {name, source, inProps} = data;
                 if (source === 'static') {
-                    dataProps[name] = data[name];
+                    dataProps[name] = data.static[name];
                 } else {
                     const key = curItem.__refs__[name];
                     if (data.dynamic.dataKey) {

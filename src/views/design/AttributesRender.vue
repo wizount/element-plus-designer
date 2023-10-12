@@ -4,7 +4,7 @@
       <el-radio-button v-for="v in curComConfig.layouts" :label="v">{{ v }}</el-radio-button>
     </el-radio-group>
   </el-form-item>
-  <el-form-item label="组件名">
+  <el-form-item label="组件名" v-if="activeData.__id__">
     <el-input v-model="curItemConfig.itemName" placeholder="请输入组件名"/>
   </el-form-item>
   <el-form-item label="ref" v-if="activeData.__id__!=='plainText' &&typeof activeData!=='string'">

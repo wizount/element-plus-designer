@@ -15,7 +15,7 @@ export const renderJsOption = (itemList) => {
     const jsCodeWithoutImport=renderJsOptionRaw(itemList);
     return `
     ${Array.from(imports).join(";")}
-    export default ${jsCodeWithoutImport}}`
+    export default ${jsCodeWithoutImport}`
 }
 //没有export default和import
 export const renderJsOptionRaw = (itemList) => {
@@ -54,9 +54,9 @@ export const renderJsComposition = (itemList) => {
 
     }).join("")
     }
-    onMounted(()=>{
+  ${  mountedFunctions.length?`onMounted(()=>{
   ${mountedFunctions.join("")}
-})
+})`:``}
 
       ${dynamicFunctions.join("")}
     `
@@ -110,7 +110,7 @@ const processFormModel = (itemList) => {
     }
     let data = [];
     for (const item of itemList) {
-        if (item.__config__.tag === 'el-form') {
+        if(typeof item==='string'||item.__config__.tag === 'el-form') {
             continue;
         }
         if (item.__vModel__) {
@@ -128,7 +128,7 @@ const processFormRules = (itemList) => {
     }
     let rules = [];
     for (const item of itemList) {
-        if (item.__config__.tag === 'el-form') {
+        if(typeof item==='string'||item.__config__.tag === 'el-form') {
             continue;
         }
         if (item.__vModel__) {
@@ -200,7 +200,7 @@ function getStaticData(__data__, key) {
         return undefined;
     }
     if (__data__.source === 'static') {
-        return __data__[key];
+        return __data__.static[key];
     }
 }
 //生成动态的数据获取

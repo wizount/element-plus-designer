@@ -56,9 +56,9 @@
     </div>
     <div class="center-board">
       <div class="action-bar">
-        <el-button text @click="run">
-          <svg-icon class="mr-2" icon-class="run"/>
-          运行
+        <el-button text @click="execPreview">
+          <svg-icon class="mr-2" icon-class="preview"/>
+          预览
         </el-button>
         <el-button text @click="showJson">
           <svg-icon class="mr-2" icon-class="json"/>
@@ -68,12 +68,13 @@
           <svg-icon class="mr-2" icon-class="code"/>
           查看Vue
         </el-button>
-        <el-button text @click="download" icon="Download"> 导出vue文件</el-button>
+        <el-button text @click="execCopy" icon="DocumentCopy"> 复制代码</el-button>
+        <el-button text @click="execDownload" icon="Download"> 导出vue文件</el-button>
         <el-button text @click="drawItemTreeVisible=true">
           <svg-icon class="mr-2" icon-class="tree"/>
           组件树
         </el-button>
-        <el-button text @click="execCopy" icon="DocumentCopy"> 复制代码</el-button>
+
         <el-dropdown>
           <el-button text icon="Setting"> 设置</el-button>
           <template #dropdown>
@@ -151,12 +152,10 @@
     <right-panel :active-data="activeData" :design-conf="designConf" :show-field="!!drawItemList.length"
                  @add-slot-draw-item="addSlotDrawItem"
                  @active-parent-draw-item="activeParentDrawItem"/>
-    <form-drawer v-model="formDrawerVisible" :draw-item-list="drawingData" size="100%" :generate-conf="generateConf"/>
+    <form-drawer v-model="formDrawerVisible" :draw-item-list="drawItemList" size="100%" />
     <json-drawer size="750px" v-model="jsonDrawerVisible" :json-str="jsonStr" @refresh="refreshJson"/>
 
     <html-drawer size="750px" v-model="htmlDrawerVisible" :html-str="htmlStr"/>
-    <code-type-dialog v-model="dialogVisible" title="选择生成类型" :show-file-name="showFileName"
-                      @confirm="generate"/>
     <el-drawer v-model="drawItemTreeVisible" title="组件树" size="405px" modal-class="bg-transparent"
                @open="openTreeDrawer">
       <!--      fixme 更改height-->
@@ -195,17 +194,16 @@ import logo from "@/assets/logo.png"
 import Draggable from '@/vuedraggable/vuedraggable'
 import {saveAs} from 'file-saver'
 import ClipboardJS from 'clipboard'
-import FormDrawer from './FormDrawer.vue'
+import FormDrawer from './PreviewDrawer.vue'
 import JsonDrawer from './JsonDrawer'
 import RightPanel from './RightPanel'
 import {
   designConf as designConfPreset
 } from '@/components/config/config'
-import {addClass, beautifierConf, camelCase, deepClone, deleteObjectProps, isObjectObject} from '@/utils'
+import {addClass, camelCase, deepClone, deleteObjectProps} from '@/utils'
 
 
-import CodeTypeDialog from './CodeTypeDialog'
-import {getDesignConf, getDrawItemList, getIdGlobal, saveDesignConf, saveDrawItemList, saveIdGlobal,} from '@/utils/db'
+import {getDesignConf, saveDesignConf} from '@/utils/db'
 import loadBeautifier from '@/utils/loadBeautifier'
 import {ElMessage, ElMessageBox, ElNotification} from 'element-plus'
 import DraggableItem from "./DraggableItem"
@@ -290,15 +288,13 @@ const designConf = ref(designConfPreset);
 const drawingData = ref()
 const activeId = ref(0)
 const formDrawerVisible = ref(false)
-const dialogVisible = ref(false)
 
 const generateConf = ref(null)
-const showFileName = ref(false)
+
 const activeData = ref({})
 const activeToolbar = ref(null)
 
 //region 初始化及退出
-let operationType = ""
 let clipboard
 onMounted(() => {
   drawItemList.value = props.modelValue;
@@ -557,6 +553,7 @@ function cloneDrawItem(origin) {
       const {name, source,inProps} = data;//props为true，代表是__props__里面的属性
       const static_ = {
         ref: data.static.ref,
+        [data.name]: deepClone(data.static.default)
       }
       if (data.static.ref) {
         clone.__refs__[data.name] = camelCase(config.itemName + '-' + data.name)
@@ -565,8 +562,8 @@ function cloneDrawItem(origin) {
 
       Object.assign(dynamic, data.dynamic)
       clone.__data__ = {
-        name, source, dynamic, static: static_,inProps,
-        [data.name]: deepClone(data.static.default)
+        name, source, dynamic, static: static_,inProps
+
       };
 
     }
@@ -743,44 +740,19 @@ function findChildrenParent(parent, children) {
 }
 
 //endregion
-const layoutTreeProps = {
-  label(data, node) {
-    const config = data.__config__
-    return config.tag + ":" + config.itemName || `${config.label}: ${data.__vModel__}`
-  }
-}
 
-function AssembleFormData() {
-  drawingData.value = {
-    fields: deepClone(drawItemList.value),
-    ...designConf.value,
-  }
-}
 
-function generate(data) {
 
-  AssembleFormData()
-  if (operationType === "download") {
-    generateConf.value = data
-    execDownload(data)
-  } else if (operationType === "copy") {
-    execCopy();
-  } else if (operationType === "run") {
-    generateConf.value = data
-    execRun();
-  }
-}
 
-function execRun(data) {
-  AssembleFormData()
+function execPreview() {
   formDrawerVisible.value = true
 }
 
-function execDownload(data) {
+function execDownload() {
 
   const codeStr = generateCode()
   const blob = new Blob([codeStr], {type: 'text/plain;charset=utf-8'})
-  saveAs(blob, data.fileName)
+  saveAs(blob, `${+new Date()}.vue`)
 }
 
 function execCopy() {
@@ -805,81 +777,77 @@ function generateCode() {
 }
 
 //region json显示操作
+function simplifyJson(all) {
+  const cloneDrawItemList = deepClone(drawItemList.value)
+  recursiveProcessDrawItemList(cloneDrawItemList, (item) => {
+    const {__id__: id} = item;
+
+    const {attributes} = elementPlusConfigMap[id];
+    const {__props__: props, __slots__, __refs__} = item;
+    for (const attr in props) {
+      const val = props[attr];
+      if (val === '' || val === undefined) {
+        delete props[attr];
+        continue;
+      }
+      const default_ = attributes[attr] && attributes[attr].default;
+      if (val === default_) {
+        delete props[attr];
+      } else if (typeof val === 'object') {
+        if (Array.isArray(val)) {
+          if (isArrayEqual(val, default_)) {
+            delete props[attr];
+          }
+          if (val.length === 0) {
+            delete props[attr];
+          }
+        } else {
+          if (default_) {
+            for (const key in val) {
+              if (val[key] === default_[key]) {
+                delete val[key];
+              }
+            }
+          }
+          if (JSON.stringify(val) === '{}') {
+            delete props[attr];
+          }
+        }
+      }
+    }
+
+
+    if (id === 'container') {//direction 子元素中有 el-header 或 el-footer 时为 vertical，否则为 horizontal"
+      let hasFooterOrHeader = false;
+      for (const aItem of item.__slots__.default) {
+        if (aItem.__id__ === 'header' || aItem.__id__ === 'footer') {
+          hasFooterOrHeader = true;
+          break;
+        }
+      }
+      if (hasFooterOrHeader && item.__props__.direction === 'vertical' || !hasFooterOrHeader && item.__props__.direction === 'horizontal') {
+        delete item.__props__.direction;
+      }
+    }
+    if (all) {
+      deleteObjectProps(__slots__);
+      deleteObjectProps(__refs__);
+      deleteObjectProps(item);
+      delete item["renderKey"];
+      delete item.__id__;
+      delete item.__config__["name"];
+      delete item.__config__["drawItemId"];
+      delete item.__config__["tagIcon"];
+      delete item.__config__["itemName"];
+    }
+  })
+  return cloneDrawItemList;
+}
 const jsonDrawerVisible = ref(false)
 const jsonStr = ref("");
 
-function simplifyJson(all) {
-  const cloneDrawItemList = deepClone(drawItemList.value)
-  // recursiveProcessDrawItemList(cloneDrawItemList, (item) => {
-  //   const {__id__: id} = item;
-  //
-  //   const {attributes} = elementPlusConfigMap[id];
-  //   const {__props__: props, __slots__, __refs__} = item;
-  //   for (const attr in props) {
-  //     const val = props[attr];
-  //     if (val === '' || val === undefined) {
-  //       delete props[attr];
-  //       continue;
-  //     }
-  //     const default_ = attributes[attr] && attributes[attr].default;
-  //     if (val === default_) {
-  //       delete props[attr];
-  //     } else if (typeof val === 'object') {
-  //       if (Array.isArray(val)) {
-  //         if (isArrayEqual(val, default_)) {
-  //           delete props[attr];
-  //         }
-  //         if (val.length === 0) {
-  //           delete props[attr];
-  //         }
-  //       } else {
-  //         if (default_) {
-  //           for (const key in val) {
-  //             if (val[key] === default_[key]) {
-  //               delete val[key];
-  //             }
-  //           }
-  //         }
-  //         if (JSON.stringify(val) === '{}') {
-  //           delete props[attr];
-  //         }
-  //       }
-  //     }
-  //   }
-  //
-  //
-  //   if (id === 'container') {//direction 子元素中有 el-header 或 el-footer 时为 vertical，否则为 horizontal"
-  //     let hasFooterOrHeader = false;
-  //     for (const aItem of item.__slots__.default) {
-  //       if (aItem.__id__ === 'header' || aItem.__id__ === 'footer') {
-  //         hasFooterOrHeader = true;
-  //         break;
-  //       }
-  //     }
-  //     if (hasFooterOrHeader && item.__props__.direction === 'vertical' || !hasFooterOrHeader && item.__props__.direction === 'horizontal') {
-  //       delete item.__props__.direction;
-  //     }
-  //   }
-  //   if (all) {
-  //     deleteObjectProps(__slots__);
-  //     deleteObjectProps(__refs__);
-  //     deleteObjectProps(item);
-  //     delete item["renderKey"];
-  //     delete item.__id__;
-  //     delete item.__config__["name"];
-  //     delete item.__config__["drawItemId"];
-  //     delete item.__config__["tagIcon"];
-  //     delete item.__config__["itemName"];
-  //   }
-  // })
-  return cloneDrawItemList;
-}
-
 function showJson() {
-
-
   jsonStr.value = JSON.stringify(simplifyJson(true), null, 2);
-
   jsonDrawerVisible.value = true
 }
 
@@ -901,24 +869,6 @@ function showHtml() {
 
 
 //endregion
-function download() {
-  dialogVisible.value = true
-  showFileName.value = true
-  operationType = 'download'
-}
-
-function run() {
-  dialogVisible.value = true
-  showFileName.value = false
-  operationType = 'run'
-}
-
-function copy() {
-  dialogVisible.value = true
-  showFileName.value = false
-  operationType = 'copy'
-}
-
 
 //region 组件树操作
 const drawItemTreeVisible = ref(false)
