@@ -10,9 +10,11 @@ Element Plus设计器提供大部分element plus组件所见及所得在线设�
 - 支持98%以上的element plus组件在线设计
 - 丰富快速组件属性更改
 - style样式修改
+- 组件插槽在线可插入
 - 表单正则表达式创建
-- 导出和复制vue3代码
-- 导出JSON
+- 导出和复制vue3代码(支持选项式和组合式)
+- 导出组件后台JSON代码
+- 代码预览
 
 
 ## 使用
@@ -78,12 +80,11 @@ npm run build
 - Vue3 
 - Element Plus
 - Vite4
-- Vuedraggable
+- Vuedraggable（有进行修改，并在项目直接使用）
 
 ## 下一步计划
-- 支持更多组件
-- 优化界面和导出编码
-- 同步官网组件属性
+- 支持剩下10%组件
+- 支持事件
 
 
 联系方式：微信：glqqyx, QQ: 2537660666 email: 2537660666@qq.com

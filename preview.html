@@ -44,10 +44,9 @@
 
     window.addEventListener('message', init, false);
 
-    function init( ) {
+    function init( event) {
         if (event.data.type === 'refreshFrame') {
             const {data} = event.data;
-            console.info(data)
             const attrs = {}
             newVue(attrs, data.js, data.html)
 
@@ -55,11 +54,10 @@
     }
 
     function newVue(attrs, js, html) {
-        console.log(js)
-        const   moute = eval(`(${js})`)
-        moute.template=html;
+        const   vnode = eval(`(${js})`)
+        vnode.template=html;
 
-        const app = Vue.createApp(moute);
+        const app = Vue.createApp(vnode);
         app.use(ElementPlus,{
             locale: ElementPlusLocaleZhCn
         });
