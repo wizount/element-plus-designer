@@ -6,7 +6,6 @@ import createVitePlugins from './vite/plugins'
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd())
   const { VITE_APP_ENV } = env
-  console.log("env",env)
   return {
     base: VITE_APP_ENV === 'production' ? '/element-plus-designer' : '/',
     plugins: createVitePlugins(env,  'build'),

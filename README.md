@@ -22,15 +22,16 @@ Element Plus设计器提供大部分element plus组件所见及所得在线设�
 
 ```sh 
 npm install element-plus-designer
-
-复制preview.html到你的工程根目录
-
-main.js
+```
+#### 复制preview.html到你的工程根目录
+#### main.js输入以下代码
+```
 import  ElementPlusDesigner from 'element-plus-designer'
 import 'element-plus-designer/dist/style.css'
 app.use(ElementPlusDesigner)
-
-vue
+```
+#### 需要设计，请在*.vue输入以下代码
+```
 <script setup>
 import {ref} from "vue";
 const drawingList=ref([])
@@ -43,25 +44,23 @@ body{
   margin: 0px;
 }
 </style>
-
-仅使用render
+```
+#### 仅使用render，请在*.vue输入以下代码
+```
 <script setup>
 import {ref,watch} from "vue";
 import data from "./data.json";
-const renderJson = ref(data)
-const formModel = ref(data)
-
+const renderJson = ref(data);
+const formModel = ref(data);
 watch(formModel, (val) => {
-  console.info(val)
+  console.info(val);
 }, {deep: true})
 </script>
-
 <template>
   <div>
     <element-plus-render :draw-item-list="renderJson" v-model="formModel"></element-plus-render>
   </div>
 </template>
-
 ```
 ## 工程开发安装
 ### 安装
