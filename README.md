@@ -23,6 +23,8 @@ Element Plus设计器提供大部分element plus组件所见及所得在线设�
 ```sh 
 npm install element-plus-designer
 
+复制preview.html到你的工程根目录
+
 main.js
 import  ElementPlusDesigner from 'element-plus-designer'
 import 'element-plus-designer/dist/style.css'
@@ -34,10 +36,13 @@ import {ref} from "vue";
 const drawingList=ref([])
 </script>
 <template>
-  <div>
     <element-plus-designer v-model="drawingList"></element-plus-designer>
-  </div>
 </template>
+<style>
+body{
+  margin: 0px;
+}
+</style>
 
 仅使用render
 <script setup>
@@ -84,7 +89,7 @@ npm run build
 
 ## 下一步计划
 - 支持剩下2%组件
-- 支持事件
+- 支持事件编辑
 
 
 联系方式：微信：glqqyx, QQ: 2537660666 email: 2537660666@qq.com
