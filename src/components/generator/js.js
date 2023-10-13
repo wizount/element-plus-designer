@@ -7,7 +7,7 @@ const imports = new Set();
 let vModelRefGeneratedMap = {}
 let variables = [];
 let mountedFunctions = [];
-let dynamicFunctions = [];
+let functions = [];
 let vueImports= new Set();
 let optionsStyle = false;
 //选项式
@@ -32,7 +32,7 @@ export const renderJsOptionRaw = (itemList) => {
          }
        }`)
     mountedFunctions.length&&codeList.push(`mounted(){${mountedFunctions.map(s=>'this.'+s).join("")}}`)
-    dynamicFunctions.length&&codeList.push(`methods:{${dynamicFunctions.join(",")}}`)
+    functions.length&&codeList.push(`methods:{${functions.join(",")}}`)
 
     return `{
       ${codeList.join(",")}
@@ -58,7 +58,7 @@ export const renderJsComposition = (itemList) => {
   ${mountedFunctions.join("")}
 })`:``}
 
-      ${dynamicFunctions.join("")}
+      ${functions.join("")}
     `
 }
 
@@ -67,7 +67,7 @@ const clearAndStartProcess = (itemList) => {
     imports.clear();
     variables = [];
     mountedFunctions = [];
-    dynamicFunctions = [];
+    functions = [];
     vueImports= new Set();
     processItemList(itemList);
 
@@ -99,6 +99,7 @@ const processItem = (item) => {
     processVModelRef(item);
     processPropRefs(item);
     processDynamicData(item);
+    processEvents(item);
     for (const slotName in item.__slots__) {
         processItemList(item.__slots__[slotName]);
     }
@@ -194,13 +195,26 @@ const processPropRefs = (item) => {
         addVariable(__refs__[k], renderValue(val, attributes[k] && attributes[k].default));
     })
 }
+//生成属性ref
+const processEvents = (item) => {
 
+    const events = item.__events__ || []
+    events.map(e=>{
+        functions.push(`
+        ${e.fnName}(${e.params}){
+          ${e.fnBody}
+        }
+        `)
+    })
+}
 function getStaticData(__data__, key) {
     if (__data__ === undefined || key === undefined || __data__.name !== key) {
         return undefined;
     }
     if (__data__.source === 'static') {
         return __data__.static[key];
+    }else{
+        return []
     }
 }
 //生成动态的数据获取
@@ -220,12 +234,12 @@ const processDynamicData = (item) => {
     mountedFunctions.push(`${fnName}();`)
     if (optionsStyle) {
 
-        dynamicFunctions.push(`${fnName} (){axios({method:"${method}", url:"${url}"}).then((resp) => {
+        functions.push(`${fnName} (){axios({method:"${method}", url:"${url}"}).then((resp) => {
          this.${__refs__[name]}=resp.data${dataKey ? "[" + dataKey + "]" : ""};
         })}`)
     } else {
         vueImports.add("onMounted");
-        dynamicFunctions.push(`function ${fnName} (){axios({method:"${method}", url:"${url}"}).then((resp) => {
+        functions.push(`function ${fnName} (){axios({method:"${method}", url:"${url}"}).then((resp) => {
          ${__refs__[name]}.value=resp.data${dataKey ? "[" + dataKey + "]" : ""};
         })}`)
     }

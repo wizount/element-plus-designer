@@ -1,7 +1,7 @@
 import FixItem from "@/components/FixItem"
 import {ElFormItem} from "element-plus";
 import Draggable from '@/vuedraggable/vuedraggable';
-import {deepClone} from "@/utils";
+import {deepClone, titleCase} from "@/utils";
 import {h, resolveComponent} from "vue";
 import '@/styles/draggalbeItem.scss'
 
@@ -244,6 +244,12 @@ export default {
                     const source = h(resolveComponent(tag), {...curItem.__props__, ...data, ...buildVModel(curItem)}, buildSlots(curItem));
                     return doWrapWithSpan(curItem, source);
                 } else {
+                    // const fns={}
+                    // for (const e of curItem.__events__) {
+                    //     const fn = `(${e.params})=>{${e.fnBody}}`
+                    //     fns["on"+titleCase(e.name)]=eval(fn)
+                    // }
+                    // console.log(fns)
                     return h(resolveComponent(tag),
                         {...buildClass(curItem), ...curItem.__props__, ...data, ...buildVModel(curItem), ...buildEvent(curItem)},
                         buildSlots(curItem));

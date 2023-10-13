@@ -513,6 +513,9 @@ function cloneDrawItem(origin) {
   if (!clone["__props__"]) {
     clone["__props__"] = {}
   }
+  if (!clone["__events__"]) {
+    clone["__events__"] = []
+  }
   //__refs__用来放需要通过变量引用的属性值。比如<el-input :disabled="disabled/> 中的 const disabled=ref(false)
   if (!clone["__refs__"]) {
     clone["__refs__"] = {}
@@ -847,7 +850,8 @@ const jsonDrawerVisible = ref(false)
 const jsonStr = ref("");
 
 function showJson() {
-  jsonStr.value = JSON.stringify(simplifyJson(true), null, 2);
+  jsonStr.value = JSON.stringify(drawItemList.value, null, 2);
+  //jsonStr.value = JSON.stringify(simplifyJson(true), null, 2);
   jsonDrawerVisible.value = true
 }
 

@@ -3,6 +3,7 @@
     <el-tabs v-model="currentTab" class="center-tabs" style="padding-left: 15px">
       <el-tab-pane label="组件属性" name="field"/>
       <el-tab-pane label="插槽" name="slots" v-if="showSlots"/>
+      <el-tab-pane label="事件" name="events"/>
       <el-tab-pane label="样式" name="style"/>
       <el-tab-pane label="正则表达式" name="reg" v-if="Array.isArray(curItemConfig.regList)"/>
     </el-tabs>
@@ -173,6 +174,32 @@
             </el-collapse-transition>
           </div>
         </div>
+        <div v-if="currentTab==='events'">
+          <el-dropdown @command="addEvent">
+            <el-button link type="primary" :content="`添加事件`" icon="Plus">添加事件</el-button>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item v-for="e in curComConfig.events" :command="e">
+                  添加{{ e.name }}事件
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+          <div v-for="e in activeData.__events__">
+            <el-form-item label="事件名">
+              <el-tag>{{ e.name }}</el-tag>
+            </el-form-item>
+            <el-form-item label="函数">
+              <el-input v-model="e.fnName"></el-input>
+            </el-form-item>
+            <el-form-item label="参数">
+              <el-input v-model="e.params"></el-input>
+            </el-form-item>
+            <el-form-item label="函数体">
+              <el-input type="textarea" v-model="e.fnBody"></el-input>
+            </el-form-item>
+          </div>
+        </div>
       </div>
       <div style="position: absolute; bottom: 2px;right: 10px;color: gray">Element Plus version {{ version }}</div>
     </el-scrollbar>
@@ -307,9 +334,10 @@ watch(() => props.activeData.__data__ && props.activeData.__data__.source, (val)
 })
 
 
-function changeRenderKey(){
+function changeRenderKey() {
   props.activeData.renderKey = `${curItemConfig.value.drawItemId}${Math.floor(Math.random() * 10000)}`
 }
+
 //region 对时间和日期组件进行格式操作
 //监听date-picker-type格式
 
@@ -343,7 +371,10 @@ watch(() => curItemProps.value.type, (newVal) => {
 import {AutoCompleteCallback} from "@/utils/element-plus-utils";
 import regList from '@/utils/regList.json'
 import {changeDrawItemVariableName} from "@/views/design/DrawItemProcessor";
+import {deepClone, titleCase} from "@/utils";
+
 const ac = new AutoCompleteCallback(regList)
+
 function addReg() {
   curItemConfig.value.regList.push({
     pattern: '',
@@ -353,14 +384,14 @@ function addReg() {
 
 //fixme 当更新时，要填入正则表达式的message
 function regChange(item) {
- for(const reg of regList){
-   console.info(reg.value)
-   if(reg.value===item.pattern){
-     item.message=reg.text;
-     console.info(item)
-     break;
-   }
- }
+  for (const reg of regList) {
+    console.info(reg.value)
+    if (reg.value === item.pattern) {
+      item.message = reg.text;
+      console.info(item)
+      break;
+    }
+  }
 }
 
 //endregion
@@ -400,6 +431,14 @@ function activeParentDrawItem() {
 
 //endregion
 
+
+//region
+function addEvent(event) {
+
+  props.activeData.__events__.push({name: event.name, fnName:curItemConfig.value.itemName+titleCase(event.name), params: event.params.join(",")})
+}
+
+//endregion
 </script>
 
 <style lang="scss" scoped>

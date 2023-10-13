@@ -80,7 +80,7 @@
     <div v-show="activeData.__data__.source==='static'">
 
       <config-value-input :attr-config="curComConfig.data.static.type" :treeProps="curItemProps.props"
-                          v-model="activeData.__data__[curComConfig.data.name]"></config-value-input>
+                          v-model="activeData.__data__.static[curComConfig.data.name]"></config-value-input>
     </div>
     <div v-show="activeData.__data__.source==='dynamic'">
       <el-form-item label="网址">

@@ -124,6 +124,12 @@ const renderProps = (item) => {
             str.push(` v-model="${item.__vModel__}"`)//todo el-upload要用v-model:file-list
         }
     }
+
+    //生成Events
+    const events = item.__events__ || []
+    events.map(e=>{
+        str.push(` @${e.name}=${e.fnName}`)
+    })
     return str.join("");
 
 }
