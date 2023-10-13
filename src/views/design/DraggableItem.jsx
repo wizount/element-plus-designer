@@ -36,16 +36,32 @@ export default {
             return {onClick}
         }
 
-        function buildClass(curItem) {
+        function buildProps(curItem, {isBuildClass, isBuildEvent, isBuildModel}) {
+            const newProps = {};
+            Object.assign(newProps, curItem.__native__);
+            Object.assign(newProps, curItem.__props__);
+            if (isBuildClass) {
+                Object.assign(newProps, buildClass(curItem, newProps.class))
+            }
+            if (isBuildEvent) {
+                Object.assign(newProps, buildEvent(curItem))
+            }
+            if (isBuildModel && curItem.__vModel__) {
+                Object.assign(newProps, buildVModel(curItem));
+            }
+            return newProps;
+        }
+
+
+        function buildClass(curItem, oldClass) {
             const {drawItemId} = curItem.__config__
             let clazz = props.activeId === drawItemId ? 'drawing-ele selected-draw-ele' : 'drawing-ele';
             if (props.designConf.unFocusedComponentBorder && props.activeId !== drawItemId) clazz += ' unselected-draw-ele'
-            const curClass = curItem.__props__.class;
-            if (curClass) {
-                if (Array.isArray(curClass)) {
-                    clazz += " " + curClass.join(" ")
+            if (oldClass) {
+                if (Array.isArray(oldClass)) {
+                    clazz += " " + oldClass.join(" ")
                 } else {
-                    clazz += " " + curClass
+                    clazz += " " + oldClass
                 }
             }
             if (clazz) {
@@ -109,8 +125,8 @@ export default {
         }
 
         function containerItem(curItem) {
-            let colProps = () => {
-                const props_ = deepClone(curItem.__props__)
+            let containerProps = (curItem) => {
+                const props_ = buildProps(curItem, {isBuildClass: true, isBuildModel: true})
                 if (curItem.__slots__.default.length === 0) {
                     if (!props_.style.minHeight && !props_.style['min-height']) {
                         props_.style['min-height'] = '60px';
@@ -128,7 +144,7 @@ export default {
             const thisSlots = buildSlots(curItem, true);
             let DraggableChildren = <Draggable tag={curItem.__config__.tag}
                                                componentData={{
-                                                   ...colProps(), ...buildClass(curItem), ...buildVModel(curItem),
+                                                   ...containerProps(curItem),
                                                    model,
                                                    rules
                                                }}
@@ -218,7 +234,7 @@ export default {
                     return doWrapWithSpan(curItem, source);
                 } else {
                     return <FixItem
-                        conf={config} {...buildClass(curItem)} {...buildVModel(curItem)} {...buildEvent(curItem)}></FixItem>
+                        conf={config} {...buildClass(curItem,curItem.__native__.class)} {...buildVModel(curItem)} {...buildEvent(curItem)}></FixItem>
                 }
 
 
@@ -237,11 +253,11 @@ export default {
             const {tag, wrapWithSpan} = curItem.__config__;
             const data = buildData(curItem);
             if (simple) {
-                return h(resolveComponent(tag), {...curItem.__props__, ...data, ...buildVModel(curItem)},
+                return h(resolveComponent(tag), {...buildProps(curItem, { isBuildModel: true, isBuildEvent: true}), ...data},
                     buildSlots(curItem));
             } else {
                 if (wrapWithSpan) {
-                    const source = h(resolveComponent(tag), {...curItem.__props__, ...data, ...buildVModel(curItem)}, buildSlots(curItem));
+                    const source = h(resolveComponent(tag), {...buildProps(curItem, { isBuildModel: true, isBuildEvent: true}) ,...data}, buildSlots(curItem));
                     return doWrapWithSpan(curItem, source);
                 } else {
                     // const fns={}
@@ -251,7 +267,7 @@ export default {
                     // }
                     // console.log(fns)
                     return h(resolveComponent(tag),
-                        {...buildClass(curItem), ...curItem.__props__, ...data, ...buildVModel(curItem), ...buildEvent(curItem)},
+                        {...buildProps(curItem, {isBuildClass: true, isBuildModel: true, isBuildEvent: true}), ...data},
                         buildSlots(curItem));
                 }
 

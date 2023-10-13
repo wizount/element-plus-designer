@@ -58,10 +58,16 @@ const renderItem = (item) => {
 const renderProps = (item) => {
     const id = item.__id__;
     const {attributes} = elementPlusConfigMap[id];
-    const props = item.__props__
+    const props = item.__props__;
     const str = []
     if (props.ref) {
         str.push(` ref=${props.ref}`)
+    }
+    if(item.__native__){
+        Object.keys(item.__native__).map(key=>{
+            if(props[key]) return false;
+            str.push(` ${key}="${item.__native__[key]}"`)
+        })
     }
     if (attributes) {
         const keys = Object.keys(attributes)

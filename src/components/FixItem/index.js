@@ -26,7 +26,7 @@ export default {
 
         return () => h(resolveComponent(conf.__config__.tag),
             {
-                ...conf.__props__
+                ...conf.__props__,...conf.__native__
             }, buildSlots(conf)
         )
     }

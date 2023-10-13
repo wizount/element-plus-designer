@@ -57,7 +57,7 @@
   <el-divider>属性</el-divider>
 
   <el-form-item label="原生属性">
-    <object-editor v-model="curItemConfig"/>
+    <object-editor v-model="activeData.__native__"/>
   </el-form-item>
   <el-form-item v-if="curItemConfig.optionType !== undefined" label="选项样式">
     <el-radio-group v-model="curItemConfig.optionType">

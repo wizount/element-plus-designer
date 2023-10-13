@@ -69,7 +69,7 @@ export default {
             }
             const {tag} = curItem.__config__;
             return h(resolveComponent(tag),
-                {...curItem.__props__, ...buildVModel(curItem), model, rules},
+                {...curItem.__props__, ...curItem.__native__,...buildVModel(curItem), model, rules},
                 buildSlots(curItem));
 
         }
@@ -136,11 +136,11 @@ export default {
             const {tag} = curItem.__config__;
             const data = buildData(curItem).__data__;
             if (simple) {
-                return h(resolveComponent(tag), {...curItem.__props__, ...data, ...buildVModel(curItem)},
+                return h(resolveComponent(tag), {...curItem.__props__,...curItem.__native__, ...data, ...buildVModel(curItem)},
                     buildSlots(curItem));
             } else {
                 return h(resolveComponent(tag),
-                    {...curItem.__props__, ...data, ...buildVModel(curItem)},
+                    {...curItem.__props__, ...curItem.__native__,...data, ...buildVModel(curItem)},
                     buildSlots(curItem));
             }
 
