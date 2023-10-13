@@ -11,23 +11,25 @@
     <el-input v-model="curItemProps.ref" title="请输入ref对象变量名">
     </el-input>
   </el-form-item>
-  <el-form-item label="文字" v-if="activeData.__slots__&&typeof activeData.__slots__.default==='string'">
-    <el-input v-model="activeData.__slots__.default" placeholder="请输入文字"/>
-  </el-form-item>
-  <el-form-item
-      v-if="curItemConfig.showLabel !== undefined &&curItemConfig.labelWidth !== undefined"
-      label="显示标签">
-    <el-switch v-model="curItemConfig.showLabel"/>
-  </el-form-item>
-  <el-form-item v-if="curItemConfig.showLabel" label="标题">
-    <el-input v-model="curItemConfig.label" placeholder="请输入标题"/>
-  </el-form-item>
-  <el-form-item v-if="curItemConfig.showLabel" label="标签宽度">
-    <el-input v-model.number="curItemConfig.labelWidth" type="number" placeholder="请输入标签宽度"/>
-  </el-form-item>
-  <el-form-item v-if="curItemProps.placeholder !== undefined" label="占位提示">
-    <el-input v-model="curItemProps.placeholder" placeholder="请输入占位提示"/>
-  </el-form-item>
+  <template v-if="curItemConfig.wrapWithFormItem">
+
+    <el-divider>表单属性</el-divider>
+    <el-form-item
+        v-if="curItemConfig.showLabel !== undefined &&curItemConfig.labelWidth !== undefined"
+        label="显示标签">
+      <el-switch v-model="curItemConfig.showLabel"/>
+    </el-form-item>
+    <el-form-item v-if="curItemConfig.showLabel" label="标题">
+      <el-input v-model="curItemConfig.label" placeholder="请输入标题"/>
+    </el-form-item>
+    <el-form-item v-if="curItemConfig.showLabel" label="标签宽度">
+      <el-input v-model.number="curItemConfig.labelWidth" type="number" placeholder="请输入标签宽度"/>
+    </el-form-item>
+    <el-form-item v-if="curItemProps.placeholder !== undefined" label="占位提示">
+      <el-input v-model="curItemProps.placeholder" placeholder="请输入占位提示"/>
+    </el-form-item>
+  </template>
+
   <el-form-item v-if="activeData.__vModel__ !== undefined" label="字段名" title="字段名，用于v-model">
     <el-input v-model="activeData.__vModel__" placeholder="请输入字段名（v-model）"/>
   </el-form-item>
@@ -51,6 +53,12 @@
         @click="curItemConfig.defaultValue=!curItemConfig.defaultValue">显示{{ curItemConfig.tag }}
     </el-button>
   </el-form-item>
+
+  <el-divider>属性</el-divider>
+
+  <el-form-item label="原生属性">
+    <object-editor v-model="curItemConfig"/>
+  </el-form-item>
   <el-form-item v-if="curItemConfig.optionType !== undefined" label="选项样式">
     <el-radio-group v-model="curItemConfig.optionType">
       <el-radio-button label="default">默认</el-radio-button>
@@ -63,10 +71,13 @@
   <el-form-item v-if="curItemConfig.reference !== undefined" label="文字">
     <el-input v-model="curItemConfig.reference"/>
   </el-form-item>
-
+  <el-form-item label="文字" v-if="activeData.__slots__&&typeof activeData.__slots__.default==='string'">
+    <el-input v-model="activeData.__slots__.default" placeholder="请输入文字"/>
+  </el-form-item>
   <el-form-item v-if="curItemConfig.required !== undefined" label="必填">
     <el-switch v-model="curItemConfig.required"></el-switch>
   </el-form-item>
+
   <el-form-item v-if="activeData.__data__" :label="curComConfig.data.label">
 
     <el-radio-group v-model="activeData.__data__.source" class="mb-2">
@@ -118,6 +129,7 @@
                 v-if="__refs__&&__refs__[k]">
         <template #prepend>REF</template>
       </el-input>
+
 <!--      :treeProps="curItemProps.props"使用不明智，但确实解决了问题-->
       <config-value-input v-model="curItemProps[k]" v-if="v.type.tag" :treeProps="curItemProps.props"
                           :attr-config="v.type"></config-value-input>
@@ -135,6 +147,7 @@ import {camelCase, deepClone, getType} from "@/utils";
 import {Sort} from "@element-plus/icons-vue";
 import IconChooser from "@/components/editors/IconChooser.vue";
 import elementPlusConfigMap from "@/element-plus-config";
+import ObjectEditor from "@/components/editors/ObjectEditor.vue";
 
 const props = defineProps(["activeData", "attributeConfig"]);
 const curItemConfig = computed(() => {

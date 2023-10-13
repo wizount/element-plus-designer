@@ -58,7 +58,7 @@ export const renderJsComposition = (itemList) => {
   ${mountedFunctions.join("")}
 })`:``}
 
-      ${functions.join("")}
+      ${functions.map(f=>`function ${f}`).join("")}
     `
 }
 
@@ -200,8 +200,7 @@ const processEvents = (item) => {
 
     const events = item.__events__ || []
     events.map(e=>{
-        functions.push(`
-        ${e.fnName}(${e.params}){
+        functions.push(`${e.fnName}(${e.params}){
           ${e.fnBody}
         }
         `)
@@ -239,7 +238,7 @@ const processDynamicData = (item) => {
         })}`)
     } else {
         vueImports.add("onMounted");
-        functions.push(`function ${fnName} (){axios({method:"${method}", url:"${url}"}).then((resp) => {
+        functions.push(`${fnName} (){axios({method:"${method}", url:"${url}"}).then((resp) => {
          ${__refs__[name]}.value=resp.data${dataKey ? "[" + dataKey + "]" : ""};
         })}`)
     }

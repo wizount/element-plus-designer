@@ -435,7 +435,8 @@ function activeParentDrawItem() {
 //region
 function addEvent(event) {
 
-  props.activeData.__events__.push({name: event.name, fnName:curItemConfig.value.itemName+titleCase(event.name), params: event.params.join(",")})
+  props.activeData.__events__.push({name: event.name, fnName:curItemConfig.value.itemName+titleCase(event.name),
+    params: (event.params||[]).join(",")})
 }
 
 //endregion
