@@ -41,8 +41,7 @@
           "name": "stringNumber",
           "tag": "string-number-input"
         }
-      ],
-      "default": "该选项卡在选项卡列表中的序数值，第一个选项卡为 '0'"
+      ]
     },
     "closable": {
       "label": "可关闭",

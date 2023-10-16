@@ -581,3 +581,10 @@
 .text-right{
   text-align: right!important;
 }
+
+.narrower-button-margin{
+  .el-button + .el-button {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}

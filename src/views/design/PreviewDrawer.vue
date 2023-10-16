@@ -19,7 +19,7 @@
 
 <script setup>
 
-import {renderJsOptionRaw} from '@/components/generator/js'
+import {renderJsOptionsRaw} from '@/components/generator/js'
 
 import {ElMessage} from "element-plus";
 
@@ -43,7 +43,7 @@ const resources = computed(() => {
 
 function onOpen() {
   htmlCode.value = renderHtml(props.drawItemList)
-  jsCode.value = renderJsOptionRaw(props.drawItemList);
+  jsCode.value = renderJsOptionsRaw(props.drawItemList);
   runCode();
 }
 

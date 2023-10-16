@@ -398,6 +398,7 @@
     "name": "data",
     "label": "展示数据",
     "source": "static",
+    "inProps": true,
     "static": {
       "ref": true,
       "type": {

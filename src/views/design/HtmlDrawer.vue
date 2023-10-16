@@ -2,14 +2,17 @@
   <div>
     <el-drawer v-bind="$attrs">
       <template #header>
-      <div :style="{ 'text-align': 'left' }">
-        <el-button text type="primary" class="copy-html-btn" icon="DocumentCopy" @click="triggerCopy">
-          复制HTML
-        </el-button>
-        <el-button text type="primary" @click="exportHtmlFile" icon="Download">
-          导出HTML文件
-        </el-button>
-      </div>
+        <div class="narrower-button-margin">
+          <el-button text type="primary" class="copy-html-btn" icon="DocumentCopy" @click="triggerCopy">
+            复制HTML
+          </el-button>
+          <el-button text type="primary" @click="exportHtmlFile" icon="Download">
+            导出HTML文件
+          </el-button>
+          <el-select style="float: right;" v-model="designConf.jsCodeStyle">
+            <el-option v-for="v in jsCodeStyleList" :value="v.value" :label="v.text" key="v.value"/>
+          </el-select>
+        </div>
 
       </template>
       <div id="htmlCopyNode" class="display:none;"></div>
@@ -32,7 +35,9 @@ import {ElMessage, ElMessageBox, ElNotification} from "element-plus";
 import {VAceEditor} from 'vue3-ace-editor';
 import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/theme-one_dark';
-const props = defineProps({htmlStr: {type: String, required: true,}})
+import {jsCodeStyleList} from "@/components/config/config";
+
+const props = defineProps({htmlStr: {type: String, required: true,}, designConf: {type: String, required: true}})
 
 const aceStr = ref(props.htmlStr);
 
@@ -79,9 +84,10 @@ function triggerCopy(event) {
   height: calc(100vh - 45px);
 }
 
-:deep(.el-drawer__body){
+:deep(.el-drawer__body) {
   padding: 40px 5px 5px;
 }
+
 :deep(.el-drawer__header) {
   display: flex;
   width: calc(100% - 40px);
@@ -89,10 +95,12 @@ function triggerCopy(event) {
   padding-top: 10px;
   padding-left: 20px;
   padding-right: 20px;
-  &:first-child{
+
+  &:first-child {
     width: unset;
   }
-  button{
+
+  button {
     right: 30px;
   }
 }

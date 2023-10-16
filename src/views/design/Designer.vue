@@ -60,11 +60,11 @@
           <svg-icon class="mr-2" icon-class="preview"/>
           预览
         </el-button>
-        <el-button text @click="showJson">
+        <el-button text @click="showJson(false)">
           <svg-icon class="mr-2" icon-class="json"/>
           查看json
         </el-button>
-        <el-button text @click="showHtml">
+        <el-button text @click="showHtml(false)">
           <svg-icon class="mr-2" icon-class="code"/>
           查看Vue
         </el-button>
@@ -94,14 +94,16 @@
                   <el-switch v-model="designConf.wrapWithFormItem"></el-switch>
                 </el-form-item>
               </el-dropdown-item>
-              <el-dropdown-item>
-                <el-form-item label="代码风格" prop="jsCodeStyle" style="margin-bottom: 0px">
-                  <el-radio-group v-model="designConf.jsCodeStyle">
-                    <el-radio-button label="options">选项式</el-radio-button>
-                    <el-radio-button label="composition">组合式</el-radio-button>
-                  </el-radio-group>
-                </el-form-item>
-              </el-dropdown-item>
+<!--              <el-dropdown-item>-->
+<!--                <el-form-item label="代码风格" prop="jsCodeStyle" style="margin-bottom: 0px">-->
+<!--                  <el-radio-group v-model="designConf.jsCodeStyle" size="small">-->
+<!--                    <el-radio-button :label="v.value" v-for="v in jsCodeStyleList" :key="v.value">{{-->
+<!--                        v.text-->
+<!--                      }}-->
+<!--                    </el-radio-button>-->
+<!--                  </el-radio-group>-->
+<!--                </el-form-item>-->
+<!--              </el-dropdown-item>-->
               <el-dropdown-item>
                 <el-form-item label="暗黑模式" style="margin-bottom: 0px">
                   <el-switch @click="toggleDark()" :model-value="isDark" title="暗黑模式"></el-switch>
@@ -152,10 +154,11 @@
     <right-panel :active-data="activeData" :design-conf="designConf" :show-field="!!drawItemList.length"
                  @add-slot-draw-item="addSlotDrawItem"
                  @active-parent-draw-item="activeParentDrawItem"/>
-    <form-drawer v-model="formDrawerVisible" :draw-item-list="drawItemList" size="100%" />
-    <json-drawer size="750px" v-model="jsonDrawerVisible" :json-str="jsonStr" @refresh="refreshJson"/>
+    <form-drawer v-model="formDrawerVisible" :draw-item-list="drawItemList" size="100%"/>
+    <json-drawer size="750px" v-model="jsonDrawerVisible" :json-str="jsonStr" @refresh="refreshJson"
+                 :design-conf="designConf"/>
 
-    <html-drawer size="750px" v-model="htmlDrawerVisible" :html-str="htmlStr"/>
+    <html-drawer size="750px" v-model="htmlDrawerVisible" :html-str="htmlStr" :design-conf="designConf"/>
     <el-drawer v-model="drawItemTreeVisible" title="组件树" size="405px" modal-class="bg-transparent"
                @open="openTreeDrawer">
       <!--      fixme 更改height-->
@@ -198,7 +201,7 @@ import FormDrawer from './PreviewDrawer.vue'
 import JsonDrawer from './JsonDrawer'
 import RightPanel from './RightPanel'
 import {
-  designConf as designConfPreset
+  designConf as designConfPreset, jsCodeStyleList
 } from '@/components/config/config'
 import {addClass, camelCase, deepClone, deleteObjectProps} from '@/utils'
 
@@ -556,7 +559,7 @@ function cloneDrawItem(origin) {
       props.placeholder = attributes.placeholder
     //复制像el-select的选项
     if (data) {
-      const {name, source,inProps} = data;//props为true，代表是__props__里面的属性
+      const {name, source, inProps} = data;//props为true，代表是__props__里面的属性
       const static_ = {
         ref: data.static.ref,
         [data.name]: deepClone(data.static.default)
@@ -568,7 +571,7 @@ function cloneDrawItem(origin) {
 
       Object.assign(dynamic, data.dynamic)
       clone.__data__ = {
-        name, source, dynamic, static: static_,inProps
+        name, source, dynamic, static: static_, inProps
 
       };
 
@@ -748,8 +751,6 @@ function findChildrenParent(parent, children) {
 //endregion
 
 
-
-
 function execPreview() {
   formDrawerVisible.value = true
 }
@@ -778,8 +779,7 @@ function emptyDrawItemList() {
 
 function generateCode() {
   let cloneJsonList = simplifyJson();
-  return renderSfc(cloneJsonList,designConf.value.jsCodeStyle,beautifier)
-
+  return renderSfc(cloneJsonList, designConf.value.jsCodeStyle, beautifier)
 }
 
 //region json显示操作
@@ -840,7 +840,7 @@ function simplifyJson(all) {
       deleteObjectProps(__refs__);
       deleteObjectProps(item);
       delete item["renderKey"];
-      delete item.__id__;
+      //  delete item.__id__;
       delete item.__config__["name"];
       delete item.__config__["drawItemId"];
       delete item.__config__["tagIcon"];
@@ -849,31 +849,41 @@ function simplifyJson(all) {
   })
   return cloneDrawItemList;
 }
+
 const jsonDrawerVisible = ref(false)
 const jsonStr = ref("");
 
-function showJson() {
-//  jsonStr.value = JSON.stringify(drawItemList.value, null, 2);
-  jsonStr.value = JSON.stringify(simplifyJson(true), null, 2);
-  jsonDrawerVisible.value = true
+function showJson(inner) {
+  if (designConf.value.jsonSimplified) {
+    jsonStr.value = JSON.stringify(simplifyJson(true), null, 2);
+  } else {
+    jsonStr.value = JSON.stringify(drawItemList.value, null, 2);
+  }
+
+  !inner && (jsonDrawerVisible.value = true)
 }
 
 function refreshJson(data) {
   drawItemList.value = deepClone(data)
 }
 
+watch(() => designConf.value.jsonSimplified, () => {
+  showJson(true);
+})
 //endregion
 
 //region html显示操作
 const htmlDrawerVisible = ref(false)
 const htmlStr = ref("");
 
-function showHtml() {
+function showHtml(inner) {
   htmlStr.value = generateCode();
 
-  htmlDrawerVisible.value = true
+  !inner&&(htmlDrawerVisible.value = true)
 }
-
+watch(() => designConf.value.jsCodeStyle, () => {
+  showHtml(true);
+})
 
 //endregion
 

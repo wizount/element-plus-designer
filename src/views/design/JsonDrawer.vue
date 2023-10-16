@@ -2,13 +2,14 @@
   <div>
     <el-drawer v-bind="$attrs">
       <template #header>
-        <div :style="{ 'text-align': 'left' }">
+        <div class="narrower-button-margin">
           <el-button text type="primary" class="copy-json-btn" icon="DocumentCopy" @click="triggerCopy">
             复制JSON
           </el-button>
           <el-button text type="primary" @click="exportJsonFile" icon="Download">
             导出JSON文件
           </el-button>
+          <el-switch  v-model="designConf.jsonSimplified" inline-prompt active-text="简化" inactive-text="完整"  style="float: right; --el-switch-off-color: grey"/>
         </div>
 
       </template>
@@ -32,7 +33,11 @@ import {ElMessage, ElMessageBox, ElNotification} from "element-plus";
 import {VAceEditor} from 'vue3-ace-editor';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-one_dark';
-const props = defineProps({jsonStr: {type: String, required: true,}})
+
+const props = defineProps({
+  jsonStr: {type: String, required: true},
+  designConf: {type: String, required: true}
+})
 
 const aceStr = ref(props.jsonStr);
 
@@ -79,9 +84,10 @@ function triggerCopy(event) {
   height: calc(100vh - 45px);
 }
 
-:deep(.el-drawer__body){
+:deep(.el-drawer__body) {
   padding: 40px 5px 5px;
 }
+
 :deep(.el-drawer__header) {
   display: flex;
   width: calc(100% - 40px);
@@ -89,10 +95,12 @@ function triggerCopy(event) {
   padding-top: 10px;
   padding-left: 20px;
   padding-right: 20px;
-  &:first-child{
+
+  &:first-child {
     width: unset;
   }
-  button{
+
+  button {
     right: 30px;
   }
 }

@@ -242,7 +242,6 @@ export default {
 
 
         }
-
         /**
          *
          * @param curItem
