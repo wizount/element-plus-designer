@@ -40,6 +40,10 @@ export default {
             const newProps = {};
             Object.assign(newProps, curItem.__native__);
             Object.assign(newProps, curItem.__props__);
+            //对style进行复制
+            if(newProps.style){
+                newProps.style=deepClone(newProps.style);
+            }
             if (isBuildClass) {
                 Object.assign(newProps, buildClass(curItem, newProps.class))
             }
