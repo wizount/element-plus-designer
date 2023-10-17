@@ -1006,25 +1006,25 @@ export const elementPlusComponents = [
             {
                 name: "Dialog 对话框",
                 key: "dialog",
-                children: [//fixme 如果有子组件，会出错。
-                    //     {
-                    //     __id__: "dialog",
-                    //     __config__: {
-                    //         defaultValue: true
-                    //     }
-                    // }
+                children: [
+                        {
+                        __id__: "dialog",
+                        __config__: {
+                            defaultValue: true
+                        }
+                    }
                 ]
             },
             {
                 name: "Drawer 抽屉",
                 key: "drawer",
                 children: [//fixme 如果有子组件，会出错。
-                    //     {
-                    //     __id__: "drawer",
-                    //     __config__: {
-                    //         defaultValue: true
-                    //     }
-                    // }
+                        {
+                        __id__: "drawer",
+                        __config__: {
+                            defaultValue: true
+                        }
+                    }
                 ]
             },
             {
@@ -1117,12 +1117,9 @@ export const elementPlusComponents = [
             },
             {
                 name: "Watermark 水印",
-                key: "watermark",
                 children: [
                     {
-                        __id__: "watermark",
-                        __slots__: {
-                        },
+                        __id__: "watermark"
                     }
                 ]
             }
