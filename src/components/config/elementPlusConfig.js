@@ -1114,6 +1114,17 @@ export const elementPlusComponents = [
                         },
                     }
                 ]
+            },
+            {
+                name: "Watermark 水印",
+                key: "watermark",
+                children: [
+                    {
+                        __id__: "watermark",
+                        __slots__: {
+                        },
+                    }
+                ]
             }
         ],
         title: "Others 其他"

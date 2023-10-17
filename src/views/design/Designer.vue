@@ -678,17 +678,18 @@ function allowToAdd(parent, clone, noShowMessage) {
   //专用,对el-container进行修改，direction：子元素中有 el-header 或 el-footer 时为 vertical，否则为 horizontal,fixme 不太准确，先这样
   if (parent && parent.__id__ === 'container') {
     const children = parent.children || parent.__slots__ && parent.__slots__.default;
-    let hasFooterOrHeader = false;
+    let hasHeaderOrFooter = clone.__id__ === 'header' || clone.__id__ === 'footer';
     for (const child of children) {
+      console.info(child.__id__)
       if (child.__id__ === 'header' || child.__id__ === 'footer') {
-        hasFooterOrHeader = true;
+        hasHeaderOrFooter = true;
         break;
       }
     }
 
     let parent_ = findDrawItemByRenderKey(drawItemList.value, parent.renderKey);
 
-    if (hasFooterOrHeader) {
+    if (hasHeaderOrFooter) {
       parent_.__props__.direction = 'vertical';
     } else {
       parent_.__props__.direction = 'horizontal';
@@ -824,14 +825,14 @@ function simplifyJson(all) {
 
 
     if (id === 'container') {//direction 子元素中有 el-header 或 el-footer 时为 vertical，否则为 horizontal"
-      let hasFooterOrHeader = false;
+      let hasHeaderOrFooter = false;
       for (const aItem of item.__slots__.default) {
         if (aItem.__id__ === 'header' || aItem.__id__ === 'footer') {
-          hasFooterOrHeader = true;
+          hasHeaderOrFooter = true;
           break;
         }
       }
-      if (hasFooterOrHeader && item.__props__.direction === 'vertical' || !hasFooterOrHeader && item.__props__.direction === 'horizontal') {
+      if (hasHeaderOrFooter && item.__props__.direction === 'vertical' || !hasHeaderOrFooter && item.__props__.direction === 'horizontal') {
         delete item.__props__.direction;
       }
     }

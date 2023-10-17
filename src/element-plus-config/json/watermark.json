@@ -1,0 +1,127 @@
+{
+  "__id__": "watermark",
+  "name": "水印",
+  "tag": "el-watermark",
+  "tagIcon": "watermark",
+  "layouts": ["containerItem"],
+  "attributes": {
+    "width": {
+      "label": "宽度",
+      "title": "水印的宽度， `content` 的默认值是它自己的宽度",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 120
+    },
+    "height": {
+      "label": "高度",
+      "title": "水印的高度， `content` 的默认值是它自己的高度",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 64
+    },
+    "rotate": {
+      "label": "旋转角度",
+      "title": "水印的旋转角度, 单位 `°`",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": -22
+    },
+    "zIndex": {
+      "label": "z-index值",
+      "title": "水印元素的z-index值",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 9
+    },
+    "image": {
+      "label": "图片",
+      "title": "水印图片，建议使用 2x 或 3x 图像",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "content": {
+      "label": "文本内容",
+      "title": "水印文本内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ]
+    },
+    "font": {
+      "label": "",
+      "title": "文字样式",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "default": {}
+    },
+    "gap": {
+      "label": "间距",
+      "title": "水印之间的间距",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor",
+          "props": {
+            "tag": "el-input-number"
+          }
+        }
+      ],
+      "default": [100, 100]
+    },
+    "offset": {
+      "label": "偏移",
+      "title": "水印从容器左上角的偏移 默认值为 `gap/2`",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor",
+          "props": {
+            "tag": "el-input-number"
+          }
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义默认内容"
+    }
+  ]
+}
