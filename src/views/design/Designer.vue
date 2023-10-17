@@ -68,8 +68,24 @@
           <svg-icon class="mr-2" icon-class="code"/>
           查看Vue
         </el-button>
-        <el-button text @click="execCopy" icon="DocumentCopy"> 复制代码</el-button>
-        <el-button text @click="execDownload" icon="Download"> 导出vue文件</el-button>
+        <el-dropdown @command="execCopy">
+          <el-button text icon="DocumentCopy"> 复制代码</el-button>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item v-for="v in jsCodeStyleList" :key="v.value" :command="v.value">{{v.text}}
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+        <el-dropdown @command="execDownload">
+          <el-button text icon="Download"> 导出vue文件</el-button>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item v-for="v in jsCodeStyleList" :key="v.value" :command="v.value">{{v.text}}
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
         <el-button text @click="drawItemTreeVisible=true">
           <svg-icon class="mr-2" icon-class="tree"/>
           组件树
@@ -520,7 +536,7 @@ function cloneDrawItem(origin) {
     clone["__events__"] = []
   }
   if (!clone["__native__"]) {
-    clone["__native__"] = []
+    clone["__native__"] = {}
   }
   //__refs__用来放需要通过变量引用的属性值。比如<el-input :disabled="disabled/> 中的 const disabled=ref(false)
   if (!clone["__refs__"]) {
@@ -756,14 +772,15 @@ function execPreview() {
   formDrawerVisible.value = true
 }
 
-function execDownload() {
-
+function execDownload(codeStyle) {
+  designConf.value.jsCodeStyle=codeStyle;
   const codeStr = generateCode()
   const blob = new Blob([codeStr], {type: 'text/plain;charset=utf-8'})
   saveAs(blob, `${+new Date()}.vue`)
 }
 
-function execCopy() {
+function execCopy(codeStyle) {
+  designConf.value.jsCodeStyle=codeStyle;
   document.getElementById('copyNode').click()
 }
 

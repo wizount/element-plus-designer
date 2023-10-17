@@ -4,7 +4,7 @@
       <el-radio-button v-for="v in curComConfig.layouts" :label="v">{{ v }}</el-radio-button>
     </el-radio-group>
   </el-form-item>
-  <el-form-item label="组件名" v-if="activeData.__id__">
+  <el-form-item label="组件名" v-if="activeData.__id__&&activeData.__id__!=='plainText'">
     <el-input v-model="curItemConfig.itemName" placeholder="请输入组件名"/>
   </el-form-item>
   <el-form-item label="ref" v-if="activeData.__id__!=='plainText' &&typeof activeData!=='string'">
@@ -53,7 +53,7 @@
         @click="curItemConfig.defaultValue=!curItemConfig.defaultValue">显示{{ curItemConfig.tag }}
     </el-button>
   </el-form-item>
-
+<template v-if="activeData.__id__!=='plainText'">
   <el-divider>属性</el-divider>
 
   <el-form-item label="原生属性">
@@ -134,6 +134,7 @@
       <config-value-input v-model="curItemProps[k]" v-if="v.type.tag" :treeProps="curItemProps.props"
                           :attr-config="v.type"></config-value-input>
     </el-form-item>
+  </template>
   </template>
 
 
