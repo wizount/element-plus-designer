@@ -82,7 +82,7 @@
 
     <el-radio-group v-model="activeData.__data__.source" class="mb-2">
       <el-radio-button label="static">静态数据</el-radio-button>
-      <el-radio-button label="dynamic">动态数据</el-radio-button>
+      <el-radio-button label="dynamic" v-if="activeData.__data__.dynamic">动态数据</el-radio-button>
     </el-radio-group>
     <el-input v-model="activeData.__refs__[curComConfig.data.name]"
               v-if="activeData.__data__[activeData.__data__.source].ref">
@@ -93,7 +93,7 @@
       <config-value-input :attr-config="curComConfig.data.static.type" :treeProps="curItemProps.props"
                           v-model="activeData.__data__.static[curComConfig.data.name]"></config-value-input>
     </div>
-    <div v-show="activeData.__data__.source==='dynamic'">
+    <div v-show="activeData.__data__.source==='dynamic'" v-if="activeData.__data__.dynamic">
       <el-form-item label="网址">
         <el-input v-model="activeData.__data__.dynamic.url" placeholder="网址">
         </el-input>

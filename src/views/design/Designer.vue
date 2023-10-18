@@ -72,7 +72,7 @@
           <el-button text icon="DocumentCopy"> 复制代码</el-button>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item v-for="v in jsCodeStyleList" :key="v.value" :command="v.value">{{v.text}}
+              <el-dropdown-item v-for="v in jsCodeStyleList" :key="v.value" :command="v.value">{{ v.text }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -81,7 +81,7 @@
           <el-button text icon="Download"> 导出vue文件</el-button>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item v-for="v in jsCodeStyleList" :key="v.value" :command="v.value">{{v.text}}
+              <el-dropdown-item v-for="v in jsCodeStyleList" :key="v.value" :command="v.value">{{ v.text }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -110,16 +110,16 @@
                   <el-switch v-model="designConf.wrapWithFormItem"></el-switch>
                 </el-form-item>
               </el-dropdown-item>
-<!--              <el-dropdown-item>-->
-<!--                <el-form-item label="代码风格" prop="jsCodeStyle" style="margin-bottom: 0px">-->
-<!--                  <el-radio-group v-model="designConf.jsCodeStyle" size="small">-->
-<!--                    <el-radio-button :label="v.value" v-for="v in jsCodeStyleList" :key="v.value">{{-->
-<!--                        v.text-->
-<!--                      }}-->
-<!--                    </el-radio-button>-->
-<!--                  </el-radio-group>-->
-<!--                </el-form-item>-->
-<!--              </el-dropdown-item>-->
+              <!--              <el-dropdown-item>-->
+              <!--                <el-form-item label="代码风格" prop="jsCodeStyle" style="margin-bottom: 0px">-->
+              <!--                  <el-radio-group v-model="designConf.jsCodeStyle" size="small">-->
+              <!--                    <el-radio-button :label="v.value" v-for="v in jsCodeStyleList" :key="v.value">{{-->
+              <!--                        v.text-->
+              <!--                      }}-->
+              <!--                    </el-radio-button>-->
+              <!--                  </el-radio-group>-->
+              <!--                </el-form-item>-->
+              <!--              </el-dropdown-item>-->
               <el-dropdown-item>
                 <el-form-item label="暗黑模式" style="margin-bottom: 0px">
                   <el-switch @click="toggleDark()" :model-value="isDark" title="暗黑模式"></el-switch>
@@ -134,7 +134,7 @@
         <div id="copyNode" class="display:none;"></div>
       </div>
       <el-scrollbar class="center-scrollbar" @scroll="resetActiveDrawItemPosition">
-        <draggable tag="div" :list="drawItemList" style="padding: 5px"
+        <draggable tag="div" :list="drawItemList" style="padding: 5px;min-height: 400px"
                    group="componentsGroup" item-key="renderKey" @change="itemChange" :move="itemMove">
           <template #item="{element,index}">
             <draggable-item :current-item="element"
@@ -471,6 +471,8 @@ function resetActiveDrawItemPosition() {
     activeToolbar.value.style.display = 'block';
     activeToolbar.value.style.left = (rect.left + rect.width - activeToolbar.value.clientWidth) + "px";
     activeToolbar.value.style.top = (rect.top - 20) + "px";
+  } else {
+    activeToolbar.value.style.display = 'none';
   }
 }
 
@@ -551,7 +553,7 @@ function cloneDrawItem(origin) {
       const attr = attributes[key];
       if (attr.ref) {
         clone.__refs__[key] = camelCase(config.itemName + "-" + key);
-      } else if (attr.formRef) {
+      } else if (attr.propsRef) {
         props[key] = camelCase(config.itemName + '-' + key)
       }
       if (key === 'vModel') {
@@ -583,17 +585,17 @@ function cloneDrawItem(origin) {
       if (data.static.ref) {
         clone.__refs__[data.name] = camelCase(config.itemName + '-' + data.name)
       }
-      const dynamic = {ref: true}
-
-      Object.assign(dynamic, data.dynamic)
+      let dynamic;
+      if (data.dynamic) {
+        dynamic = {ref: true}
+        Object.assign(dynamic, data.dynamic)
+      }
       clone.__data__ = {
         name, source, dynamic, static: static_, inProps
-
       };
 
     }
   }
-
   //不包裹form-item
   if (config.wrapWithFormItem && !designConf.value.wrapWithFormItem) {
     delete config.showLabel;
@@ -773,14 +775,14 @@ function execPreview() {
 }
 
 function execDownload(codeStyle) {
-  designConf.value.jsCodeStyle=codeStyle;
+  designConf.value.jsCodeStyle = codeStyle;
   const codeStr = generateCode()
   const blob = new Blob([codeStr], {type: 'text/plain;charset=utf-8'})
   saveAs(blob, `${+new Date()}.vue`)
 }
 
 function execCopy(codeStyle) {
-  designConf.value.jsCodeStyle=codeStyle;
+  designConf.value.jsCodeStyle = codeStyle;
   document.getElementById('copyNode').click()
 }
 
@@ -897,8 +899,9 @@ const htmlStr = ref("");
 function showHtml(inner) {
   htmlStr.value = generateCode();
 
-  !inner&&(htmlDrawerVisible.value = true)
+  !inner && (htmlDrawerVisible.value = true)
 }
+
 watch(() => designConf.value.jsCodeStyle, () => {
   showHtml(true);
 })

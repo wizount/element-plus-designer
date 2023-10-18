@@ -266,9 +266,15 @@ export const elementPlusComponents = [
                 ]
             },
             {
-                name: "Autocomplete 自动补全输入框",
+                name: "Autocomplete 自动补全",
                 key: "autocomplete",
-                children: []
+                children: [ {
+                    __id__: "autocomplete",
+                    __config__: {
+                        defaultValue: null,
+                        ...defaultFormItemConfig
+                    },
+                }]
             },
             {
                 name: "Cascader 级联选择器",

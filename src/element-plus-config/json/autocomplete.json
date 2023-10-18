@@ -1,8 +1,15 @@
 {
   "__id__": "autocomplete",
+  "name": "自动补全",
+  "tag": "el-autocomplete",
+  "tagIcon": "autocomplete",
+  "layouts": ["rawItem"],
+  "document": "https://element-plus.gitee.io/zh-CN/component/autocomplete.html",
   "attributes": {
+    "vModel": "modelValue",
+    "placeholder": "请选择",
     "clearable": {
-      "label": "",
+      "label": "可清空",
       "title": "是否可清空",
       "types": [
         {
@@ -13,7 +20,7 @@
       "default": false
     },
     "disabled": {
-      "label": "",
+      "label": "禁用",
       "title": "自动补全组件是否被禁用",
       "types": [
         {
@@ -24,7 +31,7 @@
       "default": false
     },
     "value-key": {
-      "label": "",
+      "label": "用于显示的键名",
       "title": "输入建议对象中用于显示的键名",
       "types": [
         {
@@ -38,7 +45,7 @@
       "default": "value"
     },
     "debounce": {
-      "label": "",
+      "label": "防抖延时",
       "title": "获取输入建议的防抖延时，单位为毫秒",
       "types": [
         {
@@ -49,7 +56,7 @@
       "default": 300
     },
     "placement": {
-      "label": "",
+      "label": "菜单弹出位置",
       "title": "菜单弹出位置",
       "types": [
         {
@@ -82,13 +89,16 @@
       "default": "bottom-start"
     },
     "fetch-suggestions": {
-      "label": "",
-      "title": "获取输入建议的方法， 仅当你的输入建议数据 resolve 时，通过调用 `callback(data:[]) ` 来返回它",
+      "label": "获取输入建议方法名",
+      "propsRef": true,
+      "title": "请直接输入方法名获取输入建议的方法， 仅当你的输入建议数据 resolve 时，通过调用 `callback(data:[]) ` 来返回它",
       "types": [
         {
-          "name": "function",
-          "tag": "",
-          "desc": "(queryString: string, callback: callbackfn) => void"
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
         }
       ]
     },
@@ -104,7 +114,7 @@
       "default": true
     },
     "select-when-unmatched": {
-      "label": "",
+      "label": "无匹配时是否触发select事件",
       "title": "在输入没有任何匹配建议的情况下，按下回车是否触发 `select` 事件",
       "types": [
         {
@@ -114,34 +124,8 @@
       ],
       "default": false
     },
-    "name": {
-      "label": "",
-      "title": "等价于原生 input `name` 属性",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ]
-    },
-    "label": {
-      "label": "",
-      "title": "输入框关联的 label 文字",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ]
-    },
     "hide-loading": {
-      "label": "",
+      "label": "隐藏加载图标",
       "title": "是否隐藏远程加载时的加载图标",
       "types": [
         {
@@ -165,7 +149,7 @@
       ]
     },
     "popper-append-to-body": {
-      "label": "",
+      "label": "插入至 body 元素",
       "title": "是否将下拉列表插入至 body 元素。 在下拉列表的定位出现问题时，可将该属性设置为 false",
       "types": [
         {
@@ -188,7 +172,7 @@
       "default": true
     },
     "highlight-first-item": {
-      "label": "",
+      "label": "高亮第一项搜索结果",
       "title": "是否默认高亮远程搜索结果的第一项",
       "types": [
         {
@@ -313,5 +297,41 @@
       "title": "获取自动补全结果",
       "type": "^[object]`Ref<record<string, any>>`"
     }
-  ]
+  ],
+  "data": {
+    "name": "options",
+    "label": "选项",
+    "source": "static",
+    "static": {
+      "ref": true,
+      "type": {
+        "name": "array",
+        "tag": "object-array-editor",
+        "props": {
+          "keys": [
+            {
+              "key": "value",
+              "label": "值",
+              "tag": "string-number-input"
+            },
+            {
+              "key": "label",
+              "label": "标签",
+              "tag": "string-number-input"
+            }
+          ]
+        }
+      },
+      "default": [
+        {
+          "label": "选项一",
+          "value": "1"
+        },
+        {
+          "label": "选项二",
+          "value": "2"
+        }
+      ]
+    }
+  }
 }

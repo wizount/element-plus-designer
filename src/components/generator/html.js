@@ -96,9 +96,9 @@ const renderProps = (item) => {
                 } else {
                     if (!config || value !== config.default) {
                         if (typeOfValue === 'string') {
-                            if (config.formRef === true) {//在el-form中表示引用
+                            if (config.propsRef === true) {//只是引用！
                                 str.push(` :${propsName}="${value}"`)
-                            } else if (config.ref === true) {//在el-form中表示引用
+                            } else if (config.ref === true) {//引用
                                 str.push(` :${propsName}="${props}"`)
                             } else {
                                 str.push(` ${propsName}="${value}"`)

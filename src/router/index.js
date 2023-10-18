@@ -16,11 +16,6 @@ const routes = [
         path: '/test',
         name: 'test',
         component:Test
-    },
-    {
-        path: '/elutils',
-        name: 'elutils',
-        component:() =>import('@/views/tool/ElementPropertyUtils')
     }
 ]
 

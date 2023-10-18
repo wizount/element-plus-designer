@@ -9,7 +9,7 @@ let variables = [];
 let mountedFunctions = [];
 let functions = [];
 let vueImports = new Set();
-let codeStyle = false;
+let codeStyle = '';
 //选项式
 export const renderJsOptions = (itemList) => {
     const jsCodeWithoutImport = renderJsOptionsRaw(itemList);
@@ -111,7 +111,7 @@ const clearAndStartProcess = (itemList) => {
     variables = [];
     mountedFunctions = [];
     functions = [];
-    vueImports= new Set();
+    vueImports = new Set();
     processItemList(itemList);
 
 
@@ -143,6 +143,9 @@ const processItem = (item) => {
     processPropRefs(item);
     processDynamicData(item);
     processEvents(item);
+    if (tag === 'el-autocomplete') {
+        processAutocomplete(item)
+    }
     for (const slotName in item.__slots__) {
         processItemList(item.__slots__[slotName]);
     }
@@ -154,7 +157,7 @@ const processFormModel = (itemList) => {
     }
     let data = [];
     for (const item of itemList) {
-        if(typeof item==='string'||item.__config__.tag === 'el-form') {
+        if (typeof item === 'string' || item.__config__.tag === 'el-form') {
             continue;
         }
         if (item.__vModel__) {
@@ -172,7 +175,7 @@ const processFormRules = (itemList) => {
     }
     let rules = [];
     for (const item of itemList) {
-        if(typeof item==='string'||item.__config__.tag === 'el-form') {
+        if (typeof item === 'string' || item.__config__.tag === 'el-form') {
             continue;
         }
         if (item.__vModel__) {
@@ -223,7 +226,7 @@ const processPropRefs = (item) => {
 
     const props = item.__props__ || {}
     const __refs__ = item.__refs__ || {}
-    if (codeStyle!=="options" && props.ref) {//fixme 模板引用，选项式不运行！
+    if (codeStyle !== "options" && props.ref) {//fixme 模板引用，选项式不运行！
         addVariable(props.ref, "undefined");
     }
     const {attributes} = elementPlusConfigMap[item.__id__]
@@ -276,12 +279,12 @@ const processDynamicData = (item) => {
     const fnName = `get${titleCase(__refs__[name])}`;
 
     mountedFunctions.push(`${fnName}`)
-    if (codeStyle==='options') {
+    if (codeStyle === 'options') {
         functions.push(`${fnName} (){axios({method:"${method}", url:"${url}"}).then((resp) => {
          this.${__refs__[name]}=resp.data${dataKey ? "[" + dataKey + "]" : ""};
         })}`)
     } else {
-        codeStyle!=='compositionSFC'&& vueImports.add("onMounted");
+        codeStyle !== 'compositionSFC' && vueImports.add("onMounted");
         functions.push(`${fnName} (){axios({method:"${method}", url:"${url}"}).then((resp) => {
          ${__refs__[name]}.value=resp.data${dataKey ? "[" + dataKey + "]" : ""};
         })}`)
@@ -322,10 +325,29 @@ const renderValue = (value, default_ob) => {
 
     }
 }
-
+//对el-autocomplete进行代码生成
+const processAutocomplete = (item) => {
+    const fnNames = item.__props__["fetch-suggestions"];
+    const listName = item.__refs__.options;
+    if (codeStyle === 'options') {
+        functions.push(`${fnNames}(queryString, cb) {
+  const results = queryString
+    ? this.${listName}.filter((item)=>item.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0)
+    : this.${listName};
+  cb(results);
+       }`);
+    } else {
+        functions.push(`${fnNames}(queryString, cb) {
+  const results = queryString
+    ? ${listName}.value.filter((item)=>item.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0)
+    : ${listName}.value;
+  cb(results);
+   }`);
+    }
+}
 
 function addVariable(name, text, noRef) {
-    if(!noRef) vueImports.add("ref");
+    if (!noRef) vueImports.add("ref");
     variables.push({name, text, noRef})
 }
 

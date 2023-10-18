@@ -16,7 +16,7 @@
           "clearable": true
         }
       ],
-      "formRef": true
+      "propsRef": true
     },
     "rules": {
       "label": "验证规则",
@@ -28,7 +28,7 @@
           "clearable": true
         }
       ],
-      "formRef": true
+      "propsRef": true
     },
     "inline": {
       "label": "行内表单",

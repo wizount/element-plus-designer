@@ -4,16 +4,16 @@
 
 <script setup>
 import {getDrawItemList, saveDrawItemList} from "@/utils/db";
-import drawingDefault from "@/components/config/drawingDefault";
+import drawingDefault from "@/components/config/drawingDefault.json";
 import Designer from "@/views/design/Designer.vue";
 
 
-const drawItemListInDB = getDrawItemList().filter((d)=>d!=null);
+let drawItemListInDB = getDrawItemList().filter((d)=>d!=null);
 
-if(drawItemListInDB==null){
-
+if(drawItemListInDB===null||drawItemListInDB.length===0){
+  drawItemListInDB=drawingDefault;
 }
-const drawItemList = ref(drawItemListInDB || drawingDefault || [])
+const drawItemList = ref(drawItemListInDB)
 watch(() => [...drawItemList.value], (val) => {
   saveDrawItemList(val)
 }, {deep: true})

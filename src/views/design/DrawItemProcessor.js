@@ -88,16 +88,13 @@ export function changeDrawItemVariableName(drawItem, newItemName, oldItemName) {
             drawItem.__refs__[key] = val.replace(oldItemName, newItemName)
         }
     }
-    const {__config__: config, __props__: props} = drawItem;
-    //针对el-form更改model和rules
-    if (config.tag === 'el-form') {//这是硬编码
-        if (props.model.indexOf(oldItemName) === 0) {
-            props.model = props.model.replace(oldItemName, newItemName)
+    const {__props__: props} = drawItem;
+
+    Object.keys(props).forEach(key => {
+        if (typeof props[key] === 'string' && props[key].indexOf(oldItemName) === 0) {
+            props[key] = props[key].replace(oldItemName, newItemName)
         }
-        if (props.rules.indexOf(oldItemName) === 0) {
-            props.rules = props.rules.replace(oldItemName, newItemName)
-        }
-    }
+    })
 }
 
 //endregion

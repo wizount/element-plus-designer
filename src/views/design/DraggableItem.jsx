@@ -4,6 +4,7 @@ import Draggable from '@/vuedraggable/vuedraggable';
 import {deepClone, titleCase} from "@/utils";
 import {h, resolveComponent} from "vue";
 import '@/styles/draggalbeItem.scss'
+import {AutoCompleteCallback} from "@/utils/element-plus-utils";
 
 let eventTime = Date.now();
 
@@ -40,6 +41,10 @@ export default {
             const newProps = {};
             Object.assign(newProps, curItem.__native__);
             Object.assign(newProps, curItem.__props__);
+            if(curItem.__id__==="autocomplete"){
+                const ac =new AutoCompleteCallback(curItem.__data__.static.options);
+                newProps["fetch-suggestions"]=ac.querySearch;
+            }
             //对style进行复制
             if(newProps.style){
                 newProps.style=deepClone(newProps.style);
