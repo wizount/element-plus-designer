@@ -3,7 +3,9 @@
   "name": "水印",
   "tag": "el-watermark",
   "tagIcon": "watermark",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/watermark.html",
   "attributes": {
     "width": {
@@ -103,7 +105,10 @@
           }
         }
       ],
-      "default": [100, 100]
+      "default": [
+        100,
+        100
+      ]
     },
     "offset": {
       "label": "偏移",
@@ -119,10 +124,5 @@
       ]
     }
   },
-  "slots": [
-    {
-      "name": "default",
-      "title": "自定义默认内容"
-    }
-  ]
+  "slots": []
 }

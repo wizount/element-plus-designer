@@ -3,7 +3,9 @@
   "name": "开关",
   "tag": "el-switch",
   "tagIcon": "switch",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/switch.html",
   "attributes": {
     "vModel": "modelValue",
@@ -293,6 +295,16 @@
           "tag": "string-number-input"
         }
       ]
+    },
+    "label ^(2.4.1)": {
+      "title": "等价于原生 input `aria-label` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.4.1"
     }
   },
   "events": [
@@ -309,6 +321,18 @@
       "title": "手动 focus 到 switch 组件",
       "type": "Function",
       "fnDes": "() => void"
+    }
+  ],
+  "slots": [
+    {
+      "name": "active-action",
+      "title": "自定义 active 行为",
+      "version": "2.4.4"
+    },
+    {
+      "name": "inactive-action",
+      "title": "自定义 inactive 行为",
+      "version": "2.4.4"
     }
   ]
 }

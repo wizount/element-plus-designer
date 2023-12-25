@@ -3,7 +3,9 @@
   "name": "单选框",
   "tag": "el-radio",
   "tagIcon": "radio",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/radio.html",
   "attributes": {
     "vModel": "modelValue",

@@ -3,14 +3,14 @@
   "name": "时间线",
   "tag": "el-timeline",
   "tagIcon": "timeline",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/timeline.html",
   "childTag": [
     "el-timeline-item"
   ],
-  "attributes": {
-
-  },
+  "attributes": {},
   "slots": [
     {
       "name": "default",

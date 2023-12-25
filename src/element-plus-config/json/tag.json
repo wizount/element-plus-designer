@@ -3,7 +3,9 @@
   "name": "标签",
   "tag": "el-tag",
   "tagIcon": "tag",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/tag.html",
   "attributes": {
     "type": {

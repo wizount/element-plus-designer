@@ -3,7 +3,9 @@
   "name": "按钮组",
   "tag": "el-button-group",
   "tagIcon": "button-group",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/button.html",
   "childTag": [
     "el-button"

@@ -3,7 +3,9 @@
   "name": "抽屉",
   "tag": "el-drawer",
   "tagIcon": "drawer",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/drawer.html",
   "attributes": {
     "vModel": "modelValue",
@@ -217,6 +219,16 @@
           "tag": "el-input-number"
         }
       ]
+    },
+    "header-aria-level": {
+      "title": "header 的 `aria-level` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": 2
     }
   },
   "slots": [
@@ -229,40 +241,39 @@
       "title": "Drawer 标题的内容；会替换标题部分，但不会移除关闭按钮。"
     },
     {
-      "name": "title ^(deprecated)",
-      "title": "与 header 作用相同 请使用 header"
+      "name": "title",
+      "title": "与 header 作用相同 请使用 header",
+      "deprecated": true
     },
     {
       "name": "footer",
       "title": "Drawer 页脚部分"
     }
   ],
-  "exposes": [
-    {
-      "name": "handleClose",
-      "title": "用于关闭 Drawer, 该方法会调用传入的 `before-close` 方法"
-    }
-  ],
   "events": [
     {
       "name": "open",
       "title": "Drawer 打开的回调",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "opened",
       "title": "Drawer 打开动画结束时的回调",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "close",
       "title": "Drawer 关闭的回调",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "closed",
       "title": "Drawer 关闭动画结束时的回调",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     }
   ]
 }

@@ -2,10 +2,11 @@
   "__id__": "dropdown-menu",
   "tag": "el-dropdown-menu",
   "tagIcon": "dropdown",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/dropdown.html",
-  "attributes": {
-  },
+  "attributes": {},
   "slots": [
     {
       "name": "default",

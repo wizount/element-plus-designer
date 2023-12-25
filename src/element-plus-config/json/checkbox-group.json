@@ -3,7 +3,9 @@
   "name": "多选框组",
   "tag": "el-checkbox-group",
   "tagIcon": "checkbox",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/checkbox.html",
   "attributes": {
     "vModel": "modelValue",

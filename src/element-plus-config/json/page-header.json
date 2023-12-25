@@ -3,7 +3,9 @@
   "name": "页头",
   "tag": "el-page-header",
   "tagIcon": "page-header",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/page-header.html",
   "attributes": {
     "icon": {

@@ -1,10 +1,11 @@
-
 {
   "__id__": "upload",
   "name": "上传",
   "tag": "el-upload",
   "tagIcon": "upload",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/upload.html",
   "attributes": {
     "action": {
@@ -244,12 +245,11 @@
       "hide": true
     },
     "file-list": {
-      "label": "",
       "title": "默认上传文件",
       "types": [
         {
-          "name": "UploadUserFile[]",
-          "tag": ""
+          "name": "array",
+          "tag": "array-editor"
         }
       ],
       "default": []
@@ -334,50 +334,52 @@
   "slots": [
     {
       "name": "default",
-      "title": "自定义默认内容",
-      "type": "-"
+      "title": "自定义默认内容"
     },
     {
       "name": "trigger",
-      "title": "触发文件选择框的内容",
-      "type": "-"
+      "title": "触发文件选择框的内容"
     },
     {
       "name": "tip",
-      "title": "提示说明文字",
-      "type": "-"
+      "title": "提示说明文字"
     },
     {
       "name": "file",
       "title": "缩略图模板的内容",
-      "type": "{ file: UploadFile }"
+      "type": "^[object]`{ file: UploadFile }`"
     }
   ],
   "exposes": [
     {
       "name": "abort",
       "title": "取消上传请求",
-      "type": "(file: UploadFile) => void"
+      "type": "Function",
+      "fnDes": "(file: UploadFile) => void"
     },
     {
       "name": "submit",
       "title": "手动上传文件列表",
-      "type": "() => void"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "clearFiles",
       "title": "清空已上传的文件列表（该方法不支持在 `before-upload` 中调用）",
-      "type": "(status?: Array<\"ready\" | \"uploading\" | \"success\" | \"fail\">) => void"
+      "type": "Function",
+      "fnDes": "(status?: UploadStatus[]) => void"
     },
     {
       "name": "handleStart",
       "title": "手动选择文件",
-      "type": "(rawFile: UploadRawFile) => void"
+      "type": "Function",
+      "fnDes": "(rawFile: UploadRawFile) => void"
     },
     {
       "name": "handleRemove",
       "title": "手动移除文件。 `file` 和`rawFile` 已被合并。 `rawFile` 将在 `v2.2.0` 中移除",
-      "type": "(file: UploadFile | UploadRawFile, rawFile?: UploadRawFile) => void"
+      "type": "Function",
+      "fnDes": "(file: UploadFile | UploadRawFile, rawFile?: UploadRawFile) => void"
     }
   ]
 }

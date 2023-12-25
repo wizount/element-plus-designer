@@ -3,7 +3,9 @@
   "name": "图标",
   "tag": "el-icon",
   "tagIcon": "icon",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/icon.html",
   "attributes": {
     "color": {

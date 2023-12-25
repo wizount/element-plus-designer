@@ -3,7 +3,9 @@
   "name": "头像",
   "tag": "el-avatar",
   "tagIcon": "avatar",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/avatar.html",
   "attributes": {
     "icon": {

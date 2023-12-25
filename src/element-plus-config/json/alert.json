@@ -3,7 +3,9 @@
   "name": "提示",
   "tag": "el-alert",
   "tagIcon": "alert",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/result.html",
   "attributes": {
     "title": {

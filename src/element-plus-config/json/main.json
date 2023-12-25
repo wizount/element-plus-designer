@@ -3,12 +3,15 @@
   "name": "主要区域容器",
   "tag": "el-main",
   "tagIcon": "main",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/container.html",
   "slots": [
     {
       "name": "default",
       "title": "自定义默认内容"
     }
-  ]
+  ],
+  "attributes": {}
 }

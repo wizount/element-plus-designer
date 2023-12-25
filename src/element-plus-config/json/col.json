@@ -3,7 +3,9 @@
   "name": "列容器",
   "tag": "el-col",
   "tagIcon": "col",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/layout.html",
   "parentTag": [
     "el-row"
@@ -140,7 +142,6 @@
       "label": "md(≥992px)",
       "title": "≥992px 响应式栅格数或者栅格属性对象",
       "types": [
-
         {
           "name": "number",
           "tag": "col-span-editor"

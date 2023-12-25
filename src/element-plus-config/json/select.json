@@ -3,7 +3,9 @@
   "name": "下拉选择",
   "tag": "el-select",
   "tagIcon": "select",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "childTag": [
     "option-group",
     "option"
@@ -549,48 +551,83 @@
         true
       ],
       "version": "2.3.0"
+    },
+    "popper-options": {
+      "title": "[popper.js](https://popper.js.org/docs/v2/) 参数",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "default": {}
+    },
+    "aria-label": {
+      "title": "等价于原生 input `aria-label` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
     }
   },
   "events": [
     {
       "name": "change",
       "title": "选中值发生变化时触发",
-      "params": "val，目前的选中值"
+      "type": "Function",
+      "fnDes": "(value: any) => void"
     },
     {
       "name": "visible-change",
       "title": "下拉框出现/隐藏时触发",
-      "params": "val，出现则为 true，隐藏则为 false"
+      "type": "Function",
+      "fnDes": "(visible: boolean) => void"
     },
     {
       "name": "remove-tag",
       "title": "多选模式下移除tag时触发",
-      "params": "val，移除的tag值"
+      "type": "Function",
+      "fnDes": "(tagValue: any) => void"
     },
     {
       "name": "clear",
       "title": "可清空的单选模式下用户点击清空按钮时触发",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "blur",
       "title": "当 input 失去焦点时触发",
-      "params": "(event: FocusEvent)"
+      "type": "Function",
+      "fnDes": "(event: FocusEvent) => void"
     },
     {
       "name": "focus",
       "title": "当 input 获得焦点时触发",
-      "params": "(event: FocusEvent)"
+      "type": "Function",
+      "fnDes": "(event: FocusEvent) => void"
     }
   ],
   "slots": [
     {
       "name": "default",
-      "title": "Option 组件列表",
+      "title": "option 组件列表",
       "subtags": [
         "option-group",
         "option"
       ]
+    },
+    {
+      "name": "header",
+      "title": "下拉列表顶部的内容",
+      "version": "2.4.3"
+    },
+    {
+      "name": "footer",
+      "title": "下拉列表底部的内容",
+      "version": "2.4.3"
     },
     {
       "name": "prefix",
@@ -641,5 +678,19 @@
       "method": "get",
       "dataKey": ""
     }
-  }
+  },
+  "exposes": [
+    {
+      "Method": "focus",
+      "title": "使选择器的输入框获取焦点",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "Method": "blur",
+      "title": "使选择器的输入框失去焦点，并隐藏下拉框",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ]
 }

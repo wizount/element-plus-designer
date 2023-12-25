@@ -3,7 +3,9 @@
   "name": "时间选择器",
   "tag": "el-time-picker",
   "tagIcon": "time",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/time-picker.html",
   "attributes": {
     "vModel": "modelValue",
@@ -346,5 +348,6 @@
       "type": "Function",
       "fnDes": "(visibility: boolean) => void"
     }
-  ]
+  ],
+  "slots": []
 }

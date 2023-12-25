@@ -3,7 +3,9 @@
   "name": "卡片",
   "tag": "el-card",
   "tagIcon": "card",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/card.html",
   "attributes": {
     "header": {
@@ -18,6 +20,16 @@
           }
         }
       ]
+    },
+    "footer": {
+      "title": "卡片页脚。 你既可以通过设置 header 来修改标题，也可以通过 `slot#footer` 传入 DOM 节点",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.4.3"
     },
     "body-style": {
       "label": "",
@@ -79,6 +91,10 @@
     {
       "name": "header",
       "title": "卡片标题内容"
+    },
+    {
+      "name": "footer",
+      "title": "卡片页脚内容"
     }
   ]
 }

@@ -3,7 +3,9 @@
   "name": "颜色选择",
   "tag": "el-color-picker",
   "tagIcon": "color",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/color-picker.html",
   "attributes": {
     "vModel": "modelValue",
@@ -109,7 +111,6 @@
           "props": {
             "tag": "el-color-picker"
           }
-
         }
       ],
       "default": []
@@ -135,6 +136,15 @@
         }
       ],
       "default": 0
+    },
+    "label": {
+      "title": "ColorPicker 的 aria-label",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
     },
     "label<A11yTag/>": {
       "label": "",
@@ -175,6 +185,18 @@
       "title": "面板中当前显示的颜色发生改变时触发",
       "type": "Function",
       "fnDes": "(value: string) => void"
+    },
+    {
+      "name": "focus ^(2.4.0)",
+      "title": "当获得焦点时触发",
+      "type": "Function",
+      "fnDes": "(event: FocusEvent) => void"
+    },
+    {
+      "name": "blur ^(2.4.0)",
+      "title": "当失去焦点时触发",
+      "type": "Function",
+      "fnDes": "(event: FocusEvent) => void"
     }
   ],
   "exposes": [
@@ -194,6 +216,19 @@
       "title": "手动隐藏颜色选择器",
       "type": "Function",
       "fnDes": "() => void"
+    },
+    {
+      "name": "focus ^(2.3.13)",
+      "title": "使 picker 获得焦点",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "blur ^(2.3.13)",
+      "title": "使 picker 失去焦点",
+      "type": "Function",
+      "fnDes": "() => void"
     }
-  ]
+  ],
+  "slots": []
 }

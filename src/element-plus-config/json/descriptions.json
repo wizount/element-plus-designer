@@ -3,7 +3,9 @@
   "name": "描述列表",
   "tag": "el-descriptions",
   "tagIcon": "menu",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "childTag": [
     "el-descriptions-item"
   ],

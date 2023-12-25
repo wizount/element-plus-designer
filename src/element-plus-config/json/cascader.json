@@ -3,7 +3,9 @@
   "name": "级联选择",
   "tag": "el-cascader",
   "tagIcon": "cascader",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/cascader.html",
   "attributes": {
     "vModel": "modelValue",
@@ -333,6 +335,17 @@
         }
       ],
       "default": true
+    },
+    "max-collapse-tags": {
+      "title": "需要显示的 Tag 的最大数量 只有当 `collapse-tags` 设置为 true 时才会生效。",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 1,
+      "version": "2.3.10"
     }
   },
   "events": [
@@ -398,7 +411,7 @@
       "type": "^[object]`ComputedRef<any>`"
     },
     {
-      "name": "togglePopperVisible",
+      "name": "togglePopperVisible ^(2.2.31)",
       "title": "切换 popper 可见状态",
       "type": "Function",
       "fnDes": "(visible?: boolean) => void"

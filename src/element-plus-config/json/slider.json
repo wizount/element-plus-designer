@@ -3,7 +3,9 @@
   "name": "滑块",
   "tag": "el-slider",
   "tagIcon": "slider",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/slider.html",
   "attributes": {
     "vModel": "modelValue",
@@ -388,12 +390,15 @@
     {
       "name": "change",
       "title": "值改变时触发（使用鼠标拖曳时，只在松开鼠标后触发）",
-      "params": "val，新状态的值"
+      "type": "Function",
+      "fnDes": "(value: Arrayable<number>) => boolean"
     },
     {
       "name": "input",
       "title": "数据改变时触发（使用鼠标拖曳时，活动过程实时触发）",
-      "params": "val，改变后的值"
+      "type": "Function",
+      "fnDes": "(value: Arrayable<number>) => boolean"
     }
-  ]
+  ],
+  "slots": []
 }

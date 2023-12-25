@@ -3,11 +3,23 @@
   "name": "可选中标签",
   "tag": "el-check-tag",
   "tagIcon": "check-tag",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/tag.html",
   "attributes": {
     "checked": {
       "label": "",
+      "title": "是否选中",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "checked / v-model:checked": {
       "title": "是否选中",
       "types": [
         {

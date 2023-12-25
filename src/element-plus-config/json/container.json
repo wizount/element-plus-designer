@@ -3,7 +3,9 @@
   "name": "外层容器",
   "tag": "el-container",
   "tagIcon": "container",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/container.html",
   "attributes": {
     "direction": {

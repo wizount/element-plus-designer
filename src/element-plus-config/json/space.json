@@ -3,7 +3,9 @@
   "name": "间距",
   "tag": "el-space",
   "tagIcon": "space",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/space.html",
   "attributes": {
     "alignment": {
@@ -153,7 +155,7 @@
         {
           "name": "array",
           "tag": "array-editor",
-          "props":{
+          "props": {
             "tag": "el-input-number",
             "fixedNumber": 2
           }

@@ -3,7 +3,9 @@
   "name": "图片",
   "tag": "el-image-viewer",
   "tagIcon": "image",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/image.html",
   "attributes": {
     "url-list": {
@@ -82,6 +84,28 @@
       ],
       "default": 1.2
     },
+    "min-scale": {
+      "title": "图像查看器缩放事件的最小缩放比例",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0.2,
+      "version": "2.4.0"
+    },
+    "max-scale": {
+      "title": "图像查看器缩放事件的最大缩放比例",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 7,
+      "version": "2.4.0"
+    },
     "close-on-press-escape": {
       "label": "",
       "title": "是否可以通过按下 ESC 关闭 Image Viewer",
@@ -106,6 +130,12 @@
       "title": "切换图像时触发。",
       "type": "Function",
       "fnDes": "(index: number) => void"
+    },
+    {
+      "name": "rotate ^(2.3.13)",
+      "title": "旋转图像时触发。",
+      "type": "Function",
+      "fnDes": "(deg: number) => void"
     }
   ],
   "exposes": [
@@ -115,5 +145,6 @@
       "type": "Function",
       "fnDes": "(index: number) => void"
     }
-  ]
+  ],
+  "slots": []
 }

@@ -3,7 +3,9 @@
   "name": "下拉菜单",
   "tag": "el-dropdown",
   "tagIcon": "dropdown",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/dropdown.html",
   "attributes": {
     "type": {

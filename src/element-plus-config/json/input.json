@@ -3,7 +3,9 @@
   "name": "单行文本",
   "tag": "el-input",
   "tagIcon": "input",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/input.html",
   "attributes": {
     "vModel": "modelValue",

@@ -3,7 +3,9 @@
   "name": "进度条",
   "tag": "el-progress",
   "tagIcon": "progress",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/progress.html",
   "attributes": {
     "percentage": {
@@ -240,7 +242,8 @@
   "slots": [
     {
       "name": "default",
-      "title": "自定义内容，参数为 `{ percentage }`"
+      "title": "自定义内容",
+      "type": "^[object]`{ percentage: number }`"
     }
   ]
 }

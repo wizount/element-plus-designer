@@ -3,7 +3,9 @@
   "name": "滚动条",
   "tag": "el-scrollbar",
   "tagIcon": "scrollbar",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/scrollbar.html",
   "attributes": {
     "height": {
@@ -143,6 +145,59 @@
         }
       ],
       "default": 20
+    },
+    "id": {
+      "title": "视图ID",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.4.0"
+    },
+    "role ^(2.4.0)": {
+      "title": "视图的角色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.4.0"
+    },
+    "aria-label ^(2.4.0)": {
+      "title": "视图的 aria-label",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.4.0"
+    },
+    "aria-orientation ^(2.4.0)": {
+      "title": "视图的 aria-orientation",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "horizontal",
+              "value": "horizontal"
+            },
+            {
+              "label": "vertical",
+              "value": "vertical"
+            }
+          ]
+        }
+      ],
+      "version": "2.4.0"
     }
   },
   "events": [

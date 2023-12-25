@@ -3,7 +3,9 @@
   "name": "标签页",
   "tag": "el-tab-pane",
   "tagIcon": "tab-pane",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/tabs.html",
   "parentTag": [
     "el-tabs"

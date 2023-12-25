@@ -3,7 +3,9 @@
   "name": "自动补全",
   "tag": "el-autocomplete",
   "tagIcon": "autocomplete",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/autocomplete.html",
   "attributes": {
     "vModel": "modelValue",
@@ -124,6 +126,24 @@
       ],
       "default": false
     },
+    "name": {
+      "title": "等价于原生 input `name` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "label": {
+      "title": "输入框关联的 label 文字",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
     "hide-loading": {
       "label": "隐藏加载图标",
       "title": "是否隐藏远程加载时的加载图标",
@@ -211,7 +231,8 @@
   "slots": [
     {
       "name": "default",
-      "title": "自定义输入建议的内容。 自定义标签，参数为 { item }"
+      "title": "自定义输入建议的内容。",
+      "type": "^[object]`{ item: Record<string, any> }`"
     },
     {
       "name": "prefix",
@@ -228,6 +249,11 @@
     {
       "name": "append",
       "title": "输入框后置内容，在 suffix 之后"
+    },
+    {
+      "name": "loading",
+      "title": "override loading content",
+      "version": "2.5.0"
     }
   ],
   "exposes": [

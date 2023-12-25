@@ -3,7 +3,9 @@
   "name": "虚拟表格",
   "tag": "el-table-v2",
   "tagIcon": "table",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "attributes": {
     "cache": {
       "label": "",
@@ -421,7 +423,7 @@
     },
     {
       "name": "scroll",
-      "title": "Invoked after scrolling",
+      "title": "表格被用户滚动后触发",
       "params": "Object\\<[ScrollParams](#typings)\\>"
     },
     {

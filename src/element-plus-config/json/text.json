@@ -3,7 +3,9 @@
   "name": "文本",
   "tag": "el-text",
   "tagIcon": "text",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/text.html",
   "attributes": {
     "type": {
@@ -81,6 +83,16 @@
         }
       ],
       "default": false
+    },
+    "line-clamp": {
+      "title": "最大行数",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "version": "2.4.0"
     },
     "tag": {
       "label": "自定义元素标签",

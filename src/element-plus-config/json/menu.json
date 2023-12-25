@@ -3,7 +3,9 @@
   "name": "菜单",
   "tag": "el-menu",
   "tagIcon": "menu",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/menu.html",
   "attributes": {
     "mode": {
@@ -55,6 +57,27 @@
         }
       ],
       "default": true
+    },
+    "ellipsis-icon": {
+      "title": "自定义省略图标 (仅在水平模式下可用)",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.4.4"
+    },
+    "popper-offset": {
+      "title": "弹出层的偏移量(对所有子菜单有效)",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 6,
+      "version": "2.4.4"
     },
     "background-color": {
       "label": "背景颜色",
@@ -192,6 +215,49 @@
         }
       ],
       "default": "dark"
+    },
+    "close-on-click-outside": {
+      "title": "可选，单击外部时是否折叠菜单",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.4.4"
+    },
+    "popper-class": {
+      "title": "custom class name for all popup menus",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.5.0"
+    },
+    "show-timeout": {
+      "title": "Control timeout for all menus before showing",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 300,
+      "version": "2.5.0"
+    },
+    "hide-timeout": {
+      "title": "Control timeout for all menus before hiding",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 300,
+      "version": "2.5.0"
     }
   },
   "events": [

@@ -3,7 +3,9 @@
   "name": "时间线子项",
   "tag": "el-timeline-item",
   "tagIcon": "timeline-item",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/timeline.html",
   "parentTag": [
     "el-timeline"
@@ -166,7 +168,7 @@
     },
     {
       "name": "dot",
-      "title": "customize defined node for timeline item.搞不清楚怎么用"
+      "title": "customize defined node for timeline item"
     }
   ]
 }

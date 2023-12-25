@@ -3,7 +3,9 @@
   "name": "穿梭框",
   "tag": "el-transfer",
   "tagIcon": "transfer",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/transfer.html",
   "attributes": {
     "vModel": "modelValue",
@@ -202,7 +204,7 @@
   "slots": [
     {
       "name": "default",
-      "title": "自定义数据项的内容， 参数为 `{ option }`"
+      "title": "自定义数据项的内容， The scope parameter is { option }"
     },
     {
       "name": "left-footer",
@@ -215,26 +217,30 @@
   ],
   "exposes": [
     {
-      "name": "clearQuery",
+      "Method": "clearQuery",
       "title": "清空某个面板的搜索关键词",
-      "params": "'left' / 'right'"
+      "type": "Function",
+      "fnDes": "(which: TransferDirection) => void"
     }
   ],
   "events": [
     {
       "name": "change",
       "title": "右侧列表元素变化时触发",
-      "params": "当前值、数据移动的方向（'left' / 'right'）、发生移动的数据 key 数组"
+      "type": "Function",
+      "fnDes": "(value: TransferKey[], direction: TransferDirection, movedKeys: TransferKey[]) => void"
     },
     {
       "name": "left-check-change",
       "title": "左侧列表元素被用户选中 / 取消选中时触发",
-      "params": "当前被选中的元素的 key 数组、选中状态发生变化的元素的 key 数组"
+      "type": "Function",
+      "fnDes": "(value: TransferKey[], movedKeys?: TransferKey[]) => void"
     },
     {
       "name": "right-check-change",
       "title": "右侧列表元素被用户选中 / 取消选中时触发",
-      "params": "当前被选中的元素的 key 数组、选中状态发生变化的元素的 key 数组"
+      "type": "Function",
+      "fnDes": "(value: TransferKey[], movedKeys?: TransferKey[]) => void"
     }
   ]
 }

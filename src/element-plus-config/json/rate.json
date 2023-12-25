@@ -3,7 +3,9 @@
   "name": "评分",
   "tag": "el-rate",
   "tagIcon": "rate",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/rate.html",
   "attributes": {
     "vModel": "modelValue",
@@ -145,7 +147,11 @@
           }
         }
       ],
-      "default": ["StarFilled", "StarFilled", "StarFilled"]
+      "default": [
+        "StarFilled",
+        "StarFilled",
+        "StarFilled"
+      ]
     },
     "void-icon": {
       "label": "未选中图标",
@@ -294,5 +300,6 @@
       "type": "Function",
       "fnDes": "() => void"
     }
-  ]
+  ],
+  "slots": []
 }

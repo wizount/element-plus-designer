@@ -3,7 +3,9 @@
   "name": "表单项",
   "tag": "el-form-item",
   "tagIcon": "form",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/form.html",
   "attributes": {
     "prop": {
@@ -190,8 +192,7 @@
   "slots": [
     {
       "name": "default",
-      "title": "表单的内容。",
-      "type": "—"
+      "title": "表单的内容。"
     },
     {
       "name": "label",

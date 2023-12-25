@@ -3,7 +3,9 @@
   "name": "顶栏容器",
   "tag": "el-header",
   "tagIcon": "header",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/container.html",
   "attributes": {
     "height": {

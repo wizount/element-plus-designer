@@ -3,7 +3,9 @@
   "name": "固钉",
   "tag": "el-affix",
   "tagIcon": "affix",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/affix.html",
   "attributes": {
     "offset": {
@@ -69,7 +71,7 @@
   "events": [
     {
       "name": "change",
-      "title": "fixed 状态改变时触发的事件",
+      "title": "固钉状态改变时触发的事件",
       "type": "Function",
       "fnDes": "(fixed: boolean) => void"
     },
@@ -78,20 +80,6 @@
       "title": "滚动时触发的事件",
       "type": "Function",
       "fnDes": "(value: { scrollTop: number, fixed: boolean }) => void"
-    }
-  ],
-  "exposes": [
-    {
-      "name": "update",
-      "title": "手动更新固钉状态",
-      "type": "Function",
-      "fnDes": "() => void"
-    },
-    {
-      "name": "updateRoot",
-      "title": "手动更新根元素的盒模型信息",
-      "type": "Function",
-      "fnDes": "() => void"
     }
   ],
   "slots": [

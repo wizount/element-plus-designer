@@ -3,7 +3,9 @@
   "name": "链接",
   "tag": "el-link",
   "tagIcon": "link",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/link.html",
   "attributes": {
     "type": {

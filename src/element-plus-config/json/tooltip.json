@@ -3,7 +3,9 @@
   "name": "文字提示",
   "tag": "el-tooltip",
   "tagIcon": "tooltip",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/tooltip.html",
   "attributes": {
     "append-to": {

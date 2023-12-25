@@ -3,7 +3,9 @@
   "name": "对话框",
   "tag": "el-dialog",
   "tagIcon": "dialog",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/dialog.html",
   "attributes": {
     "vModel": "modelValue",
@@ -91,6 +93,17 @@
         }
       ],
       "default": false
+    },
+    "append-to": {
+      "title": "Dialog 挂载到哪个 DOM 元素 将覆盖 `append-to-body`",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "body",
+      "version": "2.4.3"
     },
     "lock-scroll": {
       "label": "Dialog 出现 body 滚动锁定",
@@ -248,6 +261,16 @@
           "tag": "el-input-number"
         }
       ]
+    },
+    "header-aria-level": {
+      "title": "header 的 `aria-level` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": 2
     }
   },
   "slots": [
@@ -258,6 +281,11 @@
     {
       "name": "header",
       "title": "对话框标题的内容；会替换标题部分，但不会移除关闭按钮。"
+    },
+    {
+      "name": "title",
+      "title": "与 header 作用相同 请使用 header",
+      "deprecated": true
     },
     {
       "name": "footer",

@@ -3,7 +3,9 @@
   "name": "分页",
   "tag": "el-pagination",
   "tagIcon": "pagination",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/pagination.html",
   "attributes": {
     "small": {
@@ -27,6 +29,15 @@
         }
       ],
       "default": false
+    },
+    "page-size / v-model:page-size": {
+      "title": "每页显示条目个数",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
     },
     "page-size": {
       "label": "",
@@ -79,6 +90,15 @@
       ],
       "default": 7
     },
+    "current-page / v-model:current-page": {
+      "title": "当前页数",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
     "current-page": {
       "label": "",
       "title": "当前页数",
@@ -120,7 +140,7 @@
         {
           "name": "array",
           "tag": "array-editor",
-          "props":{
+          "props": {
             "tag": "el-input-number",
             "tagProps": {
               "step": 10,
@@ -213,6 +233,17 @@
       ],
       "default": false
     },
+    "teleported": {
+      "title": "是否将下拉菜单teleport至 body",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.3.13"
+    },
     "hide-on-single-page": {
       "label": "只有一页时隐藏",
       "title": "只有一页时是否隐藏",
@@ -237,6 +268,12 @@
       "title": "`current-page` 改变时触发",
       "type": "Function",
       "fnDes": "(value: number) => void"
+    },
+    {
+      "name": "change ^(2.4.4)",
+      "title": "`current-page` 或 `page-size` 更改时触发",
+      "type": "Function",
+      "fnDes": "(currentPage: number, pageSize: number) => void"
     },
     {
       "name": "prev-click",

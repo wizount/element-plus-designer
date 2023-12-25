@@ -3,7 +3,9 @@
   "name": "折叠面板子项",
   "tag": "el-collapse-item",
   "tagIcon": "collapse-item",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/collapse.html",
   "parentTag": [
     "el-collapse"
@@ -46,11 +48,11 @@
   "slots": [
     {
       "name": "default",
-      "title": "content of Collapse Item"
+      "title": "Collapse Item 的内容"
     },
     {
       "name": "title",
-      "title": "content of Collapse Item title"
+      "title": "Collapse Item 的标题"
     }
   ]
 }

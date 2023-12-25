@@ -3,7 +3,9 @@
   "name": "按钮",
   "tag": "el-button",
   "tagIcon": "button",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/button.html",
   "attributes": {
     "size": {
@@ -268,12 +270,6 @@
       "version": "2.3.4"
     }
   },
-  "events":[
-    {
-      "name": "click",
-      "params": ["event"]
-    }
-  ],
   "slots": [
     {
       "name": "default",

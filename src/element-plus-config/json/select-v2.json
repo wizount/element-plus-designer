@@ -3,7 +3,9 @@
   "name": "虚拟选择器",
   "tag": "el-select-v2",
   "tagIcon": "select",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/select-v2.html",
   "attributes": {
     "vModel": "modelValue",
@@ -14,6 +16,16 @@
       "hide": true,
       "required": true,
       "default": []
+    },
+    "props": {
+      "title": "配置选项，具体看下表",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "version": "2.4.2"
     },
     "multiple": {
       "label": "多选",
@@ -311,6 +323,16 @@
       ],
       "default": 170
     },
+    "item-height": {
+      "title": "下拉项的高度",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 34
+    },
     "scrollbar-always-on": {
       "label": "展示滚动条",
       "title": "控制是否总是展示滚动条",
@@ -432,6 +454,17 @@
         true
       ],
       "version": "2.3.0"
+    },
+    "max-collapse-tags": {
+      "title": "需要显示的 Tag 的最大数量 只有当 `collapse-tags` 设置为 true 时才会生效。",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 1,
+      "version": "2.3.0"
     }
   },
   "events": [
@@ -443,7 +476,7 @@
     {
       "name": "visible-change",
       "title": "下拉框出现/隐藏时触发",
-      "params": "val，出现则为 true，隐藏则为 false"
+      "params": "出现时为true，隐藏时为false"
     },
     {
       "name": "remove-tag",

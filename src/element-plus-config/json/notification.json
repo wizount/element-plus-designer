@@ -83,6 +83,16 @@
         }
       ]
     },
+    "customClass": {
+      "title": "自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": ""
+    },
     "custom-class": {
       "label": "",
       "title": "自定义类名",
@@ -136,6 +146,36 @@
         }
       ],
       "default": "top-right"
+    },
+    "showClose": {
+      "title": "是否显示关闭按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "onClose": {
+      "title": "关闭时的回调函数",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "() => void"
+        }
+      ]
+    },
+    "onClick": {
+      "title": "点击 Notification 时的回调函数",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "() => void"
+        }
+      ]
     },
     "show-close": {
       "label": "",
@@ -209,5 +249,7 @@
       ],
       "default": 0
     }
-  }
+  },
+  "slots": [],
+  "exposes": []
 }

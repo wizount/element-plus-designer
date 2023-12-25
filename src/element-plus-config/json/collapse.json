@@ -3,7 +3,9 @@
   "name": "折叠面板",
   "tag": "el-collapse",
   "tagIcon": "collapse",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/collapse.html",
   "childTag": [
     "el-collapse-item"
@@ -26,7 +28,7 @@
     {
       "name": "change",
       "title": "当前激活面板改变时触发(如果是手风琴模式，参数 `activeNames` 类型为`string`，否则为`array`)",
-      "params": "(activeNames: array (non-accordion mode) / string (accordion mode))"
+      "params": "(activeNames: array (非手风琴模式) / string (手风琴模式))"
     }
   ],
   "slots": [

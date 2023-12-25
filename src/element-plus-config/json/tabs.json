@@ -3,7 +3,9 @@
   "name": "标签页",
   "tag": "el-tabs",
   "tagIcon": "tabs",
-  "layouts": ["containerItem"],
+  "layouts": [
+    "containerItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/tabs.html",
   "childTag": [
     "el-tab-pane"
@@ -156,6 +158,11 @@
       "subtags": [
         "tab-pane"
       ]
+    },
+    {
+      "name": "addIcon",
+      "title": "自定义添加按钮图标",
+      "version": "2.4.0"
     }
   ]
 }

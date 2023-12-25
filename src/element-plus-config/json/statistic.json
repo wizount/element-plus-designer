@@ -3,7 +3,9 @@
   "name": "统计组件",
   "tag": "el-statistic",
   "tagIcon": "statistic",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/statistic.html",
   "attributes": {
     "value": {

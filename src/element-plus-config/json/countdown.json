@@ -3,7 +3,9 @@
   "name": "倒计时",
   "tag": "el-countdown",
   "tagIcon": "countdown",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/statistic.html#%E5%80%92%E8%AE%A1%E6%97%B6",
   "attributes": {
     "value": {
@@ -17,7 +19,7 @@
         {
           "name": "string",
           "tag": "el-date-picker",
-          "props":{
+          "props": {
             "type": "datetime",
             "value-format": "YYYY-MM-DD HH:mm:ss"
           }

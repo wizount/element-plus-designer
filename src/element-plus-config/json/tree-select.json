@@ -3,7 +3,9 @@
   "name": "树形选择",
   "tag": "el-tree-select",
   "tagIcon": "tree-select",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/tree-select.html",
   "data": {
     "name": "data",
@@ -33,5 +35,7 @@
       "method": "get",
       "dataKey": ""
     }
-  }
+  },
+  "attributes": {},
+  "slots": []
 }

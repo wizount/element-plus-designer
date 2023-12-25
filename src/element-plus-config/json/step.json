@@ -3,7 +3,9 @@
   "name": "步骤",
   "tag": "el-step",
   "tagIcon": "step",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/steps.html",
   "parentTag": [
     "el-steps"

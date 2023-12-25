@@ -3,7 +3,9 @@
   "name": "日期时间选择",
   "tag": "el-date-picker",
   "tagIcon": "date",
-  "layouts": ["rawItem"],
+  "layouts": [
+    "rawItem"
+  ],
   "document": "https://element-plus.gitee.io/zh-CN/component/date-picker.html",
   "attributes": {
     "readonly": {
@@ -298,6 +300,86 @@
         }
       ]
     },
+    "date-format": {
+      "title": "可选，时间选择器下拉列表中显示的日期格式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "参见 [date formats](https:",
+              "value": "参见 [date formats](https:"
+            },
+            {
+              "label": "",
+              "value": ""
+            },
+            {
+              "label": "day.js.org",
+              "value": "day.js.org"
+            },
+            {
+              "label": "docs",
+              "value": "docs"
+            },
+            {
+              "label": "en",
+              "value": "en"
+            },
+            {
+              "label": "display",
+              "value": "display"
+            },
+            {
+              "label": "format)",
+              "value": "format)"
+            }
+          ]
+        }
+      ],
+      "version": "2.4.0"
+    },
+    "time-format": {
+      "title": "可选，时间选择器下拉列表中显示的时间格式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "参见 [date formats](https:",
+              "value": "参见 [date formats](https:"
+            },
+            {
+              "label": "",
+              "value": ""
+            },
+            {
+              "label": "day.js.org",
+              "value": "day.js.org"
+            },
+            {
+              "label": "docs",
+              "value": "docs"
+            },
+            {
+              "label": "en",
+              "value": "en"
+            },
+            {
+              "label": "display",
+              "value": "display"
+            },
+            {
+              "label": "format)",
+              "value": "format)"
+            }
+          ]
+        }
+      ],
+      "version": "2.4.0"
+    },
     "id": {
       "label": "",
       "title": "等价于原生 input `id` 属性",
@@ -442,6 +524,13 @@
     {
       "name": "range-separator",
       "title": "自定义范围分割符内容"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "focus",
+      "title": "使 input 获取焦点",
+      "params": "—"
     }
   ]
 }
