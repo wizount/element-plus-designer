@@ -239,7 +239,8 @@
           }
         }
       ],
-      "hide": true
+      "hide": true,
+      "a11y": true
     },
     "prefix-icon": {
       "label": "前缀图标",

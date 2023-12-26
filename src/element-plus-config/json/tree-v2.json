@@ -194,7 +194,8 @@
           "tag": "el-input-number"
         }
       ],
-      "default": 26
+      "default": 26,
+      "version": "2.2.33"
     }
   },
   "exposes": [],

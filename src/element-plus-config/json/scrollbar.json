@@ -156,7 +156,7 @@
       ],
       "version": "2.4.0"
     },
-    "role ^(2.4.0)": {
+    "role": {
       "title": "视图的角色",
       "types": [
         {
@@ -164,9 +164,10 @@
           "tag": "el-input"
         }
       ],
-      "version": "2.4.0"
+      "version": "2.4.0",
+      "a11y": true
     },
-    "aria-label ^(2.4.0)": {
+    "aria-label": {
       "title": "视图的 aria-label",
       "types": [
         {
@@ -174,9 +175,10 @@
           "tag": "el-input"
         }
       ],
-      "version": "2.4.0"
+      "version": "2.4.0",
+      "a11y": true
     },
-    "aria-orientation ^(2.4.0)": {
+    "aria-orientation": {
       "title": "视图的 aria-orientation",
       "types": [
         {
@@ -197,7 +199,8 @@
           ]
         }
       ],
-      "version": "2.4.0"
+      "version": "2.4.0",
+      "a11y": true
     }
   },
   "events": [

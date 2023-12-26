@@ -118,7 +118,8 @@
       "switch": [
         "collapse-tags",
         true
-      ]
+      ],
+      "version": "2.3.0"
     },
     "multiple-limit": {
       "label": "多选最大数目",
@@ -341,18 +342,6 @@
       ],
       "default": false
     },
-    "popper-append-to-body": {
-      "label": "弹出框插入至body元素",
-      "title": "是否将弹出框插入至 body 元素 当弹出框的位置出现问题时，你可以尝试将该属性设置为false。",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": true,
-      "deprecated": true
-    },
     "teleported": {
       "label": "使用teleport插入body元素",
       "title": "该下拉菜单是否使用teleport插入body元素",
@@ -534,7 +523,8 @@
           ]
         }
       ],
-      "default": "bottom-start"
+      "default": "bottom-start",
+      "version": "2.2.17"
     },
     "max-collapse-tags": {
       "label": "标签最大数量",
@@ -569,7 +559,8 @@
           "name": "string",
           "tag": "el-input"
         }
-      ]
+      ],
+      "a11y": true
     }
   },
   "events": [

@@ -237,7 +237,8 @@
           "name": "boolean",
           "tag": "el-switch"
         }
-      ]
+      ],
+      "version": "2.3.2"
     }
   },
   "events": [

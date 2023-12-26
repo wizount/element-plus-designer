@@ -263,7 +263,8 @@
           "tag": "el-switch"
         }
       ],
-      "default": true
+      "default": true,
+      "version": "2.2.20"
     }
   },
   "slots": [

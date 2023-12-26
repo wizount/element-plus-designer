@@ -144,20 +144,8 @@
           "name": "string",
           "tag": "el-input"
         }
-      ]
-    },
-    "label<A11yTag/>": {
-      "label": "",
-      "title": "ColorPicker 的 aria-label",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ]
+      ],
+      "a11y": true
     },
     "id": {
       "label": "",
@@ -187,15 +175,17 @@
       "fnDes": "(value: string) => void"
     },
     {
-      "name": "focus ^(2.4.0)",
+      "name": "focus",
       "title": "当获得焦点时触发",
       "type": "Function",
+      "version": "2.4.0",
       "fnDes": "(event: FocusEvent) => void"
     },
     {
-      "name": "blur ^(2.4.0)",
+      "name": "blur",
       "title": "当失去焦点时触发",
       "type": "Function",
+      "version": "2.4.0",
       "fnDes": "(event: FocusEvent) => void"
     }
   ],
@@ -206,27 +196,31 @@
       "type": "^[object]`Color`"
     },
     {
-      "name": "show ^(2.3.3)",
+      "name": "show",
       "title": "手动显示颜色选择器",
       "type": "Function",
+      "version": "2.3.3",
       "fnDes": "() => void"
     },
     {
-      "name": "hide ^(2.3.3)",
+      "name": "hide",
       "title": "手动隐藏颜色选择器",
       "type": "Function",
+      "version": "2.3.3",
       "fnDes": "() => void"
     },
     {
-      "name": "focus ^(2.3.13)",
+      "name": "focus",
       "title": "使 picker 获得焦点",
       "type": "Function",
+      "version": "2.3.13",
       "fnDes": "() => void"
     },
     {
-      "name": "blur ^(2.3.13)",
+      "name": "blur",
       "title": "使 picker 失去焦点",
       "type": "Function",
+      "version": "2.3.13",
       "fnDes": "() => void"
     }
   ],

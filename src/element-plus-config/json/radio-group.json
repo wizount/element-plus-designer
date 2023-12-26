@@ -92,7 +92,8 @@
             "clearable": true
           }
         }
-      ]
+      ],
+      "a11y": true
     },
     "name": {
       "label": "",

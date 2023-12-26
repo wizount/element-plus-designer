@@ -82,7 +82,8 @@
           "tag": "el-input-number"
         }
       ],
-      "default": 1.2
+      "default": 1.2,
+      "version": "2.2.27"
     },
     "min-scale": {
       "title": "图像查看器缩放事件的最小缩放比例",
@@ -132,9 +133,10 @@
       "fnDes": "(index: number) => void"
     },
     {
-      "name": "rotate ^(2.3.13)",
+      "name": "rotate",
       "title": "旋转图像时触发。",
       "type": "Function",
+      "version": "2.3.13",
       "fnDes": "(deg: number) => void"
     }
   ],

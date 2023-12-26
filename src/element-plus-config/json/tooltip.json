@@ -134,7 +134,7 @@
       ],
       "default": "bottom"
     },
-    "visible / v-model:visible": {
+    "visible": {
       "label": "",
       "title": "Tooltip 组件可见性",
       "types": [
@@ -368,7 +368,8 @@
             "clearable": true
           }
         }
-      ]
+      ],
+      "a11y": true
     }
   },
   "slots": [

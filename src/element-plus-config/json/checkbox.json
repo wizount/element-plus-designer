@@ -181,7 +181,8 @@
           "name": "boolean",
           "tag": "el-switch"
         }
-      ]
+      ],
+      "a11y": true
     }
   },
   "events": [

@@ -170,7 +170,7 @@
       ],
       "default": false
     },
-    "visible / v-model:visible": {
+    "visible": {
       "label": "",
       "title": "Popover 是否显示",
       "types": [

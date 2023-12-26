@@ -20,7 +20,8 @@
           }
         }
       ],
-      "default": "https"
+      "default": "https",
+      "required": true
     },
     "headers": {
       "label": "请求头部",

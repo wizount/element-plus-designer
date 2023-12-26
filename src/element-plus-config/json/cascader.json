@@ -411,9 +411,10 @@
       "type": "^[object]`ComputedRef<any>`"
     },
     {
-      "name": "togglePopperVisible ^(2.2.31)",
+      "name": "togglePopperVisible",
       "title": "切换 popper 可见状态",
       "type": "Function",
+      "version": "2.2.31",
       "fnDes": "(visible?: boolean) => void"
     },
     {

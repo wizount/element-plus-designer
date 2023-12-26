@@ -248,7 +248,8 @@
           "tag": "el-switch"
         }
       ],
-      "default": false
+      "default": false,
+      "version": "2.2.18"
     },
     "id": {
       "label": "",
@@ -276,7 +277,8 @@
           }
         }
       ],
-      "hide": true
+      "hide": true,
+      "a11y": true
     }
   },
   "events": [

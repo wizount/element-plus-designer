@@ -214,7 +214,8 @@
           ]
         }
       ],
-      "default": "dark"
+      "default": "dark",
+      "version": "2.2.26"
     },
     "close-on-click-outside": {
       "title": "可选，单击外部时是否折叠菜单",

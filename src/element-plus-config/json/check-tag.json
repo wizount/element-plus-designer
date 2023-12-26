@@ -18,16 +18,6 @@
         }
       ],
       "default": false
-    },
-    "checked / v-model:checked": {
-      "title": "是否选中",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false
     }
   },
   "events": [

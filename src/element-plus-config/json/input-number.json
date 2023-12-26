@@ -104,7 +104,8 @@
           "tag": "el-switch"
         }
       ],
-      "default": false
+      "default": false,
+      "version": "2.2.16"
     },
     "disabled": {
       "label": "禁用",

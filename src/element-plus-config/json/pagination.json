@@ -30,15 +30,6 @@
       ],
       "default": false
     },
-    "page-size / v-model:page-size": {
-      "title": "每页显示条目个数",
-      "types": [
-        {
-          "name": "number",
-          "tag": "el-input-number"
-        }
-      ]
-    },
     "page-size": {
       "label": "",
       "title": "每页显示条目个数",
@@ -89,15 +80,6 @@
         }
       ],
       "default": 7
-    },
-    "current-page / v-model:current-page": {
-      "title": "当前页数",
-      "types": [
-        {
-          "name": "number",
-          "tag": "el-input-number"
-        }
-      ]
     },
     "current-page": {
       "label": "",
@@ -270,9 +252,10 @@
       "fnDes": "(value: number) => void"
     },
     {
-      "name": "change ^(2.4.4)",
+      "name": "change",
       "title": "`current-page` 或 `page-size` 更改时触发",
       "type": "Function",
+      "version": "2.4.4",
       "fnDes": "(currentPage: number, pageSize: number) => void"
     },
     {
