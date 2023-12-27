@@ -53,88 +53,92 @@
         @click="curItemConfig.defaultValue=!curItemConfig.defaultValue">显示{{ curItemConfig.tag }}
     </el-button>
   </el-form-item>
-<template v-if="activeData.__id__!=='plainText'">
-  <el-divider>属性</el-divider>
+  <template v-if="activeData.__id__!=='plainText'">
+    <el-divider>属性</el-divider>
 
-  <el-form-item label="原生属性">
-    <object-editor v-model="activeData.__native__"/>
-  </el-form-item>
-  <el-form-item v-if="curItemConfig.optionType !== undefined" label="选项样式">
-    <el-radio-group v-model="curItemConfig.optionType">
-      <el-radio-button label="default">默认</el-radio-button>
-      <el-radio-button label="button">按钮</el-radio-button>
-    </el-radio-group>
-  </el-form-item>
-  <el-form-item v-if="curItemConfig.iconName !== undefined" label="图标">
-    <icon-chooser v-model="curItemConfig.iconName"></icon-chooser>
-  </el-form-item>
-  <el-form-item v-if="curItemConfig.reference !== undefined" label="文字">
-    <el-input v-model="curItemConfig.reference"/>
-  </el-form-item>
-  <el-form-item label="文字" v-if="activeData.__slots__&&typeof activeData.__slots__.default==='string'">
-    <el-input v-model="activeData.__slots__.default" placeholder="请输入文字"/>
-  </el-form-item>
-  <el-form-item v-if="curItemConfig.required !== undefined" label="必填">
-    <el-switch v-model="curItemConfig.required"></el-switch>
-  </el-form-item>
+    <el-form-item label="原生属性">
+      <object-editor v-model="activeData.__native__"/>
+    </el-form-item>
+    <el-form-item v-if="curItemConfig.optionType !== undefined" label="选项样式">
+      <el-radio-group v-model="curItemConfig.optionType">
+        <el-radio-button label="default">默认</el-radio-button>
+        <el-radio-button label="button">按钮</el-radio-button>
+      </el-radio-group>
+    </el-form-item>
+    <el-form-item v-if="curItemConfig.iconName !== undefined" label="图标">
+      <icon-chooser v-model="curItemConfig.iconName"></icon-chooser>
+    </el-form-item>
+    <el-form-item v-if="curItemConfig.reference !== undefined" label="文字">
+      <el-input v-model="curItemConfig.reference"/>
+    </el-form-item>
+    <el-form-item label="文字" v-if="activeData.__slots__&&typeof activeData.__slots__.default==='string'">
+      <el-input v-model="activeData.__slots__.default" placeholder="请输入文字"/>
+    </el-form-item>
+    <el-form-item v-if="curItemConfig.required !== undefined" label="必填">
+      <el-switch v-model="curItemConfig.required"></el-switch>
+    </el-form-item>
 
-  <el-form-item v-if="activeData.__data__" :label="curComConfig.data.label">
+    <el-form-item v-if="activeData.__data__" :label="curComConfig.data.label">
 
-    <el-radio-group v-model="activeData.__data__.source" class="mb-2">
-      <el-radio-button label="static">静态数据</el-radio-button>
-      <el-radio-button label="dynamic" v-if="activeData.__data__.dynamic">动态数据</el-radio-button>
-    </el-radio-group>
-    <el-input v-model="activeData.__refs__[curComConfig.data.name]"
-              v-if="activeData.__data__[activeData.__data__.source].ref">
-      <template #prepend>REF</template>
-    </el-input>
-    <div v-show="activeData.__data__.source==='static'">
+      <el-radio-group v-model="activeData.__data__.source" class="mb-2">
+        <el-radio-button label="static">静态数据</el-radio-button>
+        <el-radio-button label="dynamic" v-if="activeData.__data__.dynamic">动态数据</el-radio-button>
+      </el-radio-group>
+      <el-input v-model="activeData.__refs__[curComConfig.data.name]"
+                v-if="activeData.__data__[activeData.__data__.source].ref">
+        <template #prepend>REF</template>
+      </el-input>
+      <div v-show="activeData.__data__.source==='static'">
 
-      <config-value-input :attr-config="curComConfig.data.static.type" :treeProps="curItemProps.props"
-                          v-model="activeData.__data__.static[curComConfig.data.name]"></config-value-input>
-    </div>
-    <div v-show="activeData.__data__.source==='dynamic'" v-if="activeData.__data__.dynamic">
-      <el-form-item label="网址">
-        <el-input v-model="activeData.__data__.dynamic.url" placeholder="网址">
-        </el-input>
-      </el-form-item>
-      <el-form-item label="方法">
-        <el-select v-model="activeData.__data__.dynamic.method" placeholder="方法">
-          <el-option label="get" value="get"></el-option>
-          <el-option label="post" value="post"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="数据位置">
-        <el-input v-model="activeData.__data__.dynamic.dataKey" placeholder="数据位置" @change="changeRenderKey()">
-        </el-input>
-      </el-form-item>
-    </div>
-  </el-form-item>
-  <template v-for="(v,k) in defaultSetterData" :key="k">
-    <el-form-item v-show="!v.switch||v.switch&&curItemProps[v.switch[0]]===v.switch[1]"
-                  :required="v.required">
-      <template #label>
-        <div>
+        <config-value-input :attr-config="curComConfig.data.static.type" :treeProps="curItemProps.props"
+                            v-model="activeData.__data__.static[curComConfig.data.name]"></config-value-input>
+      </div>
+      <div v-show="activeData.__data__.source==='dynamic'" v-if="activeData.__data__.dynamic">
+        <el-form-item label="网址">
+          <el-input v-model="activeData.__data__.dynamic.url" placeholder="网址">
+          </el-input>
+        </el-form-item>
+        <el-form-item label="方法">
+          <el-select v-model="activeData.__data__.dynamic.method" placeholder="方法">
+            <el-option label="get" value="get"></el-option>
+            <el-option label="post" value="post"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="数据位置">
+          <el-input v-model="activeData.__data__.dynamic.dataKey" placeholder="数据位置" @change="changeRenderKey()">
+          </el-input>
+        </el-form-item>
+      </div>
+    </el-form-item>
+    <template v-for="(v,k) in defaultSetterData" :key="k">
+      <el-form-item v-show="!v.switch||v.switch&&curItemProps[v.switch[0]]===v.switch[1]"
+                    :required="v.required">
+        <template #label>
+          <div>
           <span :title="`${k}${v.title?'：'+v.title:''}。${v.ref?'':'双击可以变成ref对象'}`"
                 @dblclick.prevent="!v.ref&&switchRef(k)" @click.prevent="" class="mr-1">
           {{ v.label || v.title }}</span>
-          <el-icon v-if="attributeConfig[k]&&attributeConfig[k].types.length>1" style="transform: rotate(90deg); cursor: pointer;"
-                   :title="`当前${v.type.name}类型，点击更换类型`" @click="changeType(k,v.type.name)">
-            <Sort/>
-          </el-icon>
-        </div>
-      </template>
+            <el-tag v-if="v.version">{{ v.version }}</el-tag>
+            <el-tag v-if="v.deprecated" type="warning">弃用</el-tag>
+            <el-tag v-if="v.a11y">a11y</el-tag>
+            <el-icon v-if="attributeConfig[k]&&attributeConfig[k].types.length>1"
+                     style="transform: rotate(90deg); cursor: pointer;"
+                     :title="`当前${v.type.name}类型，点击更换类型`" @click="changeType(k,v.type.name)">
+              <Sort/>
+            </el-icon>
+          </div>
+        </template>
 
-      <el-input v-model="__refs__[k]" placeholder="请输入ref对象变量名" title="请输入ref对象变量名"
-                v-if="__refs__&&__refs__[k]">
-        <template #prepend>REF</template>
-      </el-input>
+        <el-input v-model="__refs__[k]" placeholder="请输入ref对象变量名" title="请输入ref对象变量名"
+                  v-if="__refs__&&__refs__[k]">
+          <template #prepend>REF</template>
+        </el-input>
 
-<!--      :treeProps="curItemProps.props"使用不明智，但确实解决了问题-->
-      <config-value-input v-model="curItemProps[k]" v-if="v.type.tag" :treeProps="curItemProps.props"
-                          :attr-config="v.type"></config-value-input>
-    </el-form-item>
-  </template>
+        <!--      :treeProps="curItemProps.props"使用不明智，但确实解决了问题-->
+        <config-value-input v-model="curItemProps[k]" v-if="v.type.tag" :treeProps="curItemProps.props"
+                            :attr-config="v.type"></config-value-input>
+      </el-form-item>
+    </template>
   </template>
 
 
@@ -162,20 +166,21 @@ const __refs__ = computed(() => {
   return props.activeData && props.activeData.__refs__ || {}
 })
 
-onMounted(()=>{
-  nextTick(()=>{
+onMounted(() => {
+  nextTick(() => {
     setDefaultSetterData();
   })
 
 })
 const defaultSetterData = ref({});
-watch(()=>curItemConfig.value.tag, (val) => {
+watch(() => curItemConfig.value.tag, (val) => {
   setDefaultSetterData();
 })
 const curComConfig = computed(() => {
   return elementPlusConfigMap[props.activeData.__id__] || {}
 })
-function setDefaultSetterData(){
+
+function setDefaultSetterData() {
   defaultSetterData.value = {};
   const res = {};
   for (const name in props.attributeConfig) {
