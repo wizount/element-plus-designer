@@ -1,6 +1,6 @@
 {
   "name": "element-plus-designer",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

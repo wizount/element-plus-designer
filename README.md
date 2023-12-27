@@ -7,7 +7,8 @@ Element Plus设计器提供大部分element plus组件所见及所得在线设�
 
 ## 功能概述
 
-- 支持98%以上的element plus组件在线设计
+- 支持99%以上的element plus组件在线设计
+- 原生html组件在线设计
 - 丰富快速组件属性更改
 - style样式修改
 - 组件插槽在线可插入
@@ -83,11 +84,11 @@ npm run build
 ## 技术栈
 - Vue3 
 - Element Plus
-- Vite4
+- Vite5
 - Vuedraggable（有进行修改，并在项目直接使用）
 
 ## 下一步计划
-- 支持剩下2%组件
+- 支持剩下1%组件
 - 支持事件编辑
 
 
