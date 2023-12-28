@@ -1,37 +1,37 @@
-# Element Plus designer 
-感谢 JakHuang [form generator](https://github.com/JakHuang/form-generator) 提供的灵感。  
-Element Plus设计器提供大部分element plus组件所见及所得在线设计，当然也包含表单设计。  
-[GitHub演示地址](https://wizount.github.io/element-plus-designer/)
+# Element Plus designer Element Plus
+Thanks to JakHuang [form generator](https://github.com/JakHuang/form-generator) for providing the inspiration.
+Element Plus designer provides WYSIWYG design of most element plus components, including form design. 
+[GitHub demo url](https://wizount.github.io/element-plus-designer/)
 
 <img src="https://gitee.com/wizount/element-plus-designer/raw/master/images/all.png">
 
-## 功能概述
+## Functional Overview
 
-- 支持99%以上的element plus组件在线设计
-- 原生html组件在线设计
-- 丰富快速组件属性更改
-- style样式修改
-- 组件插槽在线可插入
-- 表单正则表达式创建
-- 导出和复制vue3代码(支持选项式和组合式)
-- 导出组件后台JSON代码
-- 代码预览
+- Supports online design of more than 99% of element plus components
+- Online design of native html components
+- Rich and fast component property changes
+- style modification
+- Component slots can be inserted online
+- Form regular expression creation
+- Export and copy vue3 code (supports optional and combined types)
+- Export component background JSON code
+- Code preview
 
 
-## 使用
-### 直接引用
+## Usage
+### Use in your project
 
 ```sh 
 npm install element-plus-designer
 ```
-#### 复制preview.html到你的工程根目录
-#### main.js输入以下代码
+#### Copy preview.html to your project root directory
+#### Enter the following code in main.js
 ```
 import  ElementPlusDesigner from 'element-plus-designer'
 import 'element-plus-designer/dist/style.css'
 app.use(ElementPlusDesigner)
 ```
-#### 需要设计，请在*.vue输入以下代码
+#### If you need to design, please enter the following code in *.vue
 ```
 <script setup>
 import {ref} from "vue";
@@ -46,7 +46,7 @@ body{
 }
 </style>
 ```
-#### 仅使用render，请在*.vue输入以下代码
+#### Only use render, please enter the following code in *.vue
 ```
 <script setup>
 import {ref,watch} from "vue";
@@ -63,19 +63,19 @@ watch(formModel, (val) => {
   </div>
 </template>
 ```
-## 工程开发安装
-### 安装
+## Project development
+### install
 ```sh
 npm install
 ```
 
-### 开发
+### develop
 
 ```sh
 npm run dev
 ```
 然后访问：http://localhost:5173/
-### 发布
+### publish
 
 ```sh
 npm run build
@@ -85,11 +85,11 @@ npm run build
 - Vue3 
 - Element Plus
 - Vite5
-- Vuedraggable（有进行修改，并在项目直接使用）
+- Vuedraggable（(modified and used directly in the project）
 
-## 下一步计划
-- 支持剩下1%组件
-- 支持事件编辑
+## Next steps
+- Supports the remaining 1% components
+- Support event editing
 
 
-联系方式：微信：glqqyx, QQ: 2537660666 email: 2537660666@qq.com
+Contact information: WeChat: glqqyx, QQ: 2537660666 email: 2537660666@qq.com
