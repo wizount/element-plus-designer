@@ -1,4 +1,4 @@
-# Element Plus designer Element Plus
+# Element Plus designer
 Thanks to JakHuang [form generator](https://github.com/JakHuang/form-generator) for providing the inspiration.
 Element Plus designer provides WYSIWYG design of most element plus components, including form design. 
 [GitHub demo url](https://wizount.github.io/element-plus-designer/)
