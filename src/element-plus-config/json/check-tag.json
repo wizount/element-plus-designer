@@ -18,6 +18,39 @@
         }
       ],
       "default": false
+    },
+    "type": {
+      "title": "CheckTag 类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "primary",
+              "value": "primary"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "danger",
+              "value": "danger"
+            }
+          ]
+        }
+      ],
+      "default": "primary",
+      "version": "2.5.4"
     }
   },
   "events": [

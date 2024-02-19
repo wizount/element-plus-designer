@@ -1,0 +1,214 @@
+{
+  "attributes": {
+    "show-arrow": {
+      "title": "是否显示箭头",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "placement": {
+      "title": "引导卡片相对于目标元素的位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "top-start",
+              "value": "top-start"
+            },
+            {
+              "label": "top-end",
+              "value": "top-end"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            },
+            {
+              "label": "bottom-start",
+              "value": "bottom-start"
+            },
+            {
+              "label": "bottom-end",
+              "value": "bottom-end"
+            },
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "left-start",
+              "value": "left-start"
+            },
+            {
+              "label": "left-end",
+              "value": "left-end"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            },
+            {
+              "label": "right-start",
+              "value": "right-start"
+            },
+            {
+              "label": "right-end",
+              "value": "right-end"
+            }
+          ]
+        }
+      ],
+      "default": "bottom"
+    },
+    "content-style": {
+      "title": "为content自定义样式",
+      "types": [
+        {
+          "name": "CSSProperties",
+          "tag": "style-editor"
+        }
+      ]
+    },
+    "mask": {
+      "title": "是否启用遮罩，通过自定义属性改变遮罩样式以及填充的颜色",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "default": true
+    },
+    "type": {
+      "title": "类型，影响底色与文字颜色",
+      "types": [
+        {
+          "name": "default`",
+          "tag": ""
+        },
+        {
+          "name": "`primary",
+          "tag": ""
+        }
+      ],
+      "default": "default"
+    },
+    "current": {
+      "title": "当前值",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "scroll-into-view-options": {
+      "title": "是否支持当前元素滚动到视窗内，也可传入配置指定滚动视窗的相关参数",
+      "types": [
+        {
+          "name": "boolean`",
+          "tag": ""
+        },
+        {
+          "name": "`ScrollIntoViewOptions",
+          "tag": ""
+        }
+      ],
+      "default": "^[Object]`{ block: 'center' }`"
+    },
+    "z-index": {
+      "title": "Tour 的层级",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 2001
+    },
+    "show-close": {
+      "title": "是否显示关闭按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "close-icon": {
+      "title": "自定义关闭图标，默认Close",
+      "types": [
+        {
+          "name": "string`",
+          "tag": ""
+        },
+        {
+          "name": "`Component",
+          "tag": ""
+        }
+      ],
+      "default": "*"
+    },
+    "close-on-press-escape": {
+      "title": "是否可以通过按下 ESC 关闭引导",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "target-area-clickable": {
+      "title": "启用蒙层时，target 元素区域是否可以点击。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "tourStep 组件列表"
+    },
+    {
+      "name": "indicators",
+      "title": "自定义指示器, scope 参数是 `{ current, total }`"
+    }
+  ],
+  "events": [
+    {
+      "name": "close",
+      "title": "关闭引导时的回调函数",
+      "type": "Function",
+      "fnDes": "(current: number) => void"
+    },
+    {
+      "name": "finish",
+      "title": "引导完成时的回调",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "change",
+      "title": "步骤改变时的回调",
+      "type": "Function",
+      "fnDes": "(current: number) => void"
+    }
+  ]
+}

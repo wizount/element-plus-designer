@@ -138,6 +138,28 @@
         }
       ]
     },
+    "crossorigin": {
+      "title": "原生属性 [crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "anonymous",
+              "value": "anonymous"
+            },
+            {
+              "label": "use-credentials",
+              "value": "use-credentials"
+            }
+          ]
+        }
+      ]
+    },
     "on-preview": {
       "label": "已上传的文件时的钩子",
       "title": "点击文件列表中已上传的文件时的钩子",

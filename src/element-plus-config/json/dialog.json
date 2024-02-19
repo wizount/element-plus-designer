@@ -208,6 +208,17 @@
       ],
       "default": false
     },
+    "overflow": {
+      "title": "拖动范围可以超出可视区",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.5.4"
+    },
     "center": {
       "label": "header 和 footer 居中",
       "title": "是否让 Dialog 的 header 和 footer 部分居中排列",

@@ -80,6 +80,34 @@
         }
       ]
     },
+    "target": {
+      "title": "同原生 `target `属性",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "_blank",
+              "value": "_blank"
+            },
+            {
+              "label": "_parent",
+              "value": "_parent"
+            },
+            {
+              "label": "_self",
+              "value": "_self"
+            },
+            {
+              "label": "_top",
+              "value": "_top"
+            }
+          ]
+        }
+      ],
+      "default": "\\_self"
+    },
     "icon": {
       "label": "图标组件",
       "title": "图标组件",

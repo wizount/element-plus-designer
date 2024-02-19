@@ -134,6 +134,15 @@
       ],
       "default": "bottom"
     },
+    "fallback-placements": {
+      "title": "list of possible positions for Tooltip [popper.js](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements)",
+      "types": [
+        {
+          "name": "arrary",
+          "tag": ""
+        }
+      ]
+    },
     "visible": {
       "label": "",
       "title": "Tooltip 组件可见性",

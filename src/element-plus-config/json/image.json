@@ -144,6 +144,28 @@
         }
       ]
     },
+    "crossorigin": {
+      "title": "原生属性 [crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "anonymous",
+              "value": "anonymous"
+            },
+            {
+              "label": "use-credentials",
+              "value": "use-credentials"
+            }
+          ]
+        }
+      ]
+    },
     "preview-src-list": {
       "label": "开启启图片预览功能",
       "title": "开启图片预览功能",

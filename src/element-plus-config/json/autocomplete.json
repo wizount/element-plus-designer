@@ -252,7 +252,7 @@
     },
     {
       "name": "loading",
-      "title": "override loading content",
+      "title": "修改加载区域内容",
       "version": "2.5.0"
     }
   ],

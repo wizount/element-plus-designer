@@ -741,7 +741,7 @@
   "data": {
     "name": "data",
     "label": "数据",
-    "source": "dynamic",
+    "source": "static",
     "inProps": true,
     "static": {
       "ref": true,

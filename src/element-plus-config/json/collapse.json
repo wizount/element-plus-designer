@@ -27,8 +27,9 @@
   "events": [
     {
       "name": "change",
-      "title": "当前激活面板改变时触发(如果是手风琴模式，参数 `activeNames` 类型为`string`，否则为`array`)",
-      "params": "(activeNames: array (非手风琴模式) / string (手风琴模式))"
+      "title": "切换当前活动面板，在手风琴模式下其类型是`string`，在其他模式下是`array`",
+      "type": "Function",
+      "fnDes": "(activeNames: array | string) => void"
     }
   ],
   "slots": [

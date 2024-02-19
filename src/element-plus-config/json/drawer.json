@@ -275,6 +275,18 @@
       "title": "Drawer 关闭动画结束时的回调",
       "type": "Function",
       "fnDes": "() => void"
+    },
+    {
+      "name": "open-auto-focus",
+      "title": "输入焦点聚焦在 Drawer 内容时的回调",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "close-auto-focus",
+      "title": "输入焦点从 Drawer 内容失焦时的回调",
+      "type": "Function",
+      "fnDes": "() => void"
     }
   ]
 }

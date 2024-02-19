@@ -526,6 +526,16 @@
       "default": "bottom-start",
       "version": "2.2.17"
     },
+    "": {
+      "title": "",
+      "types": [
+        {
+          "name": "arrary",
+          "tag": ""
+        }
+      ],
+      "default": ""
+    },
     "max-collapse-tags": {
       "label": "标签最大数量",
       "title": "需要显示的 Tag 的最大数量 只有当 collapse-tags 设置为 true 时才会生效。",
@@ -627,6 +637,16 @@
     {
       "name": "empty",
       "title": "无选项时的列表"
+    },
+    {
+      "name": "tag",
+      "title": "select 组件自定义标签内容",
+      "version": "2.5.0"
+    },
+    {
+      "name": "loading",
+      "title": "select 组件自定义 loading内容",
+      "version": "2.5.2"
     }
   ],
   "data": {

@@ -194,6 +194,15 @@
         }
       ]
     },
+    "value-format": {
+      "title": "可选，绑定值的格式。 不指定则绑定值为 Date 对象",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
     "id": {
       "label": "",
       "title": "等价于原生 input id 属性",

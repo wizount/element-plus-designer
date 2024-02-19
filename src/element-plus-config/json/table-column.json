@@ -404,6 +404,16 @@
       ],
       "hide": true
     },
+    "filter-class-name": {
+      "title": "过滤弹出框的 className",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.5.0"
+    },
     "filter-multiple": {
       "label": "",
       "title": "数据过滤的选项是否多选",
