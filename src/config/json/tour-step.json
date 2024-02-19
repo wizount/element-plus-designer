@@ -185,7 +185,7 @@
       "types": [
         {
           "name": "boolean",
-          "tag": ""
+          "tag": "el-switch"
         },
         {
           "name": "object",

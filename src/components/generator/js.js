@@ -1,4 +1,4 @@
-import elementPlusConfigMap from "@/element-plus-config"
+import elementPlusConfigMap from "@/config"
 import ruleTrigger from './ruleTrigger'
 import {deepClone, titleCase} from "@/utils";
 

@@ -35,7 +35,7 @@ import {ElMessage, ElMessageBox, ElNotification} from "element-plus";
 import {VAceEditor} from 'vue3-ace-editor';
 import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/theme-one_dark';
-import {jsCodeStyleList} from "@/components/config/config";
+import {jsCodeStyleList} from "@/config/config";
 
 const props = defineProps({htmlStr: {type: String, required: true,}, designConf: {type: String, required: true}})
 

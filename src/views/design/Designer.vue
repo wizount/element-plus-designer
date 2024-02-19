@@ -218,7 +218,7 @@ import JsonDrawer from './JsonDrawer'
 import RightPanel from './RightPanel'
 import {
   designConf as designConfPreset, jsCodeStyleList
-} from '@/components/config/config'
+} from '@/config/config'
 import {addClass, camelCase, deepClone, deleteObjectProps} from '@/utils'
 
 
@@ -226,10 +226,10 @@ import {getDesignConf, saveDesignConf} from '@/utils/db'
 import loadBeautifier from '@/utils/loadBeautifier'
 import {ElMessage, ElMessageBox, ElNotification} from 'element-plus'
 import DraggableItem from "./DraggableItem"
-import {elementPlusComponents} from "@/components/config/elementPlusConfig";
+import {elementPlusComponents} from "@/config/elementPlusConfig";
 
 
-import elementPlusConfigMap from "@/element-plus-config";
+import elementPlusConfigMap from "@/config";
 
 const componentMap = {};
 elementPlusComponents.forEach((first) => {

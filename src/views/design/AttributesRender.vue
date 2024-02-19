@@ -115,7 +115,7 @@
         <template #label>
           <div>
           <span :title="`${k}${v.title?'：'+v.title:''}。${v.ref?'':'双击可以变成ref对象'}`"
-                @dblclick.prevent="!v.ref&&switchRef(k)" @click.prevent="" class="mr-1">
+                @dblclick.prevent="!v.ref&&switchRef(k)" @click.prevent="" class="mr-1" >
           {{ v.label || v.title }}</span>
             <el-tag v-if="v.version">{{ v.version }}</el-tag>
             <el-tag v-if="v.deprecated" type="warning">弃用</el-tag>
@@ -150,7 +150,7 @@ import {ElMessageBox} from "element-plus";
 import {camelCase, deepClone, getType} from "@/utils";
 import {Sort} from "@element-plus/icons-vue";
 import IconChooser from "@/components/editors/IconChooser.vue";
-import elementPlusConfigMap from "@/element-plus-config";
+import elementPlusConfigMap from "@/config";
 import ObjectEditor from "@/components/editors/ObjectEditor.vue";
 
 const props = defineProps(["activeData", "attributeConfig"]);

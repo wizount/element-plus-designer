@@ -1,4 +1,4 @@
-import elementPlusConfigMap from "@/element-plus-config"
+import elementPlusConfigMap from "@/config"
 import slotHtmlFunctions from "@/components/generator/slots";
 import {deepClone} from "@/utils";
 import {isArrayEqual, isObjectEqual} from "@/components/generator/utils";

@@ -4,7 +4,7 @@
 
 <script setup>
 import {getDrawItemList, saveDrawItemList} from "@/utils/db";
-import drawingDefault from "@/components/config/drawingDefault.json";
+import drawingDefault from "@/config/drawingDefault.json";
 import Designer from "@/views/design/Designer.vue";
 
 

@@ -214,7 +214,7 @@ const version = ElementPlus.version;
 import Draggable from '@/vuedraggable/vuedraggable';
 import {saveDesignConf} from '@/utils/db'
 import AttributesRender from "@/views/design/AttributesRender.vue";
-import elementPlusConfigMap from "@/element-plus-config";
+import elementPlusConfigMap from "@/config";
 import StyleEditor from "@/components/editors/StyleEditor.vue";
 import {ElCollapseTransition} from 'element-plus'
 
