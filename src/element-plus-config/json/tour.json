@@ -1,6 +1,19 @@
 {
+  "__id__": "tour",
+  "name": "漫游式引导",
+  "tag": "el-tour",
+  "tagIcon": "tour",
+  "layouts": [
+    "rawItem"
+  ],
+  "document": "https://element-plus.gitee.io/zh-CN/component/tour.html",
+  "childTag": [
+    "el-tour-step"
+  ],
   "attributes": {
+    "vModel": "modelValue",
     "show-arrow": {
+      "label": "显示箭头",
       "title": "是否显示箭头",
       "types": [
         {
@@ -11,6 +24,7 @@
       "default": true
     },
     "placement": {
+      "label": "引导卡片位置",
       "title": "引导卡片相对于目标元素的位置",
       "types": [
         {
@@ -71,39 +85,53 @@
       "default": "bottom"
     },
     "content-style": {
+      "label": "内容样式",
       "title": "为content自定义样式",
       "types": [
         {
-          "name": "CSSProperties",
+          "name": "object",
           "tag": "style-editor"
         }
-      ]
+      ],
+      "default": {}
     },
     "mask": {
-      "title": "是否启用遮罩，通过自定义属性改变遮罩样式以及填充的颜色",
+      "label": "启用蒙层",
+      "title": "是否启用蒙层，也可传入配置改变蒙层样式和填充色",
       "types": [
         {
-          "name": "object",
-          "tag": "object-editor"
+          "name": "boolean",
+          "tag": "el-switch"
         }
       ],
       "default": true
     },
     "type": {
+      "label": "类型",
       "title": "类型，影响底色与文字颜色",
       "types": [
         {
-          "name": "default`",
-          "tag": ""
-        },
-        {
-          "name": "`primary",
-          "tag": ""
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "primary",
+              "value": "primary"
+            }
+          ]
         }
       ],
       "default": "default"
     },
     "current": {
+      "label": "",
       "title": "当前值",
       "types": [
         {
@@ -113,20 +141,24 @@
       ]
     },
     "scroll-into-view-options": {
+      "label": "支持当前元素滚动到视窗内",
       "title": "是否支持当前元素滚动到视窗内，也可传入配置指定滚动视窗的相关参数",
       "types": [
         {
-          "name": "boolean`",
+          "name": "boolean",
           "tag": ""
         },
         {
-          "name": "`ScrollIntoViewOptions",
-          "tag": ""
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
-      "default": "^[Object]`{ block: 'center' }`"
+      "default": {
+        "block": "center"
+      }
     },
     "z-index": {
+      "label": "",
       "title": "Tour 的层级",
       "types": [
         {
@@ -137,6 +169,7 @@
       "default": 2001
     },
     "show-close": {
+      "label": "显示关闭按钮",
       "title": "是否显示关闭按钮",
       "types": [
         {
@@ -147,20 +180,18 @@
       "default": true
     },
     "close-icon": {
+      "label": "关闭图标",
       "title": "自定义关闭图标，默认Close",
       "types": [
         {
-          "name": "string`",
-          "tag": ""
-        },
-        {
-          "name": "`Component",
-          "tag": ""
+          "name": "string",
+          "tag": "icon-chooser"
         }
       ],
-      "default": "*"
+      "default": "Close"
     },
     "close-on-press-escape": {
+      "label": "ESC 关闭引导",
       "title": "是否可以通过按下 ESC 关闭引导",
       "types": [
         {
@@ -171,6 +202,7 @@
       "default": true
     },
     "target-area-clickable": {
+      "label": "",
       "title": "启用蒙层时，target 元素区域是否可以点击。",
       "types": [
         {

@@ -851,6 +851,35 @@ export const elementPlusComponents = [
                 ]
             },
             {
+                name: "Tour 漫游式引导",
+                key: "tour",
+                children: [
+                    {
+                        __id__: "tour",
+                        __config__: {
+                            visibleBtn: true,
+                            defaultValue: false
+                        },
+                        __slots__: {
+                            default: [
+                                {
+                                    __id__: "tour-step",
+                                },
+                                {
+                                    __id__: "tour-step",
+                                }
+
+                            ]
+                        },
+                        __link__: [
+                            {
+                                __id__: "tour-step"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 name: "Tree 树形控件",
                 key: "tree",
                 children: [
@@ -1035,7 +1064,8 @@ export const elementPlusComponents = [
                     {
                         __id__: "dialog",
                         __config__: {
-                            defaultValue: true
+                            visibleBtn: true,
+                            defaultValue: false
                         }
                     }
                 ]
@@ -1043,11 +1073,12 @@ export const elementPlusComponents = [
             {
                 name: "Drawer 抽屉",
                 key: "drawer",
-                children: [//fixme 如果有子组件，会出错。
+                children: [
                     {
                         __id__: "drawer",
                         __config__: {
-                            defaultValue: true
+                            visibleBtn: true,
+                            defaultValue: false
                         }
                     }
                 ]

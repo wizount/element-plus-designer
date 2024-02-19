@@ -47,8 +47,7 @@
     </div>
 
   </el-form-item>
-  <el-form-item v-if="curItemConfig.tag==='el-dialog'||curItemConfig.tag==='el-drawer'" label="显示"
-                title="显示dialog或者drawer">
+  <el-form-item v-if="curItemConfig.visibleBtn" label="显示">
     <el-button
         @click="curItemConfig.defaultValue=!curItemConfig.defaultValue">显示{{ curItemConfig.tag }}
     </el-button>

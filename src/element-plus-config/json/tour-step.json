@@ -1,16 +1,28 @@
 {
+  "__id__": "tour-step",
+  "name": "漫游式引导步骤",
+  "tag": "el-tour-step",
+  "tagIcon": "tour-step",
+  "layouts": [
+    "rawItem"
+  ],
+  "document": "https://element-plus.gitee.io/zh-CN/component/step.html",
+  "parentTag": [
+    "el-tour"
+  ],
   "attributes": {
     "target": {
-      "title": "获取引导卡片指向的元素， 为空时居中于屏幕。 自^(2.5.2)以来支持字符串和函数类型。 字符串类型是文档.querySelector的选择器。",
+      "label": "指向元素",
+      "title": "获取引导卡片指向的元素， 为空时居中于屏幕。 自2.5.2以来支持字符串和函数类型。 字符串类型是文档.querySelector的选择器。",
       "types": [
         {
-          "name": "function",
-          "tag": "",
-          "desc": "() => HTMLElemen"
+          "name": "string",
+          "tag": "el-input"
         }
       ]
     },
     "show-arrow": {
+      "label": "显示箭头",
       "title": "是否显示箭头",
       "types": [
         {
@@ -21,16 +33,17 @@
       "default": true
     },
     "title": {
+      "label": "",
       "title": "标题",
       "types": [
         {
           "name": "string",
           "tag": "el-input"
         }
-      ],
-      "default": "*"
+      ]
     },
     "description": {
+      "label": "",
       "title": "主要描述部分",
       "types": [
         {
@@ -40,6 +53,7 @@
       ]
     },
     "placement": {
+      "label": "引导卡片位置",
       "title": "引导卡片相对于目标元素的位置",
       "types": [
         {
@@ -100,40 +114,53 @@
       "default": "bottom"
     },
     "content-style": {
+      "label": "内容样式",
       "title": "为content自定义样式",
       "types": [
         {
-          "name": "CSSProperties",
+          "name": "object",
           "tag": "style-editor"
         }
       ],
-      "default": "*"
+      "default": {}
     },
     "mask": {
+      "label": "启用蒙层",
       "title": "是否启用蒙层，也可传入配置改变蒙层样式和填充色",
       "types": [
         {
-          "name": "object",
-          "tag": "object-editor"
+          "name": "boolean",
+          "tag": "el-switch"
         }
       ],
       "default": true
     },
     "type": {
+      "label": "类型",
       "title": "类型，影响底色与文字颜色",
       "types": [
         {
-          "name": "default`",
-          "tag": ""
-        },
-        {
-          "name": "`primary",
-          "tag": ""
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "primary",
+              "value": "primary"
+            }
+          ]
         }
       ],
       "default": "default"
     },
     "next-button-props": {
+      "label": "",
       "title": "“下一步”按钮的属性",
       "types": [
         {
@@ -143,29 +170,34 @@
       ]
     },
     "prev-button-props": {
+      "label": "",
       "title": "“上一步”按钮的属性",
       "types": [
         {
           "name": "object",
           "tag": "object-editor"
         }
-      ],
-      "default": "*"
+      ]
     },
     "scroll-into-view-options": {
-      "title": "是否支持当前元素滚动到视窗内，也可传入配置指定滚动视窗的相关参数，默认跟随 Tour 的 `scrollIntoViewOptions` 属性",
+      "label": "支持当前元素滚动到视窗内",
+      "title": "是否支持当前元素滚动到视窗内，也可传入配置指定滚动视窗的相关参数",
       "types": [
         {
-          "name": "boolean`",
+          "name": "boolean",
           "tag": ""
         },
         {
-          "name": "`ScrollIntoViewOptions",
-          "tag": ""
+          "name": "object",
+          "tag": "object-editor"
         }
-      ]
+      ],
+      "default": {
+        "block": "center"
+      }
     },
     "show-close": {
+      "label": "显示关闭按钮",
       "title": "是否显示关闭按钮",
       "types": [
         {
@@ -176,18 +208,15 @@
       "default": true
     },
     "close-icon": {
+      "label": "关闭图标",
       "title": "自定义关闭图标，默认Close",
       "types": [
         {
-          "name": "string`",
-          "tag": ""
-        },
-        {
-          "name": "`Component",
-          "tag": ""
+          "name": "string",
+          "tag": "icon-chooser"
         }
       ],
-      "default": "*"
+      "default": "Close"
     }
   },
   "slots": [
