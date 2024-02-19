@@ -24,7 +24,7 @@ import elementIcons from '@/components/SvgIcon/svgicon'
 app.use(elementIcons)
 
 //载入props编辑组件。
-import editors from '@/components/editors/'
+import editors from '@/components/editors/index'
 app.use(editors)
 
 
