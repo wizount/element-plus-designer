@@ -268,7 +268,7 @@ export const elementPlusComponents = [
             {
                 name: "Autocomplete 自动补全",
                 key: "autocomplete",
-                children: [ {
+                children: [{
                     __id__: "autocomplete",
                     __config__: {
                         defaultValue: null,
@@ -356,7 +356,7 @@ export const elementPlusComponents = [
                     {
                         __id__: "date-picker",
                         __config__: {
-                            name:"日期时间选择",
+                            name: "日期时间选择",
                             itemName: "datetime-picker",
                             defaultValue: null,
                             ...defaultFormItemConfig,
@@ -432,7 +432,7 @@ export const elementPlusComponents = [
                     {
                         __id__: "input-number",
                         __config__: {
-                            defaultValueType:'number',//不加这个，表单检验会显示必须输入
+                            defaultValueType: 'number',//不加这个，表单检验会显示必须输入
                             ...defaultFormItemConfig,
                             regList: [],
                         },
@@ -466,7 +466,7 @@ export const elementPlusComponents = [
                         __id__: "rate",
                         __config__: {
                             defaultValue: 0,
-                            defaultValueType:'number',
+                            defaultValueType: 'number',
                             ...defaultFormItemConfig,
                         },
                     }
@@ -783,6 +783,25 @@ export const elementPlusComponents = [
                 children: [
                     {
                         __id__: "table",
+                        __slots__: {
+                            default: [
+                                {
+                                    __id__: "table-column",
+                                    __props__: {
+                                        label: 'Date',
+                                        prop: 'date'
+                                    }
+                                },
+                                {
+                                    __id__: "table-column",
+                                    __props__: {
+                                        label: 'Address',
+                                        prop: 'address'
+                                    }
+                                }
+
+                            ]
+                        },
                         __link__: [
                             {
                                 __id__: "table-column",
@@ -1013,7 +1032,7 @@ export const elementPlusComponents = [
                 name: "Dialog 对话框",
                 key: "dialog",
                 children: [
-                        {
+                    {
                         __id__: "dialog",
                         __config__: {
                             defaultValue: true
@@ -1025,7 +1044,7 @@ export const elementPlusComponents = [
                 name: "Drawer 抽屉",
                 key: "drawer",
                 children: [//fixme 如果有子组件，会出错。
-                        {
+                    {
                         __id__: "drawer",
                         __config__: {
                             defaultValue: true
