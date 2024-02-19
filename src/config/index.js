@@ -6,11 +6,11 @@ const elementPlusConfigMap = {}
  */
 
 import slotRenderFunctions from "@/components/FixItem/slots";
-const jsonFiles = import.meta.glob("./json/*.json", {as: "raw", eager: true});
+const jsonFiles = import.meta.glob("./json/*.json", {query: "?json", import: 'default', eager: true});
 const keys = Object.keys(jsonFiles) || []
 keys.map(key => {
     const id = key.replace(/^\.\/(.*)\.\w+$/, '$1').split("/").pop();
-    const json=JSON.parse(jsonFiles[key]);
+    const json=jsonFiles[key];
     if (!json.attributes) {
         json.attributes = []
     }
@@ -23,7 +23,7 @@ keys.map(key => {
     if(slotRenderFunctions[json.tag]){
         json.layouts.splice(0,0,"fixedItem")
     }
-    elementPlusConfigMap[id] = json;//fixme 有没有比较好的方法，不用再parse一次
+    elementPlusConfigMap[id] = json;
 })
 Object.assign( elementPlusConfigMap["tree-select"].attributes,elementPlusConfigMap["select"].attributes);
 Object.assign( elementPlusConfigMap["tree-select"].attributes,elementPlusConfigMap["tree"].attributes);
