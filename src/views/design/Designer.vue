@@ -529,6 +529,11 @@ function cloneDrawItem(origin) {
 
 
   const clone = deepClone(origin);
+  
+   if (!clone["__config__"]) {
+    clone["__config__"] = {}
+  }
+  
   delete clone.__link__;
   createIdAndKey(clone);
   if (!clone["__props__"]) {
@@ -607,6 +612,27 @@ function cloneDrawItem(origin) {
   if (!props.style) {
     props.style = {}
   }
+//
+  if (!config.tag) {
+    const {name, tag, tagIcon, layouts} = elementPlusConfigMap[id];
+    config.name = name
+    config.tag = tag
+    config.tagIcon = tagIcon;
+    config.layout = layouts[0]
+  }
+  //根据slots定义生成设计器能识别的形式
+  if (clone.__slots__) {
+    Object.keys(clone.__slots__).forEach(k => {
+      if (Array.isArray(clone.__slots__[k])) {
+        for (let i = 0; i < clone.__slots__[k].length; i++) {
+          if (typeof clone.__slots__[k][i] !== 'string') {
+            clone.__slots__[k][i] = cloneDrawItem(clone.__slots__[k][i]);
+          }
+        }
+      }
+    })
+  }
+
   if (colItem) {
     colItem.__slots__.default.push(clone);
     tempActiveData = colItem;
