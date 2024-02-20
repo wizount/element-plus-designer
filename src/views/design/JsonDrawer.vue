@@ -36,7 +36,7 @@ import 'ace-builds/src-noconflict/theme-one_dark';
 
 const props = defineProps({
   jsonStr: {type: String, required: true},
-  designConf: {type: String, required: true}
+  designConf: {type: Object, required: true}
 })
 
 const aceStr = ref(props.jsonStr);

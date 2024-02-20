@@ -28,7 +28,7 @@ export default {
         if (options) {
             renderConfig.__data__ = {options}
         }
-        return () => <FixItem conf={renderConfig}></FixItem>
+        return () => h(FixItem, {conf: renderConfig})
 
     }
 

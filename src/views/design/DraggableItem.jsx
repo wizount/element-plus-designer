@@ -1,8 +1,6 @@
 import FixItem from "@/components/FixItem"
-import {ElFormItem} from "element-plus";
 import Draggable from '@/vuedraggable/vuedraggable';
-import {deepClone, titleCase} from "@/utils";
-import {h, resolveComponent} from "vue";
+import {deepClone} from "@/utils";
 import '@/styles/draggalbeItem.scss'
 import {AutoCompleteCallback} from "@/utils/element-plus-utils";
 
@@ -113,24 +111,16 @@ export default {
                     style: {width: '100%'}
                 }
             }
-            let Input;
+            let input;
             if (layout === 'rawItem') {
-                Input = rawItem(curItem, true)
+                input = rawItem(curItem, true)
 
             } else if (layout === 'fixedItem') {
-                Input = fixedItem(curItem, true);
+                input = fixedItem(curItem, true);
             } else {
-                Input = "error layout!";
+                input = "error layout!";
             }
-
-
-            const FormItem =
-                <ElFormItem {...formItemProps()}>
-                    <Input/>
-                </ElFormItem>
-            return <FormItem {...buildEvent(curItem)}/>
-
-
+            return h(resolveComponent("el-form-item"),{...formItemProps(),...buildEvent(curItem)},()=>input);
         }
 
         function containerItem(curItem) {

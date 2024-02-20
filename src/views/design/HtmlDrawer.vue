@@ -37,7 +37,7 @@ import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/theme-one_dark';
 import {jsCodeStyleList} from "@/config/config";
 
-const props = defineProps({htmlStr: {type: String, required: true,}, designConf: {type: String, required: true}})
+const props = defineProps({htmlStr: {type: String, required: true,}, designConf: {type: Object, required: true}})
 
 const aceStr = ref(props.htmlStr);
 

@@ -12,7 +12,7 @@
   position: relative;
   height: $actionBarHeight;
   background: var(--el-bg-color);
-  border-bottom: 1px solid #f1e8e8;
+  border-bottom: 1px solid var(--el-border-color);
   box-sizing: border-box;
 
   .logo {
@@ -75,7 +75,7 @@
           background: var(--el-color-primary-light-9);
           font-size: 12px;
           cursor: move;
-          border: 1px dashed var(--el-border-color);
+          border: 1px dashed var(--el-border-color-light);
           border-radius: 3px;
 
           .svg-icon {
@@ -84,7 +84,7 @@
           }
 
           &:hover {
-            border: 1px dashed #787be8;
+            border: 1px dashed var(--el-border-color-darker);
             color: var(--el-color-primary);
 
             .svg-icon {
@@ -139,8 +139,8 @@
     height: calc(100vh - $actionBarHeight) !important;
     padding: 10px;
     overflow-y: auto;
-    border-left: 1px solid #f1e8e8;
-    border-right: 1px solid #f1e8e8;
+    border-left: 1px solid var(--el-border-color);
+    border-right: 1px solid var(--el-border-color);
     box-sizing: border-box;
 
     .empty-info {

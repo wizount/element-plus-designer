@@ -1,27 +1,15 @@
 <template>
   <draggable :list="list" :animation="340" group="style" itemKey="index"
-             handle=".drag-icon" @change="change" style="margin-bottom: 5px">
+             handle=".drag-icon" @change="change">
     <template #item="{element,index}">
-      <div class="draggable-item">
-        <div class="flex-grow-1 d-flex">
-          <div class="drag-icon">
-            <el-icon>
-              <Operation/>
-            </el-icon>
-          </div>
+       <draggable-editor :remove-func="()=>{list.splice(index, 1);change()}">
           <component :is="keyTag" v-model="element.key" @change="change"/>
           <component :is="valueTag" v-model="element.value" @change="change"/>
-        </div>
-        <div class="remove-btn" @click="list.splice(index, 1);change()">
-          <el-icon>
-            <Remove/>
-          </el-icon>
-        </div>
-      </div>
+       </draggable-editor>
     </template>
   </draggable>
-  <div style="margin-left: 20px">
-    <el-button style="padding-bottom: 0" text type="primary"
+  <div class="ml-2">
+    <el-button  text type="primary" icon="Plus"
                @click="list.push({key:'',value:''});change()"> 添加
     </el-button>
   </div>
@@ -29,12 +17,12 @@
 
 <script setup>
 import Draggable from '@/vuedraggable/vuedraggable';
+import DraggableEditor from "@/components/draggableEditor/index.vue";
 import {ref, watchEffect} from "vue";
 
 const props = defineProps({
   modelValue: {
-    type: Object,
-    required: true
+    type: Object
   },
   keyTag: {
     type: String,
@@ -65,8 +53,3 @@ function change() {
 }
 
 </script>
-
-<style scoped lang="scss">
-@import './editor.scss';
-
-</style>

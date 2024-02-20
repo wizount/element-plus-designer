@@ -2,22 +2,10 @@
   <draggable :list="list" :animation="340" group="style" itemKey="index"
              handle=".drag-icon" @change="change" style="margin-bottom: 5px">
     <template #item="{element,index}">
-      <div class="draggable-item">
-        <div class="flex-grow-1 d-flex">
-          <div class="drag-icon">
-            <el-icon>
-              <Operation/>
-            </el-icon>
-          </div>
-          <el-autocomplete :fetch-suggestions="ac.querySearch" v-model="element.key" @select="change" @change="change"/>
-          <el-input v-model="element.value" @change="change" />
-        </div>
-        <div class="remove-btn" @click="list.splice(index, 1);change()">
-          <el-icon>
-            <Remove/>
-          </el-icon>
-        </div>
-      </div>
+      <draggable-editor :remove-func="()=>{list.splice(index, 1);change()}">
+        <el-autocomplete :fetch-suggestions="ac.querySearch" v-model="element.key" @select="change" @change="change"/>
+        <el-input v-model="element.value" @change="change"/>
+      </draggable-editor>
     </template>
   </draggable>
   <div style="margin-left: 20px">

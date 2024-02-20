@@ -3,22 +3,10 @@
   <draggable :list="modelValue" :animation="340" group="selectItem" itemKey="value"
              handle=".drag-icon">
     <template #item="{element,index}">
-      <div class="draggable-item">
-        <div class="flex-grow-1 d-flex">
-          <div class="drag-icon">
-            <el-icon>
-              <Operation/>
-            </el-icon>
-          </div>
+     <draggable-editor :remove-func="()=>modelValue.splice(index, 1)">
           <Component v-model="element[v.key]" :placeholder="v.label" :title="v.label" clearable :is="v.tag||'ElInput'"
                      v-for="v in keys" :key="v.key"/>
-        </div>
-        <div class="remove-btn" @click="modelValue.splice(index, 1)">
-          <el-icon>
-            <Remove/>
-          </el-icon>
-        </div>
-      </div>
+          </draggable-editor>
     </template>
   </draggable>
   <div style="margin-left: 20px">
@@ -29,7 +17,7 @@
 
 <script setup>
 import Draggable from '@/vuedraggable/vuedraggable';
-import {ref, watchEffect} from "vue";
+import DraggableEditor from "@/components/draggableEditor/index.vue";
 
 const props = defineProps({
   keys: {

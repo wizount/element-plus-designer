@@ -19,7 +19,9 @@ const props = defineProps({
   keys: {
     type: Array,
     required: true,
-    default: []
+    default: () => {
+      return []
+    }
   }
 
 });

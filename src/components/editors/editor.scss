@@ -3,14 +3,16 @@
   border-bottom: 1px dashed #d5d4d4;
   box-sizing: border-box;
   align-items: center;
+
+  margin-bottom: 5px;
   .remove-btn {
     //line-height:30px;
     //height: 30px;
     font-size: 20px;
-   // padding:3px;
+    // padding:3px;
     cursor: pointer;
     color: #f56c6c;
-  }
+  }   
 
   .drag-icon {
     @extend .remove-btn;
@@ -21,11 +23,17 @@
   &.chosen {
     border: 1px dashed #409eff;
   }
-  .text-item{
-    padding-top:3px;
+
+
+  .text-item {
+    padding-top: 3px;
   }
 }
-
+.add-btn{
+  margin-left:10px;
+  padding-top:5px;
+  padding-bottom:5px;
+}
 .draggable-item + .draggable-item {
   margin-top: 4px;
 }
