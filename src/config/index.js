@@ -11,17 +11,19 @@ const keys = Object.keys(jsonFiles) || []
 keys.map(key => {
     const id = key.replace(/^\.\/(.*)\.\w+$/, '$1').split("/").pop();
     const json=jsonFiles[key];
-    if (!json.attributes) {
-        json.attributes = []
-    }
-    if (!json.slots) {
-        json.slots = []
-    }
-    if(!json.layouts){
-        json.layouts=["rawItem"];
-    }
-    if(slotRenderFunctions[json.tag]){
-        json.layouts.splice(0,0,"fixedItem")
+    if(!json.directive) {
+        if (!json.attributes) {
+            json.attributes = []
+        }
+        if (!json.slots) {
+            json.slots = []
+        }
+        if (!json.layouts) {
+            json.layouts = ["rawItem"];
+        }
+        if (slotRenderFunctions[json.tag]) {
+            json.layouts.splice(0, 0, "fixedItem")
+        }
     }
     elementPlusConfigMap[id] = json;
 })

@@ -3,6 +3,7 @@ import Draggable from '@/vuedraggable/vuedraggable';
 import {deepClone} from "@/utils";
 import '@/styles/draggalbeItem.scss'
 import {AutoCompleteCallback} from "@/utils/element-plus-utils";
+import {resolveDirective, withDirectives} from "vue";
 
 let eventTime = Date.now();
 
@@ -39,13 +40,13 @@ export default {
             const newProps = {};
             Object.assign(newProps, curItem.__native__);
             Object.assign(newProps, curItem.__props__);
-            if(curItem.__id__==="autocomplete"){
-                const ac =new AutoCompleteCallback(curItem.__data__.static.options);
-                newProps["fetch-suggestions"]=ac.querySearch;
+            if (curItem.__id__ === "autocomplete") {
+                const ac = new AutoCompleteCallback(curItem.__data__.static.options);
+                newProps["fetch-suggestions"] = ac.querySearch;
             }
             //对style进行复制
-            if(newProps.style){
-                newProps.style=deepClone(newProps.style);
+            if (newProps.style) {
+                newProps.style = deepClone(newProps.style);
             }
             if (isBuildClass) {
                 Object.assign(newProps, buildClass(curItem, newProps.class))
@@ -120,7 +121,7 @@ export default {
             } else {
                 input = "error layout!";
             }
-            return h(resolveComponent("el-form-item"),{...formItemProps(),...buildEvent(curItem)},()=>input);
+            return h(resolveComponent("el-form-item"), {...formItemProps(), ...buildEvent(curItem)}, () => input);
         }
 
         function containerItem(curItem) {
@@ -233,7 +234,7 @@ export default {
                     return doWrapWithSpan(curItem, source);
                 } else {
                     return <FixItem
-                        conf={config} {...buildClass(curItem,curItem.__native__.class)} {...buildVModel(curItem)} {...buildEvent(curItem)}></FixItem>
+                        conf={config} {...buildClass(curItem, curItem.__native__.class)} {...buildVModel(curItem)} {...buildEvent(curItem)}></FixItem>
                 }
 
 
@@ -241,6 +242,7 @@ export default {
 
 
         }
+
         /**
          *
          * @param curItem
@@ -251,11 +253,21 @@ export default {
             const {tag, wrapWithSpan} = curItem.__config__;
             const data = buildData(curItem);
             if (simple) {
-                return h(resolveComponent(tag), {...buildProps(curItem, { isBuildModel: true, isBuildEvent: true}), ...data},
+                return h(resolveComponent(tag), {
+                        ...buildProps(curItem, {
+                            isBuildModel: true,
+                            isBuildEvent: true
+                        }), ...data
+                    },
                     buildSlots(curItem));
             } else {
                 if (wrapWithSpan) {
-                    const source = h(resolveComponent(tag), {...buildProps(curItem, { isBuildModel: true, isBuildEvent: true}) ,...data}, buildSlots(curItem));
+                    const source = h(resolveComponent(tag), {
+                        ...buildProps(curItem, {
+                            isBuildModel: true,
+                            isBuildEvent: true
+                        }), ...data
+                    }, buildSlots(curItem));
                     return doWrapWithSpan(curItem, source);
                 } else {
                     // const fns={}
@@ -283,20 +295,48 @@ export default {
             if (typeof curItem === "string") {
                 return h("span", curItem);
             }
+            let ele;
             const {layout, wrapWithFormItem} = curItem.__config__;
             if (wrapWithFormItem) {
-                return formItem(curItem, layout);
+                ele = formItem(curItem, layout);
             } else if (layout === 'containerItem') {
-                return containerItem(curItem);
+                ele = containerItem(curItem);
             } else if (layout === 'rawItem') {
-                return rawItem(curItem);
+                ele = rawItem(curItem);
             } else if (layout === 'fixedItem') {
-                return fixedItem(curItem);
+                ele = fixedItem(curItem);
             }
+            const directives=buildDirectives(curItem);
+            if(directives.length>0){
+               return  withDirectives(ele,directives);
+            }else{
+                return ele;
+            }
+
+        }
+
+        function buildDirectives(curItem) {
+            const {__directives__} = curItem;
+            const directives = [];
+            if (__directives__) {
+                for (const k in __directives__) {
+                    const v=__directives__[k];
+                    const modifiers={};
+                    v.modifiers.forEach(m=>{
+                        modifiers[m]=true;
+                    })
+                    directives.push([resolveDirective(k), v.value,v.arg,modifiers]);
+                }
+            }
+            return directives;
         }
 
         return () => doLayout(props.currentItem);
 
+
+        // return () => withDirectives(doLayout(props.currentItem), [
+        //     [resolveDirective("loading"), true, "", {fullscreen: true, lock: true}]
+        // ]);
     }
 
 

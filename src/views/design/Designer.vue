@@ -25,7 +25,7 @@
                          draggable=".components-item" :sort="false" @end="onEnd">
                 <template #item="{element}">
                   <div class="components-item" @click="addDrawItem(element)"
-                       :title="`${element.__config__.tag}${element.__config__.wrapWithFormItem&&designConf.wrapWithFormItem?'，表单组件':''}`">
+                       :title="`${element.__config__.tag}${elementPlusConfigMap[element.__id__].desc}${element.__config__.wrapWithFormItem&&designConf.wrapWithFormItem?'，表单组件':''}`">
                     <div class="components-body"
                          :class="{'form-item':element.__config__.wrapWithFormItem&&designConf.wrapWithFormItem}">
                       <svg-icon :icon-class="element.__config__.tagIcon"/>
@@ -533,7 +533,9 @@ function cloneDrawItem(origin) {
    if (!clone["__config__"]) {
     clone["__config__"] = {}
   }
-  
+  if (!clone["__directives__"]) {
+    clone["__directives__"] = {}
+  }
   delete clone.__link__;
   createIdAndKey(clone);
   if (!clone["__props__"]) {

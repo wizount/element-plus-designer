@@ -17,6 +17,7 @@
 <script setup>
 import styleName from '@/utils/styleName.json'
 import Draggable from '@/vuedraggable/vuedraggable';
+import DraggableEditor from "@/components/draggableEditor/index.vue";
 import {ref, watchEffect} from "vue";
 import {AutoCompleteCallback} from "@/utils/element-plus-utils";
 

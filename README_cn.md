@@ -1,4 +1,7 @@
 # Element Plus设计器 (Element Plus designer)
+
+[English](./README.md) | **中文** 
+
 感谢 JakHuang [form generator](https://github.com/JakHuang/form-generator) 提供的灵感。  
 Element Plus设计器提供大部分element plus组件所见及所得在线设计，当然也包含表单设计。  
 [GitHub演示地址](https://wizount.github.io/element-plus-designer/)

@@ -6,6 +6,7 @@
       <el-tab-pane label="事件" name="events"/>
       <el-tab-pane label="样式" name="style"/>
       <el-tab-pane label="正则表达式" name="reg" v-if="Array.isArray(curItemConfig.regList)"/>
+      <el-tab-pane label="指令" name="directive"/>
     </el-tabs>
     <el-scrollbar class="right-scrollbar">
       <!-- 组件属性 -->
@@ -200,7 +201,43 @@
             </el-form-item>
           </div>
         </div>
+        <div v-if="currentTab==='directive'">
+          <el-dropdown @command="addDirective">
+            <el-button link type="primary" icon="Plus">添加指令</el-button>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item command="loading">
+                  添加v-loading指令
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+          <div v-for="(d,key) in activeData.__directives__">
+
+            <el-form-item label="值">
+              <config-value-input v-model="d.value" v
+                                  :attr-config="elementPlusConfigMap[key].value"></config-value-input>
+            </el-form-item>
+
+
+            <el-form-item label="参数">
+              <el-radio-group v-model="d.arg">
+                <el-radio v-for="arg in elementPlusConfigMap[key].args" :label="arg">{{ arg }}</el-radio>
+
+              </el-radio-group>
+            </el-form-item>
+            <el-form-item label="修饰符">
+              <el-checkbox-group v-model="d.modifiers">
+                <el-checkbox v-for="arg in elementPlusConfigMap[key].modifiers" :label="arg">{{ arg }}</el-checkbox>
+              </el-checkbox-group>
+            </el-form-item>
+            {{ elementPlusConfigMap[key] }}
+            {{ d }} -- {{ key }}
+          </div>
+        </div>
+
       </div>
+
       <div style="position: absolute; bottom: 2px;right: 10px;color: gray">Element Plus version {{ version }}</div>
     </el-scrollbar>
 
@@ -333,6 +370,9 @@ watch(() => props.activeData.__data__ && props.activeData.__data__.source, (val)
   if (val) changeRenderKey();
 })
 
+watch(() => props.activeData.__directives__ , (val) => {
+  changeRenderKey();
+},{deep:true})
 
 function changeRenderKey() {
   props.activeData.renderKey = `${curItemConfig.value.drawItemId}${Math.floor(Math.random() * 10000)}`
@@ -372,6 +412,7 @@ import {AutoCompleteCallback} from "@/utils/element-plus-utils";
 import regList from '@/utils/regList.json'
 import {changeDrawItemVariableName} from "@/views/design/DrawItemProcessor";
 import {deepClone, titleCase} from "@/utils";
+import ConfigValueInput from "@/views/design/ConfigValueInput";
 
 const ac = new AutoCompleteCallback(regList)
 
@@ -435,8 +476,20 @@ function activeParentDrawItem() {
 //region
 function addEvent(event) {
 
-  props.activeData.__events__.push({name: event.name, fnName:curItemConfig.value.itemName+titleCase(event.name),
-    params: (event.params||[]).join(",")})
+  props.activeData.__events__.push({
+    name: event.name, fnName: curItemConfig.value.itemName + titleCase(event.name),
+    params: (event.params || []).join(",")
+  })
+}
+
+//endregion
+
+
+//region
+function addDirective(event) {
+  if (!props.activeData.__directives__[event]) {
+    props.activeData.__directives__[event] = {};
+  }
 }
 
 //endregion
