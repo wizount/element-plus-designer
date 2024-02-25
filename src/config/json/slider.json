@@ -400,5 +400,6 @@
       "fnDes": "(value: Arrayable<number>) => boolean"
     }
   ],
-  "slots": []
+  "slots": [],
+  "desc": "通过拖动滑块在一个固定区间内进行选择"
 }

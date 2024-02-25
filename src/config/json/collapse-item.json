@@ -54,5 +54,6 @@
       "name": "title",
       "title": "Collapse Item 的标题"
     }
-  ]
+  ],
+  "desc": "通过折叠面板收纳内容区域"
 }

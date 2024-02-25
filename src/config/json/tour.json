@@ -242,5 +242,6 @@
       "type": "Function",
       "fnDes": "(current: number) => void"
     }
-  ]
+  ],
+  "desc": "用于分步引导用户了解产品功能的气泡组件。 用来引导用户并介绍产品"
 }

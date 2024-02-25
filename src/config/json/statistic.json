@@ -147,5 +147,6 @@
       "title": "当前显示值",
       "type": "^[object]`Ref<string | number>`"
     }
-  ]
+  ],
+  "desc": "显示统计数据。"
 }

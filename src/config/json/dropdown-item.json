@@ -66,5 +66,6 @@
       "name": "default",
       "title": "自定义Dropdown-Item内容"
     }
-  ]
+  ],
+  "desc": "将动作或菜单折叠到下拉菜单中。"
 }

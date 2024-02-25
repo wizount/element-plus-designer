@@ -170,5 +170,6 @@
       "name": "dot",
       "title": "customize defined node for timeline item"
     }
-  ]
+  ],
+  "desc": "可视化地呈现时间流信息。"
 }

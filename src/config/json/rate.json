@@ -303,5 +303,6 @@
       "fnDes": "() => void"
     }
   ],
-  "slots": []
+  "slots": [],
+  "desc": "用于评分"
 }

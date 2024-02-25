@@ -453,5 +453,6 @@
       "name": "range-separator",
       "title": "自定义范围分割符内容"
     }
-  ]
+  ],
+  "desc": "用于选择或输入日期"
 }

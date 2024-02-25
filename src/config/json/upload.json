@@ -404,5 +404,6 @@
       "type": "Function",
       "fnDes": "(file: UploadFile | UploadRawFile, rawFile?: UploadRawFile) => void"
     }
-  ]
+  ],
+  "desc": "通过点击或者拖拽上传文件。"
 }

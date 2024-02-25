@@ -310,5 +310,6 @@
       "title": "是否在两个字符之间插入空格",
       "type": "^[object]`ComputedRef<boolean>`"
     }
-  ]
+  ],
+  "desc": "常用的操作按钮。"
 }

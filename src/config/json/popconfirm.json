@@ -218,5 +218,6 @@
       "name": "reference",
       "title": "触发 Popconfirm 显示的 HTML 元素"
     }
-  ]
+  ],
+  "desc": "点击某个元素弹出一个简单的气泡确认框"
 }

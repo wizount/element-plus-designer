@@ -432,5 +432,6 @@
       "type": "Function",
       "fnDes": "(event?: Event | undefined) => void"
     }
-  ]
+  ],
+  "desc": "常用于展示鼠标 hover 时的提示信息。"
 }

@@ -253,5 +253,6 @@
       "title": "滚动条包裹的 ref 对象",
       "type": "^[object]`Ref<HTMLDivElement>`"
     }
-  ]
+  ],
+  "desc": "用于替换浏览器原生滚动条。"
 }

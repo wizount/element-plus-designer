@@ -31,5 +31,6 @@
       "title": "卡片标题内容",
       "type": "^[object]`{ date: string }`"
     }
-  ]
+  ],
+  "desc": "显示日期"
 }

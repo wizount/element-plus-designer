@@ -516,5 +516,6 @@
       "title": "textarea 的样式",
       "type": "^[object]`Ref<StyleValue>`"
     }
-  ]
+  ],
+  "desc": "通过鼠标或键盘输入字符"
 }

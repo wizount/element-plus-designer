@@ -180,5 +180,6 @@
       "method": "get",
       "dataKey": "list"
     }
-  }
+  },
+  "desc": "在一组备选项中进行单选"
 }
