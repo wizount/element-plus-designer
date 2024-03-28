@@ -6,7 +6,8 @@
     "build": "vite build",
     "build:lib": "vite build -c vite.lib.config.js",
     "build:lib:render": "vite build -c vite.lib.render.config.js",
-    "preview": "vite preview --port 4173"
+    "preview": "vite preview --port 4173",
+    "gh-pages": "node gh-pages.js"
   },
   "dependencies": {
     "@element-plus/icons-vue": "2.3.1",
@@ -31,10 +32,11 @@
     "@vue/compiler-sfc": "3.3.13",
     "sass": "1.69.5",
     "unplugin-auto-import": "0.17.2",
-    "vite": "^5.0.12",
+    "vite": "^5.0.14",
     "vite-plugin-compression": "0.5.1",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vite-plugin-vue-setup-extend": "0.4.0"
+    "vite-plugin-vue-setup-extend": "0.4.0",
+    "gh-pages": "^6.1.1"
   },
   "files": [
     "lib"

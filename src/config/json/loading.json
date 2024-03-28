@@ -3,7 +3,8 @@
   "directive": true,
   "value": {
     "name": "boolean",
-    "tag": "el-switch"
+    "tag": "el-switch",
+    "default": true
   },
   "args": [],
   "modifiers": [
