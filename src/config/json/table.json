@@ -566,159 +566,190 @@
     {
       "name": "select",
       "title": "当用户手动勾选数据行的 Checkbox 时触发的事件",
-      "params": "selection, row"
+      "type": "Function",
+      "fnDes": "^[Function]`<T = any>(selection: T[], row: T) => void"
     },
     {
       "name": "select-all",
       "title": "当用户手动勾选全选 Checkbox 时触发的事件",
-      "params": "selection"
+      "type": "Function",
+      "fnDes": "(selection: any[]) => void"
     },
     {
       "name": "selection-change",
       "title": "当选择项发生变化时会触发该事件",
-      "params": "selection"
+      "type": "Function",
+      "fnDes": "(newSelection: any[]) => void"
     },
     {
       "name": "cell-mouse-enter",
       "title": "当单元格 hover 进入时会触发该事件",
-      "params": "row, column, cell, event"
+      "type": "Function",
+      "fnDes": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
     },
     {
       "name": "cell-mouse-leave",
       "title": "当单元格 hover 退出时会触发该事件",
-      "params": "row, column, cell, event"
+      "type": "Function",
+      "fnDes": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
     },
     {
       "name": "cell-click",
       "title": "当某个单元格被点击时会触发该事件",
-      "params": "row, column, cell, event"
+      "type": "Function",
+      "fnDes": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
     },
     {
       "name": "cell-dblclick",
       "title": "当某个单元格被双击击时会触发该事件",
-      "params": "row, column, cell, event"
+      "type": "Function",
+      "fnDes": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
     },
     {
       "name": "cell-contextmenu",
       "title": "当某个单元格被鼠标右键点击时会触发该事件",
-      "params": "row, column, cell, event"
+      "type": "Function",
+      "fnDes": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
     },
     {
       "name": "row-click",
       "title": "当某一行被点击时会触发该事件",
-      "params": "row, column, event"
+      "type": "Function",
+      "fnDes": "(row: any, column: any, event: Event) => void"
     },
     {
       "name": "row-contextmenu",
       "title": "当某一行被鼠标右键点击时会触发该事件",
-      "params": "row, column, event"
+      "type": "Function",
+      "fnDes": "(row: any, column: any, event: Event) => void"
     },
     {
       "name": "row-dblclick",
       "title": "当某一行被双击时会触发该事件",
-      "params": "row, column, event"
+      "type": "Function",
+      "fnDes": "(row: any, column: any, event: Event) => void"
     },
     {
       "name": "header-click",
       "title": "当某一列的表头被点击时会触发该事件",
-      "params": "column, event"
+      "type": "Function",
+      "fnDes": "(column: any, event: Event) => void"
     },
     {
       "name": "header-contextmenu",
       "title": "当某一列的表头被鼠标右键点击时触发该事件",
-      "params": "column, event"
+      "type": "Function",
+      "fnDes": "(column: any, event: Event) => void"
     },
     {
       "name": "sort-change",
       "title": "当表格的排序条件发生变化的时候会触发该事件",
-      "params": "{ column, prop, order }"
+      "type": "Function",
+      "fnDes": "(data: {column: any, prop: string, order: any }) => void"
     },
     {
       "name": "filter-change",
       "title": "column 的 key， 如果需要使用 filter-change 事件，则需要此属性标识是哪个 column 的筛选条件",
-      "params": "filters"
+      "type": "Function",
+      "fnDes": "(newFilters: any) => void"
     },
     {
       "name": "current-change",
       "title": "当表格的当前行发生变化的时候会触发该事件，如果要高亮当前行，请打开表格的 highlight-current-row 属性",
-      "params": "currentRow, oldCurrentRow"
+      "type": "Function",
+      "fnDes": "(currentRow: any, oldCurrentRow: any) => void"
     },
     {
       "name": "header-dragend",
       "title": "当拖动表头改变了列的宽度的时候会触发该事件",
-      "params": "newWidth, oldWidth, column, event"
+      "type": "Function",
+      "fnDes": "(newWidth: number, oldWidth: number, column: any, event: MouseEvent) => void"
     },
     {
       "name": "expand-change",
       "title": "当用户对某一行展开或者关闭的时候会触发该事件（展开行时，回调的第二个参数为 expandedRows；树形表格时第二参数为 expanded）",
-      "params": "row, (expandedRows | expanded)"
+      "type": "Function",
+      "fnDes": "(row: any, expandedRows: any[]) => void & (row: any, expanded: boolean) => void"
     }
   ],
   "exposes": [
     {
       "name": "clearSelection",
       "title": "用于多选表格，清空用户的选择",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "getSelectionRows",
       "title": "返回当前选中的行",
-      "params": ""
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "toggleRowSelection",
       "title": "用于多选表格，切换某一行的选中状态， 如果使用了第二个参数，则可直接设置这一行选中与否",
-      "params": "row, selected"
+      "type": "Function",
+      "fnDes": "(row: any, selected: boolean) => void"
     },
     {
       "name": "toggleAllSelection",
       "title": "用于多选表格，切换全选和全不选",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "toggleRowExpansion",
       "title": "用于可扩展的表格或树表格，如果某行被扩展，则切换。 使用第二个参数，您可以直接设置该行应该被扩展或折叠。",
-      "params": "row, expanded"
+      "type": "Function",
+      "fnDes": "(row: any, expanded?: boolean) => void"
     },
     {
       "name": "setCurrentRow",
       "title": "用于单选表格，设定某一行为选中行， 如果调用时不加参数，则会取消目前高亮行的选中状态。",
-      "params": "row"
+      "type": "Function",
+      "fnDes": "(row: any) => void"
     },
     {
       "name": "clearSort",
       "title": "用于清空排序条件，数据会恢复成未排序的状态",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "clearFilter",
       "title": "传入由`columnKey` 组成的数组以清除指定列的过滤条件。 如果没有参数，清除所有过滤器",
-      "params": "columnKeys"
+      "type": "Function",
+      "fnDes": "(columnKeys?: string[]) => void"
     },
     {
       "name": "doLayout",
       "title": "对 Table 进行重新布局。 当表格可见性变化时，您可能需要调用此方法以获得正确的布局",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "sort",
       "title": "手动排序表格。 参数 `prop` 属性指定排序列，`order` 指定排序顺序。",
-      "params": "prop: string, order: string"
+      "type": "Function",
+      "fnDes": "(prop: string, order: string) => void"
     },
     {
       "name": "scrollTo",
       "title": "滚动到一组特定坐标",
-      "params": "(options: ScrollToOptions | number, yCoord?: number)"
+      "type": "Function",
+      "fnDes": "(options: number | ScrollToOptions, yCoord?: number) => void"
     },
     {
       "name": "setScrollTop",
       "title": "设置垂直滚动位置",
-      "params": "top"
+      "type": "Function",
+      "fnDes": "(top?: number) => void"
     },
     {
       "name": "setScrollLeft",
       "title": "设置水平滚动位置",
-      "params": "left"
+      "type": "Function",
+      "fnDes": "(left?: number) => void"
     }
   ],
   "slots": [

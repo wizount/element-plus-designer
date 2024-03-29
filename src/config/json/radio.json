@@ -9,6 +9,24 @@
   "document": "https://element-plus.gitee.io/zh-CN/component/radio.html",
   "attributes": {
     "vModel": "modelValue",
+    "value": {
+      "title": "单选框的值",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "version": "2.6.0"
+    },
     "label": {
       "label": "单选框的值",
       "title": "单选框的值",
@@ -108,5 +126,5 @@
       "title": "自定义默认内容"
     }
   ],
-  "desc": "在一组备选项中进行单选"
+  "desc": ":::warning"
 }

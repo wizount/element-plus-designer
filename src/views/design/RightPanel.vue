@@ -214,6 +214,7 @@
           </el-dropdown>
           <div v-for="(d,key) in activeData.__directives__">
 
+            <el-divider>{{key}}指令</el-divider>
             <el-form-item label="值">
               <config-value-input v-model="d.value" v
                                   :attr-config="elementPlusConfigMap[key].value"></config-value-input>
@@ -231,8 +232,6 @@
                 <el-checkbox v-for="arg in elementPlusConfigMap[key].modifiers" :label="arg">{{ arg }}</el-checkbox>
               </el-checkbox-group>
             </el-form-item>
-            {{ elementPlusConfigMap[key] }}
-            {{ d }} -- {{ key }}
           </div>
         </div>
 
@@ -488,7 +487,11 @@ function addEvent(event) {
 //region
 function addDirective(event) {
   if (!props.activeData.__directives__[event]) {
-    props.activeData.__directives__[event] = {};
+    props.activeData.__directives__[event] = {
+      value:elementPlusConfigMap[event].value.default,
+      arg:undefined,
+      modifiers:[]
+    };
   }
 }
 

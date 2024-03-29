@@ -526,15 +526,21 @@
       "default": "bottom-start",
       "version": "2.2.17"
     },
-    "": {
-      "title": "",
+    "fallback-placements": {
+      "title": "dropdown 可用的 positions 请查看[popper.js 文档](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements)",
       "types": [
         {
-          "name": "arrary",
-          "tag": ""
+          "name": "array",
+          "tag": "array-editor"
         }
       ],
-      "default": ""
+      "default": [
+        "bottom-start",
+        "top-start",
+        "right",
+        "left"
+      ],
+      "version": "2.5.6"
     },
     "max-collapse-tags": {
       "label": "标签最大数量",

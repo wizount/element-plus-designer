@@ -204,6 +204,17 @@
         }
       ],
       "default": true
+    },
+    "motion-blur": {
+      "title": "添加动态模糊以给走马灯注入活力和流畅性。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.6.0"
     }
   },
   "events": [

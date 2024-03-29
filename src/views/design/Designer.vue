@@ -144,7 +144,7 @@
           </template>
         </draggable>
         <div v-show="!drawItemList||drawItemList.length===0" class="empty-info"> 从左侧拖入或点选组件进行界面设计</div>
-        <div class="activeToolbar" ref="activeToolbar" v-if="activeData.renderKey">
+        <div class="activeToolbar" ref="activeToolbar" v-if="activeData.renderKey&&activeData.__config__">
           <svg-icon style="color: var(--el-text-color)" :icon-class="activeData.__config__.tagIcon"/>
           <span style="color: var(--el-text-color)"> {{ activeData.__config__.itemName }}</span>
 

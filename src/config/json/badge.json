@@ -84,6 +84,17 @@
         }
       ],
       "default": "danger"
+    },
+    "show-zero": {
+      "title": "值为零时是否显示 Badge",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.6.0"
     }
   },
   "slots": [

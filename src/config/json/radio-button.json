@@ -22,6 +22,24 @@
         }
       ]
     },
+    "value": {
+      "title": "单选框的值",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "version": "2.6.0"
+    },
     "disabled": {
       "label": "",
       "title": "是否禁用单选框",

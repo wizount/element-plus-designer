@@ -26,6 +26,48 @@
         }
       ]
     },
+    "true-value": {
+      "title": "选中时的值",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "version": "2.6.0"
+    },
+    "false-value": {
+      "title": "没有选中时的值",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "version": "2.6.0"
+    },
+    "value": {
+      "title": "选中状态的值，只有在绑定对象类型为 `array` 时有效。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "version": "2.6.0"
+    },
     "true-label": {
       "label": "",
       "title": "选中时的值",
@@ -34,7 +76,8 @@
           "name": "stringNumber",
           "tag": "string-number-input"
         }
-      ]
+      ],
+      "deprecated": true
     },
     "false-label": {
       "label": "",
@@ -44,7 +87,8 @@
           "name": "stringNumber",
           "tag": "string-number-input"
         }
-      ]
+      ],
+      "deprecated": true
     },
     "disabled": {
       "label": "",

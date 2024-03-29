@@ -1,0 +1,128 @@
+{
+  "attributes": {
+    "container": {
+      "title": "滚动的容器",
+      "types": [
+        {
+          "name": "string`",
+          "tag": ""
+        },
+        {
+          "name": "`HTMLElement`",
+          "tag": ""
+        },
+        {
+          "name": "`Window",
+          "tag": ""
+        }
+      ]
+    },
+    "offset": {
+      "title": "设置锚点滚动的偏移量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "bound": {
+      "title": "触发锚点的元素的位置偏移量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 15
+    },
+    "duration": {
+      "title": "设置容器滚动持续时间，单位为毫秒。",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 300
+    },
+    "marker": {
+      "title": "是否显示标记",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "type": {
+      "title": "设置锚点类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "underline",
+              "value": "underline"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "direction": {
+      "title": "设置锚点方向",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "vertical",
+              "value": "vertical"
+            },
+            {
+              "label": "horizontal",
+              "value": "horizontal"
+            }
+          ]
+        }
+      ],
+      "default": "vertical"
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "AnchorLink 组件列表"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "title": "step 改变时的回调",
+      "type": "Function",
+      "fnDes": "(href: string) => void"
+    },
+    {
+      "name": "click",
+      "title": "当用户点击链接时触发",
+      "type": "Function",
+      "fnDes": "(e: MouseEvent, href?: string) => void"
+    }
+  ],
+  "desc": "通过锚点，您可以很快找到当前页面上信息内容的位置。"
+}

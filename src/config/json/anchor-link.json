@@ -1,0 +1,33 @@
+{
+  "attributes": {
+    "title": {
+      "title": "链接的文本内容。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "href": {
+      "title": "链接的地址。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "链接的内容"
+    },
+    {
+      "name": "sub-link",
+      "title": "子链接的槽位。"
+    }
+  ],
+  "desc": "通过锚点，您可以很快找到当前页面上信息内容的位置。"
+}
