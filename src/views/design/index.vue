@@ -1,5 +1,5 @@
 <template>
-  <designer v-model="drawItemList"></designer>
+  <designer v-model="drawItemList" ref="designerRef"></designer>
 </template>
 
 <script setup>
@@ -16,7 +16,15 @@ if(drawItemListInDB===null||drawItemListInDB.length===0){
 const drawItemList = ref(drawItemListInDB)
 watch(() => [...drawItemList.value], (val) => {
   saveDrawItemList(val)
+
 }, {deep: true})
+
+const designerRef=ref();
+//生成低码请使用  designerRef.value.generateCode(jsCodeStyle)
+//jsCodeStyle可以为：composition（组合式）
+//可以为：options（选项式）
+//可以为：compositionSFC（组合式SFC）
+//可以为：defineComponent（defineComponent）
 
 </script>
 

@@ -529,8 +529,8 @@ function cloneDrawItem(origin) {
 
 
   const clone = deepClone(origin);
-  
-   if (!clone["__config__"]) {
+
+  if (!clone["__config__"]) {
     clone["__config__"] = {}
   }
   if (!clone["__directives__"]) {
@@ -825,9 +825,9 @@ function emptyDrawItemList() {
 }
 
 
-function generateCode() {
+function generateCode(jsCodeStyle) {
   let cloneJsonList = simplifyJson();
-  return renderSfc(cloneJsonList, designConf.value.jsCodeStyle, beautifier)
+  return renderSfc(cloneJsonList, jsCodeStyle || designConf.value.jsCodeStyle, beautifier)
 }
 
 //region json显示操作
@@ -1198,6 +1198,15 @@ import {renderJs, renderSfc} from "@/components/generator";
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
+
+//endregion
+
+//region 导出vue代码
+
+
+defineExpose({
+  generateCode
+});
 
 //endregion
 </script>
