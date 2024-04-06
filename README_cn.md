@@ -93,6 +93,7 @@ npm run build
 ## 下一步计划
 - 支持剩下1%组件
 - 支持事件编辑
+- 计划增加if, show等vue3自带指令。
 
 
 联系方式：微信：glqqyx, QQ: 2537660666 email: 2537660666@qq.com

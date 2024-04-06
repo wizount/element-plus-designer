@@ -6,7 +6,7 @@ const elementPlusConfigMap = {}
  */
 
 import slotRenderFunctions from "@/components/FixItem/slots";
-const jsonFiles = import.meta.glob("./json/*.json", {query: "?json", import: 'default', eager: true});
+const jsonFiles = import.meta.glob("./components/*.json", {query: "?json", import: 'default', eager: true});
 const keys = Object.keys(jsonFiles) || []
 keys.map(key => {
     const id = key.replace(/^\.\/(.*)\.\w+$/, '$1').split("/").pop();
