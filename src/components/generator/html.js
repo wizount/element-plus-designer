@@ -5,7 +5,8 @@ import {isArrayEqual, isObjectEqual} from "@/components/generator/utils";
 
 
 //递归比较麻烦，直接使用
-let formModelName='';
+let formModelName = '';
+
 export function renderVue3Template(itemList) {
     return `<template_alt>
     <div style="padding: 5px">
@@ -13,11 +14,13 @@ export function renderVue3Template(itemList) {
     </div></template_alt>
  `
 }
+
 export function renderHtml(itemList) {
     return `
      ${renderItemList(itemList)}
  `
 }
+
 //总入口
 const renderItemList = (itemList) => {
     if (!itemList) {
@@ -40,11 +43,11 @@ const renderItem = (item) => {
         const {tag, wrapWithFormItem} = item.__config__;
         let childHtml
         if (tag === "el-form") {
-            formModelName=item.__props__.model;
-            childHtml = `<${tag}${renderProps(item)}>${renderSlots(item)}</${tag}>`;
-            formModelName='';
+            formModelName = item.__props__.model;
+            childHtml = `<${tag}${renderProps(item)} ${renderDirective(item)}>${renderSlots(item)}</${tag}>`;
+            formModelName = '';
         } else {
-            childHtml = `<${tag}${renderProps(item)}>${renderSlots(item)}</${tag}>`;
+            childHtml = `<${tag}${renderProps(item)} ${renderDirective(item)}>${renderSlots(item)}</${tag}>`;
         }
         if (wrapWithFormItem) {
             return renderFormItem(item, childHtml)
@@ -63,9 +66,9 @@ const renderProps = (item) => {
     if (props.ref) {
         str.push(` ref=${props.ref}`)
     }
-    if(item.__native__){
-        Object.keys(item.__native__).map(key=>{
-            if(props[key]) return false;
+    if (item.__native__) {
+        Object.keys(item.__native__).map(key => {
+            if (props[key]) return false;
             str.push(` ${key}="${item.__native__[key]}"`)
         })
     }
@@ -133,7 +136,7 @@ const renderProps = (item) => {
 
     //生成Events
     const events = item.__events__ || []
-    events.map(e=>{
+    events.map(e => {
         str.push(` @${e.name}=${e.fnName}`)
     })
     return str.join("");
@@ -143,7 +146,7 @@ const renderProps = (item) => {
 
 const renderSlots = (item) => {
     const {tag, layout} = item.__config__;
-    if (layout==='fixedItem'&&slotHtmlFunctions[tag]) {
+    if (layout === 'fixedItem' && slotHtmlFunctions[tag]) {
         return slotHtmlFunctions[tag](item);
     } else {
         const slots = item.__slots__;
@@ -162,6 +165,27 @@ const renderSlots = (item) => {
     }
 
 }
+
+
+//生成指令，todo element-plus指令只有一个loading其它没有，等多了再说
+const renderDirective = (item) => {
+    const {__directives__} = item;
+    if (!__directives__) {
+        return "";
+    }
+    const res=[];
+    for(const key in __directives__){
+        const d=__directives__[key];
+        let  modifiersStr=d.modifiers.join(".");
+        //todo 指令参数，目前element-plus指令太少
+        if(modifiersStr){
+            modifiersStr="."+modifiersStr;
+        }
+        res.push(`v-${key}${modifiersStr}="${d.value}"`)
+    }
+    return res.join(" ");
+}
+
 
 const renderFormItem = (item, child) => {
     const config = item.__config__

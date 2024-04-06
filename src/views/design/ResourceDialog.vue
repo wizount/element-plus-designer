@@ -56,6 +56,7 @@ import {
 import {deepClone} from '@/utils'
 
 export default {
+  name:"ResourceDialog",
   data() {
     return {
       resources: null,

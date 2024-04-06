@@ -113,7 +113,7 @@
               <!--              <el-dropdown-item>-->
               <!--                <el-form-item label="代码风格" prop="jsCodeStyle" style="margin-bottom: 0px">-->
               <!--                  <el-radio-group v-model="designConf.jsCodeStyle" size="small">-->
-              <!--                    <el-radio-button :label="v.value" v-for="v in jsCodeStyleList" :key="v.value">{{-->
+              <!--                    <el-radio-button :value="v.value" v-for="v in jsCodeStyleList" :key="v.value">{{-->
               <!--                        v.text-->
               <!--                      }}-->
               <!--                    </el-radio-button>-->
@@ -1194,6 +1194,7 @@ import {
 } from "@/views/design/DrawItemProcessor";
 import {isArrayEqual} from "@/components/generator/utils";
 import {renderJs, renderSfc} from "@/components/generator";
+import ResourceDialog from "@/views/design/ResourceDialog.vue";
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)

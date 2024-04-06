@@ -325,6 +325,7 @@ export default {
                     v.modifiers.forEach(m=>{
                         modifiers[m]=true;
                     })
+               //     console.log(resolveDirective("Show"))
                     directives.push([resolveDirective(k), v.value,v.arg,modifiers]);
                 }
             }

@@ -1,7 +1,7 @@
 <template>
   <el-form-item label="组件布局" v-if="curComConfig.layouts&&curComConfig.layouts.length>1">
     <el-radio-group v-model="curItemConfig.layout">
-      <el-radio-button v-for="v in curComConfig.layouts" :label="v">{{ v }}</el-radio-button>
+      <el-radio-button v-for="v in curComConfig.layouts" :value="v">{{ v }}</el-radio-button>
     </el-radio-group>
   </el-form-item>
   <el-form-item label="组件名" v-if="activeData.__id__&&activeData.__id__!=='plainText'">
@@ -60,8 +60,8 @@
     </el-form-item>
     <el-form-item v-if="curItemConfig.optionType !== undefined" label="选项样式">
       <el-radio-group v-model="curItemConfig.optionType">
-        <el-radio-button label="default">默认</el-radio-button>
-        <el-radio-button label="button">按钮</el-radio-button>
+        <el-radio-button value="default">默认</el-radio-button>
+        <el-radio-button value="button">按钮</el-radio-button>
       </el-radio-group>
     </el-form-item>
     <el-form-item v-if="curItemConfig.iconName !== undefined" label="图标">
@@ -80,8 +80,8 @@
     <el-form-item v-if="activeData.__data__" :label="curComConfig.data.label">
 
       <el-radio-group v-model="activeData.__data__.source" class="mb-2">
-        <el-radio-button label="static">静态数据</el-radio-button>
-        <el-radio-button label="dynamic" v-if="activeData.__data__.dynamic">动态数据</el-radio-button>
+        <el-radio-button value="static">静态数据</el-radio-button>
+        <el-radio-button value="dynamic" v-if="activeData.__data__.dynamic">动态数据</el-radio-button>
       </el-radio-group>
       <el-input v-model="activeData.__refs__[curComConfig.data.name]"
                 v-if="activeData.__data__[activeData.__data__.source].ref">

@@ -2,14 +2,16 @@
   <div>
     <el-drawer v-bind="$attrs">
       <template #header>
-        <div class="narrower-button-margin">
-          <el-button text type="primary" class="copy-html-btn" icon="DocumentCopy" @click="triggerCopy">
-            复制HTML
-          </el-button>
-          <el-button text type="primary" @click="exportHtmlFile" icon="Download">
-            导出HTML文件
-          </el-button>
-          <el-select style="float: right;" v-model="designConf.jsCodeStyle">
+        <div class="narrower-button-margin d-flex">
+          <div class="flex-grow-1">
+            <el-button text type="primary" class="copy-html-btn" icon="DocumentCopy" @click="triggerCopy">
+              复制HTML
+            </el-button>
+            <el-button text type="primary" @click="exportHtmlFile" icon="Download">
+              导出HTML文件
+            </el-button>
+          </div>
+          <el-select v-model="designConf.jsCodeStyle" style="width: 200px;margin-top: -5px">
             <el-option v-for="v in jsCodeStyleList" :value="v.value" :label="v.text" key="v.value"/>
           </el-select>
         </div>

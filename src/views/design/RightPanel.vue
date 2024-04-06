@@ -223,7 +223,7 @@
 
             <el-form-item label="参数">
               <el-radio-group v-model="d.arg">
-                <el-radio v-for="arg in elementPlusConfigMap[key].args" :label="arg">{{ arg }}</el-radio>
+                <el-radio v-for="arg in elementPlusConfigMap[key].args" :value="arg">{{ arg }}</el-radio>
 
               </el-radio-group>
             </el-form-item>
