@@ -346,6 +346,41 @@
       ],
       "default": 1,
       "version": "2.3.10"
+    },
+    "empty-values": {
+      "label": "组件的空值配置",
+      "title": "组件的空值配置 [参考config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "version": "2.7.0"
+    },
+    "value-on-clear": {
+      "label": "清空选项的值",
+      "title": "清空选项的值  [参考 config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        },
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "^[string] / ^[number] / ^[boolean] / ^[Function"
+        }
+      ],
+      "version": "2.7.0"
     }
   },
   "events": [

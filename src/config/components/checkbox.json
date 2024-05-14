@@ -226,7 +226,19 @@
           "tag": "el-switch"
         }
       ],
-      "a11y": true
+      "a11y": true,
+      "deprecated": true
+    },
+    "aria-controls": {
+      "title": "和 [aria-control](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)一致。当 `indeterminate` 为 `true` 时生效",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "version": "2.7.2"
     }
   },
   "events": [
@@ -243,5 +255,5 @@
       "title": "自定义默认内容"
     }
   ],
-  "desc": "在一组备选项中进行多选。"
+  "desc": ":::warning"
 }

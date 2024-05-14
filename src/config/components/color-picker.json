@@ -145,7 +145,19 @@
           "tag": "el-input"
         }
       ],
-      "a11y": true
+      "a11y": true,
+      "deprecated": true
+    },
+    "aria-label": {
+      "title": "ColorPicker 的 aria-label",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "version": "2.7.2"
     },
     "id": {
       "label": "",
@@ -159,6 +171,17 @@
           }
         }
       ]
+    },
+    "teleported": {
+      "title": "是否将 popover 的下拉列表渲染至 body 下",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.7.2"
     }
   },
   "events": [

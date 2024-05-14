@@ -178,7 +178,19 @@
           }
         }
       ],
-      "hide": true
+      "hide": true,
+      "deprecated": true
+    },
+    "aria-label": {
+      "title": "等价于原生 input `aria-label` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "version": "2.7.2"
     },
     "id": {
       "label": "",
@@ -271,6 +283,17 @@
       "fnDes": "() => void"
     }
   ],
-  "slots": [],
+  "slots": [
+    {
+      "name": "decrease-icon",
+      "title": "自定义输入框按钮减少图标",
+      "version": "2.6.3"
+    },
+    {
+      "name": "increase-icon",
+      "title": "自定义输入框按钮增加图标",
+      "version": "2.6.3"
+    }
+  ],
   "desc": "仅允许输入标准的数字值，可定义范围"
 }

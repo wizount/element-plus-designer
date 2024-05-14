@@ -93,7 +93,19 @@
           }
         }
       ],
-      "a11y": true
+      "a11y": true,
+      "deprecated": true
+    },
+    "aria-label": {
+      "title": "与 RadioGroup 中的 `aria-label` 属性相同",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "version": "2.7.2"
     },
     "name": {
       "label": "",

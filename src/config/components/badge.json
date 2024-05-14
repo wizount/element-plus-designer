@@ -95,6 +95,48 @@
       ],
       "default": true,
       "version": "2.6.0"
+    },
+    "color": {
+      "title": "背景色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "",
+      "version": "2.6.3"
+    },
+    "offset": {
+      "label": "偏移量",
+      "title": "badge 的偏移量",
+      "types": [
+        {
+          "name": "[ `number` , `number` ]",
+          "tag": ""
+        }
+      ],
+      "version": "2.7.0"
+    },
+    "badge-style": {
+      "title": "自定义 badge 样式",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "version": "2.7.1"
+    },
+    "badge-class": {
+      "title": "自定义 badge 类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.7.1"
     }
   },
   "slots": [

@@ -288,6 +288,12 @@
       "title": "清理某个字段的表单验证信息。",
       "type": "Function",
       "fnDes": "(props?: Arrayable<FormItemProp> | undefined) => void"
+    },
+    {
+      "name": "fields",
+      "title": "获取所有字段的 context",
+      "type": "^[array]`FormItemContext[]`",
+      "version": "2.7.3"
     }
   ],
   "desc": "表单包含 `输入框`, `单选框`, `下拉选择`, `多选框` 等用户输入的组件。 使用表单，您可以收集、验证和提交数据。"

@@ -88,7 +88,6 @@
         <template #prepend>REF</template>
       </el-input>
       <div v-show="activeData.__data__.source==='static'">
-
         <config-value-input :attr-config="curComConfig.data.static.type" :treeProps="curItemProps.props"
                             v-model="activeData.__data__.static[curComConfig.data.name]"></config-value-input>
       </div>
@@ -132,6 +131,7 @@
                   v-if="__refs__&&__refs__[k]">
           <template #prepend>REF</template>
         </el-input>
+
 
         <!--      :treeProps="curItemProps.props"使用不明智，但确实解决了问题-->
         <config-value-input v-model="curItemProps[k]" v-if="v.type.tag" :treeProps="curItemProps.props"

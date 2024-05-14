@@ -12,7 +12,6 @@
       </el-icon>
     </div>
   </div>
-
 </template>
 
 <script setup>

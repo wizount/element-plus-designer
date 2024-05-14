@@ -135,6 +135,17 @@
         }
       ]
     },
+    "aria-label": {
+      "title": "原生 `aria-label`属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "version": "2.7.2"
+    },
     "label": {
       "title": "输入框关联的 label 文字",
       "types": [

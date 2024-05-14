@@ -231,7 +231,19 @@
             "clearable": true
           }
         }
-      ]
+      ],
+      "deprecated": true
+    },
+    "aria-label": {
+      "title": "原生 `aria-label`属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "version": "2.7.2"
     },
     "range-start-label": {
       "label": "标签开始标记",

@@ -79,7 +79,19 @@
             "clearable": true
           }
         }
-      ]
+      ],
+      "deprecated": true
+    },
+    "aria-label": {
+      "title": "原生 `aria-label`属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "version": "2.7.2"
     },
     "text-color": {
       "label": "按钮活跃颜色",
@@ -188,5 +200,5 @@
       "dataKey": "list"
     }
   },
-  "desc": "在一组备选项中进行多选。"
+  "desc": ":::warning"
 }

@@ -372,7 +372,19 @@
         }
       ],
       "hide": true,
-      "a11y": true
+      "a11y": true,
+      "deprecated": true
+    },
+    "aria-label": {
+      "title": "等价于原生 input `aria-label` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "version": "2.7.2"
     },
     "tabindex": {
       "label": "tabindex",
