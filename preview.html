@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico">
+    <title>form-generator-preview</title>
+    <link href="https://unpkg.com/element-plus/dist/index.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3.3.4/dist/vue.global.prod.js"></script>
+    <script src="https://unpkg.com/element-plus/dist/index.full.min.js"></script>
+    <script src="https://unpkg.com/element-plus/dist/locale/zh-cn.min.js"></script>
+    <script src="https://unpkg.com/@element-plus/icons-vue@2.1.0/dist/index.iife.min.js"></script>
+    <script src="https://unpkg.com/axios@1.5.1/dist/axios.min.js"></script>
+
+
+
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            height: calc(100vh - 33px);
+            padding: 12px;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+        }
+
+        input, textarea {
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+        }
+    </style>
+</head>
+<body>
+<noscript>
+    <strong>抱歉，javascript被禁用，请开启后重试。</strong>
+</noscript>
+<div id="app">
+</div>
+<script>
+
+
+    window.addEventListener('message', init, false);
+
+    function init( event) {
+        if (event.data.type === 'refreshFrame') {
+            const {data} = event.data;
+            const attrs = {}
+            newVue(attrs, data.js, data.html)
+
+        }
+    }
+
+    function newVue(attrs, js, html) {
+        const   vnode = eval(`(${js})`)
+        vnode.template=html;
+
+        const app = Vue.createApp(vnode);
+        app.use(ElementPlus,{
+            locale: ElementPlusLocaleZhCn
+        });
+        for (const key in ElementPlusIconsVue) {
+            const componentConfig = ElementPlusIconsVue[key];
+            app.component(componentConfig.name, componentConfig);
+        }
+
+        app.mount("#app");
+    }
+
+
+</script>
+</body>
+</html>
