@@ -1,5 +1,14 @@
 {
+  "__id__": "segmented",
+  "name": "分段控制器",
+  "tag": "el-segmented",
+  "tagIcon": "segmented",
+  "layouts": [
+    "rawItem"
+  ],
+  "document": "https://element-plus.gitee.io/zh-CN/component/segmented.html",
   "attributes": {
+    "vModel": "modelValue",
     "options": {
       "title": "选项的数据",
       "types": [
@@ -35,7 +44,7 @@
           ]
         }
       ],
-      "default": ""
+      "default": "default"
     },
     "block": {
       "title": "撑满父元素宽度",
@@ -44,7 +53,8 @@
           "name": "boolean",
           "tag": "el-switch"
         }
-      ]
+      ],
+      "default": false
     },
     "disabled": {
       "title": "是否禁用",

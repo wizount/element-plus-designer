@@ -850,35 +850,35 @@ export const elementPlusComponents = [
                     }
                 ]
             },
-            {
-                name: "Tour 漫游式引导",
-                key: "tour",
-                children: [
-                    {
-                        __id__: "tour",
-                        __config__: {
-                            visibleBtn: true,
-                            defaultValue: false
-                        },
-                        __slots__: {
-                            default: [
-                                {
-                                    __id__: "tour-step",
-                                },
-                                {
-                                    __id__: "tour-step",
-                                }
-
-                            ]
-                        },
-                        __link__: [
-                            {
-                                __id__: "tour-step"
-                            }
-                        ]
-                    }
-                ]
-            },
+            // {
+            //     name: "Tour 漫游式引导",
+            //     key: "tour",
+            //     children: [
+            //         {
+            //             __id__: "tour",
+            //             __config__: {
+            //                 visibleBtn: true,
+            //                 defaultValue: false
+            //             },
+            //             __slots__: {
+            //                 default: [
+            //                     {
+            //                         __id__: "tour-step",
+            //                     },
+            //                     {
+            //                         __id__: "tour-step",
+            //                     }
+            //
+            //                 ]
+            //             },
+            //             __link__: [
+            //                 {
+            //                     __id__: "tour-step"
+            //                 }
+            //             ]
+            //         }
+            //     ]
+            // },
             {
                 name: "Tree 树形控件",
                 key: "tree",
@@ -915,6 +915,19 @@ export const elementPlusComponents = [
                     },
                     {
                         __id__: "countdown",
+                    }
+                ]
+            },
+            {
+                name: "Segmented 分段控制器",
+                key: "segmented",
+                children: [
+                    {
+                        __id__: "segmented",
+                        __props__: {
+                            options:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                        }
+
                     }
                 ]
             }
