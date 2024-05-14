@@ -20,11 +20,9 @@ export const elementPlusComponents = [
                     },
                     {
                         __id__: "div",
-                        __config__: {}
                     },
                     {
                         __id__: "flex-div",
-                        __config__: {},
                         __props__: {
                             style: {
                                 display: "flex"
@@ -925,7 +923,7 @@ export const elementPlusComponents = [
                     {
                         __id__: "segmented",
                         __props__: {
-                            options:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                            options: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
                         }
 
                     }
@@ -1188,7 +1186,19 @@ export const elementPlusComponents = [
                 name: "Watermark 水印",
                 children: [
                     {
-                        __id__: "watermark"
+                        __id__: "watermark",
+                        __slots__: {
+                            default: [
+                                {
+                                    __id__: "div",
+                                    __props__:{
+                                        style:{
+                                            height:"500px"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
                     }
                 ]
             }
