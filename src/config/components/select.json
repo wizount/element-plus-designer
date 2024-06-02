@@ -686,6 +686,11 @@
       "name": "loading",
       "title": "select 组件自定义 loading内容",
       "version": "2.5.2"
+    },
+    {
+      "name": "label",
+      "title": "select 组件自定义标签内容",
+      "version": "2.7.4"
     }
   ],
   "data": {

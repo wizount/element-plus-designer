@@ -127,7 +127,7 @@
   },
   "slots": [
     {
-      "name": "default",
+      "name": "默认",
       "title": "添加水印的容器"
     }
   ],
