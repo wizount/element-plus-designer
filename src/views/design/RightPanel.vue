@@ -131,7 +131,7 @@
               </template>
               <template v-if="Array.isArray(curItemSlots[slot.name])">
                 <draggable :list="curItemSlots[slot.name]" :animation="340" group="componentsGroup" itemKey="renderKey"
-                           handle=".drag-icon" style="min-height: 30px" class="slot-container">
+                           handle=".drag-icon" style="min-height: 30px">
                   <template #item="{element,index}">
                     <div class="draggable-item" :class="{chosen:chosenSlotIndex===(slot.name+index)}">
                       <div class="flex-grow-1 d-flex" @click="chooseSlotDrawItem(element,slot.name,index)">

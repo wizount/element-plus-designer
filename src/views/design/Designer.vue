@@ -130,7 +130,7 @@
 
         </el-dropdown>
 
-        <el-button type="danger" text icon="Delete" @click="emptyDrawItemList"> 清空</el-button>
+        <el-button type="danger" text icon="Delete" @click="emptyDrawItemList" :disabled="drawItemList.length===0"> 清空</el-button>
         <div id="copyNode" class="display:none;"></div>
       </div>
       <el-scrollbar class="center-scrollbar" @scroll="resetActiveDrawItemPosition">
@@ -231,6 +231,8 @@ import {elementPlusComponents} from "@/config/elementPlusConfig";
 
 import elementPlusConfigMap from "@/config";
 
+
+//region 根据配置，生成方便显示和查找
 const componentMap = {};
 elementPlusComponents.forEach((first) => {
   first.children.forEach((second) => {
@@ -264,6 +266,7 @@ function createComponentMap(com) {
     componentMap[com.__id__] = com;
   }
 }
+//endregion
 
 import {nextTick} from "vue";
 import {ArrowDown, Download} from "@element-plus/icons-vue";
@@ -271,7 +274,7 @@ import HtmlDrawer from "@/views/design/HtmlDrawer.vue";
 import SvgIcon from "@/components/SvgIcon/index.vue";
 
 
-let tempActiveData
+
 let beautifier
 
 //region 初始化
@@ -304,10 +307,7 @@ watch(drawItemList, (val) => {
 const idGlobal = ref(100);
 
 const designConf = ref(designConfPreset);
-const drawingData = ref()
 const activeId = ref(0)
-const formDrawerVisible = ref(false)
-
 const generateConf = ref(null)
 
 const activeData = ref({})
@@ -361,7 +361,7 @@ function setMaxIdGlobal(item) {
 }
 
 function findItemIndexInDrawItemList(targetItem) {
-  return recursiveFindItemIndexInList(null, drawItemList.value, targetItem);
+  return recursiveFindDrawItemInfo(null, drawItemList.value, targetItem);
 }
 
 //endregion
@@ -459,6 +459,9 @@ function moveDrawItem(upOrDown) {
 }
 
 function resetActiveDrawItemPosition() {
+  if(!activeToolbar.value){
+    return
+  }
   let ele = document.querySelector(".selected-draw-ele");
   if (!ele) {
     ele = document.querySelector(".selected-raw-ele :first-child");
@@ -483,12 +486,14 @@ function resetActiveDrawItemPosition() {
 
 //拖拽结束的操作
 
+let tempActiveData
+
 function onEnd(obj) {
   if (obj.from !== obj.to) {
-    const {parent, list, index} = findItemIndexInDrawItemList(tempActiveData);
+    const {parent, list, index, slotName} = findItemIndexInDrawItemList(tempActiveData);
     //判断是否可以添加
-    if (allowToAdd(parent, tempActiveData)) {
-      if (obj.to.className !== 'slot-container') {
+    if (allowToAdd({parent, slotName}, tempActiveData)) {
+      if (slotName !== 'default') {
         activeDrawItem(tempActiveData)
       }
     } else {//不能添加就删除
@@ -503,11 +508,11 @@ function onEnd(obj) {
 function addDrawItem(item) {
   const clone = cloneDrawItem(item);
   if (activeData.value && activeData.value.__config__ && activeData.value.__config__.layout === 'containerItem') {
-    if (allowToAdd(activeData.value, clone)) {
+    if (allowToAdd({parent: activeData.value}, clone)) {
       activeData.value.__slots__.default.push(clone)
     }
   } else {
-    if (allowToAdd(undefined, clone)) {
+    if (allowToAdd({}, clone)) {
       drawItemList.value.push(clone)
       activeDrawItem(clone)
     }
@@ -690,7 +695,7 @@ function resetDrawItemId(item) {
 }
 
 
-function allowToAdd(parent, clone, noShowMessage) {
+function allowToAdd({parent, slotName}, clone, noShowMessage) {
   if (!parent || !parent.__id__) {
 
     const {parentTag} = elementPlusConfigMap[clone.__id__];
@@ -700,18 +705,23 @@ function allowToAdd(parent, clone, noShowMessage) {
     }
     return true;
   }
-  const {childTag} = elementPlusConfigMap[parent.__id__];
-  if (childTag) {
-    if (childTag.indexOf(clone.__config__.tag) < 0) {
-      !noShowMessage && ElMessageBox.alert(`${parent.__config__.name}（${parent.__config__.tag}）组件下只能添加${childTag}。`)
-      //  ElMessageBox.alert(`不只能添加到${clone.__config__.name}（${parent.__config__.tag}）组件下。${designConf.value.wrapWithCol ? "可以关闭”设置->组件包裹col“。" : ""}`)
-      return false;
+  if (slotName === 'default') {
+    const {childTag} = elementPlusConfigMap[parent.__id__];
+    if (childTag) {
+      if (childTag.indexOf(clone.__config__.tag) < 0) {
+        !noShowMessage && ElMessageBox.alert(`${parent.__config__.name}（${parent.__config__.tag}）组件下只能添加${childTag}。`)
+        return false;
+      }
     }
   }
   const {parentTag} = elementPlusConfigMap[clone.__id__];
   if (parentTag) {
     if (parentTag.indexOf(parent.__config__.tag) < 0) {
       !noShowMessage && ElMessageBox.alert(`只能添加到${clone.__config__.name}（${parentTag}）组件下。`)
+      return false;
+    }
+    if(slotName !== 'default') {
+      !noShowMessage && ElMessageBox.alert(`只能添加到${clone.__config__.name}（${parentTag}）的默认插槽。`)
       return false;
     }
   }
@@ -759,48 +769,25 @@ function itemMove(evt) {
   const {element} = draggedContext;//拖拽对象
   const {list} = relatedContext;//放到哪个位置
 
-  let parent = findChildrenParentRoot(list);
+  let parentInfo = recursiveFindParentOfChildren(undefined, drawItemList.value, list, undefined);
 
-  return allowToAdd(parent, element, true);
+  return allowToAdd(parentInfo, element, true);
 
-
-}
-
-function findChildrenParentRoot(children) {
-  if (children === drawItemList.value) {//检查数组地址相同
-    return undefined;
-  } else {
-    for (const item of drawItemList.value) {
-      return findChildrenParent(item, children);
-    }
-  }
-}
-
-/**
- * 查找children的父节点
- */
-function findChildrenParent(parent, children) {
-
-  if (parent.__slots__) {
-    for (const slotName in parent.__slots__) {
-      if (parent.__slots__[slotName] === children) {
-        return parent;
-      } else {
-        for (const item of parent.__slots__[slotName]) {
-          return findChildrenParent(item, children);
-        }
-      }
-    }
-  }
 
 }
+
 
 //endregion
 
 
+
+
+const formDrawerVisible = ref(false)
 function execPreview() {
   formDrawerVisible.value = true
 }
+
+
 
 function execDownload(codeStyle) {
   designConf.value.jsCodeStyle = codeStyle;
@@ -989,23 +976,24 @@ function drawItemTreeAllowDrag(node) {
   return !node.data.slotName;
 }
 
+//fixme 晚点再试
 function drawItemTreeAllowDrop(draggingNode, dropNode, type) {
   const {__id__: dropId, renderKey: dropRenderKey, slotName} = dropNode.data;
   if (type === 'inner') {
     if (slotName) {
-      return allowToAdd(undefined, draggingNode.data, true);
+      return allowToAdd({slotName}, draggingNode.data, true);
     }
     if (elementPlusConfigMap[dropId] && elementPlusConfigMap[dropId].layouts.indexOf('containerItem') >= 0) {
-      return allowToAdd(dropNode.data, draggingNode.data, true);
+      return allowToAdd({parent: dropNode.data, slotName}, draggingNode.data, true);
     }
 
   }
   if (type !== 'inner') {
     const {__id__: draggingId, renderKey: draggingRenderKey} = dropNode.data;
     if (dropNode.parent) {
-      return allowToAdd(dropNode.parent.data, draggingNode.data, true);
+      return allowToAdd({parent: dropNode.parent.data}, draggingNode.data, true);
     } else {
-      return allowToAdd(dropNode.data, draggingNode.data, true);
+      return allowToAdd({parent: dropNode.data}, draggingNode.data, true);
     }
   }
 
@@ -1189,8 +1177,8 @@ import ruleTrigger from "@/components/generator/ruleTrigger";
 import {
   processADrawItemAndSlots,
   recursiveProcessDrawItemList,
-  recursiveFindItemIndexInList,
-  changeDrawItemVariableName, findDrawItemByRenderKey
+  recursiveFindDrawItemInfo,
+  changeDrawItemVariableName, findDrawItemByRenderKey, recursiveFindParentOfChildren
 } from "@/views/design/DrawItemProcessor";
 import {isArrayEqual} from "@/components/generator/utils";
 import {renderJs, renderSfc} from "@/components/generator";

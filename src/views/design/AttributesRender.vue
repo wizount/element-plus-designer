@@ -233,7 +233,6 @@ function changeType(key, typeName) {
     return;
   }
   switch (nextTypeName) {
-
     case 'string':
       curItemProps.value[key] = "";
       break;
