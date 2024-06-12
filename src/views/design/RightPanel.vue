@@ -3,7 +3,7 @@
     <el-tabs v-model="currentTab" class="center-tabs" style="padding-left: 15px">
       <el-tab-pane label="组件属性" name="field"/>
       <el-tab-pane label="插槽" name="slots" v-if="showSlots"/>
-      <el-tab-pane label="事件" name="events"/>
+<!--      <el-tab-pane label="事件" name="events"/>-->
       <el-tab-pane label="样式" name="style"/>
       <el-tab-pane label="正则表达式" name="reg" v-if="Array.isArray(curItemConfig.regList)"/>
       <el-tab-pane label="指令" name="directive"/>
@@ -56,7 +56,7 @@
 
 
           <attributes-render :attribute-config="curComAttrs"
-                             :active-data="activeData"></attributes-render>
+                             :active-item="activeItem"></attributes-render>
 
         </el-form>
 
@@ -169,7 +169,7 @@
             <el-collapse-transition>
               <el-form class="narrower-margin-bottom" v-if="chosenSlotDrawItem&&chosenSlotIndex.indexOf(slot.name)===0">
                 <attributes-render
-                    :active-data="chosenSlotDrawItem"
+                    :active-item="chosenSlotDrawItem"
                     :attribute-config="chosenSlotDrawItemAttributes"></attributes-render>
               </el-form>
             </el-collapse-transition>
@@ -180,13 +180,13 @@
             <el-button link type="primary" :content="`添加事件`" icon="Plus">添加事件</el-button>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item v-for="e in curComConfig.events" :command="e">
+                <el-dropdown-item v-for="e in curComEvents" :command="e">
                   添加{{ e.name }}事件
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
-          <div v-for="e in activeData.__events__">
+          <div v-for="e in activeItem.__events__">
             <el-form-item label="事件名">
               <el-tag>{{ e.name }}</el-tag>
             </el-form-item>
@@ -212,7 +212,7 @@
               </el-dropdown-menu>
             </template>
           </el-dropdown>
-          <div v-for="(d,key) in activeData.__directives__">
+          <div v-for="(d,key) in activeItem.__directives__">
 
             <el-divider>{{key}}指令</el-divider>
             <el-form-item label="值">
@@ -258,7 +258,7 @@ const currentTab = ref('field')
 
 const props = defineProps({
       showField: Boolean,
-      activeData: {
+      activeItem: {
         type: Object,
         required: true
       },
@@ -272,40 +272,45 @@ const props = defineProps({
 const emits = defineEmits(['addSlotDrawItem', "activeParentDrawItem"])
 
 const curItemConfig = computed(() => {
-  return props.activeData.__config__ || {}
+  return props.activeItem.__config__ || {}
 })
-//当前组件的属性值
+//当前drawItem属性值
 const curItemProps = computed(() => {
-  return props.activeData.__props__ || {}
+  return props.activeItem.__props__ || {}
+})
+const curItemSlots = computed(() => {
+  return props.activeItem.__slots__ || {}
 })
 
-//当前组件信息
+//当前component信息
 const curComConfig = computed(() => {
-  return elementPlusConfigMap[props.activeData.__id__] || {}
+  return elementPlusConfigMap[props.activeItem.__id__] || {}
 })
-//当前组件的属性配置
+
 const curComAttrs = computed(() => {
-  return curComConfig.value.attributes
+  return curComConfig.value.attributes;
 })
 
 const curComSlots = computed(() => {
   return curComConfig.value.slots;
 })
 
+const curComEvents = computed(() => {
+  return curComConfig.value.events;
+})
+
+
 
 const curDocLink = computed(() => {
   return curComConfig.value.document ||
       'https://element-plus.gitee.io/zh-CN/guide/installation.html'
 })
-const curItemSlots = computed(() => {
-  return props.activeData.__slots__ || {}
-})
 
 const showSlots = computed(() => {
-  return curItemConfig.value.layout !== 'fixedItem' && curComConfig.value.slots && curComConfig.value.slots.length > 0
+  return curItemConfig.value.layout !== 'fixedItem' && curComSlots.value && curComSlots.value.length > 0
 })
 //当选中组件变化，也就是renderKey变化，重新选中的插槽数据
-watch(() => props.activeData.renderKey, (val) => {
+watch(() => props.activeItem.renderKey, (val) => {
   chosenSlotDrawItem.value = undefined;
   chosenSlotIndex.value = ""
 })
@@ -354,27 +359,30 @@ watch(() => curItemProps.value.range, (val) => {
   }
 })
 //endregion
+//根据输入的标签更改placeholder
 watch(() => curItemConfig.value.label, (newVal, oldVal) => {
   if (curItemProps.value && curComAttrs.value && curItemProps.value.placeholder === (curComAttrs.value.placeholder + oldVal)) {
     curItemProps.value.placeholder = curComAttrs.value.placeholder + newVal
   }
 })
 
-
+//根据itemName更改drawItem各个地方名称
 watch(() => curItemConfig.value.itemName, (newVal, oldVal) => {
-  props.activeData.renderKey && changeDrawItemVariableName(props.activeData, newVal, oldVal);
+  props.activeItem.renderKey && changeDrawItemVariableName(props.activeItem, newVal, oldVal);
 })
 
-watch(() => props.activeData.__data__ && props.activeData.__data__.source, (val) => {
+
+
+watch(() => props.activeItem.__data__ && props.activeItem.__data__.source, (val) => {
   if (val) changeRenderKey();
 })
 
-watch(() => props.activeData.__directives__ , (val) => {
+watch(() => props.activeItem.__directives__ , (val) => {
   changeRenderKey();
 },{deep:true})
-
+//更改renderKey以达到重组drawItem
 function changeRenderKey() {
-  props.activeData.renderKey = `${curItemConfig.value.drawItemId}${Math.floor(Math.random() * 10000)}`
+  props.activeItem.renderKey = `${curItemConfig.value.drawItemId}${Math.floor(Math.random() * 10000)}`
 }
 
 //region 对时间和日期组件进行格式操作
@@ -405,8 +413,7 @@ watch(() => curItemProps.value.type, (newVal) => {
 })
 //endregion
 
-//region 正则表达式
-//AutoComplete 回调
+//region  正则表达式
 import {AutoCompleteCallback} from "@/utils/element-plus-utils";
 import regList from '@/utils/regList.json'
 import {changeDrawItemVariableName} from "@/views/design/DrawItemProcessor";
@@ -421,7 +428,9 @@ function addReg() {
     message: '',
   })
 }
+//endregion
 
+//region 正则表达式
 //fixme 当更新时，要填入正则表达式的message
 function regChange(item) {
   for (const reg of regList) {
@@ -472,10 +481,10 @@ function activeParentDrawItem() {
 //endregion
 
 
-//region
+//region 添加事件
 function addEvent(event) {
 
-  props.activeData.__events__.push({
+  props.activeItem.__events__.push({
     name: event.name, fnName: curItemConfig.value.itemName + titleCase(event.name),
     params: (event.params || []).join(",")
   })
@@ -484,11 +493,11 @@ function addEvent(event) {
 //endregion
 
 
-//region
-function addDirective(event) {
-  if (!props.activeData.__directives__[event]) {
-    props.activeData.__directives__[event] = {
-      value:elementPlusConfigMap[event].value.default,
+//region 添加指令
+function addDirective(directiveName) {
+  if (!props.activeItem.__directives__[directiveName]) {
+    props.activeItem.__directives__[directiveName] = {
+      value:elementPlusConfigMap[directiveName].value.default,
       arg:undefined,
       modifiers:[]
     };

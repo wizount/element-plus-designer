@@ -1,26 +1,12 @@
-import FixItem from "@/components/FixItem"
+import FixedItem from "@/components/FixedItem"
 
-//生成配置的FormItem
+//动态配置输入
 export default {
     props: [
-        // 'modelValue',
-        // 'attrName',
         'attrConfig'
     ],
     setup(props) {
-        // function buildVModel() {
-        //     return {
-        //         modelValue: props.data[props.attrName],
-        //         'onUpdate:modelValue'(e) {
-        //             props.data[props.attrName] = e
-        //         }
-        //     }
-        // }
-
-        //以下组件也是自动生成
-        //options只针对select
-
-        const {tag, options} = props.attrConfig;
+        const {tag, options} = props.attrConfig; //options只针对select
         const renderConfig = {
             __config__: {tag, ...props.attrConfig.config},
             __props__: props.attrConfig.props || {}
@@ -28,7 +14,7 @@ export default {
         if (options) {
             renderConfig.__data__ = {options}
         }
-        return () => h(FixItem, {conf: renderConfig})
+        return () => h(FixedItem, {conf: renderConfig})
 
     }
 

@@ -1,5 +1,5 @@
 const DRAWING_ITEMS = 'drawItems'
-const DRAWING_ITEMS_VERSION = '0.2'
+const DRAWING_ITEMS_VERSION = '0.3'
 const DRAWING_ITEMS_VERSION_KEY = 'DRAWING_ITEMS_VERSION'
 const DRAWING_ID = 'idGlobal'
 const TREE_NODE_ID = 'treeNodeId'

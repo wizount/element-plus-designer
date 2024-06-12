@@ -4,7 +4,7 @@ const defaultFormItemConfig = {
     labelWidth: null,
     required: true,
 }
-export const elementPlusComponents = [
+export const elementPlusDisplayComponents = [
     {
         title: "html组件",
         children: [
@@ -605,7 +605,6 @@ export const elementPlusComponents = [
                             disabled: false,
                             accept: "",
                             "auto-upload": true,
-                            "list-type": "text",
                             multiple: false
                         }
                     }

@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/vue@3.3.4/dist/vue.global.prod.js"></script>
     <script src="https://unpkg.com/element-plus/dist/index.full.min.js"></script>
     <script src="https://unpkg.com/element-plus/dist/locale/zh-cn.min.js"></script>
-    <script src="https://unpkg.com/@element-plus/icons-vue@2.1.0/dist/index.iife.min.js"></script>
+    <script src="https://unpkg.com/@element-plus/icons-vue/dist/index.iife.min.js"></script>
     <script src="https://unpkg.com/axios@1.5.1/dist/axios.min.js"></script>
 
 
@@ -55,7 +55,7 @@
 
     function newVue(attrs, js, html) {
         const   vnode = eval(`(${js})`)
-        vnode.template=html;
+        vnode.template=html.replaceAll("template_alt", "template");
 
         const app = Vue.createApp(vnode);
         app.use(ElementPlus,{

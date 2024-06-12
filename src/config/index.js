@@ -5,7 +5,7 @@ const elementPlusConfigMap = {}
  * 文件内容为value，解析JSON配置中的__slot__
  */
 
-import slotRenderFunctions from "@/components/FixItem/slots";
+import slotRenderFunctions from "@/components/FixedItem/slots";
 const jsonFiles = import.meta.glob("./components/*.json", {query: "?json", import: 'default', eager: true});
 const keys = Object.keys(jsonFiles) || []
 keys.map(key => {

@@ -1,4 +1,4 @@
-import FixItem from "@/components/FixItem"
+import FixedItem from "@/components/FixedItem"
 import Draggable from '@/vuedraggable/vuedraggable';
 import {deepClone} from "@/utils";
 import '@/styles/draggalbeItem.scss'
@@ -227,14 +227,14 @@ export default {
 
 
             if (simple) {
-                return <FixItem conf={config} {...buildVModel(curItem)}></FixItem>
+                return <FixedItem conf={config} {...buildVModel(curItem)}></FixedItem>
             } else {
                 if (wrapWithSpan) {
-                    const source = <FixItem conf={config}  {...buildVModel(curItem)}></FixItem>
+                    const source = <FixedItem conf={config}  {...buildVModel(curItem)}></FixedItem>
                     return doWrapWithSpan(curItem, source);
                 } else {
-                    return <FixItem
-                        conf={config} {...buildClass(curItem, curItem.__native__.class)} {...buildVModel(curItem)} {...buildEvent(curItem)}></FixItem>
+                    return <FixedItem
+                        conf={config} {...buildClass(curItem, curItem.__native__.class)} {...buildVModel(curItem)} {...buildEvent(curItem)}></FixedItem>
                 }
 
 

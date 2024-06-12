@@ -20,7 +20,7 @@ watch(() => [...drawItemList.value], (val) => {
 }, {deep: true})
 
 const designerRef=ref();
-//生成低码请使用  designerRef.value.generateCode(jsCodeStyle)
+//生成代码请使用  designerRef.value.generateCode(jsCodeStyle)
 //jsCodeStyle可以为：composition（组合式）
 //可以为：options（选项式）
 //可以为：compositionSFC（组合式SFC）

@@ -1,9 +1,9 @@
 import slotRenderFunctions from './slots'
 import {h, resolveComponent} from 'vue'
 
+//fixItem，代表这个组件下slots由固定格式生成
 export default {
     //  inheritAttrs: false,想要拖拽，这个不能要
-
     props: {
         conf: {
             type: Object,

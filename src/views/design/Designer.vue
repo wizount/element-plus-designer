@@ -18,7 +18,7 @@
       </div>
       <el-scrollbar class="left-scrollbar">
         <el-collapse class="components-list">
-          <el-collapse-item :title="c.title" :name="c.titles" v-for="c in elementPlusComponents" :key="c.title">
+          <el-collapse-item :title="c.title" :name="c.titles" v-for="c in elementPlusDisplayComponents" :key="c.title">
             <template v-for="l in c.children">
               <draggable tag="span" class="components-draggable" :list="l.children" item-key="renderKey"
                          :group="{ name: 'componentsGroup', pull: 'clone', put: false }" :clone="cloneDrawItem"
@@ -144,9 +144,9 @@
           </template>
         </draggable>
         <div v-show="!drawItemList||drawItemList.length===0" class="empty-info"> 从左侧拖入或点选组件进行界面设计</div>
-        <div class="activeToolbar" ref="activeToolbar" v-if="activeData.renderKey&&activeData.__config__">
-          <svg-icon style="color: var(--el-text-color)" :icon-class="activeData.__config__.tagIcon"/>
-          <span style="color: var(--el-text-color)"> {{ activeData.__config__.itemName }}</span>
+        <div class="activeToolbar" ref="activeToolbar" v-if="activeItem.renderKey&&activeItem.__config__">
+          <svg-icon style="color: var(--el-text-color)" :icon-class="activeItem.__config__.tagIcon"/>
+          <span style="color: var(--el-text-color)"> {{ activeItem.__config__.itemName }}</span>
 
           <el-button class="activeBtn" size="small" type="info" circle @click="activeParentDrawItem"
                      title="跳到父组件">
@@ -160,17 +160,17 @@
           <el-button class="activeBtn" size="small" type="info" circle icon="ArrowDown" @click="moveDrawItem(1)"
                      title="下移">
           </el-button>
-          <el-button class="activeBtn" type="primary" size="small" circle icon="Document" @click="drawItemCopy"
+          <el-button class="activeBtn" type="primary" size="small" circle icon="Document" @click="copyDrawItem"
                      title="复制组件"/>
           <el-button class="activeBtn" type="danger" size="small" circle icon="Delete" @click="deleteDrawItem"
                      title="删除组件"/>
         </div>
       </el-scrollbar>
     </div>
-    <right-panel :active-data="activeData" :design-conf="designConf" :show-field="!!drawItemList.length"
+    <right-panel :active-item="activeItem" :design-conf="designConf" :show-field="!!drawItemList.length"
                  @add-slot-draw-item="addSlotDrawItem"
                  @active-parent-draw-item="activeParentDrawItem"/>
-    <form-drawer v-model="formDrawerVisible" :draw-item-list="drawItemList" size="100%"/>
+    <preview-drawer v-model="previewDrawerVisible" :draw-item-list="drawItemList" size="100%"/>
     <json-drawer size="750px" v-model="jsonDrawerVisible" :json-str="jsonStr" @refresh="refreshJson"
                  :design-conf="designConf"/>
 
@@ -186,11 +186,11 @@
           <template #default="{ node, data }">
           <span>
              <el-text v-if="data.__id__==='plainText' " type="primary"><svg-icon
-                 :icon-class="data.__config__.tagIcon" :class="{ac:data.renderKey===activeData.renderKey}"/>{{
+                 :icon-class="data.__config__.tagIcon" :class="{ac:data.renderKey===activeItem.renderKey}"/>{{
                  data.__id__
                }} - {{ data.__config__.itemName }}</el-text>
           <el-text v-else-if="data.__config__&&data.__config__.tag" type="primary"><svg-icon
-              :icon-class="data.__config__.tagIcon" :class="{ac:data.renderKey===activeData.renderKey}"/>{{
+              :icon-class="data.__config__.tagIcon" :class="{ac:data.renderKey===activeItem.renderKey}"/>{{
               data.__config__.tag
             }} - {{ data.__config__.itemName }}</el-text>
              <span v-else :title="`插槽${data.slotName}`">{{ data.slotName }}</span>
@@ -213,28 +213,31 @@ import logo from "@/assets/logo.png"
 import Draggable from '@/vuedraggable/vuedraggable'
 import {saveAs} from 'file-saver'
 import ClipboardJS from 'clipboard'
-import FormDrawer from './PreviewDrawer.vue'
-import JsonDrawer from './JsonDrawer'
-import RightPanel from './RightPanel'
-import {
-  designConf as designConfPreset, jsCodeStyleList
-} from '@/config/config'
 import {addClass, camelCase, deepClone, deleteObjectProps} from '@/utils'
-
-
 import {getDesignConf, saveDesignConf} from '@/utils/db'
 import loadBeautifier from '@/utils/loadBeautifier'
 import {ElMessage, ElMessageBox, ElNotification} from 'element-plus'
 import DraggableItem from "./DraggableItem"
-import {elementPlusComponents} from "@/config/elementPlusConfig";
-
-
+import {elementPlusDisplayComponents} from "@/config/elementPlusConfig";
 import elementPlusConfigMap from "@/config";
 
+import RightPanel from './RightPanel'
 
-//region 根据配置，生成方便显示和查找
-const componentMap = {};
-elementPlusComponents.forEach((first) => {
+
+import {
+  designConf as designConfPreset, jsCodeStyleList
+} from '@/config/config'
+
+import {nextTick} from "vue";
+import SvgIcon from "@/components/SvgIcon/index.vue";
+
+
+
+
+
+//region 根据elementPlusDisplayComponents，生成所有支持的组件map，并填充数据，以方便生成drawItem
+const supportedComponentMap = {};
+elementPlusDisplayComponents.forEach((first) => {
   first.children.forEach((second) => {
     second.children.forEach((third) => {
       createComponentMap(third)
@@ -263,22 +266,22 @@ function createComponentMap(com) {
       com.__config__.tagIcon = tagIcon;
     }
     com.__config__.layout = layouts[0];
-    componentMap[com.__id__] = com;
+    supportedComponentMap[com.__id__] = com;
   }
 }
 //endregion
 
-import {nextTick} from "vue";
-import {ArrowDown, Download} from "@element-plus/icons-vue";
-import HtmlDrawer from "@/views/design/HtmlDrawer.vue";
-import SvgIcon from "@/components/SvgIcon/index.vue";
-
-
-
+//region 全局变量
 let beautifier
+let idGlobal = 100;
+//endregion
 
-//region 初始化
 
+
+
+
+
+//region props,emits定义和watch
 const props = defineProps({
   modelValue: {
     type: Array,
@@ -295,7 +298,7 @@ watch(() => props.modelValue, (val) => {
 })
 
 watch(drawItemList, (val) => {
-  if (val.length === 0) idGlobal.value = 100
+  if (val.length === 0) idGlobal = 100
   emits("update:modelValue", val);
   formModelsAndRules.value = {};
   buildFormModelsAndRules(val);
@@ -304,51 +307,16 @@ watch(drawItemList, (val) => {
 
 }, {deep: true})
 //endregion
-const idGlobal = ref(100);
+
 
 const designConf = ref(designConfPreset);
 const activeId = ref(0)
 const generateConf = ref(null)
 
-const activeData = ref({})
+const activeItem = ref({})
 const activeToolbar = ref(null)
 
-//region 初始化及退出
-let clipboard
-onMounted(() => {
-  drawItemList.value = props.modelValue;
-  if (drawItemList.value.length >= 1) {
-    activeDrawItem(drawItemList.value[0])
-  }
 
-  idGlobal.value = 100;
-  recursiveProcessDrawItemList(drawItemList.value, setMaxIdGlobal)
-  const designConfInDB = getDesignConf()
-  if (designConfInDB) {
-    designConf.value = designConfInDB
-  }
-  loadBeautifier((btf) => {
-    beautifier = btf
-  })
-  clipboard = new ClipboardJS('#copyNode', {
-    text: (trigger) => {
-      const codeStr = generateCode()
-      ElNotification({
-        title: '成功',
-        message: '代码已复制到剪切板，可粘贴。',
-        type: 'success',
-      })
-      return codeStr
-    },
-  })
-  clipboard.on('error', (e) => {
-    ElMessage.error('代码复制失败')
-  })
-})
-
-onBeforeUnmount(() => {
-  clipboard && clipboard.destroy();
-})
 
 /**
  *找出最大的idGlobal
@@ -357,7 +325,7 @@ onBeforeUnmount(() => {
 function setMaxIdGlobal(item) {
   if (!item || !item.__config__) return;
   let config = item.__config__;
-  idGlobal.value = Math.max(idGlobal.value, config.drawItemId)
+  idGlobal = Math.max(idGlobal, config.drawItemId)
 }
 
 function findItemIndexInDrawItemList(targetItem) {
@@ -381,28 +349,36 @@ function activeDrawItem(item) {
   if (!item || !item.__config__) {
     return;
   }
-  activeData.value = item;
+  activeItem.value = item;
   activeId.value = item.__config__.drawItemId;
   setTimeout(() => {
     resetActiveDrawItemPosition();
   }, 50)
 }
 
-function drawItemCopy() {
-  let res = findItemIndexInDrawItemList(activeData.value);
+function copyDrawItem() {
+  let res = findItemIndexInDrawItemList(activeItem.value);
   if (res) {
     let {list} = res;
 
-    let clone = deepClone(activeData.value);
+    let clone = deepClone(activeItem.value);
     processADrawItemAndSlots(clone, resetDrawItemId)
 
     list.push(clone);
   }
 }
-
+function emptyDrawItemList() {
+  ElMessageBox.confirm('确定要清空所有组件吗？', '提示', {type: 'warning'}).then(
+      () => {
+        drawItemList.value = []
+        activeItem.value = {}
+        idGlobal = 100;
+      }
+  )
+}
 
 function deleteDrawItem(e, item) {
-  let {parent, list, index} = findItemIndexInDrawItemList(item || activeData.value);
+  let {parent, list, index} = findItemIndexInDrawItemList(item || activeItem.value);
   if (!Array.isArray(list) || index < 0 || index > list.length) {
     return;
   }
@@ -419,14 +395,14 @@ function deleteDrawItem(e, item) {
       parent && activeDrawItem(parent);
     }
     if (drawItemList.value.length === 0) {
-      activeData.value = {}
+      activeItem.value = {}
     }
   })
 }
 
 //active父组件
 function activeParentDrawItem() {
-  let {parent} = findItemIndexInDrawItemList(activeData.value);
+  let {parent} = findItemIndexInDrawItemList(activeItem.value);
   if (parent) {
     activeDrawItem(parent);
   } else {
@@ -437,7 +413,7 @@ function activeParentDrawItem() {
 //移动
 function moveDrawItem(upOrDown) {
 
-  let res = findItemIndexInDrawItemList(activeData.value);
+  let res = findItemIndexInDrawItemList(activeItem.value);
   if (!res) {
     return;
   }
@@ -453,7 +429,7 @@ function moveDrawItem(upOrDown) {
   list[index] = list[moveIndex];
   list[moveIndex] = a;
   nextTick(() => {
-    activeDrawItem(activeData.value)
+    activeDrawItem(activeItem.value)
   })
 
 }
@@ -478,6 +454,7 @@ function resetActiveDrawItemPosition() {
     activeToolbar.value.style.display = 'none';
   }
 }
+
 
 //endregion
 
@@ -507,9 +484,9 @@ function onEnd(obj) {
 
 function addDrawItem(item) {
   const clone = cloneDrawItem(item);
-  if (activeData.value && activeData.value.__config__ && activeData.value.__config__.layout === 'containerItem') {
-    if (allowToAdd({parent: activeData.value}, clone)) {
-      activeData.value.__slots__.default.push(clone)
+  if (activeItem.value && activeItem.value.__config__ && activeItem.value.__config__.layout === 'containerItem') {
+    if (allowToAdd({parent: activeItem.value}, clone)) {
+      activeItem.value.__slots__.default.push(clone)
     }
   } else {
     if (allowToAdd({}, clone)) {
@@ -526,9 +503,9 @@ function cloneDrawItem(origin) {
   let colItem
   if (designConf.value.wrapWithCol) {
     let {parent} = findItemIndexInDrawItemList(origin);
-    parent = parent || activeData.value;
+    parent = parent || activeItem.value;
     if (parent.__config__ && parent.__config__.tag === 'el-row' && origin.__config__.tag !== 'el-col') {
-      colItem = cloneDrawItem(componentMap["col"]);
+      colItem = cloneDrawItem(supportedComponentMap["col"]);
     }
   }
 
@@ -652,7 +629,7 @@ function cloneDrawItem(origin) {
 
 function createIdAndKey(item) {
   const config = item.__config__
-  config.drawItemId = ++idGlobal.value;
+  config.drawItemId = ++idGlobal;
   if (config.showLabel) {
     config.label = config.name
   }
@@ -661,10 +638,10 @@ function createIdAndKey(item) {
   const itemId = item.__id__;
   const itemNamePrefix = config.itemName || item.__id__;
   if (itemId && elementPlusConfigMap[itemId] && elementPlusConfigMap[itemId].attributes.vModel) {
-    item.__vModel__ = camelCase(`${itemNamePrefix}${idGlobal.value}`);
+    item.__vModel__ = camelCase(`${itemNamePrefix}${idGlobal}`);
   }
 
-  config.itemName = `${itemNamePrefix}${idGlobal.value}`
+  config.itemName = `${itemNamePrefix}${idGlobal}`
 
   if (elementPlusConfigMap[item.__id__]) {
     if (!item.__slots__) {
@@ -685,7 +662,7 @@ function createIdAndKey(item) {
  * @param item
  */
 function resetDrawItemId(item) {
-  let newId = ++idGlobal.value;
+  let newId = ++idGlobal;
   let config = item.__config__;
   let oldItemName = config.itemName;
   config.itemName = `${item.__id__}${newId}`
@@ -781,14 +758,31 @@ function itemMove(evt) {
 
 
 
+//region html显示操作
+import HtmlDrawer from "@/views/design/HtmlDrawer.vue";
+const htmlDrawerVisible = ref(false)
+const htmlStr = ref("");
 
-const formDrawerVisible = ref(false)
-function execPreview() {
-  formDrawerVisible.value = true
+function showHtml(inner) {
+  htmlStr.value = generateCode();
+
+  !inner && (htmlDrawerVisible.value = true)
 }
 
+watch(() => designConf.value.jsCodeStyle, () => {
+  showHtml(true);
+})
 
+//endregion
+//region 预览操作
+import PreviewDrawer from './PreviewDrawer'
+const previewDrawerVisible = ref(false)
+function execPreview() {
+  previewDrawerVisible.value = true
+}
+//endregion
 
+//region 下载或者生成代码
 function execDownload(codeStyle) {
   designConf.value.jsCodeStyle = codeStyle;
   const codeStr = generateCode()
@@ -801,23 +795,36 @@ function execCopy(codeStyle) {
   document.getElementById('copyNode').click()
 }
 
-function emptyDrawItemList() {
-  ElMessageBox.confirm('确定要清空所有组件吗？', '提示', {type: 'warning'}).then(
-      () => {
-        drawItemList.value = []
-        activeData.value = {}
-        idGlobal.value = 100;
-      }
-  )
-}
-
-
 function generateCode(jsCodeStyle) {
   let cloneJsonList = simplifyJson();
   return renderSfc(cloneJsonList, jsCodeStyle || designConf.value.jsCodeStyle, beautifier)
 }
+//endregion
+
+
+
 
 //region json显示操作
+
+
+import JsonDrawer from './JsonDrawer'
+const jsonDrawerVisible = ref(false)
+const jsonStr = ref("");
+
+function showJson(inner) {
+  if (designConf.value.jsonSimplified) {
+    jsonStr.value = JSON.stringify(simplifyJson(true), null, 2);
+  } else {
+    jsonStr.value = JSON.stringify(drawItemList.value, null, 2);
+  }
+
+  !inner && (jsonDrawerVisible.value = true)
+}
+
+function refreshJson(data) {
+  drawItemList.value = deepClone(data)
+}
+//简化json显示
 function simplifyJson(all) {
   const cloneDrawItemList = deepClone(drawItemList.value)
   recursiveProcessDrawItemList(cloneDrawItemList, (item) => {
@@ -884,44 +891,12 @@ function simplifyJson(all) {
   })
   return cloneDrawItemList;
 }
-
-const jsonDrawerVisible = ref(false)
-const jsonStr = ref("");
-
-function showJson(inner) {
-  if (designConf.value.jsonSimplified) {
-    jsonStr.value = JSON.stringify(simplifyJson(true), null, 2);
-  } else {
-    jsonStr.value = JSON.stringify(drawItemList.value, null, 2);
-  }
-
-  !inner && (jsonDrawerVisible.value = true)
-}
-
-function refreshJson(data) {
-  drawItemList.value = deepClone(data)
-}
-
 watch(() => designConf.value.jsonSimplified, () => {
   showJson(true);
 })
 //endregion
 
-//region html显示操作
-const htmlDrawerVisible = ref(false)
-const htmlStr = ref("");
 
-function showHtml(inner) {
-  htmlStr.value = generateCode();
-
-  !inner && (htmlDrawerVisible.value = true)
-}
-
-watch(() => designConf.value.jsCodeStyle, () => {
-  showHtml(true);
-})
-
-//endregion
 
 //region 组件树操作
 const drawItemTreeVisible = ref(false)
@@ -933,7 +908,7 @@ function openTreeDrawer() {
   drawItemTreeData.value = [];
   buildDrawItemTree(drawItemList.value, drawItemTreeData.value)
   nextTick(() => {
-    drawItemTree.value.setCurrentKey(activeData.value.renderKey)
+    drawItemTree.value.setCurrentKey(activeItem.value.renderKey)
   })
 
 }
@@ -1056,24 +1031,25 @@ function activeDrawItemThroughTree(data) {
 }
 
 //endregion
-//region 表单操作
+//region 会对有el-form生成 model和rules
+
 const formModelsAndRules = ref({});
 
 //构建表单model
-function buildFormModelsAndRules(list, modal, rules) {
+function buildFormModelsAndRules(list, model, rules) {
   for (const item of list) {
     if (typeof item === 'string') {
       continue;
     }
     if (item.__id__ === 'form') {
-      modal = {};
+      model = {};
       rules = {};
-      formModelsAndRules.value[item.__props__.model] = modal;
+      formModelsAndRules.value[item.__props__.model] = model;
       formModelsAndRules.value[item.__props__.rules] = rules;
     } else {
       if (item.__config__.wrapWithFormItem && item.__vModel__) {
         const {__config__: config, __props__: props} = item;
-        modal && (modal[item.__vModel__] = config.defaultValue);
+        model && (model[item.__vModel__] = config.defaultValue);
         if (rules) {
           const r = buildRules(item);
           if (r.length > 0) {
@@ -1084,7 +1060,7 @@ function buildFormModelsAndRules(list, modal, rules) {
 
     }
     if (Array.isArray(item.__slots__.default)) {
-      buildFormModelsAndRules(item.__slots__.default, modal, rules)
+      buildFormModelsAndRules(item.__slots__.default, model, rules)
     }
   }
 }
@@ -1153,17 +1129,18 @@ function buildDynamicData() {
 //region 插槽操作
 //添加子项，比如el-steps下加上el-step子项
 function addSlotDrawItem({slotName, subtag}) {
-  let child = componentMap[subtag]
+  let child = supportedComponentMap[subtag]
 
   if (child) {
     const clone = cloneDrawItem(child);
-    activeData.value.__slots__[slotName].push(clone)
+    activeItem.value.__slots__[slotName].push(clone)
   } else {
     ElNotification.info(`添加${subtag}子组件失败！`)
   }
 }
 
 //endregion
+
 //region 配置自动保存
 watch(designConf, (val) => {
   saveDesignConf(val)
@@ -1188,6 +1165,44 @@ const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
 
+//endregion
+
+//region 初始化及退出
+let clipboard
+onMounted(() => {
+  drawItemList.value = props.modelValue;
+  if (drawItemList.value.length >= 1) {
+    activeDrawItem(drawItemList.value[0])
+  }
+
+  idGlobal = 100;
+  recursiveProcessDrawItemList(drawItemList.value, setMaxIdGlobal)
+  const designConfInDB = getDesignConf()
+  if (designConfInDB) {
+    designConf.value = designConfInDB
+  }
+  loadBeautifier((btf) => {
+    beautifier = btf
+  })
+  clipboard = new ClipboardJS('#copyNode', {
+    text: (trigger) => {
+      const codeStr = generateCode()
+      ElNotification({
+        title: '成功',
+        message: '代码已复制到剪切板，可粘贴。',
+        type: 'success',
+      })
+      return codeStr
+    },
+  })
+  clipboard.on('error', (e) => {
+    ElMessage.error('代码复制失败')
+  })
+})
+
+onBeforeUnmount(() => {
+  clipboard && clipboard.destroy();
+})
 //endregion
 
 //region 导出vue代码

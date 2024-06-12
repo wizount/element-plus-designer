@@ -139,7 +139,7 @@
       ]
     },
     "crossorigin": {
-      "title": "原生属性 [crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)",
+      "title": "crossorigin",
       "types": [
         {
           "name": "enum",
