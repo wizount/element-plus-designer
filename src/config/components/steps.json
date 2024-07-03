@@ -19,8 +19,7 @@
           "name": "stringNumber",
           "tag": "string-number-input"
         }
-      ],
-      "default": ""
+      ]
     },
     "direction": {
       "label": "方向",

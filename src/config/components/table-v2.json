@@ -396,15 +396,15 @@
     },
     {
       "name": "footer",
-      "params": "-"
+      "params": "—"
     },
     {
       "name": "empty",
-      "params": "-"
+      "params": "—"
     },
     {
       "name": "overlay",
-      "params": "-"
+      "params": "—"
     }
   ],
   "events": [
@@ -421,7 +421,7 @@
     {
       "name": "end-reached",
       "title": "到达表格末尾时触发",
-      "params": "-"
+      "params": "—"
     },
     {
       "name": "scroll",

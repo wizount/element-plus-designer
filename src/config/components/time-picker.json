@@ -149,8 +149,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "range-separator": {
       "label": "分隔符",
@@ -233,7 +232,6 @@
           }
         }
       ],
-      "default": "",
       "hide": true
     },
     "label": {
@@ -396,6 +394,13 @@
       "title": "在组件 Input 获得焦点时触发",
       "type": "Function",
       "fnDes": "(e: FocusEvent) => void"
+    },
+    {
+      "name": "clear",
+      "title": "可清空的模式下用户点击清空按钮时触发",
+      "type": "Function",
+      "version": "2.7.7",
+      "fnDes": "() => void"
     },
     {
       "name": "visible-change",

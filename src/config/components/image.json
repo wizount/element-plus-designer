@@ -19,8 +19,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "fit": {
       "label": "适应容器框",
@@ -52,8 +51,7 @@
             }
           ]
         }
-      ],
-      "default": ""
+      ]
     },
     "hide-on-click-modal": {
       "label": "通过点击遮罩层关闭",
@@ -276,7 +274,7 @@
       "name": "error",
       "title": "图片加载失败触发",
       "type": "Function",
-      "fnDes": "(e: Error) => void"
+      "fnDes": "(e: Event) => void"
     },
     {
       "name": "switch",

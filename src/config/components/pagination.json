@@ -17,7 +17,36 @@
           "tag": "el-switch"
         }
       ],
-      "default": false
+      "default": false,
+      "deprecated": true
+    },
+    "size": {
+      "title": "分页大小",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "default": "default",
+      "version": "2.7.6"
     },
     "background": {
       "label": "添加背景色",
@@ -151,8 +180,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "prev-text": {
       "label": "上一页文字",
@@ -165,8 +193,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "prev-icon": {
       "label": "上一页图标",
@@ -190,8 +217,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "next-icon": {
       "label": "下一页图标",

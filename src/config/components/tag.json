@@ -38,8 +38,7 @@
             }
           ]
         }
-      ],
-      "default": ""
+      ]
     },
     "closable": {
       "label": "可关闭",
@@ -82,8 +81,7 @@
           "name": "string",
           "tag": "el-color-picker"
         }
-      ],
-      "default": ""
+      ]
     },
     "size": {
       "label": "尺寸",
@@ -110,8 +108,7 @@
             }
           ]
         }
-      ],
-      "default": ""
+      ]
     },
     "effect": {
       "label": "主题",

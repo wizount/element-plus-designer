@@ -16,8 +16,7 @@
           "name": "stringNumber",
           "tag": "string-number-input"
         }
-      ],
-      "default": ""
+      ]
     },
     "max": {
       "label": "最大值",
@@ -104,7 +103,6 @@
           "tag": "el-input"
         }
       ],
-      "default": "",
       "version": "2.6.3"
     },
     "offset": {

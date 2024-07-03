@@ -30,8 +30,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "content": {
       "label": "内容",
@@ -44,8 +43,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     }
   },
   "events": [

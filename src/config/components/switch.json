@@ -56,8 +56,7 @@
             }
           ]
         }
-      ],
-      "default": ""
+      ]
     },
     "width": {
       "label": "宽度",
@@ -67,8 +66,7 @@
           "name": "stringNumber",
           "tag": "string-number-input"
         }
-      ],
-      "default": ""
+      ]
     },
     "inline-prompt": {
       "label": "只呈现文本第一个字符",
@@ -134,8 +132,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "inactive-text": {
       "label": "关闭时文字描述",
@@ -148,8 +145,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "active-value": {
       "label": "on时的值",
@@ -204,7 +200,6 @@
           "tag": "el-color-picker"
         }
       ],
-      "default": "",
       "deprecated": true
     },
     "inactive-color": {
@@ -216,7 +211,6 @@
           "tag": "el-color-picker"
         }
       ],
-      "default": "",
       "deprecated": true
     },
     "border-color": {
@@ -228,7 +222,6 @@
           "tag": "el-color-picker"
         }
       ],
-      "default": "",
       "deprecated": true
     },
     "name": {
@@ -243,7 +236,6 @@
           }
         }
       ],
-      "default": "",
       "hide": true
     },
     "validate-event": {

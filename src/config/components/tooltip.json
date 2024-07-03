@@ -59,8 +59,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "raw-content": {
       "label": "内容作为HTML字符串处理",
@@ -399,7 +398,7 @@
     },
     {
       "name": "contentRef",
-      "title": "el-tooltip0-content 组件实例",
+      "title": "el-tooltip-content 组件实例",
       "type": "^[object]`Ref<TooltipContentInstance | null>`"
     },
     {

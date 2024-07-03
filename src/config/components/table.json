@@ -305,8 +305,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "default-expand-all": {
       "label": "展开所有行",
@@ -418,8 +417,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "summary-method": {
       "label": "",
@@ -750,6 +748,12 @@
       "title": "设置水平滚动位置",
       "type": "Function",
       "fnDes": "(left?: number) => void"
+    },
+    {
+      "name": "columns",
+      "title": "获取表列的 context",
+      "type": "^[array]`TableColumnCtx<T>[]`",
+      "version": "2.7.6"
     }
   ],
   "slots": [

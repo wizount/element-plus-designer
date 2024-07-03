@@ -19,8 +19,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "image-size": {
       "label": "图片大小",
@@ -43,8 +42,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     }
   },
   "slots": [

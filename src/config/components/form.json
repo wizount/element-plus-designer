@@ -79,8 +79,7 @@
           "name": "stringNumber",
           "tag": "string-number-input"
         }
-      ],
-      "default": ""
+      ]
     },
     "label-suffix": {
       "label": "标签后缀",
@@ -93,8 +92,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "hide-required-asterisk": {
       "label": "隐藏标签红色星号",

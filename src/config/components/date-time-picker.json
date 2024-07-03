@@ -497,7 +497,6 @@
           "tag": "array-editor"
         }
       ],
-      "default": "",
       "version": "2.7.0"
     },
     "value-on-clear": {
@@ -522,7 +521,6 @@
           "desc": "^[string] / ^[number] / ^[boolean] / ^[Function"
         }
       ],
-      "default": "",
       "version": "2.7.0"
     }
   },
@@ -541,6 +539,12 @@
       "name": "focus",
       "title": "在组件 Input 获得焦点时触发",
       "params": "(e: FocusEvent)"
+    },
+    {
+      "name": "clear",
+      "title": "可清空的模式下用户点击清空按钮时触发",
+      "params": "^[Function]`() => void`",
+      "version": "2.7.7"
     },
     {
       "name": "calendar-change",

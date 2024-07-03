@@ -461,6 +461,13 @@
       "fnDes": "(e: FocusEvent) => void"
     },
     {
+      "name": "clear",
+      "title": "可清空的模式下用户点击清空按钮时触发",
+      "type": "Function",
+      "version": "2.7.7",
+      "fnDes": "() => void"
+    },
+    {
       "name": "calendar-change",
       "title": "在日历所选日期更改时触发",
       "type": "Function",

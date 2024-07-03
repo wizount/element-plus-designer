@@ -270,8 +270,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "teleported": {
       "label": "使用teleport",
@@ -407,6 +406,13 @@
       "title": "当获得焦点时触发",
       "type": "Function",
       "fnDes": "(event: FocusEvent) => void"
+    },
+    {
+      "name": "clear",
+      "title": "可清空的单选模式下用户点击清空按钮时触发",
+      "type": "Function",
+      "version": "2.7.7",
+      "fnDes": "() => void"
     },
     {
       "name": "visible-change",

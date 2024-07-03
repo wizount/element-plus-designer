@@ -38,6 +38,33 @@
         }
       ]
     },
+    "label-position": {
+      "title": "表单域标签的位置， 当设置为 `left` 或 `right` 时，则也需要设置 `label-width` 属性 默认会继承 `Form`的`label-position`",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            },
+            {
+              "label": "top",
+              "value": "top"
+            }
+          ]
+        }
+      ],
+      "version": "2.7.7"
+    },
     "label-width": {
       "label": "标签宽度",
       "title": "标签宽度，例如 '50px'。 可以使用 auto。",
@@ -46,8 +73,7 @@
           "name": "stringNumber",
           "tag": "string-number-input"
         }
-      ],
-      "default": ""
+      ]
     },
     "required": {
       "label": "必填项",
@@ -110,8 +136,7 @@
           "name": "boolean",
           "tag": "el-switch"
         }
-      ],
-      "default": ""
+      ]
     },
     "size": {
       "label": "尺寸",

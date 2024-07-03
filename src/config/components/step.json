@@ -22,8 +22,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "description": {
       "label": "描述",
@@ -36,8 +35,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "icon": {
       "label": "图标",
@@ -79,8 +77,7 @@
             }
           ]
         }
-      ],
-      "default": ""
+      ]
     }
   },
   "slots": [

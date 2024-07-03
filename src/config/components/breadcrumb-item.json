@@ -26,8 +26,7 @@
           "name": "object",
           "tag": "object-editor"
         }
-      ],
-      "default": ""
+      ]
     },
     "replace": {
       "label": "不留下历史记录",

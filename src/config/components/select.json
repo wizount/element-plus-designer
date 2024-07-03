@@ -290,8 +290,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "no-data-text": {
       "label": "无数据显示文字",
@@ -304,8 +303,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "popper-class": {
       "label": "下拉菜单类名",

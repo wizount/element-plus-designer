@@ -22,8 +22,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "hide-timestamp": {
       "label": "隐藏时间戳",
@@ -101,8 +100,7 @@
             }
           ]
         }
-      ],
-      "default": ""
+      ]
     },
     "color": {
       "label": "节点颜色",
@@ -112,8 +110,7 @@
           "name": "string",
           "tag": "el-color-picker"
         }
-      ],
-      "default": ""
+      ]
     },
     "size": {
       "label": "节点尺寸",

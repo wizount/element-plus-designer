@@ -73,8 +73,7 @@
             }
           ]
         }
-      ],
-      "default": ""
+      ]
     },
     "clearable": {
       "title": "是否可以清空选项",
@@ -264,8 +263,7 @@
           "name": "string",
           "tag": "el-input"
         }
-      ],
-      "default": ""
+      ]
     },
     "popper-append-to-body": {
       "title": "是否将弹出框插入至 body 元素 当弹出框的位置出现问题时，你可以尝试将该属性设置为false。",

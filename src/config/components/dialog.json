@@ -20,8 +20,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": ""
+      ]
     },
     "width": {
       "label": "宽度",
@@ -31,8 +30,7 @@
           "name": "stringNumber",
           "tag": "string-number-input"
         }
-      ],
-      "default": ""
+      ]
     },
     "fullscreen": {
       "label": "全屏",
@@ -128,8 +126,7 @@
           }
         }
       ],
-      "deprecated": true,
-      "default": ""
+      "deprecated": true
     },
     "open-delay": {
       "label": "打开延时",
@@ -282,7 +279,7 @@
           "tag": "el-input"
         }
       ],
-      "default": 2,
+      "default": "2",
       "a11y": true
     }
   },
