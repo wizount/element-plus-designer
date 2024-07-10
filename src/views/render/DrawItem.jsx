@@ -1,20 +1,22 @@
 import FixedItem from "@/components/FixedItem"
 import {ElFormItem} from "element-plus";
+import {resolveDirective, withDirectives} from "vue";
+
 export default {
     props: [
         'currentItem',
-        'formModel',
-        'formRules',
+        'formModelsAndRules',
         'dynamicData'
     ],
-    setup(props) {
-
+    setup(props, { expose }) {
+        let model = undefined
         function buildVModel(curItem) {
             if (curItem.__vModel__) {
+                let m = curItem.__config__.wrapWithFormItem ? model || {} : props.formModelsAndRules
                 return {
-                    modelValue: props.formModel[curItem.__vModel__],
+                    modelValue: m[curItem.__vModel__],
                     'onUpdate:modelValue'(e) {
-                        props.formModel[curItem.__vModel__] = e
+                        m[curItem.__vModel__] = e
                     }
                 }
             } else {
@@ -41,7 +43,7 @@ export default {
             }
             let Input;
             if (layout === 'rawItem') {
-                Input = rawItem(curItem, true)
+                Input = containerItem(curItem, true)
 
             } else if (layout === 'fixedItem') {
                 Input = fixedItem(curItem, true);
@@ -58,30 +60,32 @@ export default {
 
 
         }
-
         function containerItem(curItem) {
-
-            let model = undefined
-            let rules = undefined
-            if (curItem.__config__.tag === 'el-form') {
-                model = props.formModel;
-                rules = props.formRules;
-            }
             const {tag} = curItem.__config__;
-            return h(resolveComponent(tag),
-                {...curItem.__props__, ...curItem.__native__,...buildVModel(curItem), model, rules},
-                buildSlots(curItem));
+
+            if (props.formModelsAndRules && tag === 'el-form') {//todo 可以分开？
+                model = props.formModelsAndRules[curItem.__props__.model];
+                const rules = props.formModelsAndRules[curItem.__props__.rules];
+                return h(resolveComponent(tag),
+                    {...curItem.__props__, ...curItem.__native__, ...buildVModel(curItem), model, rules},
+                    buildSlots(curItem));
+            } else {
+                return h(resolveComponent(tag),
+                    {...curItem.__props__, ...curItem.__native__, ...buildVModel(curItem)},
+                    buildSlots(curItem));
+            }
 
         }
 
-        function buildSlots(curItem, noDefault) {
+        function buildSlots(curItem) {
             let thisSlots = {}
             for (const key in curItem.__slots__) {
-                if (noDefault && key === 'default') {
-                    continue;
-                }
                 if (typeof curItem.__slots__[key] === 'string') {
                     thisSlots[key] = () => curItem.__slots__[key];
+                    continue;
+                }
+                if (typeof curItem.__slots__[key] === 'function') {
+                    thisSlots[key] = curItem.__slots__[key];
                     continue;
                 }
                 if (curItem.__slots__[key].length === 0) {
@@ -125,43 +129,49 @@ export default {
 
 
         }
-
-        /**
-         *
-         * @param curItem
-         * @param simple true:不生成class和event
-         * @return {VNode}
-         */
-        function rawItem(curItem, simple) {
-            const {tag} = curItem.__config__;
-            const data = buildData(curItem).__data__;
-            if (simple) {
-                return h(resolveComponent(tag), {...curItem.__props__,...curItem.__native__, ...data, ...buildVModel(curItem)},
-                    buildSlots(curItem));
-            } else {
-                return h(resolveComponent(tag),
-                    {...curItem.__props__, ...curItem.__native__,...data, ...buildVModel(curItem)},
-                    buildSlots(curItem));
+        function buildDirectives(curItem) {
+            const {__directives__} = curItem;
+            const directives = [];
+            if (__directives__) {
+                for (const k in __directives__) {
+                    const v=__directives__[k];
+                    const modifiers={};
+                    v.modifiers && v.modifiers.forEach(m => {
+                        modifiers[m] = true;
+                    })
+                    directives.push([resolveDirective(k), v.value,v.arg,modifiers]);
+                }
             }
-
+            return directives;
         }
+
 
         function doLayout(curItem) {
             if (typeof curItem === "string") {
                 return h("span", curItem);
             }
-            const {layout, wrapWithFormItem} = curItem.__config__;
-            if (wrapWithFormItem) {
-                return formItem(curItem, layout);
-            } else if (layout === 'containerItem') {
-                return containerItem(curItem);
-            } else if (layout === 'rawItem') {
-                return rawItem(curItem);
-            } else if (layout === 'fixedItem') {
-                return fixedItem(curItem);
+            if (typeof curItem === "function") {
+                return curItem;
             }
-        }
+            const {layout, wrapWithFormItem} = curItem.__config__;
+            let ele
+            if (wrapWithFormItem) {
+                ele=formItem(curItem, layout);
+            } else if (layout === 'containerItem' || layout === 'rawItem') {
+                ele= containerItem(curItem);
+            } else if (layout === 'fixedItem') {
+                ele= fixedItem(curItem);
+            }
+            const directives = buildDirectives(curItem);
+            if (directives.length > 0) {
+                return withDirectives(ele, directives);
+            } else {
+                return ele;
+            }
 
+        }
+        const instance=getCurrentInstance();
+        expose({instance})
         return () => doLayout(props.currentItem);
 
     }
