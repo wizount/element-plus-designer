@@ -1,5 +1,4 @@
 import FixedItem from "@/components/FixedItem"
-import {ElFormItem} from "element-plus";
 import {resolveDirective, withDirectives} from "vue";
 
 export default {
@@ -8,8 +7,9 @@ export default {
         'formModelsAndRules',
         'dynamicData'
     ],
-    setup(props, { expose }) {
+    setup(props, {expose}) {
         let model = undefined
+
         function buildVModel(curItem) {
             if (curItem.__vModel__) {
                 let m = curItem.__config__.wrapWithFormItem ? model || {} : props.formModelsAndRules
@@ -24,42 +24,28 @@ export default {
             }
         }
 
-        function formItem(curItem, layout) {
-            //使用函数，才能响应式
-            const formItemProps = () => {
-                const {required, showLabel} = curItem.__config__
-                let {label, labelWidth} = curItem.__config__
-                labelWidth = labelWidth ? labelWidth + "px" : null
-                if (showLabel === false) {
-                    labelWidth = '0';
-                    label = ''
-                }
-                return {
-                    labelWidth,
-                    label,
-                    required,
-                    prop: curItem.__vModel__
-                }
+        function formItem(curItem) {
+            const {required, showLabel} = curItem.__config__
+            let {label, labelWidth} = curItem.__config__
+            labelWidth = labelWidth ? labelWidth + "px" : null
+            if (showLabel === false) {
+                labelWidth = '0';
+                label = ''
             }
-            let Input;
-            if (layout === 'rawItem') {
-                Input = containerItem(curItem, true)
+            const formItemProps = {
+                labelWidth,
+                label,
+                prop: curItem.__vModel__,
+                required,
 
-            } else if (layout === 'fixedItem') {
-                Input = fixedItem(curItem, true);
-            } else {
-                Input = "error layout!";
             }
 
 
-            const FormItem =
-                <ElFormItem {...formItemProps()}>
-                    <Input/>
-                </ElFormItem>
-            return <FormItem/>
+            return h(resolveComponent("el-form-item"), formItemProps, () => doLayout(curItem,true))
 
 
         }
+
         function containerItem(curItem) {
             const {tag} = curItem.__config__;
 
@@ -116,51 +102,48 @@ export default {
             return {__data__: dataProps};
         }
 
-        function fixedItem(curItem, simple) {
-
-            let config = {...curItem, ...buildData(curItem)};
-
-            if (simple) {
-                return <FixedItem conf={config} {...buildVModel(curItem)}></FixedItem>
-            } else {
-                return <FixedItem
-                    conf={config}  {...buildVModel(curItem)}></FixedItem>
-            }
-
-
+        function fixedItem(curItem) {
+            let conf = {...curItem, ...buildData(curItem)};
+            return h(FixedItem,{conf,...buildVModel(curItem)})
         }
+
         function buildDirectives(curItem) {
             const {__directives__} = curItem;
             const directives = [];
             if (__directives__) {
                 for (const k in __directives__) {
-                    const v=__directives__[k];
-                    const modifiers={};
+                    const v = __directives__[k];
+                    const modifiers = {};
                     v.modifiers && v.modifiers.forEach(m => {
                         modifiers[m] = true;
                     })
-                    directives.push([resolveDirective(k), v.value,v.arg,modifiers]);
+                    directives.push([resolveDirective(k), v.value, v.arg, modifiers]);
                 }
             }
             return directives;
         }
 
 
-        function doLayout(curItem) {
+        function doLayout(curItem,noFormItem) {
             if (typeof curItem === "string") {
                 return h("span", curItem);
             }
             if (typeof curItem === "function") {
                 return curItem;
             }
-            const {layout, wrapWithFormItem} = curItem.__config__;
+            const {layout, tag,wrapWithFormItem} = curItem.__config__;
+            if(!tag){
+                console.error("no tag setting in __config__");
+            }
             let ele
-            if (wrapWithFormItem) {
-                ele=formItem(curItem, layout);
+            if (wrapWithFormItem&&!noFormItem) {
+                ele = formItem(curItem);
             } else if (layout === 'containerItem' || layout === 'rawItem') {
-                ele= containerItem(curItem);
+                ele = containerItem(curItem);
             } else if (layout === 'fixedItem') {
-                ele= fixedItem(curItem);
+                ele = fixedItem(curItem);
+            }else{
+                console.error("invalid layout");
             }
             const directives = buildDirectives(curItem);
             if (directives.length > 0) {
@@ -170,7 +153,8 @@ export default {
             }
 
         }
-        const instance=getCurrentInstance();
+
+        const instance = getCurrentInstance();
         expose({instance})
         return () => doLayout(props.currentItem);
 

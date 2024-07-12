@@ -1,6 +1,7 @@
 <!--只有一个表单model，多个表单共享一个-->
 <template>
-  <draw-item v-for="di in drawItemList" :current-item="di" :form-models-and-rules="formModelsAndRules"  ref="drawList"></draw-item>
+  <draw-item v-for="di in drawItemList" :current-item="di" :form-models-and-rules="formModelsAndRules"
+             ref="drawList"></draw-item>
 </template>
 
 <script setup>
@@ -24,18 +25,18 @@ onMounted(() => {
 })
 
 //region 表单操作
-const formModelsAndRules = ref(props.modelValue||{});
+const formModelsAndRules = ref(props.modelValue || {});
 
 //构建表单model
 function buildFormModelsAndRules(list, model, rules) {
 
   for (const item of list) {
-    if (typeof item === 'string'||typeof item === 'function') {
+    if (typeof item === 'string' || typeof item === 'function') {
       continue;
     }
     if (item.__id__ === 'form') {
-      model = formModelsAndRules.value[item.__props__.model]||{};
-      rules =formModelsAndRules.value[item.__props__.rules] || {};
+      model = formModelsAndRules.value[item.__props__.model] || {};
+      rules = formModelsAndRules.value[item.__props__.rules] || {};
       formModelsAndRules.value[item.__props__.model] = model;
       formModelsAndRules.value[item.__props__.rules] = rules;
     } else {
@@ -55,7 +56,7 @@ function buildFormModelsAndRules(list, model, rules) {
       }
 
     }
-    if (Array.isArray(item.__slots__.default)) {
+    if (item.__slots__ && Array.isArray(item.__slots__.default)) {
       buildFormModelsAndRules(item.__slots__.default, model, rules)
     }
   }
@@ -67,12 +68,18 @@ function buildRules(item) {
   const {__config__: config, __props__} = item;
   if (ruleTrigger[config.tag]) {
     if (config.required) {
-      const type = Array.isArray(config.defaultValue) ? "array" : config.defaultValueType
 
+      let type = Array.isArray(config.defaultValue) ? "array" : config.defaultValueType
+
+
+      if (!type && config.tag === 'el-input-number') {
+        type = "number"
+      }
       let message = Array.isArray(config.defaultValue)
           ? `请至少选择一个${config.label}`
           : __props__ && __props__.placeholder || ""
       if (message === undefined) message = `${config.label}不能为空`
+
       rules.push(
           {
             required: true, type, message, trigger: ruleTrigger[config.tag]
@@ -106,39 +113,48 @@ watchEffect(() => {
 
 import elementPlusRenderConfigMap from "@/config/render";
 import {deepClone} from "@/utils";
-function buildDrawItem(id,other) {
-  if (elementPlusRenderConfigMap[id]) {
-    const item = deepClone(elementPlusRenderConfigMap[id]);
-    item.__slots__={};
-    item.__refs__={};
-    item.__props__={};
-    if (typeof other === 'object') {
-      Object.keys(other).forEach(key => {
-        const v = other[key];
-        if (typeof v === 'object') {
-          if (item[key]) {
-            Object.assign(item[key], v)
-          } else {
-            item[key] = v;
-          }
+
+function buildDrawItem(id, other) {
+  const item = deepClone(elementPlusRenderConfigMap[id]) || {
+    __config__:{
+      tag:id,
+      layout:"rawItem"
+    }
+  };
+  item.__slots__ = {};
+  item.__refs__ = {};
+  item.__props__ = {};
+  if (typeof other === 'object') {
+    Object.keys(other).forEach(key => {
+      const v = other[key];
+      if (typeof v === 'object') {
+        if (item[key]) {
+          Object.assign(item[key], v)
         } else {
           item[key] = v;
         }
-      })
-    }
-    return item
-  } else {
-    return undefined;
+      } else {
+        item[key] = v;
+      }
+    })
   }
-}
-defineExpose({
-  buildDrawItem
-})
-const drawList=ref();
-setTimeout(()=>{
-  console.info(drawList.value[0].instance.refs);
+  return item
 
-},2000)
+}
+
+function getRefs() {
+  const refs = {}
+  for (const d of drawList.value) {
+    Object.assign(refs, d.instance.refs);
+  }
+  return refs;
+}
+
+defineExpose({
+  buildDrawItem, getRefs
+})
+const drawList = ref();
+
 </script>
 
 <style scoped>
