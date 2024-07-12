@@ -35,7 +35,6 @@ function init(event) {
 }
 const { createApp} = Vue
 function newVue(attrs, main, html) {
-  console.info(attrs)
   main = eval(`(${main})`)
   main.template = `<div>${html}</div>`
   createApp({

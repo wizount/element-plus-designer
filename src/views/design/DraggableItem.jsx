@@ -172,6 +172,10 @@ export default {
                     thisSlots[key] = () => curItem.__slots__[key];
                     continue;
                 }
+                if (typeof curItem.__slots__[key] === 'function') {
+                    thisSlots[key] = curItem.__slots__[key];
+                    continue;
+                }
                 if (curItem.__slots__[key].length === 0) {
                     continue;
                 }
@@ -295,6 +299,9 @@ export default {
             if (typeof curItem === "string") {
                 return h("span", curItem);
             }
+            if (typeof curItem === "function") {
+                return curItem;
+            }
             let ele;
             const {layout, wrapWithFormItem} = curItem.__config__;
             if (wrapWithFormItem) {
@@ -306,10 +313,10 @@ export default {
             } else if (layout === 'fixedItem') {
                 ele = fixedItem(curItem);
             }
-            const directives=buildDirectives(curItem);
-            if(directives.length>0){
-               return  withDirectives(ele,directives);
-            }else{
+            const directives = buildDirectives(curItem);
+            if (directives.length > 0) {
+                return withDirectives(ele, directives);
+            } else {
                 return ele;
             }
 
@@ -320,13 +327,12 @@ export default {
             const directives = [];
             if (__directives__) {
                 for (const k in __directives__) {
-                    const v=__directives__[k];
-                    const modifiers={};
-                    v.modifiers.forEach(m=>{
-                        modifiers[m]=true;
+                    const v = __directives__[k];
+                    const modifiers = {};
+                    v.modifiers && v.modifiers.forEach(m => {
+                        modifiers[m] = true;
                     })
-               //     console.log(resolveDirective("Show"))
-                    directives.push([resolveDirective(k), v.value,v.arg,modifiers]);
+                    directives.push([resolveDirective(k), v.value, v.arg, modifiers]);
                 }
             }
             return directives;

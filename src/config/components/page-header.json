@@ -6,7 +6,7 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/page-header.html",
+  "document": "https://element-plus.org/zh-CN/component/page-header.html",
   "attributes": {
     "icon": {
       "label": "图标",

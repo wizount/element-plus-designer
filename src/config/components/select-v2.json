@@ -6,7 +6,7 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/select-v2.html",
+  "document": "https://element-plus.org/zh-CN/component/select-v2.html",
   "attributes": {
     "vModel": "modelValue",
     "placeholder": "请选择",

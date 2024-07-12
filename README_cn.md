@@ -31,6 +31,12 @@ npm install element-plus-designer
 #### 复制preview.html到你的工程根目录
 #### main.js输入以下代码
 ```
+import 'virtual:svg-icons-register'
+import * as components from '@element-plus/icons-vue'
+for (const key in components) {
+  const componentConfig = components[key];
+  app.component(componentConfig.name, componentConfig);
+}
 import  ElementPlusDesigner from 'element-plus-designer'
 import 'element-plus-designer/dist/style.css'
 app.use(ElementPlusDesigner)

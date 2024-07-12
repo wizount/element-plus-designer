@@ -5,7 +5,7 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/dropdown.html",
+  "document": "https://element-plus.org/zh-CN/component/dropdown.html",
   "attributes": {
     "command": {
       "label": "",

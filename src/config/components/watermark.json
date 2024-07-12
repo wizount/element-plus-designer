@@ -6,7 +6,7 @@
   "layouts": [
     "containerItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/watermark.html",
+  "document": "https://element-plus.org/zh-CN/component/watermark.html",
   "attributes": {
     "width": {
       "label": "宽度",

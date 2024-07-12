@@ -6,7 +6,7 @@
   "layouts": [
     "containerItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/menu.html#submenu-attributes",
+  "document": "https://element-plus.org/zh-CN/component/menu.html#submenu-attributes",
   "parentTag": [
     "el-menu",
     "el-sub-menu",

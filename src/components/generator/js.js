@@ -113,6 +113,7 @@ const clearAndStartProcess = (itemList) => {
     functions = [];
     vueImports = new Set();
     processItemList(itemList);
+    allRefSet.clear();
 
 
 }
@@ -220,7 +221,7 @@ function processARule(item) {
     }
     return ""
 }
-
+const allRefSet=new Set();
 //生成属性ref
 const processPropRefs = (item) => {
 
@@ -231,6 +232,10 @@ const processPropRefs = (item) => {
     }
     const {attributes} = elementPlusConfigMap[item.__id__]
     __refs__ && Object.keys(__refs__).forEach((k) => {
+        if(allRefSet.has(__refs__[k])){
+            return ;
+        }
+        allRefSet.add(__refs__[k]);
         let val = props[k];
         if (val === undefined) {
             val = getStaticData(item.__data__, k);

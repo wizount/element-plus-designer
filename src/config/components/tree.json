@@ -6,7 +6,7 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/tree.html",
+  "document": "https://element-plus.org/zh-CN/component/tree.html",
   "attributes": {
     "data": {
       "label": "",

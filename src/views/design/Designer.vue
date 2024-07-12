@@ -130,7 +130,9 @@
 
         </el-dropdown>
 
-        <el-button type="danger" text icon="Delete" @click="emptyDrawItemList" :disabled="drawItemList.length===0"> 清空</el-button>
+        <el-button type="danger" text icon="Delete" @click="emptyDrawItemList" :disabled="drawItemList.length===0">
+          清空
+        </el-button>
         <div id="copyNode" class="display:none;"></div>
       </div>
       <el-scrollbar class="center-scrollbar" @scroll="resetActiveDrawItemPosition">
@@ -232,9 +234,6 @@ import {nextTick} from "vue";
 import SvgIcon from "@/components/SvgIcon/index.vue";
 
 
-
-
-
 //region 根据elementPlusDisplayComponents，生成所有支持的组件map，并填充数据，以方便生成drawItem
 const supportedComponentMap = {};
 elementPlusDisplayComponents.forEach((first) => {
@@ -269,16 +268,13 @@ function createComponentMap(com) {
     supportedComponentMap[com.__id__] = com;
   }
 }
+
 //endregion
 
 //region 全局变量
 let beautifier
 let idGlobal = 100;
 //endregion
-
-
-
-
 
 
 //region props,emits定义和watch
@@ -315,7 +311,6 @@ const generateConf = ref(null)
 
 const activeItem = ref({})
 const activeToolbar = ref(null)
-
 
 
 /**
@@ -367,6 +362,7 @@ function copyDrawItem() {
     list.push(clone);
   }
 }
+
 function emptyDrawItemList() {
   ElMessageBox.confirm('确定要清空所有组件吗？', '提示', {type: 'warning'}).then(
       () => {
@@ -435,7 +431,7 @@ function moveDrawItem(upOrDown) {
 }
 
 function resetActiveDrawItemPosition() {
-  if(!activeToolbar.value){
+  if (!activeToolbar.value) {
     return
   }
   let ele = document.querySelector(".selected-draw-ele");
@@ -463,21 +459,21 @@ function resetActiveDrawItemPosition() {
 
 //拖拽结束的操作
 
-let tempActiveData
+let tempDrawItem
 
 function onEnd(obj) {
   if (obj.from !== obj.to) {
-    const {parent, list, index, slotName} = findItemIndexInDrawItemList(tempActiveData);
+    const {parent, list, index, slotName} = findItemIndexInDrawItemList(tempDrawItem);
     //判断是否可以添加
-    if (allowToAdd({parent, slotName}, tempActiveData)) {
+    if (allowToAdd({parent, slotName}, tempDrawItem)) {
       if (slotName !== 'default') {
-        activeDrawItem(tempActiveData)
+        activeDrawItem(tempDrawItem)
       }
     } else {//不能添加就删除
       list.splice(index, 1);
     }
-    if (parent && parent.__id__ === 'button-group' && tempActiveData.__id__ === 'button') {
-      delete tempActiveData.__props__.size;
+    if (parent && parent.__id__ === 'button-group' && tempDrawItem.__id__ === 'button') {
+      delete tempDrawItem.__props__.size;
     }
   }
 }
@@ -511,28 +507,10 @@ function cloneDrawItem(origin) {
 
 
   const clone = deepClone(origin);
-
-  if (!clone["__config__"]) {
-    clone["__config__"] = {}
-  }
-  if (!clone["__directives__"]) {
-    clone["__directives__"] = {}
-  }
   delete clone.__link__;
-  createIdAndKey(clone);
-  if (!clone["__props__"]) {
-    clone["__props__"] = {}
-  }
-  if (!clone["__events__"]) {
-    clone["__events__"] = []
-  }
-  if (!clone["__native__"]) {
-    clone["__native__"] = {}
-  }
-  //__refs__用来放需要通过变量引用的属性值。比如<el-input :disabled="disabled/> 中的 const disabled=ref(false)
-  if (!clone["__refs__"]) {
-    clone["__refs__"] = {}
-  }
+
+  iniDrawItem(clone);
+
   const {__props__: props, __config__: config} = clone;
 
   const id = clone.__id__;
@@ -558,9 +536,9 @@ function cloneDrawItem(origin) {
         props[key] = deepClone(attr.default)
       }
 
-      if (attr.remember && designConf.value[key]) {
-        props[key] = deepClone(designConf.value[key]);
-      }
+      // if (attr.remember && designConf.value[key]) {
+      //   props[key] = deepClone(designConf.value[key]);
+      // }
     }
     if (attributes.placeholder)
       props.placeholder = attributes.placeholder
@@ -619,15 +597,36 @@ function cloneDrawItem(origin) {
 
   if (colItem) {
     colItem.__slots__.default.push(clone);
-    tempActiveData = colItem;
+    tempDrawItem = colItem;
   } else {
-    tempActiveData = clone
+    tempDrawItem = clone
   }
-  return tempActiveData
+  return tempDrawItem
 }
 
 
-function createIdAndKey(item) {
+function iniDrawItem(item) {
+
+  if (!item["__config__"]) {
+    item["__config__"] = {}
+  }
+  if (!item["__directives__"]) {
+    item["__directives__"] = {}
+  }
+  if (!item["__props__"]) {
+    item["__props__"] = {}
+  }
+  if (!item["__events__"]) {
+    item["__events__"] = []
+  }
+  if (!item["__native__"]) {
+    item["__native__"] = {}
+  }
+  //__refs__用来放需要通过变量引用的属性值。比如<el-input :disabled="disabled/> 中的 const disabled=ref(false)
+  if (!item["__refs__"]) {
+    item["__refs__"] = {}
+  }
+
   const config = item.__config__
   config.drawItemId = ++idGlobal;
   if (config.showLabel) {
@@ -697,7 +696,7 @@ function allowToAdd({parent, slotName}, clone, noShowMessage) {
       !noShowMessage && ElMessageBox.alert(`只能添加到${clone.__config__.name}（${parentTag}）组件下。`)
       return false;
     }
-    if(slotName !== 'default') {
+    if (slotName !== 'default') {
       !noShowMessage && ElMessageBox.alert(`只能添加到${clone.__config__.name}（${parentTag}）的默认插槽。`)
       return false;
     }
@@ -713,7 +712,6 @@ function allowToAdd({parent, slotName}, clone, noShowMessage) {
     const children = parent.children || parent.__slots__ && parent.__slots__.default;
     let hasHeaderOrFooter = clone.__id__ === 'header' || clone.__id__ === 'footer';
     for (const child of children) {
-      console.info(child.__id__)
       if (child.__id__ === 'header' || child.__id__ === 'footer') {
         hasHeaderOrFooter = true;
         break;
@@ -757,9 +755,9 @@ function itemMove(evt) {
 //endregion
 
 
-
 //region html显示操作
 import HtmlDrawer from "@/views/design/HtmlDrawer.vue";
+
 const htmlDrawerVisible = ref(false)
 const htmlStr = ref("");
 
@@ -776,10 +774,13 @@ watch(() => designConf.value.jsCodeStyle, () => {
 //endregion
 //region 预览操作
 import PreviewDrawer from './PreviewDrawer'
+
 const previewDrawerVisible = ref(false)
+
 function execPreview() {
   previewDrawerVisible.value = true
 }
+
 //endregion
 
 //region 下载或者生成代码
@@ -799,15 +800,15 @@ function generateCode(jsCodeStyle) {
   let cloneJsonList = simplifyJson();
   return renderSfc(cloneJsonList, jsCodeStyle || designConf.value.jsCodeStyle, beautifier)
 }
+
 //endregion
-
-
 
 
 //region json显示操作
 
 
 import JsonDrawer from './JsonDrawer'
+
 const jsonDrawerVisible = ref(false)
 const jsonStr = ref("");
 
@@ -824,6 +825,7 @@ function showJson(inner) {
 function refreshJson(data) {
   drawItemList.value = deepClone(data)
 }
+
 //简化json显示
 function simplifyJson(all) {
   const cloneDrawItemList = deepClone(drawItemList.value)
@@ -891,11 +893,11 @@ function simplifyJson(all) {
   })
   return cloneDrawItemList;
 }
+
 watch(() => designConf.value.jsonSimplified, () => {
   showJson(true);
 })
 //endregion
-
 
 
 //region 组件树操作
@@ -1038,7 +1040,7 @@ const formModelsAndRules = ref({});
 //构建表单model
 function buildFormModelsAndRules(list, model, rules) {
   for (const item of list) {
-    if (typeof item === 'string') {
+    if (typeof item === 'string'||typeof item === 'function') {
       continue;
     }
     if (item.__id__ === 'form') {
@@ -1207,9 +1209,33 @@ onBeforeUnmount(() => {
 
 //region 导出vue代码
 
+function buildADrawItem(id,other) {
+  if (supportedComponentMap[id]) {
+    const item=cloneDrawItem(supportedComponentMap[id]);
+    if(typeof other==='object'){
+      Object.keys(other).forEach(key=>{
+        const v=other[key];
+        if(typeof v==='object'){
+          if(item[key]){
+            Object.assign( item[key],v)
+          }else{
+            item[key]=v;
+          }
+        }else{
+          item[key]=v;
+        }
+      })
+    }
+    return item
+  } else {
+    return undefined;
+  }
+}
 
 defineExpose({
-  generateCode
+  generateCode,
+  cloneDrawItem,
+  buildADrawItem
 });
 
 //endregion

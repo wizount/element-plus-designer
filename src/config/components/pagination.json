@@ -6,7 +6,7 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/pagination.html",
+  "document": "https://element-plus.org/zh-CN/component/pagination.html",
   "attributes": {
     "small": {
       "label": "小型分页",

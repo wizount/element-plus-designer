@@ -303,7 +303,7 @@ const curComEvents = computed(() => {
 
 const curDocLink = computed(() => {
   return curComConfig.value.document ||
-      'https://element-plus.gitee.io/zh-CN/guide/installation.html'
+      'https://element-plus.org/zh-CN/guide/installation.html'
 })
 
 const showSlots = computed(() => {
@@ -316,11 +316,11 @@ watch(() => props.activeItem.renderKey, (val) => {
 })
 //监听，并随时保存
 watch(curItemProps, (newVal) => {
-  curComAttrs.value && Object.keys(curComAttrs.value).forEach((k) => {
-    if (curComAttrs.value[k].remember) {
-      props.designConf[k] = curItemProps.value[k];
-    }
-  })
+  // curComAttrs.value && Object.keys(curComAttrs.value).forEach((k) => {
+  //   if (curComAttrs.value[k].remember) {
+  //     props.designConf[k] = curItemProps.value[k];
+  //   }
+  // })
   saveDesignConf(props.designConf)
 }, {deep: true})
 
@@ -434,10 +434,8 @@ function addReg() {
 //fixme 当更新时，要填入正则表达式的message
 function regChange(item) {
   for (const reg of regList) {
-    console.info(reg.value)
     if (reg.value === item.pattern) {
       item.message = reg.text;
-      console.info(item)
       break;
     }
   }

@@ -6,7 +6,7 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/statistic.html#%E5%80%92%E8%AE%A1%E6%97%B6",
+  "document": "https://element-plus.org/zh-CN/component/statistic.html#%E5%80%92%E8%AE%A1%E6%97%B6",
   "attributes": {
     "value": {
       "label": "目标时间",

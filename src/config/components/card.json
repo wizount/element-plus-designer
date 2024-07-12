@@ -6,7 +6,7 @@
   "layouts": [
     "containerItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/card.html",
+  "document": "https://element-plus.org/zh-CN/component/card.html",
   "attributes": {
     "header": {
       "label": "标题",

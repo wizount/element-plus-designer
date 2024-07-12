@@ -125,6 +125,13 @@ const renderProps = (item) => {
 
             }
         })
+
+        Object.keys(props).forEach(key => {
+            if(props[key]!==undefined &&keys.indexOf(key)<0){
+                console.info(key)
+            }
+        })
+
     }
     if (item.__vModel__) {
         if (formModelName) {

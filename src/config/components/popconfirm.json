@@ -6,7 +6,7 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/popconfirm.html",
+  "document": "https://element-plus.org/zh-CN/component/popconfirm.html",
   "attributes": {
     "title": {
       "label": "标题",

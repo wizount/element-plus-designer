@@ -6,7 +6,7 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/skeleton.html",
+  "document": "https://element-plus.org/zh-CN/component/skeleton.html",
   "attributes": {
     "animated": {
       "label": "使用动画",

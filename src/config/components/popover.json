@@ -6,7 +6,7 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/popover.html",
+  "document": "https://element-plus.org/zh-CN/component/popover.html",
   "attributes": {
     "trigger": {
       "label": "触发方式",

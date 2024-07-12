@@ -6,7 +6,7 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.gitee.io/zh-CN/component/text.html",
+  "document": "https://element-plus.org/zh-CN/component/text.html",
   "attributes": {
     "type": {
       "label": "类型",
