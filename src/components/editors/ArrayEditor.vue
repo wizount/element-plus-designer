@@ -3,13 +3,13 @@
   <draggable :list="list" :animation="340" group="selectItem" itemKey="index" class="w-100"
              handle=".drag-icon">
     <template #item="{element,index}">
-        <draggable-editor :remove-func="()=>deleteItem(index)">
-          <component :is="tag" v-model="list[index]" v-bind="tagProps" clearable/>
-        </draggable-editor>
+      <draggable-editor :remove-func="()=>deleteItem(index)">
+        <component :is="tag" v-model="list[index]" v-bind="tagProps" clearable/>
+      </draggable-editor>
     </template>
   </draggable>
   <div class="ml-2">
-    <el-button  text type="primary" icon="Plus" @click="addItem" :disabled="fixedNumber&&list.length>=fixedNumber"> 添加
+    <el-button text type="primary" icon="Plus" @click="addItem" :disabled="fixedNumber&&list.length>=fixedNumber">添加
     </el-button>
   </div>
 </template>
@@ -34,13 +34,13 @@ const props = defineProps({
       return []
     }
   },
-  fixedNumber:{
-    type:Number
+  fixedNumber: {
+    type: Number
   }
 });
 const emits = defineEmits(['update:modelValue']);
 const list = ref([]);
-watchEffect(()=>{
+watchEffect(() => {
   if (props.modelValue) {
     list.value = props.modelValue;
   } else {
@@ -48,16 +48,26 @@ watchEffect(()=>{
   }
 })
 const addItem = () => {
-  if(props.tag==='el-date-picker'){
-    list.value.push(new Date())
-  }else{
-    list.value.push('');
+  let cnt = props.fixedNumber || 1;
+
+  while (cnt > 0) {
+    if (props.tag === 'el-date-picker') {
+      list.value.push(new Date())
+    } else {
+      list.value.push('');
+    }
+    cnt--;
   }
-  emits("update:modelValue",list.value)
+
+  emits("update:modelValue", list.value)
 }
 const deleteItem = (index) => {
-  list.value.splice(index, 1)
-  emits("update:modelValue",list.value)
+  if(props.fixedNumber!==undefined){
+    list.value=[]
+  }else{
+    list.value.splice(index, 1)
+  }
+  emits("update:modelValue", list.value)
 
 }
 </script>
