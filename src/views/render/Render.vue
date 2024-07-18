@@ -115,10 +115,10 @@ import elementPlusRenderConfigMap from "@/config/render";
 import {deepClone} from "@/utils";
 
 function buildDrawItem(id, other) {
-  const item = deepClone(elementPlusRenderConfigMap[id]) || {
-    __config__:{
-      tag:id,
-      layout:"rawItem"
+  const item =cloneDrawItem(deepClone(elementPlusRenderConfigMap[id])) || {
+    __config__: {
+      tag: id,
+      layout: "rawItem"
     }
   };
   item.__slots__ = {};

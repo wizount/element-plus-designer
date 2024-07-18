@@ -134,7 +134,7 @@
                            handle=".drag-icon" style="min-height: 30px">
                   <template #item="{element,index}">
                     <div class="draggable-item" :class="{chosen:chosenSlotIndex===(slot.name+index)}">
-                      <div class="flex-grow-1 d-flex" @click="chooseSlotDrawItem(element,slot.name,index)">
+                      <div class="flex-grow-1 d-flex" @click="chooseSlotDrawItem(element,slot.name,index)" @dblclick="activeSlotDrawItem(element)" >
                         <div class="drag-icon">
                           <el-icon>
                             <Operation/>
@@ -269,7 +269,7 @@ const props = defineProps({
     }
 )
 
-const emits = defineEmits(['addSlotDrawItem', "activeParentDrawItem"])
+const emits = defineEmits(['addSlotDrawItem',  "activeDrawItem","activeParentDrawItem"])
 
 const curItemConfig = computed(() => {
   return props.activeItem.__config__ || {}
@@ -460,6 +460,10 @@ const chosenSlotIndex = ref("")
 function chooseSlotDrawItem(element, slotName, index) {
   chosenSlotDrawItem.value = element;
   chosenSlotIndex.value = slotName + index;
+}
+function activeSlotDrawItem(element) {
+
+  emits("activeDrawItem", element);
 }
 
 function deleteSlotDrawItem(slotName, index) {

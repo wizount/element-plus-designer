@@ -171,6 +171,7 @@
     </div>
     <right-panel :active-item="activeItem" :design-conf="designConf" :show-field="!!drawItemList.length"
                  @add-slot-draw-item="addSlotDrawItem"
+                 @active-draw-item="activeDrawItem"
                  @active-parent-draw-item="activeParentDrawItem"/>
     <preview-drawer v-model="previewDrawerVisible" :draw-item-list="drawItemList" size="100%"/>
     <json-drawer size="750px" v-model="jsonDrawerVisible" :json-str="jsonStr" @refresh="refreshJson"
@@ -279,23 +280,28 @@ let idGlobal = 100;
 
 //region props,emits定义和watch
 const props = defineProps({
-  modelValue: {
+  drawItemList: {
     type: Array,
+    default: []
+  },
+  modelValue: {
+    type: Object,
     default: []
   }
 });
-const emits = defineEmits(["update:modelValue"]);
+
+const emits = defineEmits(["update:drawItemList","update:modelValue"]);
 
 
 const drawItemList = ref([])
 
-watch(() => props.modelValue, (val) => {
+watch(() => props.drawItemList, (val) => {
   drawItemList.value = val;
 })
 
 watch(drawItemList, (val) => {
   if (val.length === 0) idGlobal = 100
-  emits("update:modelValue", val);
+  emits("update:drawItemList", val);
   formModelsAndRules.value = {};
   buildFormModelsAndRules(val);
   buildDynamicData();
@@ -832,7 +838,8 @@ function simplifyJson(all) {
   recursiveProcessDrawItemList(cloneDrawItemList, (item) => {
     const {__id__: id} = item;
 
-    const {attributes} = elementPlusConfigMap[id];
+    let {attributes} = id&&elementPlusConfigMap[id]||{};
+    attributes=attributes||{}
     const {__props__: props, __slots__, __refs__} = item;
     for (const attr in props) {
       const val = props[attr];
@@ -1034,13 +1041,16 @@ function activeDrawItemThroughTree(data) {
 
 //endregion
 //region 会对有el-form生成 model和rules
-
-const formModelsAndRules = ref({});
-
+const formModelsAndRules = ref(props.modelValue || {});
 //构建表单model
+
+watchEffect(() => {
+  buildFormModelsAndRules(drawItemList.value);
+  emits("update:modelValue", formModelsAndRules.value);
+})
 function buildFormModelsAndRules(list, model, rules) {
   for (const item of list) {
-    if (typeof item === 'string'||typeof item === 'function') {
+    if (typeof item === 'string' || typeof item === 'function') {
       continue;
     }
     if (item.__id__ === 'form') {
@@ -1162,6 +1172,7 @@ import {
 import {isArrayEqual} from "@/components/generator/utils";
 import {renderJs, renderSfc} from "@/components/generator";
 import ResourceDialog from "@/views/design/ResourceDialog.vue";
+import elementPlusRenderConfigMap from "@/config/render";
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -1172,7 +1183,7 @@ const toggleDark = useToggle(isDark)
 //region 初始化及退出
 let clipboard
 onMounted(() => {
-  drawItemList.value = props.modelValue;
+  drawItemList.value = props.drawItemList;
   if (drawItemList.value.length >= 1) {
     activeDrawItem(drawItemList.value[0])
   }
@@ -1209,33 +1220,40 @@ onBeforeUnmount(() => {
 
 //region 导出vue代码
 
-function buildADrawItem(id,other) {
-  if (supportedComponentMap[id]) {
-    const item=cloneDrawItem(supportedComponentMap[id]);
-    if(typeof other==='object'){
-      Object.keys(other).forEach(key=>{
-        const v=other[key];
-        if(typeof v==='object'){
-          if(item[key]){
-            Object.assign( item[key],v)
-          }else{
-            item[key]=v;
-          }
-        }else{
-          item[key]=v;
+function buildDrawItem(id, other) {
+
+
+  const item = deepClone(supportedComponentMap[id]) || {
+    __config__: {
+      tag: id,
+      layout: "rawItem"
+    },
+    __slots__:{}
+  };
+
+  iniDrawItem(item);
+  if (typeof other === 'object') {
+    Object.keys(other).forEach(key => {
+      const v = other[key];
+      if (typeof v === 'object') {
+        if (item[key]) {
+          Object.assign(item[key], v)
+        } else {
+          item[key] = v;
         }
-      })
-    }
-    return item
-  } else {
-    return undefined;
+      } else {
+        item[key] = v;
+      }
+    })
   }
+  return item
+
 }
 
 defineExpose({
   generateCode,
   cloneDrawItem,
-  buildADrawItem
+  buildDrawItem
 });
 
 //endregion

@@ -26,6 +26,10 @@ keys.map(key => {
         }
     }
     elementPlusConfigMap[id] = json;
+    if(id==='input'){
+        elementPlusConfigMap["password"] = json;
+        elementPlusConfigMap["textarea"] = json;
+    }
 })
 Object.assign( elementPlusConfigMap["tree-select"].attributes,elementPlusConfigMap["select"].attributes);
 Object.assign( elementPlusConfigMap["tree-select"].attributes,elementPlusConfigMap["tree"].attributes);

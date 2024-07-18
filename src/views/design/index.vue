@@ -1,11 +1,12 @@
 <template>
-  <designer v-model="drawItemList" ref="designerRef"></designer>
+  <designer v-model:draw-item-list="drawItemList"  v-model="formModel" ref="designerRef"></designer>
 </template>
 
 <script setup>
 import {getDrawItemList, saveDrawItemList} from "@/utils/db";
 import drawingDefault from "@/config/drawingDefault.json";
 import Designer from "@/views/design/Designer.vue";
+import data from "@/views/render/data.json";
 
 
 let drawItemListInDB = getDrawItemList().filter((d)=>d!=null);
@@ -25,6 +26,13 @@ const designerRef=ref();
 //可以为：options（选项式）
 //可以为：compositionSFC（组合式SFC）
 //可以为：defineComponent（defineComponent）
+
+
+const formModel = ref(data)
+
+watch(formModel, (val) => {
+  console.info(val)
+}, {deep: true})
 
 </script>
 
