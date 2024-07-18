@@ -259,7 +259,7 @@
       "hide": true
     },
     "show-overflow-tooltip": {
-      "label": "内容过长折叠（参考表格的 [tooltip-options](#table-attributes)）",
+      "label": "内容过长显示tooltip",
       "title": "当内容过长被隐藏时显示 tooltip",
       "types": [
         {

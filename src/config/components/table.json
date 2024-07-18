@@ -126,7 +126,7 @@
       "default": false
     },
     "current-row-key": {
-      "label": "",
+      "label": "当前行的 key",
       "title": "当前行的 key，只写属性",
       "types": [
         {

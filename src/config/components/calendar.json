@@ -15,7 +15,15 @@
       "types": [
         {
           "name": "array",
-          "tag": "array-editor"
+          "tag": "array-editor",
+          "props": {
+            "tag": "el-date-picker",
+            "fixedNumber": 2,
+            "tagProps": {
+              "type": "date",
+              "value-format": "YYYY-MM-DD"
+            }
+          }
         }
       ]
     }
@@ -29,7 +37,10 @@
     {
       "name": "header",
       "title": "卡片标题内容",
-      "type": "^[object]`{ date: string }`"
+      "params": {
+        "type": "object",
+        "key": ["date"]
+      }
     }
   ],
   "desc": "显示日期"
