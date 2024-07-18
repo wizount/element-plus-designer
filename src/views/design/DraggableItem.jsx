@@ -4,6 +4,7 @@ import {deepClone} from "@/utils";
 import '@/styles/draggalbeItem.scss'
 import {AutoCompleteCallback} from "@/utils/element-plus-utils";
 import {resolveDirective, withDirectives} from "vue";
+import {replaceTemplate} from "@/utils/share";
 
 let eventTime = Date.now();
 
@@ -28,7 +29,7 @@ export default {
                 if (curItem.__id__ === 'menu-item') {
                     eventTime = Date.now();
                 }
-                if (event instanceof PointerEvent) {
+                if (!curItem.__props__.onclick && event instanceof PointerEvent) {//如果本组件自带点击事件，则要运行
                     event.stopPropagation()
                 }
             }
@@ -43,6 +44,14 @@ export default {
             if (curItem.__id__ === "autocomplete") {
                 const ac = new AutoCompleteCallback(curItem.__data__.static.options);
                 newProps["fetch-suggestions"] = ac.querySearch;
+            }
+            if(param) {
+                for (const key in newProps) {
+                    let value = newProps[key];
+                    if(typeof value === 'string') {
+                        newProps[key] = replaceTemplate(value,param);
+                    }
+                }
             }
             //对style进行复制
             if (newProps.style) {
@@ -98,10 +107,11 @@ export default {
             const formItemProps = () => {
                 const {required, showLabel} = curItem.__config__
                 let {label, labelWidth} = curItem.__config__
-                labelWidth = labelWidth ? labelWidth + "px" : null
                 if (showLabel === false) {
-                    labelWidth = '0';
-                    label = ''
+                    labelWidth = undefined;
+                    label = undefined
+                } else {
+                    labelWidth = labelWidth ? labelWidth + "px" : null
                 }
                 return {
                     labelWidth,
@@ -141,14 +151,15 @@ export default {
                 model = props.formModelsAndRules[curItem.__props__.model];
                 rules = props.formModelsAndRules[curItem.__props__.rules];
             }
-            const thisSlots = buildSlots(curItem, true);
+            const slotsWithoutDefault = buildSlots(curItem);
+            delete slotsWithoutDefault.default;//因为由Draggable生成，所以删除default
             let DraggableChildren = <Draggable tag={curItem.__config__.tag}
                                                componentData={{
                                                    ...containerProps(curItem),
                                                    model,
                                                    rules
                                                }}
-                                               componentSlots={thisSlots}
+                                               componentSlots={slotsWithoutDefault}
                                                list={curItem.__slots__.default} group="componentsGroup"
                                                itemKey="renderKey"
                                                onChange={props.onChange}
@@ -162,14 +173,16 @@ export default {
 
         }
 
-        function buildSlots(curItem, noDefault) {
+        let param
+
+        function buildSlots(curItem) {
             let thisSlots = {}
             for (const key in curItem.__slots__) {
-                if (noDefault && key === 'default') {
-                    continue;
-                }
                 if (typeof curItem.__slots__[key] === 'string') {
-                    thisSlots[key] = () => curItem.__slots__[key];
+
+                    thisSlots[key] = () => replaceTemplate(curItem.__slots__[key], param);
+
+
                     continue;
                 }
                 if (typeof curItem.__slots__[key] === 'function') {
@@ -180,7 +193,15 @@ export default {
                     continue;
                 }
                 if (curItem.__config__.layout === 'rawItem') {
-                    thisSlots[key] = () => curItem.__slots__[key].map(element => doLayout(element));
+                    const {paramSlots} = curItem.__config__;
+                    let getParam = paramSlots && paramSlots.indexOf(key) >= 0;
+                    thisSlots[key] = (p) => {
+                        if (getParam) {
+                            param = p
+                            //  console.info(p)
+                        }
+                        return curItem.__slots__[key].map(element => doLayout(element))
+                    };
                 } else {
                     thisSlots[key] = () =>
                         <Draggable tag="span"
@@ -274,12 +295,6 @@ export default {
                     }, buildSlots(curItem));
                     return doWrapWithSpan(curItem, source);
                 } else {
-                    // const fns={}
-                    // for (const e of curItem.__events__) {
-                    //     const fn = `(${e.params})=>{${e.fnBody}}`
-                    //     fns["on"+titleCase(e.name)]=eval(fn)
-                    // }
-                    // console.log(fns)
                     return h(resolveComponent(tag),
                         {...buildProps(curItem, {isBuildClass: true, isBuildModel: true, isBuildEvent: true}), ...data},
                         buildSlots(curItem));
@@ -297,7 +312,7 @@ export default {
 
         function doLayout(curItem) {
             if (typeof curItem === "string") {
-                return h("span", curItem);
+                return h("span", replaceTemplate(curItem, param));
             }
             if (typeof curItem === "function") {
                 return curItem;

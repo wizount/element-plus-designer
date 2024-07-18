@@ -15,7 +15,7 @@ export const elementPlusDisplayComponents = [
                     {
                         __id__: "plainText",
                         __slots__: {
-                            default: "plainText"
+                            default: ["plainText"]
                         },
                     },
                     {
@@ -389,10 +389,10 @@ export const elementPlusDisplayComponents = [
                         }
                     },
                     {
-                        __id__: 'input',
+                        __id__: 'textarea',
                         __config__: {
                             name: "多行文本",
-                            itemName: "texarea",
+                            itemName: "textarea",
                             tag: 'el-input',
                             tagIcon: 'textarea',
                             defaultValue: undefined,
@@ -405,7 +405,7 @@ export const elementPlusDisplayComponents = [
                         }
                     },
                     {
-                        __id__: "input",
+                        __id__: "password",
                         __config__: {
                             itemName: "password",
                             name: "密码框",
@@ -642,6 +642,9 @@ export const elementPlusDisplayComponents = [
                 children: [
                     {
                         __id__: "calendar",
+                        __config__: {
+                            paramSlots:["header"]
+                        }
                     }
                 ]
             },
@@ -784,6 +787,9 @@ export const elementPlusDisplayComponents = [
                             default: [
                                 {
                                     __id__: "table-column",
+                                    __config__:{
+                                        paramSlots:["default"]
+                                    },
                                     __props__: {
                                         label: 'Date',
                                         prop: 'date'
@@ -791,6 +797,9 @@ export const elementPlusDisplayComponents = [
                                 },
                                 {
                                     __id__: "table-column",
+                                    __config__:{
+                                        paramSlots:["default"]
+                                    },
                                     __props__: {
                                         label: 'Address',
                                         prop: 'address'
