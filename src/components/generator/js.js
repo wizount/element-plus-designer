@@ -230,21 +230,23 @@ const processPropRefs = (item) => {
     if (codeStyle !== "options" && props.ref) {//fixme 模板引用，选项式不运行！
         addVariable(props.ref, "undefined");
     }
-    const {attributes} = elementPlusConfigMap[item.__id__]
-    __refs__ && Object.keys(__refs__).forEach((k) => {
-        if(allRefSet.has(__refs__[k])){
-            return ;
-        }
-        allRefSet.add(__refs__[k]);
-        let val = props[k];
-        if (val === undefined) {
-            val = getStaticData(item.__data__, k);
-        }
-        if (val === undefined && attributes[k] && attributes[k].required) {
-            val = attributes[k].default;
-        }
-        addVariable(__refs__[k], renderValue(val, attributes[k] && attributes[k].default));
-    })
+    if(item.__id__&& elementPlusConfigMap[item.__id__]) {
+        const {attributes} = elementPlusConfigMap[item.__id__]
+        __refs__ && Object.keys(__refs__).forEach((k) => {
+            if (allRefSet.has(__refs__[k])) {
+                return;
+            }
+            allRefSet.add(__refs__[k]);
+            let val = props[k];
+            if (val === undefined) {
+                val = getStaticData(item.__data__, k);
+            }
+            if (val === undefined && attributes[k] && attributes[k].required) {
+                val = attributes[k].default;
+            }
+            addVariable(__refs__[k], renderValue(val, attributes[k] && attributes[k].default));
+        })
+    }
 }
 //生成属性ref
 const processEvents = (item) => {

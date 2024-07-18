@@ -1,7 +1,7 @@
 import elementPlusConfigMap from "@/config"
 import slotHtmlFunctions from "@/components/generator/slots";
-import {deepClone} from "@/utils";
-import {isArrayEqual, isObjectEqual} from "@/components/generator/utils";
+import {camelCase, deepClone} from "@/utils";
+import {getFunctionName, isArrayEqual, isObjectEqual} from "@/components/generator/utils";
 
 
 //递归比较麻烦，直接使用
@@ -23,10 +23,10 @@ export function renderHtml(itemList) {
 
 //总入口
 const renderItemList = (itemList) => {
-    if (!itemList) {
+    if (!itemList||!Array.isArray( itemList )) {//todo 增加其他解析
         return ""
     }
-    let html = [];
+    const html = [];
     for (const item of itemList) {
         html.push(renderItem(item))
     }
@@ -60,7 +60,8 @@ const renderItem = (item) => {
 //组件属性
 const renderProps = (item) => {
     const id = item.__id__;
-    const {attributes} = elementPlusConfigMap[id];
+    let {attributes} = id && elementPlusConfigMap[id] || {};
+    attributes = attributes || {}
     const props = item.__props__;
     const str = []
     if (props.ref) {
@@ -127,10 +128,42 @@ const renderProps = (item) => {
         })
 
         Object.keys(props).forEach(key => {
-            if(props[key]!==undefined &&keys.indexOf(key)<0){
-                console.info(key)
+                if (key === 'ref') {
+                    return false;
+                }
+                if (props[key] !== undefined && keys.indexOf(key) < 0) {
+                    const value = props[key];
+                    const typeOfValue = typeof value;
+
+                    if (typeOfValue === 'boolean') {//针对boolean，是true直接写一个名称
+                        if (!value) {
+                            str.push(` :${key}=false`)
+                        } else {
+                            str.push(` ${key}`)
+                        }
+                    } else if (typeOfValue === 'string') {
+
+                        str.push(` ${key}="${value}"`)
+                    } else if (typeOfValue === 'number') {
+                        str.push(` :${key}="${value}"`)
+                    } else if (typeOfValue === 'object') {
+                        str.push(renderObjectProps(key, value))
+                    } else if (typeOfValue === 'function') {
+                        const isNested = getFunctionName(value) === key;//是不是内嵌函数
+                        if (key.indexOf("on") === 0) {
+                            key = "@" + key.substring(2).toLowerCase();
+                        }
+                        if (isNested) {
+                            str.push(` ${key}="${value.toString().replace(/\"/g, "'")}"`)
+                        } else {
+                            str.push(` ${key}="${getFunctionName(value)}"`)
+                        }
+                    }
+                }
+
+
             }
-        })
+        )
 
     }
     if (item.__vModel__) {
@@ -141,7 +174,7 @@ const renderProps = (item) => {
         }
     }
 
-    //生成Events
+//生成Events
     const events = item.__events__ || []
     events.map(e => {
         str.push(` @${e.name}=${e.fnName}`)
@@ -180,13 +213,17 @@ const renderDirective = (item) => {
     if (!__directives__) {
         return "";
     }
-    const res=[];
-    for(const key in __directives__){
-        const d=__directives__[key];
-        let  modifiersStr=d.modifiers.join(".");
-        //todo 指令参数，目前element-plus指令太少
-        if(modifiersStr){
-            modifiersStr="."+modifiersStr;
+    const res = [];
+    for (const key in __directives__) {
+        console.info(key)
+        const d = __directives__[key];
+        let modifiersStr=""
+        if( d.modifiers) {
+             modifiersStr = d.modifiers.join(".");
+            //todo 指令参数，目前element-plus指令太少
+            if (modifiersStr) {
+                modifiersStr = "." + modifiersStr;
+            }
         }
         res.push(`v-${key}${modifiersStr}="${d.value}"`)
     }

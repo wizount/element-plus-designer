@@ -18,3 +18,7 @@ export const isObjectEqual = (oA, oB) => {
     })
     return isEqual;
 }
+//获得function的名称
+export function getFunctionName (fun){
+    return fun.name;
+}
