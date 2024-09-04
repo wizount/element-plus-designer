@@ -443,6 +443,18 @@ export const elementPlusDisplayComponents = [
                 ]
             },
             {
+                name: "Mention 提及",
+                key: "mention",
+                children: [
+                    {
+                        __id__: "mention",
+                        __config__: {
+                            ...defaultFormItemConfig
+                        }
+                    }
+                ]
+            },
+            {
                 name: "Radio 单选框",
                 key: "radio",
                 children: [

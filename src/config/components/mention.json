@@ -1,0 +1,256 @@
+{
+  "__id__": "mention",
+  "name": "提及",
+  "tag": "el-mention",
+  "tagIcon": "mention",
+  "layouts": [
+    "rawItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/mention.html",
+  "attributes": {
+    "vModel": "modelValue",
+    "placeholder": "请输入",
+    "options": {
+      "label": "提及选项列表",
+      "title": "提及选项列表",
+      "hide": true,
+      "required": true,
+      "default": []
+    },
+    "prefix": {
+      "label": "触发前缀",
+      "title": "触发字段的前缀。 字符串长度必须且只能为 1",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": "@"
+    },
+    "split": {
+      "label": "拆分字符",
+      "title": "用于拆分提及的字符。 字符串长度必须且只能为 1",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": " "
+    },
+    "filter-option": {
+      "label": "选项逻辑",
+      "title": "定制筛选器选项逻辑",
+      "types": [
+        {
+          "name": "false",
+          "tag": ""
+        },
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(pattern: string, option: MentionOption) => boolean"
+        }
+      ]
+    },
+    "placement": {
+      "label": "弹出位置",
+      "title": "设置弹出位置",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "bottom"
+    },
+    "show-arrow": {
+      "label": "下拉菜单是否有箭头",
+      "title": "下拉菜单的内容是否有箭头",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "offset": {
+      "label": "",
+      "title": "下拉面板偏移量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0
+    },
+    "whole": {
+      "label": "整体删除",
+      "title": "当退格键被按下做删除操作时，是否将提及部分作为整体删除",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "check-is-whole": {
+      "label": "是否整体删除",
+      "title": "当退格键被按下做删除操作时，检查是否将提及部分作为整体删除",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(pattern: string, prefix: string) => boolean"
+        }
+      ]
+    },
+    "loading": {
+      "label": "加载状态",
+      "title": "提及的下拉面板是否处于加载状态",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "popper-class": {
+      "label": "浮层类名",
+      "title": "自定义浮层类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "popper-options": {
+      "label": "popper.js参数",
+      "title": "[popper.js](https://popper.js.org/docs/v2/) 参数",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "label",
+      "label": "",
+      "title": "自定义标签内容",
+      "type": "^[object]`{ item: MentionOption, index: number }`"
+    },
+    {
+      "name": "loading",
+      "label": "",
+      "title": "自定义 loading内容"
+    },
+    {
+      "name": "header",
+      "label": "",
+      "title": "下拉列表顶部的内容",
+      "type": "*"
+    },
+    {
+      "name": "footer",
+      "label": "",
+      "title": "下拉列表底部的内容"
+    },
+    {
+      "name": "[input slots](./input.md#slots)",
+      "label": "",
+      "title": "*"
+    }
+  ],
+  "events": [
+    {
+      "name": "search",
+      "label": "",
+      "title": "按下触发字段时触发",
+      "type": "Function",
+      "fnDes": "(pattern: string, prefix: string) => void"
+    },
+    {
+      "name": "select",
+      "label": "",
+      "title": "当用户选择选项时触发",
+      "type": "Function",
+      "fnDes": "(option: MentionOption, prefix: string) => void"
+    },
+    {
+      "name": "[input events](./input.md#events)",
+      "label": "",
+      "title": "-",
+      "type": "*"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "input",
+      "label": "",
+      "title": "el-input 组件实例",
+      "type": "^[object]`Ref<InputInstance \\| null>`"
+    },
+    {
+      "name": "tooltip",
+      "label": "",
+      "title": "el-tooltip 组件实例",
+      "type": "^[object]`Ref<TooltipInstance \\| null>`"
+    }
+  ],
+  "data": {
+    "name": "options",
+    "label": "选项",
+    "source": "static",
+    "inProps": true,
+    "static": {
+      "ref": true,
+      "type": {
+        "name": "array",
+        "tag": "object-array-editor",
+        "props": {
+          "keys": [
+            {
+              "key": "value",
+              "label": "值",
+              "tag": "string-number-input"
+            },
+            {
+              "key": "label",
+              "label": "标签",
+              "tag": "string-number-input"
+            }
+          ]
+        }
+      },
+      "default": [
+        {
+          "label": "提及1",
+          "value": "提及1"
+        },
+        {
+          "label": "提及2",
+          "value": "提及2"
+        }
+      ]
+    },
+    "dynamic": {
+      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/options",
+      "method": "get",
+      "dataKey": ""
+    }
+  },
+  "desc": "用于在输入中提及某人或某事。"
+}
