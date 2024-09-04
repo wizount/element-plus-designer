@@ -348,33 +348,47 @@
     {
       "name": "show",
       "title": "显示时触发",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "before-enter",
       "title": "显示动画播放前触发",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "after-enter",
       "title": "显示动画播放完毕后触发",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "hide",
       "title": "隐藏时触发",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "before-leave",
       "title": "隐藏动画播放前触发",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     },
     {
       "name": "after-leave",
       "title": "隐藏动画播放完毕后触发",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "() => void"
     }
   ],
-  "desc": ":::tip"
+  "desc": "## 基础用法",
+  "exposes": [
+    {
+      "name": "hide",
+      "title": "隐藏 popover",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ]
 }

@@ -687,7 +687,7 @@
       "name": "toggleRowSelection",
       "title": "用于多选表格，切换某一行的选中状态， 如果使用了第二个参数，则可直接设置这一行选中与否",
       "type": "Function",
-      "fnDes": "(row: any, selected: boolean) => void"
+      "fnDes": "(row: any, selected?: boolean) => void"
     },
     {
       "name": "toggleAllSelection",

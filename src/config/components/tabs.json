@@ -128,27 +128,27 @@
     {
       "name": "tab-click",
       "title": "tab 被选中时触发",
-      "params": "(pane: `TabsPaneContext`, ev: `Event`)"
+      "params": "^[Function]`(pane: TabsPaneContext, ev: Event) => void`"
     },
     {
       "name": "tab-change",
       "title": "`activeName` 改变时触发",
-      "params": "(name: `TabPaneName`)"
+      "params": "^[Function]`(name: TabPaneName) => void`"
     },
     {
       "name": "tab-remove",
       "title": "点击 tab 移除按钮时触发",
-      "params": "(name: `TabPaneName`)"
+      "params": "^[Function]`(name: TabPaneName) => void`"
     },
     {
       "name": "tab-add",
       "title": "点击 tab 新增按钮时触发",
-      "params": "—"
+      "params": "^[Function]`() => void`"
     },
     {
       "name": "edit",
       "title": "点击 tab 的新增或移除按钮后触发",
-      "params": "(paneName: `TabPaneName | undefined`, action: `'remove' | 'add'`)"
+      "params": "^[Function]`(paneName: TabPaneName | undefined, action: 'remove' | 'add') => void`"
     }
   ],
   "slots": [

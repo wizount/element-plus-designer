@@ -52,8 +52,9 @@
   "events": [
     {
       "name": "click",
-      "title": "菜单点击时的回调函数",
-      "params": "el-menu-item 实例"
+      "title": "点击菜单项时回调函数, 参数为菜单项实例",
+      "type": "Function",
+      "fnDes": "(item: MenuItemRegistered) => void"
     }
   ],
   "slots": [

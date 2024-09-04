@@ -340,5 +340,14 @@
       "fnDes": "() => void"
     }
   ],
-  "desc": "在保留当前页面状态的情况下，告知用户并承载相关操作。"
+  "desc": "在保留当前页面状态的情况下，告知用户并承载相关操作。",
+  "exposes": [
+    {
+      "name": "resetPosition",
+      "title": "重置位置",
+      "type": "Function",
+      "version": "2.8.1",
+      "fnDes": "() => void"
+    }
+  ]
 }

@@ -159,6 +159,17 @@
         }
       ]
     },
+    "cardScale": {
+      "title": "当 type 为 card时，二级卡的缩放大小",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0.83,
+      "version": "2.7.8"
+    },
     "loop": {
       "label": "循环显示",
       "title": "是否循环显示",
@@ -220,8 +231,9 @@
   "events": [
     {
       "name": "change",
-      "title": "幻灯片切换时触发",
-      "params": "目前激活的幻灯片的索引，原幻灯片的索引"
+      "title": "当前展示的幻灯片切换时触发，它有两个参数， 一个是新幻灯片的索引，另一个是旧幻灯片的索引",
+      "type": "Function",
+      "fnDes": "(current: number, prev: number) => boolean"
     }
   ],
   "slots": [
@@ -233,5 +245,31 @@
       ]
     }
   ],
-  "desc": "在有限空间内，循环播放同一类型的图片、文字等内容"
+  "desc": "在有限空间内，循环播放同一类型的图片、文字等内容",
+  "exposes": [
+    {
+      "name": "activeIndex",
+      "title": "当前幻灯片的索引",
+      "type": "^[number]",
+      "version": "2.7.8"
+    },
+    {
+      "name": "setActiveItem",
+      "title": "手动切换幻灯片，传入需要切换的幻灯片的索引，从 0 开始；或相应 `el-carousel-item` 的 `name` 属性值",
+      "type": "Function",
+      "fnDes": "(index: string | number) => void"
+    },
+    {
+      "name": "prev",
+      "title": "切换至上一张幻灯片",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "next",
+      "title": "切换至下一张幻灯片",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ]
 }

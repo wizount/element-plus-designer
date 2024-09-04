@@ -24,7 +24,8 @@
             "clearable": true
           }
         }
-      ]
+      ],
+      "required": true
     },
     "popper-class": {
       "label": "popper类名",

@@ -503,6 +503,34 @@
       "default": "info",
       "version": "2.5.0"
     },
+    "tag-effect": {
+      "title": "标签效果",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "light",
+              "value": "light"
+            },
+            {
+              "label": "dark",
+              "value": "dark"
+            },
+            {
+              "label": "plain",
+              "value": "plain"
+            }
+          ]
+        }
+      ],
+      "default": "light",
+      "version": "2.7.7"
+    },
     "aria-label": {
       "title": "等价于原生 input `aria-label` 属性",
       "types": [

@@ -460,6 +460,12 @@
       "name": "header",
       "title": "自定义表头的内容，",
       "type": "^[object]`{ column: any, $index: number }`"
+    },
+    {
+      "name": "filter-icon",
+      "title": "自定义 filter 图标",
+      "type": "^[object]`{ filterOpened: boolean }`",
+      "version": "2.7.8"
     }
   ],
   "desc": "用于展示多条结构类似的数据， 可对数据进行排序、筛选、对比或其他自定义操作。"

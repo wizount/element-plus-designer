@@ -88,7 +88,8 @@
           "tag": "el-color-picker"
         }
       ],
-      "default": "#ffffff"
+      "default": "#ffffff",
+      "deprecated": true
     },
     "text-color": {
       "label": "文字颜色",
@@ -99,7 +100,8 @@
           "tag": "el-color-picker"
         }
       ],
-      "default": "#303133"
+      "default": "#303133",
+      "deprecated": true
     },
     "active-text-color": {
       "label": "活动菜单项文本颜色",
@@ -110,7 +112,8 @@
           "tag": "el-color-picker"
         }
       ],
-      "default": "#409EFF"
+      "default": "#409EFF",
+      "deprecated": true
     },
     "default-active": {
       "label": "默认激活菜单的 index",
@@ -265,17 +268,20 @@
     {
       "name": "select",
       "title": "菜单激活回调",
-      "params": "index: 选中菜单项的 index, indexPath: 选中菜单项的 index path, item: 选中菜单项, routeResult: vue-router 的返回值（如果 router 为 true）"
+      "type": "Function",
+      "fnDes": "^[Function]`MenuSelectEvent"
     },
     {
       "name": "open",
       "title": "sub-menu 展开的回调",
-      "params": "index: 打开的 sub-menu 的 index, indexPath: 打开的 sub-menu 的 index path"
+      "type": "Function",
+      "fnDes": "^[Function]`MenuOpenEvent"
     },
     {
       "name": "close",
       "title": "sub-menu 收起的回调",
-      "params": "index: 收起的 sub-menu 的 index, indexPath: 收起的 sub-menu 的 index path"
+      "type": "Function",
+      "fnDes": "^[Function]`MenuCloseEvent"
     }
   ],
   "slots": [
@@ -289,5 +295,19 @@
       ]
     }
   ],
-  "desc": "为网站提供导航功能的菜单。"
+  "desc": "为网站提供导航功能的菜单。",
+  "exposes": [
+    {
+      "name": "open",
+      "title": "打开一个特定的子菜单，参数是要打开的子菜单的索引",
+      "type": "Function",
+      "fnDes": "(index: string) => void"
+    },
+    {
+      "name": "close",
+      "title": "关闭一个特定的子菜单，参数是要关闭子菜单的索引",
+      "type": "Function",
+      "fnDes": "(index: string) => void"
+    }
+  ]
 }

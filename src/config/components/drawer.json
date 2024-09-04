@@ -33,6 +33,17 @@
       ],
       "default": false
     },
+    "append-to": {
+      "title": "挂载到哪个 DOM 元素 将覆盖 `append-to-body`",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "body",
+      "version": "2.8.0"
+    },
     "lock-scroll": {
       "label": " 出现时将 body 滚动锁定",
       "title": "是否在 Drawer 出现时将 body 滚动锁定",

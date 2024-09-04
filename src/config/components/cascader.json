@@ -324,6 +324,34 @@
       ],
       "default": "info"
     },
+    "tag-effect": {
+      "title": "tag effect",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "light",
+              "value": "light"
+            },
+            {
+              "label": "dark",
+              "value": "dark"
+            },
+            {
+              "label": "plain",
+              "value": "plain"
+            }
+          ]
+        }
+      ],
+      "default": "light",
+      "version": "2.7.8"
+    },
     "validate-event": {
       "label": "表单校验",
       "title": "输入时是否触发表单的校验",
@@ -380,6 +408,88 @@
         }
       ],
       "version": "2.7.0"
+    },
+    "persistent": {
+      "title": "当下拉框未被激活并且`persistent`设置为`false`，下拉框容器会被删除。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.7.8"
+    },
+    "fallback-placements": {
+      "title": "Tooltip 可用的 positions 请查看[popper.js 文档](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements)",
+      "types": [
+        {
+          "name": "arrary",
+          "tag": ""
+        }
+      ],
+      "version": "2.8.1"
+    },
+    "placement": {
+      "title": "下拉框出现的位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "top-start",
+              "value": "top-start"
+            },
+            {
+              "label": "top-end",
+              "value": "top-end"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            },
+            {
+              "label": "bottom-start",
+              "value": "bottom-start"
+            },
+            {
+              "label": "bottom-end",
+              "value": "bottom-end"
+            },
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "left-start",
+              "value": "left-start"
+            },
+            {
+              "label": "left-end",
+              "value": "left-end"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            },
+            {
+              "label": "right-start",
+              "value": "right-start"
+            },
+            {
+              "label": "right-end",
+              "value": "right-end"
+            }
+          ]
+        }
+      ],
+      "default": "bottom-start",
+      "version": "2.8.1"
     }
   },
   "events": [

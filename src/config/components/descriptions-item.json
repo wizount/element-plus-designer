@@ -35,6 +35,17 @@
       ],
       "default": 1
     },
+    "rowspan": {
+      "title": "单元格应该跨越的行数",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 1,
+      "version": "2.8.1"
+    },
     "width": {
       "label": "宽度",
       "title": "列的宽度，不同行相同列的宽度按最大值设定（如无 border ，宽度包含标签与内容）",

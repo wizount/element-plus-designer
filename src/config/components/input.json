@@ -527,6 +527,12 @@
       "name": "textareaStyle",
       "title": "textarea 的样式",
       "type": "^[object]`Ref<StyleValue>`"
+    },
+    {
+      "name": "isComposing",
+      "title": "是否是输入 composing 状态",
+      "type": "^[object]`Ref<boolean>`",
+      "version": "2.8.0"
     }
   ],
   "desc": "通过鼠标或键盘输入字符"

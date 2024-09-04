@@ -19,6 +19,17 @@
       ],
       "default": false
     },
+    "disabled": {
+      "title": "whether the check-tag is disabled",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.8.2"
+    },
     "type": {
       "title": "CheckTag 类型",
       "types": [

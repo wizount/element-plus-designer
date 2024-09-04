@@ -217,6 +217,12 @@
     {
       "name": "reference",
       "title": "触发 Popconfirm 显示的 HTML 元素"
+    },
+    {
+      "name": "actions",
+      "title": "页脚的内容",
+      "type": "^[object]`{ confirm: (e: MouseEvent) => void, cancel: (e: MouseEvent) => void }`",
+      "version": "2.8.1"
     }
   ],
   "desc": "点击某个元素弹出一个简单的气泡确认框"

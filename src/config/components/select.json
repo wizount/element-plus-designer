@@ -451,6 +451,34 @@
         true
       ]
     },
+    "tag-effect": {
+      "title": "标签效果",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "light",
+              "value": "light"
+            },
+            {
+              "label": "dark",
+              "value": "dark"
+            },
+            {
+              "label": "plain",
+              "value": "plain"
+            }
+          ]
+        }
+      ],
+      "default": "light",
+      "version": "2.7.7"
+    },
     "validate-event": {
       "label": "触发表单校验",
       "title": "输入时是否触发表单的校验",

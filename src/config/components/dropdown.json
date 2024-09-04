@@ -284,18 +284,35 @@
     {
       "name": "click",
       "title": "`split-button` 为 true 时，点击左侧按钮的回调",
-      "params": "—"
+      "type": "Function",
+      "fnDes": "(e: MouseEvent) => void"
     },
     {
       "name": "command",
-      "title": "点击菜单项触发的事件回调",
-      "params": "dropdown-item 的指令"
+      "title": "当下拉项被点击时触发，参数是从下拉菜单中发送的命令",
+      "type": "Function",
+      "fnDes": "(...args: any[]) => void"
     },
     {
       "name": "visible-change",
-      "title": "下拉框出现/隐藏时触发",
-      "params": "出现则为 true，隐藏则为 false"
+      "title": "当下拉菜单出现/消失时触发器, 当它出现时, 参数将是 `true`, 否则将是 `false`",
+      "type": "Function",
+      "fnDes": "(val: boolean) => void"
     }
   ],
-  "desc": "将动作或菜单折叠到下拉菜单中。"
+  "desc": "将动作或菜单折叠到下拉菜单中。",
+  "exposes": [
+    {
+      "name": "handleOpen",
+      "title": "打开下拉菜单",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "handleClose",
+      "title": "关闭下拉菜单",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ]
 }
