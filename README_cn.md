@@ -102,5 +102,8 @@ npm run build
 - 支持事件编辑
 - 计划增加if, show等vue3自带指令。
 
+## 已知BUG或重大错误
+- svg不能被正常导入，导致图标显示不完整，需要复制到复制src/assets/icons/svg/*.svg到引用工程*.svg所在的文件夹
+
 
 联系方式：微信：glqqyx, QQ: 2537660666 email: 2537660666@qq.com
