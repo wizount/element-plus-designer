@@ -370,7 +370,7 @@
     {
       "name": "file",
       "title": "缩略图模板的内容",
-      "type": "^[object]`{ file: UploadFile }`"
+      "type": "^[object]`{ file: UploadFile, index: number }`"
     }
   ],
   "exposes": [

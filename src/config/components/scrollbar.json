@@ -201,6 +201,16 @@
       ],
       "version": "2.4.0",
       "a11y": true
+    },
+    "tabindex": {
+      "title": "容器的tabindex",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "version": "2.8.3"
     }
   },
   "events": [

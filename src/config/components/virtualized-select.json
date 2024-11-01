@@ -657,17 +657,23 @@
   ],
   "exposes": [
     {
-      "params": "focus",
+      "name": "focus",
       "title": "使选择器的输入框获取焦点",
       "type": "Function",
       "fnDes": "() => void"
     },
     {
-      "params": "blur",
+      "name": "blur",
       "title": "使选择器的输入框失去焦点，并隐藏下拉框",
       "type": "Function",
       "fnDes": "() => void"
+    },
+    {
+      "name": "selectedLabel",
+      "title": "获取当前选中的标签",
+      "type": "^[object]`ComputedRef<string | string[]>`",
+      "version": "2.8.5"
     }
   ],
-  "desc": ":::tip"
+  "desc": "在某些使用情况下，单个选择器可能最终加载数万行数据。 将这么多的数据渲染至 DOM 中可能会给浏览器带来负担，从而造成性能问题。 为了更好的用户和开发者体验，我们决定添加此组件。"
 }

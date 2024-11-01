@@ -204,7 +204,7 @@
   "slots": [
     {
       "name": "default",
-      "title": "自定义数据项的内容， The scope parameter is { option }"
+      "title": "自定义数据项的内容， 参数为 `{ option }`"
     },
     {
       "name": "left-footer",
@@ -217,10 +217,20 @@
   ],
   "exposes": [
     {
-      "Method": "clearQuery",
+      "name": "clearQuery",
       "title": "清空某个面板的搜索关键词",
       "type": "Function",
       "fnDes": "(which: TransferDirection) => void"
+    },
+    {
+      "name": "leftPanel",
+      "title": "左侧面板 ref",
+      "type": "^[object]`Ref<TransferPanelInstance>`"
+    },
+    {
+      "name": "rightPanel",
+      "title": "右侧面板 ref",
+      "type": "^[object]`Ref<TransferPanelInstance>`"
     }
   ],
   "events": [

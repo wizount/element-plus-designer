@@ -357,6 +357,13 @@
       "name": "suggestions",
       "title": "获取自动补全结果",
       "type": "^[object]`Ref<record<string, any>>`"
+    },
+    {
+      "name": "getData",
+      "title": "加载建议列表",
+      "type": "Function",
+      "version": "2.8.4",
+      "fnDes": "(queryString: string) => void"
     }
   ],
   "data": {

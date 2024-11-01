@@ -572,6 +572,12 @@
       "name": "contentRef",
       "title": "cascader 内容的 ref",
       "type": "^[object]`ComputedRef<any>`"
+    },
+    {
+      "name": "presentText",
+      "title": "选中的内容文本",
+      "type": "^[object]`ComputedRef<string>`",
+      "version": "2.8.4"
     }
   ],
   "data": {

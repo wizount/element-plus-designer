@@ -439,6 +439,27 @@
         }
       ],
       "version": "2.7.0"
+    },
+    "fallback-placements": {
+      "title": "Tooltip 可用的 positions 请查看[popper.js 文档](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements)",
+      "types": [
+        {
+          "name": "arrary",
+          "tag": ""
+        }
+      ],
+      "version": "2.8.4"
+    },
+    "placement": {
+      "title": "下拉框出现的位置",
+      "types": [
+        {
+          "name": "Placement",
+          "tag": ""
+        }
+      ],
+      "default": "bottom",
+      "version": "2.8.4"
     }
   },
   "events": [

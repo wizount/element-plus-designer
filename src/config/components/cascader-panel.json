@@ -47,6 +47,12 @@
       "name": "default",
       "title": "下级节点的自定义内容，它们分别是当前节点对象和节点数据。",
       "params": "^[object]`{ node: any, data: any }`"
+    },
+    {
+      "name": "empty",
+      "title": "没有数据时面板的内容。",
+      "params": "—",
+      "version": "2.8.3"
     }
   ],
   "exposes": [

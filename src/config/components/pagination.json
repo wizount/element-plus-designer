@@ -169,6 +169,16 @@
         100
       ]
     },
+    "append-size-to": {
+      "title": "下拉框挂载到哪个 DOM 元素",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.8.4"
+    },
     "popper-class": {
       "label": "下拉框类名",
       "title": "每页显示个数选择器的下拉框类名",

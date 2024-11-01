@@ -160,12 +160,6 @@
       ]
     },
     {
-      "name": "addIcon",
-      "title": "自定义添加按钮图标",
-      "version": "2.4.0",
-      "deprecated": true
-    },
-    {
       "name": "add-icon",
       "title": "自定义添加按钮图标",
       "version": "2.5.4"

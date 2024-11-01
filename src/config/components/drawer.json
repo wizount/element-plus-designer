@@ -253,13 +253,13 @@
       "title": "Drawer 标题的内容；会替换标题部分，但不会移除关闭按钮。"
     },
     {
+      "name": "footer",
+      "title": "Drawer 页脚部分"
+    },
+    {
       "name": "title",
       "title": "与 header 作用相同 请使用 header",
       "deprecated": true
-    },
-    {
-      "name": "footer",
-      "title": "Drawer 页脚部分"
     }
   ],
   "events": [

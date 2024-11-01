@@ -522,6 +522,17 @@
         }
       ],
       "version": "2.7.0"
+    },
+    "show-now": {
+      "title": "是否显示 now 按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.8.7"
     }
   },
   "events": [
@@ -590,8 +601,16 @@
   "exposes": [
     {
       "name": "focus",
-      "title": "使 input 获取焦点",
-      "params": "—"
+      "title": "使组件获取焦点",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "blur",
+      "title": "使组件失去焦点",
+      "type": "Function",
+      "version": "2.8.7",
+      "fnDes": "() => void"
     }
   ],
   "desc": "在同一个选择器里选择日期和时间"

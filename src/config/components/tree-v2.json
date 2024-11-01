@@ -206,6 +206,12 @@
       "params": "(data: TreeNodeData, node: TreeNode, e: MouseEvent)"
     },
     {
+      "name": "node-drop",
+      "title": "拖放到节点时触发器",
+      "params": "(data: TreeNodeData, node: TreeNode, e: DragEvent)",
+      "version": "2.8.3"
+    },
+    {
       "name": "node-contextmenu",
       "title": "当节点被鼠标右键点击时会触发该事件",
       "params": "(e: Event, data: TreeNodeData, node: TreeNode)"

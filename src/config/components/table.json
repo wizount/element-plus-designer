@@ -395,6 +395,16 @@
       },
       "version": "2.2.28"
     },
+    "append-filter-panel-to": {
+      "title": "挂载到哪个 DOM 元素",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.8.4"
+    },
     "show-summary": {
       "label": "表尾显示合计",
       "title": "是否在表尾显示合计行",
@@ -558,6 +568,16 @@
       ],
       "default": false,
       "version": "2.2.1"
+    },
+    "scrollbar-tabindex": {
+      "title": "body 的滚动条的包裹容器 tabindex",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "version": "2.8.3"
     }
   },
   "events": [
@@ -681,13 +701,13 @@
       "name": "getSelectionRows",
       "title": "返回当前选中的行",
       "type": "Function",
-      "fnDes": "() => void"
+      "fnDes": "() => any[]"
     },
     {
       "name": "toggleRowSelection",
       "title": "用于多选表格，切换某一行的选中状态， 如果使用了第二个参数，则可直接设置这一行选中与否",
       "type": "Function",
-      "fnDes": "(row: any, selected?: boolean) => void"
+      "fnDes": "(row: any, selected?: boolean, ignoreSelectable = true) => void"
     },
     {
       "name": "toggleAllSelection",
@@ -754,6 +774,13 @@
       "title": "获取表列的 context",
       "type": "^[array]`TableColumnCtx<T>[]`",
       "version": "2.7.6"
+    },
+    {
+      "name": "updateKeyChildren",
+      "title": "适用于 lazy Table, 需要设置 `rowKey`, 更新 key children",
+      "type": "Function",
+      "version": "2.8.4",
+      "fnDes": "(key: string, data: T[]) => void"
     }
   ],
   "slots": [

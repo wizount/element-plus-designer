@@ -293,13 +293,13 @@
       "title": "对话框标题的内容；会替换标题部分，但不会移除关闭按钮。"
     },
     {
+      "name": "footer",
+      "title": "Dialog 按钮操作区的内容"
+    },
+    {
       "name": "title",
       "title": "与 header 作用相同 请使用 header",
       "deprecated": true
-    },
-    {
-      "name": "footer",
-      "title": "Dialog 按钮操作区的内容"
     }
   ],
   "events": [

@@ -34,6 +34,17 @@
         }
       ]
     },
+    "icon": {
+      "title": "折叠项目的图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "ArrowRight",
+      "version": "2.8.3"
+    },
     "disabled": {
       "label": "禁用",
       "title": "是否禁用",
@@ -53,6 +64,12 @@
     {
       "name": "title",
       "title": "Collapse Item 的标题"
+    },
+    {
+      "name": "icon",
+      "title": "折叠项目图标的内容",
+      "type": "^[object]`{ isActive: boolean }`",
+      "version": "2.8.3"
     }
   ],
   "desc": "通过折叠面板收纳内容区域"

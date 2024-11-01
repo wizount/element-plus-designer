@@ -351,6 +351,16 @@
       ],
       "default": true
     },
+    "append-to": {
+      "title": "下拉框挂载到哪个 DOM 元素",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.8.4"
+    },
     "persistent": {
       "label": "persistent",
       "title": "当下拉选择器未被激活并且persistent设置为false，选择器会被删除。",
@@ -762,16 +772,22 @@
   },
   "exposes": [
     {
-      "Method": "focus",
+      "name": "focus",
       "title": "使选择器的输入框获取焦点",
       "type": "Function",
       "fnDes": "() => void"
     },
     {
-      "Method": "blur",
+      "name": "blur",
       "title": "使选择器的输入框失去焦点，并隐藏下拉框",
       "type": "Function",
       "fnDes": "() => void"
+    },
+    {
+      "name": "selectedLabel",
+      "title": "获取当前选中的标签",
+      "type": "^[object]`ComputedRef<string | string[]>`",
+      "version": "2.8.5"
     }
   ],
   "desc": "当选项过多时，使用下拉菜单展示并选择内容。"
