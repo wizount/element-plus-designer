@@ -1,6 +1,17 @@
 {
+  "__id__": "input-tag",
+  "name": "标签输入框",
+  "tag": "el-input-tag",
+  "tagIcon": "input-tag",
+  "layouts": [
+    "rawItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/tag-tag.html",
   "attributes": {
+    "vModel": "modelValue",
+    "placeholder": "请输入",
     "max": {
+      "label": "最大数量",
       "title": "可添加标签的最大数量",
       "types": [
         {
@@ -121,9 +132,11 @@
             }
           ]
         }
-      ]
+      ],
+      "default": "default"
     },
     "clearable": {
+      "label": "清除按钮",
       "title": "是否显示清除按钮",
       "types": [
         {
@@ -154,7 +167,8 @@
       "default": true
     },
     "readonly": {
-      "title": "等价于原生 <code>readonly</code> 属性",
+      "label": "readonly",
+      "title": "等价于原生readonly属性",
       "types": [
         {
           "name": "boolean",
@@ -164,7 +178,8 @@
       "default": false
     },
     "autofocus": {
-      "title": "等价于原生 <code> autofocus </code> 属性",
+      "label": "autofocus",
+      "title": "等价于原生 autofocus 属性",
       "types": [
         {
           "name": "boolean",
@@ -174,7 +189,8 @@
       "default": false
     },
     "id": {
-      "title": "等价于原生 input <code>id</code> 属性",
+      "label": "inputid",
+      "title": "等价于原生 inputid属性",
       "types": [
         {
           "name": "string",
@@ -183,7 +199,8 @@
       ]
     },
     "tabindex": {
-      "title": "等价于原生 <code> tabindex </code> 属性",
+      "label": "tabindex",
+      "title": "等价于原生 tabindex 属性",
       "types": [
         {
           "name": "stringNumber",
@@ -192,7 +209,8 @@
       ]
     },
     "maxlength": {
-      "title": "等价于原生 <code> maxlength </code> 属性",
+      "label": "maxlength",
+      "title": "等价于原生 maxlength 属性",
       "types": [
         {
           "name": "stringNumber",
@@ -201,7 +219,8 @@
       ]
     },
     "minlength": {
-      "title": "等价于原生 <code> minlength </code> 属性",
+      "label": "minlength",
+      "title": "等价于原生 minlength 属性",
       "types": [
         {
           "name": "stringNumber",
@@ -210,7 +229,8 @@
       ]
     },
     "autocomplete": {
-      "title": "等价于原生 <code> autocomplete </code> 属性",
+      "label": "autocomplete",
+      "title": "等价于原生 autocomplete 属性",
       "types": [
         {
           "name": "string",
@@ -220,7 +240,8 @@
       "default": "off"
     },
     "aria-label": {
-      "title": "等价于原生 <code> aria-label </code> 属性",
+      "label": "aria-label",
+      "title": "等价于原生 aria-label 属性",
       "types": [
         {
           "name": "string",

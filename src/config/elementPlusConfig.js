@@ -443,6 +443,22 @@ export const elementPlusDisplayComponents = [
                 ]
             },
             {
+                name: "标签输入框",
+                key: "input-tag",
+                children: [
+                    {
+                        __id__: "input-tag",
+                        __config__: {
+                            ...defaultFormItemConfig,
+                            defaultValue: []
+                        },
+                        __props__: {
+
+                        }
+                    }
+                ]
+            },
+            {
                 name: "Mention 提及",
                 key: "mention",
                 children: [
