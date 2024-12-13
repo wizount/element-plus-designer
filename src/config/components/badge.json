@@ -141,6 +141,12 @@
     {
       "name": "default",
       "title": "自定义默认内容"
+    },
+    {
+      "name": "content",
+      "title": "customize barge content",
+      "type": "^[object]`{ value: string }`",
+      "version": "2.9.1"
     }
   ],
   "desc": "按钮和图标上的数字或状态标记。"

@@ -428,6 +428,16 @@
       "default": true,
       "deprecated": true
     },
+    "tabindex": {
+      "title": "input 的 tabindex",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "version": "2.9.0"
+    },
     "tag-type": {
       "label": "标签类型",
       "title": "标签类型",
@@ -499,6 +509,28 @@
         }
       ],
       "default": true
+    },
+    "offset": {
+      "title": "下拉面板偏移量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 12,
+      "version": "2.8.8"
+    },
+    "show-arrow": {
+      "title": "下拉菜单的内容是否有箭头",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.8.8"
     },
     "placement": {
       "label": "下拉框出现位置",

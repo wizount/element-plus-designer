@@ -394,12 +394,12 @@
     {
       "name": "popperRef",
       "title": "el-popper 组件实例",
-      "type": "^[object]`Ref<PopperInstance | null>`"
+      "type": "^[object]`Ref<PopperInstance | undefined>`"
     },
     {
       "name": "contentRef",
       "title": "el-tooltip-content 组件实例",
-      "type": "^[object]`Ref<TooltipContentInstance | null>`"
+      "type": "^[object]`Ref<TooltipContentInstance | undefined>`"
     },
     {
       "name": "isFocusInsideContent",

@@ -110,6 +110,17 @@
           }
         }
       ]
+    },
+    "label-width": {
+      "label": "标签宽度",
+      "title": "每一列的标签宽度",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "version": "2.8.8"
     }
   },
   "slots": [

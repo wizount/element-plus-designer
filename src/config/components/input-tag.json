@@ -1,0 +1,293 @@
+{
+  "attributes": {
+    "max": {
+      "title": "可添加标签的最大数量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "tag-type": {
+      "title": "标签类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "danger",
+              "value": "danger"
+            }
+          ]
+        }
+      ],
+      "default": "info"
+    },
+    "tag-effect": {
+      "title": "标签效果",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "light",
+              "value": "light"
+            },
+            {
+              "label": "dark",
+              "value": "dark"
+            },
+            {
+              "label": "plain",
+              "value": "plain"
+            }
+          ]
+        }
+      ],
+      "default": "light"
+    },
+    "trigger": {
+      "title": "触发输入标签的按键",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "Enter",
+              "value": "Enter"
+            },
+            {
+              "label": "Space",
+              "value": "Space"
+            }
+          ]
+        }
+      ],
+      "default": "Enter"
+    },
+    "draggable": {
+      "title": "是否可以拖动标签",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "size": {
+      "title": "输入框尺寸",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ]
+    },
+    "clearable": {
+      "title": "是否显示清除按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "disabled": {
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "validate-event": {
+      "title": "是否触发表单验证",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "readonly": {
+      "title": "等价于原生 <code>readonly</code> 属性",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "autofocus": {
+      "title": "等价于原生 <code> autofocus </code> 属性",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "id": {
+      "title": "等价于原生 input <code>id</code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "tabindex": {
+      "title": "等价于原生 <code> tabindex </code> 属性",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "maxlength": {
+      "title": "等价于原生 <code> maxlength </code> 属性",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "minlength": {
+      "title": "等价于原生 <code> minlength </code> 属性",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "autocomplete": {
+      "title": "等价于原生 <code> autocomplete </code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "off"
+    },
+    "aria-label": {
+      "title": "等价于原生 <code> aria-label </code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true
+    }
+  },
+  "slots": [
+    {
+      "name": "tag",
+      "title": "作为tag的内容",
+      "type": "^[object]`{ value: string, index: number }`"
+    },
+    {
+      "name": "prefix",
+      "title": "InputTag 头部内容"
+    },
+    {
+      "name": "suffix",
+      "title": "InputTag 尾部内容"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "title": "绑定值变化时触发的事件",
+      "type": "Function",
+      "fnDes": "(value: string[]) => void"
+    },
+    {
+      "name": "input",
+      "title": "在 Input 值改变时触发",
+      "type": "Function",
+      "fnDes": "(value: string) => void"
+    },
+    {
+      "name": "add-tag",
+      "title": "tag 被添加时触发",
+      "type": "Function",
+      "fnDes": "(value: string) => void"
+    },
+    {
+      "name": "remove-tag",
+      "title": "tag 被移除时触发",
+      "type": "Function",
+      "fnDes": "(value: string) => void"
+    },
+    {
+      "name": "focus",
+      "title": "在 Input 获得焦点时触发",
+      "type": "Function",
+      "fnDes": "(event: FocusEvent) => void"
+    },
+    {
+      "name": "blur",
+      "title": "在 Input 失去焦点时触发",
+      "type": "Function",
+      "fnDes": "(event: FocusEvent) => void"
+    },
+    {
+      "name": "clear",
+      "title": "点击清除图标时触发",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ],
+  "desc": "InputTag 组件允许用户添加内容作为标签"
+}

@@ -213,6 +213,16 @@
     {
       "name": "right-footer",
       "title": "右侧列表底部的内容"
+    },
+    {
+      "name": "left-empty",
+      "title": "左侧面板为空或没有数据符合筛选条件时的内容",
+      "version": "2.9.0"
+    },
+    {
+      "name": "right-empty",
+      "title": "右侧面板为空或没有数据符合筛选条件时的内容",
+      "version": "2.9.0"
     }
   ],
   "exposes": [

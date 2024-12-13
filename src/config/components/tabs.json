@@ -163,6 +163,12 @@
       "name": "add-icon",
       "title": "自定义添加按钮图标",
       "version": "2.5.4"
+    },
+    {
+      "name": "addIcon",
+      "title": "自定义添加按钮图标",
+      "version": "2.4.0",
+      "deprecated": true
     }
   ],
   "desc": "分隔内容上有关联但属于不同类别的数据集合。"

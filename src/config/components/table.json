@@ -688,6 +688,13 @@
       "title": "当用户对某一行展开或者关闭的时候会触发该事件（展开行时，回调的第二个参数为 expandedRows；树形表格时第二参数为 expanded）",
       "type": "Function",
       "fnDes": "(row: any, expandedRows: any[]) => void & (row: any, expanded: boolean) => void"
+    },
+    {
+      "name": "scroll",
+      "title": "表格被用户滚动后触发",
+      "type": "Function",
+      "version": "2.9.0",
+      "fnDes": "({ scrollLeft: number, scrollTop: number }) => void"
     }
   ],
   "exposes": [

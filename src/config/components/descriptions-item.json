@@ -66,6 +66,16 @@
         }
       ]
     },
+    "label-width": {
+      "title": "列标签宽，如果未设置，它将与列宽度相同。 比 `Descriptions` 的 `label-width`  优先级高",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "version": "2.8.8"
+    },
     "align": {
       "label": "内容对齐方式",
       "title": "列的内容对齐方式（如无 border，对标签和内容均生效）",

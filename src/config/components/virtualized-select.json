@@ -276,6 +276,16 @@
       "default": false,
       "deprecated": true
     },
+    "tabindex": {
+      "title": "input 的 tabindex",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "version": "2.9.0"
+    },
     "teleported": {
       "title": "是否将下拉列表元素插入 append-to 指向的元素下",
       "types": [
@@ -285,6 +295,16 @@
         }
       ],
       "default": true
+    },
+    "append-to": {
+      "title": "下拉框挂载到哪个 DOM 元素",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.8.8"
     },
     "persistent": {
       "title": "当下拉选择器未被激活并且`persistent`设置为`false`，选择器会被删除。",
@@ -375,6 +395,28 @@
         }
       ],
       "default": true
+    },
+    "offset": {
+      "title": "下拉面板偏移量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 12,
+      "version": "2.8.8"
+    },
+    "show-arrow": {
+      "title": "下拉菜单的内容是否有箭头",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.8.8"
     },
     "placement": {
       "title": "下拉框出现的位置",
@@ -675,5 +717,5 @@
       "version": "2.8.5"
     }
   ],
-  "desc": "在某些使用情况下，单个选择器可能最终加载数万行数据。 将这么多的数据渲染至 DOM 中可能会给浏览器带来负担，从而造成性能问题。 为了更好的用户和开发者体验，我们决定添加此组件。"
+  "desc": ":::tip"
 }
