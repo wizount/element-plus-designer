@@ -396,6 +396,17 @@
         }
       ],
       "default": true
+    },
+    "persistent": {
+      "title": "当 slider 的 tooltip 处于非活动状态且 `persistent` 为 `false` 时，Popconfirm 将被销毁。 当 `show-tooltip` 为 `false` 时，`persistent` 将始终为 `false`。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.9.5"
     }
   },
   "events": [

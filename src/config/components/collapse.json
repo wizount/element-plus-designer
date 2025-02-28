@@ -22,6 +22,45 @@
         }
       ],
       "default": false
+    },
+    "name": {
+      "title": "唯一标志符",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "title": {
+      "title": "面板标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "icon": {
+      "title": "折叠项目的图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "ArrowRight",
+      "version": "2.8.3"
+    },
+    "disabled": {
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
     }
   },
   "events": [

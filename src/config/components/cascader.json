@@ -547,37 +547,18 @@
       "name": "empty",
       "title": "无匹配选项时的内容",
       "params": "—"
-    }
-  ],
-  "exposes": [
-    {
-      "name": "getCheckedNodes",
-      "title": "获取一个当前选中节点的数组。(仅仅是传单) 是否只返回叶选中的节点，默认是 `false`",
-      "type": "Function",
-      "fnDes": "(leafOnly: boolean) => CascaderNode[] | undefined"
     },
     {
-      "name": "cascaderPanelRef",
-      "title": "cascader 面板的 ref",
-      "type": "^[object]`ComputedRef<any>`"
+      "name": "prefix",
+      "title": "输入框头部内容",
+      "params": "—",
+      "version": "2.9.4"
     },
     {
-      "name": "togglePopperVisible",
-      "title": "切换 popper 可见状态",
-      "type": "Function",
-      "version": "2.2.31",
-      "fnDes": "(visible?: boolean) => void"
-    },
-    {
-      "name": "contentRef",
-      "title": "cascader 内容的 ref",
-      "type": "^[object]`ComputedRef<any>`"
-    },
-    {
-      "name": "presentText",
-      "title": "选中的内容文本",
-      "type": "^[object]`ComputedRef<string>`",
-      "version": "2.8.4"
+      "name": "suggestion-item",
+      "title": "搜索时自定义建议项内容",
+      "params": "^[object]`{ item: CascaderNode }`",
+      "version": "2.9.5"
     }
   ],
   "data": {
@@ -610,5 +591,36 @@
       "dataKey": ""
     }
   },
+  "exposes": [
+    {
+      "name": "getCheckedNodes",
+      "title": "获取一个当前选中节点的数组。(仅仅是传单) 是否只返回叶选中的节点，默认是 `false`",
+      "type": "Function",
+      "fnDes": "(leafOnly: boolean) => CascaderNode[] | undefined"
+    },
+    {
+      "name": "cascaderPanelRef",
+      "title": "cascader 面板的 ref",
+      "type": "^[object]`ComputedRef<any>`"
+    },
+    {
+      "name": "togglePopperVisible",
+      "title": "切换 popper 可见状态",
+      "type": "Function",
+      "version": "2.2.31",
+      "fnDes": "(visible?: boolean) => void"
+    },
+    {
+      "name": "contentRef",
+      "title": "cascader 内容的 ref",
+      "type": "^[object]`ComputedRef<any>`"
+    },
+    {
+      "name": "presentText",
+      "title": "选中的内容文本",
+      "type": "^[object]`ComputedRef<string>`",
+      "version": "2.8.4"
+    }
+  ],
   "desc": "当一个数据集合有清晰的层级结构时，可通过级联选择器逐级查看并选择。"
 }

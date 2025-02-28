@@ -332,6 +332,15 @@
         }
       ],
       "default": true
+    },
+    "virtual-triggering": {
+      "title": "是否启用虚拟触发器",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ]
     }
   },
   "slots": [
@@ -382,7 +391,6 @@
       "fnDes": "() => void"
     }
   ],
-  "desc": "## 基础用法",
   "exposes": [
     {
       "name": "hide",
@@ -390,5 +398,6 @@
       "type": "Function",
       "fnDes": "() => void"
     }
-  ]
+  ],
+  "desc": "## 基础用法"
 }

@@ -448,6 +448,17 @@
         }
       ],
       "hide": true
+    },
+    "tooltip-formatter": {
+      "title": "使用 `show-overflow-tooltip` 时自定义 tooltip 内容",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(data: { row: any, column: any, cellValue: any }) => VNode | string"
+        }
+      ],
+      "version": "2.9.4"
     }
   },
   "slots": [

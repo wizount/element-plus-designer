@@ -438,6 +438,36 @@
       ],
       "version": "2.9.0"
     },
+    "label": {
+      "title": "选项的标签，若不设置则默认与`value`相同",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "value": {
+      "title": "选项的值",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
     "tag-type": {
       "label": "标签类型",
       "title": "标签类型",
@@ -716,6 +746,13 @@
       "title": "当 input 获得焦点时触发",
       "type": "Function",
       "fnDes": "(event: FocusEvent) => void"
+    },
+    {
+      "name": "popup-scroll",
+      "title": "下拉滚动时触发",
+      "type": "Function",
+      "version": "2.9.4",
+      "fnDes": "(data:{scrollTop: number, scrollLeft: number}) => void"
     }
   ],
   "slots": [

@@ -49,6 +49,15 @@
       ],
       "default": "default"
     },
+    "button-props": {
+      "title": "按钮组件的 props，参考 [按钮属性](./button.html#button-attributes)",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
     "max-height": {
       "label": "",
       "title": "菜单最大高度",
@@ -145,6 +154,17 @@
         }
       ],
       "default": "hover"
+    },
+    "triggerKeys": {
+      "title": "指定键盘上哪些按键可以触发操作",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": "['Enter', 'Space', 'ArrowDown', 'NumpadEnter']",
+      "version": "2.9.1"
     },
     "hide-on-click": {
       "label": "",
@@ -265,6 +285,53 @@
       ],
       "default": true,
       "version": "2.2.20"
+    },
+    "persistent": {
+      "title": "当下拉菜单处于非活动状态且 `persistent` 为 `false` 时，下拉菜单将被销毁",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.9.5"
+    },
+    "command": {
+      "title": "派发到`command`回调函数的指令参数",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
+    "divided": {
+      "title": "是否显示分隔符",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "icon": {
+      "title": "自定义图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
     }
   },
   "slots": [
@@ -300,7 +367,6 @@
       "fnDes": "(val: boolean) => void"
     }
   ],
-  "desc": "将动作或菜单折叠到下拉菜单中。",
   "exposes": [
     {
       "name": "handleOpen",
@@ -314,5 +380,6 @@
       "type": "Function",
       "fnDes": "() => void"
     }
-  ]
+  ],
+  "desc": "将动作或菜单折叠到下拉菜单中。"
 }

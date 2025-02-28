@@ -43,6 +43,17 @@
       ],
       "default": true
     },
+    "include-end-time": {
+      "title": "是否在选项中包含`end`",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.9.3"
+    },
     "size": {
       "label": "尺寸",
       "title": "输入框尺寸",

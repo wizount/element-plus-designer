@@ -143,6 +143,64 @@
         }
       ],
       "default": false
+    },
+    "title": {
+      "title": "标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "description": {
+      "title": "描述文案",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "icon": {
+      "title": "Step 组件的自定义图标。 也支持 slot 方式写入",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "status": {
+      "title": "设置当前步骤的状态， 不设置则根据 steps 确定状态",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "wait",
+              "value": "wait"
+            },
+            {
+              "label": "process",
+              "value": "process"
+            },
+            {
+              "label": "finish",
+              "value": "finish"
+            },
+            {
+              "label": "error",
+              "value": "error"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            }
+          ]
+        }
+      ]
     }
   },
   "slots": [

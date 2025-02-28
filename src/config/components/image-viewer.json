@@ -117,6 +117,17 @@
         }
       ],
       "default": true
+    },
+    "show-progress": {
+      "title": "是否显示预览图片的进度条内容",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.9.4"
     }
   },
   "events": [

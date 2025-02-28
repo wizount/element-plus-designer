@@ -578,6 +578,28 @@
         }
       ],
       "version": "2.8.3"
+    },
+    "allow-drag-last-column": {
+      "title": "是否允许拖动最后一列",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.9.2"
+    },
+    "tooltip-formatter": {
+      "title": "自定义 `show-overflow-tooltip` 时的 tooltip 内容",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "(data: { row: any, column: any, cellValue: any }) => VNode | string"
+        }
+      ],
+      "version": "2.9.4"
     }
   },
   "events": [

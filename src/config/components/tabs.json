@@ -122,6 +122,44 @@
         }
       ],
       "hide": true
+    },
+    "label": {
+      "title": "选项卡标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "disabled": {
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "name": {
+      "title": "与选项卡绑定值 value 对应的标识符，表示选项卡别名。默认值是tab面板的序列号，如第一个 tab 是 0",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "lazy": {
+      "title": "标签是否延迟渲染",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
     }
   },
   "events": [

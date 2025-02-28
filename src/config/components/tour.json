@@ -211,6 +211,52 @@
         }
       ],
       "default": true
+    },
+    "target": {
+      "title": "获取引导卡片指向的元素， 为空时居中于屏幕。 自^(2.5.2)以来支持字符串和函数类型。 字符串类型是文档.querySelector的选择器。",
+      "types": [
+        {
+          "name": "function",
+          "tag": "",
+          "desc": "() => HTMLElemen"
+        }
+      ]
+    },
+    "title": {
+      "title": "标题部分",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "description": {
+      "title": "主要描述部分",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "next-button-props": {
+      "title": "“下一步”按钮的属性",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
+    "prev-button-props": {
+      "title": "“上一步”按钮的属性",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
     }
   },
   "slots": [

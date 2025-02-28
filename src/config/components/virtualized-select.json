@@ -336,6 +336,21 @@
       ],
       "default": false
     },
+    "fit-input-width": {
+      "title": "无论下拉框的宽度是否与输入框相同，如果值为`number`，则宽度是固定的。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": true,
+      "version": "2.9.2"
+    },
     "height": {
       "title": "下拉菜单的高度，每一个选项为34px",
       "types": [

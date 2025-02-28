@@ -284,32 +284,5 @@
       "title": "自定义图标组件"
     }
   ],
-  "exposes": [
-    {
-      "name": "ref",
-      "title": "按钮 html 元素",
-      "type": "^[object]`Ref<HTMLButtonElement>`"
-    },
-    {
-      "name": "size",
-      "title": "按钮尺寸",
-      "type": "^[object]`ComputedRef<'' | 'small' | 'default' | 'large'>`"
-    },
-    {
-      "name": "type",
-      "title": "按钮类型",
-      "type": "^[object]`ComputedRef<'' | 'default' | 'primary' | 'success' | 'warning' | 'info' | 'danger' | 'text'>`"
-    },
-    {
-      "name": "disabled",
-      "title": "按钮已禁用",
-      "type": "^[object]`ComputedRef<boolean>`"
-    },
-    {
-      "name": "shouldAddSpace",
-      "title": "是否在两个字符之间插入空格",
-      "type": "^[object]`ComputedRef<boolean>`"
-    }
-  ],
   "desc": "常用的操作按钮。"
 }

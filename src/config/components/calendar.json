@@ -37,10 +37,7 @@
     {
       "name": "header",
       "title": "卡片标题内容",
-      "params": {
-        "type": "object",
-        "key": ["date"]
-      }
+      "type": "^[object]`{ date: string }`"
     }
   ],
   "desc": "显示日期"

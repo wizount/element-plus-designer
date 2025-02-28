@@ -121,6 +121,125 @@
         }
       ],
       "version": "2.8.8"
+    },
+    "label": {
+      "title": "标签文本",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "span": {
+      "title": "列的数量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 1
+    },
+    "rowspan": {
+      "title": "单元格应该跨越的行数",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 1,
+      "version": "2.8.1"
+    },
+    "width": {
+      "title": "列的宽度，不同行相同列的宽度按最大值设定（如无 `border` ，宽度包含标签与内容）",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "min-width": {
+      "title": "列的最小宽度，与 `width` 的区别是 `width` 是固定的，`min-width` 会把剩余宽度按比例分配给设置了 `min-width` 的列（如无 `border`，宽度包含标签与内容）",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "align": {
+      "title": "列的内容对齐方式（如无 `border`，对标签和内容均生效）",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "center",
+              "value": "center"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            }
+          ]
+        }
+      ],
+      "default": "left"
+    },
+    "label-align": {
+      "title": "列的标签对齐方式，若不设置该项，则使用内容的对齐方式（如无 `border`，请使用 `align` 参数）",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "center",
+              "value": "center"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            }
+          ]
+        }
+      ]
+    },
+    "class-name": {
+      "title": "列的内容自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "label-class-name": {
+      "title": "column label custom class name",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
     }
   },
   "slots": [

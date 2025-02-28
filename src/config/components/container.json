@@ -30,6 +30,26 @@
           ]
         }
       ]
+    },
+    "height": {
+      "title": "底栏高度",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "60px"
+    },
+    "width": {
+      "title": "侧边栏宽度",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "300px"
     }
   },
   "slots": [

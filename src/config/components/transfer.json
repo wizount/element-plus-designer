@@ -225,24 +225,6 @@
       "version": "2.9.0"
     }
   ],
-  "exposes": [
-    {
-      "name": "clearQuery",
-      "title": "清空某个面板的搜索关键词",
-      "type": "Function",
-      "fnDes": "(which: TransferDirection) => void"
-    },
-    {
-      "name": "leftPanel",
-      "title": "左侧面板 ref",
-      "type": "^[object]`Ref<TransferPanelInstance>`"
-    },
-    {
-      "name": "rightPanel",
-      "title": "右侧面板 ref",
-      "type": "^[object]`Ref<TransferPanelInstance>`"
-    }
-  ],
   "events": [
     {
       "name": "change",
@@ -261,6 +243,24 @@
       "title": "右侧列表元素被用户选中 / 取消选中时触发",
       "type": "Function",
       "fnDes": "(value: TransferKey[], movedKeys?: TransferKey[]) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "clearQuery",
+      "title": "清空某个面板的搜索关键词",
+      "type": "Function",
+      "fnDes": "(which: TransferDirection) => void"
+    },
+    {
+      "name": "leftPanel",
+      "title": "左侧面板 ref",
+      "type": "^[object]`Ref<TransferPanelInstance>`"
+    },
+    {
+      "name": "rightPanel",
+      "title": "右侧面板 ref",
+      "type": "^[object]`Ref<TransferPanelInstance>`"
     }
   ],
   "desc": "## 基础用法"

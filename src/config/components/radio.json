@@ -110,6 +110,56 @@
           }
         }
       ]
+    },
+    "text-color": {
+      "title": "按钮形式的 Radio 激活时的文本颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#ffffff"
+    },
+    "fill": {
+      "title": "按钮形式的 Radio 激活时的填充色和边框色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "#409eff"
+    },
+    "validate-event": {
+      "title": "输入时是否触发表单的校验",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "aria-label": {
+      "title": "与 RadioGroup 中的 `aria-label` 属性相同",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "version": "2.7.2"
+    },
+    "id": {
+      "title": "原生 `id` 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
     }
   },
   "events": [

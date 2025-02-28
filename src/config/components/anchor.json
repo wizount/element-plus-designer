@@ -102,6 +102,35 @@
         }
       ],
       "default": "vertical"
+    },
+    "select-scroll-top": {
+      "title": "滚动时，链接是否选中位于顶部",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.9.2"
+    },
+    "title": {
+      "title": "链接的文本内容。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "href": {
+      "title": "链接的地址。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
     }
   },
   "slots": [
@@ -122,6 +151,14 @@
       "title": "当用户点击链接时触发",
       "type": "Function",
       "fnDes": "(e: MouseEvent, href?: string) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "scrollTo",
+      "title": "手动滚动到特定位置。",
+      "type": "Function",
+      "fnDes": "(href: string) => void"
     }
   ],
   "desc": "通过锚点，您可以很快找到当前页面上信息内容的位置。"

@@ -144,7 +144,7 @@
     },
     {
       "name": "content",
-      "title": "customize barge content",
+      "title": "自定义显示内容",
       "type": "^[object]`{ value: string }`",
       "version": "2.9.1"
     }

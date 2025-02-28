@@ -226,6 +226,24 @@
       ],
       "default": false,
       "version": "2.6.0"
+    },
+    "name": {
+      "title": "幻灯片的名字，可用作 `setActiveItem` 的参数",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "label": {
+      "title": "该幻灯片所对应指示器的文本",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
     }
   },
   "events": [
@@ -245,7 +263,6 @@
       ]
     }
   ],
-  "desc": "在有限空间内，循环播放同一类型的图片、文字等内容",
   "exposes": [
     {
       "name": "activeIndex",
@@ -271,5 +288,6 @@
       "type": "Function",
       "fnDes": "() => void"
     }
-  ]
+  ],
+  "desc": "在有限空间内，循环播放同一类型的图片、文字等内容"
 }

@@ -229,6 +229,65 @@
       "a11y": true,
       "deprecated": true
     },
+    "min": {
+      "title": "可被勾选的 checkbox 的最小数量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "max": {
+      "title": "可被勾选的 checkbox 的最大数量",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ]
+    },
+    "aria-label": {
+      "title": "原生 `aria-label`属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "version": "2.7.2"
+    },
+    "text-color": {
+      "title": "当按钮为活跃状态时的字体颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#ffffff"
+    },
+    "fill": {
+      "title": "当按钮为活跃状态时的边框和背景颜色",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "#409eff"
+    },
+    "tag": {
+      "title": "复选框组元素标签",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "div"
+    },
     "aria-controls": {
       "title": "和 [aria-control](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)一致。当 `indeterminate` 为 `true` 时生效",
       "types": [

@@ -310,5 +310,19 @@
       "fnDes": "() => void"
     }
   ],
+  "exposes": [
+    {
+      "name": "focus",
+      "title": "使 input 获取焦点",
+      "type": "Function",
+      "fnDes": "() => void"
+    },
+    {
+      "name": "blur",
+      "title": "使 input 失去焦点",
+      "type": "Function",
+      "fnDes": "() => void"
+    }
+  ],
   "desc": "InputTag 组件允许用户添加内容作为标签"
 }

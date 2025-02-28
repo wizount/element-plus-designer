@@ -238,7 +238,8 @@
           "tag": "el-input-number"
         }
       ],
-      "default": 1.2
+      "default": 1.2,
+      "version": "2.2.27"
     },
     "min-scale": {
       "title": "图像查看器缩放事件的最小缩放比例",
@@ -261,6 +262,37 @@
       ],
       "default": 7,
       "version": "2.4.0"
+    },
+    "url-list": {
+      "title": "用于预览的图片链接列表",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": []
+    },
+    "teleported": {
+      "title": "image 自身是否插入至 body 元素上。 嵌套的父元素属性会发生修改时应该将此属性设置为 `true`",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "show-progress": {
+      "title": "是否显示预览图片的进度条内容",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.9.4"
     }
   },
   "events": [
@@ -307,6 +339,27 @@
     {
       "name": "viewer",
       "title": "当图像预览时自定义内容"
+    },
+    {
+      "name": "progress",
+      "title": "图片预览时自定义进度条内容",
+      "type": "^[object]`{ activeIndex: number, total: number }`",
+      "version": "2.9.4"
+    },
+    {
+      "name": "toolbar",
+      "title": "当图像预览时，自定义工具栏内容",
+      "type": "^[object]`{actions: (action: ImageViewerAction, options?: ImageViewerActionOptions ) => void, prev: ()=> void, next: () => void,reset: () => void, activeIndex: number }`",
+      "version": "2.9.4"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "showPreview",
+      "title": "手动打开大图预览",
+      "type": "Function",
+      "version": "2.9.4",
+      "fnDes": "() => void"
     }
   ],
   "desc": "图片容器，在保留所有原生 img 的特性下，支持懒加载，自定义占位、加载失败等"

@@ -38,7 +38,8 @@
             }
           ]
         }
-      ]
+      ],
+      "version": "2.5.4"
     },
     "closable": {
       "label": "可关闭",
@@ -148,6 +149,27 @@
         }
       ],
       "default": false
+    },
+    "checked": {
+      "title": "是否选中",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "disabled": {
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.8.2"
     }
   },
   "events": [

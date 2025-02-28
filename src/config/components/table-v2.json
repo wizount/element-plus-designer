@@ -321,6 +321,16 @@
         }
       ]
     },
+    "indent-size": {
+      "title": "树形表的水平缩进",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 12
+    },
     "h-scrollbar-size": {
       "label": "",
       "title": "配置表格的水平滚动条大小，防止水平和垂直滚动条重叠。",
@@ -380,19 +390,19 @@
   "slots": [
     {
       "name": "cell",
-      "params": "[CellSlotProps](#typings)"
+      "params": "`object`\\<[CellSlotProps](#typings)\\>"
     },
     {
       "name": "header",
-      "params": "[HeaderSlotProps](#typings)"
+      "params": "`object`\\<[HeaderSlotProps](#typings)\\>"
     },
     {
       "name": "header-cell",
-      "params": "[HeaderCellSlotProps](#typings)"
+      "params": "`object`\\<[HeaderCellSlotProps](#typings)\\>"
     },
     {
       "name": "row",
-      "params": "[RowSlotProps](#typings)"
+      "params": "`object`\\<[RowSlotProps](#typings)\\>"
     },
     {
       "name": "footer",
@@ -411,12 +421,12 @@
     {
       "name": "column-sort",
       "title": "列排序时调用",
-      "params": "Object\\<ColumnSortParam\\>"
+      "params": "`object`\\<[ColumnSortParam](#typings)\\>"
     },
     {
       "name": "expanded-rows-change",
       "title": "行展开状态改变时触发",
-      "params": "Array<KeyType>"
+      "params": "[KeyType[]](#typings)"
     },
     {
       "name": "end-reached",
@@ -426,44 +436,44 @@
     {
       "name": "scroll",
       "title": "表格被用户滚动后触发",
-      "params": "Object\\<[ScrollParams](#typings)\\>"
+      "params": "`object`\\<[ScrollParams](#typings)\\>"
     },
     {
       "name": "rows-rendered",
       "title": "当行被渲染后触发",
-      "params": "Object\\<[RowsRenderedParams](#typings)\\>"
+      "params": "`object`\\<[RowsRenderedParams](#typings)\\>"
     },
     {
       "name": "row-expand",
       "title": "点击箭头图标展开/折叠树节点时触发",
-      "params": "Object\\<[RowExpandParams](#typings)\\>"
+      "params": "`object`\\<[RowExpandParams](#typings)\\>"
     },
     {
       "name": "row-event-handlers",
       "title": "当每行添加了一系列事件处理器时触发",
-      "params": "Object\\<[RowEventHandlers](#typings)\\>"
+      "params": "`object`\\<[RowEventHandlers](#typings)\\>"
     }
   ],
   "exposes": [
     {
       "name": "scrollTo",
       "title": "滚动到给定位置",
-      "params": "{ scrollLeft?: number, scrollTop?: number}"
+      "params": "^[Function]`(param: {scrollLeft?: number, scrollTop?: number}) => void`"
     },
     {
       "name": "scrollToLeft",
       "title": "滚动到给定的水平位置",
-      "params": "scrollLeft: number"
+      "params": "^[Function]`(scrollLeft: number) => void`"
     },
     {
       "name": "scrollToTop",
       "title": "滚动到给定的垂直位置",
-      "params": "scrollTop: number"
+      "params": "^[Function]`(scrollTop: number) => void`"
     },
     {
       "name": "scrollToRow",
       "title": "使用给定的滚动策略滚动至指定行",
-      "params": "row: number, strategy?: \"auto\" |\"center\" | \"end\" | \"start\" | \"smart\""
+      "params": "^[Function]`(row: number, strategy?: 'center' | 'end' | 'start' | 'smart') => void`"
     }
   ],
   "desc": "在前端开发领域，表格一直都是一个高频出现的组件，尤其是在中后台和数据分析场景。 但是，对于 [Table V1](./table.md)来说，当一屏里超过 1000 条数据记录时，就会出现卡顿等性能问题，体验不是很好。"

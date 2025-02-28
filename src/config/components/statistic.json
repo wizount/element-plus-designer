@@ -125,6 +125,16 @@
           "tag": "style-editor"
         }
       ]
+    },
+    "format": {
+      "title": "格式化倒计时",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "HH:mm:ss"
     }
   },
   "slots": [
