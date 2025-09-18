@@ -1,6 +1,7 @@
 {
   "__id__": "drawer",
   "name": "抽屉",
+  "desc": "有些时候, `Dialog` 组件并不满足我们的需求, 比如你的表单很长, 亦或是你需要临时展示一些文档, `Drawer` 拥有和 `Dialog` 几乎相同的 API, 在 UI 上带来不一样的体验.",
   "tag": "el-drawer",
   "tagIcon": "drawer",
   "layouts": [
@@ -9,22 +10,9 @@
   "document": "https://element-plus.org/zh-CN/component/drawer.html",
   "attributes": {
     "vModel": "modelValue",
-    "title": {
-      "label": "标题",
-      "title": "Drawer 的标题，也可通过具名 slot （见下表）传入",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ]
-    },
     "append-to-body": {
       "label": "插入至 body 元素",
-      "title": "Drawer 自身是否插入至 body 元素上。嵌套的 Drawer 必须指定该属性并赋值为 **true**",
+      "title": "Drawer 自身是否插入至 body 元素上。嵌套的 Drawer 必须指定该属性并赋值为 [object Object]",
       "types": [
         {
           "name": "boolean",
@@ -34,7 +22,8 @@
       "default": false
     },
     "append-to": {
-      "title": "挂载到哪个 DOM 元素 将覆盖 `append-to-body`",
+      "label": "挂载到哪个 DOM 元素 将覆盖 append-to-body",
+      "title": "挂载到哪个 DOM 元素 将覆盖 <code>append-to-body</code>",
       "types": [
         {
           "name": "string",
@@ -45,7 +34,7 @@
       "version": "2.8.0"
     },
     "lock-scroll": {
-      "label": " 出现时将 body 滚动锁定",
+      "label": "出现时将 body 滚动锁定",
       "title": "是否在 Drawer 出现时将 body 滚动锁定",
       "types": [
         {
@@ -61,8 +50,8 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(done: (cancel?: boolean) => void) => void(done 是个 function type 接受一个 boolean 参数, 执行 done 使用 true 参数或不提供参数将会终止关闭)"
+
+          "details": "(done: (cancel?: boolean) => void) => void(done 是个 function type 接受一个 boolean 参数, 执行 done 使用 true 参数或不提供参数将会终止关闭)"
         }
       ]
     },
@@ -78,7 +67,7 @@
       "default": true
     },
     "close-on-press-escape": {
-      "label": " ESC 关闭",
+      "label": "ESC 关闭",
       "title": "是否可以通过按下 ESC 关闭 Drawer",
       "types": [
         {
@@ -109,20 +98,6 @@
         }
       ],
       "default": 0
-    },
-    "custom-class": {
-      "label": "自定义类名",
-      "title": "Drawer 的自定义类名",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ],
-      "deprecated": true
     },
     "destroy-on-close": {
       "label": "关闭后销毁子元素",
@@ -188,7 +163,7 @@
     },
     "size": {
       "label": "窗体大小",
-      "title": "Drawer 窗体的大小, 当使用 `number` 类型时, 以像素为单位, 当使用 `string` 类型时, 请传入 'x%', 否则便会以 `number` 类型解释",
+      "title": "Drawer 窗体的大小, 当使用 <code>number</code> 类型时, 以像素为单位, 当使用 <code>string</code> 类型时, 请传入 'x%', 否则便会以 <code>number</code> 类型解释",
       "types": [
         {
           "name": "stringNumber",
@@ -196,6 +171,19 @@
         }
       ],
       "default": "30%"
+    },
+    "title": {
+      "label": "标题",
+      "title": "Drawer 的标题，也可通过具名 slot （见下表）传入",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
     },
     "with-header": {
       "label": "显示 header 栏",
@@ -222,6 +210,7 @@
       ]
     },
     "header-class": {
+      "label": "header 部分的自定义 class 名",
       "title": "header 部分的自定义 class 名",
       "types": [
         {
@@ -232,6 +221,7 @@
       "version": "2.9.3"
     },
     "body-class": {
+      "label": "body 部分的自定义 class 名",
       "title": "body 部分的自定义 class 名",
       "types": [
         {
@@ -242,6 +232,7 @@
       "version": "2.9.3"
     },
     "footer-class": {
+      "label": "footer 部分的自定义 class 名",
       "title": "footer 部分的自定义 class 名",
       "types": [
         {
@@ -262,7 +253,8 @@
       ]
     },
     "header-aria-level": {
-      "title": "header 的 `aria-level` 属性",
+      "label": "header 的 aria-level 属性",
+      "title": "header 的 <code>aria-level</code> 属性",
       "types": [
         {
           "name": "string",
@@ -271,6 +263,20 @@
       ],
       "default": "2",
       "a11y": true
+    },
+    "custom-class": {
+      "label": "自定义类名",
+      "title": "Drawer 的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "deprecated": true
     }
   },
   "slots": [
@@ -296,39 +302,44 @@
     {
       "name": "open",
       "title": "Drawer 打开的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "opened",
       "title": "Drawer 打开动画结束时的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "close",
       "title": "Drawer 关闭的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "closed",
       "title": "Drawer 关闭动画结束时的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "open-auto-focus",
       "title": "输入焦点聚焦在 Drawer 内容时的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "close-auto-focus",
       "title": "输入焦点从 Drawer 内容失焦时的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     }
   ],
-  "desc": "有些时候, `Dialog` 组件并不满足我们的需求, 比如你的表单很长, 亦或是你需要临时展示一些文档, `Drawer` 拥有和 `Dialog` 几乎相同的 API, 在 UI 上带来不一样的体验."
+  "exposes": [
+    {
+      "name": "handleClose",
+      "title": "用于关闭 Drawer, 该方法会调用传入的 <code>before-close</code> 方法"
+    }
+  ]
 }

@@ -1,6 +1,7 @@
 {
   "__id__": "date-picker",
   "name": "日期选择",
+  "desc": "用于选择或输入日期",
   "tag": "el-date-picker",
   "tagIcon": "date",
   "layouts": [
@@ -189,18 +190,8 @@
           "name": "object",
           "tag": "object-editor"
         }
-      ]
-    },
-    "arrow-control": {
-      "label": "使用箭头",
-      "title": "是否使用箭头进行时间选择",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
       ],
-      "default": false
+      "default": {}
     },
     "range-separator": {
       "label": "分隔符",
@@ -257,33 +248,16 @@
       "title": "可选，绑定值的格式。 不指定则绑定值为 Date 对象",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-select",
-          "options": [
-            {
-              "label": "请查看 [date formats](",
-              "value": "请查看 [date formats]("
-            },
-            {
-              "label": "en-US",
-              "value": "en-US"
-            },
-            {
-              "label": "component",
-              "value": "component"
-            },
-            {
-              "label": "date-picker#date-formats)",
-              "value": "date-picker#date-formats)"
-            }
-          ]
+          "name": "参见"
+        },
+        {
+          "name": "a"
         }
-      ],
-      "default": "YYYY-MM-DD"
+      ]
     },
     "id": {
-      "label": "",
-      "title": "等价于原生 id 属性",
+      "label": "等价于原生 input id 属性",
+      "title": "等价于原生 input <code>id</code> 属性",
       "types": [
         {
           "name": "string",
@@ -293,15 +267,14 @@
           }
         },
         {
-          "name": "[string, string]",
-          "tag": ""
+          "name": "object",
+          "tag": "object-editor"
         }
-      ],
-      "hide": true
+      ]
     },
     "name": {
-      "label": "",
-      "title": "等价于原生 name 属性",
+      "label": "等价于原生 input name 属性",
+      "title": "等价于原生 input <code>name</code> 属性",
       "types": [
         {
           "name": "string",
@@ -326,14 +299,13 @@
     },
     "prefix-icon": {
       "label": "前缀图标",
-      "title": "自定义前缀图标",
+      "title": "自定义前缀图标 如果 <code>type</code>的值是<code>TimeLikeType</code>，那么就是 <code>Clock</code>，不然就是 <code>Calendar</code>",
       "types": [
         {
           "name": "string",
           "tag": "icon-chooser"
         }
-      ],
-      "default": "Calendar"
+      ]
     },
     "clear-icon": {
       "label": "清除图标",
@@ -348,7 +320,7 @@
     },
     "validate-event": {
       "label": "触发表单校验",
-      "title": "输入时是否触发表单的校验",
+      "title": "是否触发表单验证",
       "types": [
         {
           "name": "boolean",
@@ -358,27 +330,24 @@
       "default": true
     },
     "disabled-date": {
-      "label": "",
+      "label": "一个用来判断该日期是否被禁用的函数",
       "title": "一个用来判断该日期是否被禁用的函数，接受一个 Date 对象作为参数。 应该返回一个 Boolean 值。",
       "types": [
         {
           "name": "function",
-          "tag": ""
+
+          "details": "(data: Date) => boolean"
         }
       ],
       "hide": true
     },
     "shortcuts": {
-      "label": "",
+      "label": "快捷选项",
       "title": "设置快捷选项，需要传入数组对象",
       "types": [
         {
           "name": "array",
           "tag": "array-editor"
-        },
-        {
-          "name": "Function }>",
-          "tag": ""
         }
       ],
       "hide": true
@@ -388,11 +357,10 @@
       "title": "设置自定义类名",
       "types": [
         {
-          "name": "Function(Date)",
-          "tag": ""
+          "name": "function",
+          "details": "(data: Date) => string"
         }
-      ],
-      "hide": true
+      ]
     },
     "teleported": {
       "label": "下拉列表插入至 body 元素",
@@ -434,8 +402,7 @@
         },
         {
           "name": "function",
-          "tag": "",
-          "desc": "^[string] / ^[number] / ^[boolean] / ^[Function"
+          "details": "^[string] / ^[number] / ^[boolean] / ^[Function"
         }
       ],
       "version": "2.7.0"
@@ -451,62 +418,41 @@
       "version": "2.8.4"
     },
     "placement": {
+      "label": "下拉框出现的位置",
       "title": "下拉框出现的位置",
       "types": [
         {
-          "name": "Placement",
-          "tag": ""
+          "name": "placement"
         }
       ],
       "default": "bottom",
       "version": "2.8.4"
+    },
+    "show-footer": {
+      "label": "显示 footer",
+      "title": "是否显示 footer",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.10.5"
+    },
+    "show-week-number": {
+      "label": "显示周数",
+      "title": "显示周数(除周外)",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.10.3"
     }
   },
-  "events": [
-    {
-      "name": "change",
-      "title": "用户确认选定的值时触发",
-      "type": "Function",
-      "fnDes": "(val: typeof v-model) => void"
-    },
-    {
-      "name": "blur",
-      "title": "在组件 Input 失去焦点时触发",
-      "type": "Function",
-      "fnDes": "(e: FocusEvent) => void"
-    },
-    {
-      "name": "focus",
-      "title": "在组件 Input 获得焦点时触发",
-      "type": "Function",
-      "fnDes": "(e: FocusEvent) => void"
-    },
-    {
-      "name": "clear",
-      "title": "可清空的模式下用户点击清空按钮时触发",
-      "type": "Function",
-      "version": "2.7.7",
-      "fnDes": "() => void"
-    },
-    {
-      "name": "calendar-change",
-      "title": "在日历所选日期更改时触发",
-      "type": "Function",
-      "fnDes": "(val: [Date, null | Date]) => void"
-    },
-    {
-      "name": "panel-change",
-      "title": "当日期面板改变时触发。",
-      "type": "Function",
-      "fnDes": "(date: Date | [Date, Date], mode: 'month' | 'year', view?: string) => void"
-    },
-    {
-      "name": "visible-change",
-      "title": "当 DatePicker 的下拉列表出现/消失时触发",
-      "type": "Function",
-      "fnDes": "(visibility: boolean) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
@@ -537,5 +483,78 @@
       "version": "2.8.0"
     }
   ],
-  "desc": "用于选择或输入日期"
+  "events": [
+    {
+      "name": "change",
+      "title": "用户确认选定的值时触发",
+      "type": "function",
+      "details": "(val: typeof v-model) => void"
+    },
+    {
+      "name": "blur",
+      "title": "在组件 Input 失去焦点时触发",
+      "type": "function",
+      "details": "(e: FocusEvent) => void"
+    },
+    {
+      "name": "focus",
+      "title": "在组件 Input 获得焦点时触发",
+      "type": "function",
+      "details": "(e: FocusEvent) => void"
+    },
+    {
+      "name": "clear ",
+      "version": "2.7.7",
+      "title": "可清空的模式下用户点击清空按钮时触发",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "calendar-change",
+      "title": "在日历所选日期更改时触发 仅用于 <code>range</code>",
+      "type": "function",
+      "details": "(val: [Date, null | Date]) => void"
+    },
+    {
+      "name": "panel-change",
+      "title": "当日期面板改变时触发。",
+      "type": "function",
+      "details": "(date: Date | [Date, Date], mode: 'month' | 'year', view?: string) => void"
+    },
+    {
+      "name": "visible-change",
+      "title": "当 DatePicker 的下拉列表出现/消失时触发",
+      "type": "function",
+      "details": "(visibility: boolean) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "focus",
+      "title": "使组件获取焦点",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "blur ",
+      "version": "2.8.7",
+      "title": "使组件失去焦点",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "handleOpen ",
+      "version": "2.2.16",
+      "title": "打开日期选择器弹窗",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "handleClose ",
+      "version": "2.2.16",
+      "title": "关闭日期选择器弹窗",
+      "type": "function",
+      "details": "() => void"
+    }
+  ]
 }

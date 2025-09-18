@@ -517,7 +517,7 @@
         },
         {
           "name": "function",
-          "tag": "",
+
           "desc": "^[string] / ^[number] / ^[boolean] / ^[Function"
         }
       ],

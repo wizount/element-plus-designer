@@ -1,6 +1,7 @@
 {
   "__id__": "divider",
   "name": "分割线",
+  "desc": "区隔内容的分割线。",
   "tag": "el-divider",
   "tagIcon": "divider",
   "layouts": [
@@ -111,6 +112,5 @@
       "name": "default",
       "title": "设置分割线文案的位置"
     }
-  ],
-  "desc": "区隔内容的分割线。"
+  ]
 }

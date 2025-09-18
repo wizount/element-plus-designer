@@ -1,6 +1,7 @@
 {
   "__id__": "container",
   "name": "外层容器",
+  "desc": "用于布局的容器组件，方便快速搭建页面的基本结构：",
   "tag": "el-container",
   "tagIcon": "container",
   "layouts": [
@@ -30,26 +31,6 @@
           ]
         }
       ]
-    },
-    "height": {
-      "title": "底栏高度",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ],
-      "default": "60px"
-    },
-    "width": {
-      "title": "侧边栏宽度",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ],
-      "default": "300px"
     }
   },
   "slots": [
@@ -64,6 +45,5 @@
         "footer"
       ]
     }
-  ],
-  "desc": "用于布局的容器组件，方便快速搭建页面的基本结构："
+  ]
 }

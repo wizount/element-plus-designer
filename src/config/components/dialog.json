@@ -1,6 +1,7 @@
 {
   "__id__": "dialog",
   "name": "对话框",
+  "desc": "在保留当前页面状态的情况下，告知用户并承载相关操作。",
   "tag": "el-dialog",
   "tagIcon": "dialog",
   "layouts": [
@@ -68,6 +69,18 @@
       ],
       "default": true
     },
+    "modal-penetrable": {
+      "label": "允许穿透遮罩层",
+      "title": "是否允许穿透遮罩层。 modal 属性必须为 <code>false</code>。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.10.5"
+    },
     "modal-class": {
       "label": "遮罩类名",
       "title": "遮罩的自定义类名",
@@ -82,6 +95,7 @@
       ]
     },
     "header-class": {
+      "label": "header 部分的自定义 class 名",
       "title": "header 部分的自定义 class 名",
       "types": [
         {
@@ -92,6 +106,7 @@
       "version": "2.9.3"
     },
     "body-class": {
+      "label": "body 部分的自定义 class 名",
       "title": "body 部分的自定义 class 名",
       "types": [
         {
@@ -102,6 +117,7 @@
       "version": "2.9.3"
     },
     "footer-class": {
+      "label": "footer 部分的自定义 class 名",
       "title": "footer 部分的自定义 class 名",
       "types": [
         {
@@ -113,7 +129,7 @@
     },
     "append-to-body": {
       "label": "插入至 body 元素上",
-      "title": "Dialog 自身是否插入至 body 元素上。 嵌套的 Dialog 必须指定该属性并赋值为 `true`",
+      "title": "Dialog 自身是否插入至 body 元素上。 嵌套的 Dialog 必须指定该属性并赋值为 <code>true</code>",
       "types": [
         {
           "name": "boolean",
@@ -123,7 +139,8 @@
       "default": false
     },
     "append-to": {
-      "title": "Dialog 挂载到哪个 DOM 元素 将覆盖 `append-to-body`",
+      "label": "Dialog 挂载到哪个 DOM 元素 将覆盖 append-to-body",
+      "title": "Dialog 挂载到哪个 DOM 元素 将覆盖 <code>append-to-body</code>",
       "types": [
         {
           "name": "string",
@@ -144,21 +161,7 @@
       ],
       "default": true
     },
-    "custom-class": {
-      "label": "自定义类名",
-      "title": "Dialog 的自定义类名",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ],
-      "deprecated": true
-    },
-    "open-delay": {
+     "open-delay": {
       "label": "打开延时",
       "title": "dialog 打开的延时时间，单位毫秒",
       "types": [
@@ -171,7 +174,7 @@
     },
     "close-delay": {
       "label": "关闭延时",
-      "title": "drawer 关闭的延时时间，单位毫秒",
+      "title": "dialog 关闭的延时时间，单位毫秒",
       "types": [
         {
           "name": "number",
@@ -219,8 +222,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(done: DoneFn) => void"
+          "details": "(done: DoneFn) => void"
         }
       ]
     },
@@ -236,6 +238,7 @@
       "default": false
     },
     "overflow": {
+      "label": "拖动范围可以超出可视区",
       "title": "拖动范围可以超出可视区",
       "types": [
         {
@@ -302,7 +305,8 @@
       ]
     },
     "header-aria-level": {
-      "title": "header 的 `aria-level` 属性",
+      "label": "header 的 aria-level 属性",
+      "title": "header 的 <code>aria-level</code> 属性",
       "types": [
         {
           "name": "string",
@@ -311,6 +315,36 @@
       ],
       "default": "2",
       "a11y": true
+    },
+    "transition": {
+      "label": "动画的自定义过渡配置。 可以是一个字符串",
+      "title": "对话框动画的自定义过渡配置。 可以是一个字符串（过渡名称），也可以是一个包含 Vue 过渡属性的对象。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "default": "dialog-fade",
+      "version": "2.10.5"
+    },
+    "custom-class": {
+      "label": "自定义类名",
+      "title": "Dialog 的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "deprecated": true
     }
   },
   "slots": [
@@ -336,48 +370,54 @@
     {
       "name": "open",
       "title": "Dialog 打开的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "opened",
       "title": "Dialog 打开动画结束时的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "close",
       "title": "Dialog 关闭的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "closed",
       "title": "Dialog 关闭动画结束时的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "open-auto-focus",
       "title": "输入焦点聚焦在 Dialog 内容时的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "close-auto-focus",
       "title": "输入焦点从 Dialog 内容失焦时的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     }
   ],
   "exposes": [
     {
-      "name": "resetPosition",
-      "title": "重置位置",
-      "type": "Function",
+      "name": "resetPosition ",
       "version": "2.8.1",
-      "fnDes": "() => void"
+      "title": "重置位置",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "handleClose ",
+      "version": "2.9.8",
+      "title": "关闭对话框",
+      "type": "function",
+      "details": "() => void"
     }
-  ],
-  "desc": "在保留当前页面状态的情况下，告知用户并承载相关操作。"
+  ]
 }

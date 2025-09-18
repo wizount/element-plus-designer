@@ -1,5 +1,7 @@
 {
   "__id__": "dropdown-menu",
+  "name": "",
+  "desc": "将动作或菜单折叠到下拉菜单中。",
   "tag": "el-dropdown-menu",
   "tagIcon": "dropdown",
   "layouts": [
@@ -15,6 +17,5 @@
         "dropdown-item"
       ]
     }
-  ],
-  "desc": "将动作或菜单折叠到下拉菜单中。"
+  ]
 }

@@ -1,15 +1,16 @@
 {
   "__id__": "descriptions-item",
   "name": "描述列表子项",
+  "desc": "列表形式展示多个字段。",
   "tag": "el-descriptions-item",
   "tagIcon": "descriptions",
   "layouts": [
     "rawItem"
   ],
+  "document": "https://element-plus.org/zh-CN/component/descriptions.html",
   "parentTag": [
     "el-descriptions"
   ],
-  "document": "https://element-plus.org/zh-CN/component/descriptions.html",
   "attributes": {
     "label": {
       "label": "标签文本",
@@ -36,6 +37,7 @@
       "default": 1
     },
     "rowspan": {
+      "label": "单元格应该跨越的行数",
       "title": "单元格应该跨越的行数",
       "types": [
         {
@@ -48,7 +50,7 @@
     },
     "width": {
       "label": "宽度",
-      "title": "列的宽度，不同行相同列的宽度按最大值设定（如无 border ，宽度包含标签与内容）",
+      "title": "列的宽度，不同行相同列的宽度按最大值设定（如无 <code>border</code> ，宽度包含标签与内容）",
       "types": [
         {
           "name": "stringNumber",
@@ -58,7 +60,7 @@
     },
     "min-width": {
       "label": "最小宽度",
-      "title": "列的最小宽度，与 width 的区别是 width 是固定的，min-width 会把剩余宽度按比例分配给设置了 min-width 的列（如无 border，宽度包含标签与内容）",
+      "title": "列的最小宽度，与 <code>width</code> 的区别是 <code>width</code> 是固定的，<code>min-width</code> 会把剩余宽度按比例分配给设置了 <code>min-width</code> 的列（如无 <code>border</code>，宽度包含标签与内容）",
       "types": [
         {
           "name": "stringNumber",
@@ -67,7 +69,8 @@
       ]
     },
     "label-width": {
-      "title": "列标签宽，如果未设置，它将与列宽度相同。 比 `Descriptions` 的 `label-width`  优先级高",
+      "label": "列标签宽",
+      "title": "列标签宽，如果未设置，它将与列宽度相同。 比 <code>Descriptions</code> 的 <code>label-width</code> 优先级高",
       "types": [
         {
           "name": "stringNumber",
@@ -78,7 +81,7 @@
     },
     "align": {
       "label": "内容对齐方式",
-      "title": "列的内容对齐方式（如无 border，对标签和内容均生效）",
+      "title": "列的内容对齐方式（如无 <code>border</code>，对标签和内容均生效）",
       "types": [
         {
           "name": "enum",
@@ -106,7 +109,7 @@
     },
     "label-align": {
       "label": "标签对齐方式",
-      "title": "列的标签对齐方式，若不设置该项，则使用内容的对齐方式（如无 border，请使用 align 参数）",
+      "title": "列的标签对齐方式，若不设置该项，则使用内容的对齐方式（如无 <code>border</code>，请使用 <code>align</code> 参数）",
       "types": [
         {
           "name": "enum",
@@ -167,6 +170,5 @@
       "name": "label",
       "title": "自定义标签"
     }
-  ],
-  "desc": "列表形式展示多个字段。"
+  ]
 }
