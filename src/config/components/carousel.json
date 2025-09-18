@@ -1,6 +1,7 @@
 {
   "__id__": "carousel",
   "name": "走马灯",
+  "desc": "在有限空间内，循环播放同一类型的图片、文字等内容",
   "tag": "el-carousel",
   "tagIcon": "carousel",
   "layouts": [
@@ -160,6 +161,7 @@
       ]
     },
     "cardScale": {
+      "label": "二级卡的缩放大小",
       "title": "当 type 为 card时，二级卡的缩放大小",
       "types": [
         {
@@ -217,6 +219,7 @@
       "default": true
     },
     "motion-blur": {
+      "label": "添加动态模糊",
       "title": "添加动态模糊以给走马灯注入活力和流畅性。",
       "types": [
         {
@@ -226,34 +229,8 @@
       ],
       "default": false,
       "version": "2.6.0"
-    },
-    "name": {
-      "title": "幻灯片的名字，可用作 `setActiveItem` 的参数",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "label": {
-      "title": "该幻灯片所对应指示器的文本",
-      "types": [
-        {
-          "name": "stringNumber",
-          "tag": "string-number-input"
-        }
-      ]
     }
   },
-  "events": [
-    {
-      "name": "change",
-      "title": "当前展示的幻灯片切换时触发，它有两个参数， 一个是新幻灯片的索引，另一个是旧幻灯片的索引",
-      "type": "Function",
-      "fnDes": "(current: number, prev: number) => boolean"
-    }
-  ],
   "slots": [
     {
       "name": "default",
@@ -263,31 +240,38 @@
       ]
     }
   ],
+  "events": [
+    {
+      "name": "change",
+      "title": "当前展示的幻灯片切换时触发，它有两个参数， 一个是新幻灯片的索引，另一个是旧幻灯片的索引",
+      "type": "function",
+      "details": "(current: number, prev: number) => boolean"
+    }
+  ],
   "exposes": [
     {
-      "name": "activeIndex",
+      "name": "activeIndex ",
+      "version": "2.7.8",
       "title": "当前幻灯片的索引",
-      "type": "^[number]",
-      "version": "2.7.8"
+      "type": "number"
     },
     {
       "name": "setActiveItem",
-      "title": "手动切换幻灯片，传入需要切换的幻灯片的索引，从 0 开始；或相应 `el-carousel-item` 的 `name` 属性值",
-      "type": "Function",
-      "fnDes": "(index: string | number) => void"
+      "title": "手动切换幻灯片，传入需要切换的幻灯片的索引，从 0 开始；或相应 <code>el-carousel-item</code> 的 <code>name</code> 属性值",
+      "type": "function",
+      "details": "(index: string | number) => void"
     },
     {
       "name": "prev",
       "title": "切换至上一张幻灯片",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "next",
       "title": "切换至下一张幻灯片",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     }
-  ],
-  "desc": "在有限空间内，循环播放同一类型的图片、文字等内容"
+  ]
 }

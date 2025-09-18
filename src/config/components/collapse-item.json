@@ -1,6 +1,7 @@
 {
   "__id__": "collapse-item",
   "name": "折叠面板子项",
+  "desc": "通过折叠面板收纳内容区域",
   "tag": "el-collapse-item",
   "tagIcon": "collapse-item",
   "layouts": [
@@ -35,6 +36,7 @@
       ]
     },
     "icon": {
+      "label": "折叠项目的图标",
       "title": "折叠项目的图标",
       "types": [
         {
@@ -53,7 +55,8 @@
           "name": "boolean",
           "tag": "el-switch"
         }
-      ]
+      ],
+      "default": false
     }
   },
   "slots": [
@@ -63,14 +66,24 @@
     },
     {
       "name": "title",
-      "title": "Collapse Item 的标题"
+      "title": "Collapse Item 的标题",
+      "type": "object",
+      "details": "{ isActive: boolean }"
     },
     {
       "name": "icon",
       "title": "折叠项目图标的内容",
-      "type": "^[object]`{ isActive: boolean }`",
-      "version": "2.8.3"
+      "type": "object",
+      "version": "2.8.3",
+      "details": "{ isActive: boolean }"
     }
   ],
-  "desc": "通过折叠面板收纳内容区域"
+  "exposes": [
+    {
+      "name": "isActive",
+      "title": "当前折叠项是否激活",
+      "type": "object",
+      "details": "ComputedRef<boolean | undefined>"
+    }
+  ]
 }

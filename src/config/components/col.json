@@ -1,6 +1,7 @@
 {
   "__id__": "col",
   "name": "列容器",
+  "desc": "通过基础的 24 分栏，迅速简便地创建布局。",
   "tag": "el-col",
   "tagIcon": "col",
   "layouts": [
@@ -70,7 +71,7 @@
     },
     "xs": {
       "label": "xs(<768px)",
-      "title": "<768px 响应式栅格数或者栅格属性对象",
+      "title": "<code><768px</code> 响应式栅格数或者栅格属性对象",
       "types": [
         {
           "name": "number",
@@ -105,7 +106,7 @@
     },
     "sm": {
       "label": "sm(≥768px)",
-      "title": "≥768px 响应式栅格数或者栅格属性对象",
+      "title": "<code>≥768px</code> 响应式栅格数或者栅格属性对象",
       "types": [
         {
           "name": "number",
@@ -140,7 +141,7 @@
     },
     "md": {
       "label": "md(≥992px)",
-      "title": "≥992px 响应式栅格数或者栅格属性对象",
+      "title": "<code>≥992px</code> 响应式栅格数或者栅格属性对象",
       "types": [
         {
           "name": "number",
@@ -175,7 +176,7 @@
     },
     "lg": {
       "label": "lg(≥1200px)",
-      "title": "≥1200px 响应式栅格数或者栅格属性对象",
+      "title": "<code>≥1200px</code> 响应式栅格数或者栅格属性对象",
       "types": [
         {
           "name": "number",
@@ -210,7 +211,7 @@
     },
     "xl": {
       "label": "xl(≥1920px)",
-      "title": "≥1920px 响应式栅格数或者栅格属性对象",
+      "title": "<code>≥1920px</code> 响应式栅格数或者栅格属性对象",
       "types": [
         {
           "name": "number",
@@ -263,6 +264,5 @@
       "name": "default",
       "title": "自定义默认内容"
     }
-  ],
-  "desc": "通过基础的 24 分栏，迅速简便地创建布局。"
+  ]
 }

@@ -1,6 +1,7 @@
 {
   "__id__": "collapse",
   "name": "折叠面板",
+  "desc": "通过折叠面板收纳内容区域",
   "tag": "el-collapse",
   "tagIcon": "collapse",
   "layouts": [
@@ -23,54 +24,43 @@
       ],
       "default": false
     },
-    "name": {
-      "title": "唯一标志符",
+    "expand-icon-position": {
+      "label": "展开图标位置",
+      "title": "设置展开图标位置",
       "types": [
         {
-          "name": "stringNumber",
-          "tag": "string-number-input"
-        }
-      ]
-    },
-    "title": {
-      "title": "面板标题",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "icon": {
-      "title": "折叠项目的图标",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            }
+          ]
         }
       ],
-      "default": "ArrowRight",
-      "version": "2.8.3"
+      "default": "right",
+      "version": "2.9.10"
     },
-    "disabled": {
-      "title": "是否禁用",
+    "before-collapse": {
+      "label": "折叠状态更改之前的折叠钩子。 返回 false 或者返回 Promise 且被 reject 则停止切换",
+      "title": "折叠状态更改之前的折叠钩子。 返回 <code>false</code> 或者返回 <code>Promise</code> 且被 reject 则停止切换",
       "types": [
         {
-          "name": "boolean",
-          "tag": "el-switch"
+          "name": "function",
+          "details": "() => Promise<boolean> | boolen"
         }
       ],
-      "default": false
+      "version": "2.9.11"
     }
   },
-  "events": [
-    {
-      "name": "change",
-      "title": "切换当前活动面板，在手风琴模式下其类型是`string`，在其他模式下是`array`",
-      "type": "Function",
-      "fnDes": "(activeNames: array | string) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
@@ -80,5 +70,26 @@
       ]
     }
   ],
-  "desc": "通过折叠面板收纳内容区域"
+  "events": [
+    {
+      "name": "change",
+      "title": "切换当前活动面板，在手风琴模式下其类型是<code>string</code>，在其他模式下是<code>array</code>",
+      "type": "function",
+      "details": "(activeNames: array | string) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "activeNames",
+      "title": "当前活动的面板名称",
+      "type": "object",
+      "details": "ComputedRef<(string | number)[]>"
+    },
+    {
+      "name": "setActiveNames",
+      "title": "设置活动面板名称",
+      "type": "function",
+      "details": "(activeNames: (string | number)[]) => void"
+    }
+  ]
 }

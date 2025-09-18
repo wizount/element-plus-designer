@@ -1,6 +1,7 @@
 {
   "__id__": "cascader",
   "name": "级联选择",
+  "desc": "当一个数据集合有清晰的层级结构时，可通过级联选择器逐级查看并选择。",
   "tag": "el-cascader",
   "tagIcon": "cascader",
   "layouts": [
@@ -193,7 +194,7 @@
     },
     "collapse-tags-tooltip": {
       "label": "折叠选中的标签",
-      "title": "当鼠标悬停于折叠标签的文本时，是否显示所有选中的标签。 要使用此属性，collapse-tags属性必须设定为 true",
+      "title": "当鼠标悬停于折叠标签的文本时，是否显示所有选中的标签。 要使用此属性，<code>collapse-tags</code>属性必须设定为 true",
       "types": [
         {
           "name": "boolean",
@@ -201,6 +202,17 @@
         }
       ],
       "default": false
+    },
+    "max-collapse-tags-tooltip-height": {
+      "label": "collapse tags 的最大高度",
+      "title": "collapse tags 的最大高度",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "version": "2.10.2"
     },
     "separator": {
       "label": "分隔符",
@@ -214,7 +226,7 @@
           }
         }
       ],
-      "default": " / "
+      "default": "/"
     },
     "filterable": {
       "label": "被搜索",
@@ -228,12 +240,11 @@
     },
     "filter-method": {
       "label": "搜索逻辑",
-      "title": "自定义搜索逻辑，第一个参数是node，第二个参数是keyword，返回的布尔值表示是否保留该选项",
+      "title": "自定义搜索逻辑，第一个参数是<code>node</code>，第二个参数是<code>keyword</code>，返回的布尔值表示是否保留该选项",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(node: CascaderNode, keyword: string) => boolean"
+          "details": "(node: CascaderNode, keyword: string) => boolean"
         }
       ]
     },
@@ -250,12 +261,11 @@
     },
     "before-filter": {
       "label": "钩子函数",
-      "title": "过滤函数调用前欲被调用的钩子函数，该函数接受一个参数。 如果该函数的返回值是 false 或者是一个被拒绝的 Promise，那么接下来的过滤逻辑便不会执行。",
+      "title": "过滤函数调用前，所要调用的钩子函数，该函数接收要过滤的值作为参数。 如果该函数的返回值是 <code>false</code> 或者是一个被拒绝的 <code>Promise</code>，那么接下来的过滤逻辑便不会执行。",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(value: string) => boolean"
+          "details": "(value: string) => boolean"
         }
       ]
     },
@@ -283,17 +293,34 @@
       ],
       "default": true
     },
-    "popper-append-to-body": {
-      "label": "弹出的内容插入到 body 元素",
-      "title": "是否将弹出的内容直接插入到 body 元素。 在弹出内容的边框定位出现问题时，可将该属性设置为 false(弃用)",
+    "effect": {
+      "label": "tooltip 主题",
+      "title": "tooltip 主题，内置了 <code>dark</code> / <code>light</code> 两种",
       "types": [
         {
-          "name": "boolean",
-          "tag": "el-switch"
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "dark",
+              "value": "dark"
+            },
+            {
+              "label": "light",
+              "value": "light"
+            }
+          ]
+        },
+        {
+          "name": "string",
+          "tag": "el-input"
         }
       ],
-      "default": true,
-      "deprecated": true
+      "default": "light",
+      "version": "2.10.5"
     },
     "tag-type": {
       "label": "标签类型",
@@ -325,6 +352,7 @@
       "default": "info"
     },
     "tag-effect": {
+      "label": "tag effect",
       "title": "tag effect",
       "types": [
         {
@@ -364,7 +392,8 @@
       "default": true
     },
     "max-collapse-tags": {
-      "title": "需要显示的 Tag 的最大数量 只有当 `collapse-tags` 设置为 true 时才会生效。",
+      "label": "需要显示的 Tag 的最大数量",
+      "title": "需要显示的 Tag 的最大数量 只有当 <code>collapse-tags</code> 设置为 true 时才会生效。",
       "types": [
         {
           "name": "number",
@@ -403,14 +432,14 @@
         },
         {
           "name": "function",
-          "tag": "",
-          "desc": "^[string] / ^[number] / ^[boolean] / ^[Function"
+          "detail": ""
         }
       ],
       "version": "2.7.0"
     },
     "persistent": {
-      "title": "当下拉框未被激活并且`persistent`设置为`false`，下拉框容器会被删除。",
+      "label": "当下拉框未被激活并且persistent设置为false",
+      "title": "当下拉框未被激活并且<code>persistent</code>设置为<code>false</code>，下拉框容器会被删除。",
       "types": [
         {
           "name": "boolean",
@@ -431,6 +460,7 @@
       "version": "2.8.1"
     },
     "placement": {
+      "label": "下拉框出现的位置",
       "title": "下拉框出现的位置",
       "types": [
         {
@@ -490,75 +520,163 @@
       ],
       "default": "bottom-start",
       "version": "2.8.1"
+    },
+    "popper-append-to-body": {
+      "label": "弹出的内容插入到 body 元素",
+      "title": "是否将弹出的内容直接插入到 body 元素。 在弹出内容的边框定位出现问题时，可将该属性设置为 false",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "deprecated": true
+    },
+    "show-checked-strategy": {
+      "label": "多选模式下已选节点的展示策略。 当你想让显示更简洁时",
+      "title": "多选模式下已选节点的展示策略。 当你想让显示更简洁时，使用 <code>parent</code>。 当你想显示每个子项时，使用 <code>child</code>。",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "parent",
+              "value": "parent"
+            },
+            {
+              "label": "child",
+              "value": "child"
+            }
+          ]
+        }
+      ],
+      "default": "child",
+      "version": "2.10.5"
     }
   },
-  "events": [
-    {
-      "name": "change",
-      "title": "当绑定值变化时触发的事件",
-      "type": "Function",
-      "fnDes": "(value: CascaderValue) => void"
-    },
-    {
-      "name": "expand-change",
-      "title": "当展开节点发生变化时触发",
-      "type": "Function",
-      "fnDes": "(value: CascaderValue) => void"
-    },
-    {
-      "name": "blur",
-      "title": "当失去焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
-    },
-    {
-      "name": "focus",
-      "title": "当获得焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
-    },
-    {
-      "name": "clear",
-      "title": "可清空的单选模式下用户点击清空按钮时触发",
-      "type": "Function",
-      "version": "2.7.7",
-      "fnDes": "() => void"
-    },
-    {
-      "name": "visible-change",
-      "title": "下拉框出现/隐藏时触发",
-      "type": "Function",
-      "fnDes": "(value: boolean) => void"
-    },
-    {
-      "name": "remove-tag",
-      "title": "在多选模式下，移除Tag时触发",
-      "type": "Function",
-      "fnDes": "(value: CascaderNode['valueByOption']) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
       "title": "自定义备选项的节点内容，分别为当前节点的 Node 对象和数据",
-      "params": "^[object]`{ node: any, data: any }`"
+      "type": "object",
+      "details": "{ node: any, data: any }"
     },
     {
       "name": "empty",
-      "title": "无匹配选项时的内容",
-      "params": "—"
+      "title": "无匹配选项时的内容"
     },
     {
       "name": "prefix",
       "title": "输入框头部内容",
-      "params": "—",
       "version": "2.9.4"
     },
     {
       "name": "suggestion-item",
       "title": "搜索时自定义建议项内容",
-      "params": "^[object]`{ item: CascaderNode }`",
-      "version": "2.9.5"
+      "type": "object",
+      "version": "2.9.5",
+      "details": "{ item: CascaderNode }"
+    },
+    {
+      "name": "tag",
+      "title": "自定义tag样式",
+      "type": "object",
+      "version": "2.10.3",
+      "details": "{ data: Tag[], deleteTag: (tag: Tag) => void }"
+    },
+    {
+      "name": "header",
+      "title": "下拉列表顶部的内容",
+      "version": "2.10.5"
+    },
+    {
+      "name": "footer",
+      "title": "下拉列表底部的内容",
+      "version": "2.10.5"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "title": "当绑定值变化时触发的事件",
+      "type": "function",
+      "details": "(value: CascaderValue) => void"
+    },
+    {
+      "name": "expand-change",
+      "title": "当展开节点发生变化时触发",
+      "type": "function",
+      "details": "(value: CascaderValue) => void"
+    },
+    {
+      "name": "blur",
+      "title": "当失去焦点时触发",
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
+    },
+    {
+      "name": "focus",
+      "title": "当获得焦点时触发",
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
+    },
+    {
+      "name": "clear",
+      "version": "2.7.7",
+      "title": "可清空的单选模式下用户点击清空按钮时触发",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "visible-change",
+      "title": "下拉框出现/隐藏时触发",
+      "type": "function",
+      "details": "(value: boolean) => void"
+    },
+    {
+      "name": "remove-tag",
+      "title": "在多选模式下，移除Tag时触发",
+      "type": "function",
+      "details": "(value: CascaderNode['valueByOption']) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "getCheckedNodes",
+      "title": "获取一个当前选中节点的数组。(仅仅是传单) 是否只返回叶选中的节点，默认是 <code>false</code>",
+      "type": "function",
+      "details": "(leafOnly: boolean) => CascaderNode[] | undefined"
+    },
+    {
+      "name": "cascaderPanelRef",
+      "title": "cascader 面板的 ref",
+      "type": "object",
+      "details": "ComputedRef<any>"
+    },
+    {
+      "name": "togglePopperVisible ",
+      "version": "2.2.31",
+      "title": "切换 popper 可见状态",
+      "type": "function",
+      "details": "(visible?: boolean) => void"
+    },
+    {
+      "name": "contentRef",
+      "title": "cascader 内容的 ref",
+      "type": "object",
+      "details": "ComputedRef<any>"
+    },
+    {
+      "name": "presentText",
+      "version": "2.8.4",
+      "title": "选中的内容文本",
+      "type": "object",
+      "details": "ComputedRef<string>"
     }
   ],
   "data": {
@@ -590,37 +708,5 @@
       "method": "get",
       "dataKey": ""
     }
-  },
-  "exposes": [
-    {
-      "name": "getCheckedNodes",
-      "title": "获取一个当前选中节点的数组。(仅仅是传单) 是否只返回叶选中的节点，默认是 `false`",
-      "type": "Function",
-      "fnDes": "(leafOnly: boolean) => CascaderNode[] | undefined"
-    },
-    {
-      "name": "cascaderPanelRef",
-      "title": "cascader 面板的 ref",
-      "type": "^[object]`ComputedRef<any>`"
-    },
-    {
-      "name": "togglePopperVisible",
-      "title": "切换 popper 可见状态",
-      "type": "Function",
-      "version": "2.2.31",
-      "fnDes": "(visible?: boolean) => void"
-    },
-    {
-      "name": "contentRef",
-      "title": "cascader 内容的 ref",
-      "type": "^[object]`ComputedRef<any>`"
-    },
-    {
-      "name": "presentText",
-      "title": "选中的内容文本",
-      "type": "^[object]`ComputedRef<string>`",
-      "version": "2.8.4"
-    }
-  ],
-  "desc": "当一个数据集合有清晰的层级结构时，可通过级联选择器逐级查看并选择。"
+  }
 }

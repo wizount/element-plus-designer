@@ -1,6 +1,7 @@
 {
   "__id__": "card",
   "name": "卡片",
+  "desc": "将信息聚合在卡片容器中展示。",
   "tag": "el-card",
   "tagIcon": "card",
   "layouts": [
@@ -10,7 +11,7 @@
   "attributes": {
     "header": {
       "label": "标题",
-      "title": "卡片的标题 你既可以通过设置 header 来修改标题，也可以通过 slot#header 传入 DOM 节点",
+      "title": "卡片的标题 你既可以通过设置 header 来修改标题，也可以通过 <code>slot#header</code> 传入 DOM 节点",
       "types": [
         {
           "name": "string",
@@ -22,7 +23,8 @@
       ]
     },
     "footer": {
-      "title": "卡片页脚。 你既可以通过设置 header 来修改标题，也可以通过 `slot#footer` 传入 DOM 节点",
+      "label": "页脚",
+      "title": "卡片页脚。 你既可以通过设置 footer 来修改卡片底部内容，也可以通过 <code>slot#footer</code> 传入 DOM 节点",
       "types": [
         {
           "name": "string",
@@ -32,7 +34,7 @@
       "version": "2.4.3"
     },
     "body-style": {
-      "label": "",
+      "label": "body 的 CSS 样式",
       "title": "body 的 CSS 样式",
       "types": [
         {
@@ -41,9 +43,20 @@
         }
       ]
     },
+    "header-class": {
+      "label": "header 的自定义类名",
+      "title": "card header 的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.9.8"
+    },
     "body-class": {
-      "label": "",
-      "title": "custom class name of card body",
+      "label": "body 的自定义类名",
+      "title": "body 的自定义类名",
       "types": [
         {
           "name": "string",
@@ -55,9 +68,20 @@
       ],
       "version": "2.3.10"
     },
+    "footer-class": {
+      "label": "footer 的自定义类名",
+      "title": "footer 的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.9.8"
+    },
     "shadow": {
-      "label": "",
-      "title": "设置阴影显示时机",
+      "label": "阴影显示时机",
+      "title": "卡片阴影显示时机",
       "types": [
         {
           "name": "enum",
@@ -97,6 +121,5 @@
       "name": "footer",
       "title": "卡片页脚内容"
     }
-  ],
-  "desc": "将信息聚合在卡片容器中展示。"
+  ]
 }

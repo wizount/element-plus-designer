@@ -1,6 +1,7 @@
 {
   "__id__": "autocomplete",
   "name": "自动补全",
+  "desc": "根据输入内容提供对应的输入建议。",
   "tag": "el-autocomplete",
   "tagIcon": "autocomplete",
   "layouts": [
@@ -70,6 +71,10 @@
               "value": "top"
             },
             {
+              "label": "top-start",
+              "value": "top-start"
+            },
+            {
               "label": "top-end",
               "value": "top-end"
             },
@@ -105,7 +110,7 @@
       ]
     },
     "trigger-on-focus": {
-      "label": "",
+      "label": "whether show suggestions when input focus",
       "title": "whether show suggestions when input focus",
       "types": [
         {
@@ -117,7 +122,7 @@
     },
     "select-when-unmatched": {
       "label": "无匹配时是否触发select事件",
-      "title": "在输入没有任何匹配建议的情况下，按下回车是否触发 `select` 事件",
+      "title": "在输入没有任何匹配建议的情况下，按下回车是否触发 <code>select</code> 事件",
       "types": [
         {
           "name": "boolean",
@@ -127,7 +132,8 @@
       "default": false
     },
     "name": {
-      "title": "等价于原生 input `name` 属性",
+      "label": "等价于原生 input name 属性",
+      "title": "等价于原生 input <code>name</code> 属性",
       "types": [
         {
           "name": "string",
@@ -136,7 +142,8 @@
       ]
     },
     "aria-label": {
-      "title": "原生 `aria-label`属性",
+      "label": "原生 aria-label属性",
+      "title": "原生 <code>aria-label</code>属性",
       "types": [
         {
           "name": "string",
@@ -145,15 +152,6 @@
       ],
       "a11y": true,
       "version": "2.7.2"
-    },
-    "label": {
-      "title": "输入框关联的 label 文字",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
     },
     "hide-loading": {
       "label": "隐藏加载图标",
@@ -167,7 +165,7 @@
       "default": false
     },
     "popper-class": {
-      "label": "",
+      "label": "下拉列表的类名",
       "title": "下拉列表的类名",
       "types": [
         {
@@ -179,20 +177,8 @@
         }
       ]
     },
-    "popper-append-to-body": {
-      "label": "插入至 body 元素",
-      "title": "是否将下拉列表插入至 body 元素。 在下拉列表的定位出现问题时，可将该属性设置为 false",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false,
-      "deprecated": true
-    },
     "teleported": {
-      "label": "",
+      "label": "将下拉列表元素插入 append-to 指向的元素下",
       "title": "是否将下拉列表元素插入 append-to 指向的元素下",
       "types": [
         {
@@ -201,6 +187,19 @@
         }
       ],
       "default": true
+    },
+    "append-to": {
+      "label": "下拉框挂载到哪个 DOM 元素",
+      "title": "下拉框挂载到哪个 DOM 元素",
+      "types": [
+        {
+          "name": "cssselector"
+        },
+        {
+          "name": "htmlelement"
+        }
+      ],
+      "version": "2.9.9"
     },
     "highlight-first-item": {
       "label": "高亮第一项搜索结果",
@@ -214,7 +213,7 @@
       "default": false
     },
     "fit-input-width": {
-      "label": "",
+      "label": "下拉框的宽度是否与输入框相同",
       "title": "下拉框的宽度是否与输入框相同",
       "types": [
         {
@@ -223,51 +222,26 @@
         }
       ],
       "default": false
+    },
+    "popper-append-to-body": {
+      "label": "插入至 body 元素",
+      "title": "是否将下拉列表插入至 body 元素。 在下拉列表的定位出现问题时，可将该属性设置为 false",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "deprecated": true
     }
   },
-  "events": [
-    {
-      "name": "blur",
-      "title": "当选择器的输入框失去焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
-    },
-    {
-      "name": "focus",
-      "title": "当选择器的输入框获得焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
-    },
-    {
-      "name": "input",
-      "title": "在 Input 值改变时触发",
-      "type": "Function",
-      "fnDes": "(value: string | number) => void"
-    },
-    {
-      "name": "clear",
-      "title": "在点击由 `clearable` 属性生成的清空按钮时触发",
-      "type": "Function",
-      "fnDes": "() => void"
-    },
-    {
-      "name": "select",
-      "title": "点击选中建议项时触发",
-      "type": "Function",
-      "fnDes": "(item: typeof modelValue | any) => void"
-    },
-    {
-      "name": "change",
-      "title": "在 Input 值改变时触发",
-      "type": "Function",
-      "fnDes": "(value: string | number) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
       "title": "自定义输入建议的内容。",
-      "type": "^[object]`{ item: Record<string, any> }`"
+      "type": "object",
+      "details": "{ item: Record<string, any> }"
     },
     {
       "name": "prefix",
@@ -291,79 +265,123 @@
       "version": "2.5.0"
     }
   ],
+  "events": [
+    {
+      "name": "blur",
+      "title": "当选择器的输入框失去焦点时触发",
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
+    },
+    {
+      "name": "focus",
+      "title": "当选择器的输入框获得焦点时触发",
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
+    },
+    {
+      "name": "input",
+      "title": "在 Input 值改变时触发",
+      "type": "function",
+      "details": "(value: string | number) => void"
+    },
+    {
+      "name": "clear",
+      "title": "在点击由 <code>clearable</code> 属性生成的清空按钮时触发",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "select",
+      "title": "点击选中建议项时触发",
+      "type": "function",
+      "details": "(item: typeof modelValue | any) => void"
+    },
+    {
+      "name": "change",
+      "title": "在 Input 值改变时触发",
+      "type": "function",
+      "details": "(value: string | number) => void"
+    }
+  ],
   "exposes": [
     {
       "name": "activated",
       "title": "自动补全输入框是否被激活",
-      "type": "^[object]`Ref<boolean>`"
+      "type": "object",
+      "details": "Ref<boolean>"
     },
     {
       "name": "blur",
       "title": "使 input 失去焦点",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "close",
       "title": "折叠建议列表",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "focus",
       "title": "使 input 获取焦点",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "handleSelect",
       "title": "手动触发选中建议事件",
-      "type": "Function",
-      "fnDes": "(item: any) => promise<void>"
+      "type": "function",
+      "details": "(item: any) => promise<void>"
     },
     {
       "name": "handleKeyEnter",
       "title": "手动触发键盘回车事件",
-      "type": "Function",
-      "fnDes": "() => promise<void>"
+      "type": "function",
+      "details": "() => promise<void>"
     },
     {
       "name": "highlightedIndex",
       "title": "当前高亮显示选项的索引",
-      "type": "^[object]`Ref<number>`"
+      "type": "object",
+      "details": "Ref<number>"
     },
     {
       "name": "highlight",
       "title": "在建议中高亮显示一个项目",
-      "type": "Function",
-      "fnDes": "(itemIndex: number) => void"
+      "type": "function",
+      "details": "(itemIndex: number) => void"
     },
     {
       "name": "inputRef",
       "title": "el-input 组件实例",
-      "type": "^[object]`Ref<ElInputInstance>`"
+      "type": "object",
+      "details": "Ref<ElInputInstance>"
     },
     {
       "name": "loading",
       "title": "远程获取提示内容的加载状态指示器",
-      "type": "^[object]`Ref<boolean>`"
+      "type": "object",
+      "details": "Ref<boolean>"
     },
     {
       "name": "popperRef",
       "title": "el-tooltip 组件实例",
-      "type": "^[object]`Ref<ElTooltipInstance>`"
+      "type": "object",
+      "details": "Ref<ElTooltipInstance>"
     },
     {
       "name": "suggestions",
       "title": "获取自动补全结果",
-      "type": "^[object]`Ref<record<string, any>>`"
+      "type": "object",
+      "details": "Ref<record<string, any>>"
     },
     {
-      "name": "getData",
-      "title": "加载建议列表",
-      "type": "Function",
+      "name": "getData ",
       "version": "2.8.4",
-      "fnDes": "(queryString: string) => void"
+      "title": "加载建议列表",
+      "type": "function",
+      "details": "(queryString: string) => void"
     }
   ],
   "data": {
@@ -401,6 +419,5 @@
         }
       ]
     }
-  },
-  "desc": "根据输入内容提供对应的输入建议。"
+  }
 }

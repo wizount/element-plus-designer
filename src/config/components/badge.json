@@ -1,6 +1,7 @@
 {
   "__id__": "badge",
   "name": "徽章",
+  "desc": "按钮和图标上的数字或状态标记。",
   "tag": "el-badge",
   "tagIcon": "badge",
   "layouts": [
@@ -20,7 +21,7 @@
     },
     "max": {
       "label": "最大值",
-      "title": "最大值，超过最大值会显示 {max}+。 只有当 value 是数字类型时才会工作。",
+      "title": "最大值，超过最大值会显示 <code>{max}+</code>。 只有当 value 是数字类型时起作用。",
       "types": [
         {
           "name": "number",
@@ -53,7 +54,7 @@
     },
     "type": {
       "label": "类型",
-      "title": "badge 类型。",
+      "title": "badge type.",
       "types": [
         {
           "name": "enum",
@@ -85,6 +86,7 @@
       "default": "danger"
     },
     "show-zero": {
+      "label": "值为零时是否显示 Badge",
       "title": "值为零时是否显示 Badge",
       "types": [
         {
@@ -96,6 +98,7 @@
       "version": "2.6.0"
     },
     "color": {
+      "label": "背景色",
       "title": "背景色",
       "types": [
         {
@@ -110,23 +113,29 @@
       "title": "badge 的偏移量",
       "types": [
         {
-          "name": "[ `number` , `number` ]",
-          "tag": ""
+          "name": "array",
+          "tag": "array-editor",
+          "props": {
+            "tag": "el-input-number",
+            "fixedNumber": 2
+          }
         }
       ],
       "version": "2.7.0"
     },
     "badge-style": {
+      "label": "自定义 badge 样式",
       "title": "自定义 badge 样式",
       "types": [
         {
           "name": "object",
-          "tag": "object-editor"
+          "tag": "style-editor"
         }
       ],
       "version": "2.7.1"
     },
     "badge-class": {
+      "label": "自定义 badge 类名",
       "title": "自定义 badge 类名",
       "types": [
         {
@@ -145,9 +154,9 @@
     {
       "name": "content",
       "title": "自定义显示内容",
-      "type": "^[object]`{ value: string }`",
-      "version": "2.9.1"
+      "type": "object",
+      "version": "2.9.1",
+      "details": "{ value: string }"
     }
-  ],
-  "desc": "按钮和图标上的数字或状态标记。"
+  ]
 }

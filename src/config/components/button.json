@@ -1,6 +1,7 @@
 {
   "__id__": "button",
   "name": "按钮",
+  "desc": "常用的操作按钮。",
   "tag": "el-button",
   "tagIcon": "button",
   "layouts": [
@@ -15,8 +16,8 @@
         {
           "name": "enum",
           "tag": "el-select",
-          "props": {
-            "clearable": true
+          "config": {
+            "optionType": "button"
           },
           "options": [
             {
@@ -31,19 +32,25 @@
               "label": "small",
               "value": "small"
             }
-          ]
+          ],
+          "props": {
+            "clearable": true
+          }
         }
-      ],
-      "default": "default"
+      ]
     },
     "type": {
       "label": "类型",
-      "title": "类型",
+      "title": "按钮类型，在设置<code>color</code>时，后者优先。",
       "types": [
         {
           "name": "enum",
           "tag": "el-select",
           "options": [
+            {
+              "label": "default",
+              "value": "default"
+            },
             {
               "label": "primary",
               "value": "primary"
@@ -63,6 +70,10 @@
             {
               "label": "info",
               "value": "info"
+            },
+            {
+              "label": "text (deprecated)",
+              "value": "text"
             }
           ]
         }
@@ -182,7 +193,7 @@
     },
     "autofocus": {
       "label": "autofocus",
-      "title": "原生 autofocus 属性",
+      "title": "原生 <code>autofocus</code> 属性",
       "types": [
         {
           "name": "boolean",
@@ -221,17 +232,18 @@
     },
     "auto-insert-space": {
       "label": "插入空格",
-      "title": "自动在两个中文字符之间插入空格",
+      "title": "两个中文字符之间自动插入空格(仅当文本长度为 2 且所有字符均为中文时才生效)",
       "types": [
         {
           "name": "boolean",
           "tag": "el-switch"
         }
-      ]
+      ],
+      "default": false
     },
     "color": {
-      "label": "按钮颜色",
-      "title": "自定义按钮颜色, 并自动计算 hover 和 active 触发后的颜色",
+      "label": "颜色",
+      "title": "自定义按钮颜色, 并自动计算 <code>hover</code> 和 <code>active</code> 触发后的颜色",
       "types": [
         {
           "name": "string",
@@ -241,7 +253,7 @@
     },
     "dark": {
       "label": "dark 模式",
-      "title": "dark 模式, 意味着自动设置 color 为 dark 模式的颜色",
+      "title": "dark 模式, 意味着自动设置 <code>color</code> 为 dark 模式的颜色",
       "types": [
         {
           "name": "boolean",
@@ -252,7 +264,7 @@
     },
     "tag": {
       "label": "自定义元素标签",
-      "title": "自定义元素标签，比如按钮，div，路由链接，nuxt链接",
+      "title": "自定义元素标签",
       "types": [
         {
           "name": "string",
@@ -284,5 +296,36 @@
       "title": "自定义图标组件"
     }
   ],
-  "desc": "常用的操作按钮。"
+  "exposes": [
+    {
+      "name": "ref",
+      "title": "按钮 html 元素",
+      "type": "object",
+      "details": "Ref<HTMLButtonElement>"
+    },
+    {
+      "name": "size",
+      "title": "按钮尺寸",
+      "type": "object",
+      "details": "ComputedRef<'' | 'small' | 'default' | 'large'>"
+    },
+    {
+      "name": "type",
+      "title": "按钮类型",
+      "type": "object",
+      "details": "ComputedRef<'' | 'default' | 'primary' | 'success' | 'warning' | 'info' | 'danger' | 'text'>"
+    },
+    {
+      "name": "disabled",
+      "title": "按钮已禁用",
+      "type": "object",
+      "details": "ComputedRef<boolean>"
+    },
+    {
+      "name": "shouldAddSpace",
+      "title": "是否在两个字符之间插入空格",
+      "type": "object",
+      "details": "ComputedRef<boolean>"
+    }
+  ]
 }

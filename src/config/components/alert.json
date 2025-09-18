@@ -1,6 +1,7 @@
 {
   "__id__": "alert",
   "name": "提示",
+  "desc": "用于页面中展示重要的提示信息。",
   "tag": "el-alert",
   "tagIcon": "alert",
   "layouts": [
@@ -30,16 +31,20 @@
           "tag": "el-select",
           "options": [
             {
+              "label": "primary",
+              "value": "primary"
+            },
+            {
               "label": "success",
               "value": "success"
             },
             {
-              "label": "info",
-              "value": "info"
-            },
-            {
               "label": "warning",
               "value": "warning"
+            },
+            {
+              "label": "info",
+              "value": "info"
             },
             {
               "label": "error",
@@ -132,16 +137,44 @@
         }
       ],
       "default": "light"
+    },
+    "show-after": {
+      "label": "在触发后多久显示内容",
+      "title": "在触发后多久显示内容，单位毫秒",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0,
+      "version": "2.10.0"
+    },
+    "hide-after": {
+      "label": "延迟关闭",
+      "title": "延迟关闭，单位毫秒",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 200,
+      "version": "2.10.0"
+    },
+    "auto-close": {
+      "label": "出现后自动隐藏延时",
+      "title": "alert 出现后自动隐藏延时，单位毫秒",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0,
+      "version": "2.10.0"
     }
   },
-  "events": [
-    {
-      "name": "close",
-      "title": "关闭 Alert 时触发的事件",
-      "type": "Function",
-      "fnDes": "(event: MouseEvent) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
@@ -150,7 +183,26 @@
     {
       "name": "title",
       "title": "标题的内容"
+    },
+    {
+      "name": "icon",
+      "title": "icon 的内容",
+      "version": "2.9.7"
     }
   ],
-  "desc": "用于页面中展示重要的提示信息。"
+  "events": [
+    {
+      "name": "open ",
+      "version": "2.10.0",
+      "title": "开启 Alert 时触发的事件",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "close",
+      "title": "关闭 Alert 时触发的事件",
+      "type": "function",
+      "details": "(event?: Event) => void"
+    }
+  ]
 }

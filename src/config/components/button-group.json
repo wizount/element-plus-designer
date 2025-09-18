@@ -1,6 +1,7 @@
 {
   "__id__": "button-group",
   "name": "按钮组",
+  "desc": "常用的操作按钮。",
   "tag": "el-button-group",
   "tagIcon": "button-group",
   "layouts": [
@@ -13,7 +14,7 @@
   "attributes": {
     "size": {
       "label": "尺寸",
-      "title": "尺寸",
+      "title": "用于控制该按钮组内按钮的大小",
       "types": [
         {
           "name": "enum",
@@ -36,12 +37,11 @@
             }
           ]
         }
-      ],
-      "default": "default"
+      ]
     },
     "type": {
       "label": "类型",
-      "title": "类型",
+      "title": "用于控制该按钮组内按钮的类型",
       "types": [
         {
           "name": "enum",
@@ -80,6 +80,5 @@
         "button"
       ]
     }
-  ],
-  "desc": "常用的操作按钮。"
+  ]
 }

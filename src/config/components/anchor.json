@@ -1,23 +1,32 @@
 {
+  "__id__": "anchor",
+  "name": "锚点",
+  "desc": "通过锚点，您可以很快找到当前页面上信息内容的位置。",
+  "tag": "el-anchor",
+  "tagIcon": "anchor",
+  "layouts": [
+    "rawItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/anchor.html",
   "attributes": {
     "container": {
+      "label": "滚动的容器",
       "title": "滚动的容器",
       "types": [
         {
-          "name": "string`",
-          "tag": ""
+          "name": "string",
+          "tag": "el-input"
         },
         {
-          "name": "`HTMLElement`",
-          "tag": ""
+          "name": "HTMLElement"
         },
         {
-          "name": "`Window",
-          "tag": ""
+          "name": "Window"
         }
       ]
     },
     "offset": {
+      "label": "滚动的偏移量",
       "title": "设置锚点滚动的偏移量",
       "types": [
         {
@@ -28,6 +37,7 @@
       "default": 0
     },
     "bound": {
+      "label": "触发元素的位置偏移量",
       "title": "触发锚点的元素的位置偏移量",
       "types": [
         {
@@ -38,6 +48,7 @@
       "default": 15
     },
     "duration": {
+      "label": "容器滚动持续时间",
       "title": "设置容器滚动持续时间，单位为毫秒。",
       "types": [
         {
@@ -48,6 +59,7 @@
       "default": 300
     },
     "marker": {
+      "label": "显示标记",
       "title": "是否显示标记",
       "types": [
         {
@@ -58,6 +70,7 @@
       "default": true
     },
     "type": {
+      "label": "锚点类型",
       "title": "设置锚点类型",
       "types": [
         {
@@ -81,6 +94,7 @@
       "default": "default"
     },
     "direction": {
+      "label": "锚点方向",
       "title": "设置锚点方向",
       "types": [
         {
@@ -104,6 +118,7 @@
       "default": "vertical"
     },
     "select-scroll-top": {
+      "label": "滚动时",
       "title": "滚动时，链接是否选中位于顶部",
       "types": [
         {
@@ -113,53 +128,35 @@
       ],
       "default": false,
       "version": "2.9.2"
-    },
-    "title": {
-      "title": "链接的文本内容。",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "href": {
-      "title": "链接的地址。",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
     }
   },
   "slots": [
     {
       "name": "default",
-      "title": "AnchorLink 组件列表"
+      "title": "AnchorLink 组件列表",
+      "subtags": ["anchor-link"]
     }
   ],
   "events": [
     {
       "name": "change",
       "title": "step 改变时的回调",
-      "type": "Function",
-      "fnDes": "(href: string) => void"
+      "type": "function",
+      "details": "(href: string) => void"
     },
     {
       "name": "click",
       "title": "当用户点击链接时触发",
-      "type": "Function",
-      "fnDes": "(e: MouseEvent, href?: string) => void"
+      "type": "function",
+      "details": "(e: MouseEvent, href?: string) => void"
     }
   ],
   "exposes": [
     {
       "name": "scrollTo",
       "title": "手动滚动到特定位置。",
-      "type": "Function",
-      "fnDes": "(href: string) => void"
+      "type": "function",
+      "details": "(href: string) => void"
     }
-  ],
-  "desc": "通过锚点，您可以很快找到当前页面上信息内容的位置。"
+  ]
 }

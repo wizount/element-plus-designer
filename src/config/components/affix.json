@@ -1,6 +1,7 @@
 {
   "__id__": "affix",
   "name": "固钉",
+  "desc": "将页面元素固定在特定可视区域。",
   "tag": "el-affix",
   "tagIcon": "affix",
   "layouts": [
@@ -9,7 +10,7 @@
   "document": "https://element-plus.org/zh-CN/component/affix.html",
   "attributes": {
     "offset": {
-      "label": "",
+      "label": "偏移距离",
       "title": "偏移距离",
       "types": [
         {
@@ -20,8 +21,8 @@
       "default": 0
     },
     "position": {
-      "label": "",
-      "title": "位置",
+      "label": "位置",
+      "title": "固钉位置",
       "types": [
         {
           "name": "enum",
@@ -44,8 +45,8 @@
       "default": "top"
     },
     "target": {
-      "label": "",
-      "title": "指定容器 (CSS 选择器)",
+      "label": "指定容器",
+      "title": "指定容器（CSS 选择器）",
       "types": [
         {
           "name": "string",
@@ -57,8 +58,8 @@
       ]
     },
     "z-index": {
-      "label": "",
-      "title": "z-index",
+      "label": "z-index",
+      "title": "<code>z-index</code>",
       "types": [
         {
           "name": "number",
@@ -68,25 +69,38 @@
       "default": 100
     }
   },
-  "events": [
-    {
-      "name": "change",
-      "title": "固钉状态改变时触发的事件",
-      "type": "Function",
-      "fnDes": "(fixed: boolean) => void"
-    },
-    {
-      "name": "scroll",
-      "title": "滚动时触发的事件",
-      "type": "Function",
-      "fnDes": "(value: { scrollTop: number, fixed: boolean }) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
       "title": "自定义默认内容"
     }
   ],
-  "desc": "将页面元素固定在特定可视区域。"
+  "events": [
+    {
+      "name": "change",
+      "title": "固钉状态改变时触发的事件",
+      "type": "function",
+      "details": "(fixed: boolean) => void"
+    },
+    {
+      "name": "scroll",
+      "title": "滚动时触发的事件",
+      "type": "function",
+      "details": "(value: { scrollTop: number, fixed: boolean }) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "update",
+      "title": "手动更新固钉状态",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "updateRoot",
+      "title": "手动更新根元素的盒模型信息",
+      "type": "function",
+      "details": "() => void"
+    }
+  ]
 }

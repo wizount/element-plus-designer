@@ -1,6 +1,7 @@
 {
   "__id__": "check-tag",
   "name": "可选中标签",
+  "desc": "用于标记和选择。",
   "tag": "el-check-tag",
   "tagIcon": "check-tag",
   "layouts": [
@@ -20,7 +21,8 @@
       "default": false
     },
     "disabled": {
-      "title": "whether the check-tag is disabled",
+      "label": "禁用",
+      "title": "是否禁用",
       "types": [
         {
           "name": "boolean",
@@ -31,6 +33,7 @@
       "version": "2.8.2"
     },
     "type": {
+      "label": "CheckTag 类型",
       "title": "CheckTag 类型",
       "types": [
         {
@@ -64,19 +67,18 @@
       "version": "2.5.4"
     }
   },
-  "events": [
-    {
-      "name": "change",
-      "title": "点击 Check Tag 时触发的事件",
-      "type": "Function",
-      "fnDes": "(value: boolean) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
       "title": "自定义默认内容"
     }
   ],
-  "desc": "用于标记和选择。"
+  "events": [
+    {
+      "name": "change",
+      "title": "点击 Check Tag 时触发的事件",
+      "type": "function",
+      "details": "(value: boolean) => void"
+    }
+  ]
 }

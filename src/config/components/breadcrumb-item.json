@@ -1,6 +1,7 @@
 {
   "__id__": "breadcrumb-item",
   "name": "面包屑子项",
+  "desc": "显示当前页面的路径，快速返回之前的任意页面。",
   "tag": "el-breadcrumb-item",
   "tagIcon": "breadcrumb-item",
   "layouts": [
@@ -13,7 +14,7 @@
   "attributes": {
     "to": {
       "label": "跳转目标",
-      "title": "路由跳转目标，同 vue-router 的 to 属性",
+      "title": "路由跳转目标，同 <code>vue-router</code> 的 <code>to</code> 属性",
       "types": [
         {
           "name": "string",
@@ -30,7 +31,7 @@
     },
     "replace": {
       "label": "不留下历史记录",
-      "title": "如果设置该属性为 true, 导航将不会留下历史记录",
+      "title": "如果设置该属性为 <code>true</code>, 导航将不会留下历史记录",
       "types": [
         {
           "name": "boolean",
@@ -45,6 +46,5 @@
       "name": "default",
       "title": "自定义默认内容"
     }
-  ],
-  "desc": "显示当前页面的路径，快速返回之前的任意页面。"
+  ]
 }

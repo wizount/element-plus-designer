@@ -1,6 +1,7 @@
 {
   "__id__": "color-picker",
   "name": "颜色选择",
+  "desc": "用于颜色选择，支持多种格式。",
   "tag": "el-color-picker",
   "tagIcon": "color",
   "layouts": [
@@ -90,7 +91,7 @@
     },
     "popper-class": {
       "label": "下拉框的类名",
-      "title": "el-color-picker 下拉框的类名",
+      "title": "下拉框的类名",
       "types": [
         {
           "name": "string",
@@ -103,7 +104,7 @@
     },
     "predefine": {
       "label": "预设颜色",
-      "title": "预设颜色",
+      "title": "预定义颜色",
       "types": [
         {
           "name": "array",
@@ -127,7 +128,7 @@
       "default": true
     },
     "tabindex": {
-      "label": "",
+      "label": "ColorPicker 的 tabindex",
       "title": "ColorPicker 的 tabindex",
       "types": [
         {
@@ -137,18 +138,8 @@
       ],
       "default": 0
     },
-    "label": {
-      "title": "ColorPicker 的 aria-label",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ],
-      "a11y": true,
-      "deprecated": true
-    },
     "aria-label": {
+      "label": "ColorPicker 的 aria-label",
       "title": "ColorPicker 的 aria-label",
       "types": [
         {
@@ -159,8 +150,42 @@
       "a11y": true,
       "version": "2.7.2"
     },
+    "empty-values": {
+      "label": "组件的空值配置",
+      "title": "组件的空值配置",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "version": "2.10.3"
+    },
+    "value-on-clear": {
+      "label": "清空选项的值",
+      "title": "清空选项的值",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        },
+        {
+          "name": "function",
+          "details": ""
+        }
+      ],
+      "version": "2.10.3"
+    },
     "id": {
-      "label": "",
+      "label": "ColorPicker 的 id",
       "title": "ColorPicker 的 id",
       "types": [
         {
@@ -173,6 +198,7 @@
       ]
     },
     "teleported": {
+      "label": "将 popover 的下拉列表渲染至 body 下",
       "title": "是否将 popover 的下拉列表渲染至 body 下",
       "types": [
         {
@@ -182,71 +208,107 @@
       ],
       "default": true,
       "version": "2.7.2"
+    },
+    "label": {
+      "label": "ColorPicker 的 aria-label",
+      "title": "ColorPicker 的 aria-label",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "deprecated": true
+    },
+    "persistent": {
+      "label": "当颜色选择器未激活且 persistent 为 false 时",
+      "title": "当颜色选择器未激活且 persistent 为 false 时，颜色面板将被销毁。",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.10.5"
+    },
+    "append-to": {
+      "label": "挂载到哪个 DOM 元素",
+      "title": "挂载到哪个 DOM 元素",
+      "types": [
+        {
+          "name": "cssselector"
+        },
+        {
+          "name": "htmlelement"
+        }
+      ],
+      "version": "2.10.5"
     }
   },
   "events": [
     {
       "name": "change",
       "title": "当绑定值变化时触发",
-      "type": "Function",
-      "fnDes": "(value: string) => void"
+      "type": "function",
+      "details": "(value: string) => void"
     },
     {
       "name": "active-change",
       "title": "面板中当前显示的颜色发生改变时触发",
-      "type": "Function",
-      "fnDes": "(value: string) => void"
+      "type": "function",
+      "details": "(value: string) => void"
     },
     {
-      "name": "focus",
+      "name": "focus ",
+      "version": "2.4.0",
       "title": "当获得焦点时触发",
-      "type": "Function",
-      "version": "2.4.0",
-      "fnDes": "(event: FocusEvent) => void"
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
     },
     {
-      "name": "blur",
-      "title": "当失去焦点时触发",
-      "type": "Function",
+      "name": "blur ",
       "version": "2.4.0",
-      "fnDes": "(event: FocusEvent) => void"
+      "title": "当失去焦点时触发",
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
     }
   ],
   "exposes": [
     {
       "name": "color",
       "title": "当前色彩对象",
-      "type": "^[object]`Color`"
+      "type": "object",
+      "details": "Color"
     },
     {
-      "name": "show",
+      "name": "show ",
+      "version": "2.3.3",
       "title": "手动显示颜色选择器",
-      "type": "Function",
-      "version": "2.3.3",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
-      "name": "hide",
+      "name": "hide ",
+      "version": "2.3.3",
       "title": "手动隐藏颜色选择器",
-      "type": "Function",
-      "version": "2.3.3",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
-      "name": "focus",
+      "name": "focus ",
+      "version": "2.3.13",
       "title": "使 picker 获得焦点",
-      "type": "Function",
-      "version": "2.3.13",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
-      "name": "blur",
-      "title": "使 picker 失去焦点",
-      "type": "Function",
+      "name": "blur ",
       "version": "2.3.13",
-      "fnDes": "() => void"
+      "title": "使 picker 失去焦点",
+      "type": "function",
+      "details": "() => void"
     }
-  ],
-  "slots": [],
-  "desc": "用于颜色选择，支持多种格式。"
+  ]
 }

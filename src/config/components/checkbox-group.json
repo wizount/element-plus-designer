@@ -1,6 +1,7 @@
 {
   "__id__": "checkbox-group",
   "name": "多选框组",
+  "desc": "在一组备选项中进行多选。",
   "tag": "el-checkbox-group",
   "tagIcon": "checkbox",
   "layouts": [
@@ -34,8 +35,7 @@
             }
           ]
         }
-      ],
-      "default": "default"
+      ]
     },
     "disabled": {
       "label": "禁用",
@@ -68,22 +68,9 @@
         }
       ]
     },
-    "label": {
-      "label": "",
-      "title": "为屏幕阅读器准备的标签",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ],
-      "deprecated": true
-    },
     "aria-label": {
-      "title": "原生 `aria-label`属性",
+      "label": "原生 aria-label属性",
+      "title": "原生 <code>aria-label</code>属性",
       "types": [
         {
           "name": "string",
@@ -113,10 +100,10 @@
           "tag": "el-color-picker"
         }
       ],
-      "default": "#409EFF"
+      "default": "#409eff"
     },
     "tag": {
-      "label": "",
+      "label": "复选框组元素标签",
       "title": "复选框组元素标签",
       "types": [
         {
@@ -131,7 +118,7 @@
     },
     "validate-event": {
       "label": "表单校验",
-      "title": "输入时是否触发表单的校验",
+      "title": "是否触发表单验证",
       "types": [
         {
           "name": "boolean",
@@ -139,16 +126,23 @@
         }
       ],
       "default": true
+    },
+    "label": {
+      "label": "原生 aria-label属性",
+      "title": "原生 <code>aria-label</code>属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "a11y": true,
+      "deprecated": true
     }
   },
-  "events": [
-    {
-      "name": "change",
-      "title": "当绑定值变化时触发的事件",
-      "type": "Function",
-      "fnDes": "(value: string[] | number[]) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
@@ -157,6 +151,14 @@
         "checkbox",
         "checkbox-button"
       ]
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "title": "当绑定值变化时触发的事件",
+      "type": "function",
+      "details": "(value: string[] | number[]) => void"
     }
   ],
   "data": {
@@ -199,6 +201,5 @@
       "method": "get",
       "dataKey": "list"
     }
-  },
-  "desc": "在一组备选项中进行多选。"
+  }
 }

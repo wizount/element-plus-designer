@@ -1,9 +1,40 @@
 {
   "__id__": "checkbox-button",
+  "name": "",
+  "desc": "在一组备选项中进行多选。",
+  "tag": "el-checkbox-button",
+  "tagIcon": "checkbox-button",
+  "layouts": [
+    "containerItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/checkbox-button.html",
   "attributes": {
+    "value": {
+      "label": "选中状态的值",
+      "title": "选中状态的值，只有在绑定对象类型为 <code>array</code> 时有效。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "version": "2.6.0"
+    },
     "label": {
-      "label": "",
-      "title": "选中状态的值，只有在绑定对象类型为 `array` 时有效。",
+      "label": "选中状态的值",
+      "title": "选中状态的值，只有在绑定对象类型为 <code>array</code> 时有效。 如果没有 value， <code>label</code>则作为<code>value</code>使用",
       "types": [
         {
           "name": "string",
@@ -27,6 +58,7 @@
       ]
     },
     "true-value": {
+      "label": "选中时的值",
       "title": "选中时的值",
       "types": [
         {
@@ -37,6 +69,7 @@
       "version": "2.6.0"
     },
     "false-value": {
+      "label": "没有选中时的值",
       "title": "没有选中时的值",
       "types": [
         {
@@ -45,53 +78,9 @@
         }
       ],
       "version": "2.6.0"
-    },
-    "value": {
-      "title": "选中状态的值，只有在绑定对象类型为 `array` 时有效。",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        },
-        {
-          "name": "number",
-          "tag": "el-input-number"
-        },
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        },
-        {
-          "name": "object",
-          "tag": "object-editor"
-        }
-      ],
-      "version": "2.6.0"
-    },
-    "true-label": {
-      "label": "",
-      "title": "选中时的值",
-      "types": [
-        {
-          "name": "stringNumber",
-          "tag": "string-number-input"
-        }
-      ],
-      "deprecated": true
-    },
-    "false-label": {
-      "label": "",
-      "title": "没有选中时的值",
-      "types": [
-        {
-          "name": "stringNumber",
-          "tag": "string-number-input"
-        }
-      ],
-      "deprecated": true
     },
     "disabled": {
-      "label": "",
+      "label": "禁用",
       "title": "是否禁用",
       "types": [
         {
@@ -102,7 +91,7 @@
       "default": false
     },
     "name": {
-      "label": "",
+      "label": "原生 name 属性",
       "title": "原生 name 属性",
       "types": [
         {
@@ -115,7 +104,7 @@
       ]
     },
     "checked": {
-      "label": "",
+      "label": "当前是否勾选",
       "title": "当前是否勾选",
       "types": [
         {
@@ -124,6 +113,28 @@
         }
       ],
       "default": false
+    },
+    "true-label": {
+      "label": "选中时的值",
+      "title": "选中时的值",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "deprecated": true
+    },
+    "false-label": {
+      "label": "没有选中时的值",
+      "title": "没有选中时的值",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "deprecated": true
     }
   },
   "slots": [
@@ -131,6 +142,5 @@
       "name": "default",
       "title": "自定义默认内容"
     }
-  ],
-  "desc": "在一组备选项中进行多选。"
+  ]
 }

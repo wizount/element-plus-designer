@@ -1,6 +1,7 @@
 {
   "__id__": "calendar",
   "name": "日历",
+  "desc": "显示日期",
   "tag": "el-calendar",
   "tagIcon": "calendar",
   "layouts": [
@@ -31,14 +32,41 @@
   "slots": [
     {
       "name": "date-cell",
-      "title": "`type` 表示该日期的所属月份，可选值有 prev-month、current-month 和 next-month；`isSelected` 标明该日期是否被选中；`day` 是格式化的日期，格式为 `yyyy-MM-dd`；`date` 是单元格的日期",
-      "type": "^[object]`{ data: { type: 'prev-month' | 'current-month' | 'next-month', isSelected: boolean, day: string, date: Date } }`"
+      "title": "<code>type</code> 表示该日期的所属月份，可选值有 prev-month、current-month 和 next-month；<code>isSelected</code> 标明该日期是否被选中；<code>day</code> 是格式化的日期，格式为 <code>yyyy-MM-dd</code>；<code>date</code> 是单元格的日期",
+      "type": "object",
+      "details": "{ data: { type: 'prev-month' | 'current-month' | 'next-month', isSelected: boolean, day: string, date: Date } }"
     },
     {
       "name": "header",
       "title": "卡片标题内容",
-      "type": "^[object]`{ date: string }`"
+      "type": "object",
+      "details": "{ date: string }"
     }
   ],
-  "desc": "显示日期"
+  "exposes": [
+    {
+      "name": "selectedDay",
+      "title": "当前已选日期",
+      "type": "object",
+      "details": "ComputedRef<Dayjs | undefined>"
+    },
+    {
+      "name": "pickDay",
+      "title": "选择一个具体日期",
+      "type": "function",
+      "details": "(day: dayjs.Dayjs) => void"
+    },
+    {
+      "name": "selectDate",
+      "title": "选择日期",
+      "type": "function",
+      "details": "(type: CalendarDateType) => void"
+    },
+    {
+      "name": "calculateValidatedDateRange",
+      "title": "根据开始与结束日期计算验证日期范围",
+      "type": "function",
+      "details": "(startDayjs: dayjs.Dayjs, endDayjs: dayjs.Dayjs) => [dayjs.Dayjs, dayjs.Dayjs][]"
+    }
+  ]
 }
