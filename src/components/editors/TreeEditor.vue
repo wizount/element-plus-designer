@@ -93,7 +93,7 @@ watchEffect(() => {
     treeData.value = [];
   }
 })
-const editItem = (event, node) => {//看能不能改成promise
+const editItem = (event, node) => {
   tempItem.value = deepClone(node.data)
   popupRef.value.popup({x: event.clientX, y: event.clientY}, tempItem.value).then(res => {
     Object.assign(node.data, res);

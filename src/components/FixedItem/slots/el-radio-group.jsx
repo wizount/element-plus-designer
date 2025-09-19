@@ -3,7 +3,8 @@ import {ElRadio, ElRadioButton} from "element-plus";
 export default {
   options(h, conf, key) {
     const list = []
-    conf.__data__.options&&conf.__data__.options.forEach((item) => {
+    const options =  conf.__data__&& conf.__data__.options||conf.__props__.options
+    options&&options.forEach((item) => {
       if (conf.__config__.optionType === 'button') {
         list.push(h(ElRadioButton, {value: item.value},()=> item.label))
       } else {

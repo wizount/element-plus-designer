@@ -9,7 +9,6 @@ export default {
         if (props['list-type'] === 'picture-card') {
             defaultSlot = <ElIcon><Plus/></ElIcon>
         } else {
-            console.info("11")
             defaultSlot = <ElButton type="primary">点击上传</ElButton>
         }
         let tipSlot = null;

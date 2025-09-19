@@ -23,6 +23,9 @@ export function renderHtml(itemList) {
 
 //总入口
 const renderItemList = (itemList) => {
+    if(typeof itemList === 'string') {
+        return itemList;
+    }
     if (!itemList||!Array.isArray( itemList )) {//todo 增加其他解析
         return ""
     }
@@ -195,7 +198,9 @@ const renderSlots = (item) => {
         }
         const array = [];
         for (const slotName in slots) {
+
             let s = renderItemList(slots[slotName]);
+            console.info(slots[slotName],s)
             if (s && slotName !== "default") {
                 s = `<template_alt #${slotName}>${s}</template_alt>` //fixme js beauty不支持这个
             }
