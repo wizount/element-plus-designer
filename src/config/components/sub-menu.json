@@ -1,6 +1,7 @@
 {
   "__id__": "sub-menu",
   "name": "子菜单",
+  "desc": "为网站提供导航功能的菜单。",
   "tag": "el-sub-menu",
   "tagIcon": "sub-menu",
   "layouts": [
@@ -42,25 +43,23 @@
     },
     "show-timeout": {
       "label": "展开延时",
-      "title": "展开 sub-menu 的延时",
+      "title": "子菜单出现之前的延迟，(继承 menu 的 <code>show-timeout</code> 配置)",
       "types": [
         {
           "name": "number",
           "tag": "el-input-number"
         }
-      ],
-      "default": 300
+      ]
     },
     "hide-timeout": {
       "label": "收起延时",
-      "title": "收起 sub-menu 的延时",
+      "title": "子菜单消失之前的延迟，(继承 menu 的 <code>hide-timeout</code> 配置)",
       "types": [
         {
           "name": "number",
           "tag": "el-input-number"
         }
-      ],
-      "default": 300
+      ]
     },
     "disabled": {
       "label": "禁用",
@@ -73,44 +72,29 @@
       ],
       "default": false
     },
-    "popper-append-to-body": {
-      "label": "弹出菜单插入至 body 元素",
-      "title": "是否将弹出菜单插入至 body 元素。 在菜单的定位出现问题时，可尝试修改该属性",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": "一级子菜单：true / 非一级子菜单：false",
-      "deprecated": true,
-      "hide": true
-    },
     "teleported": {
-      "label": "",
-      "title": "是否将 popup 的下拉列表插入至 body 元素",
+      "label": "将弹出菜单挂载到 body 上",
+      "title": "是否将弹出菜单挂载到 body 上，第一级SubMenu默认值为 true，其他SubMenus 的值为 false",
       "types": [
         {
           "name": "boolean",
           "tag": "el-switch"
         }
-      ],
-      "default": "一级子菜单：true / 非一级子菜单：false"
+      ]
     },
     "popper-offset": {
       "label": "弹出窗口偏移",
-      "title": "弹出窗口偏移",
+      "title": "弹出窗口的偏移量 (覆盖 <code>popper</code>的菜单)",
       "types": [
         {
           "name": "number",
           "tag": "el-input-number"
         }
-      ],
-      "default": 6
+      ]
     },
     "expand-close-icon": {
       "label": "父展开子关闭图标",
-      "title": "父菜单展开且子菜单关闭时的图标， expand-close-icon 和 expand-open-icon 需要一起配置才能生效",
+      "title": "父菜单展开且子菜单关闭时的图标， <code>expand-close-icon</code> 和 <code>expand-open-icon</code> 需要一起配置才能生效",
       "types": [
         {
           "name": "string",
@@ -120,7 +104,7 @@
     },
     "expand-open-icon": {
       "label": "父展开子打开图标",
-      "title": "父菜单展开且子菜单打开时的图标， expand-open-icon 和 expand-close-icon 需要一起配置才能生效",
+      "title": "父菜单展开且子菜单打开时的图标， <code>expand-open-icon</code> 和 <code>expand-close-icon</code> 需要一起配置才能生效",
       "types": [
         {
           "name": "string",
@@ -130,7 +114,7 @@
     },
     "collapse-close-icon": {
       "label": "父收起子关闭图标",
-      "title": "父菜单收起且子菜单关闭时的图标， expand-close-icon 和 expand-open-icon 需要一起配置才能生效",
+      "title": "父菜单收起且子菜单关闭时的图标， <code>collapse-close-icon</code> 和 <code>collapse-open-icon</code> 需要一起配置才能生效",
       "types": [
         {
           "name": "string",
@@ -140,7 +124,7 @@
     },
     "collapse-open-icon": {
       "label": "父收起子打开图标",
-      "title": "父菜单收起且子菜单打开时的图标， expand-open-icon 和 expand-close-icon 需要一起配置才能生效",
+      "title": "父菜单收起且子菜单打开时的图标， <code>collapse-open-icon</code> 和 <code>collapse-close-icon</code> 需要一起配置才能生效",
       "types": [
         {
           "name": "string",
@@ -163,6 +147,5 @@
       "name": "title",
       "title": "自定义标题内容"
     }
-  ],
-  "desc": "为网站提供导航功能的菜单。"
+  ]
 }

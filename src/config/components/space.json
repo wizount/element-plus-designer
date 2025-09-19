@@ -1,6 +1,7 @@
 {
   "__id__": "space",
   "name": "间距",
+  "desc": "虽然我们拥有 [Divider 组件](/zh-CN/component/divider)，但很多时候我们需要不是一个被 [Divider 组件](/zh-CN/component/divider) 分割开的页面结构，因此我们会重复的使用很多的 [Divider 组件](/zh-CN/component/divider)，这在我们的开发效率上造成了一定的困扰。 **间距组件**就是为了解决这种困扰应运而生的。",
   "tag": "el-space",
   "tagIcon": "space",
   "layouts": [
@@ -39,7 +40,7 @@
     },
     "class": {
       "label": "类名",
-      "title": "类名",
+      "title": "className",
       "types": [
         {
           "name": "string",
@@ -99,6 +100,10 @@
       "label": "样式",
       "title": "额外样式",
       "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
         {
           "name": "object",
           "tag": "style-editor"
@@ -202,6 +207,5 @@
       "name": "default",
       "title": "需要添加间隔的元素"
     }
-  ],
-  "desc": "虽然我们拥有 [Divider 组件](/zh-CN/component/divider)，但很多时候我们需要不是一个被 [Divider 组件](/zh-CN/component/divider) 分割开的页面结构，因此我们会重复的使用很多的 [Divider 组件](/zh-CN/component/divider)，这在我们的开发效率上造成了一定的困扰。 **间距组件**就是为了解决这种困扰应运而生的。"
+  ]
 }

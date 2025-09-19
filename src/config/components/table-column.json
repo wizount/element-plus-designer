@@ -1,6 +1,7 @@
 {
   "__id__": "table-column",
   "name": "表格子项",
+  "desc": "用于展示多条结构类似的数据， 可对数据进行排序、筛选、对比或其他自定义操作。",
   "tag": "el-table-column",
   "tagIcon": "table-column",
   "layouts": [
@@ -13,14 +14,15 @@
   "attributes": {
     "type": {
       "label": "列类型",
-      "title": "对应列的类型。 如果设置了selection则显示多选框； 如果设置了 index 则显示该行的索引（从 1 开始计算）； 如果设置了 expand 则显示为一个可展开的按钮",
+      "title": "对应列的类型。 如果设置了<code>selection</code>则显示多选框； 如果设置了<code> index</code> 则显示该行的索引（从 1 开始计算）； 如果设置了<code> expand</code> 则显示为一个可展开的按钮",
       "types": [
         {
           "name": "enum",
           "tag": "el-select",
           "options": [
             {
-              "label": "默认"
+              "label": "default",
+              "value": "default"
             },
             {
               "label": "selection",
@@ -36,18 +38,22 @@
             }
           ]
         }
-      ]
+      ],
+      "default": "default"
     },
     "index": {
       "label": "自定义索引",
-      "title": "如果设置了 type=index，可以通过传递 index 属性来自定义索引",
+      "title": "如果设置了 <code>type=index</code>，可以通过传递 <code>index</code> 属性来自定义索引",
       "types": [
         {
           "name": "number",
           "tag": "el-input-number"
+        },
+        {
+          "name": "function",
+          "details": "(index: number) => number"
         }
-      ],
-      "hide": true
+      ]
     },
     "label": {
       "label": "列标题",
@@ -77,7 +83,7 @@
     },
     "prop": {
       "label": "字段名",
-      "title": "字段名称 对应列内容的字段名， 也可以使用 property属性",
+      "title": "字段名称 对应列内容的字段名， 也可以使用 <code>property</code>属性",
       "types": [
         {
           "name": "string",
@@ -100,7 +106,7 @@
     },
     "min-width": {
       "label": "最小宽度",
-      "title": "对应列的最小宽度， 对应列的最小宽度， 与 width 的区别是 width 是固定的，min-width 会把剩余宽度按比例分配给设置了 min-width 的列",
+      "title": "对应列的最小宽度， 对应列的最小宽度， 与 <code>width</code> 的区别是 <code>width</code> 是固定的，<code>min-width</code> 会把剩余宽度按比例分配给设置了 <code>min-width</code> 的列",
       "types": [
         {
           "name": "stringNumber",
@@ -110,7 +116,7 @@
     },
     "fixed": {
       "label": "列固定位置",
-      "title": "列是否固定在左侧或者右侧。 true 表示固定在左侧",
+      "title": "列是否固定在左侧或者右侧。 <code>true</code> 表示固定在左侧",
       "types": [
         {
           "name": "enum",
@@ -132,20 +138,23 @@
               "value": "right"
             }
           ]
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
         }
-      ]
+      ],
+      "default": false
     },
     "render-header": {
-      "label": "",
+      "label": "列标题 Label 区域渲染使用的 Function",
       "title": "列标题 Label 区域渲染使用的 Function",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "{ column, $index }"
+          "details": "(data: { column: any, $index: number }) => void"
         }
-      ],
-      "hide": true
+      ]
     },
     "sortable": {
       "label": "排序",
@@ -176,25 +185,23 @@
       "default": false
     },
     "sort-method": {
-      "label": "",
-      "title": "指定数据按照哪个属性进行排序，仅当sortable设置为true的时候有效。 应该如同 Array.sort 那样返回一个 Number",
+      "label": "指定数据按照哪个属性进行排序",
+      "title": "指定数据按照哪个属性进行排序，仅当<code>sortable</code>设置为<code>true</code>的时候有效。 应该如同 Array.sort 那样返回一个 Number",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "a, b"
+          "details": "<T = any>(a: T, b: T) => number"
         }
-      ],
-      "hide": true
+      ]
     },
     "sort-by": {
-      "label": "",
+      "label": "指定数据按照哪个属性进行排序",
       "title": "指定数据按照哪个属性进行排序，仅当 sortable 设置为 true 且没有设置 sort-method 的时候有效。 如果 sort-by 为数组，则先按照第 1 个属性排序，如果第 1 个相等，再按照第 2 个排序，以此类推",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "row, index"
+
+          "details": "(row: any, index: number) => string"
         },
         {
           "name": "string",
@@ -207,33 +214,18 @@
           "name": "array",
           "tag": "array-editor"
         }
-      ],
-      "hide": true
+      ]
     },
     "sort-orders": {
-      "label": "",
+      "label": "数据在排序时所使用排序策略的轮转顺序",
       "title": "数据在排序时所使用排序策略的轮转顺序，仅当 sortable 为 true 时有效。 需传入一个数组，随着用户点击表头，该列依次按照数组中元素的顺序进行排序",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "数组中的元素需为以下三者之一：ascending 表示升序，descending 表示降序，null 表示还原为原始顺序",
-              "value": "数组中的元素需为以下三者之一：ascending 表示升序，descending 表示降序，null 表示还原为原始顺序"
-            }
-          ]
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
-      "default": [
-        "ascending",
-        "descending",
-        null
-      ],
-      "hide": true
+      "default": "['ascending', 'descending', null]"
     },
     "resizable": {
       "label": "改变宽度",
@@ -247,16 +239,16 @@
       "default": true
     },
     "formatter": {
-      "label": "",
+      "label": "用来格式化内容",
       "title": "用来格式化内容",
       "types": [
         {
           "name": "function",
-          "tag": "",
+
+          "details": "(row: any, column: any, cellValue: any, index: number) => VNode | string",
           "desc": "row, column, cellValue, index"
         }
-      ],
-      "hide": true
+      ]
     },
     "show-overflow-tooltip": {
       "label": "内容过长显示tooltip",
@@ -322,7 +314,8 @@
             }
           ]
         }
-      ]
+      ],
+      "default": "left"
     },
     "class-name": {
       "label": "列类名",
@@ -351,20 +344,20 @@
       ]
     },
     "selectable": {
-      "label": "",
+      "label": "仅对 type=selection 的列有效",
       "title": "仅对 type=selection 的列有效，类型为 Function，Function 的返回值用来决定这一行的 CheckBox 是否可以勾选",
       "types": [
         {
           "name": "function",
-          "tag": "",
+
+          "details": "(row: any, index: number) => boolean",
           "desc": "row, index"
         }
-      ],
-      "hide": true
+      ]
     },
     "reserve-selection": {
       "label": "反选",
-      "title": "仅对  type=selection 的列有效， 请注意， 需指定 row-key 来让这个功能生效。",
+      "title": "数据刷新后是否保留选项，仅对 <code> type=selection</code> 的列有效， 请注意， 需指定 <code>row-key</code> 来让这个功能生效。",
       "types": [
         {
           "name": "boolean",
@@ -374,37 +367,80 @@
       "default": false
     },
     "filters": {
-      "label": "",
+      "label": "数据过滤的选项",
       "title": "数据过滤的选项， 数组格式，数组中的元素需要有 text 和 value 属性。 数组中的每个元素都需要有 text 和 value 属性。",
       "types": [
         {
           "name": "array",
           "tag": "array-editor"
         }
-      ],
-      "hide": true
+      ]
     },
     "filter-placement": {
-      "label": "",
+      "label": "过滤弹出框的定位",
       "title": "过滤弹出框的定位",
       "types": [
         {
           "name": "enum",
           "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
           "options": [
             {
-              "label": "与 Tooltip 的 placement 属性相同",
-              "value": "与 Tooltip 的 placement 属性相同"
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "top-start",
+              "value": "top-start"
+            },
+            {
+              "label": "top-end",
+              "value": "top-end"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            },
+            {
+              "label": "bottom-start",
+              "value": "bottom-start"
+            },
+            {
+              "label": "bottom-end",
+              "value": "bottom-end"
+            },
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "left-start",
+              "value": "left-start"
+            },
+            {
+              "label": "left-end",
+              "value": "left-end"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            },
+            {
+              "label": "right-start",
+              "value": "right-start"
+            },
+            {
+              "label": "right-end",
+              "value": "right-end"
             }
-          ]
+          ],
+          "config": {
+            "optionType": "button"
+          }
         }
-      ],
-      "hide": true
+      ]
     },
     "filter-class-name": {
+      "label": "过滤弹出框的 className",
       "title": "过滤弹出框的 className",
       "types": [
         {
@@ -415,7 +451,7 @@
       "version": "2.5.0"
     },
     "filter-multiple": {
-      "label": "",
+      "label": "数据过滤的选项是否多选",
       "title": "数据过滤的选项是否多选",
       "types": [
         {
@@ -423,38 +459,36 @@
           "tag": "el-switch"
         }
       ],
-      "default": true,
-      "hide": true
+      "default": true
     },
     "filter-method": {
-      "label": "",
+      "label": "数据过滤使用的方法",
       "title": "数据过滤使用的方法， 如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "value, row, column"
+          "details": "(value: any, row: any, column: any) => void"
         }
-      ],
-      "hide": true
+      ]
     },
     "filtered-value": {
-      "label": "",
+      "label": "选中的数据过滤项",
       "title": "选中的数据过滤项，如果需要自定义表头过滤的渲染方式，可能会需要此属性。",
       "types": [
         {
-          "name": "array",
-          "tag": "array-editor"
+          "name": "object",
+          "tag": "object-editor"
         }
-      ],
-      "hide": true
+      ]
     },
     "tooltip-formatter": {
-      "title": "使用 `show-overflow-tooltip` 时自定义 tooltip 内容",
+      "label": "使用 show-overflow-tooltip 时自定义 tooltip 内容",
+      "title": "使用 <code>show-overflow-tooltip</code> 时自定义 tooltip 内容",
       "types": [
         {
           "name": "function",
-          "tag": "",
+
+          "details": "(data: { row: any, column: any, cellValue: any }) => VNode | string",
           "desc": "(data: { row: any, column: any, cellValue: any }) => VNode | string"
         }
       ],
@@ -465,19 +499,28 @@
     {
       "name": "default",
       "title": "自定义列的内容",
-      "type": "^[object]`{ row: any, column: any, $index: number }`"
+      "type": "object",
+      "details": "{ row: any, column: any, $index: number }"
     },
     {
       "name": "header",
       "title": "自定义表头的内容，",
-      "type": "^[object]`{ column: any, $index: number }`"
+      "type": "object",
+      "details": "{ column: any, $index: number }"
     },
     {
       "name": "filter-icon",
       "title": "自定义 filter 图标",
-      "type": "^[object]`{ filterOpened: boolean }`",
-      "version": "2.7.8"
+      "type": "object",
+      "version": "2.7.8",
+      "details": "{ filterOpened: boolean }"
+    },
+    {
+      "name": "expand",
+      "title": "展开列的自定义内容",
+      "type": "object",
+      "version": "2.10.0",
+      "details": "{ expanded: boolean }"
     }
-  ],
-  "desc": "用于展示多条结构类似的数据， 可对数据进行排序、筛选、对比或其他自定义操作。"
+  ]
 }

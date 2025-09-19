@@ -1,6 +1,7 @@
 {
   "__id__": "slider",
   "name": "滑块",
+  "desc": "通过拖动滑块在一个固定区间内进行选择",
   "tag": "el-slider",
   "tagIcon": "slider",
   "layouts": [
@@ -117,7 +118,7 @@
     },
     "input-size": {
       "label": "输入框的大小",
-      "title": "输入框的大小，如果设置了size属性，默认值自动取 size",
+      "title": "输入框的大小，如果设置了 <code>size</code> 属性，默认值自动取 <code>size</code>",
       "types": [
         {
           "name": "enum",
@@ -170,16 +171,16 @@
       "default": true
     },
     "format-tooltip": {
-      "label": "",
+      "label": "格式化提示信息",
       "title": "格式化提示信息",
       "types": [
         {
           "name": "function",
-          "tag": "",
+
+          "details": "(value: number) => number | string",
           "desc": "value"
         }
-      ],
-      "hide": true
+      ]
     },
     "range": {
       "label": "选择范围",
@@ -204,7 +205,7 @@
       "default": false
     },
     "height": {
-      "label": "滑块高度",
+      "label": "高度",
       "title": "滑块高度，垂直模式必填",
       "types": [
         {
@@ -220,22 +221,9 @@
         true
       ]
     },
-    "label": {
-      "label": "屏幕阅读器标签",
-      "title": "屏幕阅读器标签",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ],
-      "deprecated": true
-    },
     "aria-label": {
-      "title": "原生 `aria-label`属性",
+      "label": "原生 aria-label属性",
+      "title": "原生 <code>aria-label</code>属性",
       "types": [
         {
           "name": "string",
@@ -247,7 +235,7 @@
     },
     "range-start-label": {
       "label": "标签开始标记",
-      "title": "当 range 为true时，屏幕阅读器标签开始的标记",
+      "title": "当 <code>range</code> 为true时，屏幕阅读器标签开始的标记",
       "types": [
         {
           "name": "string",
@@ -264,7 +252,7 @@
     },
     "range-end-label": {
       "label": "标签结尾标记",
-      "title": "当 range 为true时，屏幕阅读器标签结尾的标记",
+      "title": "当 <code>range</code> 为true时，屏幕阅读器标签结尾的标记",
       "types": [
         {
           "name": "string",
@@ -280,20 +268,20 @@
       ]
     },
     "format-value-text": {
-      "label": "",
-      "title": "显示屏幕阅读器的 aria-valuenow 属性的格式",
+      "label": "显示屏幕阅读器的 aria-valuenow 属性的格式",
+      "title": "显示屏幕阅读器的 <code>aria-valuenow</code> 属性的格式",
       "types": [
         {
           "name": "function",
-          "tag": "",
+
+          "details": "(value: number) => string",
           "desc": "value"
         }
-      ],
-      "hide": true
+      ]
     },
     "debounce": {
       "label": "去抖延迟",
-      "title": "输入时的去抖延迟，毫秒，仅在 show-input 等于 true 时有效",
+      "title": "输入时的去抖延迟，毫秒，仅在 <code>show-input</code> 等于 true 时有效",
       "types": [
         {
           "name": "number",
@@ -378,7 +366,7 @@
     },
     "marks": {
       "label": "标记",
-      "title": "标记， key 的类型必须为 number 且取值在闭区间 [min, max] 内，每个标记可以单独设置样式",
+      "title": "标记， key 的类型必须为 <code>number</code> 且取值在闭区间 <code>[min, max]</code> 内，每个标记可以单独设置样式",
       "types": [
         {
           "name": "object",
@@ -398,7 +386,8 @@
       "default": true
     },
     "persistent": {
-      "title": "当 slider 的 tooltip 处于非活动状态且 `persistent` 为 `false` 时，Popconfirm 将被销毁。 当 `show-tooltip` 为 `false` 时，`persistent` 将始终为 `false`。",
+      "label": "当 slider 的 tooltip 处于非活动状态且 persistent 为 false 时",
+      "title": "当 slider 的 tooltip 处于非活动状态且 <code>persistent</code> 为 <code>false</code> 时，Popconfirm 将被销毁。 当 <code>show-tooltip</code> 为 <code>false</code> 时，<code>persistent</code> 将始终为 <code>false</code>。",
       "types": [
         {
           "name": "boolean",
@@ -407,22 +396,35 @@
       ],
       "default": true,
       "version": "2.9.5"
+    },
+    "label": {
+      "label": "屏幕阅读器标签",
+      "title": "原生 <code>aria-label</code>属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "a11y": true,
+      "deprecated": true
     }
   },
   "events": [
     {
       "name": "change",
       "title": "值改变时触发（使用鼠标拖曳时，只在松开鼠标后触发）",
-      "type": "Function",
-      "fnDes": "(value: Arrayable<number>) => boolean"
+      "type": "function",
+      "details": "(value: Arrayable<number>) => boolean"
     },
     {
       "name": "input",
       "title": "数据改变时触发（使用鼠标拖曳时，活动过程实时触发）",
-      "type": "Function",
-      "fnDes": "(value: Arrayable<number>) => boolean"
+      "type": "function",
+      "details": "(value: Arrayable<number>) => boolean"
     }
-  ],
-  "slots": [],
-  "desc": "通过拖动滑块在一个固定区间内进行选择"
+  ]
 }

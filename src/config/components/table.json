@@ -1,6 +1,7 @@
 {
   "__id__": "table",
   "name": "表格",
+  "desc": "用于展示多条结构类似的数据， 可对数据进行排序、筛选、对比或其他自定义操作。",
   "tag": "el-table",
   "tagIcon": "table",
   "layouts": [
@@ -13,7 +14,7 @@
   "attributes": {
     "data": {
       "label": "数据",
-      "title": "显示的数据",
+      "title": "表数据",
       "types": [
         {
           "name": "array",
@@ -24,7 +25,7 @@
     },
     "height": {
       "label": "高度",
-      "title": "Table 的高度， 默认为自动高度。 如果 height 为 number 类型，单位 px；如果 height 为 string 类型，则这个高度会设置为 Table 的 style.height 的值，Table 的高度会受控于外部样式。",
+      "title": "table 的高度。 默认为自动高度。 如果 height 为 number 类型，单位 px；如果 height 为 string 类型，则这个高度会设置为 Table 的 style.height 的值，Table 的高度会受控于外部样式。",
       "types": [
         {
           "name": "stringNumber",
@@ -34,7 +35,7 @@
     },
     "max-height": {
       "label": "最大高度",
-      "title": "Table 的最大高度。 合法的值为数字或者单位为 px 的高度。",
+      "title": "table 的最大高度。 合法的值为数字或者单位为 px 的高度。",
       "types": [
         {
           "name": "stringNumber",
@@ -136,13 +137,13 @@
       ]
     },
     "row-class-name": {
-      "label": "",
+      "label": "行的 className 的回调方法",
       "title": "行的 className 的回调方法，也可以使用字符串为所有行设置一个固定的 className。",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "{ row, rowIndex }"
+
+          "details": "(data: { row: any, rowIndex: number }) => string"
         },
         {
           "name": "string",
@@ -151,17 +152,15 @@
             "clearable": true
           }
         }
-      ],
-      "hide": true
+      ]
     },
     "row-style": {
-      "label": "",
+      "label": "行的 style 的回调方法",
       "title": "行的 style 的回调方法，也可以使用一个固定的 Object 为所有行设置一样的 Style。",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "{ row, rowIndex }"
+          "details": "(data: { row: any, rowIndex: number }) => CSSProperties"
         },
         {
           "name": "object",
@@ -171,13 +170,13 @@
       "hide": true
     },
     "cell-class-name": {
-      "label": "",
+      "label": "单元格的 className 的回调方法",
       "title": "单元格的 className 的回调方法，也可以使用字符串为所有单元格设置一个固定的 className。",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "{ row, column, rowIndex, columnIndex }"
+
+          "details": "(data: { row: any, column: any, rowIndex: number, columnIndex: number }) => string"
         },
         {
           "name": "string",
@@ -190,13 +189,13 @@
       "hide": true
     },
     "cell-style": {
-      "label": "",
+      "label": "单元格的 style 的回调方法",
       "title": "单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有单元格设置一样的 Style。",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "{ row, column, rowIndex, columnIndex }"
+
+          "details": "(data: { row: any, column: any, rowIndex: number, columnIndex: number }) => CSSProperties"
         },
         {
           "name": "object",
@@ -206,13 +205,13 @@
       "hide": true
     },
     "header-row-class-name": {
-      "label": "",
+      "label": "表头行的 className 的回调方法",
       "title": "表头行的 className 的回调方法，也可以使用字符串为所有表头行设置一个固定的 className。",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "{ row, rowIndex }"
+
+          "details": "(data: { row: any, rowIndex: number }) => string"
         },
         {
           "name": "string",
@@ -225,13 +224,13 @@
       "hide": true
     },
     "header-row-style": {
-      "label": "",
+      "label": "表头行的 style 的回调方法",
       "title": "表头行的 style 的回调方法，也可以使用一个固定的 Object 为所有表头行设置一样的 Style。",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "{ row, rowIndex }"
+
+          "details": "(data: { row: any, rowIndex: number }) => CSSProperties"
         },
         {
           "name": "object",
@@ -241,13 +240,13 @@
       "hide": true
     },
     "header-cell-class-name": {
-      "label": "",
+      "label": "表头单元格的 className 的回调方法",
       "title": "表头单元格的 className 的回调方法，也可以使用字符串为所有表头单元格设置一个固定的 className。",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "{ row, column, rowIndex, columnIndex }"
+
+          "details": "(data: { row: any, column: any, rowIndex: number, columnIndex: number }) => string"
         },
         {
           "name": "string",
@@ -260,13 +259,13 @@
       "hide": true
     },
     "header-cell-style": {
-      "label": "",
+      "label": "表头单元格的 style 的回调方法",
       "title": "表头单元格的 style 的回调方法，也可以使用一个固定的 Object 为所有表头单元格设置一样的 Style。",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "{ row, column, rowIndex, columnIndex }"
+
+          "details": "(data: { row: any, column: any, rowIndex: number, columnIndex: number }) => CSSProperties"
         },
         {
           "name": "object",
@@ -276,13 +275,13 @@
       "hide": true
     },
     "row-key": {
-      "label": "",
-      "title": "行数据的 Key，用来优化 Table 的渲染； 在使用reserve-selection功能与显示树形数据时，该属性是必填的。 类型为 String 时，支持多层访问：user.info.id，但不支持 user.info[0].id，此种情况请使用 Function。",
+      "label": "行数据的 Key",
+      "title": "行数据的 Key，用来优化 Table 的渲染； 在使用<code>reserve-selection</code>功能与显示树形数据时，该属性是必填的。 类型为 String 时，支持多层访问：<code>user.info.id</code>，但不支持 <code>user.info[0].id</code>，此种情况请使用 <code>Function</code>。",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "row"
+
+          "details": "(row: any) => string"
         },
         {
           "name": "string",
@@ -296,7 +295,7 @@
     },
     "empty-text": {
       "label": "无数据显示的文本内容",
-      "title": "空数据时显示的文本内容， 也可以通过 #empty 设置",
+      "title": "空数据时显示的文本内容， 也可以通过 <code>#empty</code> 设置",
       "types": [
         {
           "name": "string",
@@ -320,7 +319,7 @@
       "hide": true
     },
     "expand-row-keys": {
-      "label": "",
+      "label": "可以通过该属性设置 Table 目前的展开行",
       "title": "可以通过该属性设置 Table 目前的展开行，需要设置 row-key 属性才能使用，该属性为展开行的 keys 数组。",
       "types": [
         {
@@ -342,18 +341,22 @@
           },
           "options": [
             {
-              "label": "(order: 'ascending' 'descending')",
-              "value": "(order: 'ascending' 'descending')"
+              "label": "ascending",
+              "value": "ascending"
+            },
+            {
+              "label": "descending",
+              "value": "descending"
             }
           ]
         }
       ],
-      "default": "'descending')",
+      "default": "descending)",
       "hide": true
     },
     "tooltip-effect": {
-      "label": "",
-      "title": "tooltip effect 属性",
+      "label": "溢出的 tooltip 的 effect",
+      "title": "溢出的 tooltip 的 <code>effect</code>",
       "types": [
         {
           "name": "enum",
@@ -380,7 +383,7 @@
       "title": "溢出 tooltip 的选项，[参见下述 tooltip 组件](tooltip.html#attributes)",
       "types": [
         {
-          "name": "string",
+          "name": "object",
           "tag": "object-editor"
         }
       ],
@@ -396,6 +399,7 @@
       "version": "2.2.28"
     },
     "append-filter-panel-to": {
+      "label": "挂载到哪个 DOM 元素",
       "title": "挂载到哪个 DOM 元素",
       "types": [
         {
@@ -418,7 +422,7 @@
     },
     "sum-text": {
       "label": "合计第一列文本",
-      "title": "合计行第一列的文本",
+      "title": "显示摘要行第一列的文本",
       "types": [
         {
           "name": "string",
@@ -427,28 +431,29 @@
             "clearable": true
           }
         }
-      ]
+      ],
+      "default": "Sum"
     },
     "summary-method": {
-      "label": "",
+      "label": "自定义的合计计算方法",
       "title": "自定义的合计计算方法",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "{ columns, data }"
+
+          "details": "(data: { columns: any[], data: any[] }) => (VNode | string)[]"
         }
       ],
       "hide": true
     },
     "span-method": {
-      "label": "",
+      "label": "合并行或列的计算方法",
       "title": "合并行或列的计算方法",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "{ row, column, rowIndex, columnIndex }"
+
+          "details": "(data: { row: any, column: any, rowIndex: number, columnIndex: number }) => number[] | { rowspan: number, colspan: number } | void"
         }
       ],
       "hide": true
@@ -485,22 +490,21 @@
           "tag": "el-switch"
         }
       ],
-      "hide": true
+      "default": false=
     },
     "load": {
-      "label": "",
+      "label": "加载子节点数据的函数",
       "title": "加载子节点数据的函数，lazy 为 true 时生效，函数第二个参数包含了节点的层级信息",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "row, treeNode, resolve"
+          "details": "(row: any, treeNode: TreeNode, resolve: (data: any[]) => void) => void"
         }
       ],
       "hide": true
     },
     "tree-props": {
-      "label": "",
+      "label": "渲染嵌套数据的配置选项",
       "title": "渲染嵌套数据的配置选项",
       "types": [
         {
@@ -508,7 +512,7 @@
           "tag": "object-editor"
         }
       ],
-      "default": "{ hasChildren: 'hasChildren', children: 'children' }",
+      "default": { "hasChildren": "hasChildren", "children": "children" },
       "hide": true
     },
     "table-layout": {
@@ -548,18 +552,17 @@
     },
     "show-overflow-tooltip": {
       "label": "隐藏额外内容",
-      "title": "是否隐藏额外内容并在单元格悬停时使用 Tooltip 显示它们。这将影响全部列的展示。",
+      "title": "是否隐藏额外内容并在单元格悬停时使用 Tooltip 显示它们。这将影响全部列的展示，详请参考[object Object]",
       "types": [
         {
           "name": "boolean",
           "tag": "el-switch"
         }
-      ],
-      "default": false
+      ]
     },
     "flexible": {
       "label": "确保主轴最小尺寸",
-      "title": "确保主轴的最小尺寸",
+      "title": "确保主轴的最小尺寸，以便不超过内容",
       "types": [
         {
           "name": "boolean",
@@ -570,6 +573,7 @@
       "version": "2.2.1"
     },
     "scrollbar-tabindex": {
+      "label": "body 的滚动条的包裹容器 tabindex",
       "title": "body 的滚动条的包裹容器 tabindex",
       "types": [
         {
@@ -580,6 +584,7 @@
       "version": "2.8.3"
     },
     "allow-drag-last-column": {
+      "label": "允许拖动最后一列",
       "title": "是否允许拖动最后一列",
       "types": [
         {
@@ -591,234 +596,47 @@
       "version": "2.9.2"
     },
     "tooltip-formatter": {
-      "title": "自定义 `show-overflow-tooltip` 时的 tooltip 内容",
+      "label": "自定义 show-overflow-tooltip 时的 tooltip 内容",
+      "title": "自定义 <code>show-overflow-tooltip</code> 时的 tooltip 内容",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(data: { row: any, column: any, cellValue: any }) => VNode | string"
+
+          "details": "(data: { row: any, column: any, cellValue: any }) => VNode | string"
         }
       ],
       "version": "2.9.4"
+    },
+    "preserve-expanded-content": {
+      "label": "在折叠后是否在DOM中保留展开行内容",
+      "title": "在折叠后是否在DOM中保留展开行内容",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.9.7"
+    },
+    "native-scrollbar": {
+      "label": "使用原生滚动条样式",
+      "title": "是否使用原生滚动条样式",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.10.5"
     }
   },
-  "events": [
-    {
-      "name": "select",
-      "title": "当用户手动勾选数据行的 Checkbox 时触发的事件",
-      "type": "Function",
-      "fnDes": "^[Function]`<T = any>(selection: T[], row: T) => void"
-    },
-    {
-      "name": "select-all",
-      "title": "当用户手动勾选全选 Checkbox 时触发的事件",
-      "type": "Function",
-      "fnDes": "(selection: any[]) => void"
-    },
-    {
-      "name": "selection-change",
-      "title": "当选择项发生变化时会触发该事件",
-      "type": "Function",
-      "fnDes": "(newSelection: any[]) => void"
-    },
-    {
-      "name": "cell-mouse-enter",
-      "title": "当单元格 hover 进入时会触发该事件",
-      "type": "Function",
-      "fnDes": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
-    },
-    {
-      "name": "cell-mouse-leave",
-      "title": "当单元格 hover 退出时会触发该事件",
-      "type": "Function",
-      "fnDes": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
-    },
-    {
-      "name": "cell-click",
-      "title": "当某个单元格被点击时会触发该事件",
-      "type": "Function",
-      "fnDes": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
-    },
-    {
-      "name": "cell-dblclick",
-      "title": "当某个单元格被双击击时会触发该事件",
-      "type": "Function",
-      "fnDes": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
-    },
-    {
-      "name": "cell-contextmenu",
-      "title": "当某个单元格被鼠标右键点击时会触发该事件",
-      "type": "Function",
-      "fnDes": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
-    },
-    {
-      "name": "row-click",
-      "title": "当某一行被点击时会触发该事件",
-      "type": "Function",
-      "fnDes": "(row: any, column: any, event: Event) => void"
-    },
-    {
-      "name": "row-contextmenu",
-      "title": "当某一行被鼠标右键点击时会触发该事件",
-      "type": "Function",
-      "fnDes": "(row: any, column: any, event: Event) => void"
-    },
-    {
-      "name": "row-dblclick",
-      "title": "当某一行被双击时会触发该事件",
-      "type": "Function",
-      "fnDes": "(row: any, column: any, event: Event) => void"
-    },
-    {
-      "name": "header-click",
-      "title": "当某一列的表头被点击时会触发该事件",
-      "type": "Function",
-      "fnDes": "(column: any, event: Event) => void"
-    },
-    {
-      "name": "header-contextmenu",
-      "title": "当某一列的表头被鼠标右键点击时触发该事件",
-      "type": "Function",
-      "fnDes": "(column: any, event: Event) => void"
-    },
-    {
-      "name": "sort-change",
-      "title": "当表格的排序条件发生变化的时候会触发该事件",
-      "type": "Function",
-      "fnDes": "(data: {column: any, prop: string, order: any }) => void"
-    },
-    {
-      "name": "filter-change",
-      "title": "column 的 key， 如果需要使用 filter-change 事件，则需要此属性标识是哪个 column 的筛选条件",
-      "type": "Function",
-      "fnDes": "(newFilters: any) => void"
-    },
-    {
-      "name": "current-change",
-      "title": "当表格的当前行发生变化的时候会触发该事件，如果要高亮当前行，请打开表格的 highlight-current-row 属性",
-      "type": "Function",
-      "fnDes": "(currentRow: any, oldCurrentRow: any) => void"
-    },
-    {
-      "name": "header-dragend",
-      "title": "当拖动表头改变了列的宽度的时候会触发该事件",
-      "type": "Function",
-      "fnDes": "(newWidth: number, oldWidth: number, column: any, event: MouseEvent) => void"
-    },
-    {
-      "name": "expand-change",
-      "title": "当用户对某一行展开或者关闭的时候会触发该事件（展开行时，回调的第二个参数为 expandedRows；树形表格时第二参数为 expanded）",
-      "type": "Function",
-      "fnDes": "(row: any, expandedRows: any[]) => void & (row: any, expanded: boolean) => void"
-    },
-    {
-      "name": "scroll",
-      "title": "表格被用户滚动后触发",
-      "type": "Function",
-      "version": "2.9.0",
-      "fnDes": "({ scrollLeft: number, scrollTop: number }) => void"
-    }
-  ],
-  "exposes": [
-    {
-      "name": "clearSelection",
-      "title": "用于多选表格，清空用户的选择",
-      "type": "Function",
-      "fnDes": "() => void"
-    },
-    {
-      "name": "getSelectionRows",
-      "title": "返回当前选中的行",
-      "type": "Function",
-      "fnDes": "() => any[]"
-    },
-    {
-      "name": "toggleRowSelection",
-      "title": "用于多选表格，切换某一行的选中状态， 如果使用了第二个参数，则可直接设置这一行选中与否",
-      "type": "Function",
-      "fnDes": "(row: any, selected?: boolean, ignoreSelectable = true) => void"
-    },
-    {
-      "name": "toggleAllSelection",
-      "title": "用于多选表格，切换全选和全不选",
-      "type": "Function",
-      "fnDes": "() => void"
-    },
-    {
-      "name": "toggleRowExpansion",
-      "title": "用于可扩展的表格或树表格，如果某行被扩展，则切换。 使用第二个参数，您可以直接设置该行应该被扩展或折叠。",
-      "type": "Function",
-      "fnDes": "(row: any, expanded?: boolean) => void"
-    },
-    {
-      "name": "setCurrentRow",
-      "title": "用于单选表格，设定某一行为选中行， 如果调用时不加参数，则会取消目前高亮行的选中状态。",
-      "type": "Function",
-      "fnDes": "(row: any) => void"
-    },
-    {
-      "name": "clearSort",
-      "title": "用于清空排序条件，数据会恢复成未排序的状态",
-      "type": "Function",
-      "fnDes": "() => void"
-    },
-    {
-      "name": "clearFilter",
-      "title": "传入由`columnKey` 组成的数组以清除指定列的过滤条件。 如果没有参数，清除所有过滤器",
-      "type": "Function",
-      "fnDes": "(columnKeys?: string[]) => void"
-    },
-    {
-      "name": "doLayout",
-      "title": "对 Table 进行重新布局。 当表格可见性变化时，您可能需要调用此方法以获得正确的布局",
-      "type": "Function",
-      "fnDes": "() => void"
-    },
-    {
-      "name": "sort",
-      "title": "手动排序表格。 参数 `prop` 属性指定排序列，`order` 指定排序顺序。",
-      "type": "Function",
-      "fnDes": "(prop: string, order: string) => void"
-    },
-    {
-      "name": "scrollTo",
-      "title": "滚动到一组特定坐标",
-      "type": "Function",
-      "fnDes": "(options: number | ScrollToOptions, yCoord?: number) => void"
-    },
-    {
-      "name": "setScrollTop",
-      "title": "设置垂直滚动位置",
-      "type": "Function",
-      "fnDes": "(top?: number) => void"
-    },
-    {
-      "name": "setScrollLeft",
-      "title": "设置水平滚动位置",
-      "type": "Function",
-      "fnDes": "(left?: number) => void"
-    },
-    {
-      "name": "columns",
-      "title": "获取表列的 context",
-      "type": "^[array]`TableColumnCtx<T>[]`",
-      "version": "2.7.6"
-    },
-    {
-      "name": "updateKeyChildren",
-      "title": "适用于 lazy Table, 需要设置 `rowKey`, 更新 key children",
-      "type": "Function",
-      "version": "2.8.4",
-      "fnDes": "(key: string, data: T[]) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
       "title": "自定义默认内容",
-      "subtags": [
-        "table-column"
-      ]
+      "subtags": ["table-column"]
     },
     {
       "name": "append",
@@ -827,6 +645,216 @@
     {
       "name": "empty",
       "title": "当数据为空时自定义的内容"
+    }
+  ],
+  "events": [
+    {
+      "name": "select",
+      "title": "当用户手动勾选数据行的 Checkbox 时触发的事件",
+      "type": "function",
+      "details": "<T = any>(selection: T[], row: T) => void"
+    },
+    {
+      "name": "select-all",
+      "title": "当用户手动勾选全选 Checkbox 时触发的事件",
+      "type": "function",
+      "details": "(selection: any[]) => void"
+    },
+    {
+      "name": "selection-change",
+      "title": "当选择项发生变化时会触发该事件",
+      "type": "function",
+      "details": "(newSelection: any[]) => void"
+    },
+    {
+      "name": "cell-mouse-enter",
+      "title": "当单元格 hover 进入时会触发该事件",
+      "type": "function",
+      "details": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
+    },
+    {
+      "name": "cell-mouse-leave",
+      "title": "当单元格 hover 退出时会触发该事件",
+      "type": "function",
+      "details": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
+    },
+    {
+      "name": "cell-click",
+      "title": "当某个单元格被点击时会触发该事件",
+      "type": "function",
+      "details": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
+    },
+    {
+      "name": "cell-dblclick",
+      "title": "当某个单元格被双击击时会触发该事件",
+      "type": "function",
+      "details": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
+    },
+    {
+      "name": "cell-contextmenu",
+      "title": "当某个单元格被鼠标右键点击时会触发该事件",
+      "type": "function",
+      "details": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
+    },
+    {
+      "name": "row-click",
+      "title": "当某一行被点击时会触发该事件",
+      "type": "function",
+      "details": "(row: any, column: any, event: Event) => void"
+    },
+    {
+      "name": "row-contextmenu",
+      "title": "当某一行被鼠标右键点击时会触发该事件",
+      "type": "function",
+      "details": "(row: any, column: any, event: Event) => void"
+    },
+    {
+      "name": "row-dblclick",
+      "title": "当某一行被双击时会触发该事件",
+      "type": "function",
+      "details": "(row: any, column: any, event: Event) => void"
+    },
+    {
+      "name": "header-click",
+      "title": "当某一列的表头被点击时会触发该事件",
+      "type": "function",
+      "details": "(column: any, event: Event) => void"
+    },
+    {
+      "name": "header-contextmenu",
+      "title": "当某一列的表头被鼠标右键点击时触发该事件",
+      "type": "function",
+      "details": "(column: any, event: Event) => void"
+    },
+    {
+      "name": "sort-change",
+      "title": "当表格的排序条件发生变化的时候会触发该事件",
+      "type": "function",
+      "details": "(data: {column: any, prop: string, order: any }) => void"
+    },
+    {
+      "name": "filter-change",
+      "title": "当表格的过滤条件发生变化的时候会触发该事件",
+      "type": "function",
+      "details": "(newFilters: any) => void"
+    },
+    {
+      "name": "current-change",
+      "title": "当表格的当前行发生变化的时候会触发该事件，如果要高亮当前行，请打开表格的 highlight-current-row 属性",
+      "type": "function",
+      "details": "(currentRow: any, oldCurrentRow: any) => void"
+    },
+    {
+      "name": "header-dragend",
+      "title": "当拖动表头改变了列的宽度的时候会触发该事件",
+      "type": "function",
+      "details": "(newWidth: number, oldWidth: number, column: any, event: MouseEvent) => void"
+    },
+    {
+      "name": "expand-change",
+      "title": "当用户对某一行展开或者关闭的时候会触发该事件（展开行时，回调的第二个参数为 expandedRows；树形表格时第二参数为 expanded）",
+      "type": "function",
+      "details": "(row: any, expandedRows: any[]) => void & (row: any, expanded: boolean) => void"
+    },
+    {
+      "name": "scroll ",
+      "version": "2.9.0",
+      "title": "表格被用户滚动后触发",
+      "type": "function",
+      "details": "({ scrollLeft: number, scrollTop: number }) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "clearSelection",
+      "title": "用于多选表格，清空用户的选择",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "getSelectionRows",
+      "title": "返回当前选中的行",
+      "type": "function",
+      "details": "() => any[]"
+    },
+    {
+      "name": "toggleRowSelection",
+      "title": "用于多选表格，切换某一行的选中状态， 如果使用了第二个参数，则可直接设置这一行选中与否",
+      "type": "function",
+      "details": "(row: any, selected?: boolean, ignoreSelectable = true) => void"
+    },
+    {
+      "name": "toggleAllSelection",
+      "title": "用于多选表格，切换全选和全不选",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "toggleRowExpansion",
+      "title": "用于可扩展的表格或树表格，如果某行被扩展，则切换。 使用第二个参数，您可以直接设置该行应该被扩展或折叠。",
+      "type": "function",
+      "details": "(row: any, expanded?: boolean) => void"
+    },
+    {
+      "name": "setCurrentRow",
+      "title": "用于单选表格，设定某一行为选中行， 如果调用时不加参数，则会取消目前高亮行的选中状态。",
+      "type": "function",
+      "details": "(row: any) => void"
+    },
+    {
+      "name": "clearSort",
+      "title": "用于清空排序条件，数据会恢复成未排序的状态",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "clearFilter",
+      "title": "传入由<code>columnKey</code> 组成的数组以清除指定列的过滤条件。 如果没有参数，清除所有过滤器",
+      "type": "function",
+      "details": "(columnKeys?: string[]) => void"
+    },
+    {
+      "name": "doLayout",
+      "title": "对 Table 进行重新布局。 当表格可见性变化时，您可能需要调用此方法以获得正确的布局",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "sort",
+      "title": "手动排序表格。 参数 <code>prop</code> 属性指定排序列，<code>order</code> 指定排序顺序。",
+      "type": "function",
+      "details": "(prop: string, order: string) => void"
+    },
+    {
+      "name": "scrollTo",
+      "title": "滚动到一组特定坐标",
+      "type": "function",
+      "details": "(options: number | ScrollToOptions, yCoord?: number) => void"
+    },
+    {
+      "name": "setScrollTop",
+      "title": "设置垂直滚动位置",
+      "type": "function",
+      "details": "(top?: number) => void"
+    },
+    {
+      "name": "setScrollLeft",
+      "title": "设置水平滚动位置",
+      "type": "function",
+      "details": "(left?: number) => void"
+    },
+    {
+      "name": "columns ",
+      "version": "2.7.6",
+      "title": "获取表列的 context",
+      "type": "array"
+    },
+    {
+      "name": "updateKeyChildren ",
+      "version": "2.8.4",
+      "title": "适用于 lazy Table, 需要设置 <code>rowKey</code>, 更新 key children",
+      "type": "function",
+      "details": "(key: string, data: T[]) => void"
     }
   ],
   "data": {
@@ -876,6 +904,5 @@
       "method": "get",
       "dataKey": ""
     }
-  },
-  "desc": "用于展示多条结构类似的数据， 可对数据进行排序、筛选、对比或其他自定义操作。"
+  }
 }

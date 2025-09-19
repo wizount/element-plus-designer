@@ -1,6 +1,7 @@
 {
   "__id__": "statistic",
   "name": "统计组件",
+  "desc": "显示统计数据。",
   "tag": "el-statistic",
   "tagIcon": "statistic",
   "layouts": [
@@ -34,16 +35,14 @@
       "default": "."
     },
     "formatter": {
-      "label": "",
+      "label": "自定义数字格式化",
       "title": "自定义数字格式化",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(value: number) => string | number"
+          "details": "(value: number) => string | number"
         }
-      ],
-      "hide": true
+      ]
     },
     "group-separator": {
       "label": "千分位",
@@ -125,16 +124,6 @@
           "tag": "style-editor"
         }
       ]
-    },
-    "format": {
-      "title": "格式化倒计时",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ],
-      "default": "HH:mm:ss"
     }
   },
   "slots": [
@@ -155,8 +144,8 @@
     {
       "name": "displayValue",
       "title": "当前显示值",
-      "type": "^[object]`Ref<string | number>`"
+      "type": "object",
+      "details": "Ref<string | number>"
     }
-  ],
-  "desc": "显示统计数据。"
+  ]
 }

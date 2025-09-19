@@ -1,6 +1,7 @@
 {
   "__id__": "skeleton",
   "name": "骨架",
+  "desc": "在需要等待加载内容的位置设置一个骨架屏，某些场景下比 Loading 的视觉效果更好。",
   "tag": "el-skeleton",
   "tagIcon": "skeleton",
   "layouts": [
@@ -54,75 +55,32 @@
     },
     "throttle": {
       "label": "渲染延迟",
-      "title": "渲染延迟（以毫秒为单位）",
+      "title": "渲染延迟（以毫秒为单位） 数字代表延迟显示, 也可以设置为延迟隐藏, 例如 <code>{ leading: 500, trailing: 500 }</code> 当需要控制初始加载值时，您可以设置 <code>{ initVal: true }</code>",
       "types": [
         {
           "name": "number",
           "tag": "el-input-number"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
       "default": 0
-    },
-    "variant": {
-      "title": "当前渲染 skeleton 类型",
-      "types": [
-        {
-          "name": "enum",
-          "tag": "el-select",
-          "options": [
-            {
-              "label": "p",
-              "value": "p"
-            },
-            {
-              "label": "text",
-              "value": "text"
-            },
-            {
-              "label": "h1",
-              "value": "h1"
-            },
-            {
-              "label": "h3",
-              "value": "h3"
-            },
-            {
-              "label": "caption",
-              "value": "caption"
-            },
-            {
-              "label": "button",
-              "value": "button"
-            },
-            {
-              "label": "image",
-              "value": "image"
-            },
-            {
-              "label": "circle",
-              "value": "circle"
-            },
-            {
-              "label": "rect",
-              "value": "rect"
-            }
-          ]
-        }
-      ],
-      "default": "text"
     }
   },
   "slots": [
     {
       "name": "default",
       "title": "真正渲染的DOM",
-      "params": "^[object]`$attrs`"
+      "type": "object",
+      "details": "$attrs"
     },
     {
       "name": "template",
       "title": "渲染 skeleton 模板的内容",
-      "params": "^[object]`{ key: number }`"
+      "type": "object",
+      "details": "{ key: number }"
     }
-  ],
-  "desc": "在需要等待加载内容的位置设置一个骨架屏，某些场景下比 Loading 的视觉效果更好。"
+  ]
 }

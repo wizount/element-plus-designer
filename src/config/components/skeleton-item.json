@@ -1,8 +1,16 @@
 {
   "__id__": "skeleton-item",
+  "name": "",
+  "desc": "在需要等待加载内容的位置设置一个骨架屏，某些场景下比 Loading 的视觉效果更好。",
+  "tag": "el-skeleton-item",
+  "tagIcon": "skeleton-item",
+  "layouts": [
+    "containerItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/skeleton-item.html",
   "attributes": {
     "variant": {
-      "label": "",
+      "label": "当前渲染 skeleton 类型",
       "title": "当前渲染 skeleton 类型",
       "types": [
         {
@@ -50,7 +58,5 @@
       ],
       "default": "text"
     }
-  },
-  "slots": [],
-  "desc": "在需要等待加载内容的位置设置一个骨架屏，某些场景下比 Loading 的视觉效果更好。"
+  }
 }

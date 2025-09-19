@@ -1,6 +1,7 @@
 {
   "__id__": "tab-pane",
   "name": "标签页",
+  "desc": "分隔内容上有关联但属于不同类别的数据集合。",
   "tag": "el-tab-pane",
   "tagIcon": "tab-pane",
   "layouts": [
@@ -37,7 +38,7 @@
     },
     "name": {
       "label": "标识符",
-      "title": "与选项卡绑定值 value 对应的标识符，表示选项卡别名",
+      "title": "与选项卡绑定值 value 对应的标识符，表示选项卡别名。默认值是tab面板的序列号，如第一个 tab 是 0",
       "types": [
         {
           "name": "stringNumber",
@@ -77,6 +78,5 @@
       "name": "label",
       "title": "Tab-pane 的标题内容"
     }
-  ],
-  "desc": "分隔内容上有关联但属于不同类别的数据集合。"
+  ]
 }

@@ -1,6 +1,7 @@
 {
   "__id__": "steps",
   "name": "步骤条",
+  "desc": "引导用户按照流程完成任务的分步导航条， 可根据实际应用场景设定步骤，步骤不得少于 2 步。",
   "tag": "el-steps",
   "tagIcon": "steps",
   "layouts": [
@@ -130,8 +131,7 @@
           "name": "boolean",
           "tag": "el-switch"
         }
-      ],
-      "default": false
+      ]
     },
     "simple": {
       "label": "简洁风格",
@@ -141,65 +141,6 @@
           "name": "boolean",
           "tag": "el-switch"
         }
-      ],
-      "default": false
-    },
-    "title": {
-      "title": "标题",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "description": {
-      "title": "描述文案",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "icon": {
-      "title": "Step 组件的自定义图标。 也支持 slot 方式写入",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "status": {
-      "title": "设置当前步骤的状态， 不设置则根据 steps 确定状态",
-      "types": [
-        {
-          "name": "enum",
-          "tag": "el-select",
-          "options": [
-            {
-              "label": "wait",
-              "value": "wait"
-            },
-            {
-              "label": "process",
-              "value": "process"
-            },
-            {
-              "label": "finish",
-              "value": "finish"
-            },
-            {
-              "label": "error",
-              "value": "error"
-            },
-            {
-              "label": "success",
-              "value": "success"
-            }
-          ]
-        }
       ]
     }
   },
@@ -207,10 +148,7 @@
     {
       "name": "default",
       "title": "默认插槽",
-      "subtags": [
-        "step"
-      ]
+      "subtags": ["el-step"]
     }
-  ],
-  "desc": "引导用户按照流程完成任务的分步导航条， 可根据实际应用场景设定步骤，步骤不得少于 2 步。"
+  ]
 }
