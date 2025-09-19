@@ -1,6 +1,7 @@
 {
   "__id__": "tabs",
   "name": "标签页",
+  "desc": "分隔内容上有关联但属于不同类别的数据集合。",
   "tag": "el-tabs",
   "tagIcon": "tabs",
   "layouts": [
@@ -113,89 +114,22 @@
       "default": false
     },
     "before-leave": {
-      "label": "",
-      "title": "切换标签之前的钩子函数， 若返回 false  或者返回被 reject 的 Promise，则阻止切换。",
+      "label": "切换标签之前的钩子函数",
+      "title": "切换标签之前的钩子函数， 若返回 <code>false </code> 或者返回被 reject 的 <code>Promise</code>，则阻止切换。",
       "types": [
         {
-          "name": "Function(activeName, oldActiveName)",
-          "tag": ""
+          "name": "function",
+          "details": "(activeName: TabPaneName, oldActiveName: TabPaneName) => Awaitable<void | boolean>"
         }
       ],
-      "hide": true
-    },
-    "label": {
-      "title": "选项卡标题",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "disabled": {
-      "title": "是否禁用",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false
-    },
-    "name": {
-      "title": "与选项卡绑定值 value 对应的标识符，表示选项卡别名。默认值是tab面板的序列号，如第一个 tab 是 0",
-      "types": [
-        {
-          "name": "stringNumber",
-          "tag": "string-number-input"
-        }
-      ]
-    },
-    "lazy": {
-      "title": "标签是否延迟渲染",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false
+      "default": "() => true"
     }
   },
-  "events": [
-    {
-      "name": "tab-click",
-      "title": "tab 被选中时触发",
-      "params": "^[Function]`(pane: TabsPaneContext, ev: Event) => void`"
-    },
-    {
-      "name": "tab-change",
-      "title": "`activeName` 改变时触发",
-      "params": "^[Function]`(name: TabPaneName) => void`"
-    },
-    {
-      "name": "tab-remove",
-      "title": "点击 tab 移除按钮时触发",
-      "params": "^[Function]`(name: TabPaneName) => void`"
-    },
-    {
-      "name": "tab-add",
-      "title": "点击 tab 新增按钮时触发",
-      "params": "^[Function]`() => void`"
-    },
-    {
-      "name": "edit",
-      "title": "点击 tab 的新增或移除按钮后触发",
-      "params": "^[Function]`(paneName: TabPaneName | undefined, action: 'remove' | 'add') => void`"
-    }
-  ],
   "slots": [
     {
       "name": "default",
       "title": "默认插槽",
-      "subtags": [
-        "tab-pane"
-      ]
+      "subtags": ["tab-pane"]
     },
     {
       "name": "add-icon",
@@ -209,5 +143,51 @@
       "deprecated": true
     }
   ],
-  "desc": "分隔内容上有关联但属于不同类别的数据集合。"
+  "events": [
+    {
+      "name": "tab-click",
+      "title": "tab 被选中时触发",
+      "type": "function",
+      "details": "(pane: TabsPaneContext, ev: Event) => void"
+    },
+    {
+      "name": "tab-change",
+      "title": "<code>activeName</code> 改变时触发",
+      "type": "function",
+      "details": "(name: TabPaneName) => void"
+    },
+    {
+      "name": "tab-remove",
+      "title": "点击 tab 移除按钮时触发",
+      "type": "function",
+      "details": "(name: TabPaneName) => void"
+    },
+    {
+      "name": "tab-add",
+      "title": "点击 tab 新增按钮时触发",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "edit",
+      "title": "点击 tab 的新增或移除按钮后触发",
+      "type": "function",
+      "details": "(paneName: TabPaneName | undefined, action: 'remove' | 'add') => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "currentName",
+      "title": "当前活动的面板名称",
+      "type": "object",
+      "details": "Ref<TabPaneName>"
+    },
+    {
+      "name": "tabNavRef ",
+      "version": "2.9.10",
+      "title": "tab-nav 组件实例",
+      "type": "object",
+      "details": "Ref<TabNavInstance | undefined>"
+    }
+  ]
 }

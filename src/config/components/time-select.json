@@ -1,6 +1,7 @@
 {
   "__id__": "time-select",
   "name": "时间选择",
+  "desc": "用于选择或输入日期",
   "tag": "el-time-select",
   "tagIcon": "time",
   "layouts": [
@@ -44,7 +45,8 @@
       "default": true
     },
     "include-end-time": {
-      "title": "是否在选项中包含`end`",
+      "label": "在选项中包含end",
+      "title": "是否在选项中包含<code>end</code>",
       "types": [
         {
           "name": "boolean",
@@ -83,7 +85,7 @@
       "default": "default"
     },
     "name": {
-      "label": "",
+      "label": "原生属性",
       "title": "原生属性",
       "types": [
         {
@@ -93,13 +95,16 @@
             "clearable": true
           }
         }
-      ],
-      "hide": true
+      ]
     },
     "effect": {
       "label": "主题",
-      "title": "Tooltip 主题，内置了 `dark` / `light` 两种主题",
+      "title": "Tooltip 主题，内置了 <code>dark</code> / <code>light</code> 两种主题",
       "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
         {
           "name": "enum",
           "tag": "el-radio-group",
@@ -143,7 +148,7 @@
       "default": "CircleClose"
     },
     "start": {
-      "label": "",
+      "label": "开始时间",
       "title": "开始时间",
       "types": [
         {
@@ -157,7 +162,7 @@
       "default": "09:00"
     },
     "end": {
-      "label": "",
+      "label": "结束时间",
       "title": "结束时间",
       "types": [
         {
@@ -171,7 +176,7 @@
       "default": "18:00"
     },
     "step": {
-      "label": "",
+      "label": "间隔时间",
       "title": "间隔时间",
       "types": [
         {
@@ -252,9 +257,7 @@
           "tag": "el-switch"
         },
         {
-          "name": "function",
-          "tag": "",
-          "desc": "^[string] / ^[number] / ^[boolean] / ^[Function"
+          "name": "function"
         }
       ],
       "version": "2.7.0"
@@ -264,43 +267,41 @@
     {
       "name": "change",
       "title": "用户确认选定的值时触发",
-      "type": "Function",
-      "fnDes": "(value: string) => void"
+      "type": "function",
+      "details": "(value: string) => void"
     },
     {
       "name": "blur",
       "title": "在组件 Input 失去焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
     },
     {
       "name": "focus",
       "title": "在组件 Input 获得焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
     },
     {
-      "name": "clear",
-      "title": "可清空的单选模式下用户点击清空按钮时触发",
-      "type": "Function",
+      "name": "clear ",
       "version": "2.7.7",
-      "fnDes": "() => void"
+      "title": "可清空的单选模式下用户点击清空按钮时触发",
+      "type": "function",
+      "details": "() => void"
     }
   ],
   "exposes": [
     {
       "name": "focus",
       "title": "使 input 获取焦点",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "blur",
       "title": "使 input 失去焦点",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     }
-  ],
-  "slots": [],
-  "desc": "用于选择或输入日期"
+  ]
 }

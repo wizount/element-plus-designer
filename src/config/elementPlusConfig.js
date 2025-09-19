@@ -226,6 +226,20 @@ export const elementPlusDisplayComponents = [
                 ]
             },
             {
+                name: "Splitter 分隔面板",
+                key: "splitter",
+                children: [
+                    {
+                        __id__: "splitter",
+                        __link__: [
+                            {
+                                __id__: "splitter-panel",
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 name: "Typography 排版",
                 key: "typography",
                 children: []

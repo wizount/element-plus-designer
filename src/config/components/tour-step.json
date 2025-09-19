@@ -1,6 +1,7 @@
 {
   "__id__": "tour-step",
   "name": "漫游式引导步骤",
+  "desc": "用于分步引导用户了解产品功能的气泡组件。 用来引导用户并介绍产品",
   "tag": "el-tour-step",
   "tagIcon": "tour-step",
   "layouts": [
@@ -13,7 +14,7 @@
   "attributes": {
     "target": {
       "label": "指向元素",
-      "title": "获取引导卡片指向的元素， 为空时居中于屏幕。 自2.5.2以来支持字符串和函数类型。 字符串类型是文档.querySelector的选择器。",
+      "title": "获取引导卡片指向的元素， 为空时居中于屏幕。 自[object Object]以来支持字符串和函数类型。 字符串类型是文档.querySelector的选择器。",
       "types": [
         {
           "name": "string",
@@ -33,8 +34,8 @@
       "default": true
     },
     "title": {
-      "label": "",
-      "title": "标题",
+      "label": "标题部分",
+      "title": "标题部分",
       "types": [
         {
           "name": "string",
@@ -43,7 +44,7 @@
       ]
     },
     "description": {
-      "label": "",
+      "label": "主要描述部分",
       "title": "主要描述部分",
       "types": [
         {
@@ -131,6 +132,10 @@
         {
           "name": "boolean",
           "tag": "el-switch"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
       "default": true
@@ -160,7 +165,7 @@
       "default": "default"
     },
     "next-button-props": {
-      "label": "",
+      "label": "“下一步”按钮的属性",
       "title": "“下一步”按钮的属性",
       "types": [
         {
@@ -170,7 +175,7 @@
       ]
     },
     "prev-button-props": {
-      "label": "",
+      "label": "“上一步”按钮的属性",
       "title": "“上一步”按钮的属性",
       "types": [
         {
@@ -181,7 +186,7 @@
     },
     "scroll-into-view-options": {
       "label": "支持当前元素滚动到视窗内",
-      "title": "是否支持当前元素滚动到视窗内，也可传入配置指定滚动视窗的相关参数",
+      "title": "是否支持当前元素滚动到视窗内，也可传入配置指定滚动视窗的相关参数，默认跟随 Tour 的 <code>scrollIntoViewOptions</code> 属性",
       "types": [
         {
           "name": "boolean",
@@ -226,15 +231,19 @@
     },
     {
       "name": "header",
-      "title": "header"
+      "title": "头部"
     }
   ],
   "events": [
     {
       "name": "close",
       "title": "关闭引导时的回调函数",
-      "params": "^[Function]`() => void`"
+      "params": [
+        {
+          "type": "Function",
+          "details": "() => void"
+        }
+      ]
     }
-  ],
-  "desc": "用于分步引导用户了解产品功能的气泡组件。 用来引导用户并介绍产品"
+  ]
 }

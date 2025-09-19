@@ -1,6 +1,7 @@
 {
   "__id__": "tooltip",
   "name": "文字提示",
+  "desc": "常用于展示鼠标 hover 时的提示信息。",
   "tag": "el-tooltip",
   "tagIcon": "tooltip",
   "layouts": [
@@ -9,24 +10,20 @@
   "document": "https://element-plus.org/zh-CN/component/tooltip.html",
   "attributes": {
     "append-to": {
-      "label": "",
+      "label": "指示 Tooltip 的内容将附加在哪一个网页元素上",
       "title": "指示 Tooltip 的内容将附加在哪一个网页元素上",
       "types": [
         {
-          "name": "CSSSelector",
-          "tag": ""
+          "name": "cssselector"
         },
         {
-          "name": "HTMLElement",
-          "tag": ""
+          "name": "htmlelement"
         }
-      ],
-      "default": "#el-popper-container-[randomValue]",
-      "hide": true
+      ]
     },
     "effect": {
       "label": "主题",
-      "title": "Tooltip 主题，内置了 dark / light 两种",
+      "title": "Tooltip 主题，内置了 <code>dark</code> / <code>light</code> 两种",
       "types": [
         {
           "name": "enum",
@@ -50,7 +47,7 @@
     },
     "content": {
       "label": "显示内容",
-      "title": "显示的内容，也可被 slot#content 覆盖",
+      "title": "显示的内容，也可被 <code>slot#content</code> 覆盖",
       "types": [
         {
           "name": "string",
@@ -63,7 +60,7 @@
     },
     "raw-content": {
       "label": "内容作为HTML字符串处理",
-      "title": "content 中的内容是否作为 HTML 字符串处理",
+      "title": "<code>content</code> 中的内容是否作为 HTML 字符串处理",
       "types": [
         {
           "name": "boolean",
@@ -134,21 +131,12 @@
       "default": "bottom"
     },
     "fallback-placements": {
-      "title": "list of possible positions for Tooltip [popper.js](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements)",
+      "label": "Tooltip 可用的 positions",
+      "title": "Tooltip 可用的 positions",
       "types": [
         {
-          "name": "arrary",
-          "tag": ""
-        }
-      ]
-    },
-    "visible": {
-      "label": "",
-      "title": "Tooltip 组件可见性",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
+          "name": "array",
+          "tag": "array-editor"
         }
       ]
     },
@@ -160,8 +148,7 @@
           "name": "boolean",
           "tag": "el-switch"
         }
-      ],
-      "default": false
+      ]
     },
     "offset": {
       "label": "偏移量",
@@ -185,29 +172,30 @@
             "clearable": true
           }
         }
-      ],
-      "default": "el-fade-in-linear"
+      ]
     },
     "popper-options": {
-      "label": "",
-      "title": "popper.js 参数",
+      "label": "popper.js  参数",
+      "title": "popper.js  参数",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "详见 popper.js 文档",
-              "value": "详见 popper.js 文档"
-            }
-          ]
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
-      "default": {},
-      "hide": true
+      "default": {}
+    },
+    "arrow-offset": {
+      "label": "控制Tooltip的箭头相对于弹出窗口的偏移",
+      "title": "控制Tooltip的箭头相对于弹出窗口的偏移(添加)。",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 5,
+      "version": "2.9.10"
     },
     "show-after": {
       "label": "触发后多久显示内容",
@@ -279,7 +267,7 @@
     },
     "teleported": {
       "label": "teleported",
-      "title": "是否使用 teleport。设置成 true则会被追加到 append-to 的位置",
+      "title": "是否使用 teleport。设置成 <code>true</code>则会被追加到 <code>append-to</code> 的位置",
       "types": [
         {
           "name": "boolean",
@@ -290,7 +278,7 @@
     },
     "trigger": {
       "label": "触发方式",
-      "title": "如何触发（展示） Tooltip",
+      "title": "如何触发 Tooltip",
       "types": [
         {
           "name": "enum",
@@ -319,29 +307,25 @@
     },
     "virtual-triggering": {
       "label": "虚拟触发器",
-      "title": "指示是否启用虚拟触发器",
+      "title": "用来标识虚拟触发是否被启用",
       "types": [
         {
           "name": "boolean",
           "tag": "el-switch"
         }
-      ],
-      "default": false,
-      "hide": true
+      ]
     },
     "virtual-ref": {
       "label": "参照元素",
-      "title": "代表 tooltip 所要附加的参照元素",
+      "title": "标识虚拟触发时的触发元素",
       "types": [
         {
-          "name": "HTMLElement",
-          "tag": ""
+          "name": "htmlelement"
         }
-      ],
-      "hide": true
+      ]
     },
     "trigger-keys": {
-      "label": "",
+      "label": "当鼠标点击或者聚焦在触发元素上时",
       "title": "当鼠标点击或者聚焦在触发元素上时， 可以定义一组键盘按键并且通过它们来控制 Tooltip 的显示",
       "types": [
         {
@@ -349,15 +333,11 @@
           "tag": "array-editor"
         }
       ],
-      "default": [
-        "Enter",
-        "Space"
-      ],
-      "hide": true
+      "default": "['Enter','Space']"
     },
     "persistent": {
-      "label": "",
-      "title": "当 tooltip 组件长时间不触发且 `persistent` 属性设置为 `false` 时, popconfirm 将会被删除",
+      "label": "当 tooltip 组件长时间不触发且 persistent 属性设置为 false 时",
+      "title": "当 tooltip 组件长时间不触发且 <code>persistent</code> 属性设置为 <code>false</code> 时, popconfirm 将会被删除",
       "types": [
         {
           "name": "boolean",
@@ -366,8 +346,8 @@
       ]
     },
     "aria-label": {
-      "label": "",
-      "title": "和 `aria-label` 属性保持一致",
+      "label": "和 aria-label 属性保持一致",
+      "title": "和 <code>aria-label</code> 属性保持一致",
       "types": [
         {
           "name": "string",
@@ -394,43 +374,44 @@
     {
       "name": "popperRef",
       "title": "el-popper 组件实例",
-      "type": "^[object]`Ref<PopperInstance | undefined>`"
+      "type": "object",
+      "details": "Ref<PopperInstance | undefined>"
     },
     {
       "name": "contentRef",
       "title": "el-tooltip-content 组件实例",
-      "type": "^[object]`Ref<TooltipContentInstance | undefined>`"
+      "type": "object",
+      "details": "Ref<TooltipContentInstance | undefined>"
     },
     {
       "name": "isFocusInsideContent",
       "title": "验证当前焦点事件是否在 el-tooltip-content 中触发",
-      "type": "Function",
-      "fnDes": "() => boolean | undefined"
+      "type": "function",
+      "details": "() => boolean | undefined"
     },
     {
       "name": "updatePopper",
       "title": "更新 el-popper组件实例",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "onOpen",
       "title": "onOpen 方法控制 el-tooltip 显示状态",
-      "type": "Function",
-      "fnDes": "(event?: Event | undefined) => void"
+      "type": "function",
+      "details": "(event?: Event | undefined) => void"
     },
     {
       "name": "onClose",
       "title": "onClose 方法控制 el-tooltip 显示状态",
-      "type": "Function",
-      "fnDes": "(event?: Event | undefined) => void"
+      "type": "function",
+      "details": "(event?: Event | undefined) => void"
     },
     {
       "name": "hide",
       "title": "提供 hide 方法",
-      "type": "Function",
-      "fnDes": "(event?: Event | undefined) => void"
+      "type": "function",
+      "details": "(event?: Event | undefined) => void"
     }
-  ],
-  "desc": "常用于展示鼠标 hover 时的提示信息。"
+  ]
 }

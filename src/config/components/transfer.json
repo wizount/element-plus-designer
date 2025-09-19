@@ -1,6 +1,7 @@
 {
   "__id__": "transfer",
   "name": "穿梭框",
+  "desc": "",
   "tag": "el-transfer",
   "tagIcon": "transfer",
   "layouts": [
@@ -11,7 +12,7 @@
     "vModel": "modelValue",
     "data": {
       "label": "数据源",
-      "title": "Transfer 的数据源Array<{ key, label, disabled }>",
+      "title": "Transfer 的数据源",
       "types": [
         {
           "name": "array",
@@ -72,14 +73,15 @@
       "types": [
         {
           "name": "function",
-          "tag": ""
+
+          "details": "(query: string, item: Record<string, any>) => boolean"
         }
       ],
       "hide": true
     },
     "target-order": {
       "label": "右侧元素排序策略",
-      "title": "右侧列表元素的排序策略： 若为 original，则保持与数据源相同的顺序； 若为 push，则新加入的元素排在最后； 若为 unshift，则新加入的元素排在最前",
+      "title": "右侧列表元素的排序策略： 若为 <code>original</code>，则保持与数据源相同的顺序； 若为 <code>push</code>，则新加入的元素排在最后； 若为 <code>unshift</code>，则新加入的元素排在最前",
       "types": [
         {
           "name": "enum",
@@ -135,59 +137,41 @@
       "title": "自定义数据项渲染函数",
       "types": [
         {
-          "name": "function",
-          "tag": "",
-          "desc": "h, option"
+          "name": "object",
+          "tag": "object-editor"
         }
-      ],
-      "hide": true
+      ]
     },
     "format": {
-      "label": "",
+      "label": "列表顶部勾选状态文案",
       "title": "列表顶部勾选状态文案",
       "types": [
         {
-          "name": "{ noChecked, hasChecked }",
-          "tag": ""
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
-      "default": "{ noChecked: '${checked}/${total}', hasChecked: '${checked}/${total}' }",
-      "hide": true
-    },
-    "props": {
-      "label": "数据源的字段别名",
-      "title": "数据源的字段别名",
-      "types": [
-        {
-          "name": "{ key, label, disabled }",
-          "tag": ""
-        }
-      ],
-      "hide": true
+      "default": {}
     },
     "left-default-checked": {
-      "label": "",
+      "label": "初始状态下左侧列表的已勾选项的 key 数组",
       "title": "初始状态下左侧列表的已勾选项的 key 数组",
       "types": [
         {
-          "name": "array",
-          "tag": "array-editor"
+          "name": "object",
+          "tag": "object-editor"
         }
-      ],
-      "default": [],
-      "hide": true
+      ]
     },
     "right-default-checked": {
-      "label": "",
+      "label": "初始状态下右侧列表的已勾选项的 key 数组",
       "title": "初始状态下右侧列表的已勾选项的 key 数组",
       "types": [
         {
-          "name": "array",
-          "tag": "array-editor"
+          "name": "object",
+          "tag": "object-editor"
         }
-      ],
-      "default": [],
-      "hide": true
+      ]
     },
     "validate-event": {
       "label": "触发表单验证",
@@ -204,7 +188,7 @@
   "slots": [
     {
       "name": "default",
-      "title": "自定义数据项的内容， 参数为 `{ option }`"
+      "title": "自定义数据项的内容， 参数为 <code>{ option }</code>"
     },
     {
       "name": "left-footer",
@@ -229,39 +213,40 @@
     {
       "name": "change",
       "title": "右侧列表元素变化时触发",
-      "type": "Function",
-      "fnDes": "(value: TransferKey[], direction: TransferDirection, movedKeys: TransferKey[]) => void"
+      "type": "function",
+      "details": "(value: TransferKey[], direction: TransferDirection, movedKeys: TransferKey[]) => void"
     },
     {
       "name": "left-check-change",
       "title": "左侧列表元素被用户选中 / 取消选中时触发",
-      "type": "Function",
-      "fnDes": "(value: TransferKey[], movedKeys?: TransferKey[]) => void"
+      "type": "function",
+      "details": "(value: TransferKey[], movedKeys?: TransferKey[]) => void"
     },
     {
       "name": "right-check-change",
       "title": "右侧列表元素被用户选中 / 取消选中时触发",
-      "type": "Function",
-      "fnDes": "(value: TransferKey[], movedKeys?: TransferKey[]) => void"
+      "type": "function",
+      "details": "(value: TransferKey[], movedKeys?: TransferKey[]) => void"
     }
   ],
   "exposes": [
     {
       "name": "clearQuery",
       "title": "清空某个面板的搜索关键词",
-      "type": "Function",
-      "fnDes": "(which: TransferDirection) => void"
+      "type": "function",
+      "details": "(which: TransferDirection) => void"
     },
     {
       "name": "leftPanel",
       "title": "左侧面板 ref",
-      "type": "^[object]`Ref<TransferPanelInstance>`"
+      "type": "object",
+      "details": "Ref<TransferPanelInstance>"
     },
     {
       "name": "rightPanel",
       "title": "右侧面板 ref",
-      "type": "^[object]`Ref<TransferPanelInstance>`"
+      "type": "object",
+      "details": "Ref<TransferPanelInstance>"
     }
-  ],
-  "desc": "## 基础用法"
+  ]
 }

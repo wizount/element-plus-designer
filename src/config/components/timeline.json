@@ -1,6 +1,7 @@
 {
   "__id__": "timeline",
   "name": "时间线",
+  "desc": "可视化地呈现时间流信息。",
   "tag": "el-timeline",
   "tagIcon": "timeline",
   "layouts": [
@@ -11,158 +12,6 @@
     "el-timeline-item"
   ],
   "attributes": {
-    "timestamp": {
-      "title": "时间戳",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "hide-timestamp": {
-      "title": "是否隐藏时间戳",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false
-    },
-    "center": {
-      "title": "是否垂直居中",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false
-    },
-    "placement": {
-      "title": "时间戳位置",
-      "types": [
-        {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "top",
-              "value": "top"
-            },
-            {
-              "label": "bottom",
-              "value": "bottom"
-            }
-          ]
-        }
-      ],
-      "default": "bottom"
-    },
-    "type": {
-      "title": "节点类型",
-      "types": [
-        {
-          "name": "enum",
-          "tag": "el-select",
-          "options": [
-            {
-              "label": "primary",
-              "value": "primary"
-            },
-            {
-              "label": "success",
-              "value": "success"
-            },
-            {
-              "label": "warning",
-              "value": "warning"
-            },
-            {
-              "label": "danger",
-              "value": "danger"
-            },
-            {
-              "label": "info",
-              "value": "info"
-            }
-          ]
-        }
-      ]
-    },
-    "color": {
-      "title": "节点颜色",
-      "types": [
-        {
-          "name": "enum",
-          "tag": "el-select",
-          "options": [
-            {
-              "label": "hsl",
-              "value": "hsl"
-            },
-            {
-              "label": "hsv",
-              "value": "hsv"
-            },
-            {
-              "label": "hex",
-              "value": "hex"
-            },
-            {
-              "label": "rgb",
-              "value": "rgb"
-            }
-          ]
-        }
-      ]
-    },
-    "size": {
-      "title": "节点尺寸",
-      "types": [
-        {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "normal",
-              "value": "normal"
-            },
-            {
-              "label": "large",
-              "value": "large"
-            }
-          ]
-        }
-      ],
-      "default": "normal"
-    },
-    "icon": {
-      "title": "自定义图标",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "hollow": {
-      "title": "是否空心点",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false
-    }
   },
   "slots": [
     {
@@ -172,6 +21,5 @@
         "timeline-item"
       ]
     }
-  ],
-  "desc": "可视化地呈现时间流信息。"
+  ]
 }

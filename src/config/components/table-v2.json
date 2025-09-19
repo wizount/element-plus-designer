@@ -41,7 +41,7 @@
         },
         {
           "name": "function",
-          "tag": "",
+
           "desc": "<[HeaderClassGetter](#typings)\\"
         }
       ]
@@ -56,7 +56,7 @@
         },
         {
           "name": "function",
-          "tag": "",
+
           "desc": "<[HeaderPropsGetter](#typings)\\"
         }
       ]
@@ -71,7 +71,7 @@
         },
         {
           "name": "function",
-          "tag": "",
+
           "desc": "<[HeaderCellPropsGetter](#typings)\\"
         }
       ]
@@ -115,7 +115,7 @@
         },
         {
           "name": "function",
-          "tag": "",
+
           "desc": "<[RowClassGetter](#typings)\\"
         }
       ]
@@ -152,7 +152,7 @@
         },
         {
           "name": "function",
-          "tag": "",
+
           "desc": "<[RowPropsGetter](#typings)\\"
         }
       ]
@@ -178,7 +178,7 @@
         },
         {
           "name": "function",
-          "tag": "",
+
           "desc": "<[CellPropsGetter](#typings)\\"
         }
       ]

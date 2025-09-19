@@ -1,0 +1,71 @@
+{
+  "__id__": "splitter",
+  "name": "分隔面板",
+  "desc": "可将区域水平或垂直分隔，并可自由拖动以调整各个区域的大小。",
+  "tag": "el-splitter",
+  "tagIcon": "splitter",
+  "layouts": [
+    "rawItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/splitter.html",
+  "attributes": {
+    "layout": {
+      "label": "布局方向",
+      "title": "分隔面板的布局方向",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "horizontal",
+              "value": "horizontal"
+            },
+            {
+              "label": "vertical",
+              "value": "vertical"
+            }
+          ]
+        }
+      ],
+      "default": "horizontal"
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "默认插槽",
+      "subtags": ["splitter-panel"]
+    }
+  ],
+  "events": [
+    {
+      "name": "resize-start",
+      "title": "开始调整面板大小时触发，<code>index</code> 是拖拽条的索引。",
+      "type": "function",
+      "details": "(index: number, sizes: number[]) => void"
+    },
+    {
+      "name": "resize",
+      "title": "调整面板大小时触发，<code>index</code> 是拖拽条的索引。",
+      "type": "function",
+      "details": "(index: number, sizes: number[]) => void"
+    },
+    {
+      "name": "resize-end",
+      "title": "面板调整大小结束时触发，<code>index</code> 是拖拽条的索引。",
+      "type": "function",
+      "details": "(index: number, sizes: number[]) => void"
+    },
+    {
+      "name": "collapse ",
+      "version": "2.10.3",
+      "title": "当面板折叠时触发，<code>index</code> 是拖拽条的索引。",
+      "type": "function",
+      "details": "(index: number, type: 'start' \\| 'end', sizes: number[]) => void"
+    }
+  ]
+}

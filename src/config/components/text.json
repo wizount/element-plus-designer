@@ -1,6 +1,7 @@
 {
   "__id__": "text",
   "name": "文本",
+  "desc": "文本的常见操作",
   "tag": "el-text",
   "tagIcon": "text",
   "layouts": [
@@ -35,15 +36,10 @@
             {
               "label": "info",
               "value": "info"
-            },
-            {
-              "label": "default",
-              "value": "default"
             }
           ]
         }
-      ],
-      "default": "default"
+      ]
     },
     "size": {
       "label": "大小",
@@ -85,6 +81,7 @@
       "default": false
     },
     "line-clamp": {
+      "label": "最大行数",
       "title": "最大行数",
       "types": [
         {
@@ -114,6 +111,5 @@
       "name": "default",
       "title": "默认内容"
     }
-  ],
-  "desc": "文本的常见操作"
+  ]
 }

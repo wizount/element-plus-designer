@@ -1,6 +1,7 @@
 {
   "__id__": "upload",
   "name": "上传",
+  "desc": "通过点击或者拖拽上传文件。",
   "tag": "el-upload",
   "tagIcon": "upload",
   "layouts": [
@@ -370,40 +371,40 @@
     {
       "name": "file",
       "title": "缩略图模板的内容",
-      "type": "^[object]`{ file: UploadFile, index: number }`"
+      "type": "object",
+      "details": "{ file: UploadFile, index: number }"
     }
   ],
   "exposes": [
     {
       "name": "abort",
       "title": "取消上传请求",
-      "type": "Function",
-      "fnDes": "(file: UploadFile) => void"
+      "type": "function",
+      "details": "(file: UploadFile) => void"
     },
     {
       "name": "submit",
       "title": "手动上传文件列表",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "clearFiles",
-      "title": "清空已上传的文件列表（该方法不支持在 `before-upload` 中调用）",
-      "type": "Function",
-      "fnDes": "(status?: UploadStatus[]) => void"
+      "title": "清空已上传的文件列表（该方法不支持在 <code>before-upload</code> 中调用）",
+      "type": "function",
+      "details": "(status?: UploadStatus[]) => void"
     },
     {
       "name": "handleStart",
       "title": "手动选择文件",
-      "type": "Function",
-      "fnDes": "(rawFile: UploadRawFile) => void"
+      "type": "function",
+      "details": "(rawFile: UploadRawFile) => void"
     },
     {
       "name": "handleRemove",
-      "title": "手动移除文件。 `file` 和`rawFile` 已被合并。 `rawFile` 将在 `v2.2.0` 中移除",
-      "type": "Function",
-      "fnDes": "(file: UploadFile | UploadRawFile, rawFile?: UploadRawFile) => void"
+      "title": "手动移除文件。 <code>file</code> 和<code>rawFile</code> 已被合并。 <code>rawFile</code> 将在 <code>v2.2.0</code> 中移除",
+      "type": "function",
+      "details": "(file: UploadFile | UploadRawFile, rawFile?: UploadRawFile) => void"
     }
-  ],
-  "desc": "通过点击或者拖拽上传文件。"
+  ]
 }

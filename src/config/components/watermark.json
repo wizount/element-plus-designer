@@ -1,6 +1,7 @@
 {
   "__id__": "watermark",
   "name": "水印",
+  "desc": "在页面上添加文本或图片等水印信息",
   "tag": "el-watermark",
   "tagIcon": "watermark",
   "layouts": [
@@ -10,7 +11,7 @@
   "attributes": {
     "width": {
       "label": "宽度",
-      "title": "水印的宽度， `content` 的默认值是它自己的宽度",
+      "title": "水印的宽度， <code>content</code> 的默认值是它自己的宽度",
       "types": [
         {
           "name": "number",
@@ -21,7 +22,7 @@
     },
     "height": {
       "label": "高度",
-      "title": "水印的高度， `content` 的默认值是它自己的高度",
+      "title": "水印的高度， <code>content</code> 的默认值是它自己的高度",
       "types": [
         {
           "name": "number",
@@ -32,7 +33,7 @@
     },
     "rotate": {
       "label": "旋转角度",
-      "title": "水印的旋转角度, 单位 `°`",
+      "title": "水印的旋转角度, 单位 <code>°</code>",
       "types": [
         {
           "name": "number",
@@ -113,7 +114,7 @@
     },
     "offset": {
       "label": "偏移",
-      "title": "水印从容器左上角的偏移 默认值为 `gap/2`",
+      "title": "水印从容器左上角的偏移 默认值为 <code>gap/2</code>",
       "types": [
         {
           "name": "array",
@@ -127,9 +128,8 @@
   },
   "slots": [
     {
-      "name": "默认",
+      "name": "default",
       "title": "添加水印的容器"
     }
-  ],
-  "desc": "在页面上添加文本或图片等水印信息"
+  ]
 }

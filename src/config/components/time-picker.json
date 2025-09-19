@@ -1,6 +1,7 @@
 {
   "__id__": "time-picker",
   "name": "时间选择器",
+  "desc": "用于选择或输入日期",
   "tag": "el-time-picker",
   "tagIcon": "time",
   "layouts": [
@@ -81,40 +82,6 @@
         }
       ],
       "default": "default"
-    },
-    "start-placeholder": {
-      "label": "开始日期占位内容",
-      "title": "范围选择时开始日期的占位内容",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ],
-      "switch": [
-        "is-range",
-        true
-      ]
-    },
-    "end-placeholder": {
-      "label": "结束日期占位内容",
-      "title": "范围选择时结束日期的占位内容",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ],
-      "switch": [
-        "is-range",
-        true
-      ]
     },
     "is-range": {
       "label": "时间范围选择",
@@ -203,8 +170,8 @@
       ]
     },
     "id": {
-      "label": "",
-      "title": "等价于原生 input id 属性",
+      "label": "等价于原生 input id 属性",
+      "title": "等价于原生 input <code>id</code> 属性",
       "types": [
         {
           "name": "string",
@@ -221,8 +188,8 @@
       "hide": true
     },
     "name": {
-      "label": "",
-      "title": "等价于原生 input name 属性",
+      "label": "等价于原生 input name 属性",
+      "title": "等价于原生 input <code>name</code> 属性",
       "types": [
         {
           "name": "string",
@@ -231,27 +198,11 @@
             "clearable": true
           }
         }
-      ],
-      "hide": true
-    },
-    "label": {
-      "label": "",
-      "title": "等价于原生 input `aria-label` 属性",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ],
-      "hide": true,
-      "a11y": true,
-      "deprecated": true
+      ]
     },
     "aria-label": {
-      "title": "等价于原生 input `aria-label` 属性",
+      "label": "等价于原生 input aria-label 属性",
+      "title": "等价于原生 input <code>aria-label</code> 属性",
       "types": [
         {
           "name": "string",
@@ -263,7 +214,7 @@
     },
     "prefix-icon": {
       "label": "前缀图标",
-      "title": "前缀图标",
+      "title": "自定义前缀图标",
       "types": [
         {
           "name": "string",
@@ -284,40 +235,38 @@
       "default": "CircleClose"
     },
     "disabled-hours": {
-      "label": "",
+      "label": "禁止选择部分小时选项",
       "title": "禁止选择部分小时选项",
       "types": [
         {
           "name": "function",
-          "tag": "",
+
+          "details": "(role: string, comparingDate?: Dayjs) => number[]",
           "desc": "(role: string, comparingDate?: Dayjs) => number[]"
         }
-      ],
-      "hide": true
+      ]
     },
     "disabled-minutes": {
-      "label": "",
+      "label": "禁止选择部分分钟选项",
       "title": "禁止选择部分分钟选项",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(hour: number, role: string, comparingDate?: Dayjs) => number[]"
+
+          "details": "(hour: number, role: string, comparingDate?: Dayjs) => number[]"
         }
-      ],
-      "hide": true
+      ]
     },
     "disabled-seconds": {
-      "label": "",
+      "label": "禁止选择部分秒选项",
       "title": "禁止选择部分秒选项",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(hour: number, minute: number, role: string, comparingDate?: Dayjs) => number[]"
+
+          "details": "(hour: number, minute: number, role: string, comparingDate?: Dayjs) => number[]"
         }
-      ],
-      "hide": true
+      ]
     },
     "teleported": {
       "label": "下拉列表镜像 body 元素",
@@ -331,7 +280,7 @@
       "default": true
     },
     "tabindex": {
-      "label": "",
+      "label": "输入框的 tabindex",
       "title": "输入框的 tabindex",
       "types": [
         {
@@ -339,8 +288,7 @@
           "tag": "string-number-input"
         }
       ],
-      "default": 0,
-      "hide": true
+      "default": 0
     },
     "empty-values": {
       "title": "组件的空值配置 [参考config-provider](/en-US/component/config-provider#empty-values-configurations)",
@@ -368,47 +316,87 @@
           "tag": "el-switch"
         },
         {
-          "name": "function",
-          "tag": "",
-          "desc": "^[string] / ^[number] / ^[boolean] / ^[Function"
+          "name": "function"
+
         }
       ],
       "version": "2.7.0"
+    },
+    "label": {
+      "label": "等价于原生 input aria-label 属性",
+      "title": "等价于原生 input <code>aria-label</code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "a11y": true,
+      "deprecated": true
     }
   },
   "events": [
     {
       "name": "change",
       "title": "用户确认选定的值时触发",
-      "type": "Function",
-      "fnDes": "(val: number | string | Date | [number, number] | [string, string] | [Date, Date]) => void"
+      "type": "function",
+      "details": "(val: number | string | Date | [number, number] | [string, string] | [Date, Date]) => void"
     },
     {
       "name": "blur",
       "title": "在组件 Input 失去焦点时触发",
-      "type": "Function",
-      "fnDes": "(e: FocusEvent) => void"
+      "type": "function",
+      "details": "(e: FocusEvent) => void"
     },
     {
       "name": "focus",
       "title": "在组件 Input 获得焦点时触发",
-      "type": "Function",
-      "fnDes": "(e: FocusEvent) => void"
+      "type": "function",
+      "details": "(e: FocusEvent) => void"
     },
     {
-      "name": "clear",
-      "title": "可清空的模式下用户点击清空按钮时触发",
-      "type": "Function",
+      "name": "clear ",
       "version": "2.7.7",
-      "fnDes": "() => void"
+      "title": "可清空的模式下用户点击清空按钮时触发",
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "visible-change",
       "title": "当 TimePicker 的下拉列表出现/消失时触发",
-      "type": "Function",
-      "fnDes": "(visibility: boolean) => void"
+      "type": "function",
+      "details": "(visibility: boolean) => void"
     }
   ],
-  "slots": [],
-  "desc": "用于选择或输入日期"
+  "exposes": [
+    {
+      "name": "focus",
+      "title": "使组件获取焦点",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "blur",
+      "title": "使组件失去焦点",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "handleOpen ",
+      "version": "2.2.16",
+      "title": "打开时间选择器弹窗",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "handleClose ",
+      "version": "2.2.16",
+      "title": "关闭时间选择器弹窗",
+      "type": "function",
+      "details": "() => void"
+    }
+  ]
 }

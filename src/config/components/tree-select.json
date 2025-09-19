@@ -1,6 +1,7 @@
 {
   "__id__": "tree-select",
   "name": "树形选择",
+  "desc": "含有下拉菜单的树形选择器，结合了 `el-tree` 和 `el-select` 两个组件的功能。",
   "tag": "el-tree-select",
   "tagIcon": "tree-select",
   "layouts": [
@@ -37,6 +38,5 @@
     }
   },
   "attributes": {},
-  "slots": [],
-  "desc": "含有下拉菜单的树形选择器，结合了 `el-tree` 和 `el-select` 两个组件的功能。"
+  "slots": []
 }

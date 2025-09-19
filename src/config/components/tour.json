@@ -1,6 +1,7 @@
 {
   "__id__": "tour",
   "name": "漫游式引导",
+  "desc": "用于分步引导用户了解产品功能的气泡组件。 用来引导用户并介绍产品",
   "tag": "el-tour",
   "tagIcon": "tour",
   "layouts": [
@@ -12,6 +13,19 @@
   ],
   "attributes": {
     "vModel": "modelValue",
+    "append-to": {
+      "label": "挂载到哪个 DOM 元素",
+      "title": "挂载到哪个 DOM 元素",
+      "types": [
+        {
+          "name": "cssselector"
+        },
+        {
+          "name": "htmlelement"
+        }
+      ],
+      "default": "body"
+    },
     "show-arrow": {
       "label": "显示箭头",
       "title": "是否显示箭头",
@@ -97,14 +111,31 @@
     },
     "mask": {
       "label": "启用蒙层",
-      "title": "是否启用蒙层，也可传入配置改变蒙层样式和填充色",
+      "title": "是否启用遮罩，通过自定义属性改变遮罩样式以及填充的颜色",
       "types": [
         {
           "name": "boolean",
           "tag": "el-switch"
+        },
+        {
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
       "default": true
+    },
+    "gap": {
+      "label": "遮罩和目标之间的透明的间距",
+      "title": "遮罩和目标之间的透明的间距",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "default": { "offset": 6, "radius": 2}
+
+
     },
     "type": {
       "label": "类型",
@@ -130,16 +161,6 @@
       ],
       "default": "default"
     },
-    "current": {
-      "label": "",
-      "title": "当前值",
-      "types": [
-        {
-          "name": "number",
-          "tag": "el-input-number"
-        }
-      ]
-    },
     "scroll-into-view-options": {
       "label": "支持当前元素滚动到视窗内",
       "title": "是否支持当前元素滚动到视窗内，也可传入配置指定滚动视窗的相关参数",
@@ -158,7 +179,7 @@
       }
     },
     "z-index": {
-      "label": "",
+      "label": "Tour 的层级",
       "title": "Tour 的层级",
       "types": [
         {
@@ -202,7 +223,7 @@
       "default": true
     },
     "target-area-clickable": {
-      "label": "",
+      "label": "启用蒙层时",
       "title": "启用蒙层时，target 元素区域是否可以点击。",
       "types": [
         {
@@ -211,52 +232,6 @@
         }
       ],
       "default": true
-    },
-    "target": {
-      "title": "获取引导卡片指向的元素， 为空时居中于屏幕。 自^(2.5.2)以来支持字符串和函数类型。 字符串类型是文档.querySelector的选择器。",
-      "types": [
-        {
-          "name": "function",
-          "tag": "",
-          "desc": "() => HTMLElemen"
-        }
-      ]
-    },
-    "title": {
-      "title": "标题部分",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "description": {
-      "title": "主要描述部分",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "next-button-props": {
-      "title": "“下一步”按钮的属性",
-      "types": [
-        {
-          "name": "object",
-          "tag": "object-editor"
-        }
-      ]
-    },
-    "prev-button-props": {
-      "title": "“上一步”按钮的属性",
-      "types": [
-        {
-          "name": "object",
-          "tag": "object-editor"
-        }
-      ]
     }
   },
   "slots": [
@@ -266,28 +241,27 @@
     },
     {
       "name": "indicators",
-      "title": "自定义指示器, scope 参数是 `{ current, total }`"
+      "title": "自定义指示器, scope 参数是 <code>{ current, total }</code>"
     }
   ],
   "events": [
     {
       "name": "close",
       "title": "关闭引导时的回调函数",
-      "type": "Function",
-      "fnDes": "(current: number) => void"
+      "type": "function",
+      "details": "(current: number) => void"
     },
     {
       "name": "finish",
       "title": "引导完成时的回调",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "change",
       "title": "步骤改变时的回调",
-      "type": "Function",
-      "fnDes": "(current: number) => void"
+      "type": "function",
+      "details": "(current: number) => void"
     }
-  ],
-  "desc": "用于分步引导用户了解产品功能的气泡组件。 用来引导用户并介绍产品"
+  ]
 }

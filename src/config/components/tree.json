@@ -104,7 +104,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
+
           "desc": "node, resolve)，`node`为当前点击的节点，`resolve`为数据加载完成的回调(必须调用"
         }
       ],
