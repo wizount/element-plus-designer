@@ -1,6 +1,7 @@
 {
   "__id__": "form-item",
   "name": "表单项",
+  "desc": "表单包含 `输入框`, `单选框`, `下拉选择`, `多选框` 等用户输入的组件。 使用表单，您可以收集、验证和提交数据。",
   "tag": "el-form-item",
   "tagIcon": "form",
   "layouts": [
@@ -10,7 +11,7 @@
   "attributes": {
     "prop": {
       "label": "model 的键名",
-      "title": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])。 在定义了 validate、resetFields 的方法时，该属性是必填的",
+      "title": "<code>model</code> 的键名。 它可以是一个属性的值(如 <code>a.b.0</code> 或 <code>['a', 'b', '0']</code>)。 在使用了 <code>validate</code>、<code>resetFields</code> 的方法时，该属性是必填的。",
       "types": [
         {
           "name": "string",
@@ -20,13 +21,12 @@
           }
         },
         {
-          "name": "string&#91;&#93;",
-          "tag": ""
+          "name": "string[]"
         }
       ]
     },
     "label": {
-      "label": "",
+      "label": "标签文本",
       "title": "标签文本",
       "types": [
         {
@@ -39,7 +39,8 @@
       ]
     },
     "label-position": {
-      "title": "表单域标签的位置， 当设置为 `left` 或 `right` 时，则也需要设置 `label-width` 属性 默认会继承 `Form`的`label-position`",
+      "label": "表单域标签的位置",
+      "title": "表单域标签的位置， 当设置为 <code>left</code> 或 <code>right</code> 时，则也需要设置 <code>label-width</code> 属性 默认会继承 <code>Form</code>的<code>label-position</code>",
       "types": [
         {
           "name": "enum",
@@ -67,7 +68,7 @@
     },
     "label-width": {
       "label": "标签宽度",
-      "title": "标签宽度，例如 '50px'。 可以使用 auto。",
+      "title": "标签宽度，例如 <code>'50px'</code>。 可以使用 <code>auto</code>。",
       "types": [
         {
           "name": "stringNumber",
@@ -167,24 +168,14 @@
       "default": "default"
     },
     "for": {
-      "label": "",
+      "label": "和原生标签相同能力",
       "title": "和原生标签相同能力",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "string",
-              "value": "string"
-            }
-          ]
+          "name": "string",
+          "tag": "el-input"
         }
-      ],
-      "hide": true
+      ]
     },
     "validate-status": {
       "label": "校验的状态",
@@ -212,6 +203,29 @@
           ]
         }
       ]
+    },
+    "trigger": {
+      "label": "验证逻辑的触发方式",
+      "title": "验证逻辑的触发方式",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "blur",
+              "value": "blur"
+            },
+            {
+              "label": "change",
+              "value": "change"
+            }
+          ]
+        }
+      ]
     }
   },
   "slots": [
@@ -222,48 +236,52 @@
     {
       "name": "label",
       "title": "标签位置显示的内容",
-      "type": "^[object]`{ label: string }`"
+      "type": "object",
+      "details": "{ label: string }"
     },
     {
       "name": "error",
       "title": "验证错误信息的显示内容",
-      "type": "^[object]`{ error: string }`"
+      "type": "object",
+      "details": "{ error: string }"
     }
   ],
   "exposes": [
     {
       "name": "size",
       "title": "表单项大小",
-      "type": "^[object]`ComputedRef<'' | 'large' | 'default' | 'small'>`"
+      "type": "object",
+      "details": "ComputedRef<'' | 'large' | 'default' | 'small'>"
     },
     {
       "name": "validateMessage",
       "title": "校验消息",
-      "type": "^[object]`Ref<string>`"
+      "type": "object",
+      "details": "Ref<string>"
     },
     {
       "name": "validateState",
       "title": "校验状态",
-      "type": "^[object]`Ref<'' | 'error' | 'validating' | 'success'>`"
+      "type": "object",
+      "details": "Ref<'' | 'error' | 'validating' | 'success'>"
     },
     {
       "name": "validate",
       "title": "验证表单项",
-      "type": "Function",
-      "fnDes": "(trigger: string, callback?: FormValidateCallback | undefined) => FormValidationResult"
+      "type": "function",
+      "details": "(trigger: string, callback?: FormValidateCallback | undefined) => FormValidationResult"
     },
     {
       "name": "resetField",
       "title": "对该表单项进行重置，将其值重置为初始值并移除校验结果",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "clearValidate",
       "title": "移除该表单项的校验结果",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     }
-  ],
-  "desc": "表单包含 `输入框`, `单选框`, `下拉选择`, `多选框` 等用户输入的组件。 使用表单，您可以收集、验证和提交数据。"
+  ]
 }

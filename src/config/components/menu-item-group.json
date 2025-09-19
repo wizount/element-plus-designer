@@ -1,6 +1,7 @@
 {
   "__id__": "menu-item-group",
   "name": "菜单项组",
+  "desc": "为网站提供导航功能的菜单。",
   "tag": "el-menu-item-group",
   "tagIcon": "menu-item-group",
   "layouts": [
@@ -13,7 +14,7 @@
   "attributes": {
     "title": {
       "label": "标题",
-      "title": "标题",
+      "title": "组标题",
       "types": [
         {
           "name": "string",
@@ -37,6 +38,5 @@
       "name": "title",
       "title": "自定义组标题内容"
     }
-  ],
-  "desc": "为网站提供导航功能的菜单。"
+  ]
 }

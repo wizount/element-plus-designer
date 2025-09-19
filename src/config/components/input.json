@@ -1,6 +1,7 @@
 {
   "__id__": "input",
   "name": "单行文本",
+  "desc": "通过鼠标或键盘输入字符",
   "tag": "el-input",
   "tagIcon": "input",
   "layouts": [
@@ -11,7 +12,7 @@
     "vModel": "modelValue",
     "placeholder": "请输入",
     "type": {
-      "label": "",
+      "label": "类型",
       "title": "类型",
       "types": [
         {
@@ -27,7 +28,7 @@
     },
     "maxlength": {
       "label": "最大输入长度",
-      "title": "最大输入长度",
+      "title": "同原生 <code>maxlength</code> 属性",
       "types": [
         {
           "name": "stringNumber",
@@ -40,15 +41,14 @@
       "title": "原生属性，最小输入长度",
       "types": [
         {
-          "name": "number",
-          "tag": "el-input-number"
+          "name": "stringNumber",
+          "tag": "string-number-input"
         }
-      ],
-      "hide": true
+      ]
     },
     "show-word-limit": {
       "label": "统计字数",
-      "title": "是否显示统计字数, 只在 type 为 'text' 或 'textarea' 的时候生效",
+      "title": "是否显示统计字数, 只在 <code>type</code> 为 'text' 或 'textarea' 的时候生效",
       "types": [
         {
           "name": "boolean",
@@ -63,7 +63,7 @@
     },
     "clearable": {
       "label": "可清空",
-      "title": "是否可清空",
+      "title": "是否显示清除按钮，只有当 <code>type</code> 不是 textarea时生效",
       "types": [
         {
           "name": "boolean",
@@ -74,12 +74,11 @@
     },
     "formatter": {
       "label": "输入值的格式",
-      "title": "指定输入值的格式。(只有当 type 是\"text\"时才能工作)",
+      "title": "指定输入值的格式。(只有当 <code>type</code> 是\"text\"时才能工作)",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(value: string | number) => string"
+          "details": "(value: string | number) => string"
         }
       ],
       "hide": true,
@@ -90,12 +89,11 @@
     },
     "parser": {
       "label": "提取的值",
-      "title": "指定从格式化器输入中提取的值。(仅当 type 是\"text\"时才起作用)",
+      "title": "指定从格式化器输入中提取的值。(仅当 <code>type</code> 是\"text\"时才起作用)",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(value: string) => string"
+          "details": "(value: string) => string"
         }
       ],
       "hide": true,
@@ -129,7 +127,7 @@
     },
     "size": {
       "label": "尺寸",
-      "title": "输入框尺寸，只在 type 不为 'textarea' 时有效",
+      "title": "输入框尺寸，只在 <code>type</code> 不为 'textarea' 时有效",
       "types": [
         {
           "name": "enum",
@@ -189,13 +187,14 @@
     },
     "rows": {
       "label": "输入框行数",
-      "title": "输入框行数，仅 `type` 为 'textarea' 时有效",
+      "title": "输入框行数，仅 <code>type</code> 为 'textarea' 时有效",
       "types": [
         {
           "name": "number",
           "tag": "el-input-number"
         }
       ],
+      "default": 2,
       "switch": [
         "type",
         "textarea"
@@ -203,7 +202,7 @@
     },
     "autosize": {
       "label": "高度自适应",
-      "title": "textarea 高度是否自适应，仅 `type` 为 'textarea' 时生效。 可以接受一个对象，比如: `{ minRows: 2, maxRows: 6 }`",
+      "title": "textarea 高度是否自适应，仅 <code>type</code> 为 'textarea' 时生效。 可以接受一个对象，比如: <code>{ minRows: 2, maxRows: 6 }</code>",
       "types": [
         {
           "name": "boolean",
@@ -234,7 +233,7 @@
     },
     "autocomplete": {
       "label": "autocomplete",
-      "title": "原生 autocomplete 属性",
+      "title": "原生 <code>autocomplete</code> 属性",
       "types": [
         {
           "name": "string",
@@ -249,7 +248,7 @@
     },
     "name": {
       "label": "name",
-      "title": "等价于原生 input name 属性",
+      "title": "等价于原生 input <code>name</code> 属性",
       "types": [
         {
           "name": "string",
@@ -263,7 +262,7 @@
     },
     "readonly": {
       "label": "只读",
-      "title": "原生  readonly 属性，是否只读",
+      "title": "原生 <code>readonly</code> 属性，是否只读",
       "types": [
         {
           "name": "boolean",
@@ -356,27 +355,11 @@
             "clearable": true
           }
         }
-      ],
-      "hide": true
-    },
-    "label": {
-      "label": "标签文本",
-      "title": "标签文本",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ],
-      "hide": true,
-      "a11y": true,
-      "deprecated": true
+      ]
     },
     "aria-label": {
-      "title": "等价于原生 input `aria-label` 属性",
+      "label": "等价于原生 input aria-label 属性",
+      "title": "等价于原生 input <code>aria-label</code> 属性",
       "types": [
         {
           "name": "string",
@@ -425,115 +408,181 @@
         }
       ],
       "default": {}
+    },
+    "label": {
+      "label": "标签文本",
+      "title": "等价于原生 input <code>aria-label</code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "a11y": true,
+      "deprecated": true
+    },
+    "inputmode": {
+      "label": "等价于原生 input inputmode 属性",
+      "title": "等价于原生 input <code>inputmode</code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.10.3"
     }
   },
+  "slots": [
+    {
+      "name": "prefix",
+      "title": "输入框头部内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "suffix",
+      "title": "输入框尾部内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "prepend",
+      "title": "输入框前置内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "append",
+      "title": "输入框后置内容，只对非 <code>type=\"textarea\"</code> 有效"
+    }
+  ],
   "events": [
     {
       "name": "blur",
       "title": "当选择器的输入框失去焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
     },
     {
       "name": "focus",
       "title": "当选择器的输入框获得焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
     },
     {
       "name": "change",
       "title": "仅当 modelValue 改变时，当输入框失去焦点或用户按Enter时触发",
-      "type": "Function",
-      "fnDes": "(value: string | number) => void"
+      "type": "function",
+      "details": "(value: string | number) => void"
     },
     {
       "name": "input",
       "title": "在 Input 值改变时触发",
-      "type": "Function",
-      "fnDes": "(value: string | number) => void"
+      "type": "function",
+      "details": "(value: string | number) => void"
     },
     {
       "name": "clear",
-      "title": "在点击由 `clearable` 属性生成的清空按钮时触发",
-      "type": "Function",
-      "fnDes": "() => void"
-    }
-  ],
-  "slots": [
-    {
-      "name": "prefix",
-      "title": "输入框头部内容，只对非 `type=\"textarea\"` 有效"
+      "title": "在点击由 <code>clearable</code> 属性生成的清空按钮时触发",
+      "type": "function",
+      "details": "() => void"
     },
     {
-      "name": "suffix",
-      "title": "输入框尾部内容，只对非 `type=\"textarea\"` 有效"
+      "name": "keydown",
+      "title": "按下键时触发",
+      "type": "function",
+      "details": "(event: KeyboardEvent | Event) => void"
     },
     {
-      "name": "prepend",
-      "title": "输入框前置内容，只对非 `type=\"textarea\"` 有效"
+      "name": "mouseleave",
+      "title": "当鼠标进入输入框时触发",
+      "type": "function",
+      "details": "(event: MouseEvent) => void"
     },
     {
-      "name": "append",
-      "title": "输入框后置内容，只对非 `type=\"textarea\"` 有效"
+      "name": "mouseenter",
+      "title": "当鼠标离开输入框时触发",
+      "type": "function",
+      "details": "(event: MouseEvent) => void"
+    },
+    {
+      "name": "compositionstart",
+      "title": "输入法输入开始时触发",
+      "type": "function",
+      "details": "(event: CompositionEvent) => void"
+    },
+    {
+      "name": "compositionupdate",
+      "title": "输入法输入改变时触发",
+      "type": "function",
+      "details": "(event: CompositionEvent) => void"
+    },
+    {
+      "name": "compositionend",
+      "title": "输入法输入完成时触发",
+      "type": "function",
+      "details": "(event: CompositionEvent) => void"
     }
   ],
   "exposes": [
     {
       "name": "blur",
       "title": "使 input 失去焦点",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "clear",
       "title": "清除 input 值",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "focus",
       "title": "使 input 获取焦点",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "input",
       "title": "Input HTML 元素",
-      "type": "^[object]`Ref<HTMLInputElement>`"
+      "type": "object",
+      "details": "Ref<HTMLInputElement>"
     },
     {
       "name": "ref",
       "title": "HTML元素 input 或 textarea",
-      "type": "^[object]`Ref<HTMLInputElement | HTMLTextAreaElement>`"
+      "type": "object",
+      "details": "Ref<HTMLInputElement | HTMLTextAreaElement>"
     },
     {
       "name": "resizeTextarea",
       "title": "改变 textarea 大小",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "select",
       "title": "选中 input 中的文字",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "textarea",
       "title": "HTML textarea 元素",
-      "type": "^[object]`Ref<HTMLTextAreaElement>`"
+      "type": "object",
+      "details": "Ref<HTMLTextAreaElement>"
     },
     {
       "name": "textareaStyle",
       "title": "textarea 的样式",
-      "type": "^[object]`Ref<StyleValue>`"
+      "type": "object",
+      "details": "Ref<StyleValue>"
     },
     {
-      "name": "isComposing",
+      "name": "isComposing ",
+      "version": "2.8.0",
       "title": "是否是输入 composing 状态",
-      "type": "^[object]`Ref<boolean>`",
-      "version": "2.8.0"
+      "type": "object",
+      "details": "Ref<boolean>"
     }
-  ],
-  "desc": "通过鼠标或键盘输入字符"
+  ]
 }

@@ -1,6 +1,7 @@
 {
   "__id__": "input-number",
   "name": "计数器",
+  "desc": "仅允许输入标准的数字值，可定义范围",
   "tag": "el-input-number",
   "tagIcon": "number",
   "layouts": [
@@ -19,7 +20,7 @@
           "tag": "el-input-number"
         }
       ],
-      "default": "-Infinity"
+      "default": "Number.MIN_SAFE_INTEGER"
     },
     "max": {
       "label": "最大值",
@@ -30,7 +31,7 @@
           "tag": "el-input-number"
         }
       ],
-      "default": "Infinity"
+      "default": "Number.MAX_SAFE_INTEGER"
     },
     "step": {
       "label": "步长",
@@ -97,7 +98,7 @@
     },
     "readonly": {
       "label": "只读",
-      "title": "原生  readonly 属性，是否只读",
+      "title": "原生 <code>readonly</code> 属性，是否只读",
       "types": [
         {
           "name": "boolean",
@@ -182,7 +183,8 @@
       "deprecated": true
     },
     "aria-label": {
-      "title": "等价于原生 input `aria-label` 属性",
+      "label": "等价于原生 input aria-label 属性",
+      "title": "等价于原生 input <code>aria-label</code> 属性",
       "types": [
         {
           "name": "string",
@@ -193,8 +195,8 @@
       "version": "2.7.2"
     },
     "id": {
-      "label": "",
-      "title": "等价于原生 input `id` 属性",
+      "label": "等价于原生 input id 属性",
+      "title": "等价于原生 input <code>id</code> 属性",
       "types": [
         {
           "name": "string",
@@ -208,6 +210,28 @@
     "value-on-clear": {
       "label": "清空时显示的值",
       "title": "当输入框被清空时显示的值 (> 2.2.0)",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.2.0"
+    },
+    "validate-event": {
+      "label": "触发表单校验",
+      "title": "是否触发表单验证",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "inputmode": {
+      "label": "等价于原生 input inputmode 属性",
+      "title": "等价于原生 input <code>inputmode</code> 属性",
       "types": [
         {
           "name": "enum",
@@ -235,54 +259,50 @@
           "tag": "el-input-number"
         }
       ],
-      "version": "2.2.0"
+      "version": "2.10.3"
     },
-    "validate-event": {
-      "label": "触发表单校验",
-      "title": "输入时是否触发表单的校验",
+    "align": {
+      "label": "内部输入文本对齐",
+      "title": "内部输入文本对齐",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "center",
+              "value": "center"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            }
+          ]
+        }
+      ],
+      "default": "'center'",
+      "version": "2.10.5"
+    },
+    "disabled-scientific": {
+      "label": "禁用科学计数法的输入",
+      "title": "禁用科学计数法的输入（例如输入 'e'）",
       "types": [
         {
           "name": "boolean",
           "tag": "el-switch"
         }
       ],
-      "default": true
+      "default": false,
+      "version": "2.10.5"
     }
   },
-  "events": [
-    {
-      "name": "change",
-      "title": "绑定值被改变时触发",
-      "type": "Function",
-      "fnDes": "(currentValue: number | undefined, oldValue: number | undefined) => void"
-    },
-    {
-      "name": "blur",
-      "title": "在组件 Input 失去焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
-    },
-    {
-      "name": "focus",
-      "title": "在组件 Input 获得焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
-    }
-  ],
-  "exposes": [
-    {
-      "name": "focus",
-      "title": "使 input 组件获得焦点",
-      "type": "Function",
-      "fnDes": "() => void"
-    },
-    {
-      "name": "blur",
-      "title": "使 input 组件失去焦点",
-      "type": "Function",
-      "fnDes": "() => void"
-    }
-  ],
   "slots": [
     {
       "name": "decrease-icon",
@@ -305,5 +325,38 @@
       "version": "2.8.4"
     }
   ],
-  "desc": "仅允许输入标准的数字值，可定义范围"
+  "events": [
+    {
+      "name": "change",
+      "title": "绑定值被改变时触发",
+      "type": "function",
+      "details": "(currentValue: number | undefined, oldValue: number | undefined) => void"
+    },
+    {
+      "name": "blur",
+      "title": "在组件 Input 失去焦点时触发",
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
+    },
+    {
+      "name": "focus",
+      "title": "在组件 Input 获得焦点时触发",
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "focus",
+      "title": "使 input 组件获得焦点",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "blur",
+      "title": "使 input 组件失去焦点",
+      "type": "function",
+      "details": "() => void"
+    }
+  ]
 }

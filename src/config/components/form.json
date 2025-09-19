@@ -1,6 +1,7 @@
 {
   "__id__": "form",
   "name": "表单",
+  "desc": "表单包含 `输入框`, `单选框`, `下拉选择`, `多选框` 等用户输入的组件。 使用表单，您可以收集、验证和提交数据。",
   "tag": "el-form",
   "tagIcon": "form",
   "layouts": [
@@ -9,7 +10,7 @@
   "document": "https://element-plus.org/zh-CN/component/form.html",
   "attributes": {
     "model": {
-      "label": "表单数据",
+      "label": "数据",
       "title": "表单数据对象",
       "types": [
         {
@@ -45,7 +46,7 @@
     },
     "label-position": {
       "label": "标签位置",
-      "title": "表单域标签的位置， 当设置为 left 或 right 时，则也需要设置 label-width 属性",
+      "title": "表单域标签的位置， 当设置为 <code>left</code> 或 <code>right</code> 时，则也需要设置 <code>label-width</code> 属性",
       "types": [
         {
           "name": "enum",
@@ -74,7 +75,7 @@
     },
     "label-width": {
       "label": "标签长度",
-      "title": "标签的长度，例如50px。 作为 Form 直接子元素的 form-item 会继承该值。 可以使用 auto。",
+      "title": "标签的长度，例如 <code>'50px'</code>。 作为 Form 直接子元素的 form-item 会继承该值。 可以使用 <code>auto</code>。",
       "types": [
         {
           "name": "stringNumber",
@@ -165,7 +166,7 @@
     },
     "validate-on-rule-change": {
       "label": "立即触发验证",
-      "title": "是否在 rules 属性改变后立即触发一次验证",
+      "title": "是否在 <code>rules</code> 属性改变后立即触发一次验证",
       "types": [
         {
           "name": "boolean",
@@ -204,7 +205,7 @@
     },
     "disabled": {
       "label": "禁用",
-      "title": "是否禁用该表单内的所有组件。 如果设置为 true, 它将覆盖内部组件的 disabled 属性",
+      "title": "是否禁用该表单内的所有组件。 如果设置为 <code>true</code>, 它将覆盖内部组件的 <code>disabled</code> 属性",
       "types": [
         {
           "name": "boolean",
@@ -237,92 +238,10 @@
           "tag": "el-switch"
         }
       ],
+      "default": true,
       "version": "2.3.2"
-    },
-    "prop": {
-      "title": "`model` 的键名。 它可以是一个属性的值(如 `a.b.0` 或 `['a', 'b', '0']`)。 在使用了 `validate`、`resetFields` 的方法时，该属性是必填的。",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        },
-        {
-          "name": "string&#91;&#93;",
-          "tag": ""
-        }
-      ]
-    },
-    "label": {
-      "title": "标签文本",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "required": {
-      "title": "是否为必填项，如不设置，则会根据校验规则确认",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ]
-    },
-    "error": {
-      "title": "表单域验证错误时的提示信息。设置该值会导致表单验证状态变为 error，并显示该错误信息。",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "for": {
-      "title": "和原生标签相同能力",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
-    },
-    "validate-status": {
-      "title": "formitem 校验的状态",
-      "types": [
-        {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "error",
-              "value": "error"
-            },
-            {
-              "label": "validating",
-              "value": "validating"
-            },
-            {
-              "label": "success",
-              "value": "success"
-            }
-          ]
-        }
-      ]
     }
   },
-  "events": [
-    {
-      "name": "validate",
-      "title": "任一表单项被校验后触发",
-      "type": "Function",
-      "fnDes": "(prop: FormItemProp, isValid: boolean, message: string) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
@@ -332,43 +251,57 @@
       ]
     }
   ],
+  "events": [
+    {
+      "name": "validate",
+      "title": "任一表单项被校验后触发",
+      "type": "function",
+      "details": "(prop: FormItemProp, isValid: boolean, message: string) => void"
+    }
+  ],
   "exposes": [
     {
       "name": "validate",
-      "title": "对整个表单的内容进行验证。 接收一个回调函数，或返回 `Promise`。",
-      "type": "Function",
-      "fnDes": "(callback?: FormValidateCallback) => Promise<void>"
+      "title": "对整个表单的内容进行验证。 接收一个回调函数，或返回 <code>Promise</code>。",
+      "type": "function",
+      "details": "(callback?: FormValidateCallback) => Promise<void>"
     },
     {
       "name": "validateField",
       "title": "验证具体的某个字段。",
-      "type": "Function",
-      "fnDes": "(props?: Arrayable<FormItemProp> | undefined, callback?: FormValidateCallback | undefined) => FormValidationResult"
+      "type": "function",
+      "details": "(props?: Arrayable<FormItemProp> | undefined, callback?: FormValidateCallback | undefined) => FormValidationResult"
     },
     {
       "name": "resetFields",
       "title": "重置该表单项，将其值重置为初始值，并移除校验结果",
-      "type": "Function",
-      "fnDes": "(props?: Arrayable<FormItemProp> | undefined) => void"
+      "type": "function",
+      "details": "(props?: Arrayable<FormItemProp> | undefined) => void"
     },
     {
       "name": "scrollToField",
       "title": "滚动到指定的字段",
-      "type": "Function",
-      "fnDes": "(prop: FormItemProp) => void"
+      "type": "function",
+      "details": "(prop: FormItemProp) => void"
     },
     {
       "name": "clearValidate",
       "title": "清理某个字段的表单验证信息。",
-      "type": "Function",
-      "fnDes": "(props?: Arrayable<FormItemProp> | undefined) => void"
+      "type": "function",
+      "details": "(props?: Arrayable<FormItemProp> | undefined) => void"
     },
     {
-      "name": "fields",
+      "name": "fields ",
+      "version": "2.7.3",
       "title": "获取所有字段的 context",
-      "type": "^[array]`FormItemContext[]`",
-      "version": "2.7.3"
+      "type": "array"
+    },
+    {
+      "name": "getField ",
+      "version": "2.10.2",
+      "title": "获取字段的 context",
+      "type": "function",
+      "details": "(prop: FormItemProp) => FormItemContext | undefined"
     }
-  ],
-  "desc": "表单包含 `输入框`, `单选框`, `下拉选择`, `多选框` 等用户输入的组件。 使用表单，您可以收集、验证和提交数据。"
+  ]
 }

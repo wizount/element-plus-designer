@@ -1,6 +1,7 @@
 {
   "__id__": "image-viewer",
   "name": "图片",
+  "desc": "图片容器，在保留所有原生 img 的特性下，支持懒加载，自定义占位、加载失败等",
   "tag": "el-image-viewer",
   "tagIcon": "image",
   "layouts": [
@@ -9,18 +10,17 @@
   "document": "https://element-plus.org/zh-CN/component/image.html",
   "attributes": {
     "url-list": {
-      "label": "",
+      "label": "用于预览的图片链接列表",
       "title": "用于预览的图片链接列表",
       "types": [
         {
-          "name": "array",
-          "tag": "array-editor"
+          "name": "object",
+          "tag": "object-editor"
         }
-      ],
-      "default": []
+      ]
     },
     "z-index": {
-      "label": "",
+      "label": "预览时遮罩层的 z-index",
       "title": "预览时遮罩层的 z-index",
       "types": [
         {
@@ -30,8 +30,8 @@
       ]
     },
     "initial-index": {
-      "label": "",
-      "title": "初始预览图像索引，小于 `url-list` 的长度",
+      "label": "初始预览图像索引",
+      "title": "初始预览图像索引，小于 <code>url-list</code> 的长度",
       "types": [
         {
           "name": "number",
@@ -41,7 +41,7 @@
       "default": 0
     },
     "infinite": {
-      "label": "",
+      "label": "可以无限循环预览",
       "title": "是否可以无限循环预览",
       "types": [
         {
@@ -52,7 +52,7 @@
       "default": true
     },
     "hide-on-click-modal": {
-      "label": "",
+      "label": "可以通过点击遮罩层关闭预览",
       "title": "是否可以通过点击遮罩层关闭预览",
       "types": [
         {
@@ -63,8 +63,8 @@
       "default": false
     },
     "teleported": {
-      "label": "",
-      "title": "image 自身是否插入至 body 元素上。 嵌套的父元素属性会发生修改时应该将此属性设置为 `true`",
+      "label": "image 自身是否插入至 body 元素上。 嵌套的父元素属性会发生修改时应该将此属性设置为 true",
+      "title": "image 自身是否插入至 body 元素上。 嵌套的父元素属性会发生修改时应该将此属性设置为 <code>true</code>",
       "types": [
         {
           "name": "boolean",
@@ -74,7 +74,7 @@
       "default": false
     },
     "zoom-rate": {
-      "label": "",
+      "label": "图像查看器缩放事件的缩放速率。",
       "title": "图像查看器缩放事件的缩放速率。",
       "types": [
         {
@@ -86,6 +86,7 @@
       "version": "2.2.27"
     },
     "min-scale": {
+      "label": "图像查看器缩放事件的最小缩放比例",
       "title": "图像查看器缩放事件的最小缩放比例",
       "types": [
         {
@@ -97,6 +98,7 @@
       "version": "2.4.0"
     },
     "max-scale": {
+      "label": "图像查看器缩放事件的最大缩放比例",
       "title": "图像查看器缩放事件的最大缩放比例",
       "types": [
         {
@@ -108,7 +110,7 @@
       "version": "2.4.0"
     },
     "close-on-press-escape": {
-      "label": "",
+      "label": "可以通过按下 ESC 关闭 Image Viewer",
       "title": "是否可以通过按下 ESC 关闭 Image Viewer",
       "types": [
         {
@@ -119,6 +121,7 @@
       "default": true
     },
     "show-progress": {
+      "label": "显示预览图片的进度条内容",
       "title": "是否显示预览图片的进度条内容",
       "types": [
         {
@@ -133,32 +136,30 @@
   "events": [
     {
       "name": "close",
-      "title": "当点击 X 按钮或者在` hide-on-click-modal `为 true 时点击遮罩层时触发",
-      "type": "Function",
-      "fnDes": "() => void"
+      "title": "当点击 X 按钮或者在<code>hide-on-click-modal</code>为 true 时点击遮罩层时触发",
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "switch",
       "title": "切换图像时触发。",
-      "type": "Function",
-      "fnDes": "(index: number) => void"
+      "type": "function",
+      "details": "(index: number) => void"
     },
     {
-      "name": "rotate",
-      "title": "旋转图像时触发。",
-      "type": "Function",
+      "name": "rotate ",
       "version": "2.3.13",
-      "fnDes": "(deg: number) => void"
+      "title": "旋转图像时触发。",
+      "type": "function",
+      "details": "(deg: number) => void"
     }
   ],
   "exposes": [
     {
       "name": "setActiveItem",
       "title": "手动切换图片",
-      "type": "Function",
-      "fnDes": "(index: number) => void"
+      "type": "function",
+      "details": "(index: number) => void"
     }
-  ],
-  "slots": [],
-  "desc": "图片容器，在保留所有原生 img 的特性下，支持懒加载，自定义占位、加载失败等"
+  ]
 }

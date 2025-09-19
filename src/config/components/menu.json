@@ -1,6 +1,7 @@
 {
   "__id__": "menu",
   "name": "菜单",
+  "desc": "为网站提供导航功能的菜单。",
   "tag": "el-menu",
   "tagIcon": "menu",
   "layouts": [
@@ -59,6 +60,7 @@
       "default": true
     },
     "ellipsis-icon": {
+      "label": "自定义省略图标",
       "title": "自定义省略图标 (仅在水平模式下可用)",
       "types": [
         {
@@ -69,6 +71,7 @@
       "version": "2.4.4"
     },
     "popper-offset": {
+      "label": "弹出层的偏移量",
       "title": "弹出层的偏移量(对所有子菜单有效)",
       "types": [
         {
@@ -78,42 +81,6 @@
       ],
       "default": 6,
       "version": "2.4.4"
-    },
-    "background-color": {
-      "label": "背景颜色",
-      "title": "菜单的背景颜色（十六进制格式）（已被废弃，使用--bg-color）",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-color-picker"
-        }
-      ],
-      "default": "#ffffff",
-      "deprecated": true
-    },
-    "text-color": {
-      "label": "文字颜色",
-      "title": "文字颜色（十六进制格式）（已被废弃，使用--text-color）",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-color-picker"
-        }
-      ],
-      "default": "#303133",
-      "deprecated": true
-    },
-    "active-text-color": {
-      "label": "活动菜单项文本颜色",
-      "title": "活动菜单项的文本颜色（十六进制格式）（已被废弃，使用--active-color）",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-color-picker"
-        }
-      ],
-      "default": "#409EFF",
-      "deprecated": true
     },
     "default-active": {
       "label": "默认激活菜单的 index",
@@ -151,7 +118,7 @@
     },
     "menu-trigger": {
       "label": "子菜单打开触发方式",
-      "title": "子菜单打开的触发方式，只在 mode 为 horizontal 时有效。",
+      "title": "子菜单打开的触发方式，只在 <code>mode</code> 为 horizontal 时有效。",
       "types": [
         {
           "name": "enum",
@@ -175,7 +142,7 @@
     },
     "router": {
       "label": "启用vue-router模式",
-      "title": "是否启用 vue-router 模式。 启用该模式会在激活导航时以 index 作为 path 进行路由跳转 使用 default-active 来设置加载时的激活项。",
+      "title": "是否启用 <code>vue-router</code> 模式。 启用该模式会在激活导航时以 index 作为 path 进行路由跳转 使用 <code>default-active</code> 来设置加载时的激活项。",
       "types": [
         {
           "name": "boolean",
@@ -196,8 +163,8 @@
       "default": true
     },
     "popper-effect": {
-      "label": "",
-      "title": "Tooltip 主题，内置了 `dark` / `light` 两种主题",
+      "label": "Tooltip 主题",
+      "title": "Tooltip 主题，内置了 <code>dark</code> / <code>light</code> 两种主题，当菜单折叠时生效。",
       "types": [
         {
           "name": "enum",
@@ -215,12 +182,17 @@
               "value": "light"
             }
           ]
+        },
+        {
+          "name": "string",
+          "tag": "el-input"
         }
       ],
       "default": "dark",
       "version": "2.2.26"
     },
     "close-on-click-outside": {
+      "label": "可选",
       "title": "可选，单击外部时是否折叠菜单",
       "types": [
         {
@@ -232,7 +204,8 @@
       "version": "2.4.4"
     },
     "popper-class": {
-      "title": "custom class name for all popup menus",
+      "label": "为 popper 添加类名",
+      "title": "为 popper 添加类名",
       "types": [
         {
           "name": "string",
@@ -242,7 +215,8 @@
       "version": "2.5.0"
     },
     "show-timeout": {
-      "title": "Control timeout for all menus before showing",
+      "label": "出现前的延迟",
+      "title": "菜单出现前的延迟",
       "types": [
         {
           "name": "number",
@@ -253,7 +227,8 @@
       "version": "2.5.0"
     },
     "hide-timeout": {
-      "title": "Control timeout for all menus before hiding",
+      "label": "消失前的延迟",
+      "title": "菜单消失前的延迟",
       "types": [
         {
           "name": "number",
@@ -262,28 +237,56 @@
       ],
       "default": 300,
       "version": "2.5.0"
+    },
+    "background-color": {
+      "label": "背景颜色",
+      "title": "菜单的背景颜色 (十六进制格式) (推荐在样式类中使用 <code>--el-menu-bg-color</code>)",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#ffffff",
+      "deprecated": true
+    },
+    "text-color": {
+      "label": "文字颜色",
+      "title": "菜单的文字颜色 (十六进制格式) (推荐在样式类中使用 <code>--el-menu-text-color</code>)",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#303133",
+      "deprecated": true
+    },
+    "active-text-color": {
+      "label": "活动菜单项文本颜色",
+      "title": "活动菜单项的文本颜色（十六进制格式）（推荐使用 css var <code>--el-menu-active-color</code>）",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-color-picker"
+        }
+      ],
+      "default": "#409eff",
+      "deprecated": true
+    },
+    "persistent": {
+      "label": "当菜单处于非活动状态且 persistent 为 false 时",
+      "title": "当菜单处于非活动状态且 <code>persistent</code> 为 <code>false</code> 时，下拉菜单将被销毁",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.9.5"
     }
   },
-  "events": [
-    {
-      "name": "select",
-      "title": "菜单激活回调",
-      "type": "Function",
-      "fnDes": "^[Function]`MenuSelectEvent"
-    },
-    {
-      "name": "open",
-      "title": "sub-menu 展开的回调",
-      "type": "Function",
-      "fnDes": "^[Function]`MenuOpenEvent"
-    },
-    {
-      "name": "close",
-      "title": "sub-menu 收起的回调",
-      "type": "Function",
-      "fnDes": "^[Function]`MenuCloseEvent"
-    }
-  ],
   "slots": [
     {
       "name": "default",
@@ -295,19 +298,45 @@
       ]
     }
   ],
-  "desc": "为网站提供导航功能的菜单。",
+  "events": [
+    {
+      "name": "select",
+      "title": "菜单激活回调",
+      "type": "function",
+      "details": "MenuSelectEvent"
+    },
+    {
+      "name": "open",
+      "title": "sub-menu 展开的回调",
+      "type": "function",
+      "details": "MenuOpenEvent"
+    },
+    {
+      "name": "close",
+      "title": "sub-menu 收起的回调",
+      "type": "function",
+      "details": "MenuCloseEvent"
+    }
+  ],
   "exposes": [
     {
       "name": "open",
       "title": "打开一个特定的子菜单，参数是要打开的子菜单的索引",
-      "type": "Function",
-      "fnDes": "(index: string) => void"
+      "type": "function",
+      "details": "(index: string) => void"
     },
     {
       "name": "close",
       "title": "关闭一个特定的子菜单，参数是要关闭子菜单的索引",
-      "type": "Function",
-      "fnDes": "(index: string) => void"
+      "type": "function",
+      "details": "(index: string) => void"
+    },
+    {
+      "name": "updateActiveIndex ",
+      "version": "2.9.8",
+      "title": "通过索引激活指定菜单",
+      "type": "function",
+      "details": "(index: string) => void"
     }
   ]
 }

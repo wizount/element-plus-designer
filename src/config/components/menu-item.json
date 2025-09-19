@@ -1,6 +1,7 @@
 {
   "__id__": "menu-item",
   "name": "菜单项",
+  "desc": "为网站提供导航功能的菜单。",
   "tag": "el-menu-item",
   "tagIcon": "menu-item",
   "layouts": [
@@ -25,12 +26,16 @@
           }
         }
       ],
-      "default": null
+      "required": true
     },
     "route": {
       "label": "Vue Router",
-      "title": "Vue Router 路径对象",
+      "title": "Vue Route 路由位置参数",
       "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
         {
           "name": "object",
           "tag": "object-editor"
@@ -49,14 +54,6 @@
       "default": false
     }
   },
-  "events": [
-    {
-      "name": "click",
-      "title": "点击菜单项时回调函数, 参数为菜单项实例",
-      "type": "Function",
-      "fnDes": "(item: MenuItemRegistered) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
@@ -67,5 +64,12 @@
       "title": "自定义标题内容"
     }
   ],
-  "desc": "为网站提供导航功能的菜单。"
+  "events": [
+    {
+      "name": "click",
+      "title": "点击菜单项时回调函数, 参数为菜单项实例",
+      "type": "function",
+      "details": "(item: MenuItemRegistered) => void"
+    }
+  ]
 }

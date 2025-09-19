@@ -1,6 +1,7 @@
 {
   "__id__": "icon",
   "name": "图标",
+  "desc": "Element Plus 提供了一套常用的图标集合。",
   "tag": "el-icon",
   "tagIcon": "icon",
   "layouts": [
@@ -22,7 +23,7 @@
       ]
     },
     "size": {
-      "label": "图标大小",
+      "label": "大小",
       "title": "SVG 图标的大小，size x size",
       "types": [
         {
@@ -37,6 +38,5 @@
       "name": "default",
       "title": "自定义默认内容"
     }
-  ],
-  "desc": "Element Plus 提供了一套常用的图标集合。"
+  ]
 }

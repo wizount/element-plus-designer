@@ -1,6 +1,7 @@
 {
   "__id__": "input-tag",
   "name": "标签输入框",
+  "desc": "InputTag 组件允许用户添加内容作为标签",
   "tag": "el-input-tag",
   "tagIcon": "input-tag",
   "layouts": [
@@ -21,6 +22,7 @@
       ]
     },
     "tag-type": {
+      "label": "标签类型",
       "title": "标签类型",
       "types": [
         {
@@ -49,6 +51,7 @@
       "default": "info"
     },
     "tag-effect": {
+      "label": "标签效果",
       "title": "标签效果",
       "types": [
         {
@@ -76,6 +79,7 @@
       "default": "light"
     },
     "trigger": {
+      "label": "触发输入标签的按键",
       "title": "触发输入标签的按键",
       "types": [
         {
@@ -99,6 +103,7 @@
       "default": "Enter"
     },
     "draggable": {
+      "label": "可以拖动标签",
       "title": "是否可以拖动标签",
       "types": [
         {
@@ -108,7 +113,22 @@
       ],
       "default": false
     },
+    "delimiter": {
+      "label": "在匹配分隔符时添加标签",
+      "title": "在匹配分隔符时添加标签",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "regex"
+        }
+      ],
+      "version": "2.9.9"
+    },
     "size": {
+      "label": "输入框尺寸",
       "title": "输入框尺寸",
       "types": [
         {
@@ -132,8 +152,19 @@
             }
           ]
         }
+      ]
+    },
+    "save-on-blur": {
+      "label": "当输入失去焦点时是否保存输入值",
+      "title": "当输入失去焦点时是否保存输入值",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
       ],
-      "default": "default"
+      "default": true,
+      "version": "2.9.7"
     },
     "clearable": {
       "label": "清除按钮",
@@ -147,6 +178,7 @@
       "default": false
     },
     "disabled": {
+      "label": "禁用",
       "title": "是否禁用",
       "types": [
         {
@@ -157,6 +189,7 @@
       "default": false
     },
     "validate-event": {
+      "label": "触发表单验证",
       "title": "是否触发表单验证",
       "types": [
         {
@@ -168,7 +201,7 @@
     },
     "readonly": {
       "label": "readonly",
-      "title": "等价于原生readonly属性",
+      "title": "等价于原生 <code>readonly</code> 属性",
       "types": [
         {
           "name": "boolean",
@@ -179,7 +212,7 @@
     },
     "autofocus": {
       "label": "autofocus",
-      "title": "等价于原生 autofocus 属性",
+      "title": "等价于原生 <code> autofocus </code> 属性",
       "types": [
         {
           "name": "boolean",
@@ -190,7 +223,7 @@
     },
     "id": {
       "label": "inputid",
-      "title": "等价于原生 inputid属性",
+      "title": "等价于原生 input <code>id</code> 属性",
       "types": [
         {
           "name": "string",
@@ -200,7 +233,7 @@
     },
     "tabindex": {
       "label": "tabindex",
-      "title": "等价于原生 tabindex 属性",
+      "title": "等价于原生 <code> tabindex </code> 属性",
       "types": [
         {
           "name": "stringNumber",
@@ -210,7 +243,7 @@
     },
     "maxlength": {
       "label": "maxlength",
-      "title": "等价于原生 maxlength 属性",
+      "title": "等价于原生 <code> maxlength </code> 属性",
       "types": [
         {
           "name": "stringNumber",
@@ -220,7 +253,7 @@
     },
     "minlength": {
       "label": "minlength",
-      "title": "等价于原生 minlength 属性",
+      "title": "等价于原生 <code> minlength </code> 属性",
       "types": [
         {
           "name": "stringNumber",
@@ -230,7 +263,7 @@
     },
     "autocomplete": {
       "label": "autocomplete",
-      "title": "等价于原生 autocomplete 属性",
+      "title": "等价于原生 <code> autocomplete </code> 属性",
       "types": [
         {
           "name": "string",
@@ -241,7 +274,7 @@
     },
     "aria-label": {
       "label": "aria-label",
-      "title": "等价于原生 aria-label 属性",
+      "title": "等价于原生 <code> aria-label </code> 属性",
       "types": [
         {
           "name": "string",
@@ -255,7 +288,8 @@
     {
       "name": "tag",
       "title": "作为tag的内容",
-      "type": "^[object]`{ value: string, index: number }`"
+      "type": "object",
+      "details": "{ value: string, index: number }"
     },
     {
       "name": "prefix",
@@ -270,59 +304,58 @@
     {
       "name": "change",
       "title": "绑定值变化时触发的事件",
-      "type": "Function",
-      "fnDes": "(value: string[]) => void"
+      "type": "function",
+      "details": "(value: string[]) => void"
     },
     {
       "name": "input",
       "title": "在 Input 值改变时触发",
-      "type": "Function",
-      "fnDes": "(value: string) => void"
+      "type": "function",
+      "details": "(value: string) => void"
     },
     {
       "name": "add-tag",
       "title": "tag 被添加时触发",
-      "type": "Function",
-      "fnDes": "(value: string) => void"
+      "type": "function",
+      "details": "(value: string \\| string []) => void"
     },
     {
       "name": "remove-tag",
       "title": "tag 被移除时触发",
-      "type": "Function",
-      "fnDes": "(value: string) => void"
+      "type": "function",
+      "details": "(value: string) => void"
     },
     {
       "name": "focus",
       "title": "在 Input 获得焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
     },
     {
       "name": "blur",
       "title": "在 Input 失去焦点时触发",
-      "type": "Function",
-      "fnDes": "(event: FocusEvent) => void"
+      "type": "function",
+      "details": "(event: FocusEvent) => void"
     },
     {
       "name": "clear",
       "title": "点击清除图标时触发",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     }
   ],
   "exposes": [
     {
       "name": "focus",
       "title": "使 input 获取焦点",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "blur",
       "title": "使 input 失去焦点",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     }
-  ],
-  "desc": "InputTag 组件允许用户添加内容作为标签"
+  ]
 }

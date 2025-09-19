@@ -1,6 +1,7 @@
 {
   "__id__": "mention",
   "name": "提及",
+  "desc": "用于在输入中提及某人或某事。",
   "tag": "el-mention",
   "tagIcon": "mention",
   "layouts": [
@@ -53,8 +54,7 @@
         },
         {
           "name": "function",
-          "tag": "",
-          "desc": "(pattern: string, option: MentionOption) => boolean"
+          "details": "(pattern: string, option: MentionOption) => boolean"
         }
       ]
     },
@@ -81,7 +81,7 @@
       "default": false
     },
     "offset": {
-      "label": "",
+      "label": "下拉面板偏移量",
       "title": "下拉面板偏移量",
       "types": [
         {
@@ -108,8 +108,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(pattern: string, prefix: string) => boolean"
+          "details": "(pattern: string, prefix: string) => boolean"
         }
       ]
     },
@@ -149,7 +148,8 @@
     {
       "name": "label",
       "title": "自定义标签内容",
-      "type": "^[object]`{ item: MentionOption, index: number }`"
+      "type": "object",
+      "details": "{ item: MentionOption, index: number }"
     },
     {
       "name": "loading",
@@ -164,45 +164,69 @@
       "title": "下拉列表底部的内容"
     },
     {
-      "name": "[input slots](./input.md#slots)",
-      "title": "—"
+      "name": "prefix",
+      "title": "输入框头部内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "suffix",
+      "title": "输入框尾部内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "prepend",
+      "title": "输入框前置内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "append",
+      "title": "输入框后置内容，只对非 <code>type=\"textarea\"</code> 有效"
     }
   ],
   "events": [
     {
       "name": "search",
       "title": "按下触发字段时触发",
-      "type": "Function",
-      "fnDes": "(pattern: string, prefix: string) => void"
+      "type": "function",
+      "details": "(pattern: string, prefix: string) => void"
     },
     {
       "name": "select",
       "title": "当用户选择选项时触发",
-      "type": "Function",
-      "fnDes": "(option: MentionOption, prefix: string) => void"
+      "type": "function",
+      "details": "(option: MentionOption, prefix: string) => void"
     },
     {
-      "name": "[input events](./input.md#events)",
-      "title": "—",
-      "type": "—"
+      "name": "whole-remove ",
+      "version": "2.10.4",
+      "title": "当整个 mention 被移除，且 <code>whole</code> 为 <code>true</code> 或 <code>check-is-whole</code> 为 <code>true</code> 时触发。",
+      "type": "function",
+      "details": "(pattern: string, prefix: string) => void"
+    },
+    {
+      "name": {
+        "type": "a",
+        "href": "./input.html#events"
+      },
+      "title": "—"
     }
   ],
   "exposes": [
     {
       "name": "input",
       "title": "el-input 组件实例",
-      "type": "^[object]`Ref<InputInstance \\| null>`"
+      "type": "object",
+      "details": "Ref<InputInstance \\| null>"
     },
     {
       "name": "tooltip",
       "title": "el-tooltip 组件实例",
-      "type": "^[object]`Ref<TooltipInstance \\| null>`"
+      "type": "object",
+      "details": "Ref<TooltipInstance \\| null>"
     },
     {
-      "name": "dropdownVisible",
+      "name": "dropdownVisible ",
+      "version": "2.8.5",
       "title": "tooltip 显示状态",
-      "type": "^[object]`ComputedRef<boolean>`",
-      "version": "2.8.5"
+      "type": "object",
+      "details": "ComputedRef<boolean>"
     }
   ],
   "data": {
@@ -246,6 +270,5 @@
       "method": "get",
       "dataKey": ""
     }
-  },
-  "desc": "用于在输入中提及某人或某事。"
+  }
 }

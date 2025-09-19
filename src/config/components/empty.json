@@ -1,6 +1,7 @@
 {
   "__id__": "empty",
   "name": "空状态",
+  "desc": "空状态时的占位提示。",
   "tag": "el-empty",
   "tagIcon": "empty",
   "layouts": [
@@ -10,7 +11,7 @@
   "attributes": {
     "image": {
       "label": "图片地址",
-      "title": "图片地址",
+      "title": "empty 组件的图像地址",
       "types": [
         {
           "name": "string",
@@ -23,7 +24,7 @@
     },
     "image-size": {
       "label": "图片大小",
-      "title": "图片大小（宽度）",
+      "title": "empty 组件的图像尺寸（宽度）",
       "types": [
         {
           "name": "number",
@@ -33,7 +34,7 @@
     },
     "description": {
       "label": "描述",
-      "title": "描述",
+      "title": "empty 组件的描述信息",
       "types": [
         {
           "name": "string",
@@ -58,6 +59,5 @@
       "name": "description",
       "title": "作为描述的内容"
     }
-  ],
-  "desc": "空状态时的占位提示。"
+  ]
 }

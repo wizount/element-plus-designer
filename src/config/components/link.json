@@ -1,6 +1,7 @@
 {
   "__id__": "link",
   "name": "链接",
+  "desc": "文字超链接",
   "tag": "el-link",
   "tagIcon": "link",
   "layouts": [
@@ -47,14 +48,32 @@
     },
     "underline": {
       "label": "下划线",
-      "title": "是否下划线",
+      "title": "控制下划线是否出现",
       "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "always",
+              "value": "always"
+            },
+            {
+              "label": "hover",
+              "value": "hover"
+            },
+            {
+              "label": "never",
+              "value": "never"
+            }
+          ]
+        },
         {
           "name": "boolean",
           "tag": "el-switch"
         }
       ],
-      "default": true
+      "default": "hover"
     },
     "disabled": {
       "label": "禁用状态",
@@ -81,7 +100,8 @@
       ]
     },
     "target": {
-      "title": "同原生 `target `属性",
+      "label": "同原生 target 属性",
+      "title": "同原生 <code>target </code>属性",
       "types": [
         {
           "name": "enum",
@@ -106,7 +126,7 @@
           ]
         }
       ],
-      "default": "\\_self"
+      "default": "_self"
     },
     "icon": {
       "label": "图标组件",
@@ -128,6 +148,5 @@
       "name": "icon",
       "title": "自定义图标组件"
     }
-  ],
-  "desc": "文字超链接"
+  ]
 }
