@@ -1,6 +1,7 @@
 {
   "__id__": "segmented",
   "name": "分段控制器",
+  "desc": "用于展示多个选项并允许用户选择其中单个选项。",
   "tag": "el-segmented",
   "tagIcon": "segmented",
   "layouts": [
@@ -10,6 +11,7 @@
   "attributes": {
     "vModel": "modelValue",
     "options": {
+      "label": "选项的数据",
       "title": "选项的数据",
       "types": [
         {
@@ -20,6 +22,7 @@
       "default": []
     },
     "size": {
+      "label": "组件大小",
       "title": "组件大小",
       "types": [
         {
@@ -47,16 +50,17 @@
       "default": "default"
     },
     "block": {
+      "label": "撑满父元素宽度",
       "title": "撑满父元素宽度",
       "types": [
         {
           "name": "boolean",
           "tag": "el-switch"
         }
-      ],
-      "default": false
+      ]
     },
     "disabled": {
+      "label": "禁用",
       "title": "是否禁用",
       "types": [
         {
@@ -67,6 +71,7 @@
       "default": false
     },
     "validate-event": {
+      "label": "触发表单验证",
       "title": "是否触发表单验证",
       "types": [
         {
@@ -77,6 +82,7 @@
       "default": true
     },
     "name": {
+      "label": "原生 name 属性",
       "title": "原生 name 属性",
       "types": [
         {
@@ -86,7 +92,8 @@
       ]
     },
     "id": {
-      "title": "原生 `id` 属性",
+      "label": "原生 id 属性",
+      "title": "原生 <code>id</code> 属性",
       "types": [
         {
           "name": "string",
@@ -95,7 +102,8 @@
       ]
     },
     "aria-label": {
-      "title": "原生 `aria-label` 属性",
+      "label": "原生 aria-label 属性",
+      "title": "原生 <code>aria-label</code> 属性",
       "types": [
         {
           "name": "string",
@@ -105,7 +113,8 @@
       "a11y": true
     },
     "direction": {
-      "title": "display direction",
+      "label": "展示的方向",
+      "title": "展示的方向",
       "types": [
         {
           "name": "enum",
@@ -133,16 +142,16 @@
     {
       "name": "default",
       "title": "自定义 Option 模板",
-      "type": "^[object]`{ item: Option }`"
+      "type": "object",
+      "details": "{ item: Option }"
     }
   ],
   "events": [
     {
       "name": "change",
       "title": "当所选值更改时触发，参数是当前选中的值",
-      "type": "Function",
-      "fnDes": "(val: any) => void"
+      "type": "function",
+      "details": "(val: any) => void"
     }
-  ],
-  "desc": "用于展示多个选项并允许用户选择其中单个选项。"
+  ]
 }

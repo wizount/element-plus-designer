@@ -361,7 +361,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
+
           "desc": "keyword: string"
         }
       ],

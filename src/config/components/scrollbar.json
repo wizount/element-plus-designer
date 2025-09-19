@@ -1,6 +1,7 @@
 {
   "__id__": "scrollbar",
   "name": "滚动条",
+  "desc": "用于替换浏览器原生滚动条。",
   "tag": "el-scrollbar",
   "tagIcon": "scrollbar",
   "layouts": [
@@ -125,7 +126,7 @@
       "default": "div"
     },
     "always": {
-      "label": "滚动条总是显示",
+      "label": "总是显示",
       "title": "滚动条总是显示",
       "types": [
         {
@@ -147,6 +148,7 @@
       "default": 20
     },
     "id": {
+      "label": "视图ID",
       "title": "视图ID",
       "types": [
         {
@@ -157,6 +159,7 @@
       "version": "2.4.0"
     },
     "role": {
+      "label": "视图的角色",
       "title": "视图的角色",
       "types": [
         {
@@ -168,6 +171,7 @@
       "a11y": true
     },
     "aria-label": {
+      "label": "视图的 aria-label",
       "title": "视图的 aria-label",
       "types": [
         {
@@ -179,6 +183,7 @@
       "a11y": true
     },
     "aria-orientation": {
+      "label": "视图的 aria-orientation",
       "title": "视图的 aria-orientation",
       "types": [
         {
@@ -203,6 +208,7 @@
       "a11y": true
     },
     "tabindex": {
+      "label": "容器的tabindex",
       "title": "容器的tabindex",
       "types": [
         {
@@ -211,58 +217,77 @@
         }
       ],
       "version": "2.8.3"
+    },
+    "distance": {
+      "label": "触发到达底部事件的距离",
+      "title": "触发到达底部事件的距离（像素）",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 0,
+      "version": "2.10.5"
     }
   },
-  "events": [
-    {
-      "name": "scroll",
-      "title": "当触发滚动事件时，返回滚动的距离",
-      "type": "Function",
-      "fnDes": "({ scrollLeft: number, scrollTop: number }) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
       "title": "自定义默认内容"
     }
   ],
+  "events": [
+    {
+      "name": "scroll",
+      "title": "当触发滚动事件时，返回滚动的距离",
+      "type": "function",
+      "details": "({ scrollLeft: number, scrollTop: number }) => void"
+    },
+    {
+      "name": "end-reached ",
+      "version": "2.10.0",
+      "title": "触发滚动结束时的触发器",
+      "type": "function",
+      "details": "(direction: 'top' | 'bottom' | 'left' | 'right') => void"
+    }
+  ],
   "exposes": [
     {
       "name": "handleScroll",
       "title": "触发滚动事件",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "scrollTo",
       "title": "滚动到一组特定坐标",
-      "type": "Function",
-      "fnDes": "(options: ScrollToOptions | number, yCoord?: number) => void"
+      "type": "function",
+      "details": "(options: ScrollToOptions | number, yCoord?: number) => void"
     },
     {
       "name": "setScrollTop",
       "title": "设置滚动条到顶部的距离",
-      "type": "Function",
-      "fnDes": "(scrollTop: number) => void"
+      "type": "function",
+      "details": "(scrollTop: number) => void"
     },
     {
       "name": "setScrollLeft",
       "title": "设置滚动条到左边的距离",
-      "type": "Function",
-      "fnDes": "(scrollLeft: number) => void"
+      "type": "function",
+      "details": "(scrollLeft: number) => void"
     },
     {
       "name": "update",
       "title": "手动更新滚动条状态",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "wrapRef",
       "title": "滚动条包裹的 ref 对象",
-      "type": "^[object]`Ref<HTMLDivElement>`"
+      "type": "object",
+      "details": "Ref<HTMLDivElement>"
     }
-  ],
-  "desc": "用于替换浏览器原生滚动条。"
+  ]
 }
