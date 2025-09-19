@@ -1,6 +1,7 @@
 {
   "__id__": "result",
   "name": "结果",
+  "desc": "用于对用户的操作结果或者异常状态做反馈。",
   "tag": "el-result",
   "tagIcon": "button",
   "layouts": [
@@ -10,7 +11,7 @@
   "attributes": {
     "title": {
       "label": "标题",
-      "title": "标题",
+      "title": "result 组件的标题",
       "types": [
         {
           "name": "string",
@@ -22,8 +23,8 @@
       ]
     },
     "sub-title": {
-      "label": "二级标题",
-      "title": "二级标题",
+      "label": "副标题",
+      "title": "result 组件的副标题",
       "types": [
         {
           "name": "string",
@@ -36,12 +37,16 @@
     },
     "icon": {
       "label": "图标类型",
-      "title": "图标类型",
+      "title": "result 组件的图标类型",
       "types": [
         {
           "name": "enum",
           "tag": "el-select",
           "options": [
+            {
+              "label": "primary",
+              "value": "primary"
+            },
             {
               "label": "success",
               "value": "success"
@@ -81,6 +86,5 @@
       "name": "extra",
       "title": "内容额外区域的内容"
     }
-  ],
-  "desc": "用于对用户的操作结果或者异常状态做反馈。"
+  ]
 }

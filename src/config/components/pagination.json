@@ -1,6 +1,7 @@
 {
   "__id__": "pagination",
   "name": "分页",
+  "desc": "当数据量过多时，使用分页分解数据。",
   "tag": "el-pagination",
   "tagIcon": "pagination",
   "layouts": [
@@ -8,19 +9,8 @@
   ],
   "document": "https://element-plus.org/zh-CN/component/pagination.html",
   "attributes": {
-    "small": {
-      "label": "小型分页",
-      "title": "是否使用小型分页样式",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false,
-      "deprecated": true
-    },
     "size": {
+      "label": "大小",
       "title": "分页大小",
       "types": [
         {
@@ -59,19 +49,9 @@
       ],
       "default": false
     },
-    "page-size": {
-      "label": "",
-      "title": "每页显示条目个数",
-      "types": [
-        {
-          "name": "number",
-          "tag": "el-input-number"
-        }
-      ]
-    },
     "default-page-size": {
       "label": "每页个数初始值",
-      "title": "每页显示条目数的初始值",
+      "title": "每页默认的条目个数，不设置时默认为10",
       "types": [
         {
           "name": "number",
@@ -81,7 +61,7 @@
     },
     "total": {
       "label": "总数",
-      "title": "总数",
+      "title": "总条目数",
       "types": [
         {
           "name": "number",
@@ -91,7 +71,7 @@
     },
     "page-count": {
       "label": "总页数",
-      "title": "总页数， total 和 page-count 设置任意一个就可以达到显示页码的功能；如果要支持 page-sizes 的更改，则需要使用 total 属性",
+      "title": "总页数， <code>total</code> 和 <code>page-count</code> 设置任意一个就可以达到显示页码的功能；如果要支持 <code>page-sizes</code> 的更改，则需要使用 <code>total</code> 属性",
       "types": [
         {
           "name": "number",
@@ -110,19 +90,9 @@
       ],
       "default": 7
     },
-    "current-page": {
-      "label": "",
-      "title": "当前页数",
-      "types": [
-        {
-          "name": "number",
-          "tag": "el-input-number"
-        }
-      ]
-    },
     "default-current-page": {
       "label": "初始页",
-      "title": "当前页数的初始值",
+      "title": "当前页数的默认初始值，不设置时默认为 1",
       "types": [
         {
           "name": "number",
@@ -170,6 +140,7 @@
       ]
     },
     "append-size-to": {
+      "label": "下拉框挂载到哪个 DOM 元素",
       "title": "下拉框挂载到哪个 DOM 元素",
       "types": [
         {
@@ -207,7 +178,7 @@
     },
     "prev-icon": {
       "label": "上一页图标",
-      "title": "上一页的图标， 比 prev-text 优先级更高",
+      "title": "上一页的图标， 比 <code>prev-text</code> 优先级更高",
       "types": [
         {
           "name": "string",
@@ -231,7 +202,7 @@
     },
     "next-icon": {
       "label": "下一页图标",
-      "title": "下一页的图标， 比 next-text 优先级更高",
+      "title": "下一页的图标， 比 <code>next-text</code> 优先级更低",
       "types": [
         {
           "name": "string",
@@ -252,6 +223,7 @@
       "default": false
     },
     "teleported": {
+      "label": "将下拉菜单teleport至 body",
       "title": "是否将下拉菜单teleport至 body",
       "types": [
         {
@@ -272,46 +244,57 @@
         }
       ],
       "default": false
+    },
+    "small": {
+      "label": "小型分页",
+      "title": "是否使用小型分页样式",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "deprecated": true
     }
   },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义内容 设置文案，需要在 <code>layout</code> 中列出 <code>slot</code>"
+    }
+  ],
   "events": [
     {
       "name": "size-change",
-      "title": "`page-size` 改变时触发",
-      "type": "Function",
-      "fnDes": "(value: number) => void"
+      "title": "<code>page-size</code> 改变时触发",
+      "type": "function",
+      "details": "(value: number) => void"
     },
     {
       "name": "current-change",
-      "title": "`current-page` 改变时触发",
-      "type": "Function",
-      "fnDes": "(value: number) => void"
+      "title": "<code>current-page</code> 改变时触发",
+      "type": "function",
+      "details": "(value: number) => void"
     },
     {
-      "name": "change",
-      "title": "`current-page` 或 `page-size` 更改时触发",
-      "type": "Function",
+      "name": "change ",
       "version": "2.4.4",
-      "fnDes": "(currentPage: number, pageSize: number) => void"
+      "title": "<code>current-page</code> 或 <code>page-size</code> 更改时触发",
+      "type": "function",
+      "details": "(currentPage: number, pageSize: number) => void"
     },
     {
       "name": "prev-click",
       "title": "用户点击上一页按钮改变当前页时触发",
-      "type": "Function",
-      "fnDes": "(value: number) => void"
+      "type": "function",
+      "details": "(value: number) => void"
     },
     {
       "name": "next-click",
       "title": "用户点击下一页按钮改变当前页时触发",
-      "type": "Function",
-      "fnDes": "(value: number) => void"
+      "type": "function",
+      "details": "(value: number) => void"
     }
-  ],
-  "slots": [
-    {
-      "name": "default",
-      "title": "自定义内容 设置文案，需要在 `layout` 中列出 `slot`"
-    }
-  ],
-  "desc": "当数据量过多时，使用分页分解数据。"
+  ]
 }

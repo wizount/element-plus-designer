@@ -1,6 +1,7 @@
 {
   "__id__": "radio",
   "name": "单选框",
+  "desc": "在一组备选项中进行单选",
   "tag": "el-radio",
   "tagIcon": "radio",
   "layouts": [
@@ -10,6 +11,7 @@
   "attributes": {
     "vModel": "modelValue",
     "value": {
+      "label": "值",
       "title": "单选框的值",
       "types": [
         {
@@ -28,8 +30,8 @@
       "version": "2.6.0"
     },
     "label": {
-      "label": "单选框的值",
-      "title": "单选框的值",
+      "label": "的值",
+      "title": "单选框的 label 如果<code>value</code>没有值， <code>label</code>则作为<code>value</code>使用",
       "types": [
         {
           "name": "string",
@@ -99,8 +101,8 @@
       "default": "default"
     },
     "name": {
-      "label": "",
-      "title": "原始 `name` 属性",
+      "label": "原始 name 属性",
+      "title": "原始 <code>name</code> 属性",
       "types": [
         {
           "name": "string",
@@ -110,71 +112,20 @@
           }
         }
       ]
-    },
-    "text-color": {
-      "title": "按钮形式的 Radio 激活时的文本颜色",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-color-picker"
-        }
-      ],
-      "default": "#ffffff"
-    },
-    "fill": {
-      "title": "按钮形式的 Radio 激活时的填充色和边框色",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ],
-      "default": "#409eff"
-    },
-    "validate-event": {
-      "title": "输入时是否触发表单的校验",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": true
-    },
-    "aria-label": {
-      "title": "与 RadioGroup 中的 `aria-label` 属性相同",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ],
-      "a11y": true,
-      "version": "2.7.2"
-    },
-    "id": {
-      "title": "原生 `id` 属性",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ]
     }
   },
-  "events": [
-    {
-      "name": "change",
-      "title": "绑定值变化时触发的事件",
-      "type": "Function",
-      "fnDes": "(value: string | number | boolean) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
       "title": "自定义默认内容"
     }
   ],
-  "desc": "在一组备选项中进行单选"
+  "events": [
+    {
+      "name": "change",
+      "title": "绑定值变化时触发的事件",
+      "type": "function",
+      "details": "(value: string | number | boolean) => void"
+    }
+  ]
 }

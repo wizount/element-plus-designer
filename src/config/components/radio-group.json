@@ -1,6 +1,7 @@
 {
   "__id__": "radio-group",
   "name": "单选框组",
+  "desc": "在一组备选项中进行单选",
   "tag": "el-radio-group",
   "tagIcon": "radio",
   "layouts": [
@@ -11,7 +12,7 @@
     "vModel": "modelValue",
     "size": {
       "label": "尺寸",
-      "title": "单选框组尺寸",
+      "title": "单选框按钮或边框按钮的大小",
       "types": [
         {
           "name": "enum",
@@ -48,6 +49,17 @@
       ],
       "default": false
     },
+    "validate-event": {
+      "label": "表单校验",
+      "title": "输入时是否触发表单的校验",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
     "text-color": {
       "label": "激活文本颜色",
       "title": "按钮形式的 Radio 激活时的文本颜色",
@@ -68,36 +80,11 @@
           "tag": "el-color-picker"
         }
       ],
-      "default": "#409EFF"
-    },
-    "validate-event": {
-      "label": "表单校验",
-      "title": "输入时是否触发表单的校验",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": true
-    },
-    "label": {
-      "label": "",
-      "title": "与 RadioGroup 中的 `aria-label` 属性相同",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ],
-      "a11y": true,
-      "deprecated": true
+      "default": "#409eff"
     },
     "aria-label": {
-      "title": "与 RadioGroup 中的 `aria-label` 属性相同",
+      "label": "与 RadioGroup 中的 aria-label 属性相同",
+      "title": "与 RadioGroup 中的 <code>aria-label</code> 属性相同",
       "types": [
         {
           "name": "string",
@@ -108,8 +95,8 @@
       "version": "2.7.2"
     },
     "name": {
-      "label": "",
-      "title": "原生 `name` 属性",
+      "label": "原生 name 属性",
+      "title": "原生 <code>name</code> 属性",
       "types": [
         {
           "name": "string",
@@ -121,8 +108,8 @@
       ]
     },
     "id": {
-      "label": "",
-      "title": "原生 `id` 属性",
+      "label": "原生 id 属性",
+      "title": "原生 <code>id</code> 属性",
       "types": [
         {
           "name": "string",
@@ -132,16 +119,23 @@
           }
         }
       ]
+    },
+    "label": {
+      "label": "与 RadioGroup 中的 aria-label 属性相同",
+      "title": "与 RadioGroup 中的 <code>aria-label</code> 属性相同",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "a11y": true,
+      "deprecated": true
     }
   },
-  "events": [
-    {
-      "name": "change",
-      "title": "绑定值变化时触发的事件",
-      "type": "Function",
-      "fnDes": "(value: string | number | boolean) => void"
-    }
-  ],
   "slots": [
     {
       "name": "default",
@@ -192,6 +186,5 @@
       "method": "get",
       "dataKey": "list"
     }
-  },
-  "desc": "在一组备选项中进行单选"
+  }
 }

@@ -1,6 +1,7 @@
 {
   "__id__": "popconfirm",
   "name": "气泡确认框",
+  "desc": "点击某个元素弹出一个简单的气泡确认框",
   "tag": "el-popconfirm",
   "tagIcon": "popconfirm",
   "layouts": [
@@ -133,7 +134,7 @@
       "default": "QuestionFilled"
     },
     "icon-color": {
-      "label": "",
+      "label": "Icon 颜色",
       "title": "Icon 颜色",
       "types": [
         {
@@ -155,7 +156,7 @@
       "default": false
     },
     "hide-after": {
-      "label": "",
+      "label": "关闭时的延迟",
       "title": "关闭时的延迟",
       "types": [
         {
@@ -178,7 +179,7 @@
     },
     "persistent": {
       "label": "persistent",
-      "title": "当 popover 组件长时间不触发且 persistent 属性设置为 false 时, popover 将会被删除",
+      "title": "当 popover 组件长时间不触发且 <code>persistent</code> 属性设置为 <code>false</code> 时, popover 将会被删除",
       "types": [
         {
           "name": "boolean",
@@ -189,7 +190,7 @@
     },
     "width": {
       "label": "弹出窗口宽度",
-      "title": "弹出窗口宽度",
+      "title": "弹层宽度，最小宽度 150px",
       "types": [
         {
           "name": "stringNumber",
@@ -199,20 +200,6 @@
       "default": 150
     }
   },
-  "events": [
-    {
-      "name": "confirm",
-      "title": "点击确认按钮时触发",
-      "type": "Function",
-      "fnDes": "(e: MouseEvent) => void"
-    },
-    {
-      "name": "cancel",
-      "title": "点击取消按钮时触发",
-      "type": "Function",
-      "fnDes": "(e: MouseEvent) => void"
-    }
-  ],
   "slots": [
     {
       "name": "reference",
@@ -221,9 +208,23 @@
     {
       "name": "actions",
       "title": "页脚的内容",
-      "type": "^[object]`{ confirm: (e: MouseEvent) => void, cancel: (e: MouseEvent) => void }`",
-      "version": "2.8.1"
+      "type": "object",
+      "version": "2.8.1",
+      "details": "{ confirm: (e: MouseEvent) => void, cancel: (e: MouseEvent) => void }"
     }
   ],
-  "desc": "点击某个元素弹出一个简单的气泡确认框"
+  "events": [
+    {
+      "name": "confirm",
+      "title": "点击确认按钮时触发",
+      "type": "function",
+      "details": "(e: MouseEvent) => void"
+    },
+    {
+      "name": "cancel",
+      "title": "点击取消按钮时触发",
+      "type": "function",
+      "details": "(e: MouseEvent) => void"
+    }
+  ]
 }

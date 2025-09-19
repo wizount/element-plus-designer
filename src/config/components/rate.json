@@ -1,6 +1,7 @@
 {
   "__id__": "rate",
   "name": "评分",
+  "desc": "用于评分",
   "tag": "el-rate",
   "tagIcon": "rate",
   "layouts": [
@@ -165,8 +166,8 @@
       "default": "Star"
     },
     "disabled-void-icon": {
-      "label": "禁用状态下未选择图标",
-      "title": "禁用状态下未选择图标",
+      "label": "禁用状态的未选择图标",
+      "title": "禁用状态的未选择图标",
       "types": [
         {
           "name": "string",
@@ -175,9 +176,9 @@
       ],
       "default": "StarFilled"
     },
-    "show-score": {
-      "label": "显示当前分数",
-      "title": "是否显示当前分数， show-score 和 show-text 不能同时为真",
+    "show-text": {
+      "label": "显示辅助文字",
+      "title": "是否显示辅助文字，若为真，则会从 texts 数组中选取当前分数对应的文字内容",
       "types": [
         {
           "name": "boolean",
@@ -186,9 +187,9 @@
       ],
       "default": false
     },
-    "show-text": {
-      "label": "显示辅助文字",
-      "title": "是否显示辅助文字，若为真，则会从 texts 数组中选取当前分数对应的文字内容",
+    "show-score": {
+      "label": "显示当前分数",
+      "title": "是否显示当前分数， show-score 和 show-text 不能同时为真",
       "types": [
         {
           "name": "boolean",
@@ -226,7 +227,7 @@
       ]
     },
     "score-template": {
-      "label": "",
+      "label": "分数显示模板",
       "title": "分数显示模板",
       "types": [
         {
@@ -241,7 +242,7 @@
     },
     "clearable": {
       "label": "可重置值为0",
-      "title": "是否可以重置值为 0",
+      "title": "是否可以重置值为 <code>0</code>",
       "types": [
         {
           "name": "boolean",
@@ -252,8 +253,8 @@
       "version": "2.2.18"
     },
     "id": {
-      "label": "",
-      "title": "原生 `id` 属性",
+      "label": "原生 id 属性",
+      "title": "原生 <code>id</code> 属性",
       "types": [
         {
           "name": "string",
@@ -262,27 +263,11 @@
             "clearable": true
           }
         }
-      ],
-      "hide": true
-    },
-    "label": {
-      "label": "",
-      "title": "和 Rate 的 `aria-label` 属性保持一致",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ],
-      "hide": true,
-      "a11y": true,
-      "deprecated": true
+      ]
     },
     "aria-label": {
-      "title": "和 Rate 的 `aria-label` 属性保持一致",
+      "label": "和 Rate 的 aria-label 属性保持一致",
+      "title": "和 Rate 的 <code>aria-label</code> 属性保持一致",
       "types": [
         {
           "name": "string",
@@ -291,30 +276,43 @@
       ],
       "a11y": true,
       "version": "2.7.2"
+    },
+    "label": {
+      "label": "和 Rate 的 aria-label 属性保持一致",
+      "title": "和 Rate 的 <code>aria-label</code> 属性保持一致",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "a11y": true,
+      "deprecated": true
     }
   },
   "events": [
     {
       "name": "change",
       "title": "分值改变时触发",
-      "type": "Function",
-      "fnDes": "(value: number) => void"
+      "type": "function",
+      "details": "(value: number) => void"
     }
   ],
   "exposes": [
     {
       "name": "setCurrentValue",
       "title": "设置当前值",
-      "type": "Function",
-      "fnDes": "(value: number) => void"
+      "type": "function",
+      "details": "(value: number) => void"
     },
     {
       "name": "resetCurrentValue",
       "title": "重置当前值",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     }
-  ],
-  "slots": [],
-  "desc": "用于评分"
+  ]
 }

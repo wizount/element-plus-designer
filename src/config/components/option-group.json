@@ -1,22 +1,23 @@
 {
   "__id__": "option-group",
   "name": "下拉选项组",
+  "desc": "当选项过多时，使用下拉菜单展示并选择内容。",
   "tag": "el-option-group",
   "tagIcon": "option-group",
   "layouts": [
     "rawItem"
   ],
-  "parentTag": [
-    "el-select"
-  ],
+  "document": "https://element-plus.org/zh-CN/component/select.html",
   "childTag": [
     "el-option"
   ],
-  "document": "https://element-plus.org/zh-CN/component/select.html",
+  "parentTag": [
+    "el-select"
+  ],
   "attributes": {
     "label": {
-      "label": "",
-      "title": "分组的组名",
+      "label": "分组的名称",
+      "title": "分组的名称",
       "types": [
         {
           "name": "string",
@@ -28,7 +29,7 @@
       ]
     },
     "disabled": {
-      "label": "",
+      "label": "将该分组下所有选项置为禁用",
       "title": "是否将该分组下所有选项置为禁用",
       "types": [
         {
@@ -47,6 +48,5 @@
         "option"
       ]
     }
-  ],
-  "desc": "当选项过多时，使用下拉菜单展示并选择内容。"
+  ]
 }

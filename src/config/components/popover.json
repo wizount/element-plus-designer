@@ -1,6 +1,7 @@
 {
   "__id__": "popover",
   "name": "弹出框",
+  "desc": "## 基础用法",
   "tag": "el-popover",
   "tagIcon": "popover",
   "layouts": [
@@ -37,6 +38,18 @@
       ],
       "default": "hover"
     },
+    "trigger-keys": {
+      "label": "当鼠标点击或者聚焦在触发元素上时",
+      "title": "当鼠标点击或者聚焦在触发元素上时， 可以定义一组键盘按键并且通过它们来控制 Popover 的显示",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": "['Enter','Space']",
+      "version": "2.9.8"
+    },
     "title": {
       "label": "标题",
       "title": "标题",
@@ -52,7 +65,7 @@
     },
     "effect": {
       "label": "主题",
-      "title": "Tooltip 主题，Element Plus 内置了 dark / light 两种主题",
+      "title": "Tooltip 主题，Element Plus 内置了 <code>dark</code> / <code>light</code> 两种主题",
       "types": [
         {
           "name": "enum",
@@ -62,21 +75,25 @@
           },
           "options": [
             {
-              "label": "light",
-              "value": "light"
-            },
-            {
               "label": "dark",
               "value": "dark"
+            },
+            {
+              "label": "light",
+              "value": "light"
             }
           ]
+        },
+        {
+          "name": "string",
+          "tag": "el-input"
         }
       ],
       "default": "light"
     },
     "content": {
       "label": "显示内容",
-      "title": "显示的内容，也可以通过写入默认 slot 修改显示内容",
+      "title": "显示的内容，也可以通过写入默认 <code>slot</code> 修改显示内容",
       "types": [
         {
           "name": "string",
@@ -96,7 +113,7 @@
           "tag": "string-number-input"
         }
       ],
-      "default": "最小宽度 150px"
+      "default": 150
     },
     "placement": {
       "label": "出现位置",
@@ -170,31 +187,19 @@
       ],
       "default": false
     },
-    "visible": {
-      "label": "",
-      "title": "Popover 是否显示",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false
-    },
     "offset": {
       "label": "偏移量",
-      "title": "出现位置的偏移量",
+      "title": "浮层偏移量, <code>Popover</code> 是在 <code>Tooltip</code>,基础上开发的， <code>Popover</code>的 offset 是 <code>undefined</code>, 但<code>Tooltip</code> 的 offset 是12",
       "types": [
         {
           "name": "number",
           "tag": "el-input-number"
         }
-      ],
-      "default": 0
+      ]
     },
     "transition": {
       "label": "渐变动画",
-      "title": "定义渐变动画",
+      "title": "定义渐变动画，默认是 el-fade-in-linear",
       "types": [
         {
           "name": "string",
@@ -203,8 +208,7 @@
             "clearable": true
           }
         }
-      ],
-      "default": "el-fade-in-linear"
+      ]
     },
     "show-arrow": {
       "label": "显示 Tooltip 箭头",
@@ -222,21 +226,11 @@
       "title": "popper.js 的参数",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "详情参考 popper.js",
-              "value": "详情参考 popper.js"
-            }
-          ]
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
-      "default": "{modifiers: [{name: 'computeStyles',options: {gpuAcceleration: false}}]}",
-      "hide": true
+      "default": "{modifiers: [{name: 'computeStyles',options: {gpuAcceleration: false}}]}"
     },
     "popper-class": {
       "label": "popper 添加类名",
@@ -252,7 +246,7 @@
       ]
     },
     "popper-style": {
-      "label": "",
+      "label": "为 popper 自定义样式",
       "title": "为 popper 自定义样式",
       "types": [
         {
@@ -264,13 +258,13 @@
         },
         {
           "name": "object",
-          "tag": "object-editor"
+          "tag": "style-editor"
         }
       ]
     },
     "show-after": {
       "label": "延迟出现",
-      "title": "延迟出现，单位毫秒",
+      "title": "在触发后多久显示内容，单位毫秒",
       "types": [
         {
           "name": "number",
@@ -292,7 +286,7 @@
     },
     "auto-close": {
       "label": "自动隐藏延时",
-      "title": "Tooltip 出现后自动隐藏延时，单位毫秒，为 0 则不会自动隐藏",
+      "title": "tooltip 出现后自动隐藏延时，单位毫秒",
       "types": [
         {
           "name": "number",
@@ -306,10 +300,11 @@
       "title": "Popover 组件的 tabindex",
       "types": [
         {
-          "name": "number",
-          "tag": "el-input-number"
+          "name": "stringNumber",
+          "tag": "string-number-input"
         }
-      ]
+      ],
+      "default": 0
     },
     "teleported": {
       "label": "teleported",
@@ -322,9 +317,23 @@
       ],
       "default": true
     },
+    "append-to": {
+      "label": "指示 Tooltip 的内容将附加在哪一个网页元素上",
+      "title": "指示 Tooltip 的内容将附加在哪一个网页元素上",
+      "types": [
+        {
+          "name": "cssselector"
+        },
+        {
+          "name": "htmlelement"
+        }
+      ],
+      "default": "body",
+      "version": "2.8.4"
+    },
     "persistent": {
       "label": "persistent",
-      "title": "当 popover 组件长时间不触发且 persistent 属性设置为 false 时, popover 将会被删除",
+      "title": "当 popover 组件长时间不触发且 <code>persistent</code> 属性设置为 <code>false</code> 时, popover 将会被删除",
       "types": [
         {
           "name": "boolean",
@@ -334,11 +343,21 @@
       "default": true
     },
     "virtual-triggering": {
+      "label": "启用虚拟触发器",
       "title": "是否启用虚拟触发器",
       "types": [
         {
           "name": "boolean",
           "tag": "el-switch"
+        }
+      ]
+    },
+    "virtual-ref": {
+      "label": "代表 tooltip 所要附加的参照元素",
+      "title": "代表 tooltip 所要附加的参照元素",
+      "types": [
+        {
+          "name": "htmlelement"
         }
       ]
     }
@@ -357,47 +376,46 @@
     {
       "name": "show",
       "title": "显示时触发",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "before-enter",
       "title": "显示动画播放前触发",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "after-enter",
       "title": "显示动画播放完毕后触发",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "hide",
       "title": "隐藏时触发",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "before-leave",
       "title": "隐藏动画播放前触发",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "after-leave",
       "title": "隐藏动画播放完毕后触发",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     }
   ],
   "exposes": [
     {
       "name": "hide",
       "title": "隐藏 popover",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     }
-  ],
-  "desc": "## 基础用法"
+  ]
 }

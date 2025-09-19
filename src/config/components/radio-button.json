@@ -1,28 +1,16 @@
 {
   "__id__": "radio-button",
+  "name": "",
+  "desc": "在一组备选项中进行单选",
+  "tag": "el-radio-button",
+  "tagIcon": "radio-button",
+  "layouts": [
+    "containerItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/radio-button.html",
   "attributes": {
-    "label": {
-      "label": "",
-      "title": "单选框的值",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        },
-        {
-          "name": "number",
-          "tag": "el-input-number"
-        },
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ]
-    },
     "value": {
+      "label": "单选框的值",
       "title": "单选框的值",
       "types": [
         {
@@ -40,8 +28,29 @@
       ],
       "version": "2.6.0"
     },
+    "label": {
+      "label": "单选框的 label 如果没有 value",
+      "title": "单选框的 label 如果没有 value， <code>label</code>则作为<code>value</code>使用",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ]
+    },
     "disabled": {
-      "label": "",
+      "label": "禁用单选框",
       "title": "是否禁用单选框",
       "types": [
         {
@@ -52,7 +61,7 @@
       "default": false
     },
     "name": {
-      "label": "",
+      "label": "原生 name 属性",
       "title": "原生 name 属性",
       "types": [
         {
@@ -70,6 +79,5 @@
       "name": "default",
       "title": "默认插槽内容"
     }
-  ],
-  "desc": "在一组备选项中进行单选"
+  ]
 }

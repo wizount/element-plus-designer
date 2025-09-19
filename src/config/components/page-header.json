@@ -1,6 +1,7 @@
 {
   "__id__": "page-header",
   "name": "页头",
+  "desc": "如果页面的路径比较简单，推荐使用页头组件而非面包屑组件。",
   "tag": "el-page-header",
   "tagIcon": "page-header",
   "layouts": [
@@ -46,14 +47,6 @@
       ]
     }
   },
-  "events": [
-    {
-      "name": "back",
-      "title": "点击左侧区域触发",
-      "type": "Function",
-      "fnDes": "() => void"
-    }
-  ],
   "slots": [
     {
       "name": "icon",
@@ -80,5 +73,12 @@
       "title": "默认内容"
     }
   ],
-  "desc": "如果页面的路径比较简单，推荐使用页头组件而非面包屑组件。"
+  "events": [
+    {
+      "name": "back",
+      "title": "点击左侧区域触发",
+      "type": "function",
+      "details": "() => void"
+    }
+  ]
 }

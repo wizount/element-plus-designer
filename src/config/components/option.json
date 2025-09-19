@@ -1,19 +1,20 @@
 {
   "__id__": "option",
   "name": "下拉选项",
+  "desc": "当选项过多时，使用下拉菜单展示并选择内容。",
   "tag": "el-option",
   "tagIcon": "option",
   "layouts": [
     "rawItem"
   ],
+  "document": "https://element-plus.org/zh-CN/component/select.html",
   "parentTag": [
     "el-select",
     "el-option-group"
   ],
-  "document": "https://element-plus.org/zh-CN/component/select.html",
   "attributes": {
     "value": {
-      "label": "",
+      "label": "选项的值",
       "title": "选项的值",
       "types": [
         {
@@ -38,8 +39,8 @@
       ]
     },
     "label": {
-      "label": "",
-      "title": "选项的标签，若不设置则默认与`value`相同",
+      "label": "选项的标签",
+      "title": "选项的标签，若不设置则默认与<code>value</code>相同",
       "types": [
         {
           "name": "stringNumber",
@@ -48,7 +49,7 @@
       ]
     },
     "disabled": {
-      "label": "",
+      "label": "禁用该选项",
       "title": "是否禁用该选项",
       "types": [
         {
@@ -64,6 +65,5 @@
       "name": "default",
       "title": "默认插槽内容"
     }
-  ],
-  "desc": "当选项过多时，使用下拉菜单展示并选择内容。"
+  ]
 }

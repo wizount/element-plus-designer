@@ -1,6 +1,7 @@
 {
   "__id__": "progress",
   "name": "进度条",
+  "desc": "用于展示操作进度，告知用户当前状态和预期。",
   "tag": "el-progress",
   "tagIcon": "progress",
   "layouts": [
@@ -10,7 +11,7 @@
   "attributes": {
     "percentage": {
       "label": "百分比",
-      "title": "百分比，必填",
+      "title": "percentage",
       "types": [
         {
           "name": "number",
@@ -61,7 +62,7 @@
     },
     "text-inside": {
       "label": "文字内置",
-      "title": "进度条显示文字内置在进度条内（仅 type 为 'line' 时可用）",
+      "title": "进度条显示文字内置在进度条内（仅 <code>type</code> 为 'line' 时可用）",
       "types": [
         {
           "name": "boolean",
@@ -77,10 +78,10 @@
         {
           "name": "enum",
           "tag": "el-select",
+          "config": {
+            "optionType": "button"
+          },
           "options": [
-            {
-              "label": "默认"
-            },
             {
               "label": "success",
               "value": "success"
@@ -109,8 +110,8 @@
       "default": false
     },
     "duration": {
-      "label": "进度条速度",
-      "title": "控制动画进度条速度",
+      "label": "速度",
+      "title": "控制动画进度条速度和条纹进度条流动速度",
       "types": [
         {
           "name": "number",
@@ -121,7 +122,7 @@
     },
     "color": {
       "label": "背景色",
-      "title": "进度条背景色 进度条背景色 （会覆盖 status 状态颜色）",
+      "title": "进度条背景色 （会覆盖 <code>status</code> 状态颜色）",
       "types": [
         {
           "name": "string",
@@ -129,7 +130,8 @@
         },
         {
           "name": "function",
-          "tag": "",
+
+          "details": "(percentage: number) => string",
           "desc": "(percentage: number) => string` / ^[Array]`{ color: string; percentage: number }[]"
         },
         {
@@ -203,19 +205,17 @@
       "default": "round"
     },
     "format": {
-      "label": "",
+      "label": "指定进度条文字内容",
       "title": "指定进度条文字内容",
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "desc": "(percentage: number) => string"
+          "details": "(percentage: number) => string"
         }
-      ],
-      "hide": true
+      ]
     },
     "striped": {
-      "label": "",
+      "label": "在进度条上增加条纹",
       "title": "在进度条上增加条纹",
       "types": [
         {
@@ -227,7 +227,7 @@
       "version": "2.3.4"
     },
     "striped-flow": {
-      "label": "",
+      "label": "让进度条上的条纹流动起来",
       "title": "让进度条上的条纹流动起来",
       "types": [
         {
@@ -243,8 +243,8 @@
     {
       "name": "default",
       "title": "自定义内容",
-      "type": "^[object]`{ percentage: number }`"
+      "type": "object",
+      "details": "{ percentage: number }"
     }
-  ],
-  "desc": "用于展示操作进度，告知用户当前状态和预期。"
+  ]
 }
