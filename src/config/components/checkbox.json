@@ -199,7 +199,8 @@
       ]
     },
     "aria-controls": {
-      "title": "与 [aria-control](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)一致, 当 `indeterminate`为 `true`时生效",
+      "label": "与 aria-control一致",
+      "title": "与 <a href=\"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls\">aria-control</a>一致, 当 <code>indeterminate</code>为 <code>true</code>时生效",
       "types": [
         {
           "name": "string",
@@ -232,7 +233,8 @@
       "deprecated": true
     },
     "controls": {
-      "title": "与 [aria-control](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)一致, 当 `indeterminate`为 `true`时生效",
+      "label": "和 aria-control一致。当 indeterminate 为 true 时生效",
+      "title": "和 <a href=\"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls\">aria-control</a>一致。当 <code>indeterminate</code> 为 <code>true</code> 时生效",
       "types": [
         {
           "name": "string",

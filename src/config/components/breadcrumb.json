@@ -7,10 +7,10 @@
   "layouts": [
     "containerItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/breadcrumb.html",
   "childTag": [
     "el-breadcrumb-item"
   ],
+  "document": "https://element-plus.org/zh-CN/component/breadcrumb.html",
   "attributes": {
     "separator": {
       "label": "分隔符",

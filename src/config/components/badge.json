@@ -54,7 +54,7 @@
     },
     "type": {
       "label": "类型",
-      "title": "badge type.",
+      "title": "badge 类型。",
       "types": [
         {
           "name": "enum",
@@ -155,8 +155,8 @@
       "name": "content",
       "title": "自定义显示内容",
       "type": "object",
-      "version": "2.9.1",
-      "details": "{ value: string }"
+      "details": "{ value: string }",
+      "version": "2.9.1"
     }
   ]
 }

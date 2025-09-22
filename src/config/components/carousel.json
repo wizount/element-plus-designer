@@ -7,10 +7,10 @@
   "layouts": [
     "containerItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/carousel.html",
   "childTag": [
     "el-carousel-item"
   ],
+  "document": "https://element-plus.org/zh-CN/component/carousel.html",
   "attributes": {
     "height": {
       "label": "高度",
@@ -94,16 +94,12 @@
           },
           "options": [
             {
-              "label": "默认",
-              "value": ""
+              "label": "none",
+              "value": "none"
             },
             {
               "label": "outside",
               "value": "outside"
-            },
-            {
-              "label": "none",
-              "value": "none"
             }
           ]
         }
@@ -149,10 +145,6 @@
           },
           "options": [
             {
-              "label": "默认",
-              "value": ""
-            },
-            {
               "label": "card",
               "value": "card"
             }
@@ -160,8 +152,8 @@
         }
       ]
     },
-    "cardScale": {
-      "label": "二级卡的缩放大小",
+    "card-scale": {
+      "label": "当 type 为 card时",
       "title": "当 type 为 card时，二级卡的缩放大小",
       "types": [
         {
@@ -250,10 +242,10 @@
   ],
   "exposes": [
     {
-      "name": "activeIndex ",
-      "version": "2.7.8",
+      "name": "activeIndex",
       "title": "当前幻灯片的索引",
-      "type": "number"
+      "type": "number",
+      "version": "2.7.8"
     },
     {
       "name": "setActiveItem",

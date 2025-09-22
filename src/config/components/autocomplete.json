@@ -97,15 +97,15 @@
     },
     "fetch-suggestions": {
       "label": "获取输入建议方法名",
-      "propsRef": true,
-      "title": "请直接输入方法名获取输入建议的方法， 仅当你的输入建议数据 resolve 时，通过调用 `callback(data:[]) ` 来返回它",
+      "title": "获取输入建议的方法， 仅当你的输入建议数据 resolve 时，通过调用 <code>callback(data:[]) </code> 来返回它",
       "types": [
         {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
+          "name": "array",
+          "tag": "array-editor"
+        },
+        {
+          "name": "function",
+          "details": "(queryString: string, callback: callbackfn) => void"
         }
       ]
     },
@@ -193,10 +193,8 @@
       "title": "下拉框挂载到哪个 DOM 元素",
       "types": [
         {
-          "name": "cssselector"
-        },
-        {
-          "name": "htmlelement"
+          "name": "string",
+          "tag": "el-input"
         }
       ],
       "version": "2.9.9"
@@ -242,6 +240,16 @@
       "title": "自定义输入建议的内容。",
       "type": "object",
       "details": "{ item: Record<string, any> }"
+    },
+    {
+      "name": "header",
+      "title": "下拉列表顶部的内容",
+      "version": "2.10.6"
+    },
+    {
+      "name": "footer",
+      "title": "下拉列表底部的内容",
+      "version": "2.10.6"
     },
     {
       "name": "prefix",
@@ -294,7 +302,7 @@
       "name": "select",
       "title": "点击选中建议项时触发",
       "type": "function",
-      "details": "(item: typeof modelValue | any) => void"
+      "details": "(item: Record<string, any>) => void"
     },
     {
       "name": "change",
@@ -377,11 +385,11 @@
       "details": "Ref<record<string, any>>"
     },
     {
-      "name": "getData ",
-      "version": "2.8.4",
+      "name": "getData",
       "title": "加载建议列表",
       "type": "function",
-      "details": "(queryString: string) => void"
+      "details": "(queryString: string) => void",
+      "version": "2.8.4"
     }
   ],
   "data": {

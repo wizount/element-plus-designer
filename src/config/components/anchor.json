@@ -134,7 +134,9 @@
     {
       "name": "default",
       "title": "AnchorLink 组件列表",
-      "subtags": ["anchor-link"]
+      "subtags": [
+        "anchor-link"
+      ]
     }
   ],
   "events": [

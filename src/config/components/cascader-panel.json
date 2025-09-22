@@ -18,6 +18,16 @@
           "tag": "object-editor"
         }
       ]
+    },
+    "<a href=\"#cascaderprops\"></a>": {
+      "label": "配置选项",
+      "title": "配置选项, 请参阅下面 <code>CascaderProps</code> 表。",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
     }
   },
   "slots": [

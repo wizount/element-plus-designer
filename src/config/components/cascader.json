@@ -13,112 +13,25 @@
     "placeholder": "请选择",
     "options": {
       "label": "数据源",
-      "title": "可选项数据源，键名可通过 Props 属性配置",
-      "ref": true,
-      "types": [
-        {
-          "name": "array",
-          "tag": "tree-editor"
-        }
-      ],
-      "default": [],
-      "hide": true
-    },
-    "props": {
-      "label": "配置选项",
-      "title": "配置选项",
+      "title": "选项的数据源， <code>value</code> 和 <code>label</code> 可以通过 <code>CascaderProps</code> 自定义.",
       "types": [
         {
           "name": "object",
-          "tag": "fixed-keys-object-editor",
-          "props": {
-            "keys": [
-              {
-                "name": "expandTrigger",
-                "type": "string",
-                "title": "次级菜单的展开方式",
-                "tag": "el-radio-group",
-                "config": {
-                  "optionType": "button"
-                },
-                "options": [
-                  {
-                    "label": "click",
-                    "value": "click"
-                  },
-                  {
-                    "label": "hover",
-                    "value": "hover"
-                  }
-                ]
-              },
-              {
-                "name": "multiple",
-                "title": "是否多选",
-                "tag": "el-switch"
-              },
-              {
-                "name": "checkStrictly",
-                "title": "是否严格的遵守父子节点不互相关联",
-                "tag": "el-switch"
-              },
-              {
-                "name": "emitPath",
-                "title": "在选中节点改变时，是否返回由该节点所在的各级菜单的值所组成的数组，若设置 false，则只返回该节点的值",
-                "tag": "el-switch"
-              },
-              {
-                "name": "lazy",
-                "title": "是否动态加载子节点，需与 lazyLoad 方法结合使用",
-                "tag": "el-switch"
-              },
-              {
-                "name": "label",
-                "title": "指定选项标签为选项对象的某个属性值",
-                "tag": "el-input"
-              },
-              {
-                "name": "value",
-                "title": "指定选项的值为选项对象的某个属性值",
-                "tag": "el-input"
-              },
-              {
-                "name": "children",
-                "title": "指定选项的子选项为选项对象的某个属性值",
-                "tag": "el-input"
-              },
-              {
-                "name": "disabled",
-                "title": "指定选项的禁用为选项对象的某个属性值",
-                "tag": "el-input"
-              },
-              {
-                "name": "leaf",
-                "title": "指定选项的叶子节点的标志位为选项对象的某个属性值",
-                "tag": "el-input"
-              },
-              {
-                "name": "hoverThreshold",
-                "title": "hover 时展开菜单的灵敏度阈值",
-                "tag": "el-input-number"
-              }
-            ]
-          }
+          "tag": "object-editor"
         }
       ],
-      "default": {
-        "expandTrigger": "click",
-        "multiple": false,
-        "checkStrictly": false,
-        "emitPath": true,
-        "lazy": false,
-        "value": "value",
-        "label": "label",
-        "children": "children",
-        "disabled": "disabled",
-        "leaf": "leaf",
-        "hoverThreshold": 500
-      }
+      "hide": true,
+      "default": []
+    },
+    "<a href=\"#cascaderprops\"></a>": {
+      "label": "配置选项",
+      "title": "配置选项, 请参阅下面 <code>CascaderProps</code> 表。",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
     },
     "size": {
       "label": "尺寸",
@@ -169,6 +82,18 @@
         }
       ],
       "default": false
+    },
+    "clear-icon": {
+      "label": "自定义清除图标",
+      "title": "自定义清除图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "CircleClose",
+      "version": "2.11.0"
     },
     "show-all-levels": {
       "label": "显示完整路径",
@@ -279,6 +204,16 @@
           "props": {
             "clearable": true
           }
+        }
+      ]
+    },
+    "popper-style": {
+      "label": "弹出内容的自定义样式",
+      "title": "弹出内容的自定义样式",
+      "types": [
+        {
+          "name": "object",
+          "tag": "style-editor"
         }
       ]
     },
@@ -393,7 +328,7 @@
     },
     "max-collapse-tags": {
       "label": "需要显示的 Tag 的最大数量",
-      "title": "需要显示的 Tag 的最大数量 只有当 <code>collapse-tags</code> 设置为 true 时才会生效。",
+      "title": "需要显示的 Tag 的最大数量 要使用此功能，<code>collapse-tags</code>的值必须为true",
       "types": [
         {
           "name": "number",
@@ -405,7 +340,7 @@
     },
     "empty-values": {
       "label": "组件的空值配置",
-      "title": "组件的空值配置 [参考config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "array",
@@ -416,7 +351,7 @@
     },
     "value-on-clear": {
       "label": "清空选项的值",
-      "title": "清空选项的值  [参考 config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "title": "清空选项的值 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "string",
@@ -432,6 +367,7 @@
         },
         {
           "name": "function",
+          "details": "",
           "detail": ""
         }
       ],
@@ -450,11 +386,12 @@
       "version": "2.7.8"
     },
     "fallback-placements": {
-      "title": "Tooltip 可用的 positions 请查看[popper.js 文档](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements)",
+      "label": "Tooltip 可用的 positions 请查看popper.js 文档",
+      "title": "Tooltip 可用的 positions 请查看<a href=\"https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements\">popper.js 文档</a>",
       "types": [
         {
-          "name": "arrary",
-          "tag": ""
+          "name": "array",
+          "tag": "array-editor"
         }
       ],
       "version": "2.8.1"
@@ -579,15 +516,15 @@
       "name": "suggestion-item",
       "title": "搜索时自定义建议项内容",
       "type": "object",
-      "version": "2.9.5",
-      "details": "{ item: CascaderNode }"
+      "details": "{ item: CascaderNode }",
+      "version": "2.9.5"
     },
     {
       "name": "tag",
       "title": "自定义tag样式",
       "type": "object",
-      "version": "2.10.3",
-      "details": "{ data: Tag[], deleteTag: (tag: Tag) => void }"
+      "details": "{ data: Tag[], deleteTag: (tag: Tag) => void }",
+      "version": "2.10.3"
     },
     {
       "name": "header",
@@ -627,10 +564,10 @@
     },
     {
       "name": "clear",
-      "version": "2.7.7",
       "title": "可清空的单选模式下用户点击清空按钮时触发",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.7.7"
     },
     {
       "name": "visible-change",
@@ -659,11 +596,11 @@
       "details": "ComputedRef<any>"
     },
     {
-      "name": "togglePopperVisible ",
-      "version": "2.2.31",
+      "name": "togglePopperVisible",
       "title": "切换 popper 可见状态",
       "type": "function",
-      "details": "(visible?: boolean) => void"
+      "details": "(visible?: boolean) => void",
+      "version": "2.2.31"
     },
     {
       "name": "contentRef",
@@ -673,10 +610,10 @@
     },
     {
       "name": "presentText",
-      "version": "2.8.4",
       "title": "选中的内容文本",
       "type": "object",
-      "details": "ComputedRef<string>"
+      "details": "ComputedRef<string>",
+      "version": "2.8.4"
     }
   ],
   "data": {

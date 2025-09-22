@@ -141,6 +141,29 @@
       ],
       "a11y": true,
       "deprecated": true
+    },
+    "options": {
+      "label": "选项的数据源",
+      "title": "选项的数据源， <code>value</code> 的 key 和 <code>label</code> 和 <code> disabled</code>可以通过 <code>props</code>自定义.",
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "version": "2.11.2"
+    },
+    "props": {
+      "label": "options 的配置",
+      "title": "options 的配置",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "default": "{value: 'value', label: 'label', disabled: 'disabled'}",
+      "version": "2.11.2"
     }
   },
   "slots": [

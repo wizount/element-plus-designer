@@ -7,10 +7,10 @@
   "layouts": [
     "containerItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/button.html",
   "childTag": [
     "el-button"
   ],
+  "document": "https://element-plus.org/zh-CN/component/button.html",
   "attributes": {
     "size": {
       "label": "尺寸",

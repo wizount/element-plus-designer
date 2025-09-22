@@ -192,11 +192,11 @@
   ],
   "events": [
     {
-      "name": "open ",
-      "version": "2.10.0",
+      "name": "open",
       "title": "开启 Alert 时触发的事件",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.10.0"
     },
     {
       "name": "close",

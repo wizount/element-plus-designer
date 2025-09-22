@@ -24,6 +24,11 @@
       "title": "Avatar 大小",
       "types": [
         {
+          "name": "number",
+          "tag": "el-input-number",
+          "default": 50
+        },
+        {
           "name": "enum",
           "tag": "el-radio-group",
           "config": {
@@ -43,11 +48,6 @@
               "value": "small"
             }
           ]
-        },
-        {
-          "name": "number",
-          "tag": "el-input-number",
-          "default": 50
         }
       ],
       "default": "default"
