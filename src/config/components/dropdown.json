@@ -79,7 +79,7 @@
     },
     "button-props": {
       "label": "按钮组件的 props",
-      "title": "按钮组件的 props，参考 <a href=\"./button.html#button-attributes\"></a>",
+      "title": "按钮组件的 props，参考 <a href=\"./button.html#button-attributes\">按钮属性</a>",
       "types": [
         {
           "name": "object",
@@ -196,6 +196,27 @@
       "default": "['Enter', 'Space', 'ArrowDown', 'NumpadEnter']",
       "version": "2.9.1"
     },
+    "virtual-triggering": {
+      "label": "启用虚拟触发器",
+      "title": "是否启用虚拟触发器",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "version": "2.11.3"
+    },
+    "virtual-ref": {
+      "label": "指示下拉框所依附的参考元素",
+      "title": "指示下拉框所依附的参考元素",
+      "types": [
+        {
+          "name": "HTMLElement"
+        }
+      ],
+      "version": "2.11.3"
+    },
     "hide-on-click": {
       "label": "在点击菜单项后隐藏菜单",
       "title": "是否在点击菜单项后隐藏菜单",
@@ -206,6 +227,18 @@
         }
       ],
       "default": true
+    },
+    "show-arrow": {
+      "label": "tooltip 的内容是否有箭头",
+      "title": "tooltip 的内容是否有箭头",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.11.3"
     },
     "show-timeout": {
       "label": "展开下拉菜单的延时",

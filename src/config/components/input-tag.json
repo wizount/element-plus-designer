@@ -373,7 +373,14 @@
       "name": "remove-tag",
       "title": "tag 被移除时触发",
       "type": "function",
-      "details": "(value: string) => void"
+      "details": "(value: string, index: number) => void"
+    },
+    {
+      "name": "drag-tag",
+      "title": "tag 被拖动时触发",
+      "type": "function",
+      "details": "(oldIndex: number, newIndex: number, value: string) => void",
+      "version": "2.11.3"
     },
     {
       "name": "focus",

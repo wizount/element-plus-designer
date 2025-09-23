@@ -73,7 +73,8 @@
           "tag": "el-switch"
         }
       ],
-      "default": "hover"
+      "default": "hover",
+      "keep": true
     },
     "disabled": {
       "label": "禁用状态",

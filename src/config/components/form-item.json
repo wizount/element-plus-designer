@@ -89,7 +89,7 @@
     },
     "rules": {
       "label": "表单验证规则",
-      "title": "表单验证规则, 具体配置见<a href=\"#formitemrule\"></a>, 更多内容可以参考<a href=\"https://github.com/yiminghe/async-validator\">async-validator</a>",
+      "title": "表单验证规则, 具体配置见<a href=\"#formitemrule\">下表</a>, 更多内容可以参考<a href=\"https://github.com/yiminghe/async-validator\">async-validator</a>",
       "types": [
         {
           "name": "object",

@@ -360,7 +360,7 @@
     },
     "focus-on-target": {
       "label": "when triggering tooltips through hover",
-      "title": "when triggering tooltips through hover, whether to focus the trigger element, which improves accessibility",
+      "title": "当通过悬停触发提示时，是否聚焦触发元素，以提升可访问性",
       "types": [],
       "default": "你好",
       "version": "2.11.2"

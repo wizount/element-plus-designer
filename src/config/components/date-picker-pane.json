@@ -199,8 +199,8 @@
       ]
     },
     "show-footer": {
-      "label": "whether to show footer where the date picker is one [object Object]",
-      "title": "whether to show footer where the date picker is one [object Object]",
+      "label": "显示页脚",
+      "title": "是否在日期选择器中显示页脚 ^[enum]<code>'dates' \\| 'months' \\| 'years' \\| 'datetime' \\| 'datetimerange'</code>",
       "types": [
         {
           "name": "boolean",

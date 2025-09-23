@@ -242,8 +242,12 @@
       "label": "值格式",
       "title": "可选，绑定值的格式。 不指定则绑定值为 Date 对象",
       "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
       ],
-      "hide": true,
+      "default": "YYYY-MM-DD",
       "keep": true
     },
     "id": {
@@ -367,7 +371,7 @@
     },
     "empty-values": {
       "label": "组件的空值配置",
-      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
+      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider#empty-values-configurations\">参考config-provider</a>",
       "types": [
         {
           "name": "array",
@@ -378,7 +382,7 @@
     },
     "value-on-clear": {
       "label": "清空选项的值",
-      "title": "清空选项的值 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
+      "title": "清空选项的值 <a href=\"/en-US/component/config-provider#empty-values-configurations\">参考 config-provider</a>",
       "types": [
         {
           "name": "string",
@@ -423,7 +427,7 @@
     },
     "show-footer": {
       "label": "显示 footer",
-      "title": "whether to show footer where the date picker is one [object Object]",
+      "title": "是否在日期选择器中显示页脚 ^[enum]`'dates'",
       "types": [
         {
           "name": "boolean",
@@ -431,7 +435,8 @@
         }
       ],
       "default": true,
-      "version": "2.10.5"
+      "version": "2.10.5",
+      "keep": true
     },
     "show-confirm": {
       "label": "显示确定按钮",

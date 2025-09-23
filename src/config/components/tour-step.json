@@ -32,7 +32,7 @@
           "tag": "el-switch"
         }
       ],
-      "default": true
+      "default": "true"
     },
     "title": {
       "label": "标题部分",

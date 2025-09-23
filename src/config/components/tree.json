@@ -94,7 +94,6 @@
       },
       "keep": true
     },
-
     "render-after-expand": {
       "label": "延迟渲染子节点",
       "title": "是否在第一次展开某个树节点后才渲染其子节点",
@@ -340,7 +339,7 @@
   },
   "slots": [
     {
-      "name": "default",
+      "name": ":::",
       "title": "自定义树节点的内容。 自定义树节点的内容， 参数为 <code> { node, data }</code>"
     },
     {

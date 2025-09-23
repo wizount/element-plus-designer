@@ -149,7 +149,7 @@
     },
     "empty-values": {
       "label": "组件的空值配置",
-      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
+      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider#empty-values-configurations\">参考config-provider</a>",
       "types": [
         {
           "name": "array",
@@ -160,7 +160,7 @@
     },
     "value-on-clear": {
       "label": "清空选项的值",
-      "title": "清空选项的值 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
+      "title": "清空选项的值 <a href=\"/en-US/component/config-provider#empty-values-configurations\">参考 config-provider</a>",
       "types": [
         {
           "name": "string",

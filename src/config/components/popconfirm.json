@@ -53,7 +53,7 @@
     },
     "close-on-press-escape": {
       "label": "whether the popConfirm can be closed by pressing ESC",
-      "title": "whether the popConfirm can be closed by pressing ESC",
+      "title": "是否可以通过按下 ESC 关闭",
       "types": [
         {
           "name": "boolean",

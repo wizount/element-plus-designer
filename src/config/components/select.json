@@ -46,7 +46,11 @@
           "tag": "object-editor"
         }
       ],
-      "default": {"value": "value", "label": "label", "disabled": "disabled"},
+      "default": {
+        "value": "value",
+        "label": "label",
+        "disabled": "disabled"
+      },
       "version": "2.10.5",
       "keep": true
     },
@@ -687,7 +691,7 @@
     },
     "empty-values": {
       "label": "组件的空值配置",
-      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
+      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider#empty-values-configurations\">参考config-provider</a>",
       "types": [
         {
           "name": "array",
@@ -698,7 +702,7 @@
     },
     "value-on-clear": {
       "label": "清空选项的值",
-      "title": "清空选项的值 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
+      "title": "清空选项的值 <a href=\"/en-US/component/config-provider#empty-values-configurations\">参考 config-provider</a>",
       "types": [
         {
           "name": "string",
@@ -774,8 +778,8 @@
     {
       "name": "tag",
       "title": "作为 Select 组件的内容时，子标签 <code>data</code>、<code>selectDisabled</code> 和 <code>deleteTag</code> 是在版本 [object Object] 中新增的。",
-      "version": "2.5.0",
-      "keep": true
+      "subtags": "[object Object]",
+      "version": "2.5.0"
     },
     {
       "name": "loading",
@@ -784,9 +788,9 @@
     },
     {
       "name": "label",
-      "title": "content as Select label. <code>index</code> introduced in [object Object]",
-      "version": "2.7.4",
-      "keep": true
+      "title": "select 组件自定义标签内容 <code>index</code> 引入于[object Object]",
+      "subtags": "[object Object]",
+      "version": "2.7.4"
     }
   ],
   "events": [
