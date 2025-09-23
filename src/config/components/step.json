@@ -7,10 +7,10 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/steps.html",
   "parentTag": [
     "el-steps"
   ],
+  "document": "https://element-plus.org/zh-CN/component/steps.html",
   "attributes": {
     "title": {
       "label": "标题",

@@ -7,10 +7,10 @@
   "layouts": [
     "containerItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/steps.html",
   "childTag": [
     "el-step"
   ],
+  "document": "https://element-plus.org/zh-CN/component/steps.html",
   "attributes": {
     "space": {
       "label": "间距",
@@ -148,7 +148,9 @@
     {
       "name": "default",
       "title": "默认插槽",
-      "subtags": ["el-step"]
+      "subtags": [
+        "el-step"
+      ]
     }
   ]
 }

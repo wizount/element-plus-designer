@@ -212,6 +212,13 @@
       "title": "弹出内容的自定义样式",
       "types": [
         {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
           "name": "object",
           "tag": "style-editor"
         }

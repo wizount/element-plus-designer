@@ -7,10 +7,10 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/timeline.html",
   "parentTag": [
     "el-timeline"
   ],
+  "document": "https://element-plus.org/zh-CN/component/timeline.html",
   "attributes": {
     "timestamp": {
       "label": "时间戳",

@@ -7,12 +7,10 @@
   "layouts": [
     "containerItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/timeline.html",
   "childTag": [
     "el-timeline-item"
   ],
-  "attributes": {
-  },
+  "document": "https://element-plus.org/zh-CN/component/timeline.html",
   "slots": [
     {
       "name": "default",

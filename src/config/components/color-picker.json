@@ -91,7 +91,7 @@
     },
     "popper-class": {
       "label": "下拉框的类名",
-      "title": "下拉框的类名",
+      "title": "ColorPicker 下拉框的类名",
       "types": [
         {
           "name": "string",
@@ -107,11 +107,8 @@
       "title": "预定义颜色",
       "types": [
         {
-          "name": "array",
-          "tag": "array-editor",
-          "props": {
-            "tag": "el-color-picker"
-          }
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
       "default": []
@@ -152,7 +149,7 @@
     },
     "empty-values": {
       "label": "组件的空值配置",
-      "title": "组件的空值配置",
+      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "array",
@@ -163,7 +160,7 @@
     },
     "value-on-clear": {
       "label": "清空选项的值",
-      "title": "清空选项的值",
+      "title": "清空选项的值 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "string",
@@ -238,15 +235,14 @@
       "title": "挂载到哪个 DOM 元素",
       "types": [
         {
-          "name": "cssselector"
-        },
-        {
-          "name": "htmlelement"
+          "name": "string",
+          "tag": "el-input"
         }
       ],
       "version": "2.10.5"
     }
   },
+  "slots": [],
   "events": [
     {
       "name": "change",
@@ -261,18 +257,18 @@
       "details": "(value: string) => void"
     },
     {
-      "name": "focus ",
-      "version": "2.4.0",
+      "name": "focus",
       "title": "当获得焦点时触发",
       "type": "function",
-      "details": "(event: FocusEvent) => void"
+      "details": "(event: FocusEvent) => void",
+      "version": "2.4.0"
     },
     {
-      "name": "blur ",
-      "version": "2.4.0",
+      "name": "blur",
       "title": "当失去焦点时触发",
       "type": "function",
-      "details": "(event: FocusEvent) => void"
+      "details": "(event: FocusEvent) => void",
+      "version": "2.4.0"
     }
   ],
   "exposes": [
@@ -283,32 +279,32 @@
       "details": "Color"
     },
     {
-      "name": "show ",
-      "version": "2.3.3",
+      "name": "show",
       "title": "手动显示颜色选择器",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.3.3"
     },
     {
-      "name": "hide ",
-      "version": "2.3.3",
+      "name": "hide",
       "title": "手动隐藏颜色选择器",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.3.3"
     },
     {
-      "name": "focus ",
-      "version": "2.3.13",
+      "name": "focus",
       "title": "使 picker 获得焦点",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.3.13"
     },
     {
-      "name": "blur ",
-      "version": "2.3.13",
+      "name": "blur",
       "title": "使 picker 失去焦点",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.3.13"
     }
   ]
 }

@@ -176,7 +176,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(value: number) => number | string",
           "desc": "value"
         }
@@ -273,7 +272,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(value: number) => string",
           "desc": "value"
         }
@@ -413,6 +411,7 @@
       "deprecated": true
     }
   },
+  "slots": [],
   "events": [
     {
       "name": "change",
