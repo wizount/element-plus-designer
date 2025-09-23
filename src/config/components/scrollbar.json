@@ -245,11 +245,11 @@
       "details": "({ scrollLeft: number, scrollTop: number }) => void"
     },
     {
-      "name": "end-reached ",
-      "version": "2.10.0",
+      "name": "end-reached",
       "title": "触发滚动结束时的触发器",
       "type": "function",
-      "details": "(direction: 'top' | 'bottom' | 'left' | 'right') => void"
+      "details": "(direction: 'top' | 'bottom' | 'left' | 'right') => void",
+      "version": "2.10.0"
     }
   ],
   "exposes": [

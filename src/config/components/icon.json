@@ -20,7 +20,8 @@
             "clearable": true
           }
         }
-      ]
+      ],
+      "keep": true
     },
     "size": {
       "label": "大小",
@@ -30,7 +31,8 @@
           "name": "stringNumber",
           "tag": "string-number-input"
         }
-      ]
+      ],
+      "keep": true
     }
   },
   "slots": [

@@ -130,7 +130,6 @@
         },
         {
           "name": "function",
-
           "details": "(percentage: number) => string",
           "desc": "(percentage: number) => string` / ^[Array]`{ color: string; percentage: number }[]"
         },

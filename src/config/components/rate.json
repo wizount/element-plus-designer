@@ -109,7 +109,8 @@
         "#F7BA2A",
         "#F7BA2A",
         "#F7BA2A"
-      ]
+      ],
+      "keep": true
     },
     "void-color": {
       "label": "未选中 icon 的颜色",
@@ -120,7 +121,7 @@
           "tag": "el-color-picker"
         }
       ],
-      "default": "#C6D1DE"
+      "default": "#c6d1de"
     },
     "disabled-void-color": {
       "label": "只读时未选中 icon 的颜色",
@@ -134,11 +135,11 @@
           }
         }
       ],
-      "default": "#EFF2F7"
+      "default": "#eff2f7"
     },
     "icons": {
       "label": "图标组件",
-      "title": "图标组件 若传入数组，共有 3 个元素，为 3 个分段所对应的类名；若传入对象，可自定义分段，键名为分段的界限值，键值为对应的类名",
+      "title": "图标组件 若传入数组，则需要传入 3 个元素，分别为 3 个部分所对应的类名；若传入对象，则可自定义分段，键名为分段的界限值，键值为对应的类名",
       "types": [
         {
           "name": "array",
@@ -152,7 +153,8 @@
         "StarFilled",
         "StarFilled",
         "StarFilled"
-      ]
+      ],
+      "keep": true
     },
     "void-icon": {
       "label": "未选中图标",
@@ -224,7 +226,8 @@
         "Fair",
         "Satisfied",
         "Surprise"
-      ]
+      ],
+      "keep": true
     },
     "score-template": {
       "label": "分数显示模板",
@@ -293,6 +296,7 @@
       "deprecated": true
     }
   },
+  "slots": [],
   "events": [
     {
       "name": "change",

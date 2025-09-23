@@ -118,6 +118,23 @@
         }
       ]
     },
+    "popper-style": {
+      "label": "为 TimePicke 的下拉菜单自定义样式",
+      "title": "为 TimePicke 的下拉菜单自定义样式",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "object",
+          "tag": "style-editor"
+        }
+      ]
+    },
     "range-separator": {
       "label": "分隔符",
       "title": "选择范围时的分隔符",
@@ -144,7 +161,8 @@
           }
         }
       ],
-      "default": "HH:mm:ss"
+      "default": "HH:mm:ss",
+      "keep": true
     },
     "default-value": {
       "label": "默认显示的时间",
@@ -158,16 +176,19 @@
           "name": "object",
           "tag": "object-editor"
         }
-      ]
+      ],
+      "keep": true
     },
     "value-format": {
+      "label": "绑定值的格式",
       "title": "可选，绑定值的格式。 不指定则绑定值为 Date 对象",
       "types": [
         {
           "name": "string",
           "tag": "el-input"
         }
-      ]
+      ],
+      "keep": true
     },
     "id": {
       "label": "等价于原生 input id 属性",
@@ -240,7 +261,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(role: string, comparingDate?: Dayjs) => number[]",
           "desc": "(role: string, comparingDate?: Dayjs) => number[]"
         }
@@ -252,7 +272,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(hour: number, role: string, comparingDate?: Dayjs) => number[]"
         }
       ]
@@ -263,7 +282,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(hour: number, minute: number, role: string, comparingDate?: Dayjs) => number[]"
         }
       ]
@@ -291,7 +309,8 @@
       "default": 0
     },
     "empty-values": {
-      "title": "组件的空值配置 [参考config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "label": "组件的空值配置",
+      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "array",
@@ -301,7 +320,8 @@
       "version": "2.7.0"
     },
     "value-on-clear": {
-      "title": "清空选项的值 [参考 config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "label": "清空选项的值",
+      "title": "清空选项的值 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "string",
@@ -316,8 +336,8 @@
           "tag": "el-switch"
         },
         {
-          "name": "function"
-
+          "name": "function",
+          "details": ""
         }
       ],
       "version": "2.7.0"
@@ -338,6 +358,7 @@
       "deprecated": true
     }
   },
+  "slots": [],
   "events": [
     {
       "name": "change",
@@ -358,11 +379,11 @@
       "details": "(e: FocusEvent) => void"
     },
     {
-      "name": "clear ",
-      "version": "2.7.7",
+      "name": "clear",
       "title": "可清空的模式下用户点击清空按钮时触发",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.7.7"
     },
     {
       "name": "visible-change",
@@ -385,18 +406,18 @@
       "details": "() => void"
     },
     {
-      "name": "handleOpen ",
-      "version": "2.2.16",
+      "name": "handleOpen",
       "title": "打开时间选择器弹窗",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.2.16"
     },
     {
-      "name": "handleClose ",
-      "version": "2.2.16",
+      "name": "handleClose",
       "title": "关闭时间选择器弹窗",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.2.16"
     }
   ]
 }

@@ -7,13 +7,13 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/select.html",
   "childTag": [
     "el-option"
   ],
   "parentTag": [
     "el-select"
   ],
+  "document": "https://element-plus.org/zh-CN/component/select.html",
   "attributes": {
     "label": {
       "label": "分组的名称",

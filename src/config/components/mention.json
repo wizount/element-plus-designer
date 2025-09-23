@@ -14,9 +14,14 @@
     "options": {
       "label": "提及选项列表",
       "title": "提及选项列表",
-      "hide": true,
-      "required": true,
-      "default": []
+      "types": [
+        {
+          "name": "array",
+          "tag": "array-editor"
+        }
+      ],
+      "default": "[]",
+      "hide": true
     },
     "prefix": {
       "label": "触发前缀",
@@ -42,7 +47,7 @@
           "tag": "el-input"
         }
       ],
-      "default": " "
+      "default": ""
     },
     "filter-option": {
       "label": "选项逻辑",
@@ -78,7 +83,7 @@
           "tag": "el-switch"
         }
       ],
-      "default": false
+      "default": "false"
     },
     "offset": {
       "label": "下拉面板偏移量",
@@ -135,13 +140,14 @@
     },
     "popper-options": {
       "label": "popper.js参数",
-      "title": "[popper.js](https://popper.js.org/docs/v2/) 参数",
+      "title": "<a href=\"https://popper.js.org/docs/v2/\">popper.js</a> 参数",
       "types": [
         {
           "name": "object",
           "tag": "object-editor"
         }
-      ]
+      ],
+      "keep": true
     }
   },
   "slots": [
@@ -194,18 +200,11 @@
       "details": "(option: MentionOption, prefix: string) => void"
     },
     {
-      "name": "whole-remove ",
-      "version": "2.10.4",
+      "name": "whole-remove",
       "title": "当整个 mention 被移除，且 <code>whole</code> 为 <code>true</code> 或 <code>check-is-whole</code> 为 <code>true</code> 时触发。",
       "type": "function",
-      "details": "(pattern: string, prefix: string) => void"
-    },
-    {
-      "name": {
-        "type": "a",
-        "href": "./input.html#events"
-      },
-      "title": "—"
+      "details": "(pattern: string, prefix: string) => void",
+      "version": "2.10.4"
     }
   ],
   "exposes": [
@@ -222,11 +221,11 @@
       "details": "Ref<TooltipInstance \\| null>"
     },
     {
-      "name": "dropdownVisible ",
-      "version": "2.8.5",
+      "name": "dropdownVisible",
       "title": "tooltip 显示状态",
       "type": "object",
-      "details": "ComputedRef<boolean>"
+      "details": "ComputedRef<boolean>",
+      "version": "2.8.5"
     }
   ],
   "data": {

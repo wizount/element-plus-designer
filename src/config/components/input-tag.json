@@ -48,7 +48,8 @@
           ]
         }
       ],
-      "default": "info"
+      "default": "info",
+      "keep": true
     },
     "tag-effect": {
       "label": "标签效果",
@@ -76,7 +77,8 @@
           ]
         }
       ],
-      "default": "light"
+      "default": "light",
+      "keep": true
     },
     "trigger": {
       "label": "触发输入标签的按键",
@@ -154,6 +156,30 @@
         }
       ]
     },
+    "collapse-tags": {
+      "label": "多选时是否将选中值按文字的形式展示",
+      "title": "多选时是否将选中值按文字的形式展示",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.11.0"
+    },
+    "collapse-tags-tooltip": {
+      "label": "当鼠标悬停于折叠标签的文本时",
+      "title": "当鼠标悬停于折叠标签的文本时，是否显示所有选中的标签。 要使用此功能，<code>collapse-tags</code>的值必须为true",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.11.0"
+    },
     "save-on-blur": {
       "label": "当输入失去焦点时是否保存输入值",
       "title": "当输入失去焦点时是否保存输入值",
@@ -176,6 +202,18 @@
         }
       ],
       "default": false
+    },
+    "clear-icon": {
+      "label": "自定义清除图标",
+      "title": "自定义清除图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "CircleClose",
+      "version": "2.11.0"
     },
     "disabled": {
       "label": "禁用",
@@ -240,6 +278,18 @@
           "tag": "string-number-input"
         }
       ]
+    },
+    "max-collapse-tags": {
+      "label": "需要显示的 Tag 的最大数量 要使用此功能",
+      "title": "需要显示的 Tag 的最大数量 要使用此功能，<code>collapse-tags</code>的值必须为true",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 1,
+      "version": "2.11.0"
     },
     "maxlength": {
       "label": "maxlength",

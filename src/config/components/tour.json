@@ -7,10 +7,10 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/tour.html",
   "childTag": [
     "el-tour-step"
   ],
+  "document": "https://element-plus.org/zh-CN/component/tour.html",
   "attributes": {
     "vModel": "modelValue",
     "append-to": {
@@ -18,10 +18,8 @@
       "title": "挂载到哪个 DOM 元素",
       "types": [
         {
-          "name": "cssselector"
-        },
-        {
-          "name": "htmlelement"
+          "name": "string",
+          "tag": "el-input"
         }
       ],
       "default": "body"
@@ -107,7 +105,8 @@
           "tag": "style-editor"
         }
       ],
-      "default": {}
+      "default": {},
+      "keep": true
     },
     "mask": {
       "label": "启用蒙层",
@@ -122,7 +121,7 @@
           "tag": "object-editor"
         }
       ],
-      "default": true
+      "default": "true"
     },
     "gap": {
       "label": "遮罩和目标之间的透明的间距",
@@ -133,9 +132,11 @@
           "tag": "object-editor"
         }
       ],
-      "default": { "offset": 6, "radius": 2}
-
-
+      "default": {
+        "offset": 6,
+        "radius": 2
+      },
+      "keep": true
     },
     "type": {
       "label": "类型",
@@ -159,7 +160,8 @@
           ]
         }
       ],
-      "default": "default"
+      "default": "default",
+      "keep": true
     },
     "scroll-into-view-options": {
       "label": "支持当前元素滚动到视窗内",
@@ -176,7 +178,8 @@
       ],
       "default": {
         "block": "center"
-      }
+      },
+      "keep": true
     },
     "z-index": {
       "label": "Tour 的层级",
@@ -187,7 +190,8 @@
           "tag": "el-input-number"
         }
       ],
-      "default": 2001
+      "default": 2001,
+      "keep": true
     },
     "show-close": {
       "label": "显示关闭按钮",
@@ -198,7 +202,7 @@
           "tag": "el-switch"
         }
       ],
-      "default": true
+      "default": "true"
     },
     "close-icon": {
       "label": "关闭图标",
@@ -220,7 +224,8 @@
           "tag": "el-switch"
         }
       ],
-      "default": true
+      "default": true,
+      "keep": true
     },
     "target-area-clickable": {
       "label": "启用蒙层时",
@@ -231,7 +236,8 @@
           "tag": "el-switch"
         }
       ],
-      "default": true
+      "default": true,
+      "keep": true
     }
   },
   "slots": [

@@ -32,15 +32,21 @@
         }
       ],
       "default": "horizontal"
+    },
+    "lazy": {
+      "label": "使用懒加载",
+      "title": "是否使用懒加载",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.11.0"
     }
   },
-  "slots": [
-    {
-      "name": "default",
-      "title": "默认插槽",
-      "subtags": ["splitter-panel"]
-    }
-  ],
+  "slots": [],
   "events": [
     {
       "name": "resize-start",
@@ -61,11 +67,11 @@
       "details": "(index: number, sizes: number[]) => void"
     },
     {
-      "name": "collapse ",
-      "version": "2.10.3",
+      "name": "collapse",
       "title": "当面板折叠时触发，<code>index</code> 是拖拽条的索引。",
       "type": "function",
-      "details": "(index: number, type: 'start' \\| 'end', sizes: number[]) => void"
+      "details": "(index: number, type: 'start' \\| 'end', sizes: number[]) => void",
+      "version": "2.10.3"
     }
   ]
 }

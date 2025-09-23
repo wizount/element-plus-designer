@@ -7,10 +7,10 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/step.html",
   "parentTag": [
     "el-tour"
   ],
+  "document": "https://element-plus.org/zh-CN/component/step.html",
   "attributes": {
     "target": {
       "label": "指向元素",
@@ -20,7 +20,8 @@
           "name": "string",
           "tag": "el-input"
         }
-      ]
+      ],
+      "keep": true
     },
     "show-arrow": {
       "label": "显示箭头",
@@ -123,7 +124,8 @@
           "tag": "style-editor"
         }
       ],
-      "default": {}
+      "default": {},
+      "keep": true
     },
     "mask": {
       "label": "启用蒙层",
@@ -138,7 +140,7 @@
           "tag": "object-editor"
         }
       ],
-      "default": true
+      "default": "true"
     },
     "type": {
       "label": "类型",
@@ -162,7 +164,8 @@
           ]
         }
       ],
-      "default": "default"
+      "default": "default",
+      "keep": true
     },
     "next-button-props": {
       "label": "“下一步”按钮的属性",
@@ -199,7 +202,8 @@
       ],
       "default": {
         "block": "center"
-      }
+      },
+      "keep": true
     },
     "show-close": {
       "label": "显示关闭按钮",
@@ -210,7 +214,8 @@
           "tag": "el-switch"
         }
       ],
-      "default": true
+      "default": true,
+      "keep": true
     },
     "close-icon": {
       "label": "关闭图标",

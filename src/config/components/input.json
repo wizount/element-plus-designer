@@ -23,8 +23,9 @@
           }
         }
       ],
+      "default": "text",
       "hide": true,
-      "default": "text"
+      "keep": true
     },
     "maxlength": {
       "label": "最大输入长度",
@@ -72,6 +73,18 @@
       ],
       "default": false
     },
+    "clear-icon": {
+      "label": "自定义清除图标",
+      "title": "自定义清除图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "CircleClose",
+      "version": "2.11.0"
+    },
     "formatter": {
       "label": "输入值的格式",
       "title": "指定输入值的格式。(只有当 <code>type</code> 是\"text\"时才能工作)",
@@ -81,11 +94,11 @@
           "details": "(value: string | number) => string"
         }
       ],
-      "hide": true,
       "switch": [
         "type",
         "text"
-      ]
+      ],
+      "hide": true
     },
     "parser": {
       "label": "提取的值",
@@ -96,11 +109,11 @@
           "details": "(value: string) => string"
         }
       ],
-      "hide": true,
       "switch": [
         "type",
         "text"
-      ]
+      ],
+      "hide": true
     },
     "show-password": {
       "label": "显示切换密码图标",
@@ -111,8 +124,8 @@
           "tag": "el-switch"
         }
       ],
-      "hide": true,
-      "default": false
+      "default": false,
+      "hide": true
     },
     "disabled": {
       "label": "禁用",
@@ -151,11 +164,11 @@
           ]
         }
       ],
-      "default": "default",
       "switch": [
         "type",
         "text"
-      ]
+      ],
+      "default": "default"
     },
     "prefix-icon": {
       "label": "前缀图标",
@@ -280,7 +293,8 @@
           "tag": "el-input"
         }
       ],
-      "hide": true
+      "hide": true,
+      "keep": true
     },
     "min": {
       "label": "min",
@@ -291,18 +305,20 @@
           "tag": "el-input"
         }
       ],
-      "hide": true
+      "hide": true,
+      "keep": true
     },
     "step": {
       "label": "step",
       "title": "原生属性，设置输入字段的合法数字间隔",
       "types": [
         {
-          "name": "—",
-          "tag": ""
+          "name": "number",
+          "tag": "el-input-number"
         }
       ],
-      "hide": true
+      "hide": true,
+      "keep": true
     },
     "resize": {
       "label": "缩放",
@@ -493,13 +509,13 @@
     },
     {
       "name": "mouseleave",
-      "title": "当鼠标进入输入框时触发",
+      "title": "当鼠标离开输入元素时触发",
       "type": "function",
       "details": "(event: MouseEvent) => void"
     },
     {
       "name": "mouseenter",
-      "title": "当鼠标离开输入框时触发",
+      "title": "当鼠标进入输入元素时触发",
       "type": "function",
       "details": "(event: MouseEvent) => void"
     },
@@ -578,11 +594,11 @@
       "details": "Ref<StyleValue>"
     },
     {
-      "name": "isComposing ",
-      "version": "2.8.0",
+      "name": "isComposing",
       "title": "是否是输入 composing 状态",
       "type": "object",
-      "details": "Ref<boolean>"
+      "details": "Ref<boolean>",
+      "version": "2.8.0"
     }
   ]
 }

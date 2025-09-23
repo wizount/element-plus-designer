@@ -137,7 +137,8 @@
         40,
         50,
         100
-      ]
+      ],
+      "keep": true
     },
     "append-size-to": {
       "label": "下拉框挂载到哪个 DOM 元素",
@@ -278,11 +279,11 @@
       "details": "(value: number) => void"
     },
     {
-      "name": "change ",
-      "version": "2.4.4",
+      "name": "change",
       "title": "<code>current-page</code> 或 <code>page-size</code> 更改时触发",
       "type": "function",
-      "details": "(currentPage: number, pageSize: number) => void"
+      "details": "(currentPage: number, pageSize: number) => void",
+      "version": "2.4.4"
     },
     {
       "name": "prev-click",

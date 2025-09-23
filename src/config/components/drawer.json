@@ -50,7 +50,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(done: (cancel?: boolean) => void) => void(done 是个 function type 接受一个 boolean 参数, 执行 done 使用 true 参数或不提供参数将会终止关闭)"
         }
       ]
@@ -148,7 +147,20 @@
           ]
         }
       ],
-      "default": "rtl"
+      "default": "rtl",
+      "keep": true
+    },
+    "resizable": {
+      "label": "为抽屉启用可调整大小的功能",
+      "title": "为抽屉启用可调整大小的功能",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.11.0"
     },
     "show-close": {
       "label": "显示关闭按钮",

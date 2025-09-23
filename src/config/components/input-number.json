@@ -151,11 +151,12 @@
             }
           ]
         }
-      ]
+      ],
+      "keep": true
     },
     "name": {
-      "label": "",
-      "title": "等价于原生 input name 属性",
+      "label": "等价于原生 input name 属性",
+      "title": "等价于原生 input <code>name</code> 属性",
       "types": [
         {
           "name": "string",
@@ -166,21 +167,6 @@
         }
       ],
       "hide": true
-    },
-    "label": {
-      "label": "",
-      "title": "输入框关联的 label 文字",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ],
-      "hide": true,
-      "deprecated": true
     },
     "aria-label": {
       "label": "等价于原生 input aria-label 属性",
@@ -209,14 +195,32 @@
     },
     "value-on-clear": {
       "label": "清空时显示的值",
-      "title": "当输入框被清空时显示的值 (> 2.2.0)",
+      "title": "当输入框被清空时显示的值",
       "types": [
         {
-          "name": "string",
-          "tag": "el-input"
+          "name": "number",
+          "tag": "el-input-number"
+        },
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "min",
+              "value": "min"
+            },
+            {
+              "label": "max",
+              "value": "max"
+            }
+          ]
         }
       ],
-      "version": "2.2.0"
+      "version": "2.2.0",
+      "keep": true
     },
     "validate-event": {
       "label": "触发表单校验",
@@ -228,6 +232,22 @@
         }
       ],
       "default": true
+    },
+    "label": {
+      "label": "等价于原生 input aria-label 属性",
+      "title": "等价于原生 input <code>aria-label</code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "a11y": true,
+      "deprecated": true,
+      "hide": true
     },
     "inputmode": {
       "label": "等价于原生 input inputmode 属性",
@@ -259,7 +279,8 @@
           "tag": "el-input-number"
         }
       ],
-      "version": "2.10.3"
+      "version": "2.10.3",
+      "keep": true
     },
     "align": {
       "label": "内部输入文本对齐",

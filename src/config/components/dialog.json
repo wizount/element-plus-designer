@@ -161,7 +161,7 @@
       ],
       "default": true
     },
-     "open-delay": {
+    "open-delay": {
       "label": "打开延时",
       "title": "dialog 打开的延时时间，单位毫秒",
       "types": [
@@ -406,18 +406,18 @@
   ],
   "exposes": [
     {
-      "name": "resetPosition ",
-      "version": "2.8.1",
+      "name": "resetPosition",
       "title": "重置位置",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.8.1"
     },
     {
-      "name": "handleClose ",
-      "version": "2.9.8",
+      "name": "handleClose",
       "title": "关闭对话框",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.9.8"
     }
   ]
 }

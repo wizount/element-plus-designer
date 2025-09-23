@@ -16,7 +16,8 @@
           "name": "stringNumber",
           "tag": "string-number-input"
         }
-      ]
+      ],
+      "keep": true
     },
     "min": {
       "label": "最小尺寸",
@@ -51,7 +52,7 @@
     },
     "collapsible": {
       "label": "可折叠",
-      "title": "面板是否可折叠",
+      "title": "面板是否可折叠。",
       "types": [
         {
           "name": "boolean",

@@ -227,11 +227,12 @@
           }
         }
       ],
-      "default": "HH:mm"
+      "default": "HH:mm",
+      "keep": true
     },
     "empty-values": {
       "label": "组件的空值配置",
-      "title": "组件的空值配置 [参考config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "array",
@@ -242,7 +243,7 @@
     },
     "value-on-clear": {
       "label": "清空选项的值",
-      "title": "清空选项的值 [参考 config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "title": "清空选项的值 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "string",
@@ -257,12 +258,14 @@
           "tag": "el-switch"
         },
         {
-          "name": "function"
+          "name": "function",
+          "details": ""
         }
       ],
       "version": "2.7.0"
     }
   },
+  "slots": [],
   "events": [
     {
       "name": "change",
@@ -283,11 +286,11 @@
       "details": "(event: FocusEvent) => void"
     },
     {
-      "name": "clear ",
-      "version": "2.7.7",
+      "name": "clear",
       "title": "可清空的单选模式下用户点击清空按钮时触发",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.7.7"
     }
   ],
   "exposes": [

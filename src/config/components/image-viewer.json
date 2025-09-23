@@ -133,6 +133,7 @@
       "version": "2.9.4"
     }
   },
+  "slots": [],
   "events": [
     {
       "name": "close",
@@ -147,11 +148,11 @@
       "details": "(index: number) => void"
     },
     {
-      "name": "rotate ",
-      "version": "2.3.13",
+      "name": "rotate",
       "title": "旋转图像时触发。",
       "type": "function",
-      "details": "(deg: number) => void"
+      "details": "(deg: number) => void",
+      "version": "2.3.13"
     }
   ],
   "exposes": [

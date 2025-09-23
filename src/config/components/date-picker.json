@@ -83,32 +83,6 @@
       ],
       "default": true
     },
-    "start-placeholder": {
-      "label": "开始日期占位内容",
-      "title": "范围选择时开始日期的占位内容",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ]
-    },
-    "end-placeholder": {
-      "label": "结束日期占位内容",
-      "title": "范围选择时结束日期的占位内容",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
-          }
-        }
-      ]
-    },
     "type": {
       "label": "类型",
       "title": "显示类型",
@@ -156,7 +130,8 @@
           ]
         }
       ],
-      "default": "date"
+      "default": "date",
+      "keep": true
     },
     "format": {
       "label": "显示格式",
@@ -167,7 +142,8 @@
           "tag": "el-input"
         }
       ],
-      "default": "YYYY-MM-DD"
+      "default": "YYYY-MM-DD",
+      "keep": true
     },
     "popper-class": {
       "label": "下拉框的类名",
@@ -182,9 +158,26 @@
         }
       ]
     },
+    "popper-style": {
+      "label": "弹出内容的自定义样式",
+      "title": "弹出内容的自定义样式",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "object",
+          "tag": "style-editor"
+        }
+      ]
+    },
     "popper-options": {
-      "label": "",
-      "title": "自定义 popper 选项，更多请参考 [popper.js](https://popper.js.org/docs/v2/)",
+      "label": "自定义 popper 选项",
+      "title": "自定义 popper 选项，更多请参考 <a href=\"https://popper.js.org/docs/v2/\">popper.js</a>",
       "types": [
         {
           "name": "object",
@@ -223,7 +216,8 @@
             "fixedNumber": 2
           }
         }
-      ]
+      ],
+      "keep": true
     },
     "default-time": {
       "label": "默认时间",
@@ -241,19 +235,16 @@
             "fixedNumber": 2
           }
         }
-      ]
+      ],
+      "keep": true
     },
     "value-format": {
       "label": "值格式",
       "title": "可选，绑定值的格式。 不指定则绑定值为 Date 对象",
       "types": [
-        {
-          "name": "参见"
-        },
-        {
-          "name": "a"
-        }
-      ]
+      ],
+      "hide": true,
+      "keep": true
     },
     "id": {
       "label": "等价于原生 input id 属性",
@@ -284,7 +275,8 @@
           }
         }
       ],
-      "hide": true
+      "hide": true,
+      "keep": true
     },
     "unlink-panels": {
       "label": "取消两个日期面板联动",
@@ -335,7 +327,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(data: Date) => boolean"
         }
       ],
@@ -350,7 +341,8 @@
           "tag": "array-editor"
         }
       ],
-      "hide": true
+      "hide": true,
+      "keep": true
     },
     "cell-class-name": {
       "label": "自定义类名",
@@ -375,7 +367,7 @@
     },
     "empty-values": {
       "label": "组件的空值配置",
-      "title": "组件的空值配置 [参考config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "array",
@@ -386,7 +378,7 @@
     },
     "value-on-clear": {
       "label": "清空选项的值",
-      "title": "清空选项的值 [参考 config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "title": "清空选项的值 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "string",
@@ -408,11 +400,12 @@
       "version": "2.7.0"
     },
     "fallback-placements": {
-      "title": "Tooltip 可用的 positions 请查看[popper.js 文档](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements)",
+      "label": "Tooltip 可用的 positions 请查看popper.js 文档",
+      "title": "Tooltip 可用的 positions 请查看<a href=\"https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements\">popper.js 文档</a>",
       "types": [
         {
-          "name": "arrary",
-          "tag": ""
+          "name": "array",
+          "tag": "array-editor"
         }
       ],
       "version": "2.8.4"
@@ -422,7 +415,7 @@
       "title": "下拉框出现的位置",
       "types": [
         {
-          "name": "placement"
+          "name": "Placement"
         }
       ],
       "default": "bottom",
@@ -430,7 +423,7 @@
     },
     "show-footer": {
       "label": "显示 footer",
-      "title": "是否显示 footer",
+      "title": "whether to show footer where the date picker is one [object Object]",
       "types": [
         {
           "name": "boolean",
@@ -439,6 +432,18 @@
       ],
       "default": true,
       "version": "2.10.5"
+    },
+    "show-confirm": {
+      "label": "显示确定按钮",
+      "title": "是否显示确定按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.11.0"
     },
     "show-week-number": {
       "label": "显示周数",
@@ -486,7 +491,7 @@
   "events": [
     {
       "name": "change",
-      "title": "用户确认选定的值时触发",
+      "title": "当用户确认值或点击外部时触发",
       "type": "function",
       "details": "(val: typeof v-model) => void"
     },
@@ -503,11 +508,11 @@
       "details": "(e: FocusEvent) => void"
     },
     {
-      "name": "clear ",
-      "version": "2.7.7",
+      "name": "clear",
       "title": "可清空的模式下用户点击清空按钮时触发",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.7.7"
     },
     {
       "name": "calendar-change",
@@ -536,25 +541,25 @@
       "details": "() => void"
     },
     {
-      "name": "blur ",
-      "version": "2.8.7",
+      "name": "blur",
       "title": "使组件失去焦点",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.8.7"
     },
     {
-      "name": "handleOpen ",
-      "version": "2.2.16",
+      "name": "handleOpen",
       "title": "打开日期选择器弹窗",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.2.16"
     },
     {
-      "name": "handleClose ",
-      "version": "2.2.16",
+      "name": "handleClose",
       "title": "关闭日期选择器弹窗",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.2.16"
     }
   ]
 }

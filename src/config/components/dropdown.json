@@ -47,7 +47,8 @@
             }
           ]
         }
-      ]
+      ],
+      "keep": true
     },
     "size": {
       "label": "菜单尺寸",
@@ -78,7 +79,7 @@
     },
     "button-props": {
       "label": "按钮组件的 props",
-      "title": "按钮组件的 props，参考 [按钮属性](./button.html#button-attributes)",
+      "title": "按钮组件的 props，参考 <a href=\"./button.html#button-attributes\"></a>",
       "types": [
         {
           "name": "object",
@@ -183,7 +184,7 @@
       ],
       "default": "hover"
     },
-    "triggerKeys": {
+    "trigger-keys": {
       "label": "指定键盘上哪些按键可以触发操作",
       "title": "指定键盘上哪些按键可以触发操作",
       "types": [
@@ -275,7 +276,8 @@
     },
     "tabindex": {
       "label": "Dropdown 组件的 [object Object]",
-      "title": "Dropdown 组件的 [tabindex](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)",   "types": [
+      "title": "Dropdown 组件的 <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex\">tabindex</a>",
+      "types": [
         {
           "name": "stringNumber",
           "tag": "string-number-input"
@@ -297,8 +299,8 @@
       ]
     },
     "popper-options": {
-      "label": "",
-      "title": "[popper.js](https://popper.js.org/docs/v2/) 参数",
+      "label": "popper.js 参数",
+      "title": "<a href=\"https://popper.js.org/docs/v2/\">popper.js</a> 参数",
       "types": [
         {
           "name": "object",
@@ -339,7 +341,7 @@
     },
     {
       "name": "dropdown",
-      "title": "下拉列表，通常是 `<el-dropdown-menu>` 组件",
+      "title": "下拉列表，通常是 <code><el-dropdown-menu></code> 组件",
       "subtags": [
         "dropdown-menu"
       ]

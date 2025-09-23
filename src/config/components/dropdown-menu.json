@@ -8,7 +8,6 @@
     "rawItem"
   ],
   "document": "https://element-plus.org/zh-CN/component/dropdown.html",
-  "attributes": {},
   "slots": [
     {
       "name": "default",

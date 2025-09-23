@@ -7,11 +7,11 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/select.html",
   "childTag": [
     "option-group",
     "option"
   ],
+  "document": "https://element-plus.org/zh-CN/component/select.html",
   "attributes": {
     "vModel": "modelValue",
     "placeholder": "请选择",
@@ -47,7 +47,8 @@
         }
       ],
       "default": {"value": "value", "label": "label", "disabled": "disabled"},
-      "version": "2.10.5"
+      "version": "2.10.5",
+      "keep": true
     },
     "disabled": {
       "label": "禁用",
@@ -253,7 +254,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(query: string) => void"
         }
       ]
@@ -275,7 +275,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(query: string) => void"
         }
       ]
@@ -353,6 +352,24 @@
           }
         }
       ]
+    },
+    "popper-style": {
+      "label": "为 Select 的下拉菜单自定义样式",
+      "title": "为 Select 的下拉菜单自定义样式",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "object",
+          "tag": "style-editor"
+        }
+      ],
+      "version": "2.11.0"
     },
     "reserve-keyword": {
       "label": "搜索关键词",
@@ -626,7 +643,8 @@
         "right",
         "left"
       ],
-      "version": "2.5.6"
+      "version": "2.5.6",
+      "keep": true
     },
     "max-collapse-tags": {
       "label": "标签最大数量",
@@ -645,10 +663,16 @@
       ]
     },
     "popper-options": {
-      "title": "[popper.js](https://popper.js.org/docs/v2/) 参数",
+      "label": "popper.js 参数",
+      "title": "<a href=\"https://popper.js.org/docs/v2/\">popper.js</a> 参数",
       "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
       ],
-      "default": {}
+      "default": {},
+      "keep": true
     },
     "aria-label": {
       "label": "等价于原生 input aria-label 属性",
@@ -662,7 +686,8 @@
       "a11y": true
     },
     "empty-values": {
-      "title": "组件的空值配置 [参考config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "label": "组件的空值配置",
+      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "array",
@@ -672,7 +697,8 @@
       "version": "2.7.0"
     },
     "value-on-clear": {
-      "title": "清空选项的值 [参考 config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "label": "清空选项的值",
+      "title": "清空选项的值 <a href=\"/en-US/component/config-provider.html#empty-values-configurations\"></a>",
       "types": [
         {
           "name": "string",
@@ -688,7 +714,6 @@
         },
         {
           "name": "function",
-
           "details": "",
           "desc": "^[string] / ^[number] / ^[boolean] / ^[Function"
         }
@@ -748,8 +773,9 @@
     },
     {
       "name": "tag",
-      "title": "select 组件自定义标签内容",
-      "version": "2.5.0"
+      "title": "作为 Select 组件的内容时，子标签 <code>data</code>、<code>selectDisabled</code> 和 <code>deleteTag</code> 是在版本 [object Object] 中新增的。",
+      "version": "2.5.0",
+      "keep": true
     },
     {
       "name": "loading",
@@ -758,8 +784,9 @@
     },
     {
       "name": "label",
-      "title": "select 组件自定义标签内容",
-      "version": "2.7.4"
+      "title": "content as Select label. <code>index</code> introduced in [object Object]",
+      "version": "2.7.4",
+      "keep": true
     }
   ],
   "events": [
@@ -800,11 +827,11 @@
       "details": "(event: FocusEvent) => void"
     },
     {
-      "name": "popup-scroll ",
-      "version": "2.9.4",
+      "name": "popup-scroll",
       "title": "下拉滚动时触发",
       "type": "function",
-      "details": "(data:{scrollTop: number, scrollLeft: number}) => void"
+      "details": "(data:{scrollTop: number, scrollLeft: number}) => void",
+      "version": "2.9.4"
     }
   ],
   "exposes": [
@@ -821,11 +848,11 @@
       "details": "() => void"
     },
     {
-      "name": "selectedLabel ",
-      "version": "2.8.5",
+      "name": "selectedLabel",
       "title": "获取当前选中的标签",
       "type": "object",
-      "details": "ComputedRef<string | string[]>"
+      "details": "ComputedRef<string | string[]>",
+      "version": "2.8.5"
     }
   ],
   "data": {

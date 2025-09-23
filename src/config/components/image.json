@@ -24,7 +24,7 @@
     },
     "fit": {
       "label": "适应容器框",
-      "title": "确定图片如何适应容器框，同原生 [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)",
+      "title": "确定图片如何适应容器框，同原生 <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit\">object-fit</a>",
       "types": [
         {
           "name": "enum",
@@ -67,7 +67,7 @@
     },
     "loading": {
       "label": "加载图像策略",
-      "title": "浏览器加载图像的策略，和 [浏览器原生](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-loading)能力一致",
+      "title": "浏览器加载图像的策略，和 <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-loading\">浏览器原生</a>能力一致",
       "types": [
         {
           "name": "enum",
@@ -132,7 +132,7 @@
     },
     "referrerpolicy": {
       "label": "referrerPolicy",
-      "title": "原生属性 [referrerPolicy](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/referrerPolicy)。",
+      "title": "原生属性 <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/referrerPolicy\">referrerPolicy</a>。",
       "types": [
         {
           "name": "string",
@@ -144,7 +144,8 @@
       ]
     },
     "crossorigin": {
-      "title": "原生属性 [crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)",
+      "label": "原生属性 crossorigin",
+      "title": "原生属性 <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin\">crossorigin</a>",
       "types": [
         {
           "name": "enum",
@@ -170,8 +171,8 @@
       "title": "开启图片预览功能",
       "types": [
         {
-          "name": "array",
-          "tag": "array-editor"
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
       "default": []
@@ -239,8 +240,7 @@
           "tag": "el-input-number"
         }
       ],
-      "default": 1.2,
-      "version": "2.2.27"
+      "default": 1.2
     },
     "min-scale": {
       "label": "图像查看器缩放事件的最小缩放比例",
@@ -296,15 +296,15 @@
       "name": "progress",
       "title": "图片预览时自定义进度条内容 （优先级高于 <code>show-progress</code> 属性）",
       "type": "object",
-      "version": "2.9.4",
-      "details": "{ activeIndex: number, total: number }"
+      "details": "{ activeIndex: number, total: number }",
+      "version": "2.9.4"
     },
     {
       "name": "toolbar",
       "title": "当图像预览时，自定义工具栏内容",
       "type": "object",
-      "version": "2.9.4",
-      "details": "{actions: (action: ImageViewerAction, options?: ImageViewerActionOptions ) => void, prev: ()=> void, next: () => void,reset: () => void, activeIndex: number }, setActiveItem: (index: number) => void"
+      "details": "{actions: (action: ImageViewerAction, options?: ImageViewerActionOptions ) => void, prev: ()=> void, next: () => void,reset: () => void, activeIndex: number }, setActiveItem: (index: number) => void",
+      "version": "2.9.4"
     }
   ],
   "events": [
@@ -341,11 +341,11 @@
   ],
   "exposes": [
     {
-      "name": "showPreview ",
-      "version": "2.9.4",
+      "name": "showPreview",
       "title": "手动打开大图预览",
       "type": "function",
-      "details": "() => void"
+      "details": "() => void",
+      "version": "2.9.4"
     }
   ]
 }

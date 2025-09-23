@@ -22,6 +22,47 @@
         }
       ]
     },
+    "effect": {
+      "label": "Tooltip 主题",
+      "title": "Tooltip 主题，内置了 <code>dark</code> / <code>light</code> 两种",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "dark",
+              "value": "dark"
+            },
+            {
+              "label": "light",
+              "value": "light"
+            }
+          ]
+        },
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "light",
+      "version": "2.11.2"
+    },
+    "close-on-press-escape": {
+      "label": "whether the popConfirm can be closed by pressing ESC",
+      "title": "whether the popConfirm can be closed by pressing ESC",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.11.2"
+    },
     "confirm-button-text": {
       "label": "确认按钮文字",
       "title": "确认按钮文字",
@@ -209,8 +250,8 @@
       "name": "actions",
       "title": "页脚的内容",
       "type": "object",
-      "version": "2.8.1",
-      "details": "{ confirm: (e: MouseEvent) => void, cancel: (e: MouseEvent) => void }"
+      "details": "{ confirm: (e: MouseEvent) => void, cancel: (e: MouseEvent) => void }",
+      "version": "2.8.1"
     }
   ],
   "events": [
@@ -225,6 +266,22 @@
       "title": "点击取消按钮时触发",
       "type": "function",
       "details": "(e: MouseEvent) => void"
+    }
+  ],
+  "exposes": [
+    {
+      "name": "popperRef",
+      "title": "el-popper 组件实例",
+      "type": "object",
+      "details": "Ref<PopperInstance | undefined>",
+      "version": "2.10.7"
+    },
+    {
+      "name": "hide",
+      "title": "hide popconfirm",
+      "type": "function",
+      "details": "() => void",
+      "version": "2.10.7"
     }
   ]
 }

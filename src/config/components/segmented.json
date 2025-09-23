@@ -19,7 +19,18 @@
           "tag": "array-editor"
         }
       ],
-      "default": []
+      "default": "[]"
+    },
+    "props": {
+      "label": "配置选项",
+      "title": "配置选项，详见下表",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "version": "2.9.8"
     },
     "size": {
       "label": "组件大小",
@@ -28,10 +39,11 @@
         {
           "name": "enum",
           "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
           "options": [
+            {
+              "label": "",
+              "value": ""
+            },
             {
               "label": "large",
               "value": "large"
@@ -44,7 +56,10 @@
               "label": "small",
               "value": "small"
             }
-          ]
+          ],
+          "config": {
+            "optionType": "button"
+          }
         }
       ],
       "default": "default"

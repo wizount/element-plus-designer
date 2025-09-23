@@ -19,7 +19,8 @@
           "clearable": true
         }
       ],
-      "propsRef": true
+      "propsRef": true,
+      "keep": true
     },
     "rules": {
       "label": "验证规则",
@@ -31,7 +32,8 @@
           "clearable": true
         }
       ],
-      "propsRef": true
+      "propsRef": true,
+      "keep": true
     },
     "inline": {
       "label": "行内表单",
@@ -70,8 +72,7 @@
           ]
         }
       ],
-      "default": "right",
-      "version": "2.7.7"
+      "default": "right"
     },
     "label-width": {
       "label": "标签长度",
@@ -227,7 +228,7 @@
     },
     "scroll-into-view-options": {
       "label": "校验失败滚动到第一个失败",
-      "title": "当校验有失败结果时，滚动到第一个失败的表单项目 可通过 [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) 配置",
+      "title": "当校验有失败结果时，滚动到第一个失败的表单项目 可通过 <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView\">scrollIntoView</a> 配置",
       "types": [
         {
           "name": "object",
@@ -291,17 +292,17 @@
       "details": "(props?: Arrayable<FormItemProp> | undefined) => void"
     },
     {
-      "name": "fields ",
-      "version": "2.7.3",
+      "name": "fields",
       "title": "获取所有字段的 context",
-      "type": "array"
+      "type": "array",
+      "version": "2.7.3"
     },
     {
-      "name": "getField ",
-      "version": "2.10.2",
+      "name": "getField",
       "title": "获取字段的 context",
       "type": "function",
-      "details": "(prop: FormItemProp) => FormItemContext | undefined"
+      "details": "(prop: FormItemProp) => FormItemContext | undefined",
+      "version": "2.10.2"
     }
   ]
 }

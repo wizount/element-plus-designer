@@ -31,7 +31,8 @@
           ]
         }
       ],
-      "default": "vertical"
+      "default": "vertical",
+      "keep": true
     },
     "collapse": {
       "label": "水平折叠",
@@ -103,7 +104,8 @@
           "name": "array",
           "tag": "array-editor"
         }
-      ]
+      ],
+      "keep": true
     },
     "unique-opened": {
       "label": "只保持一个子菜单展开",
@@ -332,11 +334,17 @@
       "details": "(index: string) => void"
     },
     {
-      "name": "updateActiveIndex ",
-      "version": "2.9.8",
+      "name": "handleResize",
+      "title": "手动触发菜单宽度重新计算",
+      "type": "function",
+      "details": "() => void"
+    },
+    {
+      "name": "updateActiveIndex",
       "title": "通过索引激活指定菜单",
       "type": "function",
-      "details": "(index: string) => void"
+      "details": "(index: string) => void",
+      "version": "2.9.8"
     }
   ]
 }

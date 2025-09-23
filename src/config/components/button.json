@@ -272,10 +272,6 @@
           "props": {
             "clearable": true
           }
-        },
-        {
-          "name": "component",
-          "tag": ""
         }
       ],
       "default": "button",
