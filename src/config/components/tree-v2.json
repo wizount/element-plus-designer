@@ -1,6 +1,7 @@
 {
   "__id__": "tree-v2",
   "name": "虚拟树形",
+  "desc": "不论你的数据量多大，虚拟树都能毫无压力地处理。",
   "tag": "el-tree-v2",
   "tagIcon": "tree",
   "layouts": [
@@ -9,14 +10,19 @@
   "document": "https://element-plus.org/zh-CN/component/tree-v2.html",
   "attributes": {
     "data": {
-      "label": "",
+      "label": "展示数据",
       "title": "展示数据",
-      "required": true,
-      "default": [],
-      "hide": true
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "hide": true,
+      "default": []
     },
     "empty-text": {
-      "label": "",
+      "label": "内容为空的时候展示的文本",
       "title": "内容为空的时候展示的文本",
       "types": [
         {
@@ -66,7 +72,8 @@
         "label": "label",
         "children": "children",
         "disabled": "disabled"
-      }
+      },
+      "keep": true
     },
     "highlight-current": {
       "label": "高亮选中",
@@ -101,6 +108,18 @@
       ],
       "default": false
     },
+    "check-on-click-leaf": {
+      "label": "点击叶节点",
+      "title": "点击叶节点(最后一个子节点)时是否检查或取消节点",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.9.6"
+    },
     "default-expanded-keys": {
       "label": "默认展开节点",
       "title": "默认展开的节点的 key 的数组",
@@ -109,7 +128,8 @@
           "name": "array",
           "tag": "array-editor"
         }
-      ]
+      ],
+      "keep": true
     },
     "show-checkbox": {
       "label": "可被选择",
@@ -141,7 +161,8 @@
           "name": "array",
           "tag": "array-editor"
         }
-      ]
+      ],
+      "keep": true
     },
     "current-node-key": {
       "label": "当前选中节点",
@@ -154,12 +175,12 @@
       ]
     },
     "filter-method": {
-      "label": "",
-      "title": "对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示， 返回 `false` 则表示这个节点会被隐藏",
+      "label": "对树节点进行筛选时执行的方法",
+      "title": "对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示， 返回 <code>false</code> 则表示这个节点会被隐藏",
       "types": [
         {
-          "name": "Function(value, data)",
-          "tag": ""
+          "name": "function",
+          "details": "(query: string, data: TreeNodeData, node: TreeNode) => boolean"
         }
       ],
       "hide": true
@@ -177,7 +198,7 @@
     },
     "icon": {
       "label": "节点图标",
-      "title": "自定义树节点的图标",
+      "title": "自定义树节点图标组件",
       "types": [
         {
           "name": "string",
@@ -186,7 +207,7 @@
       ]
     },
     "item-size": {
-      "label": "",
+      "label": "自定义树节点的高度",
       "title": "自定义树节点的高度",
       "types": [
         {
@@ -196,61 +217,83 @@
       ],
       "default": 26,
       "version": "2.2.33"
+    },
+    "scrollbar-always-on": {
+      "label": "总是显示滚动条",
+      "title": "总是显示滚动条",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.10.4"
+    },
+    "height": {
+      "label": "height of the tree",
+      "title": "height of the tree",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 200
     }
   },
-  "exposes": [],
-  "events": [
-    {
-      "name": "node-click",
-      "title": "当节点被点击的时候触发",
-      "params": "(data: TreeNodeData, node: TreeNode, e: MouseEvent)"
-    },
-    {
-      "name": "node-drop",
-      "title": "拖放到节点时触发器",
-      "params": "(data: TreeNodeData, node: TreeNode, e: DragEvent)",
-      "version": "2.8.3"
-    },
-    {
-      "name": "node-contextmenu",
-      "title": "当节点被鼠标右键点击时会触发该事件",
-      "params": "(e: Event, data: TreeNodeData, node: TreeNode)"
-    },
-    {
-      "name": "check-change",
-      "title": "节点选中状态发生变化时的回调",
-      "params": "(data: TreeNodeData, checked: boolean)"
-    },
-    {
-      "name": "check",
-      "title": "当复选框被点击的时候触发",
-      "params": "(data: TreeNodeData, info: { checkedKeys: TreeKey[],checkedNodes: TreeData, halfCheckedKeys: TreeKey[], halfCheckedNodes: TreeData,})"
-    },
-    {
-      "name": "current-change",
-      "title": "当前选中节点变化时触发的事件",
-      "params": "(data: TreeNodeData, node: TreeNode)"
-    },
-    {
-      "name": "node-expand",
-      "title": "节点被展开时触发的事件",
-      "params": "(data: TreeNodeData, node: TreeNode)"
-    },
-    {
-      "name": "node-collapse",
-      "title": "节点被收起时触发的事件",
-      "params": "(data: TreeNodeData, node: TreeNode)"
-    }
-  ],
   "slots": [
     {
       "name": "default",
-      "title": "自定义树节点的内容。 作用域参数为 `{ node: TreeNode, data: TreeNodeData }`"
+      "title": "自定义树节点的内容。 作用域参数为 <code>{ node: TreeNode, data: TreeNodeData }</code>"
     },
     {
       "name": "empty",
       "title": "当数据为空时自定义的内容",
       "version": "2.9.0"
+    }
+  ],
+  "events": [
+    {
+      "name": "node-click",
+      "title": "当节点被点击的时候触发",
+      "type": "(data: TreeNodeData, node: TreeNode, e: MouseEvent)"
+    },
+    {
+      "name": "node-drop",
+      "title": "拖放到节点时触发器",
+      "type": "(data: TreeNodeData, node: TreeNode, e: DragEvent)",
+      "version": "2.8.3"
+    },
+    {
+      "name": "node-contextmenu",
+      "title": "当某一节点被鼠标右键点击时会触发该事件",
+      "type": "(e: Event, data: TreeNodeData, node: TreeNode)"
+    },
+    {
+      "name": "check-change",
+      "title": "当复选框被点击的时候触发",
+      "type": "(data: TreeNodeData, checked: boolean)"
+    },
+    {
+      "name": "check",
+      "title": "点击节点复选框之后触发",
+      "type": "(data: TreeNodeData, info: { checkedKeys: TreeKey[],checkedNodes: TreeData, halfCheckedKeys: TreeKey[], halfCheckedNodes: TreeData,})"
+    },
+    {
+      "name": "current-change",
+      "title": "当前选中节点变化时触发的事件",
+      "type": "(data: TreeNodeData, node: TreeNode)"
+    },
+    {
+      "name": "node-expand",
+      "title": "节点被展开时触发的事件",
+      "type": "(data: TreeNodeData, node: TreeNode)"
+    },
+    {
+      "name": "node-collapse",
+      "title": "节点被关闭时触发的事件",
+      "type": "(data: TreeNodeData, node: TreeNode)"
     }
   ],
   "data": {
@@ -281,6 +324,5 @@
       "method": "get",
       "dataKey": ""
     }
-  },
-  "desc": "不论你的数据量多大，虚拟树都能毫无压力地处理。"
+  }
 }

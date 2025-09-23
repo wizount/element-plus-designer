@@ -42,8 +42,8 @@
       ],
       "default": -22
     },
-    "zIndex": {
-      "label": "z-index值",
+    "z-index": {
+      "label": "水印元素的z-index值",
       "title": "水印元素的z-index值",
       "types": [
         {
@@ -82,10 +82,11 @@
           "tag": "array-editor"
         }
       ],
-      "default": "Element Plus"
+      "default": "Element Plus",
+      "keep": true
     },
     "font": {
-      "label": "",
+      "label": "文字样式",
       "title": "文字样式",
       "types": [
         {
@@ -93,7 +94,8 @@
           "tag": "object-editor"
         }
       ],
-      "default": {}
+      "default": {},
+      "keep": true
     },
     "gap": {
       "label": "间距",
@@ -110,7 +112,8 @@
       "default": [
         100,
         100
-      ]
+      ],
+      "keep": true
     },
     "offset": {
       "label": "偏移",
@@ -123,7 +126,8 @@
             "tag": "el-input-number"
           }
         }
-      ]
+      ],
+      "keep": true
     }
   },
   "slots": [

@@ -1,0 +1,39 @@
+{
+  "__id__": "tab-nav",
+  "name": "",
+  "tag": "el-tab-nav",
+  "tagIcon": "tab-nav",
+  "layouts": [
+    "containerItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/tabs.html",
+  "slots": [],
+  "exposes": [
+    {
+      "name": "scrollToActiveTab",
+      "title": "滚动到活动标签",
+      "type": "function",
+      "details": "() => Promise<void>"
+    },
+    {
+      "name": "removeFocus",
+      "title": "移除聚焦状态",
+      "type": "function",
+      "details": "() => boolean"
+    },
+    {
+      "name": "tabListRef",
+      "title": "el_tabs__nav html 元素",
+      "type": "object",
+      "details": "Ref<HTMLDivElement | undefined>",
+      "version": "2.9.10"
+    },
+    {
+      "name": "tabBarRef",
+      "title": "el_tabs__nav bar 实例",
+      "type": "object",
+      "details": "Ref<TabBarInstance | undefined>",
+      "version": "2.9.10"
+    }
+  ]
+}

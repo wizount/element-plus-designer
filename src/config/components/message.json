@@ -1,0 +1,227 @@
+{
+  "__id__": "message",
+  "name": "",
+  "tag": "el-message",
+  "tagIcon": "message",
+  "layouts": [
+    "containerItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/message.html",
+  "attributes": {
+    "message": {
+      "label": "消息文字",
+      "title": "消息文字",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "VNode"
+        },
+        {
+          "name": "function",
+          "details": "() => VNode"
+        }
+      ]
+    },
+    "type": {
+      "label": "消息类型",
+      "title": "消息类型",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "primary",
+              "value": "primary"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "error",
+              "value": "error"
+            }
+          ]
+        }
+      ],
+      "default": "info"
+    },
+    "plain": {
+      "label": "纯色",
+      "title": "是否纯色",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.6.3"
+    },
+    "icon": {
+      "label": "自定义图标",
+      "title": "自定义图标，该属性会覆盖 <code>type</code> 的图标。",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "dangerouslyUseHTMLString": {
+      "label": "将 message 属性作为 HTML 片段处理",
+      "title": "是否将 message 属性作为 HTML 片段处理",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "customClass": {
+      "label": "自定义类名",
+      "title": "自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "duration": {
+      "label": "显示时间",
+      "title": "显示时间，单位为毫秒。 设为 0 则不会自动关闭",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 3000
+    },
+    "showClose": {
+      "label": "显示关闭按钮",
+      "title": "是否显示关闭按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "onClose": {
+      "label": "关闭时的回调函数",
+      "title": "关闭时的回调函数, 参数为被关闭的 message 实例",
+      "types": [
+        {
+          "name": "function",
+          "details": "() => void"
+        }
+      ]
+    },
+    "offset": {
+      "label": "到视口边缘的距离",
+      "title": "设置到视口边缘的距离（当位置为'top'时为顶部，当位置为'bottom'时为底部）",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 16
+    },
+    "placement": {
+      "label": "消息放置位置",
+      "title": "消息放置位置",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "top",
+              "value": "top"
+            },
+            {
+              "label": "top-left",
+              "value": "top-left"
+            },
+            {
+              "label": "top-right",
+              "value": "top-right"
+            },
+            {
+              "label": "bottom",
+              "value": "bottom"
+            },
+            {
+              "label": "bottom-left",
+              "value": "bottom-left"
+            },
+            {
+              "label": "bottom-right",
+              "value": "bottom-right"
+            }
+          ]
+        }
+      ],
+      "default": "top",
+      "version": "2.11.0"
+    },
+    "appendTo": {
+      "label": " message 的根元素",
+      "title": "设置 message 的根元素，默认为 <code>document.body</code>",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "grouping": {
+      "label": "合并内容相同的消息",
+      "title": "合并内容相同的消息，不支持 VNode 类型的消息",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "repeatNum": {
+      "label": "重复次数",
+      "title": "重复次数，类似于 Badge 。当和 <code>grouping</code> 属性一起使用时作为初始数量使用",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 1
+    }
+  },
+  "slots": [],
+  "exposes": [
+    {
+      "name": "close",
+      "title": "关闭当前的 Message",
+      "type": "function",
+      "details": "() => void"
+    }
+  ]
+}

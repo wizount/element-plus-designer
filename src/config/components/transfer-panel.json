@@ -1,0 +1,18 @@
+{
+  "__id__": "transfer-panel",
+  "name": "",
+  "tag": "el-transfer-panel",
+  "tagIcon": "transfer-panel",
+  "layouts": [
+    "containerItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/transfer-panel.html",
+  "slots": [],
+  "exposes": [
+    {
+      "name": "query",
+      "title": "过滤关键词",
+      "type": "string"
+    }
+  ]
+}

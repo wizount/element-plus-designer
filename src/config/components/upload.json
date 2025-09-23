@@ -21,7 +21,7 @@
           }
         }
       ],
-      "default": "https",
+      "default": "#",
       "required": true
     },
     "headers": {
@@ -29,7 +29,7 @@
       "title": "设置上传的请求头部",
       "types": [
         {
-          "name": "Object",
+          "name": "object",
           "tag": "object-editor"
         }
       ]
@@ -39,21 +39,8 @@
       "title": "设置上传请求方法",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "post",
-              "value": "post"
-            },
-            {
-              "label": "get",
-              "value": "get"
-            }
-          ]
+          "name": "string",
+          "tag": "el-input"
         }
       ],
       "default": "post"
@@ -71,13 +58,18 @@
     },
     "data": {
       "label": "附带参数",
-      "title": "上传时附带的额外参数",
+      "title": "上传时附带的额外参数 从 v2.3.13 支持 <code>Awaitable</code> 数据，和 <code>Function</code>",
       "types": [
         {
-          "name": "Object",
+          "name": "object",
           "tag": "object-editor"
+        },
+        {
+          "name": "function",
+          "details": "(rawFile: UploadRawFile) => Awaitable<Record<string, any>>"
         }
-      ]
+      ],
+      "default": {}
     },
     "name": {
       "label": "字段名",
@@ -128,7 +120,7 @@
     },
     "accept": {
       "label": "文件类型",
-      "title": "接受上传的文件类型（thumbnail-mode 模式下此参数无效）",
+      "title": "接受上传的<a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-accept\">文件类型</a>（thumbnail-mode 模式下此参数无效）",
       "types": [
         {
           "name": "string",
@@ -140,7 +132,8 @@
       ]
     },
     "crossorigin": {
-      "title": "crossorigin",
+      "label": "原生属性 crossorigin",
+      "title": "原生属性 <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin\">crossorigin</a>",
       "types": [
         {
           "name": "enum",
@@ -168,6 +161,7 @@
         {
           "name": "function",
           "tag": "",
+          "details": "(uploadFile: UploadFile) => void",
           "desc": "(uploadFile: UploadFile) => void"
         }
       ],
@@ -180,103 +174,101 @@
         {
           "name": "function",
           "tag": "",
+          "details": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void",
           "desc": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
         }
       ],
       "hide": true
     },
     "on-success": {
-      "label": "",
+      "label": "文件上传成功时的钩子",
       "title": "文件上传成功时的钩子",
       "types": [
         {
           "name": "function",
           "tag": "",
+          "details": "(response: any, uploadFile: UploadFile, uploadFiles: UploadFiles) => void",
           "desc": "(response: any, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
         }
       ],
       "hide": true
     },
     "on-error": {
-      "label": "",
+      "label": "文件上传失败时的钩子",
       "title": "文件上传失败时的钩子",
       "types": [
         {
           "name": "function",
           "tag": "",
+          "details": "(error: Error, uploadFile: UploadFile, uploadFiles: UploadFiles) => void",
           "desc": "(error: Error, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
         }
       ],
       "hide": true
     },
     "on-progress": {
-      "label": "",
+      "label": "文件上传时的钩子",
       "title": "文件上传时的钩子",
       "types": [
         {
           "name": "function",
           "tag": "",
+          "details": "(evt: UploadProgressEvent, uploadFile: UploadFile, uploadFiles: UploadFiles) => void",
           "desc": "(evt: UploadProgressEvent, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
         }
       ],
       "hide": true
     },
     "on-change": {
-      "label": "",
+      "label": "文件状态改变时的钩子",
       "title": "文件状态改变时的钩子，添加文件、上传成功和上传失败时都会被调用",
       "types": [
         {
           "name": "function",
           "tag": "",
+          "details": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void",
           "desc": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
         }
       ],
       "hide": true
     },
     "on-exceed": {
-      "label": "",
+      "label": "当超出限制时",
       "title": "当超出限制时，执行的钩子函数",
       "types": [
         {
           "name": "function",
           "tag": "",
+          "details": "(files: File[], uploadFiles: UploadUserFile[]) => void",
           "desc": "(files: File[], uploadFiles: UploadUserFile[]) => void"
         }
       ],
       "hide": true
     },
     "before-upload": {
-      "label": "",
-      "title": "上传文件之前的钩子，参数为上传的文件， 若返回false或者返回 Promise 且被 reject，则停止上传。",
+      "label": "上传文件之前的钩子",
+      "title": "上传文件之前的钩子，参数为上传的文件， 若返回<code>false</code>或者返回<code> Promise</code> 且被 reject，则停止上传。",
       "types": [
         {
           "name": "function",
-          "tag": ""
+          "tag": "",
+          "details": "(rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>"
         }
       ],
       "hide": true
     },
     "before-remove": {
-      "label": "",
-      "title": "删除文件之前的钩子，参数为上传的文件和文件列表， 若返回 false 或者返回 Promise 且被 reject，则停止删除。",
+      "label": "删除文件之前的钩子",
+      "title": "删除文件之前的钩子，参数为上传的文件和文件列表， 若返回 <code>false </code>或者返回 <code>Promise </code>且被 reject，则停止删除。",
       "types": [
         {
           "name": "function",
           "tag": "",
+          "details": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => Awaitable<boolean>",
           "desc": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => Awaitable<boolean>"
         }
       ],
       "hide": true
-    },
-    "file-list": {
-      "title": "默认上传文件",
-      "types": [
-        {
-          "name": "array",
-          "tag": "array-editor"
-        }
-      ],
-      "default": []
     },
     "list-type": {
       "label": "列表类型",
@@ -324,13 +316,11 @@
         {
           "name": "function",
           "tag": "",
+          "details": "(options: UploadRequestOptions) => XMLHttpRequest | Promise<unknown>",
           "desc": "(options: UploadRequestOptions) => XMLHttpRequest"
-        },
-        {
-          "name": "Promise<unknown>",
-          "tag": ""
         }
       ],
+      "default": "请参考ajaxUpload",
       "hide": true
     },
     "disabled": {

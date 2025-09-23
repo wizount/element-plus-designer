@@ -1,0 +1,472 @@
+{
+  "__id__": "message-box",
+  "name": "",
+  "tag": "el-message-box",
+  "tagIcon": "message-box",
+  "layouts": [
+    "containerItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/message-box.html",
+  "attributes": {
+    "autofocus": {
+      "label": "打开 MessageBox 时是否自动获得焦点",
+      "title": "打开 MessageBox 时是否自动获得焦点",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "title": {
+      "label": "MessageBox 的标题",
+      "title": "MessageBox 的标题",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "message": {
+      "label": "MessageBox 的正文内容",
+      "title": "MessageBox 的正文内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "VNode"
+        },
+        {
+          "name": "function",
+          "details": "() => VNode"
+        },
+        {
+          "name": ""
+        },
+        {
+          "name": ""
+        }
+      ]
+    },
+    "dangerouslyUseHTMLString": {
+      "label": "将 message 作为 HTML 片段处理",
+      "title": "是否将 <code>message</code> 作为 HTML 片段处理",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "type": {
+      "label": "消息类型",
+      "title": "消息类型，用于图标显示",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "primary",
+              "value": "primary"
+            },
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "error",
+              "value": "error"
+            }
+          ]
+        }
+      ]
+    },
+    "icon": {
+      "label": "自定义图标组件",
+      "title": "自定义图标组件，会覆盖 <code>type</code> 的类型",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ]
+    },
+    "closeIcon": {
+      "label": "自定义关闭图标组件",
+      "title": "自定义关闭图标组件，默认是 Close",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "Component"
+        }
+      ],
+      "version": "2.9.5"
+    },
+    "customClass": {
+      "label": "MessageBox 的自定义类名",
+      "title": "MessageBox 的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "customStyle": {
+      "label": "MessageBox 的自定义内联样式",
+      "title": "MessageBox 的自定义内联样式",
+      "types": [
+        {
+          "name": "CSSProperties",
+          "tag": "style-editor"
+        }
+      ],
+      "default": "{}"
+    },
+    "modalClass": {
+      "label": "遮罩的自定义类名",
+      "title": "遮罩的自定义类名",
+      "types": []
+    },
+    "callback": {
+      "label": "若不使用 Promise",
+      "title": "若不使用 Promise，可以使用此参数指定 MessageBox 关闭后的回调",
+      "types": [
+        {
+          "name": "function",
+          "details": "(value: string, action: Action) => any | (action: Action) => any"
+        }
+      ]
+    },
+    "showClose": {
+      "label": "MessageBox 是否显示右上角关闭按钮",
+      "title": "MessageBox 是否显示右上角关闭按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "beforeClose": {
+      "label": "messageBox 关闭前的回调",
+      "title": "messageBox 关闭前的回调，会暂停消息弹出框的关闭过程。",
+      "types": [
+        {
+          "name": "function",
+          "details": "(action: Action, instance: MessageBoxState, done: () => void) => void"
+        }
+      ]
+    },
+    "distinguishCancelAndClose": {
+      "label": "将取消",
+      "title": "是否将取消（点击取消按钮）与关闭（点击关闭按钮或遮罩层、按下 Esc 键）进行区分",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "lockScroll": {
+      "label": "在 MessageBox 出现时将 body 滚动锁定",
+      "title": "是否在 MessageBox 出现时将 body 滚动锁定",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "showCancelButton": {
+      "label": "显示取消按钮",
+      "title": "是否显示取消按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": "false（以 confirm 和 prompt 方式调用时为 true）"
+    },
+    "showConfirmButton": {
+      "label": "显示确定按钮",
+      "title": "是否显示确定按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "cancelButtonText": {
+      "label": "取消按钮的文本内容",
+      "title": "取消按钮的文本内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "取消"
+    },
+    "confirmButtonText": {
+      "label": "确定按钮的文本内容",
+      "title": "确定按钮的文本内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "确定"
+    },
+    "cancelButtonLoadingIcon": {
+      "label": "取消按钮的加载图标内容",
+      "title": "取消按钮的加载图标内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "Component"
+        }
+      ],
+      "default": "Loading",
+      "version": "2.7.7"
+    },
+    "confirmButtonLoadingIcon": {
+      "label": "确认按钮的加载图标内容",
+      "title": "确认按钮的加载图标内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        },
+        {
+          "name": "Component"
+        }
+      ],
+      "default": "Loading",
+      "version": "2.7.7"
+    },
+    "cancelButtonClass": {
+      "label": "取消按钮的自定义类名",
+      "title": "取消按钮的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "confirmButtonClass": {
+      "label": "确定按钮的自定义类名",
+      "title": "确定按钮的自定义类名",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "closeOnClickModal": {
+      "label": "可通过点击遮罩层关闭 MessageBox",
+      "title": "是否可通过点击遮罩层关闭 MessageBox",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": "true（以 alert 方式调用时为 false）"
+    },
+    "closeOnPressEscape": {
+      "label": "可通过按下 ESC 键关闭 MessageBox",
+      "title": "是否可通过按下 ESC 键关闭 MessageBox",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": "true（以 alert 方式调用时为 false）"
+    },
+    "closeOnHashChange": {
+      "label": "在 hash 改变时关闭 MessageBox",
+      "title": "是否在 hash 改变时关闭 MessageBox",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "showInput": {
+      "label": "显示输入框",
+      "title": "是否显示输入框",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": "false（以 prompt 方式调用时为 true）"
+    },
+    "inputPlaceholder": {
+      "label": "输入框占位文本",
+      "title": "输入框占位文本",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "inputType": {
+      "label": "输入框的类型",
+      "title": "输入框的类型",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "text"
+    },
+    "inputValue": {
+      "label": "输入框的初始文本",
+      "title": "输入框的初始文本",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "inputPattern": {
+      "label": "输入框的校验表达式",
+      "title": "输入框的校验表达式",
+      "types": [
+        {
+          "name": "regexp"
+        }
+      ]
+    },
+    "inputValidator": {
+      "label": "输入框的校验函数。 应该返回一个 boolean 或者 string",
+      "title": "输入框的校验函数。 应该返回一个 boolean 或者 string， 如果返回的是一个 string 类型，那么该返回值会被赋值给 inputErrorMessage 用于向用户展示错误消息。",
+      "types": [
+        {
+          "name": "function",
+          "details": "(value: string) => boolean | string"
+        },
+        {
+          "name": "undefined"
+        }
+      ]
+    },
+    "inputErrorMessage": {
+      "label": "校验未通过时的提示文本",
+      "title": "校验未通过时的提示文本",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "输入的数据不合法!"
+    },
+    "center": {
+      "label": "居中布局",
+      "title": "是否居中布局",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "draggable": {
+      "label": "MessageBox 是否可拖放",
+      "title": "MessageBox 是否可拖放",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "overflow": {
+      "label": "MessageBox 拖动范围可以超出可视区",
+      "title": "MessageBox 拖动范围可以超出可视区",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.5.4"
+    },
+    "roundButton": {
+      "label": "使用圆角按钮",
+      "title": "是否使用圆角按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "buttonSize": {
+      "label": "自定义确认按钮及取消按钮的大小",
+      "title": "自定义确认按钮及取消按钮的大小",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "default"
+    },
+    "appendTo": {
+      "label": "组件的根元素",
+      "title": "设置组件的根元素",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.2.19"
+    }
+  },
+  "slots": []
+}

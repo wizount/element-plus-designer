@@ -36,7 +36,8 @@
           }
         }
       ],
-      "default": []
+      "default": [],
+      "keep": true
     },
     "filterable": {
       "label": "可搜索",
@@ -73,7 +74,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(query: string, item: Record<string, any>) => boolean"
         }
       ],
@@ -105,7 +105,8 @@
           ]
         }
       ],
-      "default": "original"
+      "default": "original",
+      "keep": true
     },
     "titles": {
       "label": "列表标题",
@@ -119,7 +120,8 @@
       "default": [
         "List 1",
         "List 2"
-      ]
+      ],
+      "keep": true
     },
     "button-texts": {
       "label": "按钮文字",
@@ -130,7 +132,8 @@
           "tag": "array-editor"
         }
       ],
-      "default": []
+      "default": [],
+      "keep": true
     },
     "render-content": {
       "label": "数据项渲染函数",
@@ -152,6 +155,16 @@
         }
       ],
       "default": {}
+    },
+    "props": {
+      "label": "数据源的字段别名",
+      "title": "数据源的字段别名",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
     },
     "left-default-checked": {
       "label": "初始状态下左侧列表的已勾选项的 key 数组",

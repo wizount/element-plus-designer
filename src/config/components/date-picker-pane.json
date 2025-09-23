@@ -1,0 +1,271 @@
+{
+  "__id__": "date-picker-pane",
+  "name": "日期选择器面板",
+  "desc": "DatePickerPanel是DatePicker的核心组件",
+  "tag": "el-date-picker-pane",
+  "tagIcon": "date-picker-pane",
+  "layouts": [
+    "containerItem"
+  ],
+  "document": "https://element-plus.org/zh-CN/component/date-picker-pane.html",
+  "attributes": {
+    "border": {
+      "label": "日期选择器是否有边框",
+      "title": "日期选择器是否有边框",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "clearable": {
+      "label": "显示清除按钮",
+      "title": "是否显示清除按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "type": {
+      "label": "选择器类型",
+      "title": "选择器类型，默认是普通选择器",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "year",
+              "value": "year"
+            },
+            {
+              "label": "years",
+              "value": "years"
+            },
+            {
+              "label": "month",
+              "value": "month"
+            },
+            {
+              "label": "months",
+              "value": "months"
+            },
+            {
+              "label": "date",
+              "value": "date"
+            },
+            {
+              "label": "dates",
+              "value": "dates"
+            },
+            {
+              "label": "datetime",
+              "value": "datetime"
+            },
+            {
+              "label": "week",
+              "value": "week"
+            },
+            {
+              "label": "datetimerange",
+              "value": "datetimerange"
+            },
+            {
+              "label": "daterange",
+              "value": "daterange"
+            },
+            {
+              "label": "monthrange",
+              "value": "monthrange"
+            },
+            {
+              "label": "yearrange",
+              "value": "yearrange"
+            }
+          ]
+        }
+      ],
+      "default": "date"
+    },
+    "default-value": {
+      "label": "可选",
+      "title": "可选，选择器打开时默认显示的时间",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
+    "default-time": {
+      "label": "范围选择时选中日期所使用的当日内具体时刻",
+      "title": "范围选择时选中日期所使用的当日内具体时刻",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
+    "value-format": {
+      "label": "可选",
+      "title": "可选，绑定值的格式。 不指定则绑定值为 Date 对象",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "date-format": {
+      "label": "可选",
+      "title": "可选，输入框内部面板中显示的日期格式",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "YYYY-MM-DD",
+      "keep": true
+    },
+    "time-format": {
+      "label": "可选",
+      "title": "可选，输入框内部面板中显示的时间格式",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "default": "HH:mm:ss",
+      "keep": true
+    },
+    "unlink-panels": {
+      "label": "在范围选择器里取消两个日期面板之间的联动",
+      "title": "在范围选择器里取消两个日期面板之间的联动",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "disabled-date": {
+      "label": "一个用来判断该日期是否被禁用的函数",
+      "title": "一个用来判断该日期是否被禁用的函数，接受一个 Date 对象作为参数。 应该返回一个 Boolean 值。",
+      "types": [
+        {
+          "name": "function",
+          "details": "(data: Date) => boolean"
+        }
+      ]
+    },
+    "shortcuts": {
+      "label": "快捷选项",
+      "title": "设置快捷选项，需要传入数组对象",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
+    },
+    "cell-class-name": {
+      "label": "自定义类名",
+      "title": "设置自定义类名",
+      "types": [
+        {
+          "name": "function",
+          "details": "(data: Date) => string"
+        }
+      ]
+    },
+    "show-footer": {
+      "label": "whether to show footer where the date picker is one [object Object]",
+      "title": "whether to show footer where the date picker is one [object Object]",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "show-confirm": {
+      "label": "显示确定按钮",
+      "title": "是否显示确定按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "show-week-number": {
+      "label": "显示周数",
+      "title": "显示周数(除周外)",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    }
+  },
+  "slots": [
+    {
+      "name": "default",
+      "title": "自定义单元格内容"
+    },
+    {
+      "name": "prev-month",
+      "title": "上个月的图标"
+    },
+    {
+      "name": "next-month",
+      "title": "下个月的图标"
+    },
+    {
+      "name": "prev-year",
+      "title": "上一年图标"
+    },
+    {
+      "name": "next-year",
+      "title": "下一年图标"
+    }
+  ],
+  "events": [
+    {
+      "name": "calendar-change",
+      "title": "在日历所选日期更改时触发 仅限“range”类型。",
+      "type": "function",
+      "details": "(val: [Date, null \\| Date]) => void"
+    },
+    {
+      "name": "panel-change",
+      "title": "当日期面板改变时触发。",
+      "type": "function",
+      "details": "(date: Date \\| [Date, Date], mode: 'month' \\| 'year', view?: string) => void"
+    }
+  ]
+}

@@ -18,12 +18,8 @@
           "tag": "el-select",
           "options": [
             {
-              "label": "stretch",
-              "value": "stretch"
-            },
-            {
-              "label": "center",
-              "value": "center"
+              "label": "normal",
+              "value": "normal"
             },
             {
               "label": "flex-start",
@@ -32,10 +28,51 @@
             {
               "label": "flex-end",
               "value": "flex-end"
+            },
+            {
+              "label": "center",
+              "value": "center"
+            },
+            {
+              "label": "start",
+              "value": "start"
+            },
+            {
+              "label": "end",
+              "value": "end"
+            },
+            {
+              "label": "self-start",
+              "value": "self-start"
+            },
+            {
+              "label": "baseline",
+              "value": "baseline"
+            },
+            {
+              "label": "first baseline",
+              "value": "first baseline"
+            },
+            {
+              "label": "last baseline",
+              "value": "last baseline"
+            },
+            {
+              "label": "stretch",
+              "value": "stretch"
+            },
+            {
+              "label": "safe",
+              "value": "safe"
+            },
+            {
+              "label": "unsafe",
+              "value": "unsafe"
             }
           ]
         }
       ],
+      "keep": true,
       "default": "center"
     },
     "class": {
@@ -102,7 +139,10 @@
       "types": [
         {
           "name": "string",
-          "tag": "el-input"
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
         },
         {
           "name": "object",
@@ -125,6 +165,9 @@
         {
           "name": "number",
           "tag": "el-input-number"
+        },
+        {
+          "name": "VNode"
         }
       ]
     },
