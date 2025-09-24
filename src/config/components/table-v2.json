@@ -1,15 +1,17 @@
 {
   "__id__": "table-v2",
   "name": "虚拟表格",
+  "desc": "在前端开发领域，表格一直都是一个高频出现的组件，尤其是在中后台和数据分析场景。 但是，对于 [Table V1](./table.md)来说，当一屏里超过 1000 条数据记录时，就会出现卡顿等性能问题，体验不是很好。",
   "tag": "el-table-v2",
   "tagIcon": "table",
   "layouts": [
     "rawItem"
   ],
+  "document": "https://element-plus.org/zh-CN/component/table-v2.html",
   "attributes": {
     "cache": {
-      "label": "",
-      "title": "Number of rows rendered in advance to boost the performance",
+      "label": "预加载的行数",
+      "title": "为了更好的渲染效果预先多加载的行数",
       "types": [
         {
           "name": "number",
@@ -19,7 +21,7 @@
       "default": 2
     },
     "estimated-row-height": {
-      "label": "",
+      "label": "预估高度",
       "title": "渲染动态的单元格的预估高度",
       "types": [
         {
@@ -29,7 +31,7 @@
       ]
     },
     "header-class": {
-      "label": "",
+      "label": "header 类名",
       "title": "header 部分的自定义 class 名",
       "types": [
         {
@@ -38,47 +40,35 @@
           "props": {
             "clearable": true
           }
-        },
-        {
-          "name": "function",
-
-          "desc": "<[HeaderClassGetter](#typings)\\"
         }
-      ]
+      ],
+      "keep": true
     },
     "header-props": {
-      "label": "",
+      "label": "header props 名",
       "title": "header 部分的自定义 props 名",
       "types": [
         {
           "name": "object",
           "tag": "object-editor"
-        },
-        {
-          "name": "function",
-
-          "desc": "<[HeaderPropsGetter](#typings)\\"
         }
-      ]
+      ],
+      "keep": true
     },
     "header-cell-props": {
-      "label": "",
+      "label": "header cell 部分的自定义 props 名",
       "title": "header cell 部分的自定义 props 名",
       "types": [
         {
           "name": "object",
           "tag": "object-editor"
-        },
-        {
-          "name": "function",
-
-          "desc": "<[HeaderCellPropsGetter](#typings)\\"
         }
-      ]
+      ],
+      "keep": true
     },
     "header-height": {
-      "label": "",
-      "title": "The height of the header is set by `height`. If given an array, it renders header rows equal to its length",
+      "label": "Header 的高度由height设置。 如果传入数组",
+      "title": "Header 的高度由<code>height</code>设置。 如果传入数组，它会使 header row 等于数组长度",
       "types": [
         {
           "name": "number",
@@ -89,11 +79,12 @@
           "tag": "array-editor"
         }
       ],
-      "default": 50
+      "default": 50,
+      "keep": true
     },
     "footer-height": {
-      "label": "",
-      "title": "The height of the footer element, when provided, will be part to the calculation of the table's height.",
+      "label": "Footer 部分的高度",
+      "title": "Footer 部分的高度，当传入值时，这部分将被计算入 table 的高度里",
       "types": [
         {
           "name": "number",
@@ -103,7 +94,7 @@
       "default": 0
     },
     "row-class": {
-      "label": "",
+      "label": "row wrapper 部分的自定义 class 名",
       "title": "row wrapper 部分的自定义 class 名",
       "types": [
         {
@@ -112,17 +103,13 @@
           "props": {
             "clearable": true
           }
-        },
-        {
-          "name": "function",
-
-          "desc": "<[RowClassGetter](#typings)\\"
         }
-      ]
+      ],
+      "keep": true
     },
     "row-key": {
-      "label": "",
-      "title": "The key of each row, if not provided, will be the index of the row",
+      "label": "每行的 key 值",
+      "title": "每行的 key 值，如果不提供，将使用索引 index 代替",
       "types": [
         {
           "name": "string",
@@ -130,35 +117,24 @@
           "props": {
             "clearable": true
           }
-        },
-        {
-          "name": "Symbol",
-          "tag": ""
-        },
-        {
-          "name": "number",
-          "tag": "el-input-number"
         }
       ],
-      "default": "id"
+      "default": "id",
+      "keep": true
     },
     "row-props": {
-      "label": "",
+      "label": "row component 部分的自定义 class 名",
       "title": "row component 部分的自定义 class 名",
       "types": [
         {
           "name": "object",
           "tag": "object-editor"
-        },
-        {
-          "name": "function",
-
-          "desc": "<[RowPropsGetter](#typings)\\"
         }
-      ]
+      ],
+      "keep": true
     },
     "row-height": {
-      "label": "",
+      "label": "每行的高度",
       "title": "每行的高度, 用于计算表的总高度",
       "types": [
         {
@@ -168,33 +144,41 @@
       ],
       "default": 50
     },
+    "row-event-handlers": {
+      "label": "当每行添加了一系列事件处理器时触发",
+      "title": "当每行添加了一系列事件处理器时触发",
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ],
+      "keep": true
+    },
     "cell-props": {
-      "label": "",
+      "label": "每个单元格 cell 的自定义 props ",
       "title": "每个单元格 cell 的自定义 props (除了 header cell 以外)",
       "types": [
         {
           "name": "object",
           "tag": "object-editor"
-        },
-        {
-          "name": "function",
-
-          "desc": "<[CellPropsGetter](#typings)\\"
         }
-      ]
+      ],
+      "keep": true
     },
     "columns": {
-      "label": "",
+      "label": "列 column 的配置数组",
       "title": "列 column 的配置数组",
       "types": [
         {
           "name": "array",
           "tag": "array-editor"
         }
-      ]
+      ],
+      "keep": true
     },
     "data": {
-      "label": "",
+      "label": "要在表中渲染的数据数组",
       "title": "要在表中渲染的数据数组",
       "types": [
         {
@@ -202,30 +186,45 @@
           "tag": "array-editor"
         }
       ],
-      "default": []
+      "default": [],
+      "keep": true
     },
     "data-getter": {
-      "label": "",
-      "title": "A method to customize data fetch from the data source.",
+      "label": "一个自定义方法从数据源获取数据",
+      "title": "一个自定义方法从数据源获取数据",
       "types": [
         {
-          "name": "function",
-          "tag": ""
+          "name": "Function<"
+        },
+        {
+          "name": "DataGetter"
+        },
+        {
+          "name": ">"
         }
       ]
     },
     "fixed-data": {
-      "label": "",
+      "label": "渲染行在表格主内容上方和 header 下方区域的数据",
       "title": "渲染行在表格主内容上方和 header 下方区域的数据",
       "types": [
         {
-          "name": "array",
-          "tag": "array-editor"
+          "name": "object",
+          "tag": "object-editor"
+        },
+        {
+          "name": "<"
+        },
+        {
+          "name": "Data"
+        },
+        {
+          "name": ">"
         }
       ]
     },
     "expand-column-key": {
-      "label": "",
+      "label": "列的 key 来标记哪个行可以被展开",
       "title": "列的 key 来标记哪个行可以被展开",
       "types": [
         {
@@ -238,28 +237,30 @@
       ]
     },
     "expanded-row-keys": {
-      "label": "",
-      "title": "存放行展开状态的 key 的数组，可以和  `v-model` 搭配使用",
+      "label": "存放行展开状态的 key 的数组",
+      "title": "存放行展开状态的 key 的数组，可以和 <code>v-model</code> 搭配使用",
       "types": [
         {
           "name": "array",
           "tag": "array-editor"
         }
-      ]
+      ],
+      "keep": true
     },
     "default-expanded-row-keys": {
-      "label": "",
-      "title": "默认展开的行的 key 的数组, **这个数据不是响应式的**",
+      "label": "默认展开的行的 key 的数组",
+      "title": "默认展开的行的 key 的数组, [object Object]",
       "types": [
         {
           "name": "array",
           "tag": "array-editor"
         }
-      ]
+      ],
+      "keep": true
     },
     "class": {
-      "label": "",
-      "title": "Class name for the virtual table, will be applied to all three tables (left, right, main)",
+      "label": "表格的类名称",
+      "title": "表格的类名称，将应用于表格的全部的三个部分 (左、右、主)",
       "types": [
         {
           "name": "string",
@@ -276,11 +277,12 @@
           "name": "object",
           "tag": "object-editor"
         }
-      ]
+      ],
+      "keep": true
     },
     "fixed": {
-      "label": "",
-      "title": "Flag indicates the table column's width to be fixed or flexible.",
+      "label": "自适应还是固定",
+      "title": "单元格宽度是自适应还是固定",
       "types": [
         {
           "name": "boolean",
@@ -290,8 +292,8 @@
       "default": false
     },
     "width": {
-      "label": "",
-      "title": "Width of the table",
+      "label": "宽度",
+      "title": "表格的宽度",
       "types": [
         {
           "name": "number",
@@ -301,8 +303,8 @@
       "required": true
     },
     "height": {
-      "label": "",
-      "title": "Height of the table",
+      "label": "高度",
+      "title": "表格的高度",
       "types": [
         {
           "name": "number",
@@ -312,8 +314,8 @@
       "required": true
     },
     "max-height": {
-      "label": "",
-      "title": "Maximum height of the table",
+      "label": "最大高度",
+      "title": "表格的最大高度",
       "types": [
         {
           "name": "number",
@@ -322,6 +324,7 @@
       ]
     },
     "indent-size": {
+      "label": "树形表水平缩进",
       "title": "树形表的水平缩进",
       "types": [
         {
@@ -332,7 +335,7 @@
       "default": 12
     },
     "h-scrollbar-size": {
-      "label": "",
+      "label": "水平滚动条大小",
       "title": "配置表格的水平滚动条大小，防止水平和垂直滚动条重叠。",
       "types": [
         {
@@ -343,7 +346,7 @@
       "default": 6
     },
     "v-scrollbar-size": {
-      "label": "",
+      "label": "垂直滚动条大小",
       "title": "配置表格的垂直滚动条大小，防止水平和垂直滚动条重叠。",
       "types": [
         {
@@ -354,7 +357,7 @@
       "default": 6
     },
     "scrollbar-always-on": {
-      "label": "",
+      "label": "滚动条一直显示",
       "title": "如果开启，滚动条将一直显示，反之只会在鼠标经过时显示。",
       "types": [
         {
@@ -365,116 +368,162 @@
       "default": false
     },
     "sort-by": {
-      "label": "",
+      "label": "排序方式",
       "title": "排序方式",
       "types": [
         {
-          "name": "Object\\<[SortBy](#typings)\\>",
-          "tag": ""
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
-      "default": {}
+      "default": {},
+      "keep": true
     },
     "sort-state": {
-      "label": "",
+      "label": "多个排序",
       "title": "多个排序",
       "types": [
         {
-          "name": "Object\\<[SortState](#typings)\\>",
-          "tag": ""
+          "name": "object",
+          "tag": "object-editor"
         }
       ],
-      "default": "undefined"
+      "keep": true
     }
   },
   "slots": [
     {
       "name": "cell",
-      "params": "`object`\\<[CellSlotProps](#typings)\\>"
+      "title": "",
+      "params": "<code>object</code><<a href=\"#typings\">CellSlotProps</a>>"
     },
     {
       "name": "header",
-      "params": "`object`\\<[HeaderSlotProps](#typings)\\>"
+      "title": "",
+      "params": "<code>object</code><<a href=\"#typings\">HeaderSlotProps</a>>"
     },
     {
       "name": "header-cell",
-      "params": "`object`\\<[HeaderCellSlotProps](#typings)\\>"
+      "title": "",
+      "params": "<code>object</code><<a href=\"#typings\">HeaderCellSlotProps</a>>"
     },
     {
       "name": "row",
-      "params": "`object`\\<[RowSlotProps](#typings)\\>"
+      "title": "",
+      "params": "<code>object</code><<a href=\"#typings\">RowSlotProps</a>>"
     },
     {
       "name": "footer",
-      "params": "—"
+      "title": ""
     },
     {
       "name": "empty",
-      "params": "—"
+      "title": ""
     },
     {
       "name": "overlay",
-      "params": "—"
+      "title": ""
     }
   ],
   "events": [
     {
       "name": "column-sort",
       "title": "列排序时调用",
-      "params": "`object`\\<[ColumnSortParam](#typings)\\>"
+      "params": [
+        "<code>object</code>",
+        "<",
+        "<a href=\"#typings\">ColumnSortParam</a>",
+        ">"
+      ]
     },
     {
       "name": "expanded-rows-change",
       "title": "行展开状态改变时触发",
-      "params": "[KeyType[]](#typings)"
+      "params": [
+        "<a href=\"#typings\">KeyType[]</a>"
+      ]
     },
     {
       "name": "end-reached",
-      "title": "到达表格末尾时触发",
-      "params": "—"
+      "title": "到达表格末尾时触发。 回调包含剩余距离，它通常是滚动条高度。",
+      "params": [
+        {
+          "type": "Function",
+          "details": "(remainDistance: number) => void"
+        }
+      ]
     },
     {
       "name": "scroll",
       "title": "表格被用户滚动后触发",
-      "params": "`object`\\<[ScrollParams](#typings)\\>"
+      "params": [
+        "<code>object</code>",
+        "<",
+        "<a href=\"#typings\">ScrollParams</a>",
+        ">"
+      ]
     },
     {
       "name": "rows-rendered",
       "title": "当行被渲染后触发",
-      "params": "`object`\\<[RowsRenderedParams](#typings)\\>"
+      "params": [
+        "<code>object</code>",
+        "<",
+        "<a href=\"#typings\">RowsRenderedParams</a>",
+        ">"
+      ]
     },
     {
       "name": "row-expand",
       "title": "点击箭头图标展开/折叠树节点时触发",
-      "params": "`object`\\<[RowExpandParams](#typings)\\>"
-    },
-    {
-      "name": "row-event-handlers",
-      "title": "当每行添加了一系列事件处理器时触发",
-      "params": "`object`\\<[RowEventHandlers](#typings)\\>"
+      "params": [
+        "<code>object</code>",
+        "<",
+        "<a href=\"#typings\">RowExpandParams</a>",
+        ">"
+      ]
     }
   ],
   "exposes": [
     {
-      "name": "scrollTo",
+      "undefined": "scrollTo",
       "title": "滚动到给定位置",
-      "params": "^[Function]`(param: {scrollLeft?: number, scrollTop?: number}) => void`"
+      "params": [
+        {
+          "type": "Function",
+          "details": "(param: {scrollLeft?: number, scrollTop?: number}) => void"
+        }
+      ]
     },
     {
-      "name": "scrollToLeft",
+      "undefined": "scrollToLeft",
       "title": "滚动到给定的水平位置",
-      "params": "^[Function]`(scrollLeft: number) => void`"
+      "params": [
+        {
+          "type": "Function",
+          "details": "(scrollLeft: number) => void"
+        }
+      ]
     },
     {
-      "name": "scrollToTop",
+      "undefined": "scrollToTop",
       "title": "滚动到给定的垂直位置",
-      "params": "^[Function]`(scrollTop: number) => void`"
+      "params": [
+        {
+          "type": "Function",
+          "details": "(scrollTop: number) => void"
+        }
+      ]
     },
     {
-      "name": "scrollToRow",
+      "undefined": "scrollToRow",
       "title": "使用给定的滚动策略滚动至指定行",
-      "params": "^[Function]`(row: number, strategy?: 'center' | 'end' | 'start' | 'smart') => void`"
+      "params": [
+        {
+          "type": "Function",
+          "details": "(row: number, strategy?: 'center' | 'end' | 'start' | 'smart') => void"
+        }
+      ]
     }
-  ],
-  "desc": "在前端开发领域，表格一直都是一个高频出现的组件，尤其是在中后台和数据分析场景。 但是，对于 [Table V1](./table.md)来说，当一屏里超过 1000 条数据记录时，就会出现卡顿等性能问题，体验不是很好。"
+  ]
 }

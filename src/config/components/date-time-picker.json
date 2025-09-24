@@ -1,6 +1,7 @@
 {
   "__id__": "date-time-picker",
   "name": "日期时间选择",
+  "desc": "在同一个选择器里选择日期和时间",
   "tag": "el-date-picker",
   "tagIcon": "date",
   "layouts": [
@@ -9,7 +10,7 @@
   "document": "https://element-plus.org/zh-CN/component/date-picker.html",
   "attributes": {
     "readonly": {
-      "label": "",
+      "label": "只读",
       "title": "只读",
       "types": [
         {
@@ -20,7 +21,7 @@
       "default": false
     },
     "disabled": {
-      "label": "",
+      "label": "禁用",
       "title": "禁用",
       "types": [
         {
@@ -31,7 +32,7 @@
       "default": false
     },
     "editable": {
-      "label": "",
+      "label": "文本框可输入",
       "title": "文本框可输入",
       "types": [
         {
@@ -42,7 +43,7 @@
       "default": true
     },
     "clearable": {
-      "label": "",
+      "label": "显示清除按钮",
       "title": "是否显示清除按钮",
       "types": [
         {
@@ -53,7 +54,7 @@
       "default": true
     },
     "size": {
-      "label": "",
+      "label": "输入框尺寸",
       "title": "输入框尺寸",
       "types": [
         {
@@ -107,8 +108,8 @@
       ]
     },
     "arrow-control": {
-      "label": "",
-      "title": "whether to pick time using arrow buttons",
+      "label": "使用箭头进行时间选择",
+      "title": "是否使用箭头进行时间选择",
       "types": [
         {
           "name": "boolean",
@@ -118,7 +119,7 @@
       "default": false
     },
     "type": {
-      "label": "",
+      "label": "显示类型",
       "title": "显示类型",
       "types": [
         {
@@ -159,36 +160,19 @@
       "default": "date"
     },
     "format": {
-      "label": "",
+      "label": "输入框中的格式",
       "title": "显示在输入框中的格式",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-select",
-          "options": [
-            {
-              "label": "see [date formats](",
-              "value": "see [date formats]("
-            },
-            {
-              "label": "en-US",
-              "value": "en-US"
-            },
-            {
-              "label": "component",
-              "value": "component"
-            },
-            {
-              "label": "date-picker#date-formats)",
-              "value": "date-picker#date-formats)"
-            }
-          ]
+          "name": "string",
+          "tag": "el-input"
         }
       ],
-      "default": "YYYY-MM-DD HH:mm:ss"
+      "default": "YYYY-MM-DD HH:mm:ss",
+      "keep": true
     },
     "popper-class": {
-      "label": "",
+      "label": "下拉框类名",
       "title": "DateTimePicker 下拉框的类名",
       "types": [
         {
@@ -200,8 +184,25 @@
         }
       ]
     },
+    "popper-style": {
+      "label": "弹出内容的自定义样式",
+      "title": "弹出内容的自定义样式",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "object",
+          "tag": "style-editor"
+        }
+      ]
+    },
     "range-separator": {
-      "label": "",
+      "label": "范围分隔符",
       "title": "选择范围时的分隔符",
       "types": [
         {
@@ -215,174 +216,75 @@
       "default": "-"
     },
     "default-value": {
-      "label": "",
+      "label": "可选",
       "title": "可选，选择器打开时默认显示的时间",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "",
-              "value": ""
-            }
-          ]
-        },
-        {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "",
-              "value": ""
-            }
-          ]
+          "name": "date",
+          "tag": "el-date-picker"
         }
-      ]
+      ],
+      "keep": true
     },
     "default-time": {
-      "label": "",
-      "title": "选择日期后的默认时间值。 如未指定则默认时间值为 `00:00:00`",
+      "label": "默认时间值",
+      "title": "选择日期后的默认时间值。 如未指定则默认时间值为 <code>00:00:00</code>",
       "types": [
         {
           "name": "date",
-          "tag": ""
+          "tag": "el-time-picker"
         },
         {
-          "name": "[Date, Date]",
-          "tag": ""
+          "name": "array",
+          "tag": "array-editor",
+          "props": {
+            "tag": "el-time-picker",
+            "fixedNumber": 2
+          }
         }
-      ]
+      ],
+      "keep": true
     },
     "value-format": {
-      "label": "",
+      "label": "可选",
       "title": "可选，绑定值的格式。 不指定则绑定值为 Date 对象",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-select",
-          "options": [
-            {
-              "label": "查看 [日期格式](https:",
-              "value": "查看 [日期格式](https:"
-            },
-            {
-              "label": "",
-              "value": ""
-            },
-            {
-              "label": "day.js.org",
-              "value": "day.js.org"
-            },
-            {
-              "label": "docs",
-              "value": "docs"
-            },
-            {
-              "label": "en",
-              "value": "en"
-            },
-            {
-              "label": "display",
-              "value": "display"
-            },
-            {
-              "label": "format)",
-              "value": "format)"
-            }
-          ]
+          "name": "string",
+          "tag": "el-input"
         }
-      ]
+      ],
+      "keep": true
     },
     "date-format": {
-      "title": "可选，时间选择器下拉列表中显示的日期格式",
+      "label": "可选",
+      "title": "可选，输入框内部面板中显示的日期格式",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-select",
-          "options": [
-            {
-              "label": "参见 [date formats](https:",
-              "value": "参见 [date formats](https:"
-            },
-            {
-              "label": "",
-              "value": ""
-            },
-            {
-              "label": "day.js.org",
-              "value": "day.js.org"
-            },
-            {
-              "label": "docs",
-              "value": "docs"
-            },
-            {
-              "label": "en",
-              "value": "en"
-            },
-            {
-              "label": "display",
-              "value": "display"
-            },
-            {
-              "label": "format)",
-              "value": "format)"
-            }
-          ]
+          "name": "string",
+          "tag": "el-input"
         }
       ],
-      "version": "2.4.0"
+      "default": "YYYY-MM-DD",
+      "version": "2.4.0",
+      "keep": true
     },
     "time-format": {
-      "title": "可选，时间选择器下拉列表中显示的时间格式",
+      "label": "时间格式",
+      "title": "可选，输入框内部面板中显示的时间格式",
       "types": [
         {
-          "name": "enum",
-          "tag": "el-select",
-          "options": [
-            {
-              "label": "参见 [date formats](https:",
-              "value": "参见 [date formats](https:"
-            },
-            {
-              "label": "",
-              "value": ""
-            },
-            {
-              "label": "day.js.org",
-              "value": "day.js.org"
-            },
-            {
-              "label": "docs",
-              "value": "docs"
-            },
-            {
-              "label": "en",
-              "value": "en"
-            },
-            {
-              "label": "display",
-              "value": "display"
-            },
-            {
-              "label": "format)",
-              "value": "format)"
-            }
-          ]
+          "name": "string",
+          "tag": "el-input"
         }
       ],
+      "default": "HH:mm:ss",
+      "keep": true,
       "version": "2.4.0"
     },
     "id": {
-      "label": "",
-      "title": "等价于原生 input `id` 属性",
+      "label": "等价于原生 input id 属性",
+      "title": "等价于原生 input <code>id</code> 属性",
       "types": [
         {
           "name": "string",
@@ -390,16 +292,13 @@
           "props": {
             "clearable": true
           }
-        },
-        {
-          "name": "[string, string]",
-          "tag": ""
         }
-      ]
+      ],
+      "keep": true
     },
     "name": {
-      "label": "",
-      "title": "等价于原生 input `name` 属性",
+      "label": "等价于原生 input name 属性",
+      "title": "等价于原生 input <code>name</code> 属性",
       "types": [
         {
           "name": "string",
@@ -411,7 +310,7 @@
       ]
     },
     "unlink-panels": {
-      "label": "",
+      "label": "取消两个日期面板之间的联动",
       "title": "在范围选择器里取消两个日期面板之间的联动",
       "types": [
         {
@@ -422,8 +321,8 @@
       "default": false
     },
     "prefix-icon": {
-      "label": "",
-      "title": "自定义前缀图标",
+      "label": "自定义前缀图标组件",
+      "title": "自定义前缀图标组件",
       "types": [
         {
           "name": "string",
@@ -433,7 +332,7 @@
       "default": "Date"
     },
     "clear-icon": {
-      "label": "",
+      "label": "自定义清除图标",
       "title": "自定义清除图标",
       "types": [
         {
@@ -444,41 +343,67 @@
       "default": "CircleClose"
     },
     "shortcuts": {
-      "label": "",
+      "label": "快捷选项",
       "title": "设置快捷选项，需要传入数组对象",
       "types": [
         {
-          "name": "object[{ text: string, value: date",
-          "tag": ""
-        },
-        {
-          "name": "function }]",
-          "tag": ""
+          "name": "object",
+          "tag": "object-editor"
         }
       ]
     },
     "disabled-date": {
-      "label": "",
+      "label": "一个用来判断该日期是否被禁用的函数",
       "title": "一个用来判断该日期是否被禁用的函数，接受一个 Date 对象作为参数。 应该返回一个 Boolean 值。",
       "types": [
         {
-          "name": "Function(Date)",
-          "tag": ""
+          "name": "function",
+          "details": "(data: Date) => boolean"
+        }
+      ]
+    },
+    "disabled-hours": {
+      "label": "禁止选择部分小时选项",
+      "title": "禁止选择部分小时选项",
+      "types": [
+        {
+          "name": "function",
+          "details": "(role: string, comparingDate?: Dayjs) => number[]"
+        }
+      ]
+    },
+    "disabled-minutes": {
+      "label": "禁止选择部分分钟选项",
+      "title": "禁止选择部分分钟选项",
+      "types": [
+        {
+          "name": "function",
+          "details": "(hour: number, role: string, comparingDate?: Dayjs) => number[]"
+        }
+      ]
+    },
+    "disabled-seconds": {
+      "label": "禁止选择部分秒选项",
+      "title": "禁止选择部分秒选项",
+      "types": [
+        {
+          "name": "function",
+          "details": "(hour: number, minute: number, role: string, comparingDate?: Dayjs) => number[]"
         }
       ]
     },
     "cell-class-name": {
-      "label": "",
+      "label": "自定义类名",
       "title": "设置自定义类名",
       "types": [
         {
-          "name": "Function(Date)",
-          "tag": ""
+          "name": "function",
+          "details": "(data: Date) => string"
         }
       ]
     },
     "teleported": {
-      "label": "",
+      "label": "将 datetime-picker 的下拉列表插入至 body 元素",
       "title": "是否将 datetime-picker 的下拉列表插入至 body 元素",
       "types": [
         {
@@ -490,7 +415,7 @@
     },
     "empty-values": {
       "label": "组件的空值配置",
-      "title": "组件的空值配置 [参考config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "title": "组件的空值配置 <a href=\"/en-US/component/config-provider#empty-values-configurations\">参考config-provider</a>",
       "types": [
         {
           "name": "array",
@@ -501,7 +426,7 @@
     },
     "value-on-clear": {
       "label": "清空选项的值",
-      "title": "清空选项的值 [参考 config-provider](/en-US/component/config-provider#empty-values-configurations)",
+      "title": "清空选项的值 <a href=\"/en-US/component/config-provider#empty-values-configurations\">参考 config-provider</a>",
       "types": [
         {
           "name": "string",
@@ -517,13 +442,14 @@
         },
         {
           "name": "function",
-
+          "details": "",
           "desc": "^[string] / ^[number] / ^[boolean] / ^[Function"
         }
       ],
       "version": "2.7.0"
     },
     "show-now": {
+      "label": "显示 now 按钮",
       "title": "是否显示 now 按钮",
       "types": [
         {
@@ -533,41 +459,45 @@
       ],
       "default": true,
       "version": "2.8.7"
+    },
+    "show-footer": {
+      "label": "在日期选择器中显示页脚 ^[enum]`'datetime'",
+      "title": "是否在日期选择器中显示页脚 ^[enum]`'datetime'",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.10.5",
+      "keep": true
+    },
+    "show-confirm": {
+      "label": "显示确定按钮",
+      "title": "是否显示确定按钮",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true,
+      "version": "2.11.0"
+    },
+    "show-week-number": {
+      "label": "显示周数",
+      "title": "显示周数(除周外)",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "version": "2.10.3"
     }
   },
-  "events": [
-    {
-      "name": "change",
-      "title": "用户确认选定的值时触发",
-      "params": "value"
-    },
-    {
-      "name": "blur",
-      "title": "在组件 Input 失去焦点时触发",
-      "params": "(e: FocusEvent)"
-    },
-    {
-      "name": "focus",
-      "title": "在组件 Input 获得焦点时触发",
-      "params": "(e: FocusEvent)"
-    },
-    {
-      "name": "clear",
-      "title": "可清空的模式下用户点击清空按钮时触发",
-      "params": "^[Function]`() => void`",
-      "version": "2.7.7"
-    },
-    {
-      "name": "calendar-change",
-      "title": "如果用户没有选择日期，那默认展示当前日的月份。 选中日历日期后会执行的回调，只有当 `datetimerange` 才生效",
-      "params": "[Date, Date]"
-    },
-    {
-      "name": "visible-change",
-      "title": "当 DateTimePicker 的下拉列表出现/消失时触发",
-      "params": "出现时为true，隐藏时为false"
-    }
-  ],
   "slots": [
     {
       "name": "default",
@@ -598,20 +528,64 @@
       "version": "2.8.0"
     }
   ],
+  "events": [
+    {
+      "name": "change",
+      "title": "当用户确认值或点击外部时触发",
+      "type": "function",
+      "details": "(val: typeof v-model) => void"
+    },
+    {
+      "name": "blur",
+      "title": "在组件 Input 失去焦点时触发",
+      "type": "function",
+      "details": "(e: FocusEvent) => void"
+    },
+    {
+      "name": "focus",
+      "title": "在组件 Input 获得焦点时触发",
+      "type": "function",
+      "details": "(e: FocusEvent) => void"
+    },
+    {
+      "name": "clear",
+      "title": "可清空的模式下用户点击清空按钮时触发",
+      "type": "function",
+      "details": "() => void",
+      "version": "2.7.7"
+    },
+    {
+      "name": "calendar-change",
+      "title": "如果用户没有选择日期，那默认展示当前日的月份。 仅用于 <code>range</code>",
+      "type": "function",
+      "details": "(val: [Date, null | Date]) => void"
+    },
+    {
+      "name": "panel-change",
+      "title": "当日期面板改变时触发。",
+      "type": "function",
+      "details": "(date: Date | [Date, Date], mode: 'month' | 'year', view?: string) => void"
+    },
+    {
+      "name": "visible-change",
+      "title": "当 DateTimePicker 的下拉列表出现/消失时触发",
+      "type": "function",
+      "details": "(visibility: boolean) => void"
+    }
+  ],
   "exposes": [
     {
       "name": "focus",
       "title": "使组件获取焦点",
-      "type": "Function",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void"
     },
     {
       "name": "blur",
       "title": "使组件失去焦点",
-      "type": "Function",
-      "version": "2.8.7",
-      "fnDes": "() => void"
+      "type": "function",
+      "details": "() => void",
+      "version": "2.8.7"
     }
-  ],
-  "desc": "在同一个选择器里选择日期和时间"
+  ]
 }

@@ -7,10 +7,10 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/table.html",
   "childTag": [
     "el-table-column"
   ],
+  "document": "https://element-plus.org/zh-CN/component/table.html",
   "attributes": {
     "data": {
       "label": "数据",
@@ -21,6 +21,7 @@
           "tag": "array-editor"
         }
       ],
+      "default": "[]",
       "hide": true
     },
     "height": {
@@ -142,7 +143,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(data: { row: any, rowIndex: number }) => string"
         },
         {
@@ -175,7 +175,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(data: { row: any, column: any, rowIndex: number, columnIndex: number }) => string"
         },
         {
@@ -194,7 +193,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(data: { row: any, column: any, rowIndex: number, columnIndex: number }) => CSSProperties"
         },
         {
@@ -210,7 +208,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(data: { row: any, rowIndex: number }) => string"
         },
         {
@@ -229,7 +226,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(data: { row: any, rowIndex: number }) => CSSProperties"
         },
         {
@@ -245,7 +241,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(data: { row: any, column: any, rowIndex: number, columnIndex: number }) => string"
         },
         {
@@ -264,7 +259,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(data: { row: any, column: any, rowIndex: number, columnIndex: number }) => CSSProperties"
         },
         {
@@ -280,7 +274,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(row: any) => string"
         },
         {
@@ -304,7 +297,8 @@
             "clearable": true
           }
         }
-      ]
+      ],
+      "default": "No Data"
     },
     "default-expand-all": {
       "label": "展开所有行",
@@ -327,11 +321,12 @@
           "tag": "array-editor"
         }
       ],
-      "hide": true
+      "hide": true,
+      "keep": true
     },
     "default-sort": {
-      "label": "",
-      "title": "默认的排序列的 prop 和顺序。 它的 prop 属性指定默认的排序的列，order 指定默认排序的顺序",
+      "label": "默认的排序列的 prop 和顺序",
+      "title": "默认的排序列的 prop 和顺序。 它的 <code>prop</code> 属性指定默认的排序的列，<code>order</code> 指定默认排序的顺序",
       "types": [
         {
           "name": "enum",
@@ -351,8 +346,9 @@
           ]
         }
       ],
-      "default": "descending)",
-      "hide": true
+      "default": "descending",
+      "hide": true,
+      "keep": true
     },
     "tooltip-effect": {
       "label": "溢出的 tooltip 的 effect",
@@ -380,7 +376,7 @@
     },
     "tooltip-options": {
       "label": "tooltip 的选项",
-      "title": "溢出 tooltip 的选项，[参见下述 tooltip 组件](tooltip.html#attributes)",
+      "title": "溢出 tooltip 的选项，<a href=\"./tooltip.html#attributes\">参见下述 tooltip 组件</a>",
       "types": [
         {
           "name": "object",
@@ -394,515 +390,516 @@
         "hideAfter": 200,
         "popperOptions": {
           "strategy": "fixed"
-        }
+        },
+        "version": "2.2.28",
+        "keep": true
       },
-      "version": "2.2.28"
-    },
-    "append-filter-panel-to": {
-      "label": "挂载到哪个 DOM 元素",
-      "title": "挂载到哪个 DOM 元素",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input"
-        }
-      ],
-      "version": "2.8.4"
-    },
-    "show-summary": {
-      "label": "表尾显示合计",
-      "title": "是否在表尾显示合计行",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false
-    },
-    "sum-text": {
-      "label": "合计第一列文本",
-      "title": "显示摘要行第一列的文本",
-      "types": [
-        {
-          "name": "string",
-          "tag": "el-input",
-          "props": {
-            "clearable": true
+      "append-filter-panel-to": {
+        "label": "挂载到哪个 DOM 元素",
+        "title": "挂载到哪个 DOM 元素",
+        "types": [
+          {
+            "name": "string",
+            "tag": "el-input"
           }
-        }
-      ],
-      "default": "Sum"
-    },
-    "summary-method": {
-      "label": "自定义的合计计算方法",
-      "title": "自定义的合计计算方法",
-      "types": [
-        {
-          "name": "function",
-
-          "details": "(data: { columns: any[], data: any[] }) => (VNode | string)[]"
-        }
-      ],
-      "hide": true
-    },
-    "span-method": {
-      "label": "合并行或列的计算方法",
-      "title": "合并行或列的计算方法",
-      "types": [
-        {
-          "name": "function",
-
-          "details": "(data: { row: any, column: any, rowIndex: number, columnIndex: number }) => number[] | { rowspan: number, colspan: number } | void"
-        }
-      ],
-      "hide": true
-    },
-    "select-on-indeterminate": {
-      "label": "点击表头多选框行为",
-      "title": "在多选表格中，当仅有部分行被选中时，点击表头的多选框时的行为。 若为 true，则选中所有行；若为 false，则取消选择所有行",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": true
-    },
-    "indent": {
-      "label": "树节点缩进",
-      "title": "展示树形数据时，树节点的缩进",
-      "types": [
-        {
-          "name": "number",
-          "tag": "el-input-number"
-        }
-      ],
-      "default": 16,
-      "hide": true
-    },
-    "lazy": {
-      "label": "懒加载",
-      "title": "是否懒加载子节点数据",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false=
-    },
-    "load": {
-      "label": "加载子节点数据的函数",
-      "title": "加载子节点数据的函数，lazy 为 true 时生效，函数第二个参数包含了节点的层级信息",
-      "types": [
-        {
-          "name": "function",
-          "details": "(row: any, treeNode: TreeNode, resolve: (data: any[]) => void) => void"
-        }
-      ],
-      "hide": true
-    },
-    "tree-props": {
-      "label": "渲染嵌套数据的配置选项",
-      "title": "渲染嵌套数据的配置选项",
-      "types": [
-        {
-          "name": "object",
-          "tag": "object-editor"
-        }
-      ],
-      "default": { "hasChildren": "hasChildren", "children": "children" },
-      "hide": true
-    },
-    "table-layout": {
-      "label": "布局方式",
-      "title": "设置表格单元、行和列的布局方式",
-      "types": [
-        {
-          "name": "enum",
-          "tag": "el-radio-group",
-          "config": {
-            "optionType": "button"
-          },
-          "options": [
-            {
-              "label": "fixed",
-              "value": "fixed"
-            },
-            {
-              "label": "auto",
-              "value": "auto"
-            }
-          ]
-        }
-      ],
-      "default": "fixed"
-    },
-    "scrollbar-always-on": {
-      "label": "总是显示滚动条",
-      "title": "总是显示滚动条",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false
-    },
-    "show-overflow-tooltip": {
-      "label": "隐藏额外内容",
-      "title": "是否隐藏额外内容并在单元格悬停时使用 Tooltip 显示它们。这将影响全部列的展示，详请参考[object Object]",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ]
-    },
-    "flexible": {
-      "label": "确保主轴最小尺寸",
-      "title": "确保主轴的最小尺寸，以便不超过内容",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false,
-      "version": "2.2.1"
-    },
-    "scrollbar-tabindex": {
-      "label": "body 的滚动条的包裹容器 tabindex",
-      "title": "body 的滚动条的包裹容器 tabindex",
-      "types": [
-        {
-          "name": "stringNumber",
-          "tag": "string-number-input"
-        }
-      ],
-      "version": "2.8.3"
-    },
-    "allow-drag-last-column": {
-      "label": "允许拖动最后一列",
-      "title": "是否允许拖动最后一列",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": true,
-      "version": "2.9.2"
-    },
-    "tooltip-formatter": {
-      "label": "自定义 show-overflow-tooltip 时的 tooltip 内容",
-      "title": "自定义 <code>show-overflow-tooltip</code> 时的 tooltip 内容",
-      "types": [
-        {
-          "name": "function",
-
-          "details": "(data: { row: any, column: any, cellValue: any }) => VNode | string"
-        }
-      ],
-      "version": "2.9.4"
-    },
-    "preserve-expanded-content": {
-      "label": "在折叠后是否在DOM中保留展开行内容",
-      "title": "在折叠后是否在DOM中保留展开行内容",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false,
-      "version": "2.9.7"
-    },
-    "native-scrollbar": {
-      "label": "使用原生滚动条样式",
-      "title": "是否使用原生滚动条样式",
-      "types": [
-        {
-          "name": "boolean",
-          "tag": "el-switch"
-        }
-      ],
-      "default": false,
-      "version": "2.10.5"
-    }
-  },
-  "slots": [
-    {
-      "name": "default",
-      "title": "自定义默认内容",
-      "subtags": ["table-column"]
-    },
-    {
-      "name": "append",
-      "title": "插入至表格最后一行之后的内容， 如果需要对表格的内容进行无限滚动操作，可能需要用到这个 slot。 若表格有合计行，该 slot 会位于合计行之上。"
-    },
-    {
-      "name": "empty",
-      "title": "当数据为空时自定义的内容"
-    }
-  ],
-  "events": [
-    {
-      "name": "select",
-      "title": "当用户手动勾选数据行的 Checkbox 时触发的事件",
-      "type": "function",
-      "details": "<T = any>(selection: T[], row: T) => void"
-    },
-    {
-      "name": "select-all",
-      "title": "当用户手动勾选全选 Checkbox 时触发的事件",
-      "type": "function",
-      "details": "(selection: any[]) => void"
-    },
-    {
-      "name": "selection-change",
-      "title": "当选择项发生变化时会触发该事件",
-      "type": "function",
-      "details": "(newSelection: any[]) => void"
-    },
-    {
-      "name": "cell-mouse-enter",
-      "title": "当单元格 hover 进入时会触发该事件",
-      "type": "function",
-      "details": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
-    },
-    {
-      "name": "cell-mouse-leave",
-      "title": "当单元格 hover 退出时会触发该事件",
-      "type": "function",
-      "details": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
-    },
-    {
-      "name": "cell-click",
-      "title": "当某个单元格被点击时会触发该事件",
-      "type": "function",
-      "details": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
-    },
-    {
-      "name": "cell-dblclick",
-      "title": "当某个单元格被双击击时会触发该事件",
-      "type": "function",
-      "details": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
-    },
-    {
-      "name": "cell-contextmenu",
-      "title": "当某个单元格被鼠标右键点击时会触发该事件",
-      "type": "function",
-      "details": "(row: any, column: any, cell: HTMLTableCellElement, event: Event) => void"
-    },
-    {
-      "name": "row-click",
-      "title": "当某一行被点击时会触发该事件",
-      "type": "function",
-      "details": "(row: any, column: any, event: Event) => void"
-    },
-    {
-      "name": "row-contextmenu",
-      "title": "当某一行被鼠标右键点击时会触发该事件",
-      "type": "function",
-      "details": "(row: any, column: any, event: Event) => void"
-    },
-    {
-      "name": "row-dblclick",
-      "title": "当某一行被双击时会触发该事件",
-      "type": "function",
-      "details": "(row: any, column: any, event: Event) => void"
-    },
-    {
-      "name": "header-click",
-      "title": "当某一列的表头被点击时会触发该事件",
-      "type": "function",
-      "details": "(column: any, event: Event) => void"
-    },
-    {
-      "name": "header-contextmenu",
-      "title": "当某一列的表头被鼠标右键点击时触发该事件",
-      "type": "function",
-      "details": "(column: any, event: Event) => void"
-    },
-    {
-      "name": "sort-change",
-      "title": "当表格的排序条件发生变化的时候会触发该事件",
-      "type": "function",
-      "details": "(data: {column: any, prop: string, order: any }) => void"
-    },
-    {
-      "name": "filter-change",
-      "title": "当表格的过滤条件发生变化的时候会触发该事件",
-      "type": "function",
-      "details": "(newFilters: any) => void"
-    },
-    {
-      "name": "current-change",
-      "title": "当表格的当前行发生变化的时候会触发该事件，如果要高亮当前行，请打开表格的 highlight-current-row 属性",
-      "type": "function",
-      "details": "(currentRow: any, oldCurrentRow: any) => void"
-    },
-    {
-      "name": "header-dragend",
-      "title": "当拖动表头改变了列的宽度的时候会触发该事件",
-      "type": "function",
-      "details": "(newWidth: number, oldWidth: number, column: any, event: MouseEvent) => void"
-    },
-    {
-      "name": "expand-change",
-      "title": "当用户对某一行展开或者关闭的时候会触发该事件（展开行时，回调的第二个参数为 expandedRows；树形表格时第二参数为 expanded）",
-      "type": "function",
-      "details": "(row: any, expandedRows: any[]) => void & (row: any, expanded: boolean) => void"
-    },
-    {
-      "name": "scroll ",
-      "version": "2.9.0",
-      "title": "表格被用户滚动后触发",
-      "type": "function",
-      "details": "({ scrollLeft: number, scrollTop: number }) => void"
-    }
-  ],
-  "exposes": [
-    {
-      "name": "clearSelection",
-      "title": "用于多选表格，清空用户的选择",
-      "type": "function",
-      "details": "() => void"
-    },
-    {
-      "name": "getSelectionRows",
-      "title": "返回当前选中的行",
-      "type": "function",
-      "details": "() => any[]"
-    },
-    {
-      "name": "toggleRowSelection",
-      "title": "用于多选表格，切换某一行的选中状态， 如果使用了第二个参数，则可直接设置这一行选中与否",
-      "type": "function",
-      "details": "(row: any, selected?: boolean, ignoreSelectable = true) => void"
-    },
-    {
-      "name": "toggleAllSelection",
-      "title": "用于多选表格，切换全选和全不选",
-      "type": "function",
-      "details": "() => void"
-    },
-    {
-      "name": "toggleRowExpansion",
-      "title": "用于可扩展的表格或树表格，如果某行被扩展，则切换。 使用第二个参数，您可以直接设置该行应该被扩展或折叠。",
-      "type": "function",
-      "details": "(row: any, expanded?: boolean) => void"
-    },
-    {
-      "name": "setCurrentRow",
-      "title": "用于单选表格，设定某一行为选中行， 如果调用时不加参数，则会取消目前高亮行的选中状态。",
-      "type": "function",
-      "details": "(row: any) => void"
-    },
-    {
-      "name": "clearSort",
-      "title": "用于清空排序条件，数据会恢复成未排序的状态",
-      "type": "function",
-      "details": "() => void"
-    },
-    {
-      "name": "clearFilter",
-      "title": "传入由<code>columnKey</code> 组成的数组以清除指定列的过滤条件。 如果没有参数，清除所有过滤器",
-      "type": "function",
-      "details": "(columnKeys?: string[]) => void"
-    },
-    {
-      "name": "doLayout",
-      "title": "对 Table 进行重新布局。 当表格可见性变化时，您可能需要调用此方法以获得正确的布局",
-      "type": "function",
-      "details": "() => void"
-    },
-    {
-      "name": "sort",
-      "title": "手动排序表格。 参数 <code>prop</code> 属性指定排序列，<code>order</code> 指定排序顺序。",
-      "type": "function",
-      "details": "(prop: string, order: string) => void"
-    },
-    {
-      "name": "scrollTo",
-      "title": "滚动到一组特定坐标",
-      "type": "function",
-      "details": "(options: number | ScrollToOptions, yCoord?: number) => void"
-    },
-    {
-      "name": "setScrollTop",
-      "title": "设置垂直滚动位置",
-      "type": "function",
-      "details": "(top?: number) => void"
-    },
-    {
-      "name": "setScrollLeft",
-      "title": "设置水平滚动位置",
-      "type": "function",
-      "details": "(left?: number) => void"
-    },
-    {
-      "name": "columns ",
-      "version": "2.7.6",
-      "title": "获取表列的 context",
-      "type": "array"
-    },
-    {
-      "name": "updateKeyChildren ",
-      "version": "2.8.4",
-      "title": "适用于 lazy Table, 需要设置 <code>rowKey</code>, 更新 key children",
-      "type": "function",
-      "details": "(key: string, data: T[]) => void"
-    }
-  ],
-  "data": {
-    "name": "data",
-    "label": "数据",
-    "source": "static",
-    "inProps": true,
-    "static": {
-      "ref": true,
-      "type": {
-        "name": "array",
-        "tag": "array-object-editor"
+        ],
+        "version": "2.8.4"
       },
-      "default": [
-        {
-          "date": "2016-05-03",
-          "address": "No. 189, Grove St, Los Angeles"
-        },
-        {
-          "date": "2016-05-02",
-          "address": "No. 189, Grove St, Los Angeles"
-        },
-        {
-          "date": "2016-05-04",
-          "address": "No. 189, Grove St, Los Angeles"
-        },
-        {
-          "date": "2016-05-01",
-          "address": "No. 189, Grove St, Los Angeles"
-        },
-        {
-          "date": "2016-05-08",
-          "address": "No. 189, Grove St, Los Angeles"
-        },
-        {
-          "date": "2016-05-06",
-          "address": "No. 189, Grove St, Los Angeles"
-        },
-        {
-          "date": "2016-05-07",
-          "address": "No. 189, Grove St, Los Angeles"
-        }
-      ]
+      "show-summary": {
+        "label": "表尾显示合计",
+        "title": "是否在表尾显示合计行",
+        "types": [
+          {
+            "name": "boolean",
+            "tag": "el-switch"
+          }
+        ],
+        "default": false
+      },
+      "sum-text": {
+        "label": "合计第一列文本",
+        "title": "显示摘要行第一列的文本",
+        "types": [
+          {
+            "name": "string",
+            "tag": "el-input",
+            "props": {
+              "clearable": true
+            }
+          }
+        ],
+        "default": "Sum"
+      },
+      "summary-method": {
+        "label": "自定义的合计计算方法",
+        "title": "自定义的合计计算方法",
+        "types": [
+          {
+            "name": "function",
+            "details": "(data: { columns: any[], data: any[] }) => (VNode | string)[]"
+          }
+        ],
+        "hide": true
+      },
+      "span-method": {
+        "label": "合并行或列的计算方法",
+        "title": "合并行或列的计算方法",
+        "types": [
+          {
+            "name": "function",
+            "details": "(data: { row: any, column: any, rowIndex: number, columnIndex: number }) => number[] | { rowspan: number, colspan: number } | void"
+          }
+        ],
+        "hide": true
+      },
+      "select-on-indeterminate": {
+        "label": "点击表头多选框行为",
+        "title": "在多选表格中，当仅有部分行被选中时，点击表头的多选框时的行为。 若为 true，则选中所有行；若为 false，则取消选择所有行",
+        "types": [
+          {
+            "name": "boolean",
+            "tag": "el-switch"
+          }
+        ],
+        "default": true
+      },
+      "indent": {
+        "label": "树节点缩进",
+        "title": "展示树形数据时，树节点的缩进",
+        "types": [
+          {
+            "name": "number",
+            "tag": "el-input-number"
+          }
+        ],
+        "default": 16,
+        "hide": true
+      },
+      "lazy": {
+        "label": "懒加载",
+        "title": "是否懒加载子节点数据",
+        "types": [
+          {
+            "name": "boolean",
+            "tag": "el-switch"
+          }
+        ],
+        "default": false
+      },
+      "load": {
+        "label": "加载子节点数据的函数",
+        "title": "加载子节点数据的函数，<code>lazy</code> 为 true 时生效",
+        "types": [
+          {
+            "name": "function",
+            "details": "(row: any, treeNode: TreeNode, resolve: (data: any[]) => void) => void"
+          }
+        ],
+        "hide": true
+      },
+      "tree-props": {
+        "label": "渲染嵌套数据的配置选项",
+        "title": "渲染嵌套数据的配置选项",
+        "types": [
+          {
+            "name": "object",
+            "tag": "object-editor"
+          }
+        ],
+        "default": { "hasChildren": "hasChildren", "children": "children" },
+        "hide": true,
+        "keep": true
+      },
+      "table-layout": {
+        "label": "布局方式",
+        "title": "设置表格单元、行和列的布局方式",
+        "types": [
+          {
+            "name": "enum",
+            "tag": "el-radio-group",
+            "config": {
+              "optionType": "button"
+            },
+            "options": [
+              {
+                "label": "fixed",
+                "value": "fixed"
+              },
+              {
+                "label": "auto",
+                "value": "auto"
+              }
+            ]
+          }
+        ],
+        "default": "fixed"
+      },
+      "scrollbar-always-on": {
+        "label": "总是显示滚动条",
+        "title": "总是显示滚动条",
+        "types": [
+          {
+            "name": "boolean",
+            "tag": "el-switch"
+          }
+        ],
+        "default": false
+      },
+      "show-overflow-tooltip": {
+        "label": "隐藏额外内容",
+        "title": "是否隐藏额外内容并在单元格悬停时使用 Tooltip 显示它们。这将影响全部列的展示，详请参考<a href=\"#table-attributes\">tooltip-options</a>",
+        "types": [
+          {
+            "name": "boolean",
+            "tag": "el-switch"
+          }
+        ],
+        "keep": true
+      },
+      "flexible": {
+        "label": "确保主轴最小尺寸",
+        "title": "确保主轴的最小尺寸，以便不超过内容",
+        "types": [
+          {
+            "name": "boolean",
+            "tag": "el-switch"
+          }
+        ],
+        "default": false,
+        "version": "2.2.1"
+      },
+      "scrollbar-tabindex": {
+        "label": "body 的滚动条的包裹容器 tabindex",
+        "title": "body 的滚动条的包裹容器 tabindex",
+        "types": [
+          {
+            "name": "stringNumber",
+            "tag": "string-number-input"
+          }
+        ],
+        "version": "2.8.3"
+      },
+      "allow-drag-last-column": {
+        "label": "允许拖动最后一列",
+        "title": "是否允许拖动最后一列",
+        "types": [
+          {
+            "name": "boolean",
+            "tag": "el-switch"
+          }
+        ],
+        "default": true,
+        "version": "2.9.2"
+      },
+      "tooltip-formatter": {
+        "label": "自定义 show-overflow-tooltip 时的 tooltip 内容",
+        "title": "自定义 <code>show-overflow-tooltip</code> 时的 tooltip 内容",
+        "types": [
+          {
+            "name": "function",
+            "details": "(data: { row: any, column: any, cellValue: any }) => VNode | string"
+          }
+        ],
+        "version": "2.9.4"
+      },
+      "preserve-expanded-content": {
+        "label": "在折叠后是否在DOM中保留展开行内容",
+        "title": "在折叠后是否在DOM中保留展开行内容",
+        "types": [
+          {
+            "name": "boolean",
+            "tag": "el-switch"
+          }
+        ],
+        "default": false,
+        "version": "2.9.7"
+      },
+      "native-scrollbar": {
+        "label": "使用原生滚动条样式",
+        "title": "是否使用原生滚动条样式",
+        "types": [
+          {
+            "name": "boolean",
+            "tag": "el-switch"
+          }
+        ],
+        "default": false,
+        "version": "2.10.5"
+      }
     },
-    "dynamic": {
-      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/tableData",
-      "method": "get",
-      "dataKey": ""
+    "slots": [
+      {
+        "name": "default",
+        "title": "自定义默认内容",
+        "subtags": [
+          "table-column"
+        ]
+      },
+      {
+        "name": "append",
+        "title": "插入至表格最后一行之后的内容， 如果需要对表格的内容进行无限滚动操作，可能需要用到这个 slot。 若表格有合计行，该 slot 会位于合计行之上。"
+      },
+      {
+        "name": "empty",
+        "title": "当数据为空时自定义的内容"
+      }
+    ],
+    "events": [
+      {
+        "name": "select",
+        "title": "当用户手动勾选数据行的 Checkbox 时触发的事件",
+        "type": "function",
+        "details": "<T = any>(selection: T[], row: T) => void"
+      },
+      {
+        "name": "select-all",
+        "title": "当用户手动勾选全选 Checkbox 时触发的事件",
+        "type": "function",
+        "details": "(selection: any[]) => void"
+      },
+      {
+        "name": "selection-change",
+        "title": "当选择项发生变化时会触发该事件",
+        "type": "function",
+        "details": "(newSelection: any[]) => void"
+      },
+      {
+        "name": "cell-mouse-enter",
+        "title": "当单元格 hover 进入时会触发该事件",
+        "type": "function",
+        "details": "(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void"
+      },
+      {
+        "name": "cell-mouse-leave",
+        "title": "当单元格 hover 退出时会触发该事件",
+        "type": "function",
+        "details": "(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void"
+      },
+      {
+        "name": "cell-click",
+        "title": "当某个单元格被点击时会触发该事件",
+        "type": "function",
+        "details": "(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void"
+      },
+      {
+        "name": "cell-dblclick",
+        "title": "当某个单元格被双击击时会触发该事件",
+        "type": "function",
+        "details": "(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void"
+      },
+      {
+        "name": "cell-contextmenu",
+        "title": "当某个单元格被鼠标右键点击时会触发该事件",
+        "type": "function",
+        "details": "(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void"
+      },
+      {
+        "name": "row-click",
+        "title": "当某一行被点击时会触发该事件",
+        "type": "function",
+        "details": "(row: any, column: TableColumnCtx<T>, event: Event) => void"
+      },
+      {
+        "name": "row-contextmenu",
+        "title": "当某一行被鼠标右键点击时会触发该事件",
+        "type": "function",
+        "details": "(row: any, column: TableColumnCtx<T>, event: Event) => void"
+      },
+      {
+        "name": "row-dblclick",
+        "title": "当某一行被双击时会触发该事件",
+        "type": "function",
+        "details": "(row: any, column: TableColumnCtx<T>, event: Event) => void"
+      },
+      {
+        "name": "header-click",
+        "title": "当某一列的表头被点击时会触发该事件",
+        "type": "function",
+        "details": "(column: TableColumnCtx<T>, event: Event) => void"
+      },
+      {
+        "name": "header-contextmenu",
+        "title": "当某一列的表头被鼠标右键点击时触发该事件",
+        "type": "function",
+        "details": "(column: TableColumnCtx<T>, event: Event) => void"
+      },
+      {
+        "name": "sort-change",
+        "title": "当表格的排序条件发生变化的时候会触发该事件",
+        "type": "function",
+        "details": "(data: {column: TableColumnCtx<T>, prop: string, order: any }) => void"
+      },
+      {
+        "name": "filter-change",
+        "title": "当表格的过滤条件发生变化的时候会触发该事件",
+        "type": "function",
+        "details": "(newFilters: any) => void"
+      },
+      {
+        "name": "current-change",
+        "title": "当表格的当前行发生变化的时候会触发该事件，如果要高亮当前行，请打开表格的 highlight-current-row 属性",
+        "type": "function",
+        "details": "(currentRow: any, oldCurrentRow: any) => void"
+      },
+      {
+        "name": "header-dragend",
+        "title": "当拖动表头改变了列的宽度的时候会触发该事件",
+        "type": "function",
+        "details": "(newWidth: number, oldWidth: number, column: TableColumnCtx<T>, event: MouseEvent) => void"
+      },
+      {
+        "name": "expand-change",
+        "title": "当用户对某一行展开或者关闭的时候会触发该事件（展开行时，回调的第二个参数为 expandedRows；树形表格时第二参数为 expanded）",
+        "type": "function",
+        "details": "(row: any, expandedRows: any[]) => void & (row: any, expanded: boolean) => void"
+      },
+      {
+        "name": "scroll",
+        "title": "表格被用户滚动后触发",
+        "type": "function",
+        "details": "({ scrollLeft: number, scrollTop: number }) => void",
+        "version": "2.9.0"
+      }
+    ],
+    "exposes": [
+      {
+        "name": "clearSelection",
+        "title": "用于多选表格，清空用户的选择",
+        "type": "function",
+        "details": "() => void"
+      },
+      {
+        "name": "getSelectionRows",
+        "title": "返回当前选中的行",
+        "type": "function",
+        "details": "() => any[]"
+      },
+      {
+        "name": "toggleRowSelection",
+        "title": "用于多选表格，切换某一行的选中状态， 如果使用了第二个参数，则可直接设置这一行选中与否",
+        "type": "function",
+        "details": "(row: any, selected?: boolean, ignoreSelectable = true) => void"
+      },
+      {
+        "name": "toggleAllSelection",
+        "title": "用于多选表格，切换全选和全不选",
+        "type": "function",
+        "details": "() => void"
+      },
+      {
+        "name": "toggleRowExpansion",
+        "title": "用于可扩展的表格或树表格，如果某行被扩展，则切换。 使用第二个参数，您可以直接设置该行应该被扩展或折叠。",
+        "type": "function",
+        "details": "(row: any, expanded?: boolean) => void"
+      },
+      {
+        "name": "setCurrentRow",
+        "title": "用于单选表格，设定某一行为选中行， 如果调用时不加参数，则会取消目前高亮行的选中状态。",
+        "type": "function",
+        "details": "(row: any) => void"
+      },
+      {
+        "name": "clearSort",
+        "title": "用于清空排序条件，数据会恢复成未排序的状态",
+        "type": "function",
+        "details": "() => void"
+      },
+      {
+        "name": "clearFilter",
+        "title": "传入由<code>columnKey</code> 组成的数组以清除指定列的过滤条件。 如果没有参数，清除所有过滤器",
+        "type": "function",
+        "details": "(columnKeys?: string[]) => void"
+      },
+      {
+        "name": "doLayout",
+        "title": "对 Table 进行重新布局。 当表格可见性变化时，您可能需要调用此方法以获得正确的布局",
+        "type": "function",
+        "details": "() => void"
+      },
+      {
+        "name": "sort",
+        "title": "手动排序表格。 参数 <code>prop</code> 属性指定排序列，<code>order</code> 指定排序顺序。",
+        "type": "function",
+        "details": "(prop: string, order: string) => void"
+      },
+      {
+        "name": "scrollTo",
+        "title": "滚动到一组特定坐标",
+        "type": "function",
+        "details": "(options: number | ScrollToOptions, yCoord?: number) => void"
+      },
+      {
+        "name": "setScrollTop",
+        "title": "设置垂直滚动位置",
+        "type": "function",
+        "details": "(top?: number) => void"
+      },
+      {
+        "name": "setScrollLeft",
+        "title": "设置水平滚动位置",
+        "type": "function",
+        "details": "(left?: number) => void"
+      },
+      {
+        "name": "columns",
+        "title": "获取表列的 context",
+        "type": "array",
+        "version": "2.7.6"
+      },
+      {
+        "name": "updateKeyChildren",
+        "title": "适用于 lazy Table, 需要设置 <code>rowKey</code>, 更新 key children",
+        "type": "function",
+        "details": "(key: string, data: T[]) => void",
+        "version": "2.8.4"
+      }
+    ],
+    "data": {
+      "name": "data",
+      "label": "数据",
+      "source": "static",
+      "inProps": true,
+      "static": {
+        "ref": true,
+        "type": {
+          "name": "array",
+          "tag": "array-object-editor"
+        },
+        "default": [
+          {
+            "date": "2016-05-03",
+            "address": "No. 189, Grove St, Los Angeles"
+          },
+          {
+            "date": "2016-05-02",
+            "address": "No. 189, Grove St, Los Angeles"
+          },
+          {
+            "date": "2016-05-04",
+            "address": "No. 189, Grove St, Los Angeles"
+          },
+          {
+            "date": "2016-05-01",
+            "address": "No. 189, Grove St, Los Angeles"
+          },
+          {
+            "date": "2016-05-08",
+            "address": "No. 189, Grove St, Los Angeles"
+          },
+          {
+            "date": "2016-05-06",
+            "address": "No. 189, Grove St, Los Angeles"
+          },
+          {
+            "date": "2016-05-07",
+            "address": "No. 189, Grove St, Los Angeles"
+          }
+        ]
+      },
+      "dynamic": {
+        "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/tableData",
+        "method": "get",
+        "dataKey": ""
+      }
     }
   }
-}

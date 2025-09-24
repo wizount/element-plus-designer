@@ -242,6 +242,18 @@
       ],
       "default": 1.2
     },
+    "scale": {
+      "label": "预览图像缩放。",
+      "title": "预览图像缩放。",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 1,
+      "version": "2.11.3"
+    },
     "min-scale": {
       "label": "图像查看器缩放事件的最小缩放比例",
       "title": "图像查看器缩放事件的最小缩放比例",
@@ -287,24 +299,6 @@
     {
       "name": "error",
       "title": "自定义图像加载失败的内容"
-    },
-    {
-      "name": "viewer",
-      "title": "当图像预览时自定义内容"
-    },
-    {
-      "name": "progress",
-      "title": "图片预览时自定义进度条内容 （优先级高于 <code>show-progress</code> 属性）",
-      "type": "object",
-      "details": "{ activeIndex: number, total: number }",
-      "version": "2.9.4"
-    },
-    {
-      "name": "toolbar",
-      "title": "当图像预览时，自定义工具栏内容",
-      "type": "object",
-      "details": "{actions: (action: ImageViewerAction, options?: ImageViewerActionOptions ) => void, prev: ()=> void, next: () => void,reset: () => void, activeIndex: number }, setActiveItem: (index: number) => void",
-      "version": "2.9.4"
     }
   ],
   "events": [

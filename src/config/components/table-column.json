@@ -7,10 +7,10 @@
   "layouts": [
     "rawItem"
   ],
-  "document": "https://element-plus.org/zh-CN/component/table.html",
   "parentTag": [
     "el-table"
   ],
+  "document": "https://element-plus.org/zh-CN/component/table.html",
   "attributes": {
     "type": {
       "label": "列类型",
@@ -144,7 +144,8 @@
           "tag": "el-switch"
         }
       ],
-      "default": false
+      "default": false,
+      "keep": true
     },
     "render-header": {
       "label": "列标题 Label 区域渲染使用的 Function",
@@ -182,7 +183,8 @@
           ]
         }
       ],
-      "default": false
+      "default": false,
+      "keep": true
     },
     "sort-method": {
       "label": "指定数据按照哪个属性进行排序",
@@ -200,7 +202,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(row: any, index: number) => string"
         },
         {
@@ -214,7 +215,8 @@
           "name": "array",
           "tag": "array-editor"
         }
-      ]
+      ],
+      "keep": true
     },
     "sort-orders": {
       "label": "数据在排序时所使用排序策略的轮转顺序",
@@ -244,7 +246,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(row: any, column: any, cellValue: any, index: number) => VNode | string",
           "desc": "row, column, cellValue, index"
         }
@@ -259,7 +260,8 @@
           "tag": "el-switch"
         }
       ],
-      "default": false
+      "default": false,
+      "keep": true
     },
     "align": {
       "label": "对齐方式",
@@ -349,7 +351,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(row: any, index: number) => boolean",
           "desc": "row, index"
         }
@@ -487,7 +488,6 @@
       "types": [
         {
           "name": "function",
-
           "details": "(data: { row: any, column: any, cellValue: any }) => VNode | string",
           "desc": "(data: { row: any, column: any, cellValue: any }) => VNode | string"
         }
@@ -500,27 +500,27 @@
       "name": "default",
       "title": "自定义列的内容",
       "type": "object",
-      "details": "{ row: any, column: any, $index: number }"
+      "details": "{ row: any, column: TableColumnCtx<T>, $index: number }"
     },
     {
       "name": "header",
       "title": "自定义表头的内容，",
       "type": "object",
-      "details": "{ column: any, $index: number }"
+      "details": "{ column: TableColumnCtx<T>, $index: number }"
     },
     {
       "name": "filter-icon",
       "title": "自定义 filter 图标",
       "type": "object",
-      "version": "2.7.8",
-      "details": "{ filterOpened: boolean }"
+      "details": "{ filterOpened: boolean }",
+      "version": "2.7.8"
     },
     {
       "name": "expand",
       "title": "展开列的自定义内容",
       "type": "object",
-      "version": "2.10.0",
-      "details": "{ expanded: boolean }"
+      "details": "{ expanded: boolean }",
+      "version": "2.10.0"
     }
   ]
 }

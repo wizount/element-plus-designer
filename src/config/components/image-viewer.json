@@ -85,6 +85,18 @@
       "default": 1.2,
       "version": "2.2.27"
     },
+    "scale": {
+      "label": "预览图像缩放。",
+      "title": "预览图像缩放。",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 1,
+      "version": "2.11.3"
+    },
     "min-scale": {
       "label": "图像查看器缩放事件的最小缩放比例",
       "title": "图像查看器缩放事件的最小缩放比例",
@@ -133,13 +145,46 @@
       "version": "2.9.4"
     }
   },
-  "slots": [],
+  "slots": [
+    {
+      "name": "viewer",
+      "title": "自定义内容"
+    },
+    {
+      "name": "progress",
+      "title": "自定义进度内容 (优先级高于 <code>show-progress</code> prop)",
+      "type": "object",
+      "version": "2.9.4",
+      "details": "{ activeIndex: number, total: number }"
+    },
+    {
+      "name": "toolbar",
+      "title": "自定义工具栏内容",
+      "type": "object",
+      "version": "2.9.4",
+      "details": "{actions: (action: ImageViewerAction, options?: ImageViewerActionOptions ) => void, prev: ()=> void, next: () => void,reset: () => void, activeIndex: number }, setActiveItem: (index: number) => void"
+    },
+    {
+      "name": "viewer-error",
+      "title": "自定义图像加载失败的内容",
+      "type": "object",
+      "version": "2.11.3",
+      "details": "{ activeIndex: number, src: string }"
+    }
+  ],
   "events": [
     {
       "name": "close",
       "title": "当点击 X 按钮或者在<code>hide-on-click-modal</code>为 true 时点击遮罩层时触发",
       "type": "function",
       "details": "() => void"
+    },
+    {
+      "name": "error",
+      "title": "图片加载失败触发",
+      "type": "function",
+      "details": "(e: Event) => void",
+      "version": "2.11.3"
     },
     {
       "name": "switch",
