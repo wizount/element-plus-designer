@@ -76,7 +76,8 @@
           ]
         }
       ],
-      "default": "solid"
+      "default": "solid",
+      "keep": true
     },
     "content-position": {
       "label": "内容位置",

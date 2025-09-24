@@ -227,7 +227,11 @@
           "tag": "object-editor"
         }
       ],
-      "default": "['ascending', 'descending', null]"
+      "default": [
+        "ascending",
+        "descending",
+        null
+      ]
     },
     "resizable": {
       "label": "改变宽度",

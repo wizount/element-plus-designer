@@ -32,11 +32,11 @@
           "tag": "el-switch"
         }
       ],
-      "default": "true"
+      "default": true
     },
     "title": {
       "label": "标题部分",
-      "title": "标题部分",
+      "title": "title",
       "types": [
         {
           "name": "string",
@@ -46,7 +46,7 @@
     },
     "description": {
       "label": "主要描述部分",
-      "title": "主要描述部分",
+      "title": "description",
       "types": [
         {
           "name": "string",
@@ -140,7 +140,7 @@
           "tag": "object-editor"
         }
       ],
-      "default": "true"
+      "default": true
     },
     "type": {
       "label": "类型",
@@ -236,7 +236,7 @@
     },
     {
       "name": "header",
-      "title": "头部"
+      "title": "header"
     }
   ],
   "events": [

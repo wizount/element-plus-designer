@@ -486,7 +486,7 @@
   ],
   "exposes": [
     {
-      "undefined": "scrollTo",
+      "name": "scrollTo",
       "title": "滚动到给定位置",
       "params": [
         {
@@ -496,7 +496,7 @@
       ]
     },
     {
-      "undefined": "scrollToLeft",
+      "name": "scrollToLeft",
       "title": "滚动到给定的水平位置",
       "params": [
         {
@@ -506,7 +506,7 @@
       ]
     },
     {
-      "undefined": "scrollToTop",
+      "name": "scrollToTop",
       "title": "滚动到给定的垂直位置",
       "params": [
         {
@@ -516,7 +516,7 @@
       ]
     },
     {
-      "undefined": "scrollToRow",
+      "name": "scrollToRow",
       "title": "使用给定的滚动策略滚动至指定行",
       "params": [
         {

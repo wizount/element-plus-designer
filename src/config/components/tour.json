@@ -121,7 +121,7 @@
           "tag": "object-editor"
         }
       ],
-      "default": "true"
+      "default": true
     },
     "gap": {
       "label": "遮罩和目标之间的透明的间距",
@@ -202,7 +202,7 @@
           "tag": "el-switch"
         }
       ],
-      "default": "true"
+      "default": true
     },
     "close-icon": {
       "label": "关闭图标",
