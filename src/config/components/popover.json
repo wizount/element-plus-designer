@@ -230,7 +230,16 @@
           "tag": "object-editor"
         }
       ],
-      "default": "{modifiers: [{name: 'computeStyles',options: {gpuAcceleration: false}}]}"
+      "default": {
+        "modifiers": [
+          {
+            "name": "computeStyles",
+            "options": {
+              "gpuAcceleration": false
+            }
+          }
+        ]
+      }
     },
     "popper-class": {
       "label": "popper 添加类名",

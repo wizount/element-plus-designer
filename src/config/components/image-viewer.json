@@ -154,22 +154,22 @@
       "name": "progress",
       "title": "自定义进度内容 (优先级高于 <code>show-progress</code> prop)",
       "type": "object",
-      "version": "2.9.4",
-      "details": "{ activeIndex: number, total: number }"
+      "details": "{ activeIndex: number, total: number }",
+      "version": "2.9.4"
     },
     {
       "name": "toolbar",
       "title": "自定义工具栏内容",
       "type": "object",
-      "version": "2.9.4",
-      "details": "{actions: (action: ImageViewerAction, options?: ImageViewerActionOptions ) => void, prev: ()=> void, next: () => void,reset: () => void, activeIndex: number }, setActiveItem: (index: number) => void"
+      "details": "{actions: (action: ImageViewerAction, options?: ImageViewerActionOptions ) => void, prev: ()=> void, next: () => void,reset: () => void, activeIndex: number }, setActiveItem: (index: number) => void",
+      "version": "2.9.4"
     },
     {
       "name": "viewer-error",
       "title": "自定义图像加载失败的内容",
       "type": "object",
-      "version": "2.11.3",
-      "details": "{ activeIndex: number, src: string }"
+      "details": "{ activeIndex: number, src: string }",
+      "version": "2.11.3"
     }
   ],
   "events": [

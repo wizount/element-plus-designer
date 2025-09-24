@@ -20,8 +20,8 @@
           "tag": "array-editor"
         }
       ],
-      "default": "[]",
-      "hide": true
+      "hide": true,
+      "default": []
     },
     "props": {
       "label": "options 的配置",
@@ -37,7 +37,8 @@
         "label": "label",
         "disabled": "disabled"
       },
-      "version": "2.11.3"
+      "version": "2.11.3",
+      "keep": true
     },
     "prefix": {
       "label": "触发前缀",
@@ -99,7 +100,7 @@
           "tag": "el-switch"
         }
       ],
-      "default": "false"
+      "default": false
     },
     "offset": {
       "label": "下拉面板偏移量",
@@ -184,22 +185,6 @@
     {
       "name": "footer",
       "title": "下拉列表底部的内容"
-    },
-    {
-      "name": "prefix",
-      "title": "输入框头部内容，只对非 <code>type=\"textarea\"</code> 有效"
-    },
-    {
-      "name": "suffix",
-      "title": "输入框尾部内容，只对非 <code>type=\"textarea\"</code> 有效"
-    },
-    {
-      "name": "prepend",
-      "title": "输入框前置内容，只对非 <code>type=\"textarea\"</code> 有效"
-    },
-    {
-      "name": "append",
-      "title": "输入框后置内容，只对非 <code>type=\"textarea\"</code> 有效"
     }
   ],
   "events": [

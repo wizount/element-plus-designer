@@ -12,35 +12,72 @@
     "border": {
       "label": "颜色选择器面板是否有边框",
       "title": "颜色选择器面板是否有边框",
-      "types": [],
-      "default": "true"
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
     },
     "disabled": {
       "label": "禁用",
       "title": "是否禁用",
-      "types": [],
-      "default": "false"
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
     },
     "show-alpha": {
       "label": "显示 alpha 滑块",
       "title": "是否显示 alpha 滑块",
-      "types": [],
-      "default": [
+      "types": [
         {
-          "type": "boolean",
-          "details": ""
+          "name": "boolean",
+          "tag": "el-switch"
         }
       ]
     },
     "color-format": {
       "label": "写入 v-model 的颜色的格式",
       "title": "写入 v-model 的颜色的格式",
-      "types": []
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "hsl",
+              "value": "hsl"
+            },
+            {
+              "label": "hsv",
+              "value": "hsv"
+            },
+            {
+              "label": "hex",
+              "value": "hex"
+            },
+            {
+              "label": "rgb",
+              "value": "rgb"
+            }
+          ]
+        }
+      ]
     },
     "predefine": {
       "label": "预定义颜色",
       "title": "预定义颜色",
-      "types": []
+      "types": [
+        {
+          "name": "object",
+          "tag": "object-editor"
+        }
+      ]
     }
   },
   "slots": [],
@@ -48,22 +85,14 @@
     {
       "name": "color",
       "title": "当前色彩对象",
-      "undefined": [
-        {
-          "type": "object",
-          "details": "Color"
-        }
-      ]
+      "type": "object",
+      "details": "Color"
     },
     {
       "name": "inputRef",
       "title": "custom input ref",
-      "undefined": [
-        {
-          "type": "object",
-          "details": "InputInstance"
-        }
-      ]
+      "type": "object",
+      "details": "InputInstance"
     }
   ]
 }

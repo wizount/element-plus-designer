@@ -62,11 +62,11 @@
           }
         }
       ],
-      "default": "Enter keyword",
       "switch": [
         "filterable",
         true
-      ]
+      ],
+      "default": "Enter keyword"
     },
     "filter-method": {
       "label": "搜索方法",

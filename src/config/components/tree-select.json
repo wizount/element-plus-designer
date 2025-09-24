@@ -9,19 +9,31 @@
   ],
   "document": "https://element-plus.org/zh-CN/component/tree-select.html",
   "attributes": {
-    "cache-data": {
+    "tree": {
       "label": "",
-      "title": "懒加载节点的缓存数据，结构与数据相同，用于获取未加载数据的标签",
+      "title": "",
       "types": [
         {
-          "name": "object",
-          "tag": "object-editor"
+          "name": "tree"
+        }
+      ]
+    },
+    "select": {
+      "label": "select",
+      "title": "<a href=\"./select#methods\">select</a>",
+      "types": [
+        {
+          "name": "select"
         }
       ],
-      "default": "",
-      "version": "2.2.26"
+      "default": "select"
     },
-    "keep": true
+    "cache-data": {
+      "label": "",
+      "title": "",
+      "types": [],
+      "version": "2.2.26"
+    }
   },
   "slots": [],
   "exposes": [

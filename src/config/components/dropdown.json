@@ -193,7 +193,12 @@
           "tag": "array-editor"
         }
       ],
-      "default": "['Enter', 'Space', 'ArrowDown', 'NumpadEnter']",
+      "default": [
+        "Enter",
+        "Space",
+        "ArrowDown",
+        "NumpadEnter"
+      ],
       "version": "2.9.1"
     },
     "virtual-triggering": {
@@ -340,7 +345,7 @@
           "tag": "object-editor"
         }
       ],
-      "default": "{modifiers: [{name: 'computeStyles',options: {gpuAcceleration: false}}]}"
+      "default": "{modifiers: [{name: \"computeStyles\",options: {gpuAcceleration: false}}]}"
     },
     "teleported": {
       "label": "将下拉列表插入至 body 元素",
