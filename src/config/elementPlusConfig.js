@@ -343,6 +343,19 @@ export const elementPlusDisplayComponents = [
                 ]
             },
             {
+                name: "ColorPickerPanel 颜色选择器面板",
+                key: "color-picker-panel",
+                children: [
+                    {
+                        __id__: "color-picker-panel",
+                        __config__: {
+                            defaultValue: null,
+                            ...defaultFormItemConfig
+                        },
+                    }
+                ]
+            },
+            {
                 name: "Date Picker 日期选择",
                 key: "date-picker",
                 children: [

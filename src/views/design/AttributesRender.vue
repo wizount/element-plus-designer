@@ -113,17 +113,16 @@
       <el-form-item v-show="!v.switch||v.switch&&activeItemProps[v.switch[0]]===v.switch[1]"
                     :required="v.required">
         <template #label>
-          <div v-html="v.title"></div>
           <div>
             <el-tooltip effect="light"
                 :content="`${k}${v.title?'：'+v.title:''}。${v.ref?'':'双击可以变成ref对象'}`"
                 raw-content
             >
-              <el-button>hover me</el-button>
-            </el-tooltip>
-          <span :title="`${k}${v.title?'：'+v.title:''}。${v.ref?'':'双击可以变成ref对象'}`"
-                @dblclick.prevent="!v.ref&&switchRef(k)" @click.prevent="" class="mr-1" >
+                <span
+                      @dblclick.prevent="!v.ref&&switchRef(k)" @click.prevent="" class="mr-1" >
           {{ v.label || v.title }}</span>
+            </el-tooltip>
+
             <el-tag v-if="v.version">{{ v.version }}</el-tag>
             <el-tag v-if="v.deprecated" type="warning">弃用</el-tag>
             <el-tag v-if="v.a11y">a11y</el-tag>
