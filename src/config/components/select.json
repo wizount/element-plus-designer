@@ -718,8 +718,7 @@
         },
         {
           "name": "function",
-          "details": "",
-          "desc": "^[string] / ^[number] / ^[boolean] / ^[Function"
+          "details": ""
         }
       ],
       "version": "2.7.0"

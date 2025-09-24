@@ -176,8 +176,7 @@
       "types": [
         {
           "name": "function",
-          "details": "(value: number) => number | string",
-          "desc": "value"
+          "details": "(value: number) => number | string"
         }
       ]
     },
@@ -272,8 +271,7 @@
       "types": [
         {
           "name": "function",
-          "details": "(value: number) => string",
-          "desc": "value"
+          "details": "(value: number) => string"
         }
       ]
     },

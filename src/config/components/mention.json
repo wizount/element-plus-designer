@@ -165,6 +165,446 @@
         }
       ],
       "keep": true
+    },
+    "type": {
+      "label": "类型",
+      "title": "类型",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "text",
+      "hide": true,
+      "keep": true
+    },
+    "maxlength": {
+      "label": "最大输入长度",
+      "title": "同原生 <code>maxlength</code> 属性",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "minlength": {
+      "label": "最小输入长度",
+      "title": "原生属性，最小输入长度",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ]
+    },
+    "show-word-limit": {
+      "label": "统计字数",
+      "title": "是否显示统计字数, 只在 <code>type</code> 为 'text' 或 'textarea' 的时候生效",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "switch": [
+        "show-password",
+        false
+      ]
+    },
+    "clearable": {
+      "label": "可清空",
+      "title": "是否显示清除按钮，只有当 <code>type</code> 不是 textarea时生效",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "clear-icon": {
+      "label": "自定义清除图标",
+      "title": "自定义清除图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "default": "CircleClose",
+      "version": "2.11.0"
+    },
+    "formatter": {
+      "label": "输入值的格式",
+      "title": "指定输入值的格式。(只有当 <code>type</code> 是\"text\"时才能工作)",
+      "types": [
+        {
+          "name": "function",
+          "details": "(value: string | number) => string"
+        }
+      ],
+      "switch": [
+        "type",
+        "text"
+      ],
+      "hide": true
+    },
+    "parser": {
+      "label": "提取的值",
+      "title": "指定从格式化器输入中提取的值。(仅当 <code>type</code> 是\"text\"时才起作用)",
+      "types": [
+        {
+          "name": "function",
+          "details": "(value: string) => string"
+        }
+      ],
+      "switch": [
+        "type",
+        "text"
+      ],
+      "hide": true
+    },
+    "show-password": {
+      "label": "显示切换密码图标",
+      "title": "是否显示切换密码图标",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false,
+      "hide": true
+    },
+    "disabled": {
+      "label": "禁用",
+      "title": "是否禁用",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "size": {
+      "label": "尺寸",
+      "title": "输入框尺寸，只在 <code>type</code> 不为 'textarea' 时有效",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-radio-group",
+          "config": {
+            "optionType": "button"
+          },
+          "options": [
+            {
+              "label": "large",
+              "value": "large"
+            },
+            {
+              "label": "default",
+              "value": "default"
+            },
+            {
+              "label": "small",
+              "value": "small"
+            }
+          ]
+        }
+      ],
+      "switch": [
+        "type",
+        "text"
+      ],
+      "default": "default"
+    },
+    "prefix-icon": {
+      "label": "前缀图标",
+      "title": "自定义前缀图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "switch": [
+        "type",
+        "text"
+      ]
+    },
+    "suffix-icon": {
+      "label": "后缀图标",
+      "title": "自定义后缀图标",
+      "types": [
+        {
+          "name": "string",
+          "tag": "icon-chooser"
+        }
+      ],
+      "switch": [
+        "type",
+        "text"
+      ]
+    },
+    "rows": {
+      "label": "输入框行数",
+      "title": "输入框行数，仅 <code>type</code> 为 'textarea' 时有效",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "default": 2,
+      "switch": [
+        "type",
+        "textarea"
+      ]
+    },
+    "autosize": {
+      "label": "高度自适应",
+      "title": "textarea 高度是否自适应，仅 <code>type</code> 为 'textarea' 时生效。 可以接受一个对象，比如: <code>{ minRows: 2, maxRows: 6 }</code>",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        },
+        {
+          "name": "object",
+          "tag": "fixed-keys-object-editor",
+          "props": {
+            "keys": [
+              {
+                "name": "minRows",
+                "tag": "el-input-number"
+              },
+              {
+                "name": "maxRows",
+                "tag": "el-input-number"
+              }
+            ]
+          }
+        }
+      ],
+      "default": false,
+      "switch": [
+        "type",
+        "textarea"
+      ]
+    },
+    "autocomplete": {
+      "label": "autocomplete",
+      "title": "原生 <code>autocomplete</code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "default": "off",
+      "hide": true
+    },
+    "name": {
+      "label": "name",
+      "title": "等价于原生 input <code>name</code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "hide": true
+    },
+    "readonly": {
+      "label": "只读",
+      "title": "原生 <code>readonly</code> 属性，是否只读",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "max": {
+      "label": "max",
+      "title": "原生 max 属性，设置最大值",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "hide": true,
+      "keep": true
+    },
+    "min": {
+      "label": "min",
+      "title": "原生属性，设置最小值",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "hide": true,
+      "keep": true
+    },
+    "step": {
+      "label": "step",
+      "title": "原生属性，设置输入字段的合法数字间隔",
+      "types": [
+        {
+          "name": "number",
+          "tag": "el-input-number"
+        }
+      ],
+      "hide": true,
+      "keep": true
+    },
+    "resize": {
+      "label": "缩放",
+      "title": "控制是否能被用户缩放",
+      "types": [
+        {
+          "name": "enum",
+          "tag": "el-select",
+          "options": [
+            {
+              "label": "none",
+              "value": "none"
+            },
+            {
+              "label": "both",
+              "value": "both"
+            },
+            {
+              "label": "horizontal",
+              "value": "horizontal"
+            },
+            {
+              "label": "vertical",
+              "value": "vertical"
+            }
+          ]
+        }
+      ],
+      "hide": true
+    },
+    "autofocus": {
+      "label": "自动获取焦点",
+      "title": "原生属性，自动获取焦点",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": false
+    },
+    "form": {
+      "label": "form",
+      "title": "原生属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ]
+    },
+    "aria-label": {
+      "label": "等价于原生 input aria-label 属性",
+      "title": "等价于原生 input <code>aria-label</code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "a11y": true,
+      "version": "2.7.2"
+    },
+    "tabindex": {
+      "label": "tabindex",
+      "title": "输入框的 tabindex",
+      "types": [
+        {
+          "name": "stringNumber",
+          "tag": "string-number-input"
+        }
+      ],
+      "hide": true
+    },
+    "validate-event": {
+      "label": "表单校验",
+      "title": "输入时是否触发表单的校验",
+      "types": [
+        {
+          "name": "boolean",
+          "tag": "el-switch"
+        }
+      ],
+      "default": true
+    },
+    "input-style": {
+      "label": "style",
+      "title": "input 元素或 textarea 元素的 style",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        },
+        {
+          "name": "object",
+          "tag": "style-editor"
+        }
+      ],
+      "default": {}
+    },
+    "label": {
+      "label": "标签文本",
+      "title": "等价于原生 input <code>aria-label</code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input",
+          "props": {
+            "clearable": true
+          }
+        }
+      ],
+      "a11y": true,
+      "deprecated": true
+    },
+    "inputmode": {
+      "label": "等价于原生 input inputmode 属性",
+      "title": "等价于原生 input <code>inputmode</code> 属性",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ],
+      "version": "2.10.3"
     }
   },
   "slots": [
@@ -185,6 +625,22 @@
     {
       "name": "footer",
       "title": "下拉列表底部的内容"
+    },
+    {
+      "name": "prefix",
+      "title": "输入框头部内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "suffix",
+      "title": "输入框尾部内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "prepend",
+      "title": "输入框前置内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "append",
+      "title": "输入框后置内容，只对非 <code>type=\"textarea\"</code> 有效"
     }
   ],
   "events": [
@@ -206,6 +662,22 @@
       "type": "function",
       "details": "(pattern: string, prefix: string) => void",
       "version": "2.10.4"
+    },
+    {
+      "name": "prefix",
+      "title": "输入框头部内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "suffix",
+      "title": "输入框尾部内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "prepend",
+      "title": "输入框前置内容，只对非 <code>type=\"textarea\"</code> 有效"
+    },
+    {
+      "name": "append",
+      "title": "输入框后置内容，只对非 <code>type=\"textarea\"</code> 有效"
     }
   ],
   "exposes": [

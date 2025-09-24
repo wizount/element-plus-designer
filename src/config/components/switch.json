@@ -329,6 +329,7 @@
   ],
   "exposes": [
     {
+      "name": "focus",
       "title": "手动 focus 到 switch 组件",
       "type": "function",
       "details": "() => void"

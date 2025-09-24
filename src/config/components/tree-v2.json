@@ -298,98 +298,117 @@
   ],
   "exposes": [
     {
+      "name": "filter",
       "title": "过滤所有树节点，过滤后的节点将被隐藏",
       "params": [
         "<code>(query: string)</code>"
       ]
     },
     {
+      "name": "getCheckedNodes",
       "title": "如果节点可以被选中，(<code>show-checkbox</code> 为 <code>true</code>), 本方法将返回当前选中节点的数组",
       "params": [
         "<code>(leafOnly: boolean)</code>"
       ]
     },
     {
+      "name": "getCheckedKeys",
       "title": "若节点可用被选中 (<code>show-checkbox</code> 为 <code>true</code>), 它将返回当前选中节点 key 的数组",
       "params": [
         "<code>(leafOnly: boolean)</code>"
       ]
     },
     {
+      "name": "setCheckedKeys",
       "title": "通过 keys 设置目前勾选的节点",
       "params": [
         "<code>(keys: TreeKey[])</code>"
       ]
     },
     {
+      "name": "setChecked",
       "title": "通过 key 设置某个节点的勾选状态",
       "params": [
         "<code>(key: TreeKey, checked: boolean)</code>"
       ]
     },
     {
+      "name": "setExpandedKeys",
       "title": "设置当前展开的节点",
       "params": [
         "<code>(keys: TreeKey[])</code>"
       ]
     },
     {
+      "name": "getHalfCheckedNodes",
       "title": "如果节点可用被选中 (<code>show-checkbox</code> 为 <code>true</code>), 它将返回当前半选中的节点组成的数组",
       "params": ":::"
     },
     {
+      "name": "getHalfCheckedKeys",
       "title": "若节点可被选中(<code>show-checkbox</code> 为 <code>true</code>)，则返回目前半选中的节点的 key 所组成的数组",
       "params": ":::"
     },
     {
+      "name": "getCurrentKey",
       "title": "获取当前被选中节点的 key，若没有节点被选中则返回 <code>undefined</code>",
       "params": ":::"
     },
     {
+      "name": "getCurrentNode",
       "title": "获取当前被选中节点的 data，若没有节点被选中则返回 <code>undefined</code>",
       "params": ":::"
     },
     {
+      "name": "setCurrentKey",
       "title": "通过 key 设置某个节点的当前选中状态",
       "params": [
         "<code>(key: TreeKey)</code>"
       ]
     },
     {
+      "name": "getNode",
       "title": "通过 key 或 data 获取节点",
       "params": [
         "<code>(data: TreeKey | TreeNodeData)</code>"
       ]
     },
     {
+      "name": "expandNode",
       "title": "展开指定节点",
       "params": [
         "<code>(node: TreeNode)</code>"
       ]
     },
     {
+      "name": "collapseNode",
       "title": "折叠指定节点",
       "params": [
         "<code>(node: TreeNode)</code>"
       ]
     },
     {
+      "name": "setData",
       "title": "当数据量非常庞大的时候，总是使用响应式数据将导致性能表现不佳，所以我们提供一种显式设置的方式来避免此种情况",
       "params": [
         "<code>(data: TreeData)</code>"
       ]
     },
     {
+      "name": "scrollTo",
       "title": "滚动到给定位置",
       "params": [
         "<code>(offset: number)</code>"
-      ]
+      ],
+      "version": "2.8.0"
     },
     {
+      "name": "scrollToNode",
       "title": "使用给定的滚动策略滚动至指定位置",
       "params": [
         "<code>(key: TreeKey, strategy?: auto | smart | center | start | end)</code>"
-      ]
+      ],
+      "version": "2.8.0"
     }
   ],
   "data": {

@@ -111,8 +111,7 @@
       "types": [
         {
           "name": "function",
-          "details": "(node, resolve, reject) => void",
-          "desc": "node, resolve)，`node`为当前点击的节点，`resolve`为数据加载完成的回调(必须调用"
+          "details": "(node, resolve, reject) => void"
         }
       ],
       "hide": true
@@ -404,57 +403,75 @@
   ],
   "exposes": [
     {
+      "name": "filter",
       "title": "过滤所有树节点，过滤后的节点将被隐藏"
     },
     {
+      "name": "updateKeyChildren",
       "title": "为节点设置新数据，只有当设置 <code>node-key</code> 属性的时候才可用"
     },
     {
+      "name": "getCheckedNodes",
       "title": "如果节点可以被选中，(<code>show-checkbox</code> 为 <code>true</code>), 本方法将返回当前选中节点的数组"
     },
     {
+      "name": "setCheckedNodes",
       "title": "设置目前选中的节点，使用此方法必须设置 <code>node-key</code> 属性"
     },
     {
+      "name": "getCheckedKeys",
       "title": "若节点可用被选中 (<code>show-checkbox</code> 为 <code>true</code>), 它将返回当前选中节点 key 的数组"
     },
     {
+      "name": "setCheckedKeys",
       "title": "设置目前选中的节点，使用此方法必须设置 <code>node-key</code> 属性"
     },
     {
+      "name": "setChecked",
       "title": "设置节点是否被选中, 使用此方法必须设置 <code>node-key</code> 属性"
     },
     {
+      "name": "getHalfCheckedNodes",
       "title": "如果节点可用被选中 (<code>show-checkbox</code> 为 <code>true</code>), 它将返回当前半选中的节点组成的数组"
     },
     {
+      "name": "getHalfCheckedKeys",
       "title": "若节点可被选中(<code>show-checkbox</code> 为 <code>true</code>)，则返回目前半选中的节点的 key 所组成的数组"
     },
     {
+      "name": "getCurrentKey",
       "title": "返回当前被选中节点的数据 (如果没有则返回 null)"
     },
     {
+      "name": "getCurrentNode",
       "title": "返回当前被选中节点的数据 (如果没有则返回 null)"
     },
     {
+      "name": "setCurrentKey",
       "title": "通过 key 设置某个节点的当前选中状态，使用此方法必须设置 <code>node-key </code> 属性"
     },
     {
+      "name": "setCurrentNode",
       "title": "设置节点为选中状态，使用此方法必须设置 <code>node-key </code>属性"
     },
     {
+      "name": "getNode",
       "title": "根据 data 或者 key 拿到 Tree 组件中的 node"
     },
     {
+      "name": "remove",
       "title": "删除 Tree 中的一个节点，使用此方法必须设置 node-key 属性"
     },
     {
+      "name": "append",
       "title": "为 Tree 中的一个节点追加一个子节点"
     },
     {
+      "name": "insertBefore",
       "title": "在 Tree 中给定节点前插入一个节点"
     },
     {
+      "name": "insertAfter",
       "title": "在 Tree 中给定节点后插入一个节点"
     }
   ],

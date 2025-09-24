@@ -250,8 +250,7 @@
       "types": [
         {
           "name": "function",
-          "details": "(row: any, column: any, cellValue: any, index: number) => VNode | string",
-          "desc": "row, column, cellValue, index"
+          "details": "(row: any, column: any, cellValue: any, index: number) => VNode | string"
         }
       ]
     },
@@ -355,8 +354,7 @@
       "types": [
         {
           "name": "function",
-          "details": "(row: any, index: number) => boolean",
-          "desc": "row, index"
+          "details": "(row: any, index: number) => boolean"
         }
       ]
     },
@@ -492,8 +490,7 @@
       "types": [
         {
           "name": "function",
-          "details": "(data: { row: any, column: any, cellValue: any }) => VNode | string",
-          "desc": "(data: { row: any, column: any, cellValue: any }) => VNode | string"
+          "details": "(data: { row: any, column: any, cellValue: any }) => VNode | string"
         }
       ],
       "version": "2.9.4"

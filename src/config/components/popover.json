@@ -239,7 +239,8 @@
             }
           }
         ]
-      }
+      },
+      "keep": true
     },
     "popper-class": {
       "label": "popper 添加类名",

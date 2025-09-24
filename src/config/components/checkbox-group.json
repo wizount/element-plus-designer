@@ -162,7 +162,7 @@
           "tag": "object-editor"
         }
       ],
-      "default": "{value: 'value', label: 'label', disabled: 'disabled'}",
+      "default": "{value: \"value\", label: \"label\", disabled: \"disabled\"}",
       "version": "2.11.2"
     }
   },

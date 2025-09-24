@@ -83,6 +83,26 @@
       ],
       "default": "default"
     },
+    "start-placeholder": {
+      "label": "范围选择时开始日期的占位内容",
+      "title": "范围选择时开始日期的占位内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "end-placeholder": {
+      "label": "范围选择时结束日期的占位内容",
+      "title": "范围选择时结束日期的占位内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
     "is-range": {
       "label": "时间范围选择",
       "title": "是否为时间范围选择",
@@ -261,8 +281,7 @@
       "types": [
         {
           "name": "function",
-          "details": "(role: string, comparingDate?: Dayjs) => number[]",
-          "desc": "(role: string, comparingDate?: Dayjs) => number[]"
+          "details": "(role: string, comparingDate?: Dayjs) => number[]"
         }
       ]
     },

@@ -160,9 +160,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "details": "(uploadFile: UploadFile) => void",
-          "desc": "(uploadFile: UploadFile) => void"
+          "details": "(uploadFile: UploadFile) => void"
         }
       ],
       "hide": true
@@ -173,9 +171,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "details": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void",
-          "desc": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
+          "details": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
         }
       ],
       "hide": true
@@ -186,9 +182,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "details": "(response: any, uploadFile: UploadFile, uploadFiles: UploadFiles) => void",
-          "desc": "(response: any, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
+          "details": "(response: any, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
         }
       ],
       "hide": true
@@ -199,9 +193,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "details": "(error: Error, uploadFile: UploadFile, uploadFiles: UploadFiles) => void",
-          "desc": "(error: Error, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
+          "details": "(error: Error, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
         }
       ],
       "hide": true
@@ -212,9 +204,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "details": "(evt: UploadProgressEvent, uploadFile: UploadFile, uploadFiles: UploadFiles) => void",
-          "desc": "(evt: UploadProgressEvent, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
+          "details": "(evt: UploadProgressEvent, uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
         }
       ],
       "hide": true
@@ -225,9 +215,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "details": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void",
-          "desc": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
+          "details": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => void"
         }
       ],
       "hide": true
@@ -238,9 +226,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "details": "(files: File[], uploadFiles: UploadUserFile[]) => void",
-          "desc": "(files: File[], uploadFiles: UploadUserFile[]) => void"
+          "details": "(files: File[], uploadFiles: UploadUserFile[]) => void"
         }
       ],
       "hide": true
@@ -251,7 +237,6 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
           "details": "(rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>"
         }
       ],
@@ -263,9 +248,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "details": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => Awaitable<boolean>",
-          "desc": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => Awaitable<boolean>"
+          "details": "(uploadFile: UploadFile, uploadFiles: UploadFiles) => Awaitable<boolean>"
         }
       ],
       "hide": true
@@ -315,9 +298,7 @@
       "types": [
         {
           "name": "function",
-          "tag": "",
-          "details": "(options: UploadRequestOptions) => XMLHttpRequest | Promise<unknown>",
-          "desc": "(options: UploadRequestOptions) => XMLHttpRequest"
+          "details": "(options: UploadRequestOptions) => XMLHttpRequest | Promise<unknown>"
         }
       ],
       "default": "请参考ajaxUpload",

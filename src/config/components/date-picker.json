@@ -83,6 +83,26 @@
       ],
       "default": true
     },
+    "start-placeholder": {
+      "label": "范围选择时开始日期的占位内容",
+      "title": "范围选择时开始日期的占位内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
+    "end-placeholder": {
+      "label": "范围选择时结束日期的占位内容",
+      "title": "范围选择时结束日期的占位内容",
+      "types": [
+        {
+          "name": "string",
+          "tag": "el-input"
+        }
+      ]
+    },
     "type": {
       "label": "类型",
       "title": "显示类型",
