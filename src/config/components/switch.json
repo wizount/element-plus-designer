@@ -250,7 +250,7 @@
       ]
     },
     "aria-label": {
-      "label": "等价于原生 input aria-label 属性",
+      "label": "aria-label 属性",
       "title": "等价于原生 input <code>aria-label</code> 属性",
       "types": [
         {
@@ -295,7 +295,7 @@
       "deprecated": true
     },
     "label": {
-      "label": "等价于原生 input aria-label 属性",
+      "label": "aria-label 属性",
       "title": "等价于原生 input <code>aria-label</code> 属性",
       "types": [
         {

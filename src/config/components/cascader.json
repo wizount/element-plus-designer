@@ -29,9 +29,40 @@
       "types": [
         {
           "name": "object",
-          "tag": "object-editor"
+          "tag": "fixed-keys-object-editor",
+          "props": {
+            "keys": [
+              {
+                "name": "label",
+                "title": "标签",
+                "tag": "el-input"
+              },
+              {
+                "name": "value",
+                "title": "值",
+                "tag": "el-input"
+              },
+              {
+                "name": "children",
+                "title": "子元素",
+                "tag": "el-input"
+              },
+              {
+                "name": "disabled",
+                "title": "禁用",
+                "tag": "el-input"
+              }
+            ]
+          }
         }
-      ]
+      ],
+      "default": {
+        "value": "id",
+        "label": "label",
+        "children": "children",
+        "disabled": "disabled"
+      },
+      "keep": true
     },
     "size": {
       "label": "尺寸",
@@ -648,7 +679,7 @@
       ]
     },
     "dynamic": {
-      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/cascaderData",
+      "url": "tree.json",
       "method": "get",
       "dataKey": ""
     }

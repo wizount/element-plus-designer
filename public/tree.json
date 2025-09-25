@@ -1,0 +1,23 @@
+[
+  {
+    "value": "val1",
+    "label": "树1",
+    "children": [
+      {
+        "value": "val1-1",
+        "label": "树1-1"
+      }
+    ]
+  },
+  {
+    "value": "val2",
+    "label": "树2",
+    "children": [
+      {
+        "value": "val2-1",
+        "label": "树2-1",
+        "disabled": true
+      }
+    ]
+  }
+]

@@ -36,7 +36,7 @@
                         </el-icon>
                         <template #dropdown>
                           <el-dropdown-menu>
-                            <el-dropdown-item v-for="l in element.__link__" :command="l">
+                            <el-dropdown-item v-for="l in element.__link__" :command="l" :title="l.__config__.tag">
                               <svg-icon :icon-class="l.__config__.tagIcon"/>
                               {{ l.__config__.name || l.__config__.tag }}
                             </el-dropdown-item>

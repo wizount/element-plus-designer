@@ -1,9 +1,9 @@
 {
   "__id__": "color-picker-panel",
-  "name": "颜色选择器面板",
+  "name": "颜色选择面板",
   "desc": "ColorPickerPanel是ColorPicker的核心组件。",
   "tag": "el-color-picker-panel",
-  "tagIcon": "color-picker-panel",
+  "tagIcon": "color",
   "layouts": [
     "rawItem"
   ],

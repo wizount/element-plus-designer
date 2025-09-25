@@ -173,7 +173,7 @@
       ]
     },
     "dynamic": {
-      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/tree-v2-data",
+      "url": "tree.json",
       "method": "get",
       "dataKey": ""
     }

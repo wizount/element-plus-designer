@@ -19,12 +19,13 @@ import IconsDialog from "@/components/IconsDialog.vue";
 const emits = defineEmits(['update:modelValue']);
 const props = defineProps({
   modelValue: {
-    type: String
+    type: String,
+    default: ""
   }
 });
-const icon=ref(props.modelValue);
-watch(props.modelValue,(val)=>{
-  icon.value=val;
+const icon = ref(props.modelValue);
+watch(props.modelValue, (val) => {
+  icon.value = val;
 })
 const iconsVisible = ref(false)
 
@@ -33,8 +34,8 @@ function openIconsDialog() {
 }
 
 function setIcon(val) {
-  icon.value= val;
-  emits("update:modelValue",val);
+  icon.value = val;
+  emits("update:modelValue", val);
 }
 
 </script>
@@ -43,9 +44,11 @@ function setIcon(val) {
 .click-remove-btn:hover {
   text-decoration: line-through red
 }
-.el-button{
+
+.el-button {
   padding: 0 6px;
 }
+
 .el-button + .el-button {
   margin-left: 2px;
 }

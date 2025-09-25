@@ -153,7 +153,26 @@
       "types": [
         {
           "name": "object",
-          "tag": "object-editor"
+          "tag": "fixed-keys-object-editor",
+          "props": {
+            "keys": [
+              {
+                "name": "label",
+                "title": "标签",
+                "tag": "el-input"
+              },
+              {
+                "name": "value",
+                "title": "值",
+                "tag": "el-input"
+              },
+              {
+                "name": "disabled",
+                "title": "禁用",
+                "tag": "el-input"
+              }
+            ]
+          }
         }
       ],
       "default": {
@@ -219,7 +238,7 @@
       ]
     },
     "dynamic": {
-      "url": "https://www.fastmock.site/mock/c9e1a1c3cefb84da4306dcf9fadde652/ele-plus-desinger/options",
+      "url": "array.json",
       "method": "get",
       "dataKey": "list"
     }

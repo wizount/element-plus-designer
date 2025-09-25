@@ -211,7 +211,7 @@
       "keep": true
     },
     "id": {
-      "label": "等价于原生 input id 属性",
+      "label": "id 属性",
       "title": "等价于原生 input <code>id</code> 属性",
       "types": [
         {
@@ -229,7 +229,7 @@
       "hide": true
     },
     "name": {
-      "label": "等价于原生 input name 属性",
+      "label": "name 属性",
       "title": "等价于原生 input <code>name</code> 属性",
       "types": [
         {
@@ -242,7 +242,7 @@
       ]
     },
     "aria-label": {
-      "label": "等价于原生 input aria-label 属性",
+      "label": "aria-label 属性",
       "title": "等价于原生 input <code>aria-label</code> 属性",
       "types": [
         {
@@ -362,7 +362,7 @@
       "version": "2.7.0"
     },
     "label": {
-      "label": "等价于原生 input aria-label 属性",
+      "label": "aria-label 属性",
       "title": "等价于原生 input <code>aria-label</code> 属性",
       "types": [
         {
