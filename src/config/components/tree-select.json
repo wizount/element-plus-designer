@@ -20,7 +20,8 @@
       ],
       "default": "",
       "version": "2.2.26"
-    },
+    }
+  },
   "slots": [],
   "exposes": [
     {
