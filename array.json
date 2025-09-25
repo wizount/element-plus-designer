@@ -1,0 +1,15 @@
+[
+  {
+    "value": "val1",
+    "label": "lbl1"
+  },
+  {
+    "value": "val2",
+    "label": "lbl3"
+  },
+  {
+    "value": "val3",
+    "label": "lbl3",
+    "disabled": true
+  }
+]
